@@ -1,0 +1,19 @@
+<%= form_for(:user, url: { controller: "sessions", action: "create" }, method: :post) do |f| %>
+  <fieldset>
+    <legend>User Sign In</legend>
+
+    <div>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+
+    <div>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  </fieldset>
+<% end %>

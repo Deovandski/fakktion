@@ -1,0 +1,2 @@
+module LegalInfoHelper
+end

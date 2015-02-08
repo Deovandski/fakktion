@@ -1,0 +1,7 @@
+@import "imports";
+
+.button,
+button,
+input[type="submit"] {
+  @include button;
+}

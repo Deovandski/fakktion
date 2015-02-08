@@ -1,0 +1,7 @@
+@function icon-font-path($path) {
+  @return font-path('diabetes/' + $path);
+}
+
+@function icon-image-path($path) {
+  @return image-path('diabetes/' + $path);
+}

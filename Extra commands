@@ -1,0 +1,9 @@
+Create Database diagram
+  rake erd
+  
+
+Fully reset DB and redo all migrations
+  rake db:migrate:reset
+ 
+
+

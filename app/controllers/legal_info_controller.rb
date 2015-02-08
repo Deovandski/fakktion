@@ -1,0 +1,2 @@
+class LegalInfoController < ApplicationController
+end
