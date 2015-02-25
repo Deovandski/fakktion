@@ -1,6 +1,6 @@
 @import "imports";
 
-body.application-layout footer {
+body.ember-application footer {
   @include clearfix;
   border-top: 1px solid $base-border-color;
   padding: 0.5em 0;

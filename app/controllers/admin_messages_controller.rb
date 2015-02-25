@@ -1,0 +1,2 @@
+class AdminMessagesController < ApplicationController
+end

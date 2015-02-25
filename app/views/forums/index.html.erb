@@ -1,22 +1,4 @@
-<div class="left-sidebar">
-  <table> 
-    <% @genres.each do |genre| %>
-      <tr>
-  			<td><%= genre.genre_name %></td>
-      </tr>
-    <% end %>
-  </table>
-</div>
-
-<div class="shared-panel">
-</div>
-
-<div class="right-sidebar">
-  <table> 
-    <% @fact_types.each do |type| %>
-      <tr>
-  			<td><%= type.fact_name %></td>
-      </tr>
-    <% end %>
-  </table>
-</div>
+<script type='text/handlebars' data-template-name='index'>
+ <p>There are {{productsCount}} products</p>
+ <p>Current Time: {{time}}</p>
+</script>

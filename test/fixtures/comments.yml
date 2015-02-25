@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  soft_delete: false
+  soft_delete_date: 2015-02-24
+  text: MyString
+  hidden: false
+  empathy_level: 1
+
+two:
+  soft_delete: false
+  soft_delete_date: 2015-02-24
+  text: MyString
+  hidden: false
+  empathy_level: 1

@@ -1,6 +1,6 @@
 @import "imports";
 
-body.application-layout header {
+body.ember-application header {
   @include clearfix;
   background-color: $header-background-color;
   color: #fff;
@@ -81,7 +81,7 @@ body.application-layout header {
   }
 }
 
-body.application-layout header li.divider {
+body.ember-application header li.divider {
   margin: 0 28px 0 14px;
   position: relative;
 
@@ -96,7 +96,7 @@ body.application-layout header li.divider {
   }
 }
 
-body.application-layout header li.new-session {
+body.ember-application header li.new-session {
   a {
     color: $header-font-color;
 
@@ -106,7 +106,7 @@ body.application-layout header li.new-session {
   }
 }
 
-body.application-layout header li.new-registration a {
+body.ember-application header li.new-registration a {
   border: 1px solid $header-font-color;
   border-radius: $base-border-radius;
   color: $header-font-color;
@@ -119,7 +119,7 @@ body.application-layout header li.new-registration a {
   }
 }
 
-body.application-layout header li.user {
+body.ember-application header li.user {
   font-family: 'Ovo', serif;
   float: right;
 
