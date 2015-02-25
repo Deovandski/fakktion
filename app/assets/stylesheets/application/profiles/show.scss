@@ -1,6 +1,6 @@
 @import "imports";
 
-body.application-layout.dashboards.show main {
+body.ember-application.profiles.show main {
   @include outer-container;
 
   div:nth-child(3n) {

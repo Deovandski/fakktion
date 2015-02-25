@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "imports";
 
-body.application-layout.forum.show main {
+body.ember-application.forum.show main {
   @include outer-container;
 
   div:nth-child(3n) {

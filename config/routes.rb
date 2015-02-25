@@ -1,5 +1,21 @@
 Rails.application.routes.draw do
 
+  resources :admin_messages
+
+  resources :posts
+
+  resources :comments
+
+  resources :fact_types
+
+  resources :topics
+
+  resources :categories
+
+  resources :fact_postings
+
+  resources :genres
+
   root 'forums#index'
   
   resources :users

@@ -5,21 +5,17 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <%= yield :head %>
-</head>
-
-<body class="application-layout <%= body_class %>">
   <%= render partial: "layouts/application/header" unless @hide_header %>
+  <%= javascript_include_tag "templates/all" %>
+</head>
+<body>
   <%= render partial: "layouts/shared/flash_messages" unless @hide_header %>
-  
   <main>
     <%= yield %>
   </main>
-  
-  <%= render partial: "layouts/application/footer" unless @hide_footer %>
-
-  <%= javascript_include_tag "application" %>
-  <%= yield :scripts %>
   <%= render partial: "layouts/shared/analytics" %>
 </body>
+<footer>
+  <%= render partial: "layouts/application/footer" unless @hide_footer %>
+</footer>
 </html>

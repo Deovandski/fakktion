@@ -1,5 +1,5 @@
 <footer>
-  <div class="outer-container">
+  <div class="outer-container"><script type='text/handlebars'>
     <nav>
       <ul>
           <li>
@@ -13,9 +13,7 @@
             <% end %>
           </li>
           <li>
-            <%= link_to about_path, title: "About Fakktion" do%>
-              <span>About Fakktion</span>
-            <% end %>
+            {{#link-to 'about'}}About{{/link-to}}
           </li>
           <li>
             <%= link_to support_path, title: "Contact Us!" do%>
@@ -29,5 +27,6 @@
           </li>
       </ul>
     </nav>
-  </div>
+  </script>
+ </div>
 </footer>

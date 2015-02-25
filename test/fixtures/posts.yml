@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fact_link: MyString
+  fiction_link: MyString
+  post_name: MyString
+  importance: 1
+  soft_delete: false
+  soft_delete_date: 2015-02-24
+  hidden: false
+
+two:
+  fact_link: MyString
+  fiction_link: MyString
+  post_name: MyString
+  importance: 1
+  soft_delete: false
+  soft_delete_date: 2015-02-24
+  hidden: false
