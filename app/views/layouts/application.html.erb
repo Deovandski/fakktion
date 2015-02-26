@@ -2,19 +2,19 @@
 <html>
 <head>
   <title>Fakktion</title>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all'%>
+  <%= javascript_include_tag 'application'%>
+  <%= javascript_include_tag "templates/all" %>
   <%= csrf_meta_tags %>
   <%= render partial: "layouts/application/header" unless @hide_header %>
-  <%= javascript_include_tag "templates/all" %>
 </head>
+
 <body>
   <%= render partial: "layouts/shared/flash_messages" unless @hide_header %>
-  <main>
-    <%= yield %>
-  </main>
+  <%= yield %>  
   <%= render partial: "layouts/shared/analytics" %>
 </body>
+
 <footer>
   <%= render partial: "layouts/application/footer" unless @hide_footer %>
 </footer>

@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+namespace :api do
+  namespace :v1 do
+    resources :admin_messages
+    resources :posts
+    resources :comments
+    resources :fact_types
+    resources :topics
+    resources :categories
+    resources :fact_postings
+    resources :genres
+  end
+end
   resources :admin_messages
 
   resources :posts
@@ -28,6 +40,8 @@ Rails.application.routes.draw do
   match 'support', to: 'support#index', via: [:get]
   match 'privacy_info', to: 'privacy_info#index', via: [:get]
   match "clear_info", to: "users#clear_info", as: :clear_info, via: :post
+  
+  get '*path', to: 'forums#index'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

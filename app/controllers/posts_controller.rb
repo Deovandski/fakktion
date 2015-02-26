@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    respond_with Post.create(post_params)
+    respond_with :api, :v1,Post.create(post_params)
   end
 
   def update
