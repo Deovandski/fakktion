@@ -1,19 +1,15 @@
 source 'https://rubygems.org'
 
-
 gem "awesome_print"
 gem "font-awesome-rails"
 gem "foreman"
 gem "local_time"
 gem "puma"
 gem 'neat'
-gem 'ember-rails'
-gem 'ember-source'
-gem 'haml'
 
-group :development do
-  gem 'rails-erd'
-end
+#Ember.js
+gem 'ember-rails'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
@@ -30,8 +26,6 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
