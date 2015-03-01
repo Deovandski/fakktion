@@ -1,4 +1,9 @@
 class AdminMessageSerializer < ActiveModel::Serializer
   belongs_to :user
-  attributes :id, :title, :message
+  
+  embed :ids, include: true
+  
+  attributes :id,
+             :title,
+             :message
 end

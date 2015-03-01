@@ -1,1 +1,43 @@
-Template is working!
+<div class="ember_application">
+  <div class="left-sidebar">
+    <div class="genres_div">
+      <h1>Genres</h1>
+      <ul>
+        {{#each genre in genres}}
+          <li>{{genre.genre_name}}</li>
+        {{/each}}
+      </ul>
+    </div>
+    <div class="categories_div">
+      <script type='text/x-handlebars' data-template-name='categories'>
+        
+      </script>
+    </div>
+  </div>
+  
+  <div class="shared-panel">{{outlet}}</div>
+  
+  <div class="right-sidebar">
+    <div class="fact_types_div">div3</div>
+    <div class="fact_posting_dates_div">div4</div>
+  </div>
+</div>
+
+<footer>
+  <nav>
+  <ul>
+    <li>
+      {{#link-to 'about'}}About{{/link-to}}
+    </li>
+    <li>
+      {{#link-to 'privacy_info'}}Privacy Info{{/link-to}}
+    </li>
+    <li>
+      {{#link-to 'legal_info'}}Legal Info{{/link-to}}
+    </li>
+    <li>
+      {{#link-to 'support'}}Contact Us!{{/link-to}}
+    </li>
+  </ul>
+  </nav>
+</footer>

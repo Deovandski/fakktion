@@ -1,4 +1,8 @@
 class TopicSerializer < ActiveModel::Serializer
   has_many :posts
-  attributes :id, :topic_name
+  
+  embed :ids, include: true
+  
+  attributes :id,
+             :topic_name
 end

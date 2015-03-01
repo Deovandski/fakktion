@@ -1,44 +1,23 @@
 Rails.application.routes.draw do
 
-namespace :api do
-  namespace :v1 do
-    resources :admin_messages
-    resources :posts
-    resources :comments
-    resources :fact_types
-    resources :topics
-    resources :categories
-    resources :fact_postings
-    resources :genres
-  end
-end
-  resources :admin_messages
-
-  resources :posts
-
-  resources :comments
-
-  resources :fact_types
-
-  resources :topics
-
-  resources :categories
-
-  resources :fact_postings
-
-  resources :genres
-
   root 'forums#index'
   
+  namespace :api, defaults: {format: :json} do
+    namespace :v1 do
+      resources :admin_messages
+      resources :posts
+      resources :comments
+      resources :fact_types
+      resources :topics
+      resources :categories
+      resources :fact_postings
+      resources :genres
+    end
+  end
+  
   resources :users
-
   resource :session, :profile
   
-  match 'code_sample', to: 'code_samples#index', via: [:get]
-  match 'about', to: 'about#index', via: [:get]
-  match 'legal_info', to: 'legal_info#index', via: [:get]
-  match 'support', to: 'support#index', via: [:get]
-  match 'privacy_info', to: 'privacy_info#index', via: [:get]
   match "clear_info", to: "users#clear_info", as: :clear_info, via: :post
   
   get '*path', to: 'forums#index'

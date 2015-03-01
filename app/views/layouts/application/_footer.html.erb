@@ -1,6 +1,4 @@
 <footer>
-  <div class="outer-container"><script type='text/handlebars'>
-    <nav>
       <ul>
           <li>
             <%= link_to legal_info_path, title: "Legal Information" do%>
@@ -13,7 +11,9 @@
             <% end %>
           </li>
           <li>
-            {{#link-to 'about'}}About{{/link-to}}
+            <%= link_to about_path, title: "About" do%>
+              <span>About</span>
+            <% end %>
           </li>
           <li>
             <%= link_to support_path, title: "Contact Us!" do%>
@@ -27,6 +27,5 @@
           </li>
       </ul>
     </nav>
-  </script>
  </div>
 </footer>
