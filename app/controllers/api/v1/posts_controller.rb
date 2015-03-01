@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    respond_with :api, :v1,Post.create(post_params)
+    respond_with :api, :v1, Post.create(post_params)
   end
 
   def update
@@ -22,6 +22,6 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :intro, :extended, :published_at, :author) # only allow these for now
+    params.require(:post).permit(fact_dates_id, :genres_id, :post_name, :categories_id, :topics_id) # only allow these for now
   end
 end

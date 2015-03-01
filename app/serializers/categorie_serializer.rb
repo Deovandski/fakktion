@@ -1,4 +1,8 @@
 class CategorieSerializer < ActiveModel::Serializer
   has_many :posts
-  attributes :id, :category_name
+  
+  embed :ids, include: true
+  
+  attributes :id,
+             :category_name
 end
