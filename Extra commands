@@ -5,5 +5,8 @@ Create Database diagram
 Fully reset DB and redo all migrations
   rake db:migrate:reset
  
+Testing json response
 
+http://localhost:3000/api/v1/genres.json // for all of them
+http://localhost:3000/api/v1/genres/1.json // for individual response
 
