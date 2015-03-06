@@ -1,9 +1,2 @@
-<h1>Genre</h1>
-<script type='text/x-handlebars' data-template-name='genres'>
-<h1>Genres</h1>
-<ul>
-  {{#each genre in genres}}
-    <li>{{genre.genre_name}}</li>
-  {{/each}}
-</ul>
-</script>
+<h1>Genres Index</h1>
+{{outlet}}

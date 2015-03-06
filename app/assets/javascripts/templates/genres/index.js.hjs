@@ -1,0 +1,2 @@
+<h1>Index Genres</h1>
+<div>{{outlet}}</div>

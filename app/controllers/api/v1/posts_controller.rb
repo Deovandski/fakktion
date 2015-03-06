@@ -1,5 +1,6 @@
-class PostsController < ApplicationController
+class Api::V1::PostsController < ApplicationController
   respond_to :json # default to Active Model Serializers
+  
   def index
     respond_with Post.all
   end

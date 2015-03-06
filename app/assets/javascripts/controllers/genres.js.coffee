@@ -4,7 +4,3 @@
 App.GenresController = Ember.ArrayController.extend({
 
 })
-
-App.GenresIndexController = Ember.ArrayController.extend({
-
-})

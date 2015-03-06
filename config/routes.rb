@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'forums#index'
   
-  namespace :api, defaults: {format: :json} do
+  namespace :api do
     namespace :v1 do
       resources :admin_messages
       resources :posts

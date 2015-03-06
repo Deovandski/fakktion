@@ -6,11 +6,10 @@ gem "foreman"
 gem "local_time"
 gem "puma"
 gem 'neat'
+gem 'responders', '~> 2.0'
 
 #Ember.js
 gem 'ember-rails'
-
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use sqlite3 as the database for Active Record

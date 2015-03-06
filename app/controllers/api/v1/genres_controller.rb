@@ -1,13 +1,12 @@
-class GenresController < ApplicationController
-# TODO: Check to see if Api::V1:: is required...
-
+class Api::V1::GenresController < ApplicationController
   respond_to :json # default to Active Model Serializers | 
+  
   def index
     respond_with Genre.all
   end
 
   def show
-    respond_with Genre.find(params[:id])
+    respond_with genre
   end
 
   def create
@@ -15,15 +14,20 @@ class GenresController < ApplicationController
   end
 
   def update
-    respond_with Genre.update(params[:id], genre_params)
+    respond_with genre.update(lead_params)
   end
 
   def destroy
-    respond_with Genre.destroy(params[:id])
+    respond_with genre.destroy
   end
 
   private
+  
+  def genre
+    Genre.find(params[:id])
+  end
+  
   def genre_params
-    params.require(:post).permit(:genre_name) # only allow these for now
+    params.require(:genre).permit(:genre_name) # only allow these for now
   end
 end
