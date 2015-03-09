@@ -1,2 +1,6 @@
-<h1>Genres Index</h1>
-{{outlet}}
+<h4>Genre template</h4>
+<ul>
+  {{#each genre in model}}
+  <li>{{genre.genreName}}</li>
+  {{/each}}
+</ul>

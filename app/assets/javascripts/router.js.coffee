@@ -9,6 +9,7 @@ App.Router.map ()->
    @resource 'genres'
    @resource 'genre', path: '/genres/:id'
    
+   @resource 'factTypes'
    
    # Footer Routes
    @route 'about'
