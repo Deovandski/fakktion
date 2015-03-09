@@ -6,9 +6,6 @@
     <div class="genres_div">
       <h5>Genres</h5>
       <ul>
-        {{#each genre in genres}}
-          <li>Genre: {{genre.genreName}}</li>
-        {{/each}}
         <li>{{#link-to 'genres'}}All Genres{{/link-to}}</li>
       </ul>
     </div>
@@ -22,6 +19,9 @@
   <div class="right-sidebar">
     <div class="fact_types_div">
       <h5>Fact Types</h5>
+      <ul>
+        <li>{{#link-to 'factTypes'}}All Fact Types{{/link-to}}</li>
+      </ul>
     </div>
     <div class="fact_posting_dates_div">
       <h5>Fact Post date</h5>
