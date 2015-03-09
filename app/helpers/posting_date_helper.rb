@@ -1,0 +1,2 @@
+module PostingDateHelper
+end

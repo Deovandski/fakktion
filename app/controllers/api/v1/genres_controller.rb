@@ -14,7 +14,7 @@ class Api::V1::GenresController < ApplicationController
   end
 
   def update
-    respond_with genre.update(lead_params)
+    respond_with genre.update(genre_params)
   end
 
   def destroy

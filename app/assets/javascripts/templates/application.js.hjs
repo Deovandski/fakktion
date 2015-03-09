@@ -7,8 +7,9 @@
       <h5>Genres</h5>
       <ul>
         {{#each genre in genres}}
-          <li>{{genre.genreName}}</li>
+          <li>Genre: {{genre.genreName}}</li>
         {{/each}}
+        <li>{{#link-to 'genres'}}All Genres{{/link-to}}</li>
       </ul>
     </div>
     <div class="categories_div">

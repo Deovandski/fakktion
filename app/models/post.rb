@@ -27,6 +27,6 @@ class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :genre
   belongs_to :topic
-  belongs_to :fact_posting
+  belongs_to :posting_date
   belongs_to :fact_type
 end

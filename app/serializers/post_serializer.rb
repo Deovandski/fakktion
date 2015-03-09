@@ -1,8 +1,10 @@
 class PostSerializer < ActiveModel::Serializer
-  has_many :comments
+  #has_many :comments
+  
+  #not working
   #belongs_to :genre
   #belongs_to :fact_type
-  #belongs_to :fact_posting
+  #belongs_to :posting_date
   #belongs_to :topic
   #belongs_to :categorie
   

@@ -1,7 +1,7 @@
 class UserSerializer < ActiveModel::Serializer
-  has_many :posts
-  has_many :comments
-  has_many :admin_messages
+  #has_many :posts
+  #has_many :comments
+  #has_many :admin_messages
   embed :ids, include: true
   attributes :id,
              :full_name,

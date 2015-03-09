@@ -2,7 +2,7 @@ class CreateRelationships < ActiveRecord::Migration
   def up
     add_reference :posts, :user, index: true
     add_reference :posts, :fact_type, index: true
-    add_reference :posts, :fact_posting, index: true
+    add_reference :posts, :posting_date, index: true
     add_reference :posts, :genre, index: true
     add_reference :posts, :topic, index: true
     add_reference :posts, :categorie, index: true
@@ -14,7 +14,7 @@ class CreateRelationships < ActiveRecord::Migration
   def down
     remove_reference :posts, :user, index: true
     remove_reference :posts, :fact_type, index: true
-    remove_reference :posts, :fact_posting, index: true
+    remove_reference :posts, :posting_date, index: true
     remove_reference :posts, :genre, index: true
     remove_reference :posts, :topic, index: true
     remove_reference :posts, :categorie, index: true
