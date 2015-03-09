@@ -42,9 +42,9 @@ puts "No new categories created as there is already at least one 1 category in t
 end
 
 # FACT POSTING DATE RELATED SEED
-puts "Creating fact post dates"
-if FactPosting.count == 0
-FactPosting.create!(fact_post_date: DateTime.strptime('09/14/2009', '%m/%d/%Y'))
+puts "Creating Post dates"
+if PostingDate.count == 0
+PostingDate.create!(post_date: DateTime.strptime('09/14/2009', '%m/%d/%Y'))
 puts "Fact posting dates created"
 else
 puts "No new fact posting dates created as there is already at least one 1 fact post date in the database"
@@ -82,7 +82,7 @@ end
 # POST RELATED SEED
 puts "Creating posts"
 if Post.count == 0
-Post.create!(fact_posting_id: 0, fact_link: "test fact link", fact_type_id: 0, fiction_link: "test fiction link", genre_id: 1, hidden: false, importance: 0, post_name: "The concept of reality behind Hatsune Miku", soft_delete: false, soft_delete_date: nil, topic_id: 0, user_id: 0,categorie_id: 2)
+Post.create!(posting_date_id: 0, fact_link: "test fact link", fact_type_id: 0, fiction_link: "test fiction link", genre_id: 1, hidden: false, importance: 0, post_name: "The concept of reality behind Hatsune Miku", soft_delete: false, soft_delete_date: nil, topic_id: 0, user_id: 0,categorie_id: 2)
 puts "Posts created"
 else
 puts "No new posts created as there is already at least one 1 post in the database"

@@ -1,5 +1,5 @@
 class CategorieSerializer < ActiveModel::Serializer
-  has_many :posts
+  #has_many :posts
   
   embed :ids, include: true
   

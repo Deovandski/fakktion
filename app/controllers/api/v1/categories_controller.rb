@@ -1,11 +1,12 @@
 class Api::V1::CategoriesController < ApplicationController
   respond_to :json # default to Active Model Serializers
+  
   def index
     respond_with Categorie.all
   end
 
   def show
-    respond_with Categorie.find(params[:id])
+    respond_with categorie
   end
 
   def create
@@ -13,14 +14,19 @@ class Api::V1::CategoriesController < ApplicationController
   end
 
   def update
-    respond_with Categorie.update(params[:id], categorie_params)
+    respond_with categorie.update(categorie_params)
   end
 
   def destroy
-    respond_with Categorie.destroy(params[:id])
+    respond_with categorie.destroy
   end
 
   private
+  
+  def categorie
+    Categorie.find(params[:id])
+  end
+  
   def categorie_params
     params.require(:categorie).permit(:category_name) # only allow these for now
   end

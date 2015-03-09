@@ -1,6 +1,4 @@
 class CommentSerializer < ActiveModel::Serializer
-  belongs_to :user
-  belongs_to :post
   
   embed :ids, include: true
   

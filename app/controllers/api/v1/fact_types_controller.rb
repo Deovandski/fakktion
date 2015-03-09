@@ -1,11 +1,12 @@
-class FactTypesController < ApplicationController
+class Api::V1::FactTypesController < ApplicationController
   respond_to :json # default to Active Model Serializers
+  
   def index
     respond_with FactType.all
   end
 
   def show
-    respond_with FactType.find(params[:id])
+    respond_with factType
   end
 
   def create
@@ -13,15 +14,20 @@ class FactTypesController < ApplicationController
   end
 
   def update
-    respond_with FactType.update(params[:id], factType_params)
+    respond_with factType.update(factType_params)
   end
 
   def destroy
-    respond_with FactType.destroy(params[:id])
+    respond_with factType.destroy
   end
 
   private
+  
+  def factType
+    FactType.find(params[:id])
+  end
+  
   def factType_params
-    params.require(:post).permit(:fact_name) # only allow these for now
+    params.require(:factType).permit(:fact_name) # only allow these for now
   end
 end

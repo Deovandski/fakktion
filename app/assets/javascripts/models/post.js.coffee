@@ -8,3 +8,4 @@ App.Post = DS.Model.extend
   softDelete: DS.attr 'boolean'
   softDeleteDate: DS.attr 'date'
   hidden: DS.attr 'boolean'
+  genre: DS.belongsTo('genre')

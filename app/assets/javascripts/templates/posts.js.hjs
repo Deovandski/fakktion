@@ -1,8 +1,0 @@
-<h1>Posts</h1>
-<ul>{{#each post in controller}}
-    <li>{{#link-to 'post' post}}{{post.title}}{{/link-to}}</li>
-{{else}}
-    <li>There are no posts.</li>
-{{/each}}</ul>
- 
-{{outlet}}

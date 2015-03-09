@@ -3,11 +3,11 @@
 App.Router.map ()->
 
    # Resources
-   @resource 'posts', ->
-    @resource 'post', path: '/posts/:id'
+   @resource 'posts'
+   @resource 'post', path: '/posts/:id'
    
-   @resource 'genres', ->
-    @resource 'genre', path: '/genres/:id'
+   @resource 'genres'
+   @resource 'genre', path: '/genres/:id'
    
    
    # Footer Routes
