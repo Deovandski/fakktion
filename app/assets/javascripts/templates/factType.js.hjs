@@ -1,6 +1,2 @@
 <h4>Fact Type template</h4>
-<ul>
-  {{#each factType in model}}
-  <li>{{factType.factName}}</li>
-  {{/each}}
-</ul>
+

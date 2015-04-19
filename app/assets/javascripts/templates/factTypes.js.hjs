@@ -1,6 +1,5 @@
-<label>FactTypes template</label>
 <ul>
   {{#each factType in factTypes}}
-  <li>{{factType.factName}}</li>
+  <li>{{#link-to factType.edit}}{{factType.factName}}{{/link-to}}</li>
   {{/each}}
 </ul>

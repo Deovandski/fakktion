@@ -1,6 +1,5 @@
-<label>Genres template</label>
 <ul>
   {{#each genre in genres}}
-  <li>{{genre.genreName}}</li>
+  <li>{{#link-to genre.edit}}{{genre.genreName}}{{/link-to}}</li>
   {{/each}}
 </ul>

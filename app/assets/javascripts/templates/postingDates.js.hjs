@@ -1,0 +1,5 @@
+<ul>
+  {{#each postingDate in postingDates}}
+  <li>{{postingDate.factPostDate}}</li>
+  {{/each}}
+</ul>

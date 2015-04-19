@@ -4,10 +4,10 @@
   <div class="left-sidebar">
     <div class="genres_div">
       <h5>Genres</h5>
-      {{render 'genres' genres}}
+      {{partial 'genres'}}
     </div>
     <div class="categories_div">
-      <h5>Categories</h5>
+      {{render 'categories'}}
     </div>
   </div>
   
@@ -16,13 +16,11 @@
   <div class="right-sidebar">
     <div class="fact_types_div">
       <h5>Fact Types</h5>
-      {{render 'factTypes' factTypes}}
+      {{partial 'factTypes'}}
     </div>
     <div class="fact_posting_dates_div">
       <h5>Fact Post date</h5>
-      <ul>
-        <li>{{#link-to 'factPostDates'}}All Post Dates{{/link-to}}</li>
-      </ul>
+      {{partial 'postingDates'}}
     </div>
   </div>
 </div>

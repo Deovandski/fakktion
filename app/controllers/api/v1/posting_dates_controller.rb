@@ -1,7 +1,8 @@
-class Api::V1::PostingDateController < ApplicationController
+class Api::V1::PostingDatesController < ApplicationController
   respond_to :json # default to Active Model Serializers
+  
   def index
-    respond_with Posting_Date.all
+    respond_with PostingDate.all
   end
 
   def show
@@ -23,7 +24,7 @@ class Api::V1::PostingDateController < ApplicationController
   private
   
   def postingDate
-    Genre.find(params[:id])
+    PostingDate.find(params[:id])
   end
   
   def postingDate_params
