@@ -1,4 +1,4 @@
 # for more details see: http://emberjs.com/guides/models/defining-models/
 
-App.FactPosting = DS.Model.extend
-  factPostDate: DS.attr 'date'
+App.PostingDate = DS.Model.extend
+  postDate: DS.attr 'date'

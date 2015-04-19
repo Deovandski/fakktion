@@ -9,9 +9,11 @@ App.Router.map ()->
    @resource 'genres'
    @resource 'genre', path: '/genres/:id'
    
-   @resource 'factTypes'
+   @resource 'categories'
+   @resource 'categorie', path: '/categories/:id'
    
-   @resource 'factPostDates'
+   @resource 'postingDates'
+   @resource 'postingDate', path: '/postingDates/:id'
    
    # Footer Routes
    @route 'about'

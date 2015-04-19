@@ -1,4 +1,4 @@
-<label>Categorie template</label>
+<label>Categories template</label>
 <ul>
   {{#each categorie in categories}}
   <li>{{categorie.categoryName}}</li>

@@ -1,6 +1,5 @@
 class Api::V1::FactTypesController < ApplicationController
   respond_to :json # default to Active Model Serializers
-  
   def index
     respond_with FactType.all
   end
