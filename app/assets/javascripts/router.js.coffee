@@ -11,6 +11,8 @@ App.Router.map ()->
    
    @resource 'factTypes'
    
+   @resource 'factPostDates'
+   
    # Footer Routes
    @route 'about'
    @route 'legal_info'

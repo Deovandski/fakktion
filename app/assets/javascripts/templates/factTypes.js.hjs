@@ -1,0 +1,6 @@
+<label>FactTypes template</label>
+<ul>
+  {{#each factType in factTypes}}
+  <li>{{factType.factName}}</li>
+  {{/each}}
+</ul>

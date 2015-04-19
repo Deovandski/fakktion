@@ -1,4 +1,4 @@
-<label>Genre template</label>
+<label>Genres template</label>
 <ul>
   {{#each genre in genres}}
   <li>{{genre.genreName}}</li>
