@@ -28,6 +28,6 @@ class Api::V1::PostingDatesController < ApplicationController
   end
   
   def postingDate_params
-    params.require(:posting_date).permit(:fact_posting_date) # only allow these for now
+    params.require(:posting_date).permit(:post_date) # only allow these for now
   end
 end

@@ -1,2 +1,6 @@
-<h1>Index Page</h1>
-
+<h1>Forum -- Index Page</h1>
+<ul>
+  {{#each post in posts}}
+  <li><button{{action "showPost" post}}>{{post.postName}}</button></li>
+  {{/each}}
+</ul>

@@ -15,6 +15,9 @@ App.Router.map ()->
    @resource 'postingDates'
    @resource 'postingDate', path: '/postingDates/:id'
    
+   @resource 'factTypes'
+   @resource 'factType', path: '/factTypes/:id'
+   
    # Footer Routes
    @route 'about'
    @route 'legal_info'

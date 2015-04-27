@@ -9,6 +9,12 @@ class PostSerializer < ActiveModel::Serializer
   #belongs_to :categorie
   
   attributes :id,
+             :user_id,
+             :genre_id,
+             :topic_id,
+             :categorie_id,
+             :fact_type_id,
+             :posting_date_id,
              :fact_link,
              :fiction_link,
              :post_name,
