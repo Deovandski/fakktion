@@ -1,5 +1,5 @@
 <ul>
   {{#each genre in genres}}
-  <li>{{#link-to genre.edit}}{{genre.genreName}}{{/link-to}}</li>
+    <li><button{{action "selectGenre" genre}}>{{genre.genreName}}</button></li>
   {{/each}}
 </ul>

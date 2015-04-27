@@ -1,5 +1,5 @@
 <ul>
   {{#each factType in factTypes}}
-  <li>{{#link-to factType.edit}}{{factType.factName}}{{/link-to}}</li>
+    <li><button{{action "selectFactType" factType}}>{{factType.factName}}</button></li>
   {{/each}}
 </ul>
