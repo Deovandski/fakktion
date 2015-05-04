@@ -4,8 +4,7 @@ App.ApplicationRoute = Ember.Route.extend({
          genres: this.store.find('genre'),
          factTypes: this.store.find('factType'),
          postingDates: this.store.find('postingDate'),
-         categories: this.store.find('category'),
-         posts: this.store.find('post')
+         categories: this.store.find('category')
       })
   }
 });

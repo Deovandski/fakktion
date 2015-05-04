@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20150207185717) do
     t.string   "fiction_link"
     t.string   "post_name"
     t.integer  "importance"
+    t.string   "text"
     t.boolean  "soft_delete"
     t.date     "soft_delete_date"
     t.boolean  "hidden"
