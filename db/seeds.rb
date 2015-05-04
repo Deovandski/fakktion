@@ -82,7 +82,8 @@ end
 # POST RELATED SEED
 puts "Creating posts"
 if Post.count == 0
-Post.create!(posting_date_id: 0, fact_link: "test fact link", fact_type_id: 0, fiction_link: "test fiction link", genre_id: 1, hidden: false, importance: 0, post_name: "The concept of reality behind Hatsune Miku", soft_delete: false, soft_delete_date: nil, topic_id: 0, user_id: 0,categorie_id: 2)
+Post.create!(posting_date_id: 0, fact_link: "test fact link", fact_type_id: 0, fiction_link: "test fiction link", text: "Miku is love! Miku is Life! No seriously, Miku is the result of how community driven creativity can bring a virtual being into life.", genre_id: 1, hidden: false, importance: 0, post_name: "The concept of reality behind Hatsune Miku", soft_delete: false, soft_delete_date: nil, topic_id: 0, user_id: 0,categorie_id: 2)
+Post.create!(posting_date_id: 1, fact_link: "test fact link", fact_type_id: 0, fiction_link: "test fiction link", text: "test Text", genre_id: 2, hidden: false, importance: 0, post_name: "test Novel Post with category D-E-F", soft_delete: false, soft_delete_date: nil, topic_id: 0, user_id: 0,categorie_id: 1)
 puts "Posts created"
 else
 puts "No new posts created as there is already at least one 1 post in the database"
