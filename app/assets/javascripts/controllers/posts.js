@@ -5,11 +5,11 @@ App.PostsController = Ember.ArrayController.extend({
   model: function() {
       return Ember.RSVP.hash({
          posts: this.store.find('post')
-      })
+      });
   },
   modelG: function() {
     return Ember.RSVP.hash({
        posts: this.store.find('post', {genre_id: this.get('genreSelected')})
-      })
+      });
   }
 })
