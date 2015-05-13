@@ -16,12 +16,12 @@ App.IndexController = Ember.ObjectController.extend({
     console.log('SelectedGenre DEBUG: ' + this.get('genreSelected'));
       if(this.get('genreSelected') != 0)
       {
-        console.log('Filter called. Result: Return all Posts with genre_id of' + this.get('genreSelected'));
-        return this.get('posts').filterBy('genre_id', this.get('genreSelected'));      
+        console.log('Result: Return all Posts with genre_id of ' + this.get('genreSelected'));
+        return this.get('posts').filterBy('genre_id', parseInt(this.get('genreSelected')));      
       }
       else
       {
-        console.log('Filter called. Result: Return all Posts');
+        console.log('Result: Return all Posts');
         return this.get('posts');
       }
   }.property('controllers.application.genreSelected')

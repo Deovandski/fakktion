@@ -2,7 +2,7 @@
 
     <ul>
     {{#each post in filteredPosts}}
-      <li>{{post.postName}}</li>
+      <li>{{#link-to 'post' post}}{{post.postName}}{{/link-to}}</li>
     {{/each}}
     </ul>
 
