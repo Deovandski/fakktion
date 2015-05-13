@@ -12,8 +12,8 @@ App.ApplicationController = Ember.ObjectController.extend({
     selectGenre: function(genre) 
     { 
        this.set('genreSelected', genre.id);
-       console.log('selectGenre.Genre.id: ' + genre.id);
-       console.log('selectGenre.genreSelected: ' + this.get('genreSelected'));
+       //console.log('selectGenre.Genre.id: ' + genre.id);
+       //console.log('selectGenre.genreSelected: ' + this.get('genreSelected'));
     },
     selectCategorie: function(categorie) 
     { 
