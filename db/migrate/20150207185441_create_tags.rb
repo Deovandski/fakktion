@@ -1,9 +1,4 @@
 class CreateTags < ActiveRecord::Migration
-  def up
-    create_table :posting_dates do |t|
-      t.date :post_date
-    end
-    
     create_table :categories do |t|
       t.string :category_name
       t.timestamps
@@ -23,10 +18,8 @@ class CreateTags < ActiveRecord::Migration
       t.string :fact_name
       t.timestamps
     end
-  end
   
   def down
-    drop_table :posting_dates
     drop_table :categories
     drop_table :genres
     drop_table :topics

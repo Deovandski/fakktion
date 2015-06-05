@@ -6,7 +6,6 @@ App.ApplicationController = Ember.ObjectController.extend({
   genreSelected: 0,
   categorieSelected: 0,
   factTypeSelected: 0,
-  postingDateSelected: 0,
   
   actions: 
   {
@@ -23,10 +22,6 @@ App.ApplicationController = Ember.ObjectController.extend({
     selectFactType: function(factType) 
     { 
       this.set('factTypeSelected', factType.id);
-    },
-    selectPostingDate: function(postingDate) 
-    { 
-      this.set('postingDateSelected', postingDate.id);
     }
   }
 });

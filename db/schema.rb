@@ -56,10 +56,6 @@ ActiveRecord::Schema.define(version: 20150207185717) do
     t.datetime "updated_at"
   end
 
-  create_table "posting_dates", force: :cascade do |t|
-    t.date "post_date"
-  end
-
   create_table "posts", force: :cascade do |t|
     t.string   "fact_link"
     t.string   "fiction_link"
@@ -73,7 +69,6 @@ ActiveRecord::Schema.define(version: 20150207185717) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "fact_type_id"
-    t.integer  "posting_date_id"
     t.integer  "genre_id"
     t.integer  "topic_id"
     t.integer  "categorie_id"
@@ -82,7 +77,6 @@ ActiveRecord::Schema.define(version: 20150207185717) do
   add_index "posts", ["categorie_id"], name: "index_posts_on_categorie_id"
   add_index "posts", ["fact_type_id"], name: "index_posts_on_fact_type_id"
   add_index "posts", ["genre_id"], name: "index_posts_on_genre_id"
-  add_index "posts", ["posting_date_id"], name: "index_posts_on_posting_date_id"
   add_index "posts", ["topic_id"], name: "index_posts_on_topic_id"
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
