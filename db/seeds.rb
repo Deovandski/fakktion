@@ -15,7 +15,7 @@ if User.count == 0
 puts "Creating Users"
 
 # User #1 - Admin:
-User.create!(full_name: "Sample User", display_name: "User#1", email: "user@example.com",  password: "12345678",date_of_birth: DateTime.strptime('09/14/2009', '%m/%d/%Y'), gender: "male", is_admin: true,facebook_id: 3, personal_message: "sample personal message", twitter_url: "https://twitter.com/Deovandski", webpage_url: "www.google.com",privacy_terms_read: true, legal_terms_read: true)
+User.create!(full_name: "Sample User", display_name: "User#1", email: "user@example.com",  password: "12345678",date_of_birth: DateTime.strptime('09/14/2009', '%m/%d/%Y'), gender: "male", is_admin: true, facebook_id: 3, personal_message: "sample personal message", twitter_url: "https://twitter.com/Deovandski", webpage_url: "www.google.com",privacy_terms_read: true, legal_terms_read: true)
 
 # User #2 - Normal User:
 User.create!(full_name: "User Example", email: "user@sample.com", display_name: "User#2", password: "12345678",date_of_birth: DateTime.strptime('09/14/2009', '%m/%d/%Y'), gender: "female", is_admin: false,facebook_id: 1, personal_message: "Vocaloid Rules!", twitter_url: "https://twitter.com/Deo", webpage_url: "www.deovandski.blogspot.com", privacy_terms_read: true, legal_terms_read: true)
@@ -41,18 +41,10 @@ else
 puts "No new categories created as there is already at least one 1 category in the database"
 end
 
-# FACT POSTING DATE RELATED SEED
-puts "Creating Post dates"
-if PostingDate.count == 0
-PostingDate.create!(post_date: DateTime.strptime('09/14/2009', '%m/%d/%Y'))
-puts "Fact posting dates created"
-else
-puts "No new fact posting dates created as there is already at least one 1 fact post date in the database"
-end
-
 # FACT TYPE RELATED SEED
 puts "Creating fact types"
 if FactType.count == 0
+FactType.create!(fact_name: "Business")
 FactType.create!(fact_name: "Technology")
 FactType.create!(fact_name: "International")
 puts "Fact types created"
@@ -65,9 +57,10 @@ puts "Creating Genres"
 if Genre.count == 0
 Genre.create!(genre_name: "Song")
 Genre.create!(genre_name: "Novel")
-puts "Fact types created"
+Genre.create!(genre_name: "Movie")
+puts "Genres created"
 else
-puts "No new fact types created as there is already at least one 1 fact type in the database"
+puts "No new Genres created as there is already at least one 1 fact type in the database"
 end
 
 # TOPIC RELATED SEED
@@ -76,14 +69,17 @@ if Topic.count == 0
 Topic.create!(topic_name: "Hatsune Miku")
 puts "Topics created"
 else
-puts "No new topics created as there is already at least one topic in the database"
+puts "No new Topics created as there is already at least one topic in the database"
 end
 
 # POST RELATED SEED
 puts "Creating posts"
 if Post.count == 0
-Post.create!(posting_date_id: 0, fact_link: "test fact link", fact_type_id: 0, fiction_link: "test fiction link", text: "Miku is love! Miku is Life! No seriously, Miku is the result of how community driven creativity can bring a virtual being into life.", genre_id: 1, hidden: false, importance: 0, post_name: "The concept of reality behind Hatsune Miku", soft_delete: false, soft_delete_date: nil, topic_id: 0, user_id: 0,categorie_id: 2)
-Post.create!(posting_date_id: 1, fact_link: "test fact link", fact_type_id: 0, fiction_link: "test fiction link", text: "test Text", genre_id: 2, hidden: false, importance: 0, post_name: "test Novel Post with category D-E-F", soft_delete: false, soft_delete_date: nil, topic_id: 0, user_id: 0,categorie_id: 1)
+Post.create!(fact_link: "test fact link", fact_type_id: 1, fiction_link: "test fiction link", text: "Miku is love! Miku is Life! No seriously, Miku is the result of how community driven creativity can bring a virtual being into life.", genre_id: 1, hidden: false, importance: 0, post_name: "The concept of reality behind Hatsune Miku", soft_delete: false, soft_delete_date: nil, topic_id: 0, user_id: 0,categorie_id: 2)
+
+Post.create!(fact_link: "test fact link", fact_type_id: 2, fiction_link: "test fiction link", text: "test Text", genre_id: 2, hidden: false, importance: 0, post_name: "test Novel Post with category D-E-F", soft_delete: false, soft_delete_date: nil, topic_id: 0, user_id: 0,categorie_id: 1)
+
+Post.create!(fact_link: "test fact link #2", fact_type_id: 1, fiction_link: "test fiction link #2", text: "test Text #2", genre_id: 3, hidden: false, importance: 0, post_name: "test Novel Post with category G-H-I", soft_delete: false, soft_delete_date: nil, topic_id: 0, user_id: 0,categorie_id: 3)
 puts "Posts created"
 else
 puts "No new posts created as there is already at least one 1 post in the database"

@@ -4,7 +4,6 @@ class PostSerializer < ActiveModel::Serializer
   #not working
   #belongs_to :genre
   #belongs_to :fact_type
-  #belongs_to :posting_date
   #belongs_to :topic
   #belongs_to :categorie
   
@@ -14,7 +13,6 @@ class PostSerializer < ActiveModel::Serializer
              :topic_id,
              :categorie_id,
              :fact_type_id,
-             :posting_date_id,
              :fact_link,
              :fiction_link,
              :post_name,

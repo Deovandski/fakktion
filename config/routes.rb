@@ -10,7 +10,6 @@ Rails.application.routes.draw do
       resources :fact_types
       resources :topics
       resources :categories
-      resources :posting_dates
       resources :genres
       resources :users
     end

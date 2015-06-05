@@ -17,107 +17,63 @@ App.IndexController = Ember.ObjectController.extend({
     this.set('genreSelected', this.get('controllers.application.genreSelected'));
     this.set('factTypeSelected', this.get('controllers.application.factTypeSelected'));
     this.set('categorieSelected', this.get('controllers.application.categorieSelected'));
-    this.set('postingDateSelected', this.get('controllers.application.postingDateSelected'));
-    console.log('Variables Debug: ');
+    //console.log('Variables Debug: ');
     console.log('SelectedGenre DEBUG: ' + this.get('genreSelected'));
     console.log('factTypeSelected DEBUG: ' + this.get('factTypeSelected'));
     console.log('categorieSelected DEBUG: ' + this.get('categorieSelected'));
-    console.log('SelectedGenre DEBUG: ' + this.get('postingDateSelected'));
     console.log('Filter called');
     
          // MAIN FILTER
          // ALL NOT SELECTED
-        if(this.get('genreSelected') == 0 && this.get('factTypeSelected') == 0 && this.get('categorieSelected') == 0 && this.get('postingDateSelected') == 0)
+        if(this.get('genreSelected') == 0 && this.get('factTypeSelected') == 0 && this.get('categorieSelected') == 0)
         {
             console.log('Result: Return all Posts');
             return this.get('posts');
         }
         
         // INDIVIDUAL SELECTION
-        else if(this.get('genreSelected') != 0 && this.get('factTypeSelected') == 0 && this.get('categorieSelected') == 0 && this.get('postingDateSelected') == 0)
+        else if(this.get('genreSelected') != 0 && this.get('factTypeSelected') == 0 && this.get('categorieSelected') == 0)
         {
             console.log('Result: Return all Posts by filtering Genre');
             return this.get('posts').filterBy('genre_id', parseInt(this.get('genreSelected')));
         }
-        else if(this.get('genreSelected') == 0 && this.get('factTypeSelected') != 0 && this.get('categorieSelected') == 0 && this.get('postingDateSelected') == 0)
+        else if(this.get('genreSelected') == 0 && this.get('factTypeSelected') != 0 && this.get('categorieSelected') == 0)
         {
             console.log('Result: Return all Posts by filtering FactType');
             return this.get('posts').filterBy('fact_type_id', parseInt(this.get('factTypeSelected')));
         }
-        else if(this.get('genreSelected') == 0 && this.get('factTypeSelected') == 0 && this.get('categorieSelected') != 0 && this.get('postingDateSelected') == 0)
+        else if(this.get('genreSelected') == 0 && this.get('factTypeSelected') == 0 && this.get('categorieSelected') != 0)
         {
             console.log('Result: Return all Posts by filtering Categorie');
             return this.get('posts').filterBy('categorie_id', parseInt(this.get('categorieSelected')));
         }
-        else if(this.get('genreSelected') == 0 && this.get('factTypeSelected') == 0 && this.get('categorieSelected') == 0 && this.get('postingDateSelected') != 0)
-        {
-            console.log('Result: Return all Posts by filtering PostingDate');
-            return this.get('posts').filterBy('posting_date_id', parseInt(this.get('postingDateSelected')));
-        }
         
         // TWO AT A TIME SELECTION
         
-        else if(this.get('genreSelected') != 0 && this.get('factTypeSelected') != 0 && this.get('categorieSelected') == 0 && this.get('postingDateSelected') == 0)
+        else if(this.get('genreSelected') != 0 && this.get('factTypeSelected') != 0 && this.get('categorieSelected') == 0)
         {
             console.log('Result: Return all Posts by filtering Genre and FactType');
-            filter1 = this.get('posts').filterBy('genre_id', parseInt(this.get('genreSelected')));
-            console.log(filter1.filterBy('fact_type_id', parseInt(this.get('factTypeSelected'))));
-            return filter1.filterBy('fact_type_id', parseInt(this.get('factTypeSelected')));
+            return this.get('posts').filterBy('genre_id', parseInt(this.get('genreSelected'))).filterBy('fact_type_id', parseInt(this.get('factTypeSelected')));
             
         }
-        else if(this.get('genreSelected') == 0 && this.get('factTypeSelected') != 0 && this.get('categorieSelected') != 0 && this.get('postingDateSelected') == 0)
+        else if(this.get('genreSelected') == 0 && this.get('factTypeSelected') != 0 && this.get('categorieSelected') != 0)
         {
             console.log('Result: Return all Posts by filtering FactType and Categorie');
-            
+            return this.get('posts').filterBy('fact_type_id', parseInt(this.get('factTypeSelected'))).filterBy('categorie_id', parseInt(this.get('categorieSelected')));
         }
-        else if(this.get('genreSelected') == 0 && this.get('factTypeSelected') == 0 && this.get('categorieSelected') != 0 && this.get('postingDateSelected') != 0)
-        {
-            console.log('Result: Return all Posts by filtering Categorie and PostingDate');
-            
-        }
-        else if(this.get('genreSelected') != 0 && this.get('factTypeSelected') == 0 && this.get('categorieSelected') != 0 && this.get('postingDateSelected') == 0)
+        else if(this.get('genreSelected') != 0 && this.get('factTypeSelected') == 0 && this.get('categorieSelected') != 0)
         {
             console.log('Result: Return all Posts by filtering Genre and Categorie');
-            
-        }
-        else if(this.get('genreSelected') != 0 && this.get('factTypeSelected') == 0 && this.get('categorieSelected') == 0 && this.get('postingDateSelected') != 0)
-        {
-            console.log('Result: Return all Posts by filtering Genre and PostingDate');
-            
-        }
-        else if(this.get('genreSelected') == 0 && this.get('factTypeSelected') != 0 && this.get('categorieSelected') == 0 && this.get('postingDateSelected') != 0)
-        {
-            console.log('Result: Return all Posts by filtering FactType and PostingDate');
-            
+            return this.get('posts').filterBy('genre_id', parseInt(this.get('genreSelected'))).filterBy('categorie_id', parseInt(this.get('categorieSelected')));
         }
         
         // THREE AT A TIME SELECTION
-        else if(this.get('genreSelected') == 0 && this.get('factTypeSelected') != 0 && this.get('categorieSelected') != 0 && this.get('postingDateSelected') != 0)
-        {
-            console.log('Result: Return all Posts by filtering FactType,Categorie and PostingDate');
-            
-        }
-        else if(this.get('genreSelected') != 0 && this.get('factTypeSelected') == 0 && this.get('categorieSelected') != 0 && this.get('postingDateSelected') != 0)
-        {
-            console.log('Result: Return all Posts by filtering Genre,Categorie and PostingDate');
-            
-        }
-        else if(this.get('genreSelected') != 0 && this.get('factTypeSelected') != 0 && this.get('categorieSelected') == 0 && this.get('postingDateSelected') != 0)
-        {
-            console.log('Result: Return all Posts by filtering Genre, FactType and PostingDate');
-            
-        }
-        else if(this.get('genreSelected') != 0 && this.get('factTypeSelected') != 0 && this.get('categorieSelected') != 0 && this.get('postingDateSelected') == 0)
-        {
-            console.log('Result: Return all Posts by filtering Genre, FactType and PostingDate');
-            
-        }
+        // TODO when postingDate is refactored.
         
       else
       {
-          // Return with all filters...
-            return this.get('posts').filterBy('genre_id', parseInt(this.get('genreSelected')));
+            console.log('Result: Return all Posts by filtering Genre, FactType and Categorie');
+            return this.get('posts').filterBy('genre_id', parseInt(this.get('genreSelected'))).filterBy('fact_type_id', parseInt(this.get('factTypeSelected'))).filterBy('categorie_id', parseInt(this.get('categorieSelected')));
       }
-  }.property('controllers.application.genreSelected','controllers.application.factTypeSelected')
-  //.property('model.@each.color', 'daFilter')
+  }.property('controllers.application.genreSelected','controllers.application.factTypeSelected','controllers.application.categorieSelected')
 });

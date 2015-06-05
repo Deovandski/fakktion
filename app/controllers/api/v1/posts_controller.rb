@@ -23,6 +23,6 @@ class Api::V1::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(fact_dates_id, :genres_id, :post_name, :categories_id, :topics_id) # only allow these for now
+    params.require(:post).permit(:genres_id, :post_name, :categories_id, :topics_id) # only allow these for now
   end
 end

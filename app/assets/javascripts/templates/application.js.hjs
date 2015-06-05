@@ -19,7 +19,7 @@
       {{partial 'factTypes'}}
     </div>
     <div class="fact_posting_dates_div">
-      <h5>Fact Post date</h5>
+      <h5>Post Date</h5>
       {{partial 'postingDates'}}
     </div>
   </div>

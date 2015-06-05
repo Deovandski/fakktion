@@ -6,7 +6,6 @@ App.Post = DS.Model.extend
   topic_id: DS.attr 'number'
   categorie_id: DS.attr 'number'
   fact_type_id: DS.attr 'number'
-  posting_date_id: DS.attr 'number'
   factLink: DS.attr 'string'
   fictionLink: DS.attr 'string'
   postName: DS.attr 'string'
