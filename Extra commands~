@@ -1,0 +1,20 @@
+Create Database diagram
+  rake erd
+  
+
+Fully reset DB and redo all migrations
+  rake db:migrate:reset
+
+git return file state to previous commit
+
+  git reset --hard
+
+
+Bundler commands http://bundler.io/v1.5/commands.html
+
+
+Testing json response
+
+http://localhost:3000/api/v1/genres.json // for all of them
+http://localhost:3000/api/v1/genres/1.json // for individual response
+
