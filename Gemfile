@@ -15,7 +15,7 @@ end
 
 #Ember.js
 gem 'ember-rails'
-gem 'ember-source', '~> 1.9.0'
+gem 'ember-source'
 
 #https://github.com/rails-api/active_model_serializers
 #TO DO when serializers breaks: Your custom serializer uses the old version of the Serializer API, with `extract` hooks. Please upgrade your serializers to the new Serializer API using `normalizeResponse` hooks instead.

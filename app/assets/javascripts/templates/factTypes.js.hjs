@@ -3,3 +3,6 @@
     <li><button{{action "selectFactType" factType}}>{{factType.factName}}</button></li>
   {{/each}}
 </ul>
+	<label>FactType Length: {{factTypes.length}}</label> 
+<ul>
+</ul>
