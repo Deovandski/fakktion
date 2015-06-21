@@ -1,5 +1,0 @@
-<ul>
-  {{#each factType in factTypes}}
-    <li><button{{action "selectFactType" factType}}>{{factType.factName}}</button></li>
-  {{/each}}
-</ul>
