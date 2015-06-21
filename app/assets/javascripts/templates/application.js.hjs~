@@ -1,5 +1,6 @@
 <h1>Ember.js temp header</h1>
-<main class="ember_application">
+<main>
+<div class="ember_application">
   <div class="left-sidebar">
     <div class="genres_div">
       <h5>Genres</h5>
@@ -22,6 +23,7 @@
       {{partial 'postingDates'}}
     </div>
   </div>
+</div>
 </main>
 <!-- Footer Controls -->
 <footer>

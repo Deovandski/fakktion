@@ -3,7 +3,7 @@ App.IndexRoute = Ember.Route.extend({
  // Remember that to filter you need to call posts instead
   model: function() {
       return Ember.RSVP.hash({
-         posts: this.store.findAll('post')
+         posts: this.store.find('post')
       });
   }
 // For future use when implementing search by Topic...  
