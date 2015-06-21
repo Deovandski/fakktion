@@ -1,6 +1,0 @@
-{{input type="text" value=searchText placeholder="Search..."}}
-<ul>
-    {{#each searchResults in model}}
-        <li>{{this.color}}</li>
-    {{/each}}
-</ul>

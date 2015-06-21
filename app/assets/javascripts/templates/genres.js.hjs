@@ -1,5 +1,6 @@
 <ul>
   {{#each genres as |genre|}}
     <li><button{{action "selectGenre" genre}}>{{genre.genreName}}</button></li>
+    <li>{{genres.genreName}}</li>
   {{/each}}
 </ul>

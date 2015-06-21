@@ -1,6 +1,0 @@
-<label>Categories template</label>
-      <ul>
-        {{#each categorie in categories}}
-          <li><button{{action "selectCategorie" categorie}}>{{categorie.categoryName}}</button></li>
-        {{/each}}
-      </ul>
