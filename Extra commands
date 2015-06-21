@@ -35,6 +35,10 @@
 		*Some errors are caused by the source code, sometimes a switch to canary or something else for a particular file is recommended.
 	rake tmp:clear
 
+9. fix public SSH key issue
+	ssh-add -l (The agent has no identities message will shown up)
+	ssh-add "Key"
+	ssh-add -l (to verify agent)
 
 
 
