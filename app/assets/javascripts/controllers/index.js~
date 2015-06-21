@@ -75,5 +75,4 @@ App.IndexController = Ember.Controller.extend({
             console.log('Result: Return all Posts by filtering Genre, FactType and Categorie');
             return this.get('posts').filterBy('genre_id', parseInt(this.get('genreSelected'))).filterBy('fact_type_id', parseInt(this.get('factTypeSelected'))).filterBy('categorie_id', parseInt(this.get('categorieSelected')));
       }
-  }.property('controllers.application.genreSelected','controllers.application.factTypeSelected','controllers.application.categorieSelected')
-});
+  }});

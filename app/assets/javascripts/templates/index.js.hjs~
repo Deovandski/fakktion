@@ -1,0 +1,8 @@
+<h1>Forum -- Index Page</h1>
+
+    <ul>
+    {{#each filteredPosts as |post|}}
+      <li>{{#link-to 'post' post}}{{post.postName}}{{/link-to}}</li>
+    {{/each}}
+    </ul>
+

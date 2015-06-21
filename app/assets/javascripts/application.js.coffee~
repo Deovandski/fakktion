@@ -7,7 +7,7 @@
 #= require app
 
 # for more details see: http://emberjs.com/guides/application/
-window.App = Ember.Application.create(
+window.App = Ember.Application.create.extend(
   LOG_TRANSITIONS_INTERNAL:  true,
   LOG_ACTIVE_GENERATION:     true,
   LOG_VIEW_LOOKUPS:          true,
