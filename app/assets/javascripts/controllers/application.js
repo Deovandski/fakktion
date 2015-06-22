@@ -2,7 +2,7 @@
 // All this logic will automatically be available in application.js.
 // You can use CoffeeScript in this file: http://coffeescript.org/
 
-App.ApplicationController = Ember.ObjectController.extend({
+App.ApplicationController = Ember.Controller.extend({
   genreSelected: 0,
   categorieSelected: 0,
   factTypeSelected: 0,

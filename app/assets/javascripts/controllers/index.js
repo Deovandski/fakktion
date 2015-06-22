@@ -2,9 +2,7 @@
 // All this logic will automatically be available in application.js.
 // You can use CoffeeScript in this file: http://coffeescript.org/
 
-//App.IndexController = Ember.ObjectController.create({})
-
-App.IndexController = Ember.ObjectController.extend({
+App.IndexController = Ember.Controller.extend({
 	needs: ['application'],
 	genreSelected: 0,
 	factTypeSelected: 0,
@@ -14,7 +12,7 @@ App.IndexController = Ember.ObjectController.extend({
 	//filtered: function(){
 	//return this.get('model').filterBy('color', this.get('daFilter'));
 	//}.property('model.@each.color', 'daFilter')
-	filteredPosts: function(){
+	filteredPosts: Ember.computed('controllers.application.genreSelected', 'controllers.application.factTypeSelected', 'controllers.application.categorieSelected', function(){
 		//controllers DEBUG console.log(this.get('controllers'));
 		//Get variables from ApplicationController
 		this.set('genreSelected', this.get('controllers.application.genreSelected'));
@@ -71,5 +69,5 @@ App.IndexController = Ember.ObjectController.extend({
       	console.log('Result: Return all Posts by filtering Genre, FactType and Categorie');
          return this.get('posts').filterBy('genre_id', parseInt(this.get('genreSelected'))).filterBy('fact_type_id', parseInt(this.get('factTypeSelected'))).filterBy('categorie_id', parseInt(this.get('categorieSelected')));
       }
-  }//.property('controllers.application.genreSelected','controllers.application.factTypeSelected','controllers.application.categorieSelected')
-});
+	})
+})
