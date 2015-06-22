@@ -1,6 +1,5 @@
-<h1>Forum -- Index</h1>
+<h1>Forum -- Index Page</h1>
 
-	<label>Post Length: {{posts.length}}</label> 
     <ul>
     {{#each filteredPosts as |post|}}
       <li>{{#link-to 'post' post}}{{post.postName}}{{/link-to}}</li>

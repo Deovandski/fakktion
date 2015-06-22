@@ -5,19 +5,19 @@ App.Router.map ()->
 
    # Resources
    @resource 'posts'
-   @resource 'post', path: '/posts/:id'
+   #@resource 'post', path: '/posts/:id'
    
    @resource 'genres'
-   @resource 'genre', path: '/genres/:id'
+   #@resource 'genre', path: '/genres/:id'
    
    @resource 'categories'
-   @resource 'categorie', path: '/categories/:id'
+   #@resource 'categorie', path: '/categories/:id'
    
    @resource 'postingDates'
-   @resource 'postingDate', path: '/postingDates/:id'
+   #@resource 'postingDate', path: '/postingDates/:id'
    
    @resource 'factTypes'
-   @resource 'factType', path: '/factTypes/:id'
+   #@resource 'factType', path: '/factTypes/:id'
    
    # Footer Routes
    @route 'about'

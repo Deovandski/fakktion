@@ -1,8 +1,7 @@
 <ul>
-  {{#each factTypes as |factType|}}
+  {{#each model.factTypes as |factType|}}
     <li><button{{action "selectFactType" factType}}>{{factType.factName}}</button></li>
   {{/each}}
 </ul>
-	<label>FactType Length: {{factTypes.length}}</label> 
 <ul>
 </ul>

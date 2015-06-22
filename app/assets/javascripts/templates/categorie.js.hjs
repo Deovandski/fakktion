@@ -1,6 +1,6 @@
 <label>Categorie template</label>
 <ul>
-  {{#each categorie as |categorie|}}
+  {{#each model.categorie as |categorie|}}
   <li>{{categorie.categoryName}}</li>
   {{/each}}
 </ul>
