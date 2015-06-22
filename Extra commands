@@ -32,6 +32,7 @@
 8. Setting Up Ember
 	rails generate ember:bootstrap
 	rails generate ember:install --chanel=release|beta|canary
+	(For something especific: rails generate ember:install --tag=v1.0.0-beta.2 --ember-data)
 		*Some errors are caused by the source code, sometimes a switch to canary or something else for a particular file is recommended.
 	rake tmp:clear
 
