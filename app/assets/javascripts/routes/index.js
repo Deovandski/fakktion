@@ -2,7 +2,7 @@ App.IndexRoute = Ember.Route.extend({
  // model does not return array, but instead an object that contains an array
  // Remember that to filter you need to call posts instead
   model: function() {
-      return Ember.RSVP.hash({
+      return Ember.Object.create({
          posts: this.store.findAll('post')
       });
   }

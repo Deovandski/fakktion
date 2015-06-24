@@ -4,20 +4,20 @@
 App.Router.map ()->
 
    # Resources
-   @resource 'posts'
-   #@resource 'post', path: '/posts/:id'
+   @route 'posts'
+   @route 'post', path: '/posts/:id'
    
-   @resource 'genres'
-   #@resource 'genre', path: '/genres/:id'
+   @route 'genres'
+   @route 'genre', path: '/genres/:id'
    
-   @resource 'categories'
-   #@resource 'categorie', path: '/categories/:id'
+   @route 'categories'
+   @route 'categorie', path: '/categories/:id'
    
-   @resource 'postingDates'
-   #@resource 'postingDate', path: '/postingDates/:id'
+   @route 'postingDates'
+   @route 'postingDate', path: '/postingDates/:id'
    
-   @resource 'factTypes'
-   #@resource 'factType', path: '/factTypes/:id'
+   @route 'factTypes'
+   @route 'factType', path: '/factTypes/:id'
    
    # Footer Routes
    @route 'about'
