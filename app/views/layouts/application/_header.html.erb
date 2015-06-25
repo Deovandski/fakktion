@@ -14,16 +14,16 @@
             <% end %>
           </li>
           <li>
-            <%= link_to session_path, title: "Sign Out", class: "sign-out", method: :delete do %>
-              <span>Logout</span>
-            <% end %>
+          <li class="destroy-session <%= current_page?(destroy_user_session_path) ? "active" : "" %>">
+            <%= link_to "Sign Out", destroy_user_session_path %>
+          </li>
           </li>
         <% else %>
-          <li class="new-registration <%= current_page?(new_user_path) ? "active" : "" %>">
-            <%= link_to "Sign Up", new_user_path %>
+          <li class="new-registration <%= current_page?(new_user_registration_path) ? "active" : "" %>">
+            <%= link_to "Sign Up", new_user_registration_path %>
           </li>
-          <li class="new-session <%= current_page?(new_session_path) ? "active" : "" %>">
-            <%= link_to "Sign In", new_session_path %>
+          <li class="new-session <%= current_page?(new_user_session_path) ? "active" : "" %>">
+            <%= link_to "Sign In", new_user_session_path %>
           </li>
         <% end %>
       </ul>

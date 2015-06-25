@@ -3,8 +3,6 @@ class CreateBlog < ActiveRecord::Migration
     create_table :users do |t|
       t.string :full_name
       t.string :display_name
-      t.string :email
-      t.string :password_digest
       t.date :date_of_birth
       t.integer :gender
       t.integer :facebook_id
@@ -17,6 +15,7 @@ class CreateBlog < ActiveRecord::Migration
       t.integer :number_of_comments
       t.boolean :legal_terms_read
       t.boolean :privacy_terms_read
+      t.boolean :is_superUser
       t.boolean :is_admin
       t.timestamps
     end
