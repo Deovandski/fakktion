@@ -7,16 +7,16 @@
     </div>
     <nav>
       <ul>
-        <% if current_user %>
+        <% if user_signed_in? %>
           <li>
             <%= link_to profile_path(current_user), title: "Account Settings" do %>
               <span>Profile</span>
             <% end %>
           </li>
           <li>
-          <li class="destroy-session <%= current_page?(destroy_user_session_path) ? "active" : "" %>">
-            <%= link_to "Sign Out", destroy_user_session_path %>
-          </li>
+            <%= link_to destroy_user_session_path, title: "Sign Out", class: "sign-out", method: :delete do %>
+              <span>Logout</span>
+            <% end %>
           </li>
         <% else %>
           <li class="new-registration <%= current_page?(new_user_registration_path) ? "active" : "" %>">
