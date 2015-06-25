@@ -15,10 +15,10 @@ if User.count == 0
 puts "Creating Users"
 
 # User #1 - Admin:
-User.create!(full_name: "Sample User", display_name: "User#1", email: "user@example.com",  password: "12345678",date_of_birth: DateTime.strptime('09/14/2009', '%m/%d/%Y'), gender: "male", is_admin: true, facebook_id: 3, personal_message: "sample personal message", twitter_url: "https://twitter.com/Deovandski", webpage_url: "www.google.com",privacy_terms_read: true, legal_terms_read: true)
+User.create!(full_name: "Sample User", display_name: "User#1", email: "user@example.com", password: "12345678",password_confirmation:"12345678", date_of_birth: DateTime.strptime('09/14/2009', '%m/%d/%Y'), gender: "male", is_admin: true, facebook_id: 3, personal_message: "sample personal message", twitter_url: "https://twitter.com/Deovandski", webpage_url: "www.google.com",privacy_terms_read: true, legal_terms_read: true)
 
 # User #2 - Normal User:
-User.create!(full_name: "User Example", email: "user@sample.com", display_name: "User#2", password: "12345678",date_of_birth: DateTime.strptime('09/14/2009', '%m/%d/%Y'), gender: "female", is_admin: false,facebook_id: 1, personal_message: "Vocaloid Rules!", twitter_url: "https://twitter.com/Deo", webpage_url: "www.deovandski.blogspot.com", privacy_terms_read: true, legal_terms_read: true)
+User.create!(full_name: "User Example", email: "user@sample.com", display_name: "User#2", password: "12345678",password_confirmation:"12345678",date_of_birth: DateTime.strptime('09/14/2009', '%m/%d/%Y'), gender: "female", is_admin: false,facebook_id: 1, personal_message: "Vocaloid Rules!", twitter_url: "https://twitter.com/Deo", webpage_url: "www.deovandski.blogspot.com", privacy_terms_read: true, legal_terms_read: true)
 puts "Users created"
 else
 puts "No new users created as there is already at least one 1 user in the database"

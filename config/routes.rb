@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 
   root 'forums#index'
-  
+
+  devise_for :users, controllers:
+  {
+  sessions: 'users/sessions'
+  }
+
   namespace :api do
     namespace :v1 do
       resources :admin_messages
@@ -15,8 +20,7 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :users
-  resource :session, :profile
+  resource :profile
   
   match "clear_info", to: "users#clear_info", as: :clear_info, via: :post
   

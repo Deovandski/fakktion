@@ -1,12 +1,15 @@
 require 'bcrypt'
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  # users.password_hash in the database is a :string
+  include BCrypt
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
   has_many :admin_messages
   has_many :posts
   has_many :comments
 
-  # users.password_hash in the database is a :string
-  include BCrypt
-  has_secure_password
   validates :gender, presence: true
   validates :password, length: { minimum: 8 }
   validates_presence_of :full_name, :email, :display_name, :date_of_birth
