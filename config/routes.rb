@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  root 'forums#index'
+  root 'ember#bootstrap'
+  get '/*path' => 'ember#bootstrap'
 
   devise_for :users, controllers:
   {
