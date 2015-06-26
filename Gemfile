@@ -13,9 +13,8 @@ group :development do
   gem "rails-erd"
 end
 
-#Ember.js
-gem 'ember-rails'
-gem 'ember-source'
+#EmberCLI
+gem 'ember-cli-rails'
 
 #https://github.com/rails-api/active_model_serializers
 #TO DO when serializers breaks: Your custom serializer uses the old version of the Serializer API, with `extract` hooks. Please upgrade your serializers to the new Serializer API using `normalizeResponse` hooks instead.
@@ -26,7 +25,7 @@ gem 'rails', '4.2.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views

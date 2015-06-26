@@ -3,8 +3,10 @@
 <head>
   <title>Fakktion</title>
   <%= stylesheet_link_tag 'application', media: 'all'%>
-  <%= javascript_include_tag 'application'%>
-  <%= javascript_include_tag "templates/all" %>
+  <!--<%= javascript_include_tag 'application'%>-->
+  <!--<%= javascript_include_tag "templates/all" %>-->
+  <%= stylesheet_link_tag 'frontend' %>
+  <%= include_ember_script_tags :frontend %>
   <%= csrf_meta_tags %>
   <%= render partial: "layouts/application/header" unless @hide_header %>
 </head>

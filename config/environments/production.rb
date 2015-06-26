@@ -75,9 +75,6 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  
-  # Ember in Dev Mode
-  config.ember.variant = :production
 
   # devise configs
   #In production, :host should be set to the actual host of your application.
