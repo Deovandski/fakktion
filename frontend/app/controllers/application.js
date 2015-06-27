@@ -1,8 +1,6 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
-// You can use CoffeeScript in this file: http://coffeescript.org/
+import Ember from "ember";
 
-App.ApplicationController = Ember.Controller.extend({
+export default Ember.Controller.extend({
   genreSelected: 0,
   categorieSelected: 0,
   factTypeSelected: 0,

@@ -1,4 +1,6 @@
-App.IndexRoute = Ember.Route.extend({
+import Ember from 'ember';
+ 
+export default Ember.Route.extend({
  // model does not return array, but instead an object that contains an array
  // Remember that to filter you need to call posts instead
   model: function() {

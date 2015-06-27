@@ -1,8 +1,6 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
-// You can use CoffeeScript in this file: http://coffeescript.org/
+import Ember from "ember";
 
-App.IndexController = Ember.Controller.extend({
+export default Ember.Controller.extend({
 	needs: ['application'],
 	genreSelected: 0,
 	factTypeSelected: 0,
@@ -25,39 +23,39 @@ App.IndexController = Ember.Controller.extend({
 		console.log('Filter called');   
 		//// MAIN FILTER
 		// ALL NOT SELECTED
-		if(this.get('genreSelected') == 0 && this.get('factTypeSelected') == 0 && this.get('categorieSelected') == 0)
+		if(this.get('genreSelected') === 0 && this.get('factTypeSelected') === 0 && this.get('categorieSelected') === 0)
 		{
 	      console.log('Result: Return all Posts');
 	      return this.model.get('posts');
 		}  
      	// INDIVIDUAL SELECTION
-		else if(this.get('genreSelected') != 0 && this.get('factTypeSelected') == 0 && this.get('categorieSelected') == 0)
+		else if(this.get('genreSelected') !== 0 && this.get('factTypeSelected') === 0 && this.get('categorieSelected') === 0)
       {
 			console.log('Result: Return all Posts by filtering Genre');
-         return this.model.get('posts').filterBy('genre_id', parseInt(this.get('genreSelected')))
+         return this.model.get('posts').filterBy('genre_id', parseInt(this.get('genreSelected')));
      	}
-  		else if(this.get('genreSelected') == 0 && this.get('factTypeSelected') != 0 && this.get('categorieSelected') == 0)
+  		else if(this.get('genreSelected') === 0 && this.get('factTypeSelected') !== 0 && this.get('categorieSelected') === 0)
 	  	{
    	   console.log('Result: Return all Posts by filtering FactType');
          return this.model.get('posts').filterBy('fact_type_id', parseInt(this.get('factTypeSelected')));
 	  	}
-     	else if(this.get('genreSelected') == 0 && this.get('factTypeSelected') == 0 && this.get('categorieSelected') != 0)
+     	else if(this.get('genreSelected') === 0 && this.get('factTypeSelected') === 0 && this.get('categorieSelected') !== 0)
      	{
          console.log('Result: Return all Posts by filtering Categorie');
          return this.model.get('posts').filterBy('categorie_id', parseInt(this.get('categorieSelected')));
      	}
      	// TWO AT A TIME SELECTION
-     	else if(this.get('genreSelected') != 0 && this.get('factTypeSelected') != 0 && this.get('categorieSelected') == 0)
+     	else if(this.get('genreSelected') !== 0 && this.get('factTypeSelected') !== 0 && this.get('categorieSelected') === 0)
      	{
 			console.log('Result: Return all Posts by filtering Genre and FactType');
          return this.model.get('posts').filterBy('genre_id', parseInt(this.get('genreSelected'))).filterBy('fact_type_id', parseInt(this.get('factTypeSelected')));
      	}
-     	else if(this.get('genreSelected') == 0 && this.get('factTypeSelected') != 0 && this.get('categorieSelected') != 0)
+     	else if(this.get('genreSelected') === 0 && this.get('factTypeSelected') !== 0 && this.get('categorieSelected') !== 0)
      	{
       	console.log('Result: Return all Posts by filtering FactType and Categorie');
       	return this.model.get('posts').filterBy('fact_type_id', parseInt(this.get('factTypeSelected'))).filterBy('categorie_id', parseInt(this.get('categorieSelected')));
      	}
-     	else if(this.get('genreSelected') != 0 && this.get('factTypeSelected') == 0 && this.get('categorieSelected') != 0)
+     	else if(this.get('genreSelected') !== 0 && this.get('factTypeSelected') === 0 && this.get('categorieSelected') !== 0)
      	{
       	console.log('Result: Return all Posts by filtering Genre and Categorie');
          return this.model.get('posts').filterBy('genre_id', parseInt(this.get('genreSelected'))).filterBy('categorie_id', parseInt(this.get('categorieSelected')));
@@ -70,4 +68,4 @@ App.IndexController = Ember.Controller.extend({
          return this.model.get('posts').filterBy('genre_id', parseInt(this.get('genreSelected'))).filterBy('fact_type_id', parseInt(this.get('factTypeSelected'))).filterBy('categorie_id', parseInt(this.get('categorieSelected')));
       }
 	})
-})
+});

@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   
   match "clear_info", to: "users#clear_info", as: :clear_info, via: :post
   
-  get '*path', to: 'forums#index'
+  #get '*path', to: 'forums#index'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
