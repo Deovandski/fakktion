@@ -1,8 +1,13 @@
-import Ember from 'ember';
 import DS from "ember-data";
+import $ from 'jquery';
+
 // Override the default adapter with the `DS.ActiveModelAdapter` with
-DS.ActiveModelAdapter.reopen({
+DS.RESTAdapter.reopen({
   namespace: 'api/v1'
 });
 
-export default DS.ActiveModelAdapter.extend();
+export default DS.ActiveModelAdapter.extend({
+  headers: {
+    "X-CSRF-Token": $('meta[name="csrf-token"]').attr('content')
+  }
+});

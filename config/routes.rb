@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'ember#bootstrap'
-  get '/*path' => 'ember#bootstrap'
+  root 'forums#index'
 
   devise_for :users, controllers:
   {
@@ -25,9 +24,8 @@ Rails.application.routes.draw do
   
   resource :profile
   
-  match "clear_info", to: "users#clear_info", as: :clear_info, via: :post
+  get '*path', to: 'forums#index'
   
-  #get '*path', to: 'forums#index'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
