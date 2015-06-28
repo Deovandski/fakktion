@@ -3,7 +3,6 @@ DONE features were written in order of when it was implemented.
 Last Updated on 6/28
 
 TODO:
-	Ember Devise Login
 	Ember Devise SignUp
 	Create raw profile page for user manipulation
 	Create raw moderation page for admins and superUser
@@ -12,7 +11,6 @@ TODO:
 	setup RESTful links for posts and tags
 	Users able to create Post and be able to create from the current selected tags story implementation
 	setup RESTful links for comments
-	
 	...
 	Remove any unwanted ~ files
 	Recreate database secrets
@@ -43,3 +41,4 @@ DONE:
 	EmberCLI migration
 	Resolved deprecations from CLI Migrations
 	Pipeline Asset fix
+	Ember Devise Login
