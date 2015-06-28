@@ -1,4 +1,6 @@
-<h1>Ember.js temp header</h1>
+<header>
+	{{partial 'header'}}
+</header>
 <main class="ember_application">
   <div class="left-sidebar">
     <div class="genres_div">
@@ -24,23 +26,5 @@
   </div>
 </main>
 <footer>
-  <nav>
-  <ul>
-    <li>
-      {{#link-to 'index'}}Forum{{/link-to}}
-    </li>
-    <li>
-      {{#link-to 'about'}}About{{/link-to}}
-    </li>
-    <li>
-      {{#link-to 'privacy_info'}}Privacy Info{{/link-to}}
-    </li>
-    <li>
-      {{#link-to 'legal_info'}}Legal Info{{/link-to}}
-    </li>
-    <li>
-      {{#link-to 'support'}}Contact Us!{{/link-to}}
-    </li>
-  </ul>
-  </nav>
+	{{partial 'footer'}}
 </footer>

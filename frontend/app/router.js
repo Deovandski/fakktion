@@ -6,6 +6,11 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+	 //Login related
+    this.route('header');
+    this.route('login');
+
+	 //Main related
     this.route('posts');
     this.route('post', { path: '/posts/:id' });
     this.route('genres');
@@ -17,6 +22,8 @@ Router.map(function() {
     this.route('factTypes');
     this.route('factType', { path: '/factTypes/:id' });
 
+	 // Footer related
+    this.route('footer');
     this.route('about');
     this.route('legal_info');
     this.route('privacy_info');

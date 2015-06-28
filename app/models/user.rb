@@ -1,5 +1,6 @@
 require 'bcrypt'
 class User < ActiveRecord::Base
+  before_save :ensure_authentication_token
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   # users.password_hash in the database is a :string
@@ -17,4 +18,19 @@ class User < ActiveRecord::Base
   validates_acceptance_of :privacy_terms_read, :on => :create, :accept => true, :allow_nil => false
   validates_acceptance_of :legal_terms_read, :on => :create, :accept => true, :allow_nil => false
   enum gender: { male: 0, female: 1, other: 2 }
+
+  def ensure_authentication_token
+    if authentication_token.blank?
+      self.authentication_token = generate_authentication_token
+    end
+  end
+
+  private
+
+    def generate_authentication_token
+      loop do
+        token = Devise.friendly_token
+        break token unless User.where(authentication_token: token).first
+      end
+    end
 end

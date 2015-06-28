@@ -19,6 +19,11 @@ module.exports = function(environment) {
     }
   };
 
+  if (environment === 'simple-auth') {
+  	authorizer: 'simple-auth-authorizer:devise'
+   store: 'simple-auth-session-store:local-storage'
+  }
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;

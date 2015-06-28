@@ -1,0 +1,18 @@
+<div class="outer-container">
+	<div class="branding">
+		Fakktion
+	</div>
+	<nav>
+		<ul>
+			{{#if session.isAuthenticated}}
+			<li>
+				<a {{ action 'invalidateSession' }}>Logout</a>
+			</li>
+			{{else}}
+			<li>
+				{{#link-to 'login'}}Login{{/link-to}}
+			</li>
+			{{/if}}
+		</ul>
+	</nav>
+</div>

@@ -20,6 +20,10 @@ export default Ember.Controller.extend({
     selectFactType: function(factType) 
     { 
       this.set('factTypeSelected', factType.id);
-    }
+    },
+	 invalidateSession: function()
+    {
+		this.get('session').invalidate();
+	 }
   }
 });

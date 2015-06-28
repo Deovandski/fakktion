@@ -17,7 +17,6 @@ end
 gem 'ember-cli-rails'
 
 #https://github.com/rails-api/active_model_serializers
-#TO DO when serializers breaks: Your custom serializer uses the old version of the Serializer API, with `extract` hooks. Please upgrade your serializers to the new Serializer API using `normalizeResponse` hooks instead.
 gem 'active_model_serializers'
       
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
