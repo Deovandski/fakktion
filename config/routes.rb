@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 	root 'forums#index'
-	get '*path', to: 'forums#index'
 	devise_for :users, controllers: {sessions: 'sessions'}
 
 	namespace :api do
