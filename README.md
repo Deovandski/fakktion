@@ -4,10 +4,11 @@
 
 All information about this project including planned features can be found on this [published paper](http://www.micsymposium.org/mics2015/ProceedingsMICS_2015/Skibinski_3C1_31.pdf), and the up to date Database Design can be seen through erd.pdf. Information about progress can be seen on each commit information.
 
+This project once used "Ember-Rails", but now it is using "Ember-cli-rails." For information about Ember-Rails, please check the respective branch.
 
-[Discussions regarding this project:](Other Files/discussions.md)
+[Discussions regarding this project:](Documents/discussions.md)
 
-[The MIT License (MIT)](Other Files/LICENSE.md)
+[The MIT License (MIT)](Documents/LICENSE.md)
 
 Copyright (c) 2014 - 2015, Deovandski Skibinski Junior and Dr. Anne Denton
 All rights reserved.
