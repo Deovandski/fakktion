@@ -11,12 +11,12 @@ This project once used [Ember-Rails](https://github.com/emberjs/ember-rails), bu
 [The MIT License (MIT)](Documents/LICENSE.md)
 
 # Building Project
-*Clone Project
-*Create new Secrets.yml and place it on the config folder. See Extra Commands on the root folder.
-*Bundle Install
-*Rake db:migrate
-*Rake db:seed
-*rake start and enjoy!
+1. Clone Project
+2. Create new Secrets.yml and place it on the config folder. See Extra Commands on the root folder.
+3. Bundle Install
+4. Rake db:migrate
+5. Rake db:seed
+6. rake start and enjoy!
 
 Copyright (c) 2014 - 2015, Deovandski Skibinski Junior and Dr. Anne Denton
 All rights reserved.
