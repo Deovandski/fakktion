@@ -2,9 +2,9 @@
 
 ![](/FakktionLogo.png)
 
-All information about this project including planned features can be found on this [published paper](http://www.micsymposium.org/mics2015/ProceedingsMICS_2015/Skibinski_3C1_31.pdf), and the up to date Database Design can be seen through erd.pdf. Information about progress can be seen on each commit information.
+All information about this project can be found on this [published paper](http://www.micsymposium.org/mics2015/ProceedingsMICS_2015/Skibinski_3C1_31.pdf). Information regarding the Database Design and can be seen [Here](erd.pdf), and information about progress can be seen [Here](Documents/TODO.md).
 
-This project once used "Ember-Rails", but now it is using "Ember-cli-rails." For information about Ember-Rails, please check the respective branch.
+This project once used [Ember-Rails](https://github.com/emberjs/ember-rails), but now it is using [Ember-cli-rails](https://github.com/rwz/ember-cli-rails). If you would like to see the previous Ember-Rails implementation, please check the [Stale branch](https://github.com/Deovandski/Fakktion/tree/Ember-Rails).
 
 [Discussions regarding this project:](Documents/discussions.md)
 
