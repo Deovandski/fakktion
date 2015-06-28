@@ -12,13 +12,12 @@ The purpose of this branch is for people who wants to see the code tied to the f
 
 [June 22 2015 - Refactoring Computed Properties on Ember.js 1.13](http://stackoverflow.com/questions/30977856/refactoring-computed-properties-on-ember-js-1-13)
 
-Steps to make this project working:
-
-*Clone Project
-*Create new Secrets.yml and place it on the config folder. See Extra Commands on the root folder.
-*Bundle Install
-*Rake db:migrate
-*Rake db:seed
-*rake start and enjoy!
+# Building Project
+1. Clone Project
+2. Create new Secrets.yml and place it on the config folder. See Extra Commands on the root folder.
+3. Bundle Install
+4. Rake db:migrate
+5. Rake db:seed
+6. rake start and enjoy!
 
 This Project was last tested on June 2015.
