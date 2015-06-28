@@ -16,7 +16,10 @@ This project once used [Ember-Rails](https://github.com/emberjs/ember-rails), bu
 3. Bundle Install
 4. Rake db:migrate
 5. Rake db:seed
-6. rake start and enjoy!
+6. cd frontend
+7. npm install
+8. bower install
+9. rake start and solve any remaining issues if there is any...
 
 Copyright (c) 2014 - 2015, Deovandski Skibinski Junior and Dr. Anne Denton
 All rights reserved.
