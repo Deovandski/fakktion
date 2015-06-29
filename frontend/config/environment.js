@@ -20,7 +20,7 @@ module.exports = function(environment) {
   };
 
   if (environment === 'simple-auth') {
-  	authorizer: 'simple-auth-authorizer:devise'
+   authorizer: 'simple-auth-authorizer:devise'
    store: 'simple-auth-session-store:local-storage'
   }
 

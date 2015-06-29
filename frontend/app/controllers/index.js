@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
 	genreSelected: 0,
 	factTypeSelected: 0,
 	categorieSelected: 0,
-	postingDateSelected: 0,
+	postingDateSelected: 0, 
 	//For Future Use when SearchByTopic is implemented// daFilter: 'blue',
 	//filtered: function(){
 	//return this.model.get('posts').FilterBy('color', this.get('daFilter'));
