@@ -6,4 +6,4 @@
 
 "EmberCLI"
 
-None
+[June 29 2015 - No authorizer was configured for Ember-Simple-Auth issue (or bug)](http://stackoverflow.com/questions/31108995/no-authorizer-was-configured-for-ember-simple-auth-issue-or-bug)
