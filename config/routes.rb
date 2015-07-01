@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 			resources :topics
 			resources :categories
 			resources :genres
+			resources :users
 		end
 	end
 end

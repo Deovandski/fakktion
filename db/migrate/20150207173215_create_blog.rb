@@ -15,7 +15,7 @@ class CreateBlog < ActiveRecord::Migration
       t.integer :number_of_comments
       t.boolean :legal_terms_read
       t.boolean :privacy_terms_read
-      t.boolean :is_superUser
+      t.boolean :is_super_user
       t.boolean :is_admin
       t.timestamps
     end
