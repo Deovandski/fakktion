@@ -45,3 +45,4 @@ EmberCLI migration
 Resolved deprecations from CLI Migrations
 Pipeline Asset fix
 Ember Devise Login
+Custom Session for Login
