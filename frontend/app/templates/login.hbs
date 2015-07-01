@@ -1,3 +1,11 @@
+{{#if errorMessage}}
+<div class="alert alert-danger">
+<p>
+<strong>Login failed:</strong> <code>{{errorMessage}}</code>
+</p>
+</div>
+{{/if}}
+
 <form {{action 'authenticate' on='submit'}}>
   <label for="identification">Login</label>
   {{input value=identification placeholder='Enter Login'}}
@@ -5,3 +13,4 @@
   {{input value=password placeholder='Enter Password' type='password'}}
   <button type="submit">Login</button>
 </form>
+

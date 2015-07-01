@@ -8,7 +8,7 @@ var Router = Ember.Router.extend({
 Router.map(function() {
 	 //Login related
     this.route('header');
-    this.route('login');
+    this.route('login', { path: '/login' });
 
 	 //Main related
     this.route('posts');

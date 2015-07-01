@@ -15,3 +15,11 @@
     {{/each}}
     </ul>
 post-filterer model=model filterByPath='color' visualPath='color'-->
+
+
+<div class="alert alert-warning">
+<p>
+Documentation of the error codes can be found in the <a href="http://tools.ietf.org/html/rfc6749#section-5.2" title="RFC 6749 - Error Response">Error Response section of RFC 6749</a>.
+</p>
+This is a protected page only visible to authenticated users!
+</div>
