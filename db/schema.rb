@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(version: 20150628051759) do
     t.integer  "number_of_comments"
     t.boolean  "legal_terms_read"
     t.boolean  "privacy_terms_read"
-    t.boolean  "is_superUser"
+    t.boolean  "is_super_user"
     t.boolean  "is_admin"
     t.datetime "created_at"
     t.datetime "updated_at"
