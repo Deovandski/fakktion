@@ -19,6 +19,16 @@ Rails.application.routes.draw do
 	get '/topics/:id', to: 'forums#index'
 	get '/categories/:id', to: 'forums#index'
 	get '/users/:id', to: 'forums#index'
+	# Resource routes without ids
+	get '/posts', to: 'forums#index'
+	get '/posts/:id/comments', to: 'forums#index'
+	get '/genres', to: 'forums#index'
+	get '/admin_messages', to: 'forums#index'
+	get '/fact_types', to: 'forums#index'
+	get '/topics', to: 'forums#index'
+	get '/categories', to: 'forums#index'
+	get '/users', to: 'forums#index'
+
 
 
 	devise_for :users, controllers: {sessions: 'sessions'}
