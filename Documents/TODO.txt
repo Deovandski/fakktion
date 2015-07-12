@@ -5,6 +5,7 @@ Last Updated on 6/28
 TODO:
 
 Ember Devise SignUp
+Create Application space for displaying tags and topic search (above application outlet)
 Create raw profile page for user manipulation
 Create raw moderation page for admins and superUser
 Create raw admin moderation page for superUser
@@ -46,3 +47,5 @@ Resolved deprecations from CLI Migrations
 Pipeline Asset fix
 Ember Devise Login
 Custom Session for Login
+Rails to ember routes transition implemented. Sharing links should automatically make Rails redirect it to ember, and ember should be able to understand what they are about.
+ 

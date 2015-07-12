@@ -41,5 +41,18 @@
 	ssh-add "Key"
 	ssh-add -l (to verify agent)
 
+10. Update Ember-CLI
+	npm uninstall -g ember-cli
+	npm cache clean
+	bower cache clean
+	npm install -g ember-cli
+	rm -rf node_modules bower_components dist tmp
+	npm install --save-dev ember-cli
+   add "ember-simple-auth": "0.8.0" to bower.json
+	bower install
+	ember install ember-cli-simple-auth
+	ember init -- Generate new project blueprint... Make sure to review diff!
+	rake start and install any mising add-on
+	
 
 
