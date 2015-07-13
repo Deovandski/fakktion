@@ -32,7 +32,7 @@ class CreateBlog < ActiveRecord::Migration
     create_table :posts do |t|
       t.string :fact_link
       t.string :fiction_link
-      t.string :post_name
+      t.string :title
       t.integer :importance
       t.string :text
       t.boolean :soft_delete

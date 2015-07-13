@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20150628051759) do
   create_table "posts", force: :cascade do |t|
     t.string   "fact_link"
     t.string   "fiction_link"
-    t.string   "post_name"
+    t.string   "title"
     t.integer  "importance"
     t.string   "text"
     t.boolean  "soft_delete"

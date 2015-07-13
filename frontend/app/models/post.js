@@ -8,7 +8,7 @@ export default DS.Model.extend({
   fact_type_id: DS.attr ('number'),
   factLink: DS.attr ('string'),
   fictionLink: DS.attr ('string'),
-  postName: DS.attr ('string'),
+  title: DS.attr ('string'),
   importance: DS.attr ('number'),
   softDelete: DS.attr ('boolean'),
   softDeleteDate: DS.attr ('date'),

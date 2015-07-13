@@ -4,8 +4,11 @@ import ApplicationRouteMixin from 'simple-auth/mixins/application-route-mixin';
 export default Ember.Route.extend
 ({
 	ApplicationRouteMixin,
-	model: function(params)
+	model: function()
 	{
-		return this.store.find('post', params.post_id);
+		return Ember.Object.create
+		({
+         posts: this.store.findAll('post')
+		});
 	}
 });
