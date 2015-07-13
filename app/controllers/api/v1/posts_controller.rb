@@ -1,5 +1,6 @@
 class Api::V1::PostsController < ApplicationController
-  respond_to :json # default to Active Model Serializers
+	#skip_before_filter :verify_authenticity_token
+	respond_to :json # default to Active Model Serializers
   
   def index
     respond_with Post.all
@@ -23,6 +24,6 @@ class Api::V1::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:genres_id, :post_name, :categories_id, :topics_id) # only allow these for now
+    params.require(:post).permit(:genres_id, :post_name, :categories_id, :topics_id, :user_id, :genre_id, :topic_id, :categorie_id, :fact_type_id, :fact_link, :fiction_link, :importance, :soft_delete, :soft_delete_date, :hidden)
   end
 end
