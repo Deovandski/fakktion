@@ -31,6 +31,7 @@ ember install ember-cli-simple-auth
 
 ember install ember-cli-simple-auth-devise
 ```
+Some commands were skipped. If you don't have some of the requirements such as node.js please check the .travis.yml file
 
 ## Usage
 
