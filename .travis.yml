@@ -6,9 +6,6 @@ branches:
     - master
 rvm:
 - 2.0.0
-env:
-- SECRET_KEY_BASE="$(bundle exec rake secret)"
-- RAILS_ENV="development"
 before_script:
 - bundle exec rake db:migrate
 - bundle exec rake db:seed
@@ -19,6 +16,7 @@ before_script:
 - ember install ember-cli-simple-auth
 - ember install ember-cli-simple-auth-devise
 - cd ..
-
+env:
+- SECRET_KEY_BASE="$(bundle exec rake secret)"
 script:
 - echo "Build Success"

@@ -13,7 +13,7 @@ Rails.application.configure do
   config.eager_load = false
 
   # Configure static asset server for tests with Cache-Control for performance.
-  config.serve_static_assets  = true
+  config.serve_static_files  = true
   config.static_cache_control = 'public, max-age=3600'
 
   # Show full error reports and disable caching.
@@ -31,12 +31,15 @@ Rails.application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
 
+  # Compress JavaScripts and CSS.
+  config.assets.js_compressor = :uglifier
+
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
-
-  # Ember in Dev Mode
-  config.ember.variant = :development
   
+  # devise configs
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end
