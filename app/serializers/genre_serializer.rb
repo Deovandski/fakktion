@@ -1,6 +1,5 @@
 class GenreSerializer < ActiveModel::Serializer
-  #has_many :posts
-  
   attributes :id,
-             :genre_name
+             :name,
+				 :usage_count
 end

@@ -1,25 +1,28 @@
 ﻿TODO features are written in order of importance.
 DONE features were written in order of when it was implemented.
-Last Updated on 6/28
+Last Updated on 7/14
 
 TODO:
 
-Ember Devise SignUp
-Create Application space for displaying tags and topic search (above application outlet)
+Ember Devise SignUp (User RESTfull links setup)
+Live tag manipulation user story implementation
 Create raw profile page for user manipulation
 Create raw moderation page for admins and superUser
 Create raw admin moderation page for superUser
-Live tag manipulation user story implementation
-setup RESTful links for posts and tags
-Users able to create Post and be able to create from the current selected tags
+Complete the setup for all RESTful links for posts and tags
+Users able to create Posts from the current selected tags
 story implementation
 setup RESTful links for comments
 Remove any unwanted ~ files
+Through code cleanup and indendation.
 Recreate database secrets
+Verify the steps required for establishing a HTTPS connection.
+Setup Travis CI for core functionalities
 ------
 Release Alpha
 ------
 update css for entire project.
+Finish setting up Travis CI for project.
 ------
 Release Beta
 ------
@@ -48,4 +51,9 @@ Pipeline Asset fix
 Ember Devise Login
 Custom Session for Login
 Rails to ember routes transition implemented. Sharing links should automatically make Rails redirect it to ember, and ember should be able to understand what they are about.
- 
+Raw RESTfull Links implemented for post creation and edit.
+Create Application space for displaying tags and topic search (above application outlet) {now named Center Panel}
+Changed CSS to support Center Panel.
+Genres live tag manipulation (Displays the selected tag name and allows user to clear selection.)
+
+

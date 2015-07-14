@@ -28,6 +28,6 @@ class Api::V1::CategoriesController < ApplicationController
   end
   
   def categorie_params
-    params.require(:categorie).permit(:category_name) # only allow these for now
+    params.require(:categorie).permit(:name, :usage_count) # only allow these for now
   end
 end

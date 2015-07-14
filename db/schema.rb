@@ -24,7 +24,8 @@ ActiveRecord::Schema.define(version: 20150628051759) do
   add_index "admin_messages", ["user_id"], name: "index_admin_messages_on_user_id"
 
   create_table "categories", force: :cascade do |t|
-    t.string   "category_name"
+    t.string   "name"
+    t.integer  "usage_count", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -45,13 +46,15 @@ ActiveRecord::Schema.define(version: 20150628051759) do
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "fact_types", force: :cascade do |t|
-    t.string   "fact_name"
+    t.string   "name"
+    t.integer  "usage_count", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "genres", force: :cascade do |t|
-    t.string   "genre_name"
+    t.string   "name"
+    t.integer  "usage_count", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -65,6 +68,7 @@ ActiveRecord::Schema.define(version: 20150628051759) do
     t.boolean  "soft_delete"
     t.date     "soft_delete_date"
     t.boolean  "hidden"
+    t.integer  "views_count",      default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
@@ -81,7 +85,8 @@ ActiveRecord::Schema.define(version: 20150628051759) do
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
   create_table "topics", force: :cascade do |t|
-    t.string   "topic_name"
+    t.string   "name"
+    t.integer  "usage_count", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

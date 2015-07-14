@@ -1,6 +1,6 @@
 <label>Categories template</label>
 <ul>
-  {{#each model.categories as |categorie|}}
-          <li><button{{action "selectCategorie" categorie}}>{{categorie.categoryName}}</button></li>
+  {{#each model.categories as |category|}}
+          <li><button{{action "setCID" category}}>{{category.name}}</button></li>
   {{/each}}
 </ul>

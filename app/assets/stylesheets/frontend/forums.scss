@@ -19,7 +19,7 @@ body.ember-application.forum.show main {
   .ember_application  {
     width: 100%;
   
-    .left-sidebar { 
+    .left_sidebar { 
     @include span-columns(2);
     list-style-type:none;
     text-align: left;
@@ -36,7 +36,7 @@ body.ember-application.forum.show main {
       }
     }
   
-    .shared-panel { 
+    .central { 
     list-style-type:none;
     text-align: center;
     padding: 0px 0px 5px 5px;
@@ -44,9 +44,17 @@ body.ember-application.forum.show main {
     border-left-style: solid; 
     border-right-style: solid;
     border-width: 3px; 
+      .central_panel {
+        border-bottom-style: solid;
+        border-width: 3px;
+      }      
+      .shared_panel {
+        border-bottom-style: solid;
+        border-width: 3px;
+      }
     }
   
-    .right-sidebar {
+    .right_sidebar {
     @include span-columns(2);
     list-style-type:none;
     text-align: right;

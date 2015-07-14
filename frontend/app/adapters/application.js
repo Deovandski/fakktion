@@ -1,7 +1,7 @@
 import DS from "ember-data";
 
 // Override the default adapter with the `DS.ActiveModelAdapter` with
-DS.RESTAdapter.reopen({
+DS.ActiveModelAdapter.reopen({
   namespace: 'api/v1'
 });
 
