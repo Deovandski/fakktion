@@ -16,7 +16,7 @@ before_script:
 - npm install -g ember-cli
 - npm install
 - bower install
-- npm install --save-dev ember-cli-rails-addon@0.1.11
+- npm install --save-dev ember-cli-rails-addon
 - ember install ember-cli-simple-auth
 - ember install ember-cli-simple-auth-devise
 - cd ..
