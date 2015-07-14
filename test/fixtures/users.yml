@@ -1,39 +1,59 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+# User #1 - Super User:
+
 one:
-  full_name: MyString
-  display_name: MyString
-  email: MyString
-  password_digest: MyString
+  full_name: Sample User
+  display_name: User#1
+  email: user@example.com
+  password: 12345678
+  password_confirmation: 12345678
   date_of_birth: 2015-02-24
-  gender: 1
-  facebook_id: 1
-  twitter_url: MyString
-  personal_message: MyString
-  webpage_url: MyString
-  is_banned: false
-  is_banned_date: 2015-02-24
-  number_of_posts: 1
-  number_of_comments: 1
-  legal_terms_read: false
-  privacy_terms_read: false
-  is_admin: false
+  gender: male
+  is_admin: true
+  is_super_user: true
+  facebook_id: 3
+  personal_message: sample personal message
+  twitter_url: https://twitter.com/Deovandski
+  webpage_url: www.google.com
+  privacy_terms_read: true
+  legal_terms_read: true
+
+# User #2 - Admin User:
 
 two:
-  full_name: MyString
-  display_name: MyString
-  email: MyString
-  password_digest: MyString
+  full_name: Sample User
+  display_name: User#2
+  email: user@example.com
+  password: 12345678
+  password_confirmation: 12345678
   date_of_birth: 2015-02-24
-  gender: 1
-  facebook_id: 1
-  twitter_url: MyString
-  personal_message: MyString
-  webpage_url: MyString
-  is_banned: false
-  is_banned_date: 2015-02-24
-  number_of_posts: 1
-  number_of_comments: 1
-  legal_terms_read: false
-  privacy_terms_read: false
+  gender: male
+  is_admin: true
+  is_super_user: false
+  facebook_id: 2
+  personal_message: sample personal message
+  twitter_url: https://twitter.com/Deovandski
+  webpage_url: www.google.com
+  privacy_terms_read: true
+  legal_terms_read: true
+
+# User #3 - Normal User:
+
+three:
+  full_name: Sample User
+  display_name: User#3
+  email: user@example.com
+  password: 12345678
+  password_confirmation: 12345678
+  date_of_birth: 2015-02-24
+  gender: male
   is_admin: false
+  is_super_user: false
+  facebook_id: 1
+  personal_message: sample personal message
+  twitter_url: https://twitter.com/Deovandski
+  webpage_url: www.google.com
+  privacy_terms_read: true
+  legal_terms_read: true
+

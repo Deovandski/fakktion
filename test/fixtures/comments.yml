@@ -2,14 +2,16 @@
 
 one:
   soft_delete: false
-  soft_delete_date: 2015-02-24
-  text: MyString
+  text: MyString #1
   hidden: false
   empathy_level: 1
+  post_id: 0
+  user_id: 1
 
 two:
   soft_delete: false
-  soft_delete_date: 2015-02-24
-  text: MyString
+  text: MyString #2 by Admin
   hidden: false
   empathy_level: 1
+  post_id: 0
+  user_id: 0
