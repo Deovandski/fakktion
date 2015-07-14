@@ -55,5 +55,8 @@ ember install ember-cli-simple-auth
 ember init -- Generate new project blueprint... Make sure to review diff!
 rake start and install any mising add-on	
 ```
-
+### Validating .travis.yml files
+```
+travis-lint command from main folder
+```
 
