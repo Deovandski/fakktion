@@ -17,6 +17,5 @@ before_script:
 - ember install ember-cli-simple-auth-devise
 - cd ..
 env:
-- SECRET_KEY_BASE="$(bundle exec rake secret)"
-script:
-- echo "Build Success"
+- SECRET_KEY_BASE= "7a0800eed4fc8c5441fda5e8c803994b9cf8ad8fdb55ef75b25bd486390cf7f3e4b32a626a3907c09ea26c0dc877ccb0d40fa61f6270f33dbc3295347e6bd7e2"
+
