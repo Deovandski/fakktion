@@ -11,12 +11,11 @@ before_script:
 - bundle exec rake db:seed
 - sudo apt-get install nodejs
 - node --help
-- npm --help
 - npm install -g bower
 - cd frontend
 - npm install -g ember-cli
-- sudo npm install
-- sudo bower install
+- npm install
+- bower install
 - npm install --save-dev ember-cli-rails-addon@0.1.11
 - ember install ember-cli-simple-auth
 - ember install ember-cli-simple-auth-devise
