@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  genre_name: MyString
+  name: MyString #1
 
 two:
-  genre_name: MyString
+  name: MyString #2

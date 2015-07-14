@@ -1,7 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  fact_name: MyString
+  name: Business
 
 two:
-  fact_name: MyString
+  name: Technology
+
+three:
+  name: International

@@ -1,7 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  topic_name: MyString
-
+  name: Hatsune Miku
 two:
-  topic_name: MyString
+  name: Vocaloid

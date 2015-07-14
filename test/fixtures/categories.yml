@@ -1,7 +1,28 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  category_name: MyString
+  name: A-B-C
 
 two:
-  category_name: MyString
+  name: D-E-F
+
+three:
+  name: G-H-I
+
+four:
+  name: J-K-L
+
+five:
+  name: M-N-O
+
+six:
+  name: P-Q-R
+
+seven:
+  name: S-T-U
+
+eight:
+  name: V-W-X
+
+nine:
+  name: Y-Z-?
