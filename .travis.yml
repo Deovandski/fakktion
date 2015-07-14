@@ -1,0 +1,19 @@
+sudo: required
+language: ruby
+rvm:
+- 2.0.0
+
+before_script:
+- ./set_token.sh
+- bundle exec rake db:migrate
+- bundle exec rake db:seed
+- cd frontend
+- sudo npm install
+- sudo bower install
+- npm install --save-dev ember-cli-rails-addon@0.1.11
+- ember install ember-cli-simple-auth
+- ember install ember-cli-simple-auth-devise
+- cd ..
+
+script:
+- echo "Build Success"
