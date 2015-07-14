@@ -9,8 +9,9 @@ rvm:
 before_script:
 - bundle exec rake db:migrate
 - bundle exec rake db:seed
-- sudo apt-get install nodejs
-- node --help
+- sudo apt-get install nodejs npm
+- sudo apt-get update
+- sudo apt-get upgrade nodejs npm 
 - npm install -g bower
 - cd frontend
 - npm install -g ember-cli
