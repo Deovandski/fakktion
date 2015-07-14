@@ -1,27 +1,17 @@
-1. Create Database diagram
+### Create Database diagram
 ```
-
 rake erd
-
 ```
-  
-2. Fully reset DB and redo all migrations
+### Fully reset DB and redo all migrations
 ```
-
 rake db:migrate:reset
-
 ```
-
-3. git return file state to previous commit
+### git return file state to previous commit
 ```
-
 git reset --hard
-
 ```
-
-4. Rebuild Secrets.yml
-
-	4.1 Create secrets.yml on config folder with the following 
+### Rebuild Secrets.yml
+	*Create secrets.yml on config folder with the following 
 		```
 		development:
 			secret_key_base: xxx
@@ -30,37 +20,29 @@ git reset --hard
 		production:
 			secret_key_base: <%= ENV["SECRET_KEY_BASE"] %>
 		```
-	4.2 Use rake secret for new keys
+	*Use rake secret for new keys
 
-5. Bundler commands
+### Bundler commands
 ```
-
 http://bundler.io/v1.5/commands.html
 ```
-
-6. Testing json response
+### Testing json response
 ```
 http://localhost:3000/api/v1/genres.json // for all of them
 http://localhost:3000/api/v1/genres/1.json // for individual response
 ```
-
-7. CLear Cache
+### Clear Cache
 ```
-	rake tmp:clear
-
+rake tmp:clear
 ```
-
-9. fix public SSH key issue
+### fix public SSH key issue
 ```
-
 ssh-add -l (The agent has no identities message will shown up)
 ssh-add "Key"
 ssh-add -l (to verify agent)
 ```
-
-10. Update Ember-CLI
+### Update Ember-CLI
 ```
-
 npm uninstall -g ember-cli
 npm cache clean
 bower cache clean

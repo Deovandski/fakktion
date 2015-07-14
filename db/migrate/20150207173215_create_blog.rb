@@ -38,6 +38,7 @@ class CreateBlog < ActiveRecord::Migration
       t.boolean :soft_delete
       t.date :soft_delete_date
       t.boolean :hidden
+      t.integer  :views_count, default: 0
       t.timestamps
     end
     

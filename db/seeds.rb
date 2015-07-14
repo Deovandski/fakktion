@@ -31,15 +31,15 @@ end
 # CATEGORIES RELATED SEED
 puts "Creating Categories"
 if Categorie.count == 0
-Categorie.create!(category_name: "A-B-C")
-Categorie.create!(category_name: "D-E-F")
-Categorie.create!(category_name: "G-H-I")
-Categorie.create!(category_name: "J-K-L")
-Categorie.create!(category_name: "M-N-O")
-Categorie.create!(category_name: "P-Q-R")
-Categorie.create!(category_name: "S-T-U")
-Categorie.create!(category_name: "V-W-X")
-Categorie.create!(category_name: "Y-Z-?")
+Categorie.create!(name: "A-B-C")
+Categorie.create!(name: "D-E-F")
+Categorie.create!(name: "G-H-I")
+Categorie.create!(name: "J-K-L")
+Categorie.create!(name: "M-N-O")
+Categorie.create!(name: "P-Q-R")
+Categorie.create!(name: "S-T-U")
+Categorie.create!(name: "V-W-X")
+Categorie.create!(name: "Y-Z-?")
 puts "Categories created"
 else
 puts "No new categories created as there is already at least one 1 category in the database"
@@ -48,9 +48,9 @@ end
 # FACT TYPE RELATED SEED
 puts "Creating fact types"
 if FactType.count == 0
-FactType.create!(fact_name: "Business")
-FactType.create!(fact_name: "Technology")
-FactType.create!(fact_name: "International")
+FactType.create!(name: "Business")
+FactType.create!(name: "Technology")
+FactType.create!(name: "International")
 puts "Fact types created"
 else
 puts "No new fact types created as there is already at least one 1 fact type in the database"
@@ -59,9 +59,9 @@ end
 # GENRE RELATED SEED
 puts "Creating Genres"
 if Genre.count == 0
-Genre.create!(genre_name: "Song")
-Genre.create!(genre_name: "Novel")
-Genre.create!(genre_name: "Movie")
+Genre.create!(name: "Song")
+Genre.create!(name: "Novel")
+Genre.create!(name: "Movie")
 puts "Genres created"
 else
 puts "No new Genres created as there is already at least one 1 fact type in the database"
@@ -70,7 +70,7 @@ end
 # TOPIC RELATED SEED
 puts "Creating topics"
 if Topic.count == 0
-Topic.create!(topic_name: "Hatsune Miku")
+Topic.create!(name: "Hatsune Miku")
 puts "Topics created"
 else
 puts "No new Topics created as there is already at least one topic in the database"

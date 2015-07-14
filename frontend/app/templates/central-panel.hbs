@@ -1,0 +1,17 @@
+<h1>Central Panel</h1>
+	<nav>
+		<ul>
+			{{#if isGenreSelected}}
+			<li>
+    			{{selectedGN}}
+			</li>
+			<li>
+    			<button{{action "clearGenre"}}>Unselect Genre</button>
+			</li>
+			{{else}}
+			<li>
+    			<label>No genre Selected</label>
+			</li>
+			{{/if}}
+		</ul>
+	</nav>
