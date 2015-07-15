@@ -3,7 +3,7 @@ DONE features were written in order of when it was implemented.
 Last Updated on 7/14
 
 TODO:
-
+Setup Travis CI extended testing for core functionalities
 Ember Devise SignUp (User RESTfull links setup)
 Live tag manipulation user story implementation
 Create raw profile page for user manipulation
@@ -14,10 +14,10 @@ Users able to create Posts from the current selected tags
 story implementation
 setup RESTful links for comments
 Remove any unwanted ~ files
-Through code cleanup and indendation.
+Through code cleanup and indentation.
 Recreate database secrets
 Verify the steps required for establishing a HTTPS connection.
-Setup Travis CI for core functionalities
+Setup Travis CI extended testing for all implemented functionalities
 ------
 Release Alpha
 ------
@@ -55,5 +55,6 @@ Raw RESTfull Links implemented for post creation and edit.
 Create Application space for displaying tags and topic search (above application outlet) {now named Center Panel}
 Changed CSS to support Center Panel.
 Genres live tag manipulation (Displays the selected tag name and allows user to clear selection.)
+Setup Travis CI and underlying testing foundation for Rails.
 
 

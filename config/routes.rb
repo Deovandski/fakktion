@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+	mount EmberCLI::Engine => "ember-tests" if Rails.env.development?
+	#http://localhost:3000/ember-tests/frontend
+
 	root 'forums#index'
 
 	#Redirect all routes to Ember.js 
