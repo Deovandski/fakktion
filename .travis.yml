@@ -1,14 +1,15 @@
-sudo: required
 language: ruby
+sudo: false
 cache: bundler
 branches:
   only:
   - master
 rvm:
 - 2.0.0
+before_install:
+- openssl aes-256-cbc -K $encrypted_f7320bcbcc32_key -iv $encrypted_f7320bcbcc32_iv
+  -in secrets.yml.enc -out config/secrets.yml -d
 before_script:
-- sudo apt-get install nodejs npm
-- sudo apt-get update
 - npm install -g bower
 - cd frontend
 - npm install -g ember-cli
@@ -20,9 +21,16 @@ before_script:
 - cd ..
 - bundle exec rake db:migrate
 - bundle exec rake db:seed
-before_install:
-- openssl aes-256-cbc -K $encrypted_f7320bcbcc32_key -iv $encrypted_f7320bcbcc32_iv
-  -in secrets.yml.enc -out config/secrets.yml -d
+script:
+- rake test
+- cd frontend
+- ember test
 addons:
   code_climate:
     repo_token: 9e561427bd3657e5d75929feb95d495b08e4b0fb665e4000bb58a1c42db1e382
+#nodejs and npm not apt whitelisted... Check again if build fails due to nodejs deprecations on Travis CI.
+#  apt:
+#    sources:
+#    - nodejs:
+#      - "0.12"
+#    - npm
