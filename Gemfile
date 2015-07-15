@@ -8,9 +8,11 @@ gem "puma"
 gem 'neat'
 gem 'responders', '~> 2.0'
 
-#Graph generation tool
 group :development do
+  #Graph generation tool
   gem "rails-erd"
+  #Travis CI
+  gem "travis"
 end
 
 #EmberCLI

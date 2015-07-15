@@ -3,7 +3,7 @@ language: ruby
 cache: bundler
 branches:
   only:
-    - master
+  - master
 rvm:
 - 2.0.0
 before_script:
@@ -21,6 +21,6 @@ before_script:
 script:
 - bundle exec rake db:migrate
 - bundle exec rake db:seed
-env:
-  RAILS_ENV=test
-  SECRET_KEY_BASE="$(bundle exec rake secret)"
+before_install:
+- openssl aes-256-cbc -K $encrypted_f7320bcbcc32_key -iv $encrypted_f7320bcbcc32_iv
+  -in secrets.yml.enc -out config/secrets.yml -d
