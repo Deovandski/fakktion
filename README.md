@@ -2,7 +2,7 @@
 
 ![](/FakktionLogo.png)
 
-[![Build Status](https://travis-ci.org/Deovandski/Fakktion.svg?branch=master)](https://travis-ci.org/Deovandski/Fakktion)[![Code Climate](https://codeclimate.com/github/Deovandski/Fakktion/badges/gpa.svg)][![Test Coverage](https://codeclimate.com/github/Deovandski/Fakktion/badges/coverage.svg)](https://codeclimate.com/github/Deovandski/Fakktion/coverage)
+[![Build Status](https://travis-ci.org/Deovandski/Fakktion.svg?branch=master)](https://travis-ci.org/Deovandski/Fakktion)![Code Climate](https://codeclimate.com/github/Deovandski/Fakktion/badges/gpa.svg)[![Test Coverage](https://codeclimate.com/github/Deovandski/Fakktion/badges/coverage.svg)](https://codeclimate.com/github/Deovandski/Fakktion/coverage)
 
 All information about this project can be found on this [published paper](http://www.micsymposium.org/mics2015/ProceedingsMICS_2015/Skibinski_3C1_31.pdf). Information regarding the Database Design and can be seen [Here](erd.pdf), and information about progress can be seen [Here](Documents/TODO.txt) and some screenshots [Here](https://www.facebook.com/media/set/?set=a.510229305806158.1073741833.100004572798493&type=1&l=55c801085f) (Screenshots represents progress as of 7/12/2015.)
 
