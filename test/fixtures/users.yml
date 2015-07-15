@@ -5,9 +5,8 @@
 one:
   full_name: Sample User
   display_name: User#1
-  email: user@example.com
-  password: 12345678
-  password_confirmation: 12345678
+  email: userFIXTURE1@example.com
+  encrypted_password: $2a$10$G3Vvxp7Ek6nkwb4JoG1C6uIwncnbM0hGusIHBbMbo1v3bzMfBs9Zu
   date_of_birth: 2015-02-24
   gender: male
   is_admin: true
@@ -24,9 +23,8 @@ one:
 two:
   full_name: Sample User
   display_name: User#2
-  email: user@example.com
-  password: 12345678
-  password_confirmation: 12345678
+  email: userFIXTURE2@example.com
+  encrypted_password: $2a$10$G3Vvxp7Ek6nkwb4JoG1C6uIwncnbM0hGusIHBbMbo1v3bzMfBs9Zu
   date_of_birth: 2015-02-24
   gender: male
   is_admin: true
@@ -43,9 +41,8 @@ two:
 three:
   full_name: Sample User
   display_name: User#3
-  email: user@example.com
-  password: 12345678
-  password_confirmation: 12345678
+  email: userFIXTURE3@example.com
+  encrypted_password: $2a$10$G3Vvxp7Ek6nkwb4JoG1C6uIwncnbM0hGusIHBbMbo1v3bzMfBs9Zu
   date_of_birth: 2015-02-24
   gender: male
   is_admin: false
