@@ -2,7 +2,9 @@
 
 ![](/FakktionLogo.png)
 
-[![Build Status](https://travis-ci.org/Deovandski/Fakktion.svg?branch=master)](https://travis-ci.org/Deovandski/Fakktion)![Code Climate](https://codeclimate.com/github/Deovandski/Fakktion/badges/gpa.svg)[![Test Coverage](https://codeclimate.com/github/Deovandski/Fakktion/badges/coverage.svg)](https://codeclimate.com/github/Deovandski/Fakktion/coverage)
+[![Build Status](https://travis-ci.org/Deovandski/Fakktion.svg?branch=master)](https://travis-ci.org/Deovandski/Fakktion) [![Test Coverage](https://codeclimate.com/github/Deovandski/Fakktion/badges/coverage.svg)](https://codeclimate.com/github/Deovandski/Fakktion/coverage)
+
+######Code Coverage is currently only available for Rails.
 
 All information about this project can be found on this [published paper](http://www.micsymposium.org/mics2015/ProceedingsMICS_2015/Skibinski_3C1_31.pdf). Information regarding the Database Design and can be seen [Here](erd.pdf), and information about progress can be seen [Here](Documents/TODO.txt) and some screenshots [Here](https://www.facebook.com/media/set/?set=a.510229305806158.1073741833.100004572798493&type=1&l=55c801085f) (Screenshots represents progress as of 7/12/2015.)
 
@@ -24,14 +26,13 @@ This project once used [Ember-Rails](https://github.com/emberjs/ember-rails), bu
 9. Run the following commands to install addons:
 
 ```
-
 npm install --save-dev ember-cli-rails-addon@0.1.11
 
 ember install ember-cli-simple-auth
 
 ember install ember-cli-simple-auth-devise
 ```
-Some commands were skipped. If you don't have some of the requirements such as node.js please check the .travis.yml file
+Some commands were skipped. If you don't have some of the requirements such as node.js please check the .travis.yml file.
 
 ## Usage
 
