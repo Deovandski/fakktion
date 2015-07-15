@@ -172,7 +172,6 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   awesome_print
-  coffee-rails (~> 4.0.0)
   devise
   ember-cli-rails
   font-awesome-rails
