@@ -7,8 +7,6 @@ branches:
 rvm:
 - 2.0.0
 before_script:
-- bundle exec rake db:migrate
-- bundle exec rake db:seed
 - sudo apt-get install nodejs npm
 - sudo apt-get update
 - npm install -g bower
@@ -20,3 +18,9 @@ before_script:
 - ember install ember-cli-simple-auth
 - ember install ember-cli-simple-auth-devise
 - cd ..
+script:
+- bundle exec rake db:migrate
+- bundle exec rake db:seed
+env:
+  RAILS_ENV=test
+  SECRET_KEY_BASE="$(bundle exec rake secret)"
