@@ -59,4 +59,8 @@ rake start and install any mising add-on
 ```
 travis-lint command from main folder
 ```
-
+### Encrypt secrets through Travis CI
+```
+travis login --org
+travis encrypt-file config/secrets.yml --add
+```

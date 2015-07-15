@@ -18,7 +18,6 @@ before_script:
 - ember install ember-cli-simple-auth
 - ember install ember-cli-simple-auth-devise
 - cd ..
-script:
 - bundle exec rake db:migrate
 - bundle exec rake db:seed
 before_install:
