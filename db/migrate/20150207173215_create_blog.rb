@@ -17,7 +17,7 @@ class CreateBlog < ActiveRecord::Migration
       t.boolean :privacy_terms_read
       t.boolean :is_super_user
       t.boolean :is_admin
-      t.timestamps
+      t.timestamps, null: true
     end
  
     create_table :comments do |t|
@@ -26,7 +26,7 @@ class CreateBlog < ActiveRecord::Migration
       t.string :text
       t.boolean :hidden
       t.integer :empathy_level
-      t.timestamps
+      t.timestamps, null: true
     end
  
     create_table :posts do |t|
@@ -39,13 +39,13 @@ class CreateBlog < ActiveRecord::Migration
       t.date :soft_delete_date
       t.boolean :hidden
       t.integer  :views_count, default: 0
-      t.timestamps
+      t.timestamps, null: true
     end
     
     create_table :admin_messages do |t|
       t.string :title
       t.string :message
-      t.timestamps
+      t.timestamps, null: true
     end
   end  
   
