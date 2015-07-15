@@ -13,6 +13,8 @@ group :development do
   gem "rails-erd"
   #Travis CI
   gem "travis"
+  #CodeClimate
+  gem "codeclimate-test-reporter", group: :test, require: nil
 end
 
 #EmberCLI
