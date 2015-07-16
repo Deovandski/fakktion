@@ -22,7 +22,7 @@ before_script:
 - bundle exec rake db:migrate
 - bundle exec rake db:seed
 script:
-- rake test
+- bundle exec rake test
 - cd frontend
 - ember test
 addons:
