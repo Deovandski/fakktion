@@ -4,13 +4,12 @@ Last Updated on 7/15
 
 TODO:
 Ember Devise SignUp (User RESTfull links setup)
-Live tag manipulation user story implementation
 Create raw profile page for user manipulation
 Create raw moderation page for admins and superUser
 Create raw admin moderation page for superUser
 Complete the setup for all RESTful links for posts and tags
-Users able to create Posts from the current selected tags
-story implementation
+Live Topic and Post Date tags manipulation user story implementation
+Users able to create Posts from the current selected tags story implementation
 setup RESTful links for comments
 Remove any unwanted ~ files
 Through code cleanup and indentation.
@@ -57,4 +56,5 @@ Changed CSS to support Center Panel.
 Genres live tag manipulation (Displays the selected tag name and allows user to clear selection.)
 Setup Travis CI and underlying testing foundation for Rails and Ember.
 Setup Code Coverage for Rails.
+Live tag manipulation user story implementation
 

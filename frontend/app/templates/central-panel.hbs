@@ -1,17 +1,55 @@
-<h1>Central Panel</h1>
-	<nav>
-		<ul>
-			{{#if isGenreSelected}}
-			<li>
-    			{{selectedGN}}
-			</li>
-			<li>
-    			<button{{action "clearGenre"}}>Unselect Genre</button>
-			</li>
-			{{else}}
-			<li>
-    			<label>No genre Selected</label>
-			</li>
-			{{/if}}
-		</ul>
-	</nav>
+<div class="central_upper_panel">
+	<div class="genre_tagging">
+		{{#if isGenreSelected}}
+			<label>
+				{{selectedGN}}
+				<button{{action "clearGenre"}}>X</button>
+			</label>
+		{{else}}
+			<label>Genre</label>
+		{{/if}}
+	</div>
+	<div class="fact_type_tagging">
+		{{#if isFactTypeSelected}}
+			<label>
+				{{selectedFTN}}
+				<button{{action "clearFactType"}}>X</button>
+			</label>
+		{{else}}
+			<label>Fact Type</label>
+		{{/if}}
+	</div>
+	<div class="category_tagging">
+		{{#if isCategorySelected}}
+			<label>
+				{{selectedCN}}
+				<button{{action "clearCategory"}}>X</button>
+			</label>
+		{{else}}
+			<label>Category</label>
+		{{/if}}
+	</div>
+	<div class="post_date_tagging">
+		<label>Post Date</label>
+	</div>
+</div>
+<div class="central_lower_panel">
+	<div class="topic_search">
+		{{#if isTopicSelected}}
+			<input type="text" value=searchTopicByName placeholder="Add Topic filter" disabled="false">
+			<button{{action "setTID"}}>Search</button>
+		{{else}}
+			<input type="text" value=searchTopicByName placeholder="Add Topic filter" disabled="true">
+		{{/if}}
+	</div>
+	<div class="topic_tagging">
+		{{#if isTopicSelected}}
+			<label>
+				{{selectedTN}}
+				<button{{action "clearTopic"}}>X</button>
+			</label>
+		{{else}}
+			<label>Topic</label>
+		{{/if}}
+	</div>
+</div>
