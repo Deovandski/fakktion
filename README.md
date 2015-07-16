@@ -6,7 +6,7 @@
 
 ######Code Coverage is currently only available for Rails.
 
-All information about this project can be found on this [published paper](http://www.micsymposium.org/mics2015/ProceedingsMICS_2015/Skibinski_3C1_31.pdf). Information regarding the Database Design and can be seen [Here](erd.pdf), and information about progress can be seen [Here](Documents/TODO.txt) and some screenshots [Here](https://www.facebook.com/media/set/?set=a.510229305806158.1073741833.100004572798493&type=1&l=55c801085f) (Screenshots represents progress as of 7/12/2015.)
+All information about this project can be found on this [published paper](http://www.micsymposium.org/mics2015/ProceedingsMICS_2015/Skibinski_3C1_31.pdf). Information regarding the Database Design and can be seen [Here](erd.pdf), and information about progress can be seen [Here](Documents/TODO.txt) and in this video [Here](https://youtu.be/tckjDm4LNjg) (Video represents progress as of 7/15/2015.)
 
 ## Notice
 This project once used [Ember-Rails](https://github.com/emberjs/ember-rails), but now it is using [Ember-cli-rails](https://github.com/rwz/ember-cli-rails). If you would like to see the previous Ember-Rails implementation, please check the [Ember-Rails Implementation branch](https://github.com/Deovandski/Fakktion/tree/Ember-Rails).
