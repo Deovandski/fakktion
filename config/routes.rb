@@ -14,9 +14,10 @@ Rails.application.routes.draw do
 	get '/privacy_info', to: 'forums#index'
 	get '/legal_info', to: 'forums#index'
 	# "Resource routes"
-	get '/post/:id', to: 'forums#index'
-		get '/post/:id/show', to: 'forums#index'
-		get '/post/:id/edit', to: 'forums#index'
+	get '/posts', to: 'forums#index'
+		get '/posts/:id', to: 'forums#index'
+		get '/posts/:id/show', to: 'forums#index'
+		get '/posts/:id/edit', to: 'forums#index'
 	get '/post/:id/comment/:id', to: 'forums#index'
 	get '/genre/:id', to: 'forums#index'
 	get '/admin_message/:id', to: 'forums#index'
@@ -25,7 +26,6 @@ Rails.application.routes.draw do
 	get '/categorie/:id', to: 'forums#index'
 	get '/user/:id', to: 'forums#index'
 	# Resource routes without ids
-	get '/posts', to: 'forums#index'
 	get '/posts/:id/comments', to: 'forums#index'
 	get '/genres', to: 'forums#index'
 	get '/admin_messages', to: 'forums#index'

@@ -6,4 +6,5 @@ DS.ActiveModelAdapter.reopen({
 });
 
 export default DS.ActiveModelAdapter.extend({
+	shouldReloadAll() { return false; }
 });

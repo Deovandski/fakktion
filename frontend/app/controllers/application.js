@@ -13,7 +13,32 @@ export default Ember.Controller.extend({
 	selectedTN: 'nil',
 	selectedFTN: 'nil',
 	searchTopicByName: 'nil',
-
+	// Display Central Panel on specified pages
+	displayCentralPanel: Ember.computed('currentPath', function()
+	{
+		if(this.get('currentPath') === 'index' || 'posts' || 'posts.create')
+		{
+			//console.log('Display Central Panel');
+			//console.log(this.get('currentPath'));
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}),
+	// Display Central Panel on only forum Related pages.
+	displaySideBars: Ember.computed('currentPath', function()
+	{
+		if(this.get('currentPath') === 'index' || 'posts.create')
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}),
 	// Methods for Tags Boolean check.
 	isGenreSelected: Ember.computed('selectedGID', function()
 	{

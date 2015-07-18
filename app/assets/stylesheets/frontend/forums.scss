@@ -127,7 +127,9 @@ body.ember-application.forum.show main {
         border-width: 3px;
       }
     }
-  
+	.main_panel { 
+		text-align: center;
+	 }
     .right_sidebar {
     @include span-columns(2);
     list-style-type:none;

@@ -5,27 +5,65 @@ var Router = Ember.Router.extend({
   location: config.locationType
 });
 
-Router.map(function() {
+Router.map(function()
+{
 	//Login related
    this.route('header');
    this.route('login', { path: '/login' });
 
-	//Main related
-	this.route('posts', function() {
-	   this.route('new');
+	//User
+	this.resource('users', function(){
+		this.resource('user', { path:'/:user_id' }, function()
+		{
+			this.route('edit');
+		});
+		this.route('create');
 	});
-	this.route('post', {path: 'post/:post_id'}, function() {
-		this.route('show');
-		this.route('edit');
+
+	//Posts + comments
+	this.resource('posts', function(){
+		this.resource('post', { path:'/:post_id' }, function()
+		{
+			this.route('edit');
+		});
+		this.route('create');
 	});
-   this.route('genres');
-   this.route('genre', { path: '/genres/:id' });
-   this.route('categories');
-   this.route('categorie', { path: '/categories/:id' });
-   this.route('postingDates');
-   this.route('postingDate', { path: '/postingDates/:id' });
-   this.route('factTypes');
-   this.route('factType', { path: '/factTypes/:id' });
+
+	//Genres
+	this.resource('genres', function(){
+		this.resource('genre', { path:'/:genre_id' }, function()
+		{
+			this.route('edit');
+		});
+		this.route('create');
+	});
+
+	//Categories
+	this.resource('categories', function(){
+		this.resource('category', { path:'/:_id' }, function()
+		{
+			this.route('edit');
+		});
+		this.route('create');
+	});
+
+	// Posting Dates
+	this.resource('postingDates', function(){
+		this.resource('postingDate', { path:'/:_id' }, function()
+		{
+			this.route('edit');
+		});
+		this.route('create');
+	});
+
+	//Fact Type
+	this.resource('factTypes', function(){
+		this.resource('factType', { path:'/:_id' }, function()
+		{
+			this.route('edit');
+		});
+		this.route('create');
+	});
 
 	// Footer related
    this.route('footer');

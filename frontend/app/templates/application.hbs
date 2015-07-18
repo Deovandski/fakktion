@@ -2,33 +2,47 @@
 	{{partial 'header'}}
 </header>
 <main class="ember_application">
-	<div class="left_sidebar">
-		<div class="genres_div">
-			<h5>Genres</h5>
-			{{partial 'genres'}}
+	{{#if displaySideBars}}
+		<div class="left_sidebar">
+			<div class="genres_div">
+				<h5>Genres</h5>
+				{{partial 'genres-partial'}}
+			</div>
+			<div class="categories_div">
+			{{partial 'categories-partial'}}
+			</div>
 		</div>
-		<div class="categories_div">
-			{{partial 'categories'}}
+	{{else}}
+	
+	{{/if}}
+		{{#if displayCentralPanel}}
+			<div class="central">
+			<div class="central_panel">
+			{{partial 'central-panel'}}
+			</div>
+			<div class="shared_panel">
+			{{outlet}}
+			</div>
+			</div>
+		{{else}}
+			<div class="main_panel">
+			{{outlet}}
+			</div>
+		{{/if}}
+	{{#if displaySideBars}}
+		<div class="right_sidebar">
+			<div class="fact_types_div">
+				<h5>Fact Types</h5>
+				{{partial 'fact-types-partial'}}
+			</div>
+			<div class="fact_posting_dates_div">
+			<h5>Post Date</h5>
+			{{partial 'posting-dates-partial'}}
+			</div>
 		</div>
-	</div>
-	<div class="central">
-		<div class="central_panel">
-		{{partial 'central-panel'}}
-		</div>
-		<div class="shared_panel">
-		{{outlet}}
-		</div>
-	</div>
-	<div class="right_sidebar">
-		<div class="fact_types_div">
-			<h5>Fact Types</h5>
-			{{partial 'fact-types'}}
-		</div>
-		<div class="fact_posting_dates_div">
-		<h5>Post Date</h5>
-		{{partial 'posting-dates'}}
-		</div>
-	</div>
+	{{else}}
+	
+	{{/if}}
 </main>
 <footer>
 	{{partial 'footer'}}

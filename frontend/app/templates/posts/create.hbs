@@ -1,0 +1,8 @@
+<h2>New Post</h2>
+<form {{action "create" on="submit"}}>
+	<label>Title: </label>{{input type="text" value=postName}}<br/>
+	<label>Text: </label>{{input type="text" value=text}}<br/>
+	<label>Fiction Link: </label>{{input type="text" value=fiction_link}}<br/>
+	<label>Fact Link: </label>{{input type="text" value=fact_link}}<br/>
+	<button type="submit">Create Post</button>
+</form>

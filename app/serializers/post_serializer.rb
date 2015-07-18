@@ -11,5 +11,7 @@ class PostSerializer < ActiveModel::Serializer
              :importance, 
              :soft_delete,
              :soft_delete_date,
-             :hidden
+             :hidden,
+				 :views_count,
+				 :text;
 end
