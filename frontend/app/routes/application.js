@@ -4,8 +4,9 @@ import ApplicationRouteMixin from 'simple-auth/mixins/application-route-mixin';
 export default Ember.Route.extend
 ({
 	ApplicationRouteMixin,
-	model: function()
+	model: function(transition, queryParams)
 	{
+		this._super(transition, queryParams);
 		return Ember.Object.create
 		({
 			genres: this.store.findAll('genre'),

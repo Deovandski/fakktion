@@ -1,12 +1,7 @@
-<h1>Forum -- Index Page</h1>
+<p>Posts Page</p>
     <ul>
-    {{#each filteredPosts as |post|}}
+    {{#each model as |post|}}
       <li>{{#link-to 'post' post}}{{post.title}}{{/link-to}}</li>
     {{/each}}
     </ul>
-<label>{{session.secure.email}}</label>
-<label>{{session.currentUser.id}}</label>
-
 <li>{{#link-to 'posts.create'}}Create Post{{/link-to}}</li>
-
-

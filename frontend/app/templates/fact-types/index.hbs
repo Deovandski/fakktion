@@ -1,0 +1,5 @@
+<ul>
+  {{#each model.factTypes as |factType|}}
+    <li><button{{action "setFTID" factType}}>{{factType.name}}</button></li>
+  {{/each}}
+</ul>
