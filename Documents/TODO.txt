@@ -1,9 +1,10 @@
-﻿TODO features are written in order of importance.
-DONE features were written in order of when it was implemented.
-Last Updated on 7/15
+﻿TODO items are written in order of importance.
+DONE items were written in order of when it was implemented. Each item does not mean a commit.
+Last Updated on 7/18 3:40AM
 
 TODO:
 Ember Devise SignUp (User RESTfull links setup)
+Update Delete command to use softDelete for posts
 Create raw profile page for user manipulation
 Create raw moderation page for admins and superUser
 Create raw admin moderation page for superUser
@@ -30,31 +31,38 @@ Release 1.0
 
 DONE:
 
-Rails 4.2 implementation
-Assets Pipeline including bourbon and neat setup
-Server Setup
-Database initial migrations
-ERD implementation
-Ember-Rails 1.8 implementation
-Active Model Serializers implementation
-Ember-Data implementation
-JSON API setup
-Ember-Rails Adapters, Controllers, Templates and Views setup.
-Ember-Rails: View posts based on selected tags user story implementation
-Ember.js sources upgrade to 1.13
-Resolved deprecations and errors caused by migration
-Devise Implementation
-EmberCLI migration
-Resolved deprecations from CLI Migrations
-Pipeline Asset fix
-Ember Devise Login
-Custom Session for Login
-Rails to ember routes transition implemented. Sharing links should automatically make Rails redirect it to ember, and ember should be able to understand what they are about.
-Raw RESTfull Links implemented for post creation and edit.
-Create Application space for displaying tags and topic search (above application outlet) {now named Center Panel}
-Changed CSS to support Center Panel.
-Genres live tag manipulation (Displays the selected tag name and allows user to clear selection.)
-Setup Travis CI and underlying testing foundation for Rails and Ember.
-Setup Code Coverage for Rails.
-Live tag manipulation user story implementation
+1. Rails 4.2 implementation
+2. Assets Pipeline including bourbon and neat setup
+3. Server Setup
+4. Database initial migrations
+5. ERD implementation
+6. Ember-Rails 1.8 implementation
+7. Active Model Serializers implementation
+8. Ember-Data implementation
+9. JSON API setup
+10. Ember-Rails Adapters, Controllers, Templates and Views setup.
+11. Ember-Rails: View posts based on selected tags user story implementation
+12. Ember.js sources upgrade to 1.13
+13. Resolved deprecations and errors caused by migration
+14. Devise Implementation
+15. EmberCLI migration
+16. Resolved deprecations from CLI Migrations
+17. Pipeline Asset fix
+18. Ember Devise Login
+19. Custom Session for Login
+20. Rails to ember routes transition implemented. Sharing links should automatically make Rails redirect it to ember, and ember should be able to understand what they are about.
+21. Raw RESTfull Links implemented for post creation and edit.
+22. Create Application space for displaying tags and topic search (above application outlet) {now named Center Panel}
+23. Changed CSS to support Center Panel.
+24. Genres live tag manipulation (Displays the selected tag name and allows user to clear selection.)
+25. Setup Travis CI and underlying testing foundation for Rails and Ember.
+26. Setup Code Coverage for Rails.
+27. Live tag manipulation user story implementation
+28. Hide/show CentralPanel and Sidebars based on currentRoute implemented.
+29. Complete the setup for almost all RESTful links for posts
+30. Attempted to switch from Partial to Render, but Render helper is not the solution for the relational tags
+31. Refactored application partials in order to separated them from the RESTfull links.
+32. Refactored Router to reflected RESTFULL links (including upcoming ones.)
+
+
 
