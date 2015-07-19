@@ -37,21 +37,21 @@ export default Ember.Controller.extend
 	verifyPassword: Ember.computed('password', function()
 	{
 		if(this.get('password').length < 4)
-			{return "Paste complete URL";}
+			{return "Too short...";}
 		else
 			{return "MKay";}
 	}),
 	verifyPasswordConfirmation: Ember.computed('passwordConfirmation', function()
 	{
-		if(this.get('passwordConfirmation').length < 4)
-			{return "8+";}
+		if(this.get('passwordConfirmation') !== this.get('password'))
+			{return "Does not match!";}
 		else
 			{return "MKay";}
 	}),
 	verifyGender: Ember.computed('gender', function()
 	{
 		console.log(this.get('gender').toLowerCase()); // NOT WORKING
-		if(this.get('gender').toLowerCase() !== "male" || "female" || "other" )
+		if(this.get('gender').toLowerCase() !== "male" && this.get('gender').toLowerCase() !== "female" && this.get('gender').toLowerCase() !== "other")
 			{return "male/female/other";}
 		else
 			{return "MKay";}
