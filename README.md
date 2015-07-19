@@ -38,13 +38,13 @@ Start the Server with '''rake start'''. To quickly login under Development mode,
 
 [Discussions regarding this project](Documents/Discussions.md)
 
-[Code Information](Documents/Code Information.md)
+[Code Information](Documents/Code Information.txt)
 
-[Design Information](Documents/Design Information.md)
+[Design Information](Documents/Design Information.txt)
 
-[Planned Work](Documents/Planned Work.md)
+[Planned Work](Documents/Planned Work.txt)
 
-[Work History](Documents/Work History.md)
+[Work History](Documents/Work History.txt)
 
 [Extra Commands](Documents/Extra Commands.md)
 

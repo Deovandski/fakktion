@@ -23,7 +23,7 @@ DONE:
 18. Ember Devise Login
 19. Custom Session for Login
 20. Rails to ember routes transition implemented. Sharing links should automatically make Rails redirect it to ember, and ember should be able to understand what they are about.
-21. Raw RESTfull Links implemented for post creation and edit.
+21. Raw RESTful Links implemented for post creation and edit.
 22. Create Application space for displaying tags and topic search (above application outlet) {now named Center Panel}
 23. Changed CSS to support Center Panel.
 24. Genres live tag manipulation (Displays the selected tag name and allows user to clear selection.)
@@ -33,13 +33,15 @@ DONE:
 28. Hide/show CentralPanel and Sidebars based on currentRoute implemented.
 29. Complete the setup for almost all RESTful links for posts
 30. Attempted to switch from Partial to Render, but Render helper is not the solution for the relational tags
-31. Refactored application partials in order to separated them from the RESTfull links.
-32. Refactored Router to reflected RESTFULL links (including upcoming ones.)
+31. Refactored application partials in order to separated them from the RESTful links.
+32. Refactored Router to reflected RESTful links (including upcoming ones.)
 33. Added Show/Hide Buttons for all tags
 34. Refactored buttons mixins to support different types of buttons.
 35. Changed Central Upper Panel G/FT/C and PD tags to support button_type2
 36. Changed documentation and created Design and Code information documents for developers looking to see the overall functionality of the project and some technical information not available on the research paper.
-37. Deleted several deperecated files carried over from the initial project (When everything was cretaed on Rails)
-
+37. Deleted several deprecated files carried over from the initial project (When everything was created on Rails)
+38. Users able to create Posts from the current Genre, Fact Type and Category selected tags story implementation
+39. Scss initial ember and rails split and scss setup for create RESTful pages.
+40. Changed facebook_id to facebookURL accross the application.
 
 

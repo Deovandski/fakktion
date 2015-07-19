@@ -5,7 +5,7 @@ class CreateBlog < ActiveRecord::Migration
       t.string :display_name
       t.date :date_of_birth
       t.integer :gender
-      t.integer :facebook_id
+      t.string :facebook_url
       t.string :twitter_url
       t.string :personal_message
       t.string :webpage_url
