@@ -1,2 +1,0 @@
-class PrivacyInfoController < ApplicationController
-end

@@ -1,0 +1,30 @@
+This document is under development... Some changes may not fully reflect the actual status.
+Last Updated 7/18/15 at 7:10PM
+
+Summary:
+
+Rails is the backend and at the same time the main control in which the whole server is instantiated. EmberCLI is also instantiated, but it is under control of ember-cli-rails gem while Ember.js (the frontend) is under EmberCLI.
+
+
+Server Structure:
+
+-Rails
+--Ember-cli-rails
+---EMberCLI
+----Ember.js
+
+For people forking the project:
+1. Review .travis.yml and follow the instructions on Extra Commands to generate new secrets.yml and secrets.yml.enc, and also change or remove the code climate token.
+
+Overall Rules:
+1. Production environment must be done using HTTPS!
+
+Rails Rules:
+1. All Rails related code are located under app folder. For resources, please follow the other implemented resources.
+2. All routes must be redirected to EMber.js on Routes.rb
+	2.1 All resources must be under :api
+3. Do not disable csrf_meta_tags since it can create an easily exploitable vulnerability.
+
+Ember Rules:
+1. All Ember related code are located under Frontend/app folder, and all Ember related commands must be done on Frontend folder.
+

@@ -34,8 +34,6 @@ Rails.application.routes.draw do
 	get '/categories', to: 'forums#index'
 	get '/users', to: 'forums#index'
 
-
-
 	devise_for :users, controllers: {sessions: 'sessions'}
 
 	namespace :api do

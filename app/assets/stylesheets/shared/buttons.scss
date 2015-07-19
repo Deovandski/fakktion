@@ -1,7 +1,22 @@
 @import "imports";
 
-.button,
-button,
+.button_type1,
+button_type1,
 input[type="submit"] {
-  @include button;
+  @include button_type1;
+}
+.button_type2,
+button_type2,
+input[type="submit"] {
+  @include button_type2;
+}
+.button_type3,
+button_type3,
+input[type="submit"] {
+  @include button_type3;
+}
+.button_type4,
+button_type4,
+input[type="submit"] {
+  @include button_type4;
 }

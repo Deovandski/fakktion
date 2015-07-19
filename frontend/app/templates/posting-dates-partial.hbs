@@ -1,2 +1,12 @@
-<h7>Posting Date under Code Refactoring</h7>
-
+{{#if displayPDP}}
+	<div class="posting_dates_div">
+		<h5>Posting Dates <button class="button_type2" {{action "setPDPV" false}}>Hide</button></h5>
+		<ul class="tag_listing">
+			<li>Code being Refactored</li>
+		</ul>
+	</div>
+{{else}}
+	<div class="tag_listing_hidden">
+		<h5>Posting Dates <button class="button_type2" {{action "setPDPV" true}}>Show</button></h5>
+		</div>
+{{/if}}

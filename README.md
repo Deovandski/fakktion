@@ -11,8 +11,6 @@ All information about this project can be found on this [published paper](http:/
 ## Notice
 This project once used [Ember-Rails](https://github.com/emberjs/ember-rails), but now it is using [Ember-cli-rails](https://github.com/rwz/ember-cli-rails). If you would like to see the previous Ember-Rails implementation, please check the [Ember-Rails Implementation branch](https://github.com/Deovandski/Fakktion/tree/Ember-Rails).
 
-[Discussions regarding this project](Documents/discussions.md)
-
 ## Installation
 
 1. Clone Project
@@ -34,16 +32,25 @@ ember install ember-cli-simple-auth-devise
 ```
 Some commands were skipped. If you don't have some of the requirements such as node.js please check the .travis.yml file.
 
-## Usage
+Start the Server with '''rake start'''. To quickly login under Development mode, please use the email as user@example.com and password as 12345678.
 
-10. rake start.
-11. Login using user@example.com with password 12345678
+## Documents
 
-[Further usage including updating procedures](Documents/ExtraCommands.md)
+[Discussions regarding this project](Documents/Discussions.md)
+
+[Code Information](Documents/Code Information.md)
+
+[Design Information](Documents/Design Information.md)
+
+[Planned Work](Documents/Planned Work.md)
+
+[Work History](Documents/Work History.md)
+
+[Extra Commands](Documents/Extra Commands.md)
 
 ## License
 
-[The MIT License (MIT)](Documents/LICENSE.md)
+[The MIT License (MIT)](Documents/License.md)
 
 Copyright (c) 2014 - 2015, Deovandski Skibinski Junior and Dr. Anne Denton
 All rights reserved.

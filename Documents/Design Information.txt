@@ -1,0 +1,47 @@
+This document is under development... Some changes may not fully reflect the actual status.
+
+---Mixins/buttons Information:
+
+There are 4 types of buttons Design implemented:
+
+-Button1:
+
+Default existing design which consists of a rather large padding with a light blue color and white text. (Image will be added later on)
+
+-Button2:
+
+Copy of the existing design, but with a smaller padding with a light blue color and white text. (Image will be added later on)
+
+-Button3:
+
+TODO:
+
+-Button4:
+
+TODO:
+
+-Usage:
+
+<button class="button_type3">...</button>
+
+-Adding more types:
+
+app>assets>stylesheets> _imports
+
+insert @import "mixins/button_typeX";
+
+app>assets>stylesheets>mixins
+
+Create button_typeX.scss and follow the examples. Make sure to change the inner mixin identification!
+
+app>assets>stylesheets>shared
+
+.button_typeX,
+button_typeX,
+input[type="submit"] {
+  @include button_typeX;
+}
+
+
+
+
