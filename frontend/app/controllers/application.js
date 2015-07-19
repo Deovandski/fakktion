@@ -27,11 +27,11 @@ export default Ember.Controller.extend
 	selectedCID: 0,
 	selectedTID: 0,
 	selectedFTID: 0,
-	selectedGN: 'nil',
-	selectedCN: 'nil',
-	selectedTN: 'nil',
-	selectedFTN: 'nil',
-	searchTopicByName: 'nil',
+	selectedGN: 'None',
+	selectedCN: 'None',
+	selectedTN: 'None',
+	selectedFTN: 'None',
+	searchTopicByName: 'None',
 	showGP: true,
 	showCP: true,
 	showFTP: true,
@@ -168,17 +168,17 @@ export default Ember.Controller.extend
 		clearGenre: function() 
 		{ 
 			this.set('selectedGID', 0);
-			this.set('selectedGN', 'nil');
+			this.set('selectedGN', 'None');
 		},
 		clearFactType: function() 
 		{ 
 			this.set('selectedFTID', 0);
-			this.set('selectedFTN', 'nil');
+			this.set('selectedFTN', 'None');
 		},
 		clearCategory: function() 
 		{ 
 			this.set('selectedCID', 0);
-			this.set('selectedCN', 'nil');
+			this.set('selectedCN', 'None');
 		},
 		clearTopic: function() 
 		{ 

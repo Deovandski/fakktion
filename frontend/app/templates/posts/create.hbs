@@ -1,8 +1,39 @@
 <h2>New Post</h2>
-<form {{action "create" on="submit"}}>
-	<label>Title: </label>{{input type="text" value=postName}}<br/>
-	<label>Text: </label>{{input type="text" value=text}}<br/>
-	<label>Fiction Link: </label>{{input type="text" value=fiction_link}}<br/>
-	<label>Fact Link: </label>{{input type="text" value=fact_link}}<br/>
-	<button type="submit">Create Post</button>
+<form>
+	<div class="input_block_type1">
+		<label class="first_label">Title:</label>
+		{{input value=title}}
+		<label class="second_label">{{verifyTitle}}</label>
+	</div><br/>
+	<div class="input_block_type1">
+		<label class="first_label">Text:</label>
+		{{input value=text}}
+		<label class="second_label">{{verifyText}}</label>
+	</div><br/>
+	<div class="input_block_type1">
+		<label class="first_label">Genre:</label>
+		{{input value=genreName disabled=true}}
+		<label class="second_label">{{verifyGenre}}</label>
+	</div><br/>
+	<div class="input_block_type1">
+		<label class="first_label">Fact Type:</label>
+		{{input value=factTypeName disabled=true}}
+		<label class="second_label">{{verifyFactType}}</label>
+	</div><br/>
+	<div class="input_block_type1">
+		<label class="first_label">Category:</label>
+		{{input value=categoryName disabled=true}}
+		<label class="second_label">{{verifyCategory}}</label>
+	</div><br/>
+	<div class="input_block_type1">
+		<label class="first_label">Fact Link:</label>
+		{{input value=factLink}}
+		<label class="second_label">{{verifyFactLink}}</label>
+	</div><br/>
+	<div class="input_block_type1">
+		<label class="first_label">Fiction Link:</label>
+		{{input value=fictionLink}}
+		<label class="second_label">{{verifyFictionLink}}</label>
+	</div><br/>
+  <button class="button_type1" {{action "create"}}>Create</button>
 </form>

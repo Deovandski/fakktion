@@ -1,7 +1,5 @@
-<p>Posts Page</p>
-    <ul>
-    {{#each model as |post|}}
-      <li>{{#link-to 'post' post}}{{post.title}}{{/link-to}}</li>
-    {{/each}}
-    </ul>
-<li>{{#link-to 'posts.create'}}Create Post{{/link-to}}</li>
+<ul>
+  {{#each model as |post|}}
+    <li><button{{action "post" post}}>{{post.title}}</button></li>
+  {{/each}}
+</ul>

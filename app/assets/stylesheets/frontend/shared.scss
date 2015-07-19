@@ -1,0 +1,76 @@
+// Place all the styles related to the forums controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+// Ember side SCSS
+@import "imports";
+
+.tag_listing
+{
+	list-style-type:none;
+	li:nth-child(n)
+	{
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+}
+.tag_listing_hidden
+{
+	margin-bottom: 5px;
+}
+.input_block_type1
+{
+	width: 100%;
+	line-height: 40px; 
+	text-align: center;
+	height: 40px;
+	.first_label
+	{
+		float: left;
+		vertical-align: middle;
+		width: 15%;
+		height: 100%;
+	}
+	input:nth-child(n)
+	{
+		float: left;
+		width: 50%;
+		height: 100%;
+	}
+	.second_label
+	{
+		text-align: left;
+		float: left;
+		width: 30%;
+		height: 100%;
+		font-size: 80%;
+	}
+}
+
+.input_block_type2
+{
+	width: 100%;
+	line-height: 40px; 
+	text-align: center;
+	height: 40px;
+	.first_label
+	{
+		float: left;
+		vertical-align: middle;
+		width: 15%;
+		height: 100%;
+	}
+	input:nth-child(n)
+	{
+		float: left;
+		width: 50%;
+		height: 100%;
+	}
+	.second_label
+	{
+		text-align: left;
+		float: left;
+		width: 30%;
+		height: 100%;
+		font-size: 80%;
+	}
+}

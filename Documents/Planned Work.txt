@@ -9,7 +9,7 @@ Create raw moderation page for admins and superUser
 Create raw admin moderation page for superUser
 Complete the setup for all RESTful links for posts and tags
 Live Topic and Post Date tags manipulation user story implementation
-Users able to create Posts from the current selected tags story implementation
+Users able to create Posts from the current selected tags story implementation (Topic and Post Date missing)
 setup RESTful links for comments
 Remove any unwanted ~ files
 Through code cleanup and indentation.

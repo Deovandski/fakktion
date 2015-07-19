@@ -1,0 +1,16 @@
+{{#if errorMessage}}
+<div class="alert alert-danger">
+	<p>
+		<strong>SignUp Failed:</strong> <code>{{errorMessage}}</code>
+	</p>
+</div>
+{{/if}}
+
+<h2>New User</h2>
+<form {{action "create" on="submit"}}>
+	<label>Full Name: </label>{{input type="text" value=full_name}}<br/>
+	<label>Display Name: </label>{{input type="text" value=display_name}}<br/>
+	<label>Fiction Link: </label>{{input type="text" value=fiction_link}}<br/>
+	<label>Fact Link: </label>{{input type="text" value=fact_link}}<br/>
+	<button type="submit">Create Post</button>
+</form>
