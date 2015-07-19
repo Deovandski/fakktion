@@ -21,7 +21,5 @@ class UserSerializer < ActiveModel::Serializer
 				 :password,
 				 :number_of_comments,
 				 :number_of_posts,
-				 :last_sign_in_at,
-				 :reset_password_sent_at,
-				 :reset_password_token
+				 :last_sign_in_at
 end

@@ -11,7 +11,7 @@ one:
   gender: male
   is_admin: true
   is_super_user: true
-  facebook_id: 3
+  facebook_url: test
   personal_message: sample personal message
   twitter_url: https://twitter.com/Deovandski
   webpage_url: www.google.com
@@ -29,7 +29,7 @@ two:
   gender: male
   is_admin: true
   is_super_user: false
-  facebook_id: 2
+  facebook_url: test
   personal_message: sample personal message
   twitter_url: https://twitter.com/Deovandski
   webpage_url: www.google.com
@@ -47,7 +47,7 @@ three:
   gender: male
   is_admin: false
   is_super_user: false
-  facebook_id: 1
+  facebook_url: test
   personal_message: sample personal message
   twitter_url: https://twitter.com/Deovandski
   webpage_url: www.google.com
