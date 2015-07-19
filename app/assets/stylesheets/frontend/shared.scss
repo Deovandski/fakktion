@@ -17,11 +17,12 @@
 {
 	margin-bottom: 5px;
 }
+// Standard size
 .input_block_type1
 {
 	width: 100%;
 	line-height: 40px; 
-	text-align: center;
+	text-align: left;
 	height: 40px;
 	.first_label
 	{
@@ -46,23 +47,80 @@
 	}
 }
 
+
 .input_block_type2
 {
 	width: 100%;
 	line-height: 40px; 
-	text-align: center;
+	text-align: left;
 	height: 40px;
 	.first_label
 	{
 		float: left;
 		vertical-align: middle;
-		width: 15%;
+		width: 30%;
 		height: 100%;
 	}
 	input:nth-child(n)
 	{
 		float: left;
 		width: 50%;
+		height: 100%;
+	}
+	.second_label
+	{
+		text-align: left;
+		float: left;
+		width: 15%;
+		height: 100%;
+		font-size: 80%;
+	}
+}
+.input_block_type3
+{
+	width: 100%;
+	line-height: 40px; 
+	text-align: left;
+	height: 40px;
+	.first_label
+	{
+		float: left;
+		vertical-align: middle;
+		width: 20%;
+		height: 100%;
+	}
+	input:nth-child(n)
+	{
+		float: left;
+		width: 50%;
+		height: 100%;
+	}
+	.second_label
+	{
+		text-align: left;
+		float: left;
+		width: 20%;
+		height: 100%;
+		font-size: 80%;
+	}
+}
+.input_block_checkbox
+{
+	width: 100%;
+	line-height: 40px; 
+	text-align: left;
+	height: 40px;
+	.first_label
+	{
+		float: left;
+		vertical-align: middle;
+		width: 34%;
+		height: 100%;
+	}
+	input:nth-child(n)
+	{
+		float: left;
+		width: 10%;
 		height: 100%;
 	}
 	.second_label
