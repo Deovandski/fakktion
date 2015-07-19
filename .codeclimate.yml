@@ -3,5 +3,9 @@ languages:
   JavaScript: true
   PHP: true
   Python: true
-# exclude_paths:
-# - "foo/bar.rb"
+ exclude_paths:
+ - "vendor/*"
+ - "frontend/vendor/*"
+ - "frontend/bower_components/*"
+ - "frontend/node_modules/*"
+ - "public/assets/*"
