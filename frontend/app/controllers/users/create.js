@@ -50,8 +50,8 @@ export default Ember.Controller.extend
 	}),
 	verifyGender: Ember.computed('gender', function()
 	{
-		console.log(this.get('gender').toLowerCase()) // NOT WORKING
-		if(this.get('gender').toLowerCase() != "male" || "female" || "other" )
+		console.log(this.get('gender').toLowerCase()); // NOT WORKING
+		if(this.get('gender').toLowerCase() !== "male" || "female" || "other" )
 			{return "male/female/other";}
 		else
 			{return "MKay";}
@@ -79,14 +79,14 @@ export default Ember.Controller.extend
 	}),
 	verifyLegalTermsRead: Ember.computed('legalTermsRead', function()
 	{
-		if(this.get('legalTermsRead') != true)
+		if(this.get('legalTermsRead') !== true)
 			{return "Must accept!";}
 		else
 			{return "MKay";}
 	}),
 	verifyPrivacyTermsRead: Ember.computed('privacyTermsRead', function()
 	{
-		if(this.get('privacyTermsRead') != true)
+		if(this.get('privacyTermsRead') !== true)
 			{return "Must accept!";}
 		else
 			{return "MKay";}
