@@ -1,33 +1,5 @@
-﻿TODO items are written in order of importance.
 DONE items were written in order of when it was implemented. Each item does not mean a commit.
-Last Updated on 7/18 3:40AM
-
-TODO:
-Ember Devise SignUp (User RESTfull links setup)
-Update Delete command to use softDelete for posts
-Create raw profile page for user manipulation
-Create raw moderation page for admins and superUser
-Create raw admin moderation page for superUser
-Complete the setup for all RESTful links for posts and tags
-Live Topic and Post Date tags manipulation user story implementation
-Users able to create Posts from the current selected tags story implementation
-setup RESTful links for comments
-Remove any unwanted ~ files
-Through code cleanup and indentation.
-Recreate database secrets
-Verify the steps required for establishing a HTTPS connection.
-Setup extended testing for all implemented functionalities
-Setup Code Coverage for Ember.
-------
-Release Alpha
-------
-update css for entire project.
-Finish setting up Travis CI for project.
-------
-Release Beta
-------
-Release 1.0
-------
+Last Updated on 7/18 6:00PM
 
 DONE:
 
@@ -63,6 +35,11 @@ DONE:
 30. Attempted to switch from Partial to Render, but Render helper is not the solution for the relational tags
 31. Refactored application partials in order to separated them from the RESTfull links.
 32. Refactored Router to reflected RESTFULL links (including upcoming ones.)
+33. Added Show/Hide Buttons for all tags
+34. Refactored buttons mixins to support different types of buttons.
+35. Changed Central Upper Panel G/FT/C and PD tags to support button_type2
+36. Changed documentation and created Design and Code information documents for developers looking to see the overall functionality of the project and some technical information not available on the research paper.
+37. Deleted several deperecated files carried over from the initial project (When everything was cretaed on Rails)
 
 
 
