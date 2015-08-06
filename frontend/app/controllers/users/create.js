@@ -15,8 +15,8 @@ export default Ember.Controller.extend
 	PrivacyTermsRead: false,
 	verifyFullName: Ember.computed('fullName', function()
 	{
-		if(this.get('fullName').length < 10)
-			{return "Write your name";}
+		if(this.get('fullName').length < 1)
+			{return "Cannot be empty";}
 		else
 			{return "MKay";}
 	}),
@@ -50,7 +50,7 @@ export default Ember.Controller.extend
 	}),
 	verifyGender: Ember.computed('gender', function()
 	{
-		console.log(this.get('gender').toLowerCase()); // NOT WORKING
+		console.log(this.get('gender').toLowerCase());
 		if(this.get('gender').toLowerCase() !== "male" && this.get('gender').toLowerCase() !== "female" && this.get('gender').toLowerCase() !== "other")
 			{return "male/female/other";}
 		else
@@ -93,7 +93,7 @@ export default Ember.Controller.extend
 	}),
   actions: {
     create: function() {
-      var post = this.store.createRecord('post', {
+      var user = this.store.createRecord('user', {
         user_id: this.get('session.currentUser.id'),
         title: this.get('title'),
         text: this.get('text'),
@@ -107,12 +107,12 @@ export default Ember.Controller.extend
         softDelete: false,
       });
       var self = this;
-      post.save().then(function() {
-        console.log('post created!');
-        self.transitionTo('post', post);
+      user.save().then(function() {
+        console.log('user created!');
+        self.transitionTo('user', user);
         self.set('postName', '');
       }, function() {
-        alert('failed to create post!');
+        alert('failed to create User!');
       });
     }
   }

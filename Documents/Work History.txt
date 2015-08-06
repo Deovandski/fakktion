@@ -1,5 +1,5 @@
 DONE items were written in order of when it was implemented. Each item does not mean a commit.
-Last Updated on 7/18 6:00PM
+Last Updated on 8/5 10:02PM
 
 DONE:
 
@@ -43,5 +43,8 @@ DONE:
 38. Users able to create Posts from the current Genre, Fact Type and Category selected tags story implementation
 39. Scss initial ember and rails split and scss setup for create RESTful pages.
 40. Changed facebook_id to facebookURL accross the application.
+41. Fixed Central Panel and Sidebars visibility based on current route.
+42. Fixed css for creating new User. Now everything is well aligned and dynamic sized.
+
 
 
