@@ -18,6 +18,7 @@ before_script:
 - npm install --save-dev ember-cli-rails-addon
 - ember install ember-cli-simple-auth
 - ember install ember-cli-simple-auth-devise
+- npm install ember-moment
 - cd ..
 - bundle exec rake db:migrate
 - bundle exec rake db:seed

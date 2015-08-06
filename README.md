@@ -29,6 +29,9 @@ npm install --save-dev ember-cli-rails-addon@0.1.11
 ember install ember-cli-simple-auth
 
 ember install ember-cli-simple-auth-devise
+
+npm install ember-moment
+
 ```
 Some commands were skipped. If you don't have some of the requirements such as node.js please check the .travis.yml file.
 
