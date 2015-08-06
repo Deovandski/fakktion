@@ -41,23 +41,33 @@ export default Ember.Controller.extend
 	// Central Panel and Sidebars Visibility Boolean Check
 	displayCentralPanel: Ember.computed('currentPath', function()
 	{
-		if(this.get('currentPath') === 'index' || 'posts' || 'posts.create')
+		if(this.get('currentPath') !== 'index' && this.get('currentPath') !== 'posts' && this.get('currentPath') !==  'posts.create')
 		{
-			//console.log('Display Central Panel');
-			//console.log(this.get('currentPath'));
-			return true;
+			console.log('Display Central Panel');
+			console.log(this.get('currentPath'));
+			return false;
 		}
 		else
 		{
-			return false;
+			console.log('Hide Central Panel');
+			console.log(this.get('currentPath'));
+			return true;
 		}
 	}),
 	displaySideBars: Ember.computed('currentPath', function()
 	{
-		if(this.get('currentPath') === 'index' || 'posts.create')
-			{return true;}
+		if(this.get('currentPath') !== 'index' && this.get('currentPath') !== 'posts' && this.get('currentPath') !==  'posts.create')
+		{
+			console.log('Display SideBars');
+			console.log(this.get('currentPath'));
+			return false;
+		}
 		else
-			{return false;}
+		{
+			console.log('Hide SideBars');
+			console.log(this.get('currentPath'));
+			return true;
+		}
 	}),
 	// Tags Selected Boolean check.
 	isGenreSelected: Ember.computed('selectedGID', function()
