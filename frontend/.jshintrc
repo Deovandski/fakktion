@@ -1,8 +1,8 @@
 {
   "predef": [
-    "document",
-    "window",
-    "-Promise"
+     "document",
+	  "window",
+     "-Promise"
   ],
   "browser": true,
   "boss": true,

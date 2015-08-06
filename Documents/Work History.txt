@@ -1,5 +1,5 @@
 DONE items were written in order of when it was implemented. Each item does not mean a commit.
-Last Updated on 8/6 3:22AM
+Last Updated on 8/6 5:54AM
 
 DONE:
 
@@ -47,6 +47,8 @@ DONE:
 42. Fixed css for creating new User template. Now everything is well aligned and dynamic sized.
 43. New footer css! Now all content will be properly organized above the footer while it stays in the bottom.
 44. Code Climate upgraded to use the new Engines-enabled config file.
+45. Moment.js now available for date manipulation
+46. Sign Up validation now also checks against users model for uniqueness. Now it only misses handling birthday input and check if date => 18 years.
 
 
 
