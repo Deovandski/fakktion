@@ -1,5 +1,5 @@
 DONE items were written in order of when it was implemented. Each item does not mean a commit.
-Last Updated on 8/5 10:02PM
+Last Updated on 8/6 3:22AM
 
 DONE:
 
@@ -44,7 +44,9 @@ DONE:
 39. Scss initial ember and rails split and scss setup for create RESTful pages.
 40. Changed facebook_id to facebookURL accross the application.
 41. Fixed Central Panel and Sidebars visibility based on current route.
-42. Fixed css for creating new User. Now everything is well aligned and dynamic sized.
+42. Fixed css for creating new User template. Now everything is well aligned and dynamic sized.
+43. New footer css! Now all content will be properly organized above the footer while it stays in the bottom.
+44. Code Climate upgraded to use the new Engines-enabled config file.
 
 
 
