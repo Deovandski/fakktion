@@ -1,11 +1,20 @@
-languages:
-  Ruby: true
-  JavaScript: true
-  PHP: true
-  Python: true
- exclude_paths:
- - "vendor/*"
- - "frontend/vendor/*"
- - "frontend/bower_components/*"
- - "frontend/node_modules/*"
- - "public/assets/*"
+engines:
+	rubocop:
+		enabled: true
+	golint:
+		enabled: true
+	gofmt:
+		enabled: true
+	eslint:
+		enabled: true
+	csslint:
+		enabled: true
+	bundler-audit:
+		enabled: true
+
+exclude_paths:
+- "vendor/*"
+- "frontend/vendor/*"
+- "frontend/bower_components/*"
+- "frontend/node_modules/*"
+- "public/assets/*"
