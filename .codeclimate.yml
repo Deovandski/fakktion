@@ -13,8 +13,8 @@ engines:
 		enabled: true
 
 exclude_paths:
-- "vendor/*"
-- "frontend/vendor/*"
-- "frontend/bower_components/*"
-- "frontend/node_modules/*"
-- "public/assets/*"
+- vendor/*
+- frontend/vendor/*
+- frontend/bower_components/*
+- frontend/node_modules/*
+- public/assets/*
