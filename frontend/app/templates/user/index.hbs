@@ -1,3 +1,30 @@
-<p>Post Page</p>
-<p>Title: {{model.title}}</p>
-<p>{{#link-to 'post.edit' }}Edit Post{{/link-to}}</p>
+<h2 class="h2_top">User Page</h2>
+
+<div class="basic_div">
+	<h4>Basic Information</h4>
+	<p>Display Name: {{model.display_name}}</p>
+	<p>Gender: {{model.gender}}</p>
+	<p>Age: {{ageDate}}</p>
+	<p>About Me: {{model.personal_message}}</p>
+	<p>Number of Posts: {{model.number_of_posts}}</p>
+	<p>Number of Comments: {{model.number_of_comments}}</p>
+	<p>Profile Created on: {{createdDate}}</p>
+	<p>Profile Updated on: {{updatedDate}}</p>
+	{{#if model.is_admin}}
+		<p>Admin!</p>
+	{{/if}}
+</div>
+
+<div class="links_div">
+	<h4>Social Network Links</h4>
+	<label>Fakktion is not responsible for the contents or the destination of the links below.<br/> More information on Legal Info.</label><br/>
+	<a href="{{model.facebook_url}}" target="_blank">Facebook</a>
+	<a href="{{model.twitter_url}}" target="_blank">Twitter</a>
+	<a href="{{model.twitter_url}}" target="_blank">Personal Page</a>
+</div>
+
+{{#if isTheUser}}
+	<div class="userInformation">
+		<p>{{#link-to 'user.edit' }}Edit Information{{/link-to}}</p>
+	</div>
+{{/if}}
