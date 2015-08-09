@@ -1,9 +1,9 @@
 import DS from "ember-data";
 
 export default DS.Model.extend({
-  softDelete: DS.attr ('boolean'),
-  softDeleteDate: DS.attr ('date'),
+  soft_delete: DS.attr ('boolean'),
+  soft_delete_date: DS.attr ('date'),
   text: DS.attr ('string'),
   hidden: DS.attr ('boolean'),
-  empathyLevel: DS.attr ('number')
+  empathy_level: DS.attr ('number')
 });
