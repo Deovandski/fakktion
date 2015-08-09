@@ -43,14 +43,14 @@ export default Ember.Controller.extend
 	{
 		if(this.get('currentPath') !== 'index' && this.get('currentPath') !== 'posts' && this.get('currentPath') !==  'posts.create')
 		{
-			console.log('Display Central Panel');
-			console.log(this.get('currentPath'));
+			//console.log('Display Central Panel');
+			//console.log(this.get('currentPath'));
 			return false;
 		}
 		else
 		{
-			console.log('Hide Central Panel');
-			console.log(this.get('currentPath'));
+			//console.log('Hide Central Panel');
+			//console.log(this.get('currentPath'));
 			return true;
 		}
 	}),
@@ -58,14 +58,14 @@ export default Ember.Controller.extend
 	{
 		if(this.get('currentPath') !== 'index' && this.get('currentPath') !== 'posts' && this.get('currentPath') !==  'posts.create')
 		{
-			console.log('Display SideBars');
-			console.log(this.get('currentPath'));
+			//console.log('Display SideBars');
+			//console.log(this.get('currentPath'));
 			return false;
 		}
 		else
 		{
-			console.log('Hide SideBars');
-			console.log(this.get('currentPath'));
+			//console.log('Hide SideBars');
+			//console.log(this.get('currentPath'));
 			return true;
 		}
 	}),

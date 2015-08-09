@@ -11,18 +11,23 @@
 		<label class="second_label">{{verifyDisplayName}}</label>
 	</div><br/>
 	<div class="input_block_typeUser">
+		<label class="first_label">Date of Birth:</label>
+		{{input type=date value=dateOfBirth}}
+		<label class="second_label">{{verifyDateOfBirth}}</label>
+	</div><br/>
+	<div class="input_block_typeUser">
 		<label class="first_label">Email:</label>
 		{{input value=email}}
 		<label class="second_label">{{verifyEmail}}</label>
 	</div><br/>
 	<div class="input_block_typeUser">
 		<label class="first_label">Password:</label>
-		{{input value=password}}
+		{{input type=password value=password}}
 		<label class="second_label">{{verifyPassword}}</label>
 	</div><br/>
 	<div class="input_block_typeUser">
 		<label class="first_label">Password Confirmation:</label>
-		{{input value=passwordConfirmation}}
+		{{input type=password value=passwordConfirmation}}
 		<label class="second_label">{{verifyPasswordConfirmation}}</label>
 	</div><br/>
 	<div class="input_block_typeUser">
@@ -55,7 +60,5 @@
 		{{input type="checkbox" checked=privacyTermsRead}}
 		<label class="second_label">{{verifyPrivacyTermsRead}}</label>
 	</div><br/>
-{{moment-format date}}
-{{moment-to-now date}}
   <button class="button_type1" {{action "create"}}>Sign Up</button>
 </form>

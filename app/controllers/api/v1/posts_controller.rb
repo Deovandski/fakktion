@@ -1,5 +1,4 @@
 class Api::V1::PostsController < ApplicationController
-	#skip_before_filter :verify_authenticity_token
 	respond_to :json # default to Active Model Serializers
   
   def index
