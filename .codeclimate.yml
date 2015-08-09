@@ -1,20 +1,18 @@
 engines:
-	rubocop:
-		enabled: true
-	golint:
-		enabled: true
-	gofmt:
-		enabled: true
-	eslint:
-		enabled: true
-	csslint:
-		enabled: true
-	bundler-audit:
-		enabled: true
-
+  rubocop:
+    enabled: true
+  golint:
+    enabled: true
+  gofmt:
+    enabled: true
+  eslint:
+    enabled: true
+  csslint:
+    enabled: true
+  bundler-audit:
+	 enabled: true
 exclude_paths:
-- vendor/*
-- frontend/vendor/*
-- frontend/bower_components/*
-- frontend/node_modules/*
-- public/assets/*
+- frontend/vendor/**/*
+- frontend/bower_components/**/*
+- frontend/node_modules/**/*
+- public/assets/**/*
