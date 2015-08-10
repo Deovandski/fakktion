@@ -1,5 +1,5 @@
 DONE items were written in order of when it was implemented. Each item does not mean a commit.
-Last Updated on 8/10 3:50AM
+Last Updated on 8/10 6:37AM
 
 DONE:
 
@@ -55,6 +55,7 @@ DONE:
 50. User Profile (user.show) link is now live and with raw css
 51. Added a confirmation message for user logout.
 52. Halfway implementing the display for posts and comments created by an user.
+53. 1/4 implementing User being able to edit information.
 
 
 

@@ -11,8 +11,6 @@ class CreateBlog < ActiveRecord::Migration
       t.string :webpage_url
       t.boolean :is_banned
       t.date :is_banned_date
-      t.integer :number_of_posts
-      t.integer :number_of_comments
       t.boolean :legal_terms_read
       t.boolean :privacy_terms_read
       t.boolean :is_super_user

@@ -5,7 +5,7 @@ export default Ember.Controller.extend
   actions: {
     updateUser: function() {
       var user = this.get('content');
-      user.set('title', this.get('title'));
+      user.set('full_name', this.get('fullName'));
       var controller = this;
       user.save().then(function() {
         console.log('user saved!');
