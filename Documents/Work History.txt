@@ -1,5 +1,5 @@
 DONE items were written in order of when it was implemented. Each item does not mean a commit.
-Last Updated on 8/9 10:20PM
+Last Updated on 8/10 3:50AM
 
 DONE:
 
@@ -53,6 +53,8 @@ DONE:
 48. Revised camelCase and under_score_case usage throughout the frontend and backend.
 49. Full Name privacy is now enabled on user signup.
 50. User Profile (user.show) link is now live and with raw css
+51. Added a confirmation message for user logout.
+52. Halfway implementing the display for posts and comments created by an user.
 
 
 

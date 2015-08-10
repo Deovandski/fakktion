@@ -1,35 +1,49 @@
 <h2 class="h2_top">User Page</h2>
 
 <div class="user_show">
-<div class="basic_info_div">
-	<h4 class="inner_heading">Basic Information</h4>
-	{{#if model.show_full_name}}
-		<p><label class="inner_label">Full Name:</label>  {{model.full_name}}</p>
-	{{/if}}
-	<p><label class="inner_label">Display Name:</label>  {{model.display_name}}</p>
-	<p><label class="inner_label">Gender:</label>  {{model.gender}}</p>
-	<p><label class="inner_label">Age:</label>  {{ageDate}}</p>
-	<p><label class="inner_label">About Me:</label></p>
-	<p><textarea readonly=true>{{model.personal_message}}</textarea></p>
-	<p><label class="inner_label">Number of Posts:</label>  {{model.number_of_posts}}</p>
-	<p><label class="inner_label">Number of Comments:</label>  {{model.number_of_comments}}</p>
-	<p><label class="inner_label">Profile Created on:</label>  {{createdDate}}</p>
-	<p><label class="inner_label">Profile Updated on:</label>  {{updatedDate}}</p>
-	{{#if model.is_admin}}
-		<p><label class="inner_label">User is an admin!</label></p>
-	{{/if}}
-</div>
-<div class="links_info_div">
-	<h4 class="inner_heading">Social Network Links</h4>
-	<label>Fakktion is not responsible for the contents or the destination of the links below.<br/> More information on Legal Info.</label><br/>
-	<a href="{{model.facebook_url}}" target="_blank">Facebook</a>
-	<a href="{{model.twitter_url}}" target="_blank">Twitter</a>
-	<a href="{{model.twitter_url}}" target="_blank">Personal Page</a>
-</div>
-
-{{#if isTheUser}}
-	<div class="userInformation">
-		<p>{{#link-to 'user.edit' }}Edit Information{{/link-to}}</p>
+	<div class="user_show_left">
+		<div class="basic_info_div">
+			<h4 class="inner_heading">Basic Information</h4>
+			{{#if isOwner}}
+				<p><label class="inner_label">Full Name:</label>  {{model.full_name}}</p>
+			{{else}}
+				{{#if model.show_full_name}}
+					<p><label class="inner_label">Full Name:</label>  {{model.full_name}}</p>
+				{{else}}
+					<p><label class="inner_label">Full Name:</label> Hidden</p>
+				{{/if}}
+			{{/if}}
+			<p><label class="inner_label">Display Name:</label>  {{model.display_name}}</p>
+			<p><label class="inner_label">Gender:</label>  {{model.gender}}</p>
+			<p><label class="inner_label">Age:</label>  {{ageDate}}</p>
+			<p><label class="inner_label">About Me:</label></p>
+			<p><textarea readonly=true>{{model.personal_message}}</textarea></p>
+			<p><label class="inner_label">Number of Posts:</label>  {{model.number_of_posts}}</p>
+			<p><label class="inner_label">Number of Comments:</label>  {{model.number_of_comments}}</p>
+			<p><label class="inner_label">Profile Created on:</label>  {{createdDate}}</p>
+			<p><label class="inner_label">Profile Updated on:</label>  {{updatedDate}}</p>
+			{{#if model.is_admin}}
+				<p><label class="inner_label">User is an admin!</label></p>
+			{{/if}}
+			{{#if isOwner}}
+				<p class="inner_edit_info">{{#link-to 'user.edit' }}Edit Information{{/link-to}}</p>
+			{{else}}
+			{{/if}}
+		</div>
 	</div>
-{{/if}}
+	<div class="user_show_right">
+		<div class="posts_info_div">
+			<h4 class="inner_heading">User Content</h4>
+			<h5 class="inner_heading">Posts by this user</h5>
+			<h5 class="inner_heading">Comments by this user</h5>
+		</div>
+		<div class="links_info_div">
+			<h4 class="inner_heading">Social Network Links</h4>
+			<label>Fakktion is not responsible for the contents or the destination of the links below.<br/> More information on Legal Info.</label><br/>
+			<a href="{{model.facebook_url}}" target="_blank">Facebook</a>
+			<a href="{{model.twitter_url}}" target="_blank">Twitter</a>
+			<a href="{{model.twitter_url}}" target="_blank">Personal Page</a>
+		</div>
+	</div>
+	
 </div>
