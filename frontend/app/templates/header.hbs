@@ -9,6 +9,9 @@
             <p>Signed in as {{session.currentUser.display_name}}</p>
 			</li>
 			<li>
+				{{#link-to 'user.index' session.currentUser.id}}Profile{{/link-to}}
+			</li>
+			<li>
 				<a {{ action 'invalidateSession' }}>Logout</a>
 			</li>
 			{{else}}

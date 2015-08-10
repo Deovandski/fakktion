@@ -17,6 +17,7 @@ class CreateBlog < ActiveRecord::Migration
       t.boolean :privacy_terms_read
       t.boolean :is_super_user
       t.boolean :is_admin
+      t.boolean :show_full_name
       t.timestamps null: false
     end
  

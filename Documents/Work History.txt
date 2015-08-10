@@ -1,5 +1,5 @@
 DONE items were written in order of when it was implemented. Each item does not mean a commit.
-Last Updated on 8/9 3:54AM
+Last Updated on 8/9 10:20PM
 
 DONE:
 
@@ -51,6 +51,8 @@ DONE:
 46. Sign Up validation now also checks against users model for uniqueness. Now it only misses handling birthday input and check if date => 18 years.
 47. Ember Devise SignUp (User RESTfull links setup) is now complete!
 48. Revised camelCase and under_score_case usage throughout the frontend and backend.
+49. Full Name privacy is now enabled on user signup.
+50. User Profile (user.show) link is now live and with raw css
 
 
 

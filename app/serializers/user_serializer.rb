@@ -18,10 +18,11 @@ class UserSerializer < ActiveModel::Serializer
              :is_admin,
              :is_super_user,
              :sign_in_count,
-				 :password,
-				 :number_of_comments,
-				 :number_of_posts,
-				 :last_sign_in_at,
-				 :created_at,
-				 :updated_at
+			 :password,
+			 :number_of_comments,
+			 :number_of_posts,
+			 :last_sign_in_at,
+			 :created_at,
+			 :updated_at,
+			 :show_full_name
 end

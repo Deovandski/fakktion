@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 20150628051759) do
     t.boolean  "privacy_terms_read"
     t.boolean  "is_super_user"
     t.boolean  "is_admin"
+    t.boolean  "show_full_name"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "email",                  default: "", null: false
