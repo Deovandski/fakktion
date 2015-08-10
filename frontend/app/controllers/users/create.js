@@ -15,6 +15,7 @@ export default Ember.Controller.extend
 	legalTermsRead: false,
 	privacyTermsRead: false,
 	dateOfBirth: null,
+	showFullName: false,
 	clientSideValidationComplete: false,
 	verifyFullName: Ember.computed('fullName', function()
 	{
@@ -194,6 +195,17 @@ export default Ember.Controller.extend
 			return "";
 		}
 	}),
+	verifyShowFullName: Ember.computed('showFullName', function()
+	{
+		if(this.get('showFullName') !== true)
+		{
+			return "";
+		}
+		else
+		{
+			return "";
+		}
+	}),
 	verifyLegalTermsRead: Ember.computed('legalTermsRead', function()
 	{
 		if(this.get('legalTermsRead') !== true)
@@ -239,6 +251,7 @@ export default Ember.Controller.extend
 					legal_terms_read: this.get('legalTermsRead'),
 					privacy_terms_read: this.get('privacyTermsRead'),
 					date_of_birth: moment(this.get('dateOfBirth')).toDate(),
+					show_full_name: this.get('showFullName'),
 					is_banned: false,
 					is_admin: false,
 					is_super_user: false,

@@ -23,4 +23,5 @@ export default DS.Model.extend({
   last_sign_in_at: DS.attr ('date'),
   updated_at: DS.attr ('date'),
   created_at: DS.attr ('date'),
+  show_full_name: DS.attr ('boolean')
 });

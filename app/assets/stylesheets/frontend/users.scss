@@ -1,0 +1,48 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "imports";
+
+// SCSS for Create Template
+
+// SCSS for Show Template
+
+.user_show
+{
+	width: 100%;
+	.basic_info_div
+	{
+		width: 35%;
+	   text-align: left;
+		float: left;
+		border-left-style: solid; 
+		border-right-style: solid;
+		border-top-style: solid; 
+		border-bottom-style: solid;
+		border-width: 1px;
+		.inner_label
+		{
+			font-weight: bold;
+		}
+
+		.inner_heading
+		{
+	 	  text-align: center;
+		}
+	}
+	.links_info_div
+	{
+		width: 65%;
+		float: left;
+		border-left-style: solid; 
+		border-right-style: solid;
+		border-top-style: solid; 
+		border-bottom-style: solid;
+		border-width: 1px;
+		.inner_heading
+		{
+	 	  text-align: center;
+		}
+	}
+}
