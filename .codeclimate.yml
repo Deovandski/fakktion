@@ -10,7 +10,7 @@ engines:
   csslint:
     enabled: true
   bundler-audit:
-	 enabled: true
+    enabled: true
 exclude_paths:
 - frontend/vendor/**/*
 - frontend/bower_components/**/*
