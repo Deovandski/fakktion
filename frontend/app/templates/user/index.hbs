@@ -18,8 +18,8 @@
 			<p><label class="inner_label">Age:</label>  {{ageDate}}</p>
 			<p><label class="inner_label">About Me:</label></p>
 			<p><textarea readonly=true>{{model.personal_message}}</textarea></p>
-			<p><label class="inner_label">Number of Posts:</label>  {{model.number_of_posts}}</p>
-			<p><label class="inner_label">Number of Comments:</label>  {{model.number_of_comments}}</p>
+			<p><label class="inner_label">Number of Posts:</label>  {{model.posts.length}}</p>
+			<p><label class="inner_label">Number of Comments:</label>  {{model.comments.length}}</p>
 			<p><label class="inner_label">Profile Created on:</label>  {{createdDate}}</p>
 			<p><label class="inner_label">Profile Updated on:</label>  {{updatedDate}}</p>
 			{{#if model.is_admin}}
@@ -33,9 +33,28 @@
 	</div>
 	<div class="user_show_right">
 		<div class="posts_info_div">
-			<h4 class="inner_heading">User Content</h4>
-			<h5 class="inner_heading">Posts by this user</h5>
-			<h5 class="inner_heading">Comments by this user</h5>
+			<h4 class="inner_heading">Posts by this user</h4>
+			{{#if verifyPosts}}
+			<ul class="posts_ul">
+				{{#each model.posts as |post|}}
+					<li>{{#link-to 'post' post}}{{post.title}}{{/link-to}}</li>
+				{{/each}}
+			</ul>
+			{{else}}
+				<p>No posts to show</p>
+			{{/if}}
+		</div>
+		<div class="comments_info_div">
+			<h4 class="inner_heading">Comments by this user</h4>
+			{{#if verifyComments}}
+			<ul class="comments_ul">
+				{{#each model.comments as |comment|}}
+					<li>{{#link-to 'comment' comment}}{{comment.text}}{{/link-to}}</li>
+				{{/each}}
+			</ul>
+			{{else}}
+				<p>No comments to show</p>
+			{{/if}}
 		</div>
 		<div class="links_info_div">
 			<h4 class="inner_heading">Social Network Links</h4>

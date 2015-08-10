@@ -11,6 +11,7 @@
 .user_show
 {
 	width: 100%;
+	overflow: scroll;	
 	.user_show_left
 	{
 		width: 35%;
@@ -29,8 +30,8 @@
 			}
 			.inner_edit_info
 			{
-	 	   	text-align: center;
-				font-weight: bold;
+ 	   	text-align: center;
+			font-weight: bold;
 			border-left-style: solid; 
 			border-right-style: solid;
 			border-top-style: solid; 
@@ -47,18 +48,6 @@
 	{
 		width: 65%;
 		float: right;
-		.links_info_div
-		{
-			border-left-style: solid; 
-			border-right-style: solid;
-			border-top-style: solid; 
-			border-bottom-style: solid;
-			border-width: 1px;
-			.inner_heading
-			{
-		 	  text-align: center;
-			}
-		}
 		.posts_info_div
 		{
 			border-left-style: solid; 
@@ -68,7 +57,46 @@
 			border-width: 1px;
 			.inner_heading
 			{
-		 	  text-align: center;
+				text-align: center;
+			}
+			.posts_ul
+			{
+				text-align: center;		
+				height: 100px;	
+   			list-style-type:none;
+    			overflow: scroll;	
+			}
+		}
+		.comments_info_div
+		{
+			border-left-style: solid; 
+			border-right-style: solid;
+			border-top-style: solid; 
+			border-bottom-style: solid;
+			border-width: 1px;
+			.inner_heading
+			{
+				text-align: center;
+			}
+			.comments_ul
+			{
+				text-align: center;		
+				height: 100px;	
+   			list-style-type:none;
+    			overflow: scroll;	
+			}
+		}
+		.links_info_div
+		{
+			border-left-style: solid; 
+			border-right-style: solid;
+			border-top-style: solid; 
+			border-bottom-style: solid;
+			border-width: 1px;	
+			height: 100px;	
+			.inner_heading
+			{
+				text-align: center;
 			}
 		}
 	}

@@ -83,7 +83,7 @@ export default Ember.Controller.extend
   actions: {
     create: function() {
       var post = this.store.createRecord('post', {
-        user_id: this.get('session.currentUser.id'),
+        user_id: this.get('session.secure.userId'),
         title: this.get('title'),
         text: this.get('text'),
         fact_link: this.get('factLink'),
