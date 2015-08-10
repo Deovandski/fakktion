@@ -201,7 +201,12 @@ export default Ember.Controller.extend
 		//Logout method
 		invalidateSession: function()
 		{
-			this.get('session').invalidate();
+			var shouldInvalidate = window.confirm("Really want to Logout? You will be returned to the main page if you do.");
+			if(shouldInvalidate)
+			{
+				this.get('session').invalidate();
+				this.transitionToRoute('index');
+			}
 		}
 	}
 });

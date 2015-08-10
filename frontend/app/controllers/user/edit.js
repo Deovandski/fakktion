@@ -3,15 +3,15 @@ import Ember from "ember";
 export default Ember.Controller.extend
 ({
   actions: {
-    updatePost: function() {
-      var post = this.get('content');
-      post.set('title', this.get('title'));
+    updateUser: function() {
+      var user = this.get('content');
+      user.set('title', this.get('title'));
       var controller = this;
-      post.save().then(function() {
-        console.log('post saved!');
-        controller.transitionTo('post', post);
+      user.save().then(function() {
+        console.log('user saved!');
+        controller.transitionTo('user', user);
       }, function() {
-        alert('failed to save post!');
+        alert('failed to save user!');
       });
     }
   }

@@ -11,38 +11,65 @@
 .user_show
 {
 	width: 100%;
-	.basic_info_div
+	.user_show_left
 	{
 		width: 35%;
-	   text-align: left;
 		float: left;
-		border-left-style: solid; 
-		border-right-style: solid;
-		border-top-style: solid; 
-		border-bottom-style: solid;
-		border-width: 1px;
-		.inner_label
+		.basic_info_div
 		{
-			font-weight: bold;
-		}
-
-		.inner_heading
-		{
-	 	  text-align: center;
+	 	   text-align: left;
+			border-left-style: solid; 
+			border-right-style: solid;
+			border-top-style: solid; 
+			border-bottom-style: solid;
+			border-width: 1px;
+			.inner_label
+			{
+				font-weight: bold;
+			}
+			.inner_edit_info
+			{
+	 	   	text-align: center;
+				font-weight: bold;
+			border-left-style: solid; 
+			border-right-style: solid;
+			border-top-style: solid; 
+			border-bottom-style: solid;
+			border-width: 1px;
+			}
+			.inner_heading
+			{
+	 		  text-align: center;
+			}
 		}
 	}
-	.links_info_div
+	.user_show_right
 	{
 		width: 65%;
-		float: left;
-		border-left-style: solid; 
-		border-right-style: solid;
-		border-top-style: solid; 
-		border-bottom-style: solid;
-		border-width: 1px;
-		.inner_heading
+		float: right;
+		.links_info_div
 		{
-	 	  text-align: center;
+			border-left-style: solid; 
+			border-right-style: solid;
+			border-top-style: solid; 
+			border-bottom-style: solid;
+			border-width: 1px;
+			.inner_heading
+			{
+		 	  text-align: center;
+			}
+		}
+		.posts_info_div
+		{
+			border-left-style: solid; 
+			border-right-style: solid;
+			border-top-style: solid; 
+			border-bottom-style: solid;
+			border-width: 1px;
+			.inner_heading
+			{
+		 	  text-align: center;
+			}
 		}
 	}
 }

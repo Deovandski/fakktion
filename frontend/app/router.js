@@ -16,6 +16,8 @@ Router.map(function()
 		this.resource('user', { path:'/:user_id' }, function()
 		{
 			this.route('edit');
+			this.route('posts');
+			this.route('comments');
 		});
 		this.route('create');
 	});
