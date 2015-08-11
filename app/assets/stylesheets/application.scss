@@ -17,22 +17,23 @@
 @import "imports";
 
 
-body.ember-application main {
-  padding-bottom: 50px;
-  padding-top: 25px;
-  fieldset {
-    background-color: #fff;
-    border-radius: 5px;
-
-    .actions {
-      @include span-columns(12);
-
-      height: 0px;
-
-      input {
-        margin-top: -3px;
-      }
-    }
-  }
-    height:100%;
+body.ember-application main
+{
+	padding-bottom: 50px;
+	padding-top: 25px;
+	fieldset
+	{
+		background-color: #fff;
+		border-radius: 5px;
+		.actions
+		{
+			@include span-columns(12);
+			height: 0px;
+			input
+			{
+				margin-top: -3px;
+			}
+		}
+	}
+	height:100%;
 }

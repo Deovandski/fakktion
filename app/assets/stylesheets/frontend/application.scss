@@ -1,7 +1,7 @@
 // Place all the styles related to the forums controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-// Ember side SCSS
+
 @import "imports";
 
 .ember_application
@@ -9,7 +9,7 @@
 
 	width: 100%;
 	.left_sidebar
-	{ 
+	{
 		@include span-columns(1.8);
 		text-align: center;
 		border-width: 3px;  

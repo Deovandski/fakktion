@@ -1,15 +1,16 @@
 import Ember from 'ember';
 import config from './config/environment';
 
-var Router = Ember.Router.extend({
-  location: config.locationType
+var Router = Ember.Router.extend
+({
+	location: config.locationType
 });
 
 Router.map(function()
 {
 	//Login related
-   this.route('header');
-   this.route('login', { path: '/login' });
+	this.route('header');
+	this.route('login', { path: '/login' });
 
 	//User
 	this.resource('users', function(){
@@ -68,12 +69,12 @@ Router.map(function()
 	});
 
 	// Footer related
-   this.route('footer');
-   this.route('about');
-   this.route('legal_info');
-   this.route('privacy_info');
-   this.route('support');
-   this.route('about');
+	this.route('footer');
+	this.route('about');
+	this.route('legal_info');
+	this.route('privacy_info');
+	this.route('support');
+	this.route('about');
 });
 
 export default Router;

@@ -1,3 +1,3 @@
 module ApplicationHelper
-  include LocalTimeHelper
+	include LocalTimeHelper
 end

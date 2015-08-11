@@ -6,37 +6,25 @@ export default Ember.Controller.extend
 	verifyPosts: Ember.computed('model.posts.length', function()
 	{
 		if(this.get('model.posts').length < 1)
-		{
-			return false;
-		}
+		{return false;}
 		else
-		{
-			return true;
-		}
+		{return true;}
 	}),
 	verifyComments: Ember.computed('model.comments.length', function()
 	{
 		if(this.get('model.comments').length < 1)
-		{
-			return false;
-		}
+		{return false;}
 		else
-		{
-			return true;
-		}
+		{return true;}
 	}),
 	isOwner: Ember.computed('model.id', function()
 	{
 		//console.log(this.get('session.secure.userId'));
 		//console.log(this.get('session.secure.email'));
 		if(this.get('session.secure.email') === this.get('model.email'))
-		{
-			return true;
-		}
+		{return true;}
 		else
-		{
-			return false;
-		}
+		{return false;}
 	}),
 	ageDate: Ember.computed('model.date_of_birth', function()
 	{

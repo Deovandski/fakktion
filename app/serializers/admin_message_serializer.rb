@@ -1,5 +1,5 @@
 class AdminMessageSerializer < ActiveModel::Serializer
-  attributes :id,
-             :title,
-             :message
+	attributes  :id,
+				:title,
+				:message
 end

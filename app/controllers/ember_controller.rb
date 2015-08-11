@@ -1,4 +1,5 @@
 class EmberController < ApplicationController
-  def bootstrap
-  end
+	def bootstrap
+		
+	end
 end

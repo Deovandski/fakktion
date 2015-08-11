@@ -1,6 +1,7 @@
 class TopicSerializer < ActiveModel::Serializer
-  attributes :id,
-             :name,
-				 :usage_count
+	has_many :posts
+	attributes  :id,
+				:name,
+				:usage_count
 end
 

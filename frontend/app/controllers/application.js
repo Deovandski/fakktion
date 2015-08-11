@@ -37,7 +37,6 @@ export default Ember.Controller.extend
 	showFTP: true,
 	showPDP: true,
 
-	
 	// Central Panel and Sidebars Visibility Boolean Check
 	displayCentralPanel: Ember.computed('currentPath', function()
 	{
