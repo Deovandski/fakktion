@@ -21,7 +21,9 @@ ratings:
     - "lib/**"
     - "test/**"
 exclude_paths:
+- app/assets/images/**/*
 - Documents/**/*
+- db/**/*
 - bourbon/**/*
 - neat/**/*
 - node_modules/**/*
@@ -31,3 +33,5 @@ exclude_paths:
 - frontend/vendor/**/*
 - public/**/*
 - vendor/**/*
+- "db/schema.rb"
+- "README.md"

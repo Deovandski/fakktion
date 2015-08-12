@@ -1,5 +1,5 @@
 class Api::V1::AdminMessagesController < ApplicationController
-	respond_to :json # default to Active Model Serializers | 
+	respond_to :json
 
 	def index
 		respond_with AdminMessage.all
@@ -28,6 +28,6 @@ class Api::V1::AdminMessagesController < ApplicationController
 	end
 
 	def adminMessage_params
-		params.require(:adminMessage).permit(:message,:title) # only allow these for now
+		params.require(:adminMessage).permit(:message,:title)
 	end
 end
