@@ -11,15 +11,7 @@ rake db:migrate:reset
 git reset --hard
 ```
 ### Rebuild Secrets.yml
-	*Create secrets.yml on config folder with the following 
-		```
-		development:
-			secret_key_base: xxx
-		test:
-			secret_key_base: xxx
-		production:
-			secret_key_base: <%= ENV["SECRET_KEY_BASE"] %>
-		```
+	*Rename secrets-base.yml to secrets.yml
 	*Use rake secret for new keys
 
 ### Bundler commands

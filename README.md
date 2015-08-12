@@ -2,7 +2,7 @@
 
 ![](/FakktionLogo.png)
 
-[![Build Status][travis-badge]][travis][![Test Coverage][testCoverage-badge]][testCoverage][![Code Climate][codeClimate-badge]][codeClimate]
+[![Build Status][travis-badge]][travis] [![Test Coverage][testCoverage-badge]][testCoverage] [![Code Climate][codeClimate-badge]][codeClimate]
 
 ######Code Coverage is for Rails only...
 
@@ -11,10 +11,18 @@ All information about this project can be found on this [published paper](http:/
 ## Notice
 This project once used [Ember-Rails](https://github.com/emberjs/ember-rails), but now it is using [Ember-cli-rails](https://github.com/rwz/ember-cli-rails). If you would like to see the previous Ember-Rails implementation, please check the [Ember-Rails Implementation branch](https://github.com/Deovandski/Fakktion/tree/Ember-Rails).
 
+## Requirements
+
+1. [Node.js](https://nodejs.org/)
+2. [Npm](https://www.npmjs.com/)
+3. [Bower](https://www.npmjs.com/package/bower)
+4. [Ruby](https://www.ruby-lang.org/en/)
+5. [Bundler](http://bundler.io/)
+
 ## Installation
 
 1. Clone Project
-2. Create new Secrets.yml and place it on the config folder. See [Extra Commands](Documents/Extra Commands.md).
+2. Create new Secrets.yml. See [Extra Commands](Documents/Extra Commands.md) for more info.
 3. Bundle Install
 4. Rake db:setup
 5. cd frontend
@@ -48,5 +56,5 @@ All rights reserved.
 [travis-badge]: https://travis-ci.org/Deovandski/Fakktion.svg?branch=master
 [testCoverage]: https://codeclimate.com/github/Deovandski/Fakktion/coverage
 [testCoverage-badge]: https://codeclimate.com/github/Deovandski/Fakktion/badges/coverage.svg
-[codeClimate]: https://codeclimate.com/github/Deovandski/Fakktion/badges/gpa.svg
-[codeClimate-badge]: https://codeclimate.com/github/Deovandski/Fakktion
+[codeClimate]: https://codeclimate.com/github/Deovandski/Fakktion
+[codeClimate-badge]: https://codeclimate.com/github/Deovandski/Fakktion/badges/gpa.svg
