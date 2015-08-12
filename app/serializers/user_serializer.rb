@@ -12,8 +12,6 @@ class UserSerializer < ActiveModel::Serializer
 				:webpage_url,
 				:is_banned,
 				:is_banned_date,
-				:number_of_posts,
-				:number_of_comments,
 				:legal_terms_read,
 				:privacy_terms_read,
 				:is_admin,

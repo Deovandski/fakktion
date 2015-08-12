@@ -14,9 +14,20 @@ engines:
 ratings:
   paths:
     - "app/**"
+    - "bin/**"
+    - "config/**"
+    - "db/**"
     - "frontend/**"
+    - "lib/**"
+    - "test/**"
 exclude_paths:
-- frontend/vendor/**/*
+- Documents/**/*
+- bourbon/**/*
+- neat/**/*
+- node_modules/**/*
 - frontend/bower_components/**/*
 - frontend/node_modules/**/*
-- public/assets/**/*
+- frontend/dist/**/*
+- frontend/vendor/**/*
+- public/**/*
+- vendor/**/*

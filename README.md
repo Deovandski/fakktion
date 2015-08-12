@@ -2,9 +2,9 @@
 
 ![](/FakktionLogo.png)
 
-[![Build Status](https://travis-ci.org/Deovandski/Fakktion.svg?branch=master)](https://travis-ci.org/Deovandski/Fakktion) [![Test Coverage](https://codeclimate.com/github/Deovandski/Fakktion/badges/coverage.svg)](https://codeclimate.com/github/Deovandski/Fakktion/coverage)[![Code Climate](https://codeclimate.com/github/Deovandski/Fakktion/badges/gpa.svg)](https://codeclimate.com/github/Deovandski/Fakktion)
+[![Build Status](travis-badge)](travis)[![Test Coverage](testCoverage-badge)](testCoverage)[![Code Climate](codeClimate-badge)](codeClimate)
 
-######Code Coverage is currently only available for Rails.
+######Code Coverage is for Rails only...
 
 All information about this project can be found on this [published paper](http://www.micsymposium.org/mics2015/ProceedingsMICS_2015/Skibinski_3C1_31.pdf). Information regarding the Database Design and can be seen [Here](erd.pdf), and information about progress can be seen [Here](Documents/TODO.txt) and in this video [Here](https://youtu.be/tckjDm4LNjg) (Video represents progress as of 7/15/2015.)
 
@@ -18,13 +18,15 @@ This project once used [Ember-Rails](https://github.com/emberjs/ember-rails), bu
 3. Bundle Install
 4. Rake db:migrate
 5. Rake db:seed
-6. cd frontend
-7. npm install
-8. bower install
-9. Run the following commands to install addons:
+6. bourbon install
+7. neat install
+8. cd frontend
+9. npm install
+10. bower install
+11. Run the following commands to install addons:
 
 ```
-npm install --save-dev ember-cli-rails-addon@0.1.11
+npm install --save-dev ember-cli-rails-addon@0.0.11
 
 ember install ember-cli-simple-auth
 
@@ -32,8 +34,11 @@ ember install ember-cli-simple-auth-devise
 
 npm install ember-moment
 
+npm install 
+
+bower install
+
 ```
-Some commands were skipped. If you don't have some of the requirements such as node.js please check the .travis.yml file.
 
 Start the Server with '''rake start'''. To quickly login under Development mode, please use the email as user@example.com and password as 12345678.
 
@@ -57,3 +62,10 @@ Start the Server with '''rake start'''. To quickly login under Development mode,
 
 Copyright (c) 2014 - 2015, Deovandski Skibinski Junior and Dr. Anne Denton
 All rights reserved.
+
+[travis]: https://travis-ci.org/Deovandski/Fakktion
+[travis-badge]: https://travis-ci.org/Deovandski/Fakktion.svg?branch=master
+[testCoverage]: https://codeclimate.com/github/Deovandski/Fakktion/coverage
+[testCoverage-badge]: https://codeclimate.com/github/Deovandski/Fakktion/badges/coverage.svg
+[codeClimate]: https://codeclimate.com/github/Deovandski/Fakktion/badges/gpa.svg
+[codeClimate-badge]: https://codeclimate.com/github/Deovandski/Fakktion
