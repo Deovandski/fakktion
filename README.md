@@ -2,7 +2,7 @@
 
 ![](/FakktionLogo.png)
 
-[![Build Status](https://travis-ci.org/Deovandski/Fakktion.svg?branch=master)](https://travis-ci.org/Deovandski/Fakktion) [![Test Coverage](https://codeclimate.com/github/Deovandski/Fakktion/badges/coverage.svg)](https://codeclimate.com/github/Deovandski/Fakktion/coverage)
+[![Build Status](https://travis-ci.org/Deovandski/Fakktion.svg?branch=master)](https://travis-ci.org/Deovandski/Fakktion) [![Test Coverage](https://codeclimate.com/github/Deovandski/Fakktion/badges/coverage.svg)](https://codeclimate.com/github/Deovandski/Fakktion/coverage)[![Code Climate](https://codeclimate.com/github/Deovandski/Fakktion/badges/gpa.svg)](https://codeclimate.com/github/Deovandski/Fakktion)
 
 ######Code Coverage is currently only available for Rails.
 
