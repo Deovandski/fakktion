@@ -6,11 +6,15 @@ engines:
   gofmt:
     enabled: true
   eslint:
-    enabled: true
+    enabled: false
   csslint:
-    enabled: true
+    enabled: false
   bundler-audit:
     enabled: true
+ratings:
+  paths:
+    - "app/**"
+    - "frontend/**"
 exclude_paths:
 - frontend/vendor/**/*
 - frontend/bower_components/**/*

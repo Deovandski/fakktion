@@ -29,7 +29,7 @@ script:
 - ember test
 addons:
   code_climate:
-    repo_token: 9e561427bd3657e5d75929feb95d495b08e4b0fb665e4000bb58a1c42db1e382
+    repo_token: c3055c2ba9d4366d62a766320aad9097184a33532676588a5fd68536f85dc048
 #nodejs and npm not apt whitelisted... Check again if build fails due to nodejs deprecations on Travis CI.
 #  apt:
 #    sources:
