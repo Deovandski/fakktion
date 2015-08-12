@@ -6,14 +6,17 @@ engines:
   gofmt:
     enabled: true
   eslint:
-    enabled: true
+    enabled: false
   csslint:
-    enabled: true
+    enabled: false
   bundler-audit:
     enabled: true
+ratings:
+  paths:
+    - "app/**"
+    - "frontend/**"
 exclude_paths:
 - frontend/vendor/**/*
 - frontend/bower_components/**/*
 - frontend/node_modules/**/*
 - public/assets/**/*
-- "public/assets/application-6715c6e740a0f4110da97a8771ee581e.js"
