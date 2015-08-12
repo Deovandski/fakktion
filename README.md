@@ -2,7 +2,7 @@
 
 ![](/FakktionLogo.png)
 
-[![Build Status](travis-badge)](travis)[![Test Coverage](testCoverage-badge)](testCoverage)[![Code Climate](codeClimate-badge)](codeClimate)
+[![Build Status][travis-badge]][travis][![Test Coverage][testCoverage-badge]][testCoverage][![Code Climate][codeClimate-badge]][codeClimate]
 
 ######Code Coverage is for Rails only...
 
@@ -14,31 +14,12 @@ This project once used [Ember-Rails](https://github.com/emberjs/ember-rails), bu
 ## Installation
 
 1. Clone Project
-2. Create new Secrets.yml and place it on the config folder. See Extra Commands on the root folder.
+2. Create new Secrets.yml and place it on the config folder. See [Extra Commands](Documents/Extra Commands.md).
 3. Bundle Install
-4. Rake db:migrate
-5. Rake db:seed
-6. bourbon install
-7. neat install
-8. cd frontend
-9. npm install
-10. bower install
-11. Run the following commands to install addons:
-
-```
-npm install --save-dev ember-cli-rails-addon@0.0.11
-
-ember install ember-cli-simple-auth
-
-ember install ember-cli-simple-auth-devise
-
-npm install ember-moment
-
-npm install 
-
-bower install
-
-```
+4. Rake db:setup
+5. cd frontend
+6. npm install
+7. bower install
 
 Start the Server with '''rake start'''. To quickly login under Development mode, please use the email as user@example.com and password as 12345678.
 

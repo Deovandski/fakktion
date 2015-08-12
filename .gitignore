@@ -8,8 +8,6 @@ capybara-*.html
 /coverage/
 /spec/tmp
 /frontend/vendor
-
-#To verify...
 /public/assets
 /node_modules
 /bourbon
