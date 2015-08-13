@@ -16,6 +16,7 @@ export default Ember.Controller.extend
 			}, function()
 			{
 				alert('failed to save user!');
+				
 			});
 		}
 	}

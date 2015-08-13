@@ -2,7 +2,7 @@
 
 ![](/FakktionLogo.png)
 
-[![Build Status][travis-badge]][travis] [![Test Coverage][testCoverage-badge]][testCoverage] [![Code Climate][codeClimate-badge]][codeClimate]
+[![Build Status][travis-badge]][travis] [![Test Coverage][testCoverage-badge]][testCoverage] [![Code Climate][codeClimate-badge]][codeClimate] [![Security][security-badge]][security]
 
 ######Code Coverage is for Rails only...
 
@@ -58,3 +58,5 @@ All rights reserved.
 [testCoverage-badge]: https://codeclimate.com/github/Deovandski/Fakktion/badges/coverage.svg
 [codeClimate]: https://codeclimate.com/github/Deovandski/Fakktion
 [codeClimate-badge]: https://codeclimate.com/github/Deovandski/Fakktion/badges/gpa.svg
+[security]: https://hakiri.io/github/Deovandski/Fakktion/master
+[security-badge]: https://hakiri.io/github/Deovandski/Fakktion/master.svg
