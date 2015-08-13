@@ -5,14 +5,15 @@ export default Ember.Controller.extend
 ({
 	verifyPosts: Ember.computed('model.posts.length', function()
 	{
-		if(this.get('model.posts').length < 1)
+		console.log(this.get('model.posts').length);
+		if(this.get('model.posts.length') === 0)
 		{return false;}
 		else
 		{return true;}
 	}),
 	verifyComments: Ember.computed('model.comments.length', function()
 	{
-		if(this.get('model.comments').length < 1)
+		if(this.get('model.comments.length') === 0)
 		{return false;}
 		else
 		{return true;}

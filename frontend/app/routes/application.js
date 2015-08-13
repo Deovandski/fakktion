@@ -2,8 +2,7 @@ import Ember from 'ember';
 import ApplicationRouteMixin from 'simple-auth/mixins/application-route-mixin';
 
 export default Ember.Route.extend
-({
-	ApplicationRouteMixin,
+(ApplicationRouteMixin, {
 	model: function()
 	{
 		return Ember.Object.create
@@ -12,9 +11,5 @@ export default Ember.Route.extend
 			factTypes: this.store.findAll('factType'),
 			categories: this.store.findAll('category')
 		});
-	},
-	setupController: function(controller, models)
-	{
-		this._super(controller, models);
 	}
 });

@@ -7,6 +7,10 @@
 <label>{{session.secure.email}}</label>
 <label>{{session.currentUser.id}}</label>
 
-<li>{{#link-to 'posts.create'}}Create Post{{/link-to}}</li>
+{{#if session.isAuthenticated}}
+	<li>{{#link-to 'posts.create'}}Create Post{{/link-to}}</li>
+{{else}}
+	<li>Please login to create a post</li>
+{{/if}}
 
 

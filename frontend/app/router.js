@@ -23,7 +23,7 @@ Router.map(function()
 		this.route('create');
 	});
 
-	//Posts + comments
+	//Posts
 	this.resource('posts', function(){
 		this.resource('post', { path:'/:post_id' }, function()
 		{
@@ -32,6 +32,14 @@ Router.map(function()
 		this.route('create');
 	});
 
+	//Comments
+	this.resource('comments', function(){
+		this.resource('comment', { path:'/:comment_id' }, function()
+		{
+			this.route('edit');
+		});
+	});
+	
 	//Genres
 	this.resource('genres', function(){
 		this.resource('genre', { path:'/:genre_id' }, function()
