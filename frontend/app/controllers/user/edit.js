@@ -6,7 +6,6 @@ export default Ember.Controller.extend
 	needs: ['application'],
 	newPassword: "",
 	newPasswordConfirmation: "",
-	passwordChangeRequest: false,
 	dateOfBirth: null,
 	clientSideValidationComplete: false,
 	verifyFullName: Ember.computed('model.full_name', function()
@@ -161,7 +160,10 @@ export default Ember.Controller.extend
 	verifyGender: Ember.computed('model.gender', function()
 	{
 		if(this.get('model.gender').toLowerCase() !== "male" && this.get('model.gender').toLowerCase() !== "female" && this.get('model.gender').toLowerCase() !== "other")
-			{return "male/female/other";}
+		{
+			this.set("clientSideValidationComplete",false);
+			return "male/female/other";
+		}
 		else
 		{
 			this.set("clientSideValidationComplete",true);
@@ -222,6 +224,8 @@ export default Ember.Controller.extend
 	{
 		update: function()
 		{
+			if(this.get('clientSideValidationComplete'))
+			{
 			var user = this.get('content');
 			//console.log(this.get('session.isAuthenticated'));
 			user.set('full_name', this.get('model.full_name'));
@@ -237,46 +241,35 @@ export default Ember.Controller.extend
 			{
 				user.set('date_of_birth', moment(this.get('dateOfBirth')).toDate());	
 			}
-			else
-			{
-				user.set('date_of_birth', null);
-			}
 			if(this.get('newPassword') !== null && this.get('newPassword') !== '')
 			{
 				user.set('password', this.get('newPassword'));	
-				this.set('passwordChangeRequest', true);
 			}
 			else
 			{
 				user.set('password', "");
-				this.set('passwordChangeRequest', false);
 			}
 			if(this.get('currentPassword') !== null && this.get('currentPassword') !== '')
 			{
 				user.set('current_password', this.get('currentPassword'));
-				this.set('passwordChangeRequest', true);
 			}
 			else
 			{
 				user.set('current_password', "");
-				this.set('passwordChangeRequest', false);
 			}
 			var controller = this;
 			user.save().then(function()
 			{
-				if(this.get('passwordChangeRequest'))
-				{
-					this.get('session').invalidate();
-					this.transitionToRoute('index');
-				}
-				else
-				{
-					controller.transitionTo('user', user);	
-				}
+				controller.transitionToRoute('user', user);	
 			}, function()
 			{
 				alert('failed to save user!');
 			});
+			}
+			else
+			{
+				alert('Hold your horses! Fix any error before Updating...');
+			}
 		}
 	}
 });

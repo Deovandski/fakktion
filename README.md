@@ -2,7 +2,7 @@
 
 ![](/FakktionLogo.png)
 
-[![Build Status][travis-badge]][travis] [![Test Coverage][testCoverage-badge]][testCoverage] [![Code Climate][codeClimate-badge]][codeClimate] [![Dependency Status](dependency-badge)](dependency) [![Security][security-badge]][security]
+[![Build Status][travis-badge]][travis] [![Test Coverage][testCoverage-badge]][testCoverage] [![Code Climate][codeClimate-badge]][codeClimate] [![Dependency Status](dependency-badge)](dependency) [![Security][security-badge]][security] [![Docs][docs-badge]][docs]
 
 ######Code Coverage and Dependencies are for Rails only...
 
@@ -62,3 +62,5 @@ All rights reserved.
 [security-badge]: https://hakiri.io/github/Deovandski/Fakktion/master.svg
 [dependency]: https://gemnasium.com/Deovandski/Fakktion
 [dependency-badge]: https://gemnasium.com/Deovandski/Fakktion.svg
+[docs]: http://inch-ci.org/github/deovandski/fakktion/branch/master
+[docs-badge]: https://inch-ci.org/github/deovandski/fakktion.svg?branch=master
