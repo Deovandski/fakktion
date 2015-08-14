@@ -2,7 +2,7 @@
 
 ![](/FakktionLogo.png)
 
-[![Build Status][travis-badge]][travis] [![Test Coverage][testCoverage-badge]][testCoverage] [![Code Climate][codeClimate-badge]][codeClimate] [![Dependency Status](dependency-badge)](dependency) [![Security][security-badge]][security] [![Docs][docs-badge]][docs]
+[![Build Status][travis-badge]][travis] [![Test Coverage][testCoverage-badge]][testCoverage] [![Code Climate][codeClimate-badge]][codeClimate] [![Dependency Status][dependency-badge]][dependency] [![Security][security-badge]][security] [![Docs][docs-badge]][docs]
 
 ######Code Coverage and Dependencies are for Rails only...
 
