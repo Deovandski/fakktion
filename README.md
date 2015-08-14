@@ -2,9 +2,9 @@
 
 ![](/FakktionLogo.png)
 
-[![Build Status][travis-badge]][travis] [![Test Coverage][testCoverage-badge]][testCoverage] [![Code Climate][codeClimate-badge]][codeClimate] [![Security][security-badge]][security]
+[![Build Status][travis-badge]][travis] [![Test Coverage][testCoverage-badge]][testCoverage] [![Code Climate][codeClimate-badge]][codeClimate] [![Dependency Status](dependency-badge)](dependency) [![Security][security-badge]][security]
 
-######Code Coverage is for Rails only...
+######Code Coverage and Dependencies are for Rails only...
 
 All information about this project can be found on this [published paper](http://www.micsymposium.org/mics2015/ProceedingsMICS_2015/Skibinski_3C1_31.pdf). Information regarding the Database Design and can be seen [Here](erd.pdf), and information about progress can be seen [Here](Documents/TODO.txt) and in this video [Here](https://youtu.be/tckjDm4LNjg) (Video represents progress as of 7/15/2015.)
 
@@ -60,3 +60,5 @@ All rights reserved.
 [codeClimate-badge]: https://codeclimate.com/github/Deovandski/Fakktion/badges/gpa.svg
 [security]: https://hakiri.io/github/Deovandski/Fakktion/master
 [security-badge]: https://hakiri.io/github/Deovandski/Fakktion/master.svg
+[dependency]: https://gemnasium.com/Deovandski/Fakktion
+[dependency-badge]: https://gemnasium.com/Deovandski/Fakktion.svg

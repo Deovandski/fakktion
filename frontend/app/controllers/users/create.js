@@ -9,14 +9,12 @@ export default Ember.Controller.extend
 	password: "",
 	passwordConfirmation: "",
 	gender: "",
-	facebookURL: "",
-	twitterURL: "",
-	webpageURL: "",
 	legalTermsRead: false,
 	privacyTermsRead: false,
 	dateOfBirth: null,
 	showFullName: false,
 	clientSideValidationComplete: false,
+	
 	verifyFullName: Ember.computed('fullName', function()
 	{
 		if(this.get('fullName').length < 1)
@@ -51,11 +49,12 @@ export default Ember.Controller.extend
 			}
 		}
 	}),
-	verifyDateOfBirth: Ember.computed('dateOfBirth', function()
+	verifyDateOfBirth: Ember.computed('dateOfBirth', 'model.date_of_birth', function()
 	{
 		if(this.get('dateOfBirth') === null)
 		{
-			this.set("clientSideValidationComplete",false);
+			console.log('fuck me');
+			this.set("model.date_of_birth",moment(this.get('dateOfBirth')).format());
 			return "MM/DD/YYYY";
 		}
 		else
@@ -156,45 +155,6 @@ export default Ember.Controller.extend
 			return "";
 		}
 	}),
-	verifyFacebookURL: Ember.computed('facebookURL', function()
-	{
-		if(this.get('facebookURL').length < 4)
-		{
-			this.set("clientSideValidationComplete",false);
-			return "Paste complete URL";
-		}
-		else
-		{
-			this.set("clientSideValidationComplete",true);
-			return "";
-		}
-	}),
-	verifyTwitterURL: Ember.computed('twitterURL', function()
-	{
-		if(this.get('twitterURL').length < 4)
-		{
-			this.set("clientSideValidationComplete",false);
-			return "Paste complete URL";
-		}
-		else
-		{
-			this.set("clientSideValidationComplete",true);
-			return "";
-		}
-	}),
-	verifyWebpageURL: Ember.computed('webpageURL', function()
-	{
-		if(this.get('webpageURL').length < 4)
-		{
-			this.set("clientSideValidationComplete",false);
-			return "Paste complete URL";
-		}
-		else
-		{
-			this.set("clientSideValidationComplete",true);
-			return "";
-		}
-	}),
 	verifyShowFullName: Ember.computed('showFullName', function()
 	{
 		if(this.get('showFullName') !== true)
@@ -245,9 +205,6 @@ export default Ember.Controller.extend
 					gender: this.get('gender'),
 					email: this.get('email'),
 					password: this.get('password'),
-					facebook_url: this.get('facebookURL'),
-					twitter_url: this.get('twitterURL'),
-					webpage_url: this.get('webpageURL'),
 					legal_terms_read: this.get('legalTermsRead'),
 					privacy_terms_read: this.get('privacyTermsRead'),
 					date_of_birth: moment(this.get('dateOfBirth')).toDate(),

@@ -3,4 +3,9 @@ import AuthenticatedRouteMixin from 'simple-auth/mixins/authenticated-route-mixi
 
 export default Ember.Route.extend
 (AuthenticatedRouteMixin,{
+	setupController: function(controller, model)
+	{
+		controller.set('content', model);
+        controller.set('users', this.store.findAll('user'));
+    }
 });

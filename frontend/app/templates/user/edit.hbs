@@ -1,5 +1,46 @@
-<h2>Edit Post</h2>
+<h2>Edit User Information</h2>
 <form>
-  <p>Full Name:<br/> {{input require='true' value=model.full_name}}</p>
-  <p><button {{action "updateUser"}}>Update Information</button></p>
+	<div class="input_block_typeUser">
+		<label class="first_label">Full Name:</label>
+		{{input value=model.full_name}}
+		<label class="second_label">{{verifyFullName}}</label>
+	</div><br/>
+	<div class="input_block_typeUser">
+		<label class="first_label">Display Name:</label>
+		{{input value=model.display_name}}
+		<label class="second_label">{{verifyDisplayName}}</label>
+	</div><br/>
+	<div class="input_block_typeUser">
+		<label class="first_label">Date of Birth:</label>
+		{{date-input-placeholder value=dateOfBirth inputDate=model.date_of_birth}}
+		<label class="second_label">{{verifyDateOfBirth}}</label>
+	</div><br/>
+	<div class="input_block_typeUser">
+		<label class="first_label">Email:</label>
+		{{input value=model.email}}
+		<label class="second_label">{{verifyEmail}}</label>
+	</div><br/>
+	<div class="input_block_typeUser">
+		<label class="first_label">Gender:</label>
+		{{input value=model.gender}}
+		<label class="second_label">{{verifyGender}}</label>
+	</div><br/>
+		<div class="input_block_checkbox_typeUser">
+		<label class="first_label">Show full name on profile:</label>
+		{{input type="checkbox" checked=model.show_full_name}}
+		<label class="second_label">{{verifyShowFullName}}</label>
+	</div><br/>
+  <button class="button_type1" {{action "update"}}>Update User</button>
+  
+  <label>Add Div with hide abilities...</label>
+  	<div class="input_block_typeUser">
+		<label class="first_label">Password:</label>
+		{{input type=password value=newPassword}}
+		<label class="second_label">{{verifyNewPassword}}</label>
+	</div><br/>
+	<div class="input_block_typeUser">
+		<label class="first_label">Password Confirmation:</label>
+		{{input type=password value=newPasswordConfirmation}}
+		<label class="second_label">{{verifyNewPasswordConfirmation}}</label>
+	</div><br/>
 </form>

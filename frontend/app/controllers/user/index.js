@@ -5,7 +5,6 @@ export default Ember.Controller.extend
 ({
 	verifyPosts: Ember.computed('model.posts.length', function()
 	{
-		console.log(this.get('model.posts').length);
 		if(this.get('model.posts.length') === 0)
 		{return false;}
 		else
@@ -20,8 +19,6 @@ export default Ember.Controller.extend
 	}),
 	isOwner: Ember.computed('model.id', function()
 	{
-		//console.log(this.get('session.secure.userId'));
-		//console.log(this.get('session.secure.email'));
 		if(this.get('session.secure.email') === this.get('model.email'))
 		{return true;}
 		else
