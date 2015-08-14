@@ -49,12 +49,11 @@ export default Ember.Controller.extend
 			}
 		}
 	}),
-	verifyDateOfBirth: Ember.computed('dateOfBirth', 'model.date_of_birth', function()
+	verifyDateOfBirth: Ember.computed('dateOfBirth',  function()
 	{
 		if(this.get('dateOfBirth') === null)
 		{
-			console.log('fuck me');
-			this.set("model.date_of_birth",moment(this.get('dateOfBirth')).format());
+			this.set("clientSideValidationComplete",false);
 			return "MM/DD/YYYY";
 		}
 		else
