@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
 	has_many :comments
 
 	validates :gender, presence: true
-	validates :password, length: { minimum: 8 }
+	validates :password, presence: true, length: { minimum: 8 }, on: :create
+	validates :password, length: {minimum: 8}, on: :update, allow_blank: true
 	validates_presence_of :full_name, :email, :display_name, :date_of_birth
 	validates_uniqueness_of :email, :display_name
 	validates_acceptance_of :privacy_terms_read, :on => :create, :accept => true, :allow_nil => false

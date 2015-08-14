@@ -14,19 +14,16 @@ class Api::V1::UsersController < ApplicationController
 	end
 
 	def update
+		#Remove password parameters if there was no request
+		#However, keep :current_password since it is always checked.
 		if user_params[:password].blank?
 			user_params.delete(:password)
-			user_params.delete(:password_confirmation)
+			user_params.delete(:current_password)
 		end
-		successfully_updated =  if needs_password?(user, user_params)
-									user.update(user_params)
-								else
-									user.update_without_password(user_params)
-								end
-		if successfully_updated
-			respond_with user, status: :ok
+		if needs_password?(user, user_params)
+			respond_with user.update_with_password(user_params)
 		else
-			respond_with user.errors, status: :unprocessable_entity
+			respond_with user.update_without_password(user_params)
 		end
 	end
 
@@ -45,6 +42,6 @@ class Api::V1::UsersController < ApplicationController
 	end
 	
 	def user_params
-		params.require(:user).permit(:id, :show_full_name, :full_name, :display_name, :email, :date_of_birth, :gender, :facebook_url, :twitter_url, :personal_message, :webpage_url, :is_banned, :is_banned_date, :legal_terms_read, :privacy_terms_read, :is_admin, :is_super_user, :sign_in_count, :password, :last_sign_in_at, :reset_password_sent_at, :reset_password_token, :updated_at, :created_at)
+		params.require(:user).permit(:id, :show_full_name, :full_name, :display_name, :email, :date_of_birth, :gender, :facebook_url, :twitter_url, :personal_message, :webpage_url, :is_banned, :is_banned_date, :legal_terms_read, :privacy_terms_read, :is_admin, :is_super_user, :sign_in_count, :password, :last_sign_in_at, :reset_password_sent_at, :reset_password_token, :updated_at, :created_at, :current_password)
 	end
 end

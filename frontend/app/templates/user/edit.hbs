@@ -30,17 +30,22 @@
 		{{input type="checkbox" checked=model.show_full_name}}
 		<label class="second_label">{{verifyShowFullName}}</label>
 	</div><br/>
-  <button class="button_type1" {{action "update"}}>Update User</button>
-  
-  <label>Add Div with hide abilities...</label>
-  	<div class="input_block_typeUser">
-		<label class="first_label">Password:</label>
-		{{input type=password value=newPassword}}
-		<label class="second_label">{{verifyNewPassword}}</label>
-	</div><br/>
-	<div class="input_block_typeUser">
-		<label class="first_label">Password Confirmation:</label>
-		{{input type=password value=newPasswordConfirmation}}
-		<label class="second_label">{{verifyNewPasswordConfirmation}}</label>
-	</div><br/>
+	<div class="show_password_form">
+		<div class="input_block_typeUser">
+			<label class="first_label">Current Password:</label>
+			{{input type="password" value=currentPassword}}
+			<label class="second_label">{{verifyCurrentPassword}}</label>
+		</div><br/>
+		<div class="input_block_typeUser">
+			<label class="first_label">Password:</label>
+			{{input type="password" value=newPassword}}
+			<label class="second_label">{{verifyNewPassword}}</label>
+		</div><br/>
+		<div class="input_block_typeUser">
+			<label class="first_label">Password Confirmation:</label>
+			{{input type="password" value=newPasswordConfirmation}}
+			<label class="second_label">{{verifyNewPasswordConfirmation}}</label>
+		</div><br/>
+	</div>
+	<button class="button_type1" {{action "update"}}>Update User</button>
 </form>

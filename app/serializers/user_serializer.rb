@@ -17,6 +17,7 @@ class UserSerializer < ActiveModel::Serializer
 				:is_admin,
 				:is_super_user,
 				:sign_in_count,
+				:current_password,
 				:password,
 				:last_sign_in_at,
 				:created_at,

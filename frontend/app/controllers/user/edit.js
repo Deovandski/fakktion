@@ -3,8 +3,10 @@ import moment from 'moment';
 
 export default Ember.Controller.extend
 ({
+	needs: ['application'],
 	newPassword: "",
 	newPasswordConfirmation: "",
+	passwordChangeRequest: false,
 	dateOfBirth: null,
 	clientSideValidationComplete: false,
 	verifyFullName: Ember.computed('model.full_name', function()
@@ -126,8 +128,16 @@ export default Ember.Controller.extend
 	{
 		if(this.get('newPassword').length < 8)
 		{
-			this.set("clientSideValidationComplete",false);
-			return "Too Short";
+			if(this.get('newPassword').length === 0)
+			{
+				this.set("clientSideValidationComplete",true);
+				return "";
+			}
+			else
+			{
+				this.set("clientSideValidationComplete",false);
+				return "Too Short";
+			}
 		}
 		else
 		{
@@ -222,17 +232,47 @@ export default Ember.Controller.extend
 			user.set('twitter_url', this.get('model.twitter_url'));
 			user.set('webpage_url', this.get('model.webpage_url'));
 			user.set('show_full_name', this.get('model.show_full_name'));
+			user.set('show_full_name', this.get('model.show_full_name'));
 			if(this.get('dateOfBirth') !== null && this.get('dateOfBirth') !== '')
 			{
 				user.set('date_of_birth', moment(this.get('dateOfBirth')).toDate());	
 			}
-			user.set('show_full_name', this.get('model.show_full_name'));
-			//user.set('password', this.get('newPassword'));
-			user.set('password', '12345678');
+			else
+			{
+				user.set('date_of_birth', null);
+			}
+			if(this.get('newPassword') !== null && this.get('newPassword') !== '')
+			{
+				user.set('password', this.get('newPassword'));	
+				this.set('passwordChangeRequest', true);
+			}
+			else
+			{
+				user.set('password', "");
+				this.set('passwordChangeRequest', false);
+			}
+			if(this.get('currentPassword') !== null && this.get('currentPassword') !== '')
+			{
+				user.set('current_password', this.get('currentPassword'));
+				this.set('passwordChangeRequest', true);
+			}
+			else
+			{
+				user.set('current_password', "");
+				this.set('passwordChangeRequest', false);
+			}
 			var controller = this;
 			user.save().then(function()
 			{
-				controller.transitionTo('user', user);
+				if(this.get('passwordChangeRequest'))
+				{
+					this.get('session').invalidate();
+					this.transitionToRoute('index');
+				}
+				else
+				{
+					controller.transitionTo('user', user);	
+				}
 			}, function()
 			{
 				alert('failed to save user!');
