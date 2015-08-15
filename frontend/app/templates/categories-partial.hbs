@@ -1,14 +1,20 @@
 {{#if displayCP}}
 	<div class="categories_div">
-		<h5>Categories <button class="button_type2" {{action "setCPV" false}}>Hide</button></h5>
+		<h5>Categories</h5>
 		<ul class="tag_listing">
 			{{#each model.categories as |category|}}
 				<li><button class="button_type1" {{action "setCID" category}}>{{category.name}}</button></li>
 			{{/each}}
 		</ul>
+		<div class="visibility_button_div">
+			<<button class="button_type2_large" {{action "setCPV" false}}>Hide</button>
+		</div>
 	</div>
 {{else}}
 	<div class="tag_listing_hidden">
-		<h5>Categories <button class="button_type2" {{action "setCPV" true}}>Show</button></h5>
+		<h5>Categories</h5>
+		<div class="visibility_button_div">
+			<button class="button_type2_large" {{action "setCPV" true}}>Show</button>
 		</div>
+	</div>
 {{/if}}

@@ -4,12 +4,15 @@ Rails.application.routes.draw do
 
 	root 'forums#index'
 
-	#Redirect all routes to Ember.js 
-	## Could not find a more straight forward way to do it since Ember is supposed to handle
-	## all frontend stuff...
+	##            Information              ##
+	#########################################
+	# get '/*path' => 'forums#index' || get '/*path', to: 'forums#index'
+	# Does not work as it causes SyntaxError: Unexpected token < 
+	# reported by ember.debug.js:31686
+	#########################################
+	##   Redirect all routes to Ember.js   ##
+	
 	# "Static routes"
-	get '/login', to: 'forums#index'
-	get '/support', to: 'forums#index'
 	get '/about', to: 'forums#index'
 	get '/privacy_info', to: 'forums#index'
 	get '/legal_info', to: 'forums#index'
@@ -37,7 +40,7 @@ Rails.application.routes.draw do
 	get '/topics', to: 'forums#index'
 	get '/categories', to: 'forums#index'
 	get '/users', to: 'forums#index'
-
+	
 	devise_for :users, controllers: {sessions: 'sessions'}
 
 	namespace :api do

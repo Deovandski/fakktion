@@ -1,14 +1,20 @@
 {{#if displayGP}}
 	<div class="genres_div">
-		<h5>Genres <button class="button_type2" {{action "setGPV" false}}>Hide</button></h5>
+		<h5>Genres   {{#link-to "genres.index" class="button_type2_smallest" }}Manage{{/link-to}}</h5>
 		<ul class="tag_listing">
 			{{#each model.genres as |genre|}}
 				<li><button class="button_type1" {{action "setGID" genre}}>{{genre.name}}</button></li>
 			{{/each}}
 		</ul>
+		<div class="visibility_button_div">
+			<button class="button_type2_large" {{action "setGPV" false}}>Hide</button>
+		</div>
 	</div>
 {{else}}
 	<div class="tag_listing_hidden">
-		<h5>Genres <button class="button_type2" {{action "setGPV" true}}>Show</button></h5>
+		<h5>Genres   {{#link-to "genres.index" class="button_type2_smallest" }}Manage{{/link-to}}</h5>
+		<div class="visibility_button_div">
+			<button class="button_type2_large" {{action "setGPV" true}}>Show</button>
 		</div>
+	</div>
 {{/if}}

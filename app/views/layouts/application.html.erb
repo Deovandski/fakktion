@@ -1,17 +1,10 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Fakktion</title>
-		<%= stylesheet_link_tag 'application', media: 'all'%>
-		<%= stylesheet_link_tag :frontend%>
-		<%= include_ember_script_tags :frontend %>
-		<%= include_ember_stylesheet_tags :frontend %>
-		<%= csrf_meta_tags %>
-	</head>
-
-	<body>
-		<%= render partial: "layouts/shared/flash_messages" unless @hide_header %>
-		<%= yield %>  
-		<%= render partial: "layouts/shared/analytics" %>
-	</body>
+	<%= stylesheet_link_tag 'application', media: 'all'%>
+	<%= stylesheet_link_tag :frontend%>
+	<%= include_ember_script_tags :frontend %>
+	<%= include_ember_stylesheet_tags :frontend %>
+	<%= csrf_meta_tags %>
+	<%= yield %>  
+	<%= render partial: "layouts/shared/analytics" %>
 </html>

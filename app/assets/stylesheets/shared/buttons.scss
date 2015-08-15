@@ -5,10 +5,20 @@ button_type1,
 input[type="submit"] {
   @include button_type1;
 }
-.button_type2,
-button_type2,
+.button_type2_large,
+button_type2_large,
 input[type="submit"] {
-  @include button_type2;
+  @include button_type2_large;
+}
+.button_type2_small,
+button_type2_small,
+input[type="submit"] {
+  @include button_type2_small;
+}
+.button_type2_smallest,
+button_type2_smallest,
+input[type="submit"] {
+  @include button_type2_smallest;
 }
 .button_type3,
 button_type3,

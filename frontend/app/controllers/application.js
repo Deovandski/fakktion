@@ -36,66 +36,52 @@ export default Ember.Controller.extend
 	showCP: true,
 	showFTP: true,
 	showPDP: true,
-
+	// Paths to show central Panel and Sidebars Panels:
+	centralPanelPaths: ["index", "posts.index", "posts.create", "posts.edit"],
+	sidebarsPanelPaths: ["index", "posts.index", "posts.create", "posts.edit"],
 	// Central Panel and Sidebars Visibility Boolean Check
 	displayCentralPanel: Ember.computed('currentPath', function()
 	{
-		if(this.get('currentPath') !== 'index' && this.get('currentPath') !== 'posts' && this.get('currentPath') !==  'posts.create')
-		{
-			//console.log('Display Central Panel');
-			//console.log(this.get('currentPath'));
-			return false;
-		}
+		if(this.get('centralPanelPaths').indexOf(this.get('currentPath')) !== -1)
+		{return true;}
 		else
-		{
-			//console.log('Hide Central Panel');
-			//console.log(this.get('currentPath'));
-			return true;
-		}
+		{return false;}
 	}),
-	displaySideBars: Ember.computed('currentPath', function()
+	displaySidebars: Ember.computed('currentPath', function()
 	{
-		if(this.get('currentPath') !== 'index' && this.get('currentPath') !== 'posts' && this.get('currentPath') !==  'posts.create')
-		{
-			//console.log('Display SideBars');
-			//console.log(this.get('currentPath'));
-			return false;
-		}
+		if(this.get('sidebarsPanelPaths').indexOf(this.get('currentPath')) !== -1)
+		{return true;}
 		else
-		{
-			//console.log('Hide SideBars');
-			//console.log(this.get('currentPath'));
-			return true;
-		}
+		{return false;}
 	}),
 	// Tags Selected Boolean check.
 	isGenreSelected: Ember.computed('selectedGID', function()
 	{
 		if(this.get('selectedGID') !== 0)
-			{return true;}
+		{return true;}
 		else
-			{return false;}
+		{return false;}
 	}),
 	isFactTypeSelected: Ember.computed('selectedFTID', function()
 	{
 		if(this.get('selectedFTID') !== 0)
-			{return true;}
+		{return true;}
 		else
-			{return false;}
+		{return false;}
 	}),
 	isCategorySelected: Ember.computed('selectedCID', function()
 	{
 		if(this.get('selectedCID') !== 0)
-			{return true;}
+		{return true;}
 		else
-			{return false;}
+		{return false;}
 	}),
 	isTopicSelected: Ember.computed('selectedCID', function()
 	{
 		if(this.get('selectedTID') !== 0)
-			{return true;}
+		{return true;}
 		else
-			{return false;}
+		{return false;}
 	}),
 	isPostDateSelected: function()
 	{
@@ -105,42 +91,38 @@ export default Ember.Controller.extend
 	displayGP: Ember.computed('showGP', function()
 	{
 		if(this.get('showGP') === true)
-			{return true;}
+		{return true;}
 		else
-			{return false;}
+		{return false;}
 	}),
 	displayCP: Ember.computed('showCP', function()
 	{
 		if(this.get('showCP') === true)
-			{return true;}
+		{return true;}
 		else
-			{return false;}
+		{return false;}
 	}),
 	displayFTP: Ember.computed('showFTP', function()
 	{
 		if(this.get('showFTP') === true)
-			{return true;}
+		{return true;}
 		else
-			{return false;}
+		{return false;}
 	}),
 	displayPDP: Ember.computed('showPDP', function()
 	{
 		if(this.get('showPDP') === true)
-			{return true;}
+		{return true;}
 		else
-			{return false;}
+		{return false;}
 	}),
 	actions: 
 	{
 		//Set ID Tag Methods
 		setGID: function(genre) 
 		{ 
-			//console.log('genre.id: ' + genre.id);
 			this.set('selectedGID', genre.id);
-			console.log('Application.selectedGID: ' + this.get('selectedGID'));
-			//console.log('selectGenre.name: ' + genre.get('name'));
 			this.set('selectedGN', genre.get('name'));
-			//console.log('Application.selectedGN: ' + this.get('selectedGN'));
 		},
 		setCID: function(category) 
 		{ 

@@ -1,4 +1,4 @@
-@mixin button_type2($background-color: #39BDFF, $text-color: #000000)
+@mixin button_type2_small($background-color: #39BDFF, $text-color: #000000)
 {
 	@include appearance(none);
 	background-color: $background-color;

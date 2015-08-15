@@ -38,7 +38,6 @@ label {
 
 textarea,
 #{$all-text-inputs} {
-  @include box-sizing(border-box);
   @include transition(border-color);
   background-color: white;
   border-radius: $form-border-radius;

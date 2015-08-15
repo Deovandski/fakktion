@@ -1,11 +1,5 @@
 @import "imports";
 
-@if $border-box-sizing == true {
-  * {
-    @include box-sizing(border-box);
-  }
-}
-
 body {
   color: $base-font-color;
   font-family: $base-font-family;

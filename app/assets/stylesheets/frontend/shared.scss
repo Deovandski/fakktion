@@ -7,18 +7,17 @@
 .tag_listing
 {
 	list-style-type:none;
+	text-align: center;
 	li:nth-child(n)
 	{
-		margin-top: 10px;
-		margin-bottom: 10px;
+		margin-top: 7px;
+		margin-bottom: 7px;
 	}
 }
-
 .tag_listing_hidden
 {
-	margin-bottom: 5px;
+	width: 100%;
 }
-
 // Standard size
 .input_block_type1
 {

@@ -1,12 +1,18 @@
 {{#if displayPDP}}
 	<div class="posting_dates_div">
-		<h5>Posting Dates <button class="button_type2" {{action "setPDPV" false}}>Hide</button></h5>
+		<h5>Posting Dates</h5>
 		<ul class="tag_listing">
 			<li>Code being Refactored</li>
 		</ul>
+		<div class="visibility_button_div">
+			<button class="button_type2_large" {{action "setPDPV" false}}>Hide</button>
+		</div>
 	</div>
 {{else}}
 	<div class="tag_listing_hidden">
-		<h5>Posting Dates <button class="button_type2" {{action "setPDPV" true}}>Show</button></h5>
+		<h5>Posting Dates</h5>
+		<div class="visibility_button_div">
+			<button class="button_type2_large" {{action "setPDPV" true}}>Show</button>
 		</div>
+	</div>
 {{/if}}

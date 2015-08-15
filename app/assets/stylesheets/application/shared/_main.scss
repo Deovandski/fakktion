@@ -1,24 +1,29 @@
-// Place all the styles related to the forums controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 @import "imports";
 
-.ember_application
+body.ember-application main
 {
-
-	width: 100%;
+	height: 100%;
+	padding-bottom: 50px;
+	fieldset
+	{
+		background-color: #fff;
+		border-radius: 5px;
+	}
 	.left_sidebar
 	{
-		@include span-columns(1.8);
+		float: left;
 		text-align: center;
-		border-width: 3px;  
+		border-width: 2px;
+		border-style: solid;
+		width: 20%;
 		.genres_div
 		{
 			h5:nth-child(n)
 			{
 				text-align: center;
 			}
+			height: 50%;
+			width: 100%;
 			border-width: 3px;
 			border-bottom-style: solid;
 		}
@@ -28,21 +33,25 @@
 			{
 				text-align: center;
 			}
+			height: 50%;
 			border-width: 3px;
 			border-bottom-style: solid;
 		}
 	}
 	.central
 	{ 
+		float: left;
+		width: 60%;
+		height: 100%;
 		list-style-type:none;
 		text-align: center;
-		padding: 0px 0px 5px 5px;
-		@include span-columns(7.4); 
-		border-left-style: solid; 
+		border-left-style: solid;
 		border-right-style: solid;
+		border-bottom-style: solid;
 		border-width: 3px; 
 		.central_panel
 		{
+			height: 20%;
 			border-bottom-style: solid;
 			border-width: 2px;
 			.central_upper_panel
@@ -128,8 +137,7 @@
 		}      
 		.shared_panel
 		{
-			border-bottom-style: solid;
-			border-width: 3px;
+			height: 80%;
 		}
 	}
 	.main_panel
@@ -137,10 +145,13 @@
 		text-align: center;
 	}
 	.right_sidebar
-	{ 
-		@include span-columns(1.8);
+	{
+		border-style: solid;
+		border-width: 2px; 
+		float: left;
+		width: 20%;
+		height: 100%;
 		text-align: center;
-		border-width: 3px;  
 		.fact_types_div
 		{
 			h5:nth-child(n)

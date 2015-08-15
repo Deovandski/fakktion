@@ -4,18 +4,4 @@
 
 @import "imports";
 
-// Rails side SCSS
-body.ember-application.forum.show main
-{
-	@include outer-container;
-	div:nth-child(3n)
-	{
-		@include omega;
-	}
-  p.error
-	{
-		color: $red;
-		font-size: 10px;
-	}
-}
 

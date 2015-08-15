@@ -1,5 +1,14 @@
+<h1>Forum</h1>
 <ul>
-  {{#each model as |post|}}
-    <li><button{{action "post" post}}>{{post.title}}</button></li>
-  {{/each}}
+    {{#each filteredPosts as |post|}}
+      <li>{{#link-to 'post' post}}{{post.title}}{{/link-to}}</li>
+    {{/each}}
 </ul>
+
+{{#if session.isAuthenticated}}
+	<li>{{#link-to 'posts.create'}}Create Post{{/link-to}}</li>
+{{else}}
+	<li>Please login to create a post</li>
+{{/if}}
+
+

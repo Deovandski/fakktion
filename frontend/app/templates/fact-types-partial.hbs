@@ -1,14 +1,20 @@
 {{#if displayFTP}}
 	<div class="fact_types_div">
-		<h5>Fact Types <button class="button_type2" {{action "setFTPV" false}}>Hide</button></h5>
+		<h5>Fact Types</h5>
 		<ul class="tag_listing">
 			{{#each model.factTypes as |factType|}}
 				<li><button class="button_type1" {{action "setFTID" factType}}>{{factType.name}}</button></li>
 			{{/each}}
 		</ul>
+		<div class="visibility_button_div">
+			<button class="button_type2_large" {{action "setFTPV" false}}>Hide</button>
+		</div>
 	</div>
 {{else}}
 	<div class="tag_listing_hidden">
-		<h5>Fact Types <button class="button_type2" {{action "setFTPV" true}}>Show</button></h5>
+		<h5>Fact Types</h5>
+		<div class="visibility_button_div">
+			<button class="button_type2_large" {{action "setFTPV" true}}>Show</button>
+		</div>
 	</div>
 {{/if}}

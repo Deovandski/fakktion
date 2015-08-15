@@ -42,6 +42,6 @@ input[type="submit"] {
   @include button_typeX;
 }
 
-
+---[Design Structure](app/assets/stylesheets/Readme.md):
 
 

@@ -1,6 +1,6 @@
 @import "imports";
 
-body.ember-application header 
+body.ember-application header
 {
 	@include clearfix;
 	background-color: $header-background-color;
@@ -18,14 +18,15 @@ body.ember-application header
 	{
 		display: inline-block;
 		float: left;
-		font-size: 25px;
+		font-size: 20px;
 		letter-spacing: 6px;
 		text-transform: uppercase;
 		a
 		{
 			color: $header-font-color;
 			display: inline-block;
-			padding: 13px 15px 8px 10px;
+			margin: 13px 17px;
+			padding: 5px 1px;
 			text-decoration: none;
 			i
 			{
