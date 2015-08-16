@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 	get '/about', to: 'forums#index'
 	get '/privacy_info', to: 'forums#index'
 	get '/legal_info', to: 'forums#index'
+	
 	# "Resource routes"
 	get '/posts', to: 'forums#index'
 	get '/posts/create', to: 'forums#index'
@@ -33,6 +34,7 @@ Rails.application.routes.draw do
 	get '/topic/:id', to: 'forums#index'
 	get '/categorie/:id', to: 'forums#index'
 	get '/user/:id', to: 'forums#index'
+	
 	# Resource routes without ids
 	get '/posts/:id/comments', to: 'forums#index'
 	get '/genres', to: 'forums#index'
@@ -41,6 +43,13 @@ Rails.application.routes.draw do
 	get '/topics', to: 'forums#index'
 	get '/categories', to: 'forums#index'
 	get '/users', to: 'forums#index'
+
+	# Assets Path
+	get '/assets/small_settings.png', to: 'forums#index'
+	get '/assets/Full_FakktionLogo.png', to: 'forums#index'
+	get '/assets/Medium_FakktionLogo.png', to: 'forums#index'
+	get '/assets/Small_FakktionLogo.png', to: 'forums#index'
+	get '/assets/UltraSmall_FakktionLogo.png', to: 'forums#index'
 	
 	devise_for :users, controllers: {sessions: 'sessions'}
 

@@ -1,5 +1,5 @@
 DONE items were written in order of when it was implemented. Each item does not mean a commit.
-Last Updated on 8/15 5:59AM
+Last Updated on 8/16 3:26PM
 
 DONE:
 
@@ -61,5 +61,7 @@ DONE:
 55. Index Page is now just a welcome page while posts.index became the new forum.
 56. Genre Manage button redirects to the genres.index for future development.
 57. Fixed error caused by null default values and fixed a possible exploit of a new user becoming admin or super user on users/create.
-
+58. 30% Complete the setup for all RESTful links for tags
+59. Rails Asset Pipeline is now working!
+60. Hide/shows buttons changed to match initial expectation (see research link on Readme.md)
 

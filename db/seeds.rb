@@ -169,10 +169,12 @@ end
 # TOPIC RELATED SEED
 Rails.logger.info 'Creating topics'
 if Topic.count == 0
-Topic.create!(name: 'Hatsune Miku')
+Topic.create!(name: 'hatsune miku')
+Topic.create!(name: 'megurine luka')
 Rails.logger.info 'Topics created'
 else
-Topic.create!(name: 'Hatsune Miku')
+Topic.create!(name: 'hatsune miku')
+Topic.create!(name: 'megurine luka')
 Rails.logger.info 'All current topics deleted and created again from seed file.'
 end
 

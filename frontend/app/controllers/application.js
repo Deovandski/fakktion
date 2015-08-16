@@ -9,6 +9,7 @@ GN: GenreName
 CN: CategoryName
 TN: Topicname
 FTN: FactTypeName
+PDN: PostingDateNaming
 ------------------
 GP: GenrePartial
 CP: CategoryPartial
@@ -31,14 +32,27 @@ export default Ember.Controller.extend
 	selectedCN: 'None',
 	selectedTN: 'None',
 	selectedFTN: 'None',
-	searchTopicByName: 'None',
+	selectedPDN: 'None',
+	topicInputText: '',
 	showGP: true,
 	showCP: true,
 	showFTP: true,
 	showPDP: true,
 	// Paths to show central Panel and Sidebars Panels:
-	centralPanelPaths: ["index", "posts.index", "posts.create", "posts.edit"],
-	sidebarsPanelPaths: ["index", "posts.index", "posts.create", "posts.edit"],
+	centralPanelPaths: ["index",
+	"posts.index", "posts.create", "posts.edit",
+	"genres.index", "genres.create", "genres.edit",
+	"topics.index", "topics.create", "topics.edit",
+	"factTypes.index", "factTypes.create", "factTypes.edit",
+	"categories.index", "categories.create", "categories.edit",
+	"postingDates.index", "postingDates.create", "postingDates.edit"],
+	sidebarsPanelPaths: ["index",
+	"posts.index", "posts.create", "posts.edit",
+	"genres.index", "genres.create", "genres.edit",
+	"topics.index", "topics.create", "topics.edit",
+	"factTypes.index", "factTypes.create", "factTypes.edit",
+	"categories.index", "categories.create", "categories.edit",
+	"postingDates.index", "postingDates.create", "postingDates.edit"],
 	// Central Panel and Sidebars Visibility Boolean Check
 	displayCentralPanel: Ember.computed('currentPath', function()
 	{
@@ -76,12 +90,31 @@ export default Ember.Controller.extend
 		else
 		{return false;}
 	}),
-	isTopicSelected: Ember.computed('selectedCID', function()
+	isTopicSelected: Ember.computed('selectedTID', function()
 	{
 		if(this.get('selectedTID') !== 0)
 		{return true;}
 		else
 		{return false;}
+	}),
+	topicStatus: Ember.computed('selectedTN', function()
+	{
+		if(this.get('selectedTN') === 'None')
+		{
+			return "Search or manage topics";
+		}
+		if(this.get('selectedTN') === 'Invalid')
+		{
+			return "Topic does not exist. Please create one";
+		}
+		if(this.get('selectedTN') === '')
+		{
+			return "Search or manage topics!";
+		}
+		else
+		{
+			return "Topic Selected";
+		}
 	}),
 	isPostDateSelected: function()
 	{
@@ -135,6 +168,26 @@ export default Ember.Controller.extend
 			this.set('selectedFTN', factType.get('name'));
 		},
 		setTID: function() 
+		{
+			if(this.get('topicInputText') !== "")
+			{	
+				var possibleTopic = this.model.get('topics').findBy('name', this.get('topicInputText').toLowerCase());
+				if(possibleTopic === undefined)
+				{
+					this.set('selectedTN', 'Invalid');
+				}
+				else
+				{
+					this.set('selectedTID', possibleTopic.id);
+					this.set('selectedTN', possibleTopic.name);
+				}
+			}
+			else
+			{
+				this.set('selectedTN', '');
+			}
+		},
+		setPD: function() 
 		{ 
 			//TODO
 		},
@@ -173,7 +226,8 @@ export default Ember.Controller.extend
 		},
 		clearTopic: function() 
 		{ 
-			//TODO
+			this.set('selectedTID', 0);
+			this.set('selectedTN', 'None');
 		},
 		clearPostDate: function() 
 		{ 

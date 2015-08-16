@@ -1,0 +1,12 @@
+<h1>Forum</h1>
+<ul>
+    {{#each filteredPosts as |post|}}
+      <li>{{#link-to 'post' post}}{{post.title}}{{/link-to}}</li>
+    {{/each}}
+</ul>
+
+{{#if session.isAuthenticated}}
+	<p class="inner_info_button">{{#link-to  'posts.create'}}Create Post{{/link-to}}</p>
+{{else}}
+	<p>Please login to create a post</p>
+{{/if}}

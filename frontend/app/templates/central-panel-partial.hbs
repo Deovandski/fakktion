@@ -36,20 +36,21 @@
 <div class="central_lower_panel">
 	<div class="topic_search">
 		{{#if isTopicSelected}}
-			<input type="text" value=searchTopicByName placeholder="Add Topic filter" disabled="false">
-			<button{{action "setTID"}}>Search</button>
+			{{input class="topic_search_text" placeholder=topicInputText disabled="true"}}
+			<div class="topic_search_input">
+				<button class="button_type2_large" {{action "clearTopic"}}>Clear</button>		
+			</div>
 		{{else}}
-			<input type="text" value=searchTopicByName placeholder="Add Topic filter" disabled="true">
+			{{input class="topic_search_text" value=topicInputText placeholder="Topic"}}
+			<div class="topic_search_input">
+				<button class="button_type2_large" {{action "setTID"}}>Search</button>		
+			</div>
 		{{/if}}
 	</div>
 	<div class="topic_tagging">
-		{{#if isTopicSelected}}
-			<label>
-				{{selectedTN}}
-				<button{{action "clearTopic"}}>X</button>
-			</label>
-		{{else}}
-			<label>Topic</label>
-		{{/if}}
+		<label>{{topicStatus}}</label>
+	</div>
+	<div class="topic_tagging_settings">
+		{{#link-to "topics.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}
 	</div>
 </div>

@@ -1,6 +1,7 @@
 @mixin button_type2_large($background-color: #39BDFF, $text-color: #000000)
 {
 	width: 100%;
+	height: 100%;
 	@include appearance(none);
 	background-color: $background-color;
 	border: 1px solid darken($background-color, 15%);

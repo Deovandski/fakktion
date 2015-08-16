@@ -1,11 +1,11 @@
 ﻿TODO items are written in order of importance.
-Last Updated on 8/15 5:54AM
+Last Updated on 8/16 3:22PM
 
 TODO:
 Update Delete command to use softDelete for posts
 Create raw moderation page for admins and superUser
 Create raw admin moderation page for superUser
-Complete the setup for all RESTful links for posts and tags
+Complete the setup for all RESTful links for posts 
 Live Topic and Post Date tags manipulation user story implementation
 Users able to create Posts from the current selected tags story implementation (Topic and Post Date missing)
 setup RESTful links for comments

@@ -25,28 +25,37 @@ body.ember-application header
 		display: inline-block;
 		float: left;
 		text-align: left;
-		font-size: 16px;
-		letter-spacing: 6px;
-		text-transform: uppercase;
-		a
+		.image_branding
 		{
-			color: $header-font-color;
-			display: inline-block;
+			float: left;
+		}
+		.text_branding
+		{
+			float: left;
+			font-size: 16px;
+			letter-spacing: 6px;
+			text-transform: uppercase;
 			margin: 13px 17px;
-			padding: 5px 1px;
-			text-decoration: none;
-			i
+			a
 			{
-				position: relative;
-				top: -2px;
-				@include transition(color 0.1s linear);
-			}
-			&:hover
-			{
-				color: lighten($header-font-color, 12%);
+				color: $header-font-color;
+				display: inline-block;
+				margin: 13px 17px;
+				padding: 5px 1px;
+				text-decoration: none;
 				i
 				{
-					color: lighten($base-accent-color, 12%);
+					position: relative;
+					top: -2px;
+					@include transition(color 0.1s linear);
+				}
+				&:hover
+				{
+					color: lighten($header-font-color, 12%);
+					i
+					{
+						color: lighten($base-accent-color, 12%);
+					}
 				}
 			}
 		}

@@ -76,6 +76,15 @@ Router.map(function()
 		this.route('create');
 	});
 
+	//Topic
+	this.resource('topics', function(){
+		this.resource('topics', { path:'/:_id' }, function()
+		{
+			this.route('edit');
+		});
+		this.route('create');
+	});
+	
 	// Footer related
 	this.route('footer');
 	this.route('about');

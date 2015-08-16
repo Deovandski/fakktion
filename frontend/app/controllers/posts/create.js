@@ -36,49 +36,49 @@ export default Ember.Controller.extend
 		if(this.get('title').length < 10)
 		{return "Too short";}
 		else
-		{return "MKay";}
+		{return "";}
 	}),
 	verifyText: Ember.computed('text', function()
 	{
 		if(this.get('text').length < 10)
 		{return "Too short";}
 		else
-		{return "MKay";}
+		{return "";}
 	}),
 	verifyFactLink: Ember.computed('factLink', function()
 	{
 		if(this.get('factLink').length < 4)
 		{return "Paste complete URL";}
 		else
-		{return "MKay";}
+		{return "";}
 	}),
 	verifyFictionLink: Ember.computed('fictionLink', function()
 	{
 		if(this.get('fictionLink').length < 4)
 		{return "Paste complete URL";}
 		else
-		{return "MKay";}
+		{return "";}
 	}),
 	verifyGenre: Ember.computed('genreID', function()
 	{
 		if(this.get('genreID') === 0)
 		{return "Please Select/Create Genre";}
 		else
-		{return "MKay";}
+		{return "";}
 	}),
 	verifyFactType: Ember.computed('factTypeID', function()
 	{
 		if(this.get('factTypeID') === 0)
 		{return "Please Select/Create Fact Type";}
 		else
-		{return "MKay";}
+		{return "";}
 	}),
 	verifyCategory: Ember.computed('categoryID', function()
 	{
 		if(this.get('categoryID') === 0)
 		{return "Please Select/Create Category";}
 		else
-		{return "MKay";}
+		{return "";}
 	}),
 	actions:
 	{
