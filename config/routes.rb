@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 	##   Redirect all routes to Ember.js   ##
 	
 	# "Static routes"
+	get '/login', to: 'forums#index'
 	get '/about', to: 'forums#index'
 	get '/privacy_info', to: 'forums#index'
 	get '/legal_info', to: 'forums#index'

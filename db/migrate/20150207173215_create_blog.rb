@@ -5,17 +5,17 @@ class CreateBlog < ActiveRecord::Migration
       t.string :display_name
       t.date :date_of_birth
       t.integer :gender
-      t.string :facebook_url
-      t.string :twitter_url
-      t.string :personal_message
-      t.string :webpage_url
-      t.boolean :is_banned
+      t.string :facebook_url, default: ""
+      t.string :twitter_url, default: ""
+      t.string :personal_message, default: ""
+      t.string :webpage_url, default: ""
+      t.boolean :is_banned, default: false
       t.date :is_banned_date
-      t.boolean :legal_terms_read
-      t.boolean :privacy_terms_read
-      t.boolean :is_super_user
-      t.boolean :is_admin
-      t.boolean :show_full_name
+      t.boolean :legal_terms_read, default: false
+      t.boolean :privacy_terms_read, default: false
+      t.boolean :is_super_user, default: false
+      t.boolean :is_admin, default: false
+      t.boolean :show_full_name, default: false
       t.timestamps null: false
     end
  

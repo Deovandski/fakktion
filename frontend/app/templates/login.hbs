@@ -1,10 +1,4 @@
-{{#if errorMessage}}
-<div class="alert alert-danger">
-	<p>
-		<strong>Login failed:</strong> <code>{{errorMessage}}</code>
-	</p>
-</div>
-{{/if}}
+{{!class="flash-alert" for future use}}
 
 <form {{action 'authenticate' on='submit'}}>
   <label for="identification">Login</label>

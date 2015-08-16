@@ -6,9 +6,7 @@
 </ul>
 
 {{#if session.isAuthenticated}}
-	<li>{{#link-to 'posts.create'}}Create Post{{/link-to}}</li>
+	<p class="inner_info_button">{{#link-to  'posts.create'}}Create Post{{/link-to}}</p>
 {{else}}
-	<li>Please login to create a post</li>
+	<p>Please login to create a post</p>
 {{/if}}
-
-

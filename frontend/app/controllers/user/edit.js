@@ -3,11 +3,13 @@ import moment from 'moment';
 
 export default Ember.Controller.extend
 ({
-	needs: ['application'],
+	currentPassword: "",
 	newPassword: "",
 	newPasswordConfirmation: "",
 	dateOfBirth: null,
 	clientSideValidationComplete: false,
+	showPassword: false,
+	showExtra: false,
 	verifyFullName: Ember.computed('model.full_name', function()
 	{
 		if(this.get('model.full_name').length < 1)
@@ -123,14 +125,43 @@ export default Ember.Controller.extend
 			}
 		}
 	}),
-	verifyNewPassword: Ember.computed('newPassword', function()
+	verifyCurrentPassword: Ember.computed('currentPassword', function()
+	{
+		if(this.get('currentPassword').length < 8)
+		{
+			if(this.get('currentPassword').length === 0)
+			{
+				this.set("clientSideValidationComplete",true);
+				return "";
+			}
+			else
+			{
+				this.set("clientSideValidationComplete",false);
+				return "Too Short";
+			}
+		}
+		else
+		{
+			this.set("clientSideValidationComplete",true);
+			return "";
+		}
+	}),
+	verifyNewPassword: Ember.computed('newPassword', 'currentPassword', function()
 	{
 		if(this.get('newPassword').length < 8)
 		{
 			if(this.get('newPassword').length === 0)
 			{
-				this.set("clientSideValidationComplete",true);
-				return "";
+				if(this.get('currentPassword').length !== 0)
+				{
+					this.set("clientSideValidationComplete",false);
+					return "Cannot be left empty!";
+				}
+				else
+				{
+					this.set("clientSideValidationComplete",true);
+					return "";
+				}
 			}
 			else
 			{
@@ -170,43 +201,68 @@ export default Ember.Controller.extend
 			return "";
 		}
 	}),
-	verifyFacebookURL: Ember.computed('model.facebookURL', function()
+	verifyFacebookURL: Ember.computed('model.facebook_url', function()
 	{
-		if(this.get('model.facebookURL').length < 4)
+		if(this.get('model.facebook_url') !== '')
 		{
-			this.set("clientSideValidationComplete",false);
-			return "Paste complete URL";
+			if(this.get('model.facebook_url').indexOf("facebook") !== -1)
+			{
+				this.set("clientSideValidationComplete", true);
+				return "";
+			}
+			else
+			{
+				this.set("clientSideValidationComplete", false);
+				return "Invalid Facebook URL";
+			}
 		}
 		else
 		{
-			this.set("clientSideValidationComplete",true);
-			return "";
+			this.set("clientSideValidationComplete", true);
+			return "https://www.facebook.com/example";
 		}
 	}),
-	verifyTwitterURL: Ember.computed('model.twitterURL', function()
+	verifyTwitterURL: Ember.computed('model.twitter_url', function()
 	{
-		if(this.get('model.twitterURL').length < 4)
+		if(this.get('model.twitter_url') !== '')
 		{
-			this.set("clientSideValidationComplete",false);
-			return "Paste complete URL";
+			if(this.get('model.twitter_url').indexOf("twitter") !== -1)
+			{
+				this.set("clientSideValidationComplete", true);
+				return "";
+			}
+			else
+			{
+				this.set("clientSideValidationComplete", false);
+				return "Invalid Twitter URL";
+			}
 		}
 		else
 		{
-			this.set("clientSideValidationComplete",true);
-			return "";
+			this.set("clientSideValidationComplete", true);
+			return "https://twitter.com/example";
 		}
 	}),
-	verifyWebpageURL: Ember.computed('model.webpageURL', function()
+	verifyWebpageURL: Ember.computed('model.webpage_url', function()
 	{
-		if(this.get('model.webpageURL').length < 4)
+		
+		if(this.get('model.webpage_url') !== '')
 		{
-			this.set("clientSideValidationComplete",false);
-			return "Paste complete URL";
+			if(this.get('model.webpage_url').length < 10)
+			{
+				this.set("clientSideValidationComplete", false);
+				return "Invalid URL";
+			}
+			else
+			{
+				this.set("clientSideValidationComplete", true);
+				return "";
+			}
 		}
 		else
 		{
 			this.set("clientSideValidationComplete",true);
-			return "";
+			return "http://www.example.com https://www.example.com";
 		}
 	}),
 	verifyShowFullName: Ember.computed('model.showFullName', function()
@@ -222,53 +278,51 @@ export default Ember.Controller.extend
 	}),
 	actions:
 	{
+		setShowPassword: function(password)
+		{
+			this.set('showPassword', password);
+		},
+		setExtraPassword: function(extra)
+		{
+			this.set('showExtra', extra);
+		},
 		update: function()
 		{
 			if(this.get('clientSideValidationComplete'))
 			{
-			var user = this.get('content');
-			//console.log(this.get('session.isAuthenticated'));
-			user.set('full_name', this.get('model.full_name'));
-			user.set('display_name', this.get('model.display_name'));
-			user.set('gender', this.get('model.gender'));
-			user.set('email', this.get('model.email'));
-			user.set('facebook_url', this.get('model.facebook_url'));
-			user.set('twitter_url', this.get('model.twitter_url'));
-			user.set('webpage_url', this.get('model.webpage_url'));
-			user.set('show_full_name', this.get('model.show_full_name'));
-			user.set('show_full_name', this.get('model.show_full_name'));
-			if(this.get('dateOfBirth') !== null && this.get('dateOfBirth') !== '')
-			{
-				user.set('date_of_birth', moment(this.get('dateOfBirth')).toDate());	
-			}
-			if(this.get('newPassword') !== null && this.get('newPassword') !== '')
-			{
-				user.set('password', this.get('newPassword'));	
-			}
-			else
-			{
-				user.set('password', "");
-			}
-			if(this.get('currentPassword') !== null && this.get('currentPassword') !== '')
-			{
-				user.set('current_password', this.get('currentPassword'));
-			}
-			else
-			{
-				user.set('current_password', "");
-			}
-			var controller = this;
-			user.save().then(function()
-			{
-				controller.transitionToRoute('user', user);	
-			}, function()
-			{
-				alert('failed to save user!');
-			});
+				var user = this.get('content');
+				if(this.get('dateOfBirth') !== null && this.get('dateOfBirth') !== '')
+				{
+					user.set('date_of_birth', moment(this.get('dateOfBirth')).toDate());	
+				}
+				if(this.get('newPassword') !== null && this.get('newPassword') !== '')
+				{
+					user.set('password', this.get('newPassword'));	
+				}
+				else
+				{
+					user.set('password', "");
+				}
+				if(this.get('currentPassword') !== null && this.get('currentPassword') !== '')
+				{
+					user.set('current_password', this.get('currentPassword'));
+				}
+				else
+				{
+					user.set('current_password', "");
+				}
+				var controller = this;
+				user.save().then(function()
+				{
+					controller.transitionToRoute('user', user);	
+				}, function()
+				{
+					alert('failed to save user!');
+				});
 			}
 			else
 			{
-				alert('Hold your horses! Fix any error before Updating...');
+				alert("(Client 402) Failed to save user... Check any warning messages (to the right of each textbox) otherwise contact support if you don't see any");
 			}
 		}
 	}

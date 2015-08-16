@@ -6,12 +6,38 @@
 
 // SCSS for Create Template
 
+.show_extra_form
+{
+	font-weight: bold;
+	border-left-style: solid; 
+	border-right-style: solid;
+	border-top-style: solid; 
+	border-bottom-style: solid;
+	border-width: 1px;
+}
+.show_extra_form
+{
+	font-weight: bold;
+	border-left-style: solid; 
+	border-right-style: solid;
+	border-top-style: solid; 
+	border-bottom-style: solid;
+	border-width: 1px;
+}
+.show_password_form
+{
+	font-weight: bold;
+	border-left-style: solid; 
+	border-right-style: solid;
+	border-top-style: solid; 
+	border-bottom-style: solid;
+	border-width: 1px;
+}
 // SCSS for Show Template
 
 .user_show
 {
 	width: 100%;
-	overflow: scroll;	
 	.user_show_left
 	{
 		width: 35%;
@@ -64,7 +90,8 @@
 				text-align: center;		
 				height: 100px;	
 				list-style-type:none;
-    			overflow: scroll;	
+    			overflow-y: scroll;
+    			overflow-x: hidden;
 			}
 		}
 		.comments_info_div
@@ -83,7 +110,8 @@
 				text-align: center;		
 				height: 100px;	
 				list-style-type:none;
-    			overflow: scroll;	
+    			overflow-y: scroll;
+    			overflow-x: hidden;
 			}
 		}
 		.links_info_div

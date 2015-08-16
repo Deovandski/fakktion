@@ -6,9 +6,14 @@ body.ember-application header
 	background-color: $header-background-color;
 	color: #fff;
 	font-family: 'Questrial', sans-serif;
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height: 50px;
 	.outer-container 
 	{
-		@include outer-container;
+		width: 100%;
 	}
 	a 
 	{
@@ -16,9 +21,11 @@ body.ember-application header
 	}
 	.branding
 	{
+		width:50%;
 		display: inline-block;
 		float: left;
-		font-size: 20px;
+		text-align: left;
+		font-size: 16px;
 		letter-spacing: 6px;
 		text-transform: uppercase;
 		a
@@ -47,7 +54,9 @@ body.ember-application header
 
 	nav
 	{
+		width:50%;
 		float: right;
+		text-align: right;
 	}
 	ul
 	{

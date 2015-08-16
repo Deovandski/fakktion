@@ -6,16 +6,15 @@ body.ember-application footer
 	border-top: 1px solid $base-border-color;
 	padding: 0.2em 0;
 	font-family: 'Questrial', sans-serif;
-	position:fixed;
+	position: fixed;
 	bottom:0;
 	left:0;
-	right:0;
-	height:50px;
+	height: 50px;
 	width:100%;
 	background-color: #F8F8F8;
 	.outer-container
 	{
-		@include outer-container;
+		width: 100%;
 	}
 	.branding
 	{

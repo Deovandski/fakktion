@@ -10,6 +10,14 @@ class Api::V1::UsersController < ApplicationController
 	end
 
 	def create
+		params[:user][:sign_in_count] = 0
+		params[:user][:webpage_url] = ""
+		params[:user][:is_banned] = false
+		params[:user][:facebook_url] = ""
+		params[:user][:twitter_url] = ""
+		params[:user][:is_admin] = false
+		params[:user][:is_super_user] = false
+		params[:user][:personal_message] = ""
 		respond_with :api, :v1, User.create(user_params)
 	end
 

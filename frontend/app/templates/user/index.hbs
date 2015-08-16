@@ -58,9 +58,21 @@
 		<div class="links_info_div">
 			<h4 class="inner_heading">Social Network Links</h4>
 			<label>Fakktion is not responsible for the contents or the destination of the links below.<br/> More information on Legal Info.</label><br/>
+			{{#if verifyFacebookURL}}
 			<a href="{{model.facebook_url}}" target="_blank">Facebook</a>
+			{{else}}
+				<label>(No Facebook Link)</label>
+			{{/if}}
+			{{#if verifyTwitterURL}}
 			<a href="{{model.twitter_url}}" target="_blank">Twitter</a>
-			<a href="{{model.twitter_url}}" target="_blank">Personal Page</a>
+			{{else}}
+				<label>(No Twitter Link)</label>
+			{{/if}}
+			{{#if verifyWebpageURL}}
+			<a href="{{model.webpage_url}}" target="_blank">Personal Page</a>
+			{{else}}
+				<label>(No Webpage Link)</label>
+			{{/if}}
 		</div>
 	</div>
 	

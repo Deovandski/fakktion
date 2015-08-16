@@ -2,8 +2,11 @@
 
 body.ember-application main
 {
-	height: 100%;
-	padding-bottom: 50px;
+    clear:both;
+    float:left;      
+    overflow:hidden;
+	padding: 50px 0 50px 0;
+	width: 100%;
 	fieldset
 	{
 		background-color: #fff;
@@ -140,8 +143,10 @@ body.ember-application main
 			height: 80%;
 		}
 	}
-	.main_panel
-	{ 
+	.body_panel
+	{
+		width: 100%;
+		height: 100%;
 		text-align: center;
 	}
 	.right_sidebar

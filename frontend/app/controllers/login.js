@@ -19,7 +19,7 @@ export default Ember.Controller.extend
 				window.history.go(-1);
 			}, function (error)
 			{
-				console.log(error);
+				alert(error.error.toString());
 			});
 		}
 	}

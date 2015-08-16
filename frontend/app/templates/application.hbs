@@ -14,20 +14,21 @@
 	{{else}}
 	
 	{{/if}}
-		{{#if displayCentralPanel}}
-			<div class="central">
-				<div class="central_panel">
-					{{partial 'central-panel'}}
-				</div>
-				<div class="shared_panel">
-					{{outlet}}
-				</div>
+	{{#if displayCentralPanel}}
+		<div class="central">
+			<div class="central_panel">
+				{{partial 'central-panel'}}
 			</div>
-		{{else}}
-			<div class="body_panel">
+			<div class="shared_panel">
+				{{outlet}}
+			</div>
+		</div>
+	{{else}}
+		<div class="body_panel">
 			{{outlet}}
-			</div>
-		{{/if}}
+		</div>
+	{{/if}}
+	
 	{{#if displaySidebars}}
 		<div class="right_sidebar">
 			<div class="fact_types_div">

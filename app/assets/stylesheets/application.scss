@@ -16,7 +16,18 @@
  
 @import "imports";
 
-html, body,body.ember-application, container {
+html
+{
 	height: 100%;
 	width: 100%;
+	body.ember-application
+	{
+		height: 100%;
+		width: 100%;
+		body.ember-view
+		{
+			height: 100%;
+			width: 100%;
+		}
+	}
 }

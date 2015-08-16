@@ -3,6 +3,37 @@ import moment from 'moment';
 
 export default Ember.Controller.extend
 ({
+	verifyFacebookURL: Ember.computed('model.facebook_url', function()
+	{
+		if(this.get('model.facebook_url') !== '')
+		{
+			if(this.get('model.facebook_url').indexOf("facebook") !== -1)
+			{return true;}
+			else
+			{return false;}
+		}
+		else
+		{return false;}
+	}),
+	verifyTwitterURL: Ember.computed('model.twitter_url', function()
+	{
+		if(this.get('model.twitter_url') !== '')
+		{
+			if(this.get('model.twitter_url').indexOf("twitter") !== -1)
+			{return true;}
+			else
+			{return false;}
+		}
+		else
+		{return false;}
+	}),
+	verifyWebpageURL: Ember.computed('model.webpage_url', function()
+	{
+		if(this.get('model.webpage_url') !== '')
+		{return true;}
+		else
+		{return false;}
+	}),
 	verifyPosts: Ember.computed('model.posts.length', function()
 	{
 		if(this.get('model.posts.length') === 0)

@@ -60,6 +60,6 @@ DONE:
 55. SCSS structure update for entire project and added new MixinsButtons.
 55. Index Page is now just a welcome page while posts.index became the new forum.
 56. Genre Manage button redirects to the genres.index for future development.
-
+57. Fixed error caused by null default values and fixed a possible exploit of a new user becoming admin or super user on users/create.
 
 

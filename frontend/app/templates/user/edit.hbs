@@ -30,22 +30,63 @@
 		{{input type="checkbox" checked=model.show_full_name}}
 		<label class="second_label">{{verifyShowFullName}}</label>
 	</div><br/>
-	<div class="show_password_form">
+
+	{{#if showPassword}}
 		<div class="input_block_typeUser">
-			<label class="first_label">Current Password:</label>
-			{{input type="password" value=currentPassword}}
-			<label class="second_label">{{verifyCurrentPassword}}</label>
+			<label class="first_label"><button class="button_type2_large" {{action "setShowPassword" false}}>Hide Password form</button></label>
 		</div><br/>
+		<div class="show_password_form">
+			<div class="input_block_typeUser">
+				<label class="first_label">Current Password:</label>
+				{{input type="password" value=currentPassword}}
+				<label class="second_label">{{verifyCurrentPassword}}</label>
+			</div><br/>
+			<div class="input_block_typeUser">
+				<label class="first_label">Password:</label>
+				{{input type="password" value=newPassword}}
+				<label class="second_label">{{verifyNewPassword}}</label>
+			</div><br/>
+			<div class="input_block_typeUser">
+				<label class="first_label">Password Confirmation:</label>
+				{{input type="password" value=newPasswordConfirmation}}
+				<label class="second_label">{{verifyNewPasswordConfirmation}}</label>
+			</div><br/>
+		</div>
+	{{else}}
 		<div class="input_block_typeUser">
-			<label class="first_label">Password:</label>
-			{{input type="password" value=newPassword}}
-			<label class="second_label">{{verifyNewPassword}}</label>
+			<label class="first_label"><button class="button_type2_large" {{action "setShowPassword" true}}>Show Password form</button></label>
 		</div><br/>
+	{{/if}}
+	{{#if showExtra}}
 		<div class="input_block_typeUser">
-			<label class="first_label">Password Confirmation:</label>
-			{{input type="password" value=newPasswordConfirmation}}
-			<label class="second_label">{{verifyNewPasswordConfirmation}}</label>
+			<label class="first_label"><button class="button_type2_large" {{action "setExtraPassword" false}}>Hide Extra form</button></label>
 		</div><br/>
-	</div>
+		<div class="show_extra_form">
+				<div class="input_block_typeUser">
+				<label class="first_label">Personal Page:</label>
+				{{input placeholder="Optional" value=model.personal_message}}
+			</div><br/>
+			<div class="input_block_typeUser">
+				<label class="first_label">Facebook URL:</label>
+				{{input placeholder="Optional" value=model.facebook_url}}
+				<label class="second_label">{{verifyFacebookURL}}</label>
+			</div><br/>
+			<div class="input_block_typeUser">
+				<label class="first_label">Twitter URL:</label>
+				{{input placeholder="Optional" value=model.twitter_url}}
+				<label class="second_label">{{verifyTwitterURL}}</label>
+			</div><br/>
+			<div class="input_block_typeUser">
+				<label class="first_label">Webpage URL:</label>
+				{{input placeholder="Optional" value=model.webpage_url}}
+				<label class="second_label">{{verifyWebpageURL}}</label>
+			</div><br/>
+		</div>
+	{{else}}
+		<div class="input_block_typeUser">
+			<label class="first_label"><button class="button_type2_large" {{action "setExtraPassword" true}}>Show Extra form</button></label>
+		</div><br/>
+	{{/if}}
 	<button class="button_type1" {{action "update"}}>Update User</button>
+	
 </form>
