@@ -28,6 +28,6 @@ class Api::V1::GenresController < ApplicationController
 	end
 
 	def genre_params
-		params.require(:genre).permit(:name, :usage_count) # only allow these for now
+		params.require(:genre).permit(:name, :posts_count, :eligibility_counter) # only allow these for now
 	end
 end

@@ -1,22 +1,26 @@
 class CreateTags < ActiveRecord::Migration
     create_table :categories do |t|
-      t.string :name
-      t.integer  :usage_count, default: 0
+      t.string	 :name
+      t.integer  :eligibility_counter, default: 0
+      t.integer  :posts_count, default: 0
     end
   
     create_table :genres do |t|
-      t.string :name
-      t.integer  :usage_count, default: 0
+      t.string	 :name
+      t.integer  :eligibility_counter, default: 0
+      t.integer  :posts_count, default: 0
     end
     
     create_table :topics do |t|
-      t.string :name
-      t.integer  :usage_count, default: 0
+      t.string	 :name
+      t.integer  :eligibility_counter, default: 0
+      t.integer  :posts_count, default: 0
     end
     
     create_table :fact_types do |t|
-      t.string :name
-      t.integer  :usage_count, default: 0
+      t.string	 :name
+      t.integer  :eligibility_counter, default: 0
+      t.integer  :posts_count, default: 0
     end
   
   def down

@@ -61,7 +61,9 @@ DONE:
 55. Index Page is now just a welcome page while posts.index became the new forum.
 56. Genre Manage button redirects to the genres.index for future development.
 57. Fixed error caused by null default values and fixed a possible exploit of a new user becoming admin or super user on users/create.
-58. 30% Complete the setup for all RESTful links for tags
+58. 40% Complete the setup for all RESTful links for tags
 59. Rails Asset Pipeline is now working!
 60. Hide/shows buttons changed to match initial expectation (see research link on Readme.md)
+61. Rails counter_cache has been set accross the application.
+62. Search by Topic name has been implemented.
 

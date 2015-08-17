@@ -3,14 +3,17 @@ class CreateBlog < ActiveRecord::Migration
     create_table :users do |t|
       t.string :full_name
       t.string :display_name
-      t.date :date_of_birth
-      t.integer :gender
       t.string :facebook_url, default: ""
       t.string :twitter_url, default: ""
       t.string :personal_message, default: ""
       t.string :webpage_url, default: ""
-      t.boolean :is_banned, default: false
+      t.date :date_of_birth
       t.date :is_banned_date
+      t.integer :gender
+	  t.integer  :admin_messages_count, default: 0
+	  t.integer  :posts_count, default: 0
+	  t.integer  :comments_count, default: 0
+      t.boolean :is_banned, default: false
       t.boolean :legal_terms_read, default: false
       t.boolean :privacy_terms_read, default: false
       t.boolean :is_super_user, default: false
@@ -20,11 +23,11 @@ class CreateBlog < ActiveRecord::Migration
     end
  
     create_table :comments do |t|
-      t.boolean :soft_delete
-      t.date :soft_delete_date
       t.string :text
-      t.boolean :hidden
+      t.date :soft_delete_date
       t.integer :empathy_level
+      t.boolean :soft_delete
+      t.boolean :hidden
       t.timestamps null: false
     end
  
@@ -32,12 +35,13 @@ class CreateBlog < ActiveRecord::Migration
       t.string :fact_link
       t.string :fiction_link
       t.string :title
-      t.integer :importance
       t.string :text
-      t.boolean :soft_delete
       t.date :soft_delete_date
-      t.boolean :hidden
+      t.integer :importance
+	  t.integer  :comments_count, default: 0
       t.integer  :views_count, default: 0
+      t.boolean :soft_delete
+      t.boolean :hidden
       t.timestamps null: false
     end
     

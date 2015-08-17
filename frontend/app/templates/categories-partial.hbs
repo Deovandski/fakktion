@@ -3,7 +3,7 @@
 		<h5>Categories {{#link-to "categories.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
 		<ul class="tag_listing">
 			{{#each model.categories as |category|}}
-				<li><button class="button_type1" {{action "setCID" category}}>{{category.name}}</button></li>
+				<li><button class="button_type1" {{action "setCID" category}}>{{category.name}}</button>  ({{category.posts_count}})</li>
 			{{/each}}
 		</ul>
 		<div class="visibility_button_div">

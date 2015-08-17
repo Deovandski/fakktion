@@ -1,4 +1,4 @@
-import Ember from "ember";
+import Ember from 'ember';
 /* Abbreviations:
 GID: Genre_id
 CID: category_id
@@ -39,20 +39,20 @@ export default Ember.Controller.extend
 	showFTP: true,
 	showPDP: true,
 	// Paths to show central Panel and Sidebars Panels:
-	centralPanelPaths: ["index",
-	"posts.index", "posts.create", "posts.edit",
-	"genres.index", "genres.create", "genres.edit",
-	"topics.index", "topics.create", "topics.edit",
-	"factTypes.index", "factTypes.create", "factTypes.edit",
-	"categories.index", "categories.create", "categories.edit",
-	"postingDates.index", "postingDates.create", "postingDates.edit"],
-	sidebarsPanelPaths: ["index",
-	"posts.index", "posts.create", "posts.edit",
-	"genres.index", "genres.create", "genres.edit",
-	"topics.index", "topics.create", "topics.edit",
-	"factTypes.index", "factTypes.create", "factTypes.edit",
-	"categories.index", "categories.create", "categories.edit",
-	"postingDates.index", "postingDates.create", "postingDates.edit"],
+	centralPanelPaths: ['index',
+	'posts.index', 'posts.create', 'posts.edit',
+	'genres.index', 'genres.create', 'genres.edit',
+	'topics.index', 'topics.create', 'topics.edit',
+	'factTypes.index', 'factTypes.create', 'factTypes.edit',
+	'categories.index', 'categories.create', 'categories.edit',
+	'postingDates.index', 'postingDates.create', 'postingDates.edit'],
+	sidebarsPanelPaths: ['index',
+	'posts.index', 'posts.create', 'posts.edit',
+	'genres.index', 'genres.create', 'genres.edit',
+	'topics.index', 'topics.create', 'topics.edit',
+	'factTypes.index', 'factTypes.create', 'factTypes.edit',
+	'categories.index', 'categories.create', 'categories.edit',
+	'postingDates.index', 'postingDates.create', 'postingDates.edit'],
 	// Central Panel and Sidebars Visibility Boolean Check
 	displayCentralPanel: Ember.computed('currentPath', function()
 	{
@@ -101,19 +101,19 @@ export default Ember.Controller.extend
 	{
 		if(this.get('selectedTN') === 'None')
 		{
-			return "Search or manage topics";
+			return 'Search or manage topics';
 		}
 		if(this.get('selectedTN') === 'Invalid')
 		{
-			return "Topic does not exist. Please create one";
+			return 'Topic does not exist. Please create one';
 		}
 		if(this.get('selectedTN') === '')
 		{
-			return "Search or manage topics!";
+			return 'Search or manage topics!';
 		}
 		else
 		{
-			return "Topic Selected";
+			return 'Topic is selected!';
 		}
 	}),
 	isPostDateSelected: function()
@@ -169,22 +169,24 @@ export default Ember.Controller.extend
 		},
 		setTID: function() 
 		{
-			if(this.get('topicInputText') !== "")
+			if(this.get('topicInputText') !== '')
 			{	
 				var possibleTopic = this.model.get('topics').findBy('name', this.get('topicInputText').toLowerCase());
 				if(possibleTopic === undefined)
 				{
 					this.set('selectedTN', 'Invalid');
+					this.set('selectedTID', 0);
 				}
 				else
-				{
+				{	
 					this.set('selectedTID', possibleTopic.id);
-					this.set('selectedTN', possibleTopic.name);
+					this.set('selectedTN', possibleTopic.get('name'));
 				}
 			}
 			else
 			{
 				this.set('selectedTN', '');
+				this.set('selectedTID', 0);
 			}
 		},
 		setPD: function() 
@@ -236,7 +238,7 @@ export default Ember.Controller.extend
 		//Logout method
 		invalidateSession: function()
 		{
-			var shouldInvalidate = window.confirm("Really want to Logout? You will be returned to the homepage if you do.");
+			var shouldInvalidate = window.confirm('Really want to Logout? You will be returned to the homepage if you do.');
 			if(shouldInvalidate)
 			{
 				this.get('session').invalidate();

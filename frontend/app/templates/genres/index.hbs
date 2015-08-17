@@ -1,5 +1,6 @@
-<ul>
-  {{#each model.genres as |genre|}}
-    <li><button{{action "setGID" genre}}>{{genre.name}}</button></li>
+<h5>Genres Tag Management</h5>
+<ul class="tag_listing">
+  {{#each model as |genre|}}
+    <li><button class="button_type1" {{action "setGID" genre}}>{{genre.name}}</button></li>
   {{/each}}
 </ul>

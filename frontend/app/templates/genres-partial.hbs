@@ -3,7 +3,7 @@
 		<h5>Genres {{#link-to "genres.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
 		<ul class="tag_listing">
 			{{#each model.genres as |genre|}}
-				<li><button class="button_type1" {{action "setGID" genre}}>{{genre.name}}</button></li>
+				<li><button class="button_type1" {{action "setGID" genre}}>{{genre.name}}</button>  ({{genre.posts_count}})</li>
 			{{/each}}
 		</ul>
 		<div class="visibility_button_div">

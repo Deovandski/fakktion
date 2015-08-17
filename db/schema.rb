@@ -25,15 +25,16 @@ ActiveRecord::Schema.define(version: 20150628051759) do
 
   create_table "categories", force: :cascade do |t|
     t.string  "name"
-    t.integer "usage_count", default: 0
+    t.integer "eligibility_counter", default: 0
+    t.integer "posts_count",         default: 0
   end
 
   create_table "comments", force: :cascade do |t|
-    t.boolean  "soft_delete"
-    t.date     "soft_delete_date"
     t.string   "text"
-    t.boolean  "hidden"
+    t.date     "soft_delete_date"
     t.integer  "empathy_level"
+    t.boolean  "soft_delete"
+    t.boolean  "hidden"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.integer  "post_id"
@@ -45,24 +46,27 @@ ActiveRecord::Schema.define(version: 20150628051759) do
 
   create_table "fact_types", force: :cascade do |t|
     t.string  "name"
-    t.integer "usage_count", default: 0
+    t.integer "eligibility_counter", default: 0
+    t.integer "posts_count",         default: 0
   end
 
   create_table "genres", force: :cascade do |t|
     t.string  "name"
-    t.integer "usage_count", default: 0
+    t.integer "eligibility_counter", default: 0
+    t.integer "posts_count",         default: 0
   end
 
   create_table "posts", force: :cascade do |t|
     t.string   "fact_link"
     t.string   "fiction_link"
     t.string   "title"
-    t.integer  "importance"
     t.string   "text"
-    t.boolean  "soft_delete"
     t.date     "soft_delete_date"
-    t.boolean  "hidden"
+    t.integer  "importance"
+    t.integer  "comments_count",   default: 0
     t.integer  "views_count",      default: 0
+    t.boolean  "soft_delete"
+    t.boolean  "hidden"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.integer  "user_id"
@@ -80,20 +84,24 @@ ActiveRecord::Schema.define(version: 20150628051759) do
 
   create_table "topics", force: :cascade do |t|
     t.string  "name"
-    t.integer "usage_count", default: 0
+    t.integer "eligibility_counter", default: 0
+    t.integer "posts_count",         default: 0
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "full_name"
     t.string   "display_name"
-    t.date     "date_of_birth"
-    t.integer  "gender"
     t.string   "facebook_url",           default: ""
     t.string   "twitter_url",            default: ""
     t.string   "personal_message",       default: ""
     t.string   "webpage_url",            default: ""
-    t.boolean  "is_banned",              default: false
+    t.date     "date_of_birth"
     t.date     "is_banned_date"
+    t.integer  "gender"
+    t.integer  "admin_messages_count",   default: 0
+    t.integer  "posts_count",            default: 0
+    t.integer  "comments_count",         default: 0
+    t.boolean  "is_banned",              default: false
     t.boolean  "legal_terms_read",       default: false
     t.boolean  "privacy_terms_read",     default: false
     t.boolean  "is_super_user",          default: false

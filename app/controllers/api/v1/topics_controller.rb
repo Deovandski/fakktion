@@ -28,6 +28,6 @@ class Api::V1::TopicsController < ApplicationController
 	end
 
 	def topic_params
-		params.require(:topic).permit(:name, :usage_count) # only allow these for now
+		params.require(:topic).permit(:name, :posts_count, :eligibility_counter) # only allow these for now
 	end
 end

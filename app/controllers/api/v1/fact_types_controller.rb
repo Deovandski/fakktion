@@ -28,6 +28,6 @@ class Api::V1::FactTypesController < ApplicationController
 	end
 
 	def factType_params
-		params.require(:factType).permit(:name, :usage_count) # only allow these for now
+		params.require(:factType).permit(:name, :posts_count, :eligibility_counter) # only allow these for now
 	end
 end

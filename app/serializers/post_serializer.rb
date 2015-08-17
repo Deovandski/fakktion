@@ -1,4 +1,5 @@
 class PostSerializer < ActiveModel::Serializer
+	has_many :comments
 	attributes  :id,
 				:user_id,
 				:genre_id,
@@ -13,5 +14,6 @@ class PostSerializer < ActiveModel::Serializer
 				:soft_delete_date,
 				:hidden,
 				:views_count,
-				:text;
+				:text,
+				:comments_count
 end

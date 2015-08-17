@@ -2,6 +2,7 @@ class TopicSerializer < ActiveModel::Serializer
 	has_many :posts
 	attributes  :id,
 				:name,
-				:usage_count
+				:eligibility_counter,
+				:posts_count
 end
 

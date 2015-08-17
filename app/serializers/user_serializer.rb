@@ -1,5 +1,8 @@
 class UserSerializer < ActiveModel::Serializer
-	has_many :posts, :comments
+	has_many	:posts,
+				:comments,
+				:admin_messages
+				
 	attributes  :id,
 				:full_name,
 				:display_name,
@@ -22,5 +25,8 @@ class UserSerializer < ActiveModel::Serializer
 				:last_sign_in_at,
 				:created_at,
 				:updated_at,
-				:show_full_name
+				:show_full_name,
+				:posts_count,
+				:admin_messages_count,
+				:comments_count
 end

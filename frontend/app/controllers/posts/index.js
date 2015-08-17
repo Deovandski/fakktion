@@ -6,69 +6,109 @@ export default Ember.Controller.extend
 	genreID: 0,
 	factTypeID: 0,
 	categoryID: 0, 
-	//For Future Use when SearchByTopic is implemented// daFilter: 'blue',
-	//filtered: function(){
-	//return this.model.get('posts').FilterBy('color', this.get('daFilter'));
-	//}.property('model.@each.color', 'daFilter')
-	filteredPosts: Ember.computed('controllers.application.selectedGID', 'controllers.application.selectedCID', 'controllers.application.selectedFTID', function()
+	topicID: 0, 
+	filteredPosts: Ember.computed('controllers.application.selectedGID', 'controllers.application.selectedCID', 'controllers.application.selectedFTID', 'controllers.application.selectedTID',function()
 	{
-		//controllers DEBUG console.log(this.get('controllers'));
 		//Get variables from ApplicationController
 		this.set('genreID', this.get('controllers.application.selectedGID'));
-		this.set('categoryID', this.get('controllers.application.selectedCID'));
 		this.set('factTypeID', this.get('controllers.application.selectedFTID'));
-		/*
+		this.set('categoryID', this.get('controllers.application.selectedCID'));
+		this.set('topicID', this.get('controllers.application.selectedTID'));
+		
 		console.log('Variables Debug: ');
 		console.log('genreID DEBUG: ' + this.get('genreID'));
 		console.log('factTypeID DEBUG: ' + this.get('factTypeID'));
 		console.log('categoryID DEBUG: ' + this.get('categoryID'));
+		console.log('topicID DEBUG: ' + this.get('topicID'));
 		console.log('Filter called');
-		*/
-		//// MAIN FILTER
-		// ALL NOT SELECTED
-		if(this.get('genreID') === 0 && this.get('factTypeID') === 0 && this.get('categoryID') === 0)
+		
+		// RETURN ALL POSTS
+		// 0000
+		if(this.get('genreID') === 0 && this.get('factTypeID') === 0 && this.get('categoryID') === 0 && this.get('topicID') === 0)
 		{
-			console.log('Result: Return all Posts');
 			return this.model.get('posts');
-		}  
+		}
+		
      	// INDIVIDUAL SELECTION
-		else if(this.get('genreID') !== 0 && this.get('factTypeID') === 0 && this.get('categoryID') === 0)
+		// 1000
+		else if(this.get('genreID') !== 0 && this.get('factTypeID') === 0 && this.get('categoryID') === 0 && this.get('topicID') === 0)
 		{
-			console.log('Result: Return all Posts by filtering Genre');
 			return this.model.get('posts').filterBy('genre_id', parseInt(this.get('genreID')));
      	}
-  		else if(this.get('genreID') === 0 && this.get('factTypeID') !== 0 && this.get('categoryID') === 0)
+		// 0100
+  		else if(this.get('genreID') === 0 && this.get('factTypeID') !== 0 && this.get('categoryID') === 0 && this.get('topicID') === 0)
 	  	{
-			console.log('Result: Return all Posts by filtering FactType');
 			return this.model.get('posts').filterBy('fact_type_id', parseInt(this.get('factTypeID')));
 	  	}
-     	else if(this.get('genreID') === 0 && this.get('factTypeID') === 0 && this.get('categoryID') !== 0)
+		// 0010
+     	else if(this.get('genreID') === 0 && this.get('factTypeID') === 0 && this.get('categoryID') !== 0 && this.get('topicID') === 0)
      	{
-			console.log('Result: Return all Posts by filtering Categorie');
 			return this.model.get('posts').filterBy('categorie_id', parseInt(this.get('categoryID')));
      	}
-     	// TWO AT A TIME SELECTION
-     	else if(this.get('genreID') !== 0 && this.get('factTypeID') !== 0 && this.get('categoryID') === 0)
+		// 0001
+     	else if(this.get('genreID') === 0 && this.get('factTypeID') === 0 && this.get('categoryID') === 0 && this.get('topicID') !== 0)
      	{
-			console.log('Result: Return all Posts by filtering Genre and FactType');
+			return this.model.get('posts').filterBy('topic_id', parseInt(this.get('topicID')));
+     	}
+		
+     	// TWO AT A TIME SELECTION
+		// 1100
+     	else if(this.get('genreID') !== 0 && this.get('factTypeID') !== 0 && this.get('categoryID') === 0 && this.get('topicID') === 0)
+     	{
 			return this.model.get('posts').filterBy('genre_id', parseInt(this.get('genreID'))).filterBy('fact_type_id', parseInt(this.get('factTypeID')));
      	}
-     	else if(this.get('genreID') === 0 && this.get('factTypeID') !== 0 && this.get('categoryID') !== 0)
+		// 0110
+     	else if(this.get('genreID') === 0 && this.get('factTypeID') !== 0 && this.get('categoryID') !== 0 && this.get('topicID') === 0)
      	{
-			console.log('Result: Return all Posts by filtering FactType and Categorie');
 			return this.model.get('posts').filterBy('fact_type_id', parseInt(this.get('factTypeID'))).filterBy('categorie_id', parseInt(this.get('categoryID')));
      	}
-     	else if(this.get('genreID') !== 0 && this.get('factTypeID') === 0 && this.get('categoryID') !== 0)
+		// 0011
+     	else if(this.get('genreID') === 0 && this.get('factTypeID') === 0 && this.get('categoryID') !== 0 && this.get('topicID') !== 0)
      	{
-			console.log('Result: Return all Posts by filtering Genre and Categorie');
-			return this.model.get('posts').filterBy('genre_id', parseInt(this.get('genreID'))).filterBy('categorie_id', parseInt(this.get('categoryID')));
+			return this.model.get('posts').filterBy('categorie_id', parseInt(this.get('categoryID'))).filterBy('topic_id', parseInt(this.get('topicID')));
      	}
+		// 1010
+     	else if(this.get('genreID') !== 0 && this.get('factTypeID') === 0 && this.get('categoryID') !== 0 && this.get('topicID') === 0)
+     	{
+			return this.model.get('posts').filterBy('genre_id', parseInt(this.get('genreID'))).filterBy('fact_type_id', parseInt(this.get('factTypeID')));
+     	}
+		// 0101
+     	else if(this.get('genreID') === 0 && this.get('factTypeID') !== 0 && this.get('categoryID') === 0 && this.get('topicID') !== 0)
+     	{
+			return this.model.get('posts').filterBy('fact_type_id', parseInt(this.get('factTypeID'))).filterBy('topic_id', parseInt(this.get('topicID')));
+     	}
+		// 1001
+     	else if(this.get('genreID') !== 0 && this.get('factTypeID') === 0 && this.get('categoryID') === 0 && this.get('topicID') !== 0)
+     	{
+			return this.model.get('posts').filterBy('genre_id', parseInt(this.get('genreID'))).filterBy('topic_id', parseInt(this.get('topicID')));
+     	}
+		
      	// THREE AT A TIME SELECTION
-     	// TODO when postingDate is refactored.
+
+		// 0111
+     	else if(this.get('genreID') === 0 && this.get('factTypeID') !== 0 && this.get('categoryID') !== 0 && this.get('topicID') !== 0)
+     	{
+			return this.model.get('posts').filterBy('fact_type_id', parseInt(this.get('factTypeID'))).filterBy('categorie_id', parseInt(this.get('categoryID'))).filterBy('topic_id', parseInt(this.get('topicID')));
+     	}
+		// 1011
+     	else if(this.get('genreID') !== 0 && this.get('factTypeID') === 0 && this.get('categoryID') !== 0 && this.get('topicID') !== 0)
+     	{
+			return this.model.get('posts').filterBy('genre_id', parseInt(this.get('genreID'))).filterBy('categorie_id', parseInt(this.get('categoryID'))).filterBy('topic_id', parseInt(this.get('topicID')));
+     	}
+		// 1101
+     	else if(this.get('genreID') !== 0 && this.get('factTypeID') !== 0 && this.get('categoryID') === 0 && this.get('topicID') !== 0)
+     	{
+			return this.model.get('posts').filterBy('genre_id', parseInt(this.get('genreID'))).filterBy('fact_type_id', parseInt(this.get('factTypeID'))).filterBy('topic_id', parseInt(this.get('topicID')));
+     	}	
+		// 1110
+     	else if(this.get('genreID') !== 0 && this.get('factTypeID') !== 0 && this.get('categoryID') !== 0 && this.get('topicID') === 0)
+     	{
+			return this.model.get('posts').filterBy('genre_id', parseInt(this.get('genreID'))).filterBy('fact_type_id', parseInt(this.get('factTypeID'))).filterBy('categorie_id', parseInt(this.get('categoryID')));
+     	}
+		// 1111	
 		else
 		{
-			console.log('Result: Return all Posts by filtering Genre, FactType and Categorie');
-			return this.model.get('posts').filterBy('genre_id', parseInt(this.get('genreID'))).filterBy('fact_type_id', parseInt(this.get('factTypeID'))).filterBy('categorie_id', parseInt(this.get('categoryID')));
+			return this.model.get('posts').filterBy('genre_id', parseInt(this.get('genreID'))).filterBy('fact_type_id', parseInt(this.get('factTypeID'))).filterBy('categorie_id', parseInt(this.get('categoryID'))).filterBy('topic_id', parseInt(this.get('topicID')));
 		}
 	})
 });

@@ -16,4 +16,5 @@ export default DS.Model.extend
 	hidden: DS.attr ('boolean'),
 	views_count: DS.attr ('number'),
 	text: DS.attr ('string'),
+	comments_count: DS.attr ('number')
 });

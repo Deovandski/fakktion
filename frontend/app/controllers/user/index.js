@@ -34,16 +34,16 @@ export default Ember.Controller.extend
 		else
 		{return false;}
 	}),
-	verifyPosts: Ember.computed('model.posts.length', function()
+	verifyPosts: Ember.computed('model.posts_count', function()
 	{
-		if(this.get('model.posts.length') === 0)
+		if(this.get('model.posts_count') === 0)
 		{return false;}
 		else
 		{return true;}
 	}),
-	verifyComments: Ember.computed('model.comments.length', function()
+	verifyComments: Ember.computed('model.comments_count', function()
 	{
-		if(this.get('model.comments.length') === 0)
+		if(this.get('model.comments_count') === 0)
 		{return false;}
 		else
 		{return true;}

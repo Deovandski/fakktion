@@ -126,6 +126,7 @@ Categorie.create!(name: 'V-W-X')
 Categorie.create!(name: 'Y-Z-?')
 Rails.logger.info 'Categories created'
 else
+Categorie.delete_all
 Categorie.create!(name: 'A-B-C')
 Categorie.create!(name: 'D-E-F')
 Categorie.create!(name: 'G-H-I')
@@ -146,6 +147,7 @@ FactType.create!(name: 'Technology')
 FactType.create!(name: 'International')
 Rails.logger.info 'Fact types created'
 else
+FactType.delete_all
 FactType.create!(name: 'Business')
 FactType.create!(name: 'Technology')
 FactType.create!(name: 'International')
@@ -160,6 +162,7 @@ Genre.create!(name: 'Novel')
 Genre.create!(name: 'Movie')
 Rails.logger.info 'Genres created'
 else
+Genre.delete_all
 Genre.create!(name: 'Song')
 Genre.create!(name: 'Novel')
 Genre.create!(name: 'Movie')
@@ -173,6 +176,7 @@ Topic.create!(name: 'hatsune miku')
 Topic.create!(name: 'megurine luka')
 Rails.logger.info 'Topics created'
 else
+Topic.delete_all
 Topic.create!(name: 'hatsune miku')
 Topic.create!(name: 'megurine luka')
 Rails.logger.info 'All current topics deleted and created again from seed file.'
@@ -232,7 +236,7 @@ Post.create!(fact_link: 'test fact link',
 			title: 'The concept of reality behind Hatsune Miku',
 			soft_delete: false,
 			soft_delete_date: nil,
-			topic_id: 0,
+			topic_id: 1,
 			user_id: 0,
 			categorie_id: 2)
 Post.create!(fact_link: 'test fact link',
