@@ -1,19 +1,33 @@
 {{#if displayFTP}}
-	<div class="fact_types_div">
-		<h5>Fact Types {{#link-to "factTypes.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
-		<ul class="tag_listing">
-			{{#each model.factTypes as |factType|}}
-				<li><button class="button_type1" {{action "setFTID" factType}}>{{factType.name}}</button>  ({{factType.posts_count}})</li>
-			{{/each}}
-		</ul>
-		<div class="visibility_button_div">
-			<button class="button_type2_large" {{action "setFTPV" false}}>Hide</button>
+	{{#if displayPDP}}
+		<div class="fact_types_div_type_dual">
+			<h5 class="tag_h5">Fact Types {{#link-to "factTypes.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
+			<ul class="tag_listing">
+				{{#each model.factTypes as |factType|}}
+					<li><button class="button_type1" {{action "setFTID" factType}}>{{factType.name}}</button>  ({{factType.posts_count}})</li>
+				{{/each}}
+			</ul>
+			<div class="visibility_button_div_hide">
+				<button class="button_type2_large" {{action "setFTPV" false}}>Hide</button>
+			</div>
 		</div>
-	</div>
+	{{else}}
+		<div class="fact_types_div_type_solo">
+			<h5 class="tag_h5">Fact Types {{#link-to "factTypes.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
+			<ul class="tag_listing">
+				{{#each model.factTypes as |factType|}}
+					<li><button class="button_type1" {{action "setFTID" factType}}>{{factType.name}}</button>  ({{factType.posts_count}})</li>
+				{{/each}}
+			</ul>
+			<div class="visibility_button_div_hide">
+				<button class="button_type2_large" {{action "setFTPV" false}}>Hide</button>
+			</div>
+		</div>
+	{{/if}}
 {{else}}
 	<div class="tag_listing_hidden">
-		<h5>Fact Types {{#link-to "factTypes.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
-		<div class="visibility_button_div">
+		<h5 class="tag_h5">Fact Types {{#link-to "factTypes.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
+		<div class="visibility_button_div_show">
 			<button class="button_type2_large" {{action "setFTPV" true}}>Show</button>
 		</div>
 	</div>

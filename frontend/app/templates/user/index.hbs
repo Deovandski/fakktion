@@ -1,6 +1,5 @@
-<h2 class="h2_top">User Page</h2>
-
 <div class="user_show">
+	<h2 class="h2_top">User Page</h2>
 	<div class="user_show_left">
 		<div class="basic_info_div">
 			<h4 class="inner_heading">Basic Information</h4>
@@ -17,7 +16,7 @@
 			<p><label class="inner_label">Gender:</label>  {{model.gender}}</p>
 			<p><label class="inner_label">Age:</label>  {{ageDate}}</p>
 			<p><label class="inner_label">About Me:</label></p>
-			<p><textarea readonly=true>{{model.personal_message}}</textarea></p>
+			<p><label class="inner_label_message">{{model.personal_message}}</label></p>
 			<p><label class="inner_label">Number of Posts:</label>  {{model.posts.length}}</p>
 			<p><label class="inner_label">Number of Comments:</label>  {{model.comments.length}}</p>
 			<p><label class="inner_label">Profile Created on:</label>  {{createdDate}}</p>
@@ -25,10 +24,12 @@
 			{{#if model.is_admin}}
 				<p><label class="inner_label">User is an admin!</label></p>
 			{{/if}}
-			{{#if isOwner}}
-				<p class="inner_edit_info">{{#link-to 'user.edit' }}Edit Information{{/link-to}}</p>
-			{{/if}}
 		</div>
+			{{#if isOwner}}
+			<p class="inner_edit_info">{{#link-to 'user.edit' }}Edit Information{{/link-to}}</p>
+			{{else}}
+			<p class="inner_edit_info">Fakktion</p>
+			{{/if}}
 	</div>
 	<div class="user_show_right">
 		<div class="posts_info_div">

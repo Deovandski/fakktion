@@ -1,19 +1,33 @@
 {{#if displayGP}}
-	<div class="genres_div">
-		<h5>Genres {{#link-to "genres.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
-		<ul class="tag_listing">
-			{{#each model.genres as |genre|}}
-				<li><button class="button_type1" {{action "setGID" genre}}>{{genre.name}}</button>  ({{genre.posts_count}})</li>
-			{{/each}}
-		</ul>
-		<div class="visibility_button_div">
-			<button class="button_type2_large" {{action "setGPV" false}}>Hide</button>
+	{{#if displayCP}}
+		<div class="genres_div_type_dual">
+			<h5 class="tag_h5">Genres {{#link-to "genres.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
+			<ul class="tag_listing">
+				{{#each model.genres as |genre|}}
+					<li><button class="button_type1" {{action "setGID" genre}}>{{genre.name}}</button>  ({{genre.posts_count}})</li>
+				{{/each}}
+			</ul>
+			<div class="visibility_button_div_hide">
+				<button class="button_type2_large" {{action "setGPV" false}}>Hide</button>
+			</div>
 		</div>
-	</div>
+	{{else}}
+		<div class="genres_div_type_solo">
+			<h5 class="tag_h5">Genres {{#link-to "genres.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
+			<ul class="tag_listing">
+				{{#each model.genres as |genre|}}
+					<li><button class="button_type1" {{action "setGID" genre}}>{{genre.name}}</button>  ({{genre.posts_count}})</li>
+				{{/each}}
+			</ul>
+			<div class="visibility_button_div_hide">
+				<button class="button_type2_large" {{action "setGPV" false}}>Hide</button>
+			</div>
+		</div>
+	{{/if}}
 {{else}}
 	<div class="tag_listing_hidden">
-		<h5>Genres {{#link-to "genres.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
-		<div class="visibility_button_div">
+		<h5 class="tag_h5">Genres {{#link-to "genres.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
+		<div class="visibility_button_div_show">
 			<button class="button_type2_large" {{action "setGPV" true}}>Show</button>
 		</div>
 	</div>

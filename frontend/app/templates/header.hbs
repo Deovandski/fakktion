@@ -13,7 +13,7 @@
 		<ul>
 			{{#if session.isAuthenticated}}
 			<li>
-            <p>Signed in as {{session.currentUser.display_name}}</p>
+            Signed in as {{session.currentUser.display_name}}
 			</li>
 			<li>
 				{{#link-to 'user.index' session.currentUser.id}}Profile{{/link-to}}

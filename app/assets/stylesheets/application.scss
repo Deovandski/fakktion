@@ -18,14 +18,20 @@
 
 html
 {
+	overflow-x: hidden;
+	overflow-y: hidden;
 	height: 100%;
 	width: 100%;
 	body.ember-application
 	{
+		overflow-x: hidden;
+		overflow-y: hidden;
 		height: 100%;
 		width: 100%;
-		body.ember-view
+		.ember-view
 		{
+			overflow-x: hidden;
+			overflow-y: hidden;
 			height: 100%;
 			width: 100%;
 		}

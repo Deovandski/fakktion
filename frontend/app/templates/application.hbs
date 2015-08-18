@@ -4,12 +4,8 @@
 <main>
 	{{#if displaySidebars}}
 		<div class="left_sidebar">
-			<div class="genres_div">
-				{{partial 'genres-partial'}}
-			</div>
-			<div class="categories_div">
+			{{partial 'genres-partial'}}
 			{{partial 'categories-partial'}}
-			</div>
 		</div>
 	{{else}}
 	
@@ -31,12 +27,8 @@
 	
 	{{#if displaySidebars}}
 		<div class="right_sidebar">
-			<div class="fact_types_div">
-				{{partial 'fact-types-partial'}}
-			</div>
-			<div class="fact_posting_dates_div">
+			{{partial 'fact-types-partial'}}
 			{{partial 'posting-dates-partial'}}
-			</div>
 		</div>
 	{{else}}
 	

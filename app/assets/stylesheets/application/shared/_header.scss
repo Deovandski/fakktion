@@ -6,14 +6,16 @@ body.ember-application header
 	background-color: $header-background-color;
 	color: #fff;
 	font-family: 'Questrial', sans-serif;
-	position:fixed;
 	top:0;
-	left:0;
+	right:0px;
+	left:0px;
 	width:100%;
 	height: 50px;
+	position:absolute;
 	.outer-container 
 	{
 		width: 100%;
+		height:100%;
 	}
 	a 
 	{
@@ -28,14 +30,16 @@ body.ember-application header
 		.image_branding
 		{
 			float: left;
+			margin-right: 10px;
 		}
 		.text_branding
 		{
+			line-height: 50px;
+			text-align: center;
 			float: left;
 			font-size: 16px;
 			letter-spacing: 6px;
 			text-transform: uppercase;
-			margin: 13px 17px;
 			a
 			{
 				color: $header-font-color;
@@ -63,29 +67,34 @@ body.ember-application header
 
 	nav
 	{
+		height:100%;
 		width:50%;
 		float: right;
 		text-align: right;
 	}
 	ul
 	{
-		display: block;
+		width:100%;
+		height:100%;
+		display: inline-block;
 		list-style-type: none;
-		margin: 0;
-		padding: 0;
 	}
 	li 
 	{
+		line-height: 50px;
+		text-align: center;
+		height:100%;
 		display: inline-block;
+		margin-left: 3px;
+		margin-right: 3px;
 		a 
 		{
+			line-height: 50px;
+			text-align: center;
 			border-bottom: 2px solid $header-background-color;
 			color: $header-font-color;
-			display: inline-block;
 			font-weight: 300;
 			letter-spacing: 2px;
-			margin: 13px 17px;
-			padding: 5px 1px;
 			text-decoration: none;
 			text-transform: uppercase;
 			&:hover
@@ -102,77 +111,3 @@ body.ember-application header
 	}
 }
 
-body.ember-application header li.divider
-{
-	margin: 0 28px 0 14px;
-	position: relative;
-	&:after 
-	{
-		background-color: rgba(#fff, 0.7);
-		content: " ";
-		display: block;
-		height: 30px;
-		position: absolute;
-		top: -20px;
-		width: 1px;
-	}
-}
-
-body.ember-application header li.new-session
-{
-	a 
-	{
-		color: $header-font-color;
-		&:hover
-		{
-			color: lighten($header-font-color, 12%);
-		}
-	}
-}
-
-body.ember-application header li.new-registration a 
-{
-	border: 1px solid $header-font-color;
-	border-radius: $base-border-radius;
-	color: $header-font-color;
-	margin: 8px 10px 14px;
-	padding: 5px 9px;
-
-	&:hover 
-	{
-		background-color: lighten($header-background-color, 2%);
-		box-shadow: 0 0 8px rgba(#fff, 0.3);
-	}
-}
-
-body.ember-application header li.user 
-{
-	font-family: 'Ovo', serif;
-	float: right;
-	span 
-	{
-		font-size: 1.2em;
-		letter-spacing: 1px;
-		line-height: 0.8em;
-		margin: 0 6px 0 0;
-		text-transform: none;
-	}
-	a 
-	{
-		border-bottom: none;
-		margin-left: 0px;
-		margin-right: 10px;
-		i 
-		{
-			@include transition(color 0.1s linear);
-		}
-		&:hover 
-		{
-			color: lighten($header-font-color, 12%);
-			i 
-			{
-				color: lighten($base-accent-color, 12%);
-			}
-		}
-	}
-}
