@@ -28,6 +28,7 @@ export default Ember.Controller.extend
 	selectedCID: 0,
 	selectedTID: 0,
 	selectedFTID: 0,
+	selectedPDID: 0,
 	selectedGN: 'None',
 	selectedCN: 'None',
 	selectedTN: 'None',
@@ -96,6 +97,13 @@ export default Ember.Controller.extend
 		{return true;}
 		else
 		{return false;}
+	}),	
+	isPostDateSelected: Ember.computed('selectedPDID', function()
+	{
+		if(this.get('selectedPDID') !== 0)
+		{return true;}
+		else
+		{return false;}
 	}),
 	topicStatus: Ember.computed('selectedTN', function()
 	{
@@ -105,7 +113,7 @@ export default Ember.Controller.extend
 		}
 		if(this.get('selectedTN') === 'Invalid')
 		{
-			return 'Topic does not exist. Please create one';
+			return 'Topic does not exist. Please create one >';
 		}
 		if(this.get('selectedTN') === '')
 		{
@@ -116,10 +124,6 @@ export default Ember.Controller.extend
 			return 'Topic is selected!';
 		}
 	}),
-	isPostDateSelected: function()
-	{
-		return false; //TODO
-	},
 	// Partials Visibility Boolean Check
 	displayGP: Ember.computed('showGP', function()
 	{
@@ -189,9 +193,23 @@ export default Ember.Controller.extend
 				this.set('selectedTID', 0);
 			}
 		},
-		setPD: function() 
+		setPDID: function(varDayType) 
 		{ 
-			//TODO
+			this.set('selectedPDID', varDayType);
+			if(varDayType === 1)
+			{this.set('selectedPDN','Today');}
+			else if(varDayType === 2)
+			{this.set('selectedPDN','Yesterday');}
+			else if(varDayType === 3)
+			{this.set('selectedPDN','Past Week');}
+			else if(varDayType === 4)
+			{this.set('selectedPDN','Past Month');}
+			else if(varDayType === 5)
+			{this.set('selectedPDN','Past 6 Months');}
+			else if(varDayType=== 6)
+			{this.set('selectedPDN','Past Year');}
+			else
+			{this.set('selectedPDN','None');}
 		},
 		//Set Partial Visibility Methods
 		setGPV: function(varBoolean)
@@ -233,7 +251,8 @@ export default Ember.Controller.extend
 		},
 		clearPostDate: function() 
 		{ 
-			//TODO
+			this.set('selectedPDID', 0);
+			this.set('selectedPDN', 'None');
 		},
 		//Logout method
 		invalidateSession: function()

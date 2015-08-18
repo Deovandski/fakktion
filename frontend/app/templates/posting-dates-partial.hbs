@@ -2,8 +2,8 @@
 	{{#if displayFTP}}
 		<div class="posting_dates_div_type_dual">
 			<h5 class="tag_h5">Posting Dates {{#link-to "postingDates.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
-			<ul class="tag_listing">
-				<li>TODO</li>
+			<ul class="button_listing">
+				{{partial 'posting-dates-inputs-partial'}}
 			</ul>
 			<div class="visibility_button_div_hide">
 				<button class="button_type2_large" {{action "setPDPV" false}}>Hide</button>
@@ -12,8 +12,8 @@
 	{{else}}
 		<div class="posting_dates_div_type_solo">
 			<h5 class="tag_h5">Posting Dates {{#link-to "postingDates.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
-			<ul class="tag_listing">
-				<li>TODO</li>
+			<ul class="button_listing">
+				{{partial 'posting-dates-inputs-partial'}}
 			</ul>
 			<div class="visibility_button_div_hide">
 				<button class="button_type2_large" {{action "setPDPV" false}}>Hide</button>

@@ -30,7 +30,14 @@
 		{{/if}}
 	</div>
 	<div class="post_date_tagging">
-		<label>Post Date</label>
+		{{#if isPostDateSelected}}
+			<label>
+				{{selectedPDN}}
+				<button class="button_type2_small" {{action "clearPostDate"}}>X</button>
+			</label>
+		{{else}}
+			<label>Post Date</label>
+		{{/if}}
 	</div>
 </div>
 <div class="central_lower_panel">

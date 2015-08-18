@@ -1,5 +1,5 @@
 DONE items were written in order of when it was implemented. Each item does not mean a commit.
-Last Updated on 8/18 5:57AM
+Last Updated on 8/18 9:57AM
 
 DONE:
 
@@ -66,4 +66,5 @@ DONE:
 60. Hide/shows buttons changed to match initial expectation (see research link on Readme.md)
 61. Rails counter_cache has been set accross the application.
 62. Search by Topic name has been implemented.
+63. Search by Post date is now setup (only missing Moment.js posts.index query)
 

@@ -44,7 +44,20 @@
 		margin-bottom: 7px;
 	}
 }
-
+.button_listing
+{
+	height:calc(100% - 50px);
+    top: 25px;
+	width:100%;
+	overflow-y: scroll;
+	list-style-type:none;
+	text-align: center;
+	li:nth-child(n)
+	{
+		margin-top: 7px;
+		margin-bottom: 7px;
+	}
+}
 .tag_h5
 {
     position: relative;

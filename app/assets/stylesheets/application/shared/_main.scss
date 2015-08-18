@@ -72,10 +72,18 @@ body.ember-application main
 			border-width: 2px;
 			.central_upper_panel
 			{
+				
 				height: 30px;
 				width: 100%;
 				.genre_tagging
 				{
+					label
+					{
+						font-size: 15px;
+						font-style: normal;
+						overflow:hidden;
+						text-overflow:ellipsis;
+					}
 					float: left;
 					width: 25%;
 					height: 100%;
@@ -86,6 +94,13 @@ body.ember-application main
 				}
 				.fact_type_tagging
 				{
+					label
+					{
+						font-size: 15px;
+						font-style: normal;
+						overflow:hidden;
+						text-overflow:ellipsis;
+					}
 					float: left;
 					width: 25%;
 					height: 100%;
@@ -97,6 +112,13 @@ body.ember-application main
 				}
 				.category_tagging
 				{
+					label
+					{
+						font-size: 15px;
+						font-style: normal;
+						overflow:hidden;
+						text-overflow:ellipsis;
+					}
 					float: left;
 					width: 25%;
 					height: 100%;
@@ -108,6 +130,13 @@ body.ember-application main
 				}
 				.post_date_tagging
 				{
+					label
+					{
+						font-size: 15px;
+						font-style: normal;
+						overflow:hidden;
+						text-overflow:ellipsis;
+					}
 					float: left;
 					width: 25%;
 					height: 100%;
@@ -149,6 +178,13 @@ body.ember-application main
 				}
 				.topic_tagging
 				{
+					label
+					{
+						font-size: 14px;
+						font-style: normal;
+						overflow:hidden;
+						text-overflow:ellipsis;
+					}
 					float: left;
 					width: 35%;
 					height: 100%;
