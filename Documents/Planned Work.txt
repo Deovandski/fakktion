@@ -1,7 +1,8 @@
 ﻿TODO items are written in order of importance.
-Last Updated on 8/16 3:22PM
+Last Updated on 8/19 4:35PM
 
 TODO:
+Update ember-cli so that Ember.js uses 2.0 as the upgrade with 1.x caused several issues.
 Update Delete command to use softDelete for posts
 Create raw moderation page for admins and superUser
 Create raw admin moderation page for superUser

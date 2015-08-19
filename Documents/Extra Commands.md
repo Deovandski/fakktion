@@ -56,3 +56,8 @@ travis-lint command from main folder
 travis login --org
 travis encrypt-file config/secrets.yml --add
 ```
+
+### Ubuntu change file permission back from sudo.
+```
+sudo chown -R username file
+```
