@@ -216,7 +216,7 @@ export default Ember.Controller.extend
 				user.save().then(function()
 				{
 				console.log('user created!');
-				self.transitionTo('user', user);
+				self.transitionToRoute('user', user);
 				}, function()
 				{
 					alert('(Server 402) failed to create User... Check your input and try again!');

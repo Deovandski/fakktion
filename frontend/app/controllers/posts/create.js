@@ -102,7 +102,7 @@ export default Ember.Controller.extend
 			post.save().then(function()
 			{
 				console.log('post created!');
-				self.transitionTo('post', post);
+				self.transitionToRoute('post', post);
 				self.set('postName', '');
 			}, function()
 			{

@@ -28,16 +28,16 @@ Router.map(function()
 		this.resource('post', { path:'/:post_id' }, function()
 		{
 			this.route('edit');
+			//Comments
+			this.resource('comments', function(){
+				this.resource('comment', { path:'/:comment_id' }, function()
+				{
+					this.route('edit');
+				});
+				this.route('create');
+			});
 		});
 		this.route('create');
-	});
-
-	//Comments
-	this.resource('comments', function(){
-		this.resource('comment', { path:'/:comment_id' }, function()
-		{
-			this.route('edit');
-		});
 	});
 	
 	//Genres

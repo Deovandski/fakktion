@@ -1,10 +1,16 @@
 {{!class="flash-alert" for future use}}
 
 <form {{action 'authenticate' on='submit'}}>
-  <label for="identification">Login</label>
-  {{input value=identification placeholder='Enter Login'}}
-  <label for="password">Password</label>
-  {{input value=password placeholder='Enter Password' type='password'}}
-  <button type="submit">Login</button>
+	<h1>Login</h1>
+	<div class="input_block_typeLogin">
+		<label class="first_label">Email:  </label>
+		<label class="input_wrapper">  {{input value=identification placeholder='example@example.com'}}</label>
+	</div><br/>
+	<div class="input_block_typeLogin">
+		<label class="first_label">Password:  </label>
+		<label class="input_wrapper">  {{input value=password placeholder='Enter Password' type='password'}}</label>
+	</div><br/>
+  <button type="submit" class="button_type1">Login</button>
 </form>
-
+<br/>
+<button class="button_type1">Forgot Password?</button>

@@ -49,7 +49,7 @@
 			{{#if verifyComments}}
 			<ul class="comments_ul">
 				{{#each model.comments as |comment|}}
-					<li>{{#link-to 'comment' comment}}{{comment.text}}{{/link-to}}</li>
+					<li>{{#link-to 'post' comment.post_id}}{{comment.text}}{{/link-to}}</li>
 				{{/each}}
 			</ul>
 			{{else}}

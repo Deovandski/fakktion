@@ -10,7 +10,7 @@ class Api::V1::CommentsController < ApplicationController
 	end
 
 	def create
-		respond_with :api, :v1, comment.create(comment_params)
+		respond_with :api, :v1, Comment.create(comment_params)
 	end
 
 	def update
@@ -28,6 +28,6 @@ class Api::V1::CommentsController < ApplicationController
 	end
 
 	def comment_params
-		params.require(:comment).permit(:text) # only allow these for now
+		params.require(:comment).permit(:text, :user_id, :post_id, :empathy_level, :soft_delete_date, :soft_delete, :hidden) # only allow these for now
 	end
 end

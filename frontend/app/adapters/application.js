@@ -9,6 +9,10 @@ export default DS.ActiveModelAdapter.extend
 ({
 	shouldReloadAll()
 	{
-		return false;
+		return true;
+	},
+	shouldBackgroundReloadRecord()
+	{
+		return true;
 	}
 });

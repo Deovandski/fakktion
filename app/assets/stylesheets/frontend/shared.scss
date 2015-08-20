@@ -79,27 +79,31 @@
 .input_block_type1
 {
 	width: 100%;
-	line-height: 40px; 
+	line-height: 40px;
 	text-align: left;
 	height: 40px;
 	.first_label
 	{
 		float: left;
 		vertical-align: middle;
-		width: 15%;
+		width: 25%;
 		height: 100%;
 	}
-	input:nth-child(n)
+	.input_wrapper
 	{
-		float: left;
-		width: 50%;
 		height: 100%;
+		width: 50%;
+		.ember-text-field
+		{
+			float: center;
+			height: 100%;
+		}
 	}
 	.second_label
 	{
 		text-align: left;
-		float: left;
-		width: 30%;
+		float: right;
+		width: 25%;
 		height: 100%;
 		font-size: 80%;
 	}
@@ -108,58 +112,88 @@
 .input_block_type2
 {
 	width: 100%;
-	line-height: 40px; 
+	line-height: 40px;
 	text-align: left;
 	height: 40px;
 	.first_label
 	{
 		float: left;
 		vertical-align: middle;
-		width: 30%;
+		width: 25%;
 		height: 100%;
 	}
-	input:nth-child(n)
+	.input_wrapper
 	{
-		float: left;
-		width: 50%;
 		height: 100%;
+		width: 50%;
+		.ember-text-field
+		{
+			float: center;
+			height: 100%;
+		}
 	}
 	.second_label
 	{
 		text-align: left;
-		float: left;
-		width: 15%;
+		float: right;
+		width: 25%;
 		height: 100%;
 		font-size: 80%;
 	}
 }
-
-.input_block_type3
+.input_block_typeLogin
 {
 	width: 100%;
-	line-height: 40px; 
-	text-align: left;
+	line-height: 40px;
+	text-align: right;
 	height: 40px;
-   border-style: solid;
-	border-width: 3px; 
 	.first_label
 	{
 		float: left;
 		vertical-align: middle;
-		width: 20%;
+		margin-right: 10px;
+		width: 30%;
 		height: 100%;
 	}
-	input:nth-child(n)
+	.input_wrapper
 	{
 		float: left;
-		width: 50%;
 		height: 100%;
+		width: 40%;
+		.ember-text-field
+		{
+			height: 100%;
+		}
+	}
+}
+.input_block_type3
+{
+	width: 100%;
+	line-height: 40px;
+	text-align: left;
+	height: 40px;
+	.first_label
+	{
+		float: left;
+		vertical-align: middle;
+		width: 25%;
+		height: 100%;
+	}
+	.input_wrapper
+	{
+		height: 100%;
+		width: 50%;
+		.ember-text-field
+		{
+			float: center;
+			height: 100%;
+		}
 	}
 	.second_label
 	{
 		text-align: left;
-		float: left;
-		width: 20%;
+		float: right;
+		width: 25%;
 		height: 100%;
 		font-size: 80%;
 	}
@@ -168,27 +202,31 @@
 .input_block_typeUser
 {
 	width: 100%;
-	line-height: 40px; 
+	line-height: 40px;
 	text-align: left;
 	height: 40px;
 	.first_label
 	{
 		float: left;
 		vertical-align: middle;
-		width: 20%;
+		width: 25%;
 		height: 100%;
 	}
-	input:nth-child(n)
+	.input_wrapper
 	{
-		float: left;
-		width: 50%;
 		height: 100%;
+		width: 50%;
+		.ember-text-field
+		{
+			float: center;
+			height: 100%;
+		}
 	}
 	.second_label
 	{
 		text-align: left;
-		float: left;
-		width: 30%;
+		float: right;
+		width: 25%;
 		height: 100%;
 		font-size: 80%;
 	}
@@ -196,27 +234,26 @@
 .input_block_checkbox_typeUser
 {
 	width: 100%;
-	line-height: 40px; 
+	line-height: 40px;
 	text-align: left;
 	height: 40px;
 	.first_label
 	{
 		float: left;
 		vertical-align: middle;
-		width: 20%;
+		width: 30%;
 		height: 100%;
 	}
-	input:nth-child(n)
+	.input_wrapper
 	{
-		float: left;
-		width: 2%;
 		height: 100%;
+		width: 10%;
 	}
 	.second_label
 	{
 		text-align: left;
-		float: left;
-		width: 50%;
+		float: right;
+		width: 60%;
 		height: 100%;
 		font-size: 80%;
 	}

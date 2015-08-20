@@ -12,7 +12,7 @@ export default Ember.Controller.extend
 			post.save().then(function()
 			{
 				console.log('post saved!');
-				controller.transitionTo('post', post);
+				controller.transitionToRoute('post', post);
 			}, function()
 			{
 				alert('failed to save post!');

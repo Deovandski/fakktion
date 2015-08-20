@@ -4,5 +4,7 @@ class CommentSerializer < ActiveModel::Serializer
 				:soft_delete_date,
 				:text,
 				:hidden,
-				:empathy_level
+				:empathy_level,
+				:user_id,
+				:post_id
 end

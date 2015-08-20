@@ -1,0 +1,12 @@
+<h5>Comments</h5>
+<ul>
+    {{#each model as |comment|}}
+      <li>{{#link-to 'comment' comment}}{{comment.text}}{{/link-to}}</li>
+    {{/each}}
+</ul>
+
+{{#if session.isAuthenticated}}
+	<p class="inner_info_button">{{#link-to  'comments.create'}}Add comment{{/link-to}}</p>
+{{else}}
+	<p>Please login to comment</p>
+{{/if}}
