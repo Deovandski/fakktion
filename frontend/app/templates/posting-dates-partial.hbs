@@ -1,7 +1,7 @@
 {{#if displayPDP}}
 	{{#if displayFTP}}
 		<div class="posting_dates_div_type_dual">
-			<h5 class="tag_h5">Posting Dates {{#link-to "postingDates.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
+			<h5 class="tag_h5">Posting Dates</h5>
 			<ul class="button_listing">
 				{{partial 'posting-dates-inputs-partial'}}
 			</ul>
@@ -11,7 +11,7 @@
 		</div>
 	{{else}}
 		<div class="posting_dates_div_type_solo">
-			<h5 class="tag_h5">Posting Dates {{#link-to "postingDates.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
+			<h5 class="tag_h5">Posting Dates</h5>
 			<ul class="button_listing">
 				{{partial 'posting-dates-inputs-partial'}}
 			</ul>
@@ -22,7 +22,7 @@
 	{{/if}}
 {{else}}
 	<div class="tag_listing_hidden">
-		<h5 class="tag_h5">Posting Dates {{#link-to "postingDates.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
+		<h5 class="tag_h5">Posting Dates</h5>
 		<div class="visibility_button_div_show">
 			<button class="button_type2_large" {{action "setPDPV" true}}>Show</button>
 		</div>

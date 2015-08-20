@@ -1,5 +1,75 @@
-<h2>Edit Post</h2>
+<h2>Update Post</h2>
 <form>
-  <p>Title:<br/> {{input require='true' value=title}}</p>
-  <p><button {{action "updatePost"}}>Update</button></p>
+	<div class="input_block_type1">
+		<label class="first_label">Title:</label>
+		<label class="input_wrapper">{{input value=model.title}}</label>
+		<label class="second_label">{{verifyTitle}}</label>
+	</div><br/>
+	<div class="input_block_type1">
+		<label class="first_label">Text:</label>
+		<label class="input_wrapper">{{input value=model.text}}</label>
+		<label class="second_label">{{verifyText}}</label>
+	</div><br/>
+	<div class="input_block_type1">
+		<label class="first_label">Fact Link:</label>
+		<label class="input_wrapper">{{input value=model.fact_link}}</label>
+		<label class="second_label">{{verifyfact_link}}</label>
+	</div><br/>
+	<div class="input_block_type1">
+		<label class="first_label">Fiction Link:</label>
+		<label class="input_wrapper">{{input value=model.fiction_link}}</label>
+		<label class="second_label">{{verifyfiction_link}}</label>
+	</div><br/>
+	<div class="input_block_type1">
+		<label class="first_label">Genre:</label>
+		<label class="input_wrapper">{{input value=model.genre_id disabled=true}}</label>
+	</div><br/>
+	<div class="input_block_type1">
+		<label class="first_label">Fact Type:</label>
+		<label class="input_wrapper">{{input value=model.fact_type_id disabled=true}}</label>
+	</div><br/>
+	<div class="input_block_type1">
+		<label class="first_label">Category:</label>
+		<label class="input_wrapper">{{input value=model.categorie_id disabled=true}}</label>
+	</div><br/>
+	<div class="input_block_type1">
+		<label class="first_label">Topic:</label>
+		<label class="input_wrapper">{{input value=model.topic_id disabled=true}}</label>
+	</div><br/>
+		
+
+
+	{{#if changeTags}}
+		<div class="input_block_typeLogin">
+			<label class="first_label"><button class="button_type2_large" {{action "setChangeTags" false}}>Don't Update tags</button></label>
+		</div><br/>
+			<div class="input_block_type1">
+				<label class="first_label">New Genre:</label>
+				<label class="input_wrapper">{{input value=nextGenreName disabled=true}}</label>
+				<label class="second_label">{{verifyGenre}}</label>
+			</div><br/>
+			<div class="input_block_type1">
+				<label class="first_label">New Fact Type:</label>
+				<label class="input_wrapper">{{input value=nextFactTypeName disabled=true}}</label>
+				<label class="second_label">{{verifyFactType}}</label>
+			</div><br/>
+			<div class="input_block_type1">
+				<label class="first_label">New Category:</label>
+				<label class="input_wrapper">{{input value=nextCategoryName disabled=true}}</label>
+				<label class="second_label">{{verifyCategory}}</label>
+			</div><br/>
+			<div class="input_block_type1">
+				<label class="first_label">New Topic:</label>
+				<label class="input_wrapper">{{input value=nextTopicName disabled=true}}</label>
+				<label class="second_label">{{verifyTopic}}</label>
+			</div><br/>
+	{{else}}
+		<div class="input_block_typeLogin">
+			<label class="first_label"><button class="button_type2_large" {{action "setChangeTags" true}}>Update tags</button></label>
+		</div><br/>
+	{{/if}}
+	
+  <button class="button_type1" {{action "update"}}>Update Post</button>
 </form>
+
+<br/><br/><br/><br/><br/><br/><br/>

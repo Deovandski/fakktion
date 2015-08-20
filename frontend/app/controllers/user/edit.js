@@ -314,7 +314,7 @@ export default Ember.Controller.extend
 				var controller = this;
 				user.save().then(function()
 				{
-					self.model.reload();
+					this.model.reload();
 					controller.transitionToRoute('user', user);	
 				}, function()
 				{

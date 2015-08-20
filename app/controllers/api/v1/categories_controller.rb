@@ -28,6 +28,6 @@ class Api::V1::CategoriesController < ApplicationController
 	end
 
 	def categorie_params
-		params.require(:categorie).permit(:name, :posts_count, :eligibility_counter) # only allow these for now
+		params.require(:categorie).permit(:name, :posts_count) # only allow these for now
 	end
 end

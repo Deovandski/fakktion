@@ -1,6 +1,20 @@
-<h5>Post Page</h5>
-<p>Title: {{model.title}}</p>
-<p>{{#link-to 'post.edit' }}Edit Post{{/link-to}}</p>
+<h5>Post</h5>
+
+<label class="first_label">Title: {{model.title}}</label><br/>
+<label class="first_label">Text: {{model.text}}</label><br/>
+<label class="first_label">Fact Link: {{model.fact_link}}</label><br/>
+<label class="first_label">Fiction Link: {{model.fiction_link}}</label><br/>
+<label class="first_label">Genre: {{model.genre_id}}</label><br/>
+<label class="first_label">Fact Type: {{model.fact_type_id}}</label><br/>
+<label class="first_label">Category: {{model.categorie_id}}</label><br/>
+<label class="first_label">Topic: {{model.topic_id}}</label><br/><br/>
+<p><label class="inner_label">Profile Created on:</label>  {{createdDate}}</p>
+<p><label class="inner_label">Profile Updated on:</label>  {{updatedDate}}</p>
+{{#if isOwner}}
+	<p>{{#link-to 'post.edit' }}Edit Post{{/link-to}}</p>
+{{else}}
+	<p class="inner_edit_info">Fakktion</p>
+{{/if}}
 <br/><br/>
 <h5>Comments</h5>
 <ul>

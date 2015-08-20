@@ -1,10 +1,10 @@
 {{#if displayCP}}
 	{{#if displayGP}}
 		<div class="categories_div_type_dual">
-			<h5 class="tag_h5">Categories {{#link-to "categories.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
+			<h5 class="tag_h5">Categories</h5>
 			<ul class="tag_listing">
-				{{#each model.categories as |categorie|}}
-					<li><button class="button_type1" {{action "setCID" categorie}}>{{categorie.name}}</button>  ({{categorie.posts_count}})</li>
+				{{#each model.categories as |category|}}
+					<li><button class="button_type1" {{action "setCID" category}}>{{category.name}}</button>  ({{category.posts_count}})</li>
 				{{/each}}
 			</ul>
 			<div class="visibility_button_div_hide">
@@ -13,10 +13,10 @@
 		</div>
 	{{else}}
 		<div class="categories_div_type_solo">
-			<h5 class="tag_h5">Categories {{#link-to "categories.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
+			<h5 class="tag_h5">Categories</h5>
 			<ul class="tag_listing">
-				{{#each model.categories as |categorie|}}
-					<li><button class="button_type1" {{action "setCID" categorie}}>{{categorie.name}}</button>  ({{categorie.posts_count}})</li>
+				{{#each model.categories as |category|}}
+					<li><button class="button_type1" {{action "setCID" category}}>{{category.name}}</button>  ({{category.posts_count}})</li>
 				{{/each}}
 			</ul>
 			<div class="visibility_button_div_hide">
@@ -26,8 +26,8 @@
 	{{/if}}
 {{else}}
 	<div class="tag_listing_hidden">
-		<h5 class="tag_h5">Categories {{#link-to "categories.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
-		<div class="visibility_button_div_show">
+			<h5 class="tag_h5">Categories</h5>
+			<div class="visibility_button_div_show">
 			<button class="button_type2_large" {{action "setCPV" true}}>Show</button>
 		</div>
 	</div>

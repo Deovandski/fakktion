@@ -49,24 +49,6 @@ Router.map(function()
 		this.route('create');
 	});
 
-	//Categories
-	this.resource('categories', function(){
-		this.resource('category', { path:'/:_id' }, function()
-		{
-			this.route('edit');
-		});
-		this.route('create');
-	});
-
-	// Posting Dates
-	this.resource('postingDates', function(){
-		this.resource('postingDate', { path:'/:_id' }, function()
-		{
-			this.route('edit');
-		});
-		this.route('create');
-	});
-
 	//Fact Type
 	this.resource('factTypes', function(){
 		this.resource('factType', { path:'/:_id' }, function()

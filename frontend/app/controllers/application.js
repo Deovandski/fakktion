@@ -41,22 +41,19 @@ export default Ember.Controller.extend
 	showPDP: true,
 	// Paths to show central Panel and Sidebars Panels:
 	centralPanelPaths: ['index',
-	'posts.index', 'posts.create', 'posts.edit',
-	'genres.index', 'genres.create', 'genres.edit',
+	'posts.index', 'posts.create', 'posts.post.edit',
+	'genres.index', 'genres.create', 'genre.edit',
 	'topics.index', 'topics.create', 'topics.edit',
-	'factTypes.index', 'factTypes.create', 'factTypes.edit',
-	'categories.index', 'categories.create', 'categories.edit',
-	'postingDates.index', 'postingDates.create', 'postingDates.edit'],
+	'factTypes.index', 'factTypes.create', 'factType.edit'],
 	sidebarsPanelPaths: ['index',
-	'posts.index', 'posts.create', 'posts.edit',
-	'genres.index', 'genres.create', 'genres.edit',
-	'topics.index', 'topics.create', 'topics.edit',
-	'factTypes.index', 'factTypes.create', 'factTypes.edit',
-	'categories.index', 'categories.create', 'categories.edit',
-	'postingDates.index', 'postingDates.create', 'postingDates.edit'],
+	'posts.index', 'posts.create', 'posts.post.edit',
+	'genres.index', 'genres.create', 'genre.edit',
+	'topics.index', 'topics.create', 'topic.edit',
+	'factTypes.index', 'factTypes.create', 'factType.edit'],
 	// Central Panel and Sidebars Visibility Boolean Check
 	displayCentralPanel: Ember.computed('currentPath', function()
 	{
+		//console.log(this.get('currentPath'));
 		if(this.get('centralPanelPaths').indexOf(this.get('currentPath')) !== -1)
 		{return true;}
 		else

@@ -8,4 +8,5 @@ class Post < ActiveRecord::Base
 	belongs_to :genre, :counter_cache => true
 	belongs_to :topic, :counter_cache => true
 	belongs_to :fact_type, :counter_cache => true
+	belongs_to :categorie, :counter_cache => true
 end
