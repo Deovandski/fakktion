@@ -17,5 +17,5 @@ export default DS.Model.extend
 	genre: DS.belongsTo('genre', {async: true}),
 	fact_type: DS.belongsTo('fact_type', {async: true}),
 	category: DS.belongsTo('category', {async: true}),
-	topic: DS.belongsTo('topic', {async: true}),
+	topic: DS.belongsTo('topic', {async: true})
 });

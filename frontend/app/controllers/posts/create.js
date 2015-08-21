@@ -161,13 +161,11 @@ export default Ember.Controller.extend
 					fiction_link: this.get('fictionLink'),
 					hidden: false,
 					softDelete: false,
-					genre: store.find('genre', parseInt(this.get('genreID')))
-				}); //FIX
-				console.log(post.genre); //>> Computed Property
-				console.log(post.genre.genre_id); //>> Undefined
-				console.log(post.genre.id); //>> Undefined
-				post.set('genre_id', this.get('genreID')); 
-				console.log(post.genre_id); //>> 1
+					genre: store.find('genre', this.get('genreID'))
+				});
+				console.log(post.genre);
+				console.log(post.genre.id);
+				console.log(post.genre.name);
 				post.save().then(function()
 				{
 					self.transitionToRoute('post', post);
