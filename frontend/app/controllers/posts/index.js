@@ -2,12 +2,12 @@ import Ember from "ember";
 
 export default Ember.Controller.extend
 ({
-	needs: ['application'],
+	application: Ember.inject.controller('application'),
 	genreID: 0,
 	factTypeID: 0,
-	categoryID: 0, 
-	topicID: 0, 
-	postDateID: 0, 
+	categoryID: 0,
+	topicID: 0,
+	postDateID: 0,
 	/*	postDateID === 1 | Today
 		postDateID === 2 | Yesterday
 		postDateID === 3 | Past Week
@@ -15,19 +15,20 @@ export default Ember.Controller.extend
 		postDateID === 5 | Past 6 Months
 		postDateID === 6 | Past Year
 	*/
-	filteredPosts: Ember.computed('controllers.application.selectedGID',
-								  'controllers.application.selectedCID',
-								  'controllers.application.selectedFTID',
-								  'controllers.application.selectedTID',
-								  'controllers.application.selectedPDID', function()
+	filteredPosts: Ember.computed('application.selectedGID',
+								  'application.selectedCID',
+								  'application.selectedFTID',
+								  'application.selectedTID',
+								  'application.selectedPDID', function()
 	{
 		//Get variables from ApplicationController
-		this.set('genreID', this.get('controllers.application.selectedGID'));
-		this.set('factTypeID', this.get('controllers.application.selectedFTID'));
-		this.set('categoryID', this.get('controllers.application.selectedCID'));
-		this.set('topicID', this.get('controllers.application.selectedTID'));
-		this.set('postDateID', this.get('controllers.application.selectedPDID'));
+		this.set('genreID', this.get('application.selectedGID'));
+		this.set('factTypeID', this.get('application.selectedFTID'));
+		this.set('categoryID', this.get('application.selectedCID'));
+		this.set('topicID', this.get('application.selectedTID'));
+		this.set('postDateID', this.get('application.selectedPDID'));
 		
+		/*
 		console.log('Variables Debug: ');
 		console.log('genreID DEBUG: ' + this.get('genreID'));
 		console.log('factTypeID DEBUG: ' + this.get('factTypeID'));
@@ -35,6 +36,7 @@ export default Ember.Controller.extend
 		console.log('topicID DEBUG: ' + this.get('topicID'));
 		console.log('postDateID DEBUG: ' + this.get('postDateID'));
 		console.log('Filter called');
+		*/
 		
 		// RETURN ALL POSTS
 		// 00000

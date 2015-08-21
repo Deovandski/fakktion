@@ -2,32 +2,32 @@ class Api::V1::CategoriesController < ApplicationController
 	respond_to :json # default to Active Model Serializers
 
 	def index
-		respond_with Categorie.all
+		respond_with Category.all
 	end
 
 	def show
-		respond_with categorie
+		respond_with category
 	end
 
 	def create
-		respond_with :api, :v1, Categorie.create(categorie_params)
+		respond_with :api, :v1, Category.create(category_params)
 	end
 
 	def update
-		respond_with categorie.update(categorie_params)
+		respond_with category.update(categorie_params)
 	end
 
 	def destroy
-		respond_with categorie.destroy
+		respond_with category.destroy
 	end
 
 	private
 
-	def categorie
-		Categorie.find(params[:id])
+	def category
+		Category.find(params[:id])
 	end
 
-	def categorie_params
-		params.require(:categorie).permit(:name, :posts_count) # only allow these for now
+	def category_params
+		params.require(:category).permit(:name, :posts_count) # only allow these for now
 	end
 end

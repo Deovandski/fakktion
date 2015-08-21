@@ -2,44 +2,44 @@ import Ember from "ember";
 
 export default Ember.Controller.extend
 ({
-	needs: ['application'],
+	application: Ember.inject.controller('application'),
 	title: "",
 	text: "",
 	fact_link: "",
 	fictionLink: "",
 	clientSideValidationComplete: false,
 	changeTags: false,
-	nextGenreID: Ember.computed('controllers.application.selectedGID', function()
+	nextGenreID: Ember.computed('application.selectedGID', function()
 	{
-		return this.get('controllers.application.selectedGID');
+		return this.get('application.selectedGID');
 	}),
-	nextGenreName: Ember.computed('controllers.application.selectedGN', function()
+	nextGenreName: Ember.computed('application.selectedGN', function()
 	{
-		return this.get('controllers.application.selectedGN');
+		return this.get('application.selectedGN');
 	}),
-	nextFactTypeID: Ember.computed('controllers.application.selectedFTID', function()
+	nextFactTypeID: Ember.computed('application.selectedFTID', function()
 	{
-		return this.get('controllers.application.selectedFTID');
+		return this.get('application.selectedFTID');
 	}),
-	nextFactTypeName: Ember.computed('controllers.application.selectedFTN', function()
+	nextFactTypeName: Ember.computed('application.selectedFTN', function()
 	{
-		return this.get('controllers.application.selectedFTN');
+		return this.get('application.selectedFTN');
 	}),
-	nextCategoryID: Ember.computed('controllers.application.selectedCID', function()
+	nextCategoryID: Ember.computed('application.selectedCID', function()
 	{
-		return this.get('controllers.application.selectedCID');
+		return this.get('application.selectedCID');
 	}),
-	nextCategoryName: Ember.computed('controllers.application.selectedCN', function()
+	nextCategoryName: Ember.computed('application.selectedCN', function()
 	{
-		return this.get('controllers.application.selectedCN');
+		return this.get('application.selectedCN');
 	}),
-	nextTopicID: Ember.computed('controllers.application.selectedTID', function()
+	nextTopicID: Ember.computed('application.selectedTID', function()
 	{
-		return this.get('controllers.application.selectedTID');
+		return this.get('application.selectedTID');
 	}),
-	nextTopicName: Ember.computed('controllers.application.selectedTN', function()
+	nextTopicName: Ember.computed('application.selectedTN', function()
 	{
-		return this.get('controllers.application.selectedTN');
+		return this.get('application.selectedTN');
 	}),
 	verifyTitle: Ember.computed('model.title', function()
 	{

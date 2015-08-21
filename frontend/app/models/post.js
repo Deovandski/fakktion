@@ -2,12 +2,7 @@ import DS from "ember-data";
 
 export default DS.Model.extend
 ({
-	comments: DS.hasMany('comment', {async: true}),
 	user_id: DS.attr ('number'),
-	genre_id: DS.attr ('number'),
-	topic_id: DS.attr ('number'),
-	categorie_id: DS.attr ('number'),
-	fact_type_id: DS.attr ('number'),
 	fact_link: DS.attr ('string'),
 	fiction_link: DS.attr ('string'),
 	title: DS.attr ('string'),
@@ -17,5 +12,10 @@ export default DS.Model.extend
 	hidden: DS.attr ('boolean'),
 	views_count: DS.attr ('number'),
 	text: DS.attr ('string'),
-	comments_count: DS.attr ('number')
+	comments_count: DS.attr ('number'),
+	comments: DS.hasMany('comment', {async: true}),
+	genre: DS.belongsTo('genre', {async: true}),
+	fact_type: DS.belongsTo('fact_type', {async: true}),
+	category: DS.belongsTo('category', {async: true}),
+	topic: DS.belongsTo('topic', {async: true}),
 });

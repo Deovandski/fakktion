@@ -21,7 +21,7 @@ end
 gem 'ember-cli-rails'
 
 #https://github.com/rails-api/active_model_serializers
-gem 'active_model_serializers'
+gem 'active_model_serializers', '0.10.0.rc2'
 
 #http://docs.travis-ci.com/user/travis-lint/
 gem 'travis-lint'

@@ -114,29 +114,29 @@ end
 
 # CATEGORIES RELATED SEED
 Rails.logger.info 'Creating Categories'
-if Categorie.count == 0
-Categorie.create!(name: 'A-B-C')
-Categorie.create!(name: 'D-E-F')
-Categorie.create!(name: 'G-H-I')
-Categorie.create!(name: 'J-K-L')
-Categorie.create!(name: 'M-N-O')
-Categorie.create!(name: 'P-Q-R')
-Categorie.create!(name: 'S-T-U')
-Categorie.create!(name: 'V-W-X')
-Categorie.create!(name: 'Y-Z-?')
+if Category.count == 0
+Category.create!(name: 'A-B-C')
+Category.create!(name: 'D-E-F')
+Category.create!(name: 'G-H-I')
+Category.create!(name: 'J-K-L')
+Category.create!(name: 'M-N-O')
+Category.create!(name: 'P-Q-R')
+Category.create!(name: 'S-T-U')
+Category.create!(name: 'V-W-X')
+Category.create!(name: 'Y-Z-?')
 Rails.logger.info 'Categories created'
 else
-Categorie.delete_all
-Categorie.create!(name: 'A-B-C')
-Categorie.create!(name: 'D-E-F')
-Categorie.create!(name: 'G-H-I')
-Categorie.create!(name: 'J-K-L')
-Categorie.create!(name: 'M-N-O')
-Categorie.create!(name: 'P-Q-R')
-Categorie.create!(name: 'S-T-U')
-Categorie.create!(name: 'V-W-X')
-Categorie.create!(name: 'Y-Z-?')
-Rails.logger.info 'All current categories deleted and created again from seed file.'
+Category.delete_all
+Category.create!(name: 'A-B-C')
+Category.create!(name: 'D-E-F')
+Category.create!(name: 'G-H-I')
+Category.create!(name: 'J-K-L')
+Category.create!(name: 'M-N-O')
+Category.create!(name: 'P-Q-R')
+Category.create!(name: 'S-T-U')
+Category.create!(name: 'V-W-X')
+Category.create!(name: 'Y-Z-?')
+Rails.logger.info 'All current Categories deleted and created again from seed file.'
 end
 
 # FACT TYPE RELATED SEED
@@ -195,9 +195,9 @@ Post.create!(fact_link: 'test fact link',
 			title: 'The concept of reality behind Hatsune Miku',
 			soft_delete: false,
 			soft_delete_date: nil,
-			topic_id: 0,
+			topic_id: 1,
 			user_id: 0,
-			categorie_id: 2)
+			category_id: 2)
 Post.create!(fact_link: 'test fact link',
 			fact_type_id: 2,
 			fiction_link: 'test fiction link',
@@ -208,9 +208,9 @@ Post.create!(fact_link: 'test fact link',
 			title: 'test Novel Post with category D-E-F', 
 			soft_delete: false,
 			soft_delete_date: nil,
-			topic_id: 0,
+			topic_id: 1,
 			user_id: 0,
-			categorie_id: 1)
+			category_id: 1)
 Post.create!(fact_link: 'test fact link #2',
 			fact_type_id: 1,
 			fiction_link: 'test fiction link #2',
@@ -221,9 +221,9 @@ Post.create!(fact_link: 'test fact link #2',
 			title: 'test Novel Post with category G-H-I',
 			soft_delete: false,
 			soft_delete_date: nil,
-			topic_id: 0,
+			topic_id: 1,
 			user_id: 0,
-			categorie_id: 3)
+			category_id: 3)
 Rails.logger.info 'Posts created'
 else
 Post.create!(fact_link: 'test fact link',
@@ -238,7 +238,7 @@ Post.create!(fact_link: 'test fact link',
 			soft_delete_date: nil,
 			topic_id: 1,
 			user_id: 0,
-			categorie_id: 2)
+			category_id: 2)
 Post.create!(fact_link: 'test fact link',
 			fact_type_id: 2,
 			fiction_link: 'test fiction link',
@@ -249,9 +249,9 @@ Post.create!(fact_link: 'test fact link',
 			title: 'test Novel Post with category D-E-F', 
 			soft_delete: false,
 			soft_delete_date: nil,
-			topic_id: 0,
+			topic_id: 1,
 			user_id: 0,
-			categorie_id: 1)
+			category_id: 1)
 Post.create!(fact_link: 'test fact link #2',
 			fact_type_id: 1,
 			fiction_link: 'test fiction link #2',
@@ -262,9 +262,9 @@ Post.create!(fact_link: 'test fact link #2',
 			title: 'test Novel Post with category G-H-I',
 			soft_delete: false,
 			soft_delete_date: nil,
-			topic_id: 0,
+			topic_id: 1,
 			user_id: 0,
-			categorie_id: 3)
+			category_id: 3)
 Rails.logger.info 'Posts created'
 Rails.logger.info 'All current posts deleted and created again from seed file.'
 end

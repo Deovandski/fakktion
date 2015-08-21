@@ -2,43 +2,43 @@ import Ember from "ember";
 
 export default Ember.Controller.extend
 ({
-	needs: ['application'],
+	application: Ember.inject.controller('application'),
 	title: "",
 	text: "",
 	factLink: "",
 	fictionLink: "",
 	clientSideValidationComplete: false,
-	genreID: Ember.computed('controllers.application.selectedGID', function()
+	genreID: Ember.computed('application.selectedGID', function()
 	{
-		return this.get('controllers.application.selectedGID');
+		return this.get('application.selectedGID');
 	}),
-	genreName: Ember.computed('controllers.application.selectedGN', function()
+	factTypeID: Ember.computed('application.selectedFTID', function()
 	{
-		return this.get('controllers.application.selectedGN');
+		return this.get('application.selectedFTID');
 	}),
-	factTypeID: Ember.computed('controllers.application.selectedFTID', function()
+	categoryID: Ember.computed('application.selectedCID', function()
 	{
-		return this.get('controllers.application.selectedFTID');
+		return this.get('application.selectedCID');
 	}),
-	factTypeName: Ember.computed('controllers.application.selectedFTN', function()
+	topicID: Ember.computed('application.selectedTID', function()
 	{
-		return this.get('controllers.application.selectedFTN');
+		return this.get('application.selectedTID');
 	}),
-	categoryID: Ember.computed('controllers.application.selectedCID', function()
+	genreName: Ember.computed('application.selectedGN', function()
 	{
-		return this.get('controllers.application.selectedCID');
+		return this.get('application.selectedGN');
 	}),
-	categoryName: Ember.computed('controllers.application.selectedCN', function()
+	factTypeName: Ember.computed('application.selectedFTN', function()
 	{
-		return this.get('controllers.application.selectedCN');
+		return this.get('application.selectedFTN');
 	}),
-	topicID: Ember.computed('controllers.application.selectedTID', function()
+	categoryName: Ember.computed('application.selectedCN', function()
 	{
-		return this.get('controllers.application.selectedTID');
+		return this.get('application.selectedCN');
 	}),
-	topicName: Ember.computed('controllers.application.selectedTN', function()
+	topicName: Ember.computed('application.selectedTN', function()
 	{
-		return this.get('controllers.application.selectedTN');
+		return this.get('application.selectedTN');
 	}),
 	verifyTitle: Ember.computed('title', function()
 	{
@@ -150,21 +150,24 @@ export default Ember.Controller.extend
 		{
 			if(this.get('clientSideValidationComplete') === true)
 			{
-				var post = this.store.createRecord('post',
+				var self = this;
+				var store = this.store;
+				var post = store.createRecord('post',
 				{
 					user_id: this.get('session.secure.userId'),
 					title: this.get('title'),
 					text: this.get('text'),
 					fact_link: this.get('factLink'),
 					fiction_link: this.get('fictionLink'),
-					genre_id: this.get('genreID'),
-					topic_id: this.get('topicID'),
-					fact_type_id: this.get('factTypeID'),
-					categorie_id: this.get('categoryID'),
 					hidden: false,
 					softDelete: false,
-				});
-				var self = this;
+					genre: store.find('genre', parseInt(this.get('genreID')))
+				}); //FIX
+				console.log(post.genre); //>> Computed Property
+				console.log(post.genre.genre_id); //>> Undefined
+				console.log(post.genre.id); //>> Undefined
+				post.set('genre_id', this.get('genreID')); 
+				console.log(post.genre_id); //>> 1
 				post.save().then(function()
 				{
 					self.transitionToRoute('post', post);

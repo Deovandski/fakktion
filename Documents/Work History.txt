@@ -1,5 +1,5 @@
 DONE items were written in order of when it was implemented. Each item does not mean a commit.
-Last Updated on 8/20 3:48AM
+Last Updated on 8/21 1:18PM
 
 DONE:
 
@@ -69,5 +69,6 @@ DONE:
 63. Search by Post date is now setup (only missing Moment.js posts.index query)
 64. Ember-cli updated to 1.13.8
 65. Comments resource has been implemented on posts.
-66. Raw post.index implemented and post edit route is complete (only missing converting tags id to name for display)
+66. Raw post.index implemented and post edit route is complete
+67. Active Model Serializers upgrade to 0.10.0.rc2 including entire project plural/singular and relationships normalization.
 

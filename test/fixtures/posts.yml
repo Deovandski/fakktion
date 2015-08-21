@@ -11,7 +11,7 @@ one:
   genre_id: 1
   topic_id: 0
   user_id: 1
-  categorie_id: 1
+  category_id: 1
 
 two:
   fact_link: MyString
@@ -24,4 +24,4 @@ two:
   genre_id: 2
   topic_id: 0
   user_id: 0
-  categorie_id: 1
+  category_id: 1

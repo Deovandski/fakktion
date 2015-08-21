@@ -25,8 +25,7 @@ ActiveRecord::Schema.define(version: 20150628051759) do
 
   create_table "categories", force: :cascade do |t|
     t.string  "name"
-    t.integer "eligibility_counter", default: 0
-    t.integer "posts_count",         default: 0
+    t.integer "posts_count", default: 0
   end
 
   create_table "comments", force: :cascade do |t|
@@ -73,10 +72,10 @@ ActiveRecord::Schema.define(version: 20150628051759) do
     t.integer  "fact_type_id"
     t.integer  "genre_id"
     t.integer  "topic_id"
-    t.integer  "categorie_id"
+    t.integer  "category_id"
   end
 
-  add_index "posts", ["categorie_id"], name: "index_posts_on_categorie_id"
+  add_index "posts", ["category_id"], name: "index_posts_on_category_id"
   add_index "posts", ["fact_type_id"], name: "index_posts_on_fact_type_id"
   add_index "posts", ["genre_id"], name: "index_posts_on_genre_id"
   add_index "posts", ["topic_id"], name: "index_posts_on_topic_id"

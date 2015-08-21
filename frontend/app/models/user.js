@@ -2,8 +2,6 @@ import DS from "ember-data";
 
 export default DS.Model.extend
 ({
-	posts: DS.hasMany('post', {async: true}),
-	comments: DS.hasMany('comment', {async: true}),
 	full_name: DS.attr ('string'),
 	display_name: DS.attr ('string'),
 	password: DS.attr ('string'),
@@ -27,5 +25,7 @@ export default DS.Model.extend
 	show_full_name: DS.attr ('boolean'),
 	admin_messages_count: DS.attr ('number'),
 	posts_count: DS.attr ('number'),
-	comments_count: DS.attr ('number')
+	comments_count: DS.attr ('number'),
+	posts: DS.hasMany('post', {async: true}),
+	comments: DS.hasMany('comment', {async: true})
 });

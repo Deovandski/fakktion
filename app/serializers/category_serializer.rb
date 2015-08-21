@@ -1,8 +1,7 @@
-class GenreSerializer < ActiveModel::Serializer
+class CategorySerializer < ActiveModel::Serializer
 	ActiveModel::Serializer.config.adapter = :json
 	has_many :posts
 	attributes  :id,
 				:name,
-				:eligibility_counter,
 				:posts_count
 end

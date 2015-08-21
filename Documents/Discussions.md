@@ -12,6 +12,7 @@
 
 [August 11 2015 - Ember CLI Simple Auth RouteMixins not working](http://stackoverflow.com/questions/31933928/ember-cli-simple-auth-routemixins-not-working)
 
+[August 21 2015 - Handling Store.save() for records that contains DS.BelongsTo](http://stackoverflow.com/questions/32146860/handling-store-save-for-records-that-contains-ds-belongsto)
 
 "Related"
 

@@ -1,4 +1,5 @@
 class CommentSerializer < ActiveModel::Serializer
+	ActiveModel::Serializer.config.adapter = :json
 	attributes  :id,
 				:soft_delete,
 				:soft_delete_date,
