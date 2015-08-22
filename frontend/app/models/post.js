@@ -2,6 +2,7 @@ import DS from "ember-data";
 
 export default DS.Model.extend
 ({
+	genre_id: DS.attr ('number'),
 	user_id: DS.attr ('number'),
 	fact_link: DS.attr ('string'),
 	fiction_link: DS.attr ('string'),

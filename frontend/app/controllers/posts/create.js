@@ -152,6 +152,7 @@ export default Ember.Controller.extend
 			{
 				var self = this;
 				var store = this.store;
+				console.log(this.get('genreID'));
 				var post = store.createRecord('post',
 				{
 					user_id: this.get('session.secure.userId'),
@@ -161,11 +162,12 @@ export default Ember.Controller.extend
 					fiction_link: this.get('fictionLink'),
 					hidden: false,
 					softDelete: false,
+					genre_id: this.get('genreID'),
 					genre: store.find('genre', this.get('genreID'))
 				});
-				console.log(post.genre);
-				console.log(post.genre.id);
-				console.log(post.genre.name);
+				console.log(post.get('genre.id'));
+				console.log(post.get('genre_id'));
+				console.log(post.get('genre.name'));
 				post.save().then(function()
 				{
 					self.transitionToRoute('post', post);
