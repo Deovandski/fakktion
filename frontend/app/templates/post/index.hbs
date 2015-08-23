@@ -26,5 +26,8 @@
     {{/each}}
 </ul>
 <br/>
-<p>{{#link-to 'comments.create' }}Add comment{{/link-to}}</p>
-{{outlet "addComment"}}
+{{#if session.isAuthenticated}}
+	<p>{{#link-to 'comments.create' }}Add comment{{/link-to}}</p>
+{{else}}
+	<p class="inner_edit_info">Please login to comment</p>
+{{/if}}

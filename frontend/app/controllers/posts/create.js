@@ -150,7 +150,6 @@ export default Ember.Controller.extend
 		{
 			if(this.get('clientSideValidationComplete') === true)
 			{
-				var self = this;
 				var store = this.store;
 				console.log(this.get('genreID'));
 				var post = store.createRecord('post',
@@ -162,12 +161,12 @@ export default Ember.Controller.extend
 					fiction_link: this.get('fictionLink'),
 					hidden: false,
 					softDelete: false,
-					genre_id: this.get('genreID'),
-					genre: store.find('genre', this.get('genreID'))
+					genre: store.peekRecord('genre', this.get('genreID')),
+					fact_type: store.peekRecord('fact_type', this.get('factTypeID')),
+					topic: store.peekRecord('topic', this.get('topicID')),
+					category: store.peekRecord('category', this.get('categoryID'))
 				});
-				console.log(post.get('genre.id'));
-				console.log(post.get('genre_id'));
-				console.log(post.get('genre.name'));
+				var self = this;
 				post.save().then(function()
 				{
 					self.transitionToRoute('post', post);

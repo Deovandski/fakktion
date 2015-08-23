@@ -26,6 +26,9 @@ export default DS.Model.extend
 	admin_messages_count: DS.attr ('number'),
 	posts_count: DS.attr ('number'),
 	comments_count: DS.attr ('number'),
+	
+	// Relationships
+	admin_messages: DS.hasMany('admin_message', {async: true}),
 	posts: DS.hasMany('post', {async: true}),
 	comments: DS.hasMany('comment', {async: true})
 });

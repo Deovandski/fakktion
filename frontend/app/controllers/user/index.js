@@ -51,7 +51,10 @@ export default Ember.Controller.extend
 	isOwner: Ember.computed('model.id', function()
 	{
 		if(this.get('session.secure.email') === this.get('model.email'))
-		{return true;}
+		{
+			console.log(this.get('model.posts.length'));
+			return true;
+		}
 		else
 		{return false;}
 	}),

@@ -158,10 +158,11 @@ export default Ember.Controller.extend
 				var post = this.get('content');
 				if(this.get('changeTags') === true)
 				{
-					post.set('categorie_id', this.get('nextCategoryID'));	
-					post.set('topic_id', this.get('nextTopicID'));	
-					post.set('genre_id', this.get('nextGenreID'));	
-					post.set('fact_type_id', this.get('nextFactTypeID'));	
+					var store = this.store;
+					post.set('categorie', store.peekRecord('category', this.get('nextCategoryID')));	
+					post.set('topic', store.peekRecord('topic', this.get('nextTopicID')));	
+					post.set('genre', store.peekRecord('genre', this.get('nextGenreID')));	
+					post.set('fact_type', store.peekRecord('fact_type', this.get('nextFactTypeID')));
 				}
 				var controller = this;
 				post.save().then(function()

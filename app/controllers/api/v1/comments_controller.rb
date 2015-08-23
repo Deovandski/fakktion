@@ -28,6 +28,6 @@ class Api::V1::CommentsController < ApplicationController
 	end
 
 	def comment_params
-		params.require(:comment).permit(:text, :user_id, :post_id, :empathy_level, :soft_delete_date, :soft_delete, :hidden) # only allow these for now
+		params.require(:comment).permit(:text, :user_id, :post_id, :empathy_level, :soft_delete_date, :soft_delete, :hidden)
 	end
 end

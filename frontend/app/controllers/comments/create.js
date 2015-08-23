@@ -23,9 +23,10 @@ export default Ember.Controller.extend
 		{
 			if(this.get('clientSideValidationComplete') === true)
 			{
+				var store = this.store;
 				var comment = this.store.createRecord('comment',
 				{
-					post_id: this.get('model.id'),
+					post: store.peekRecord('post', this.get('model.id')),
 					user_id: this.get('session.secure.userId'),
 					text: this.get('text'),
 					hidden: false,

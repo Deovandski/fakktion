@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 	include BCrypt
 	devise :database_authenticatable, :registerable,
 		 :recoverable, :rememberable, :trackable, :validatable
+		 
 	has_many :admin_messages
 	has_many :posts
 	has_many :comments
