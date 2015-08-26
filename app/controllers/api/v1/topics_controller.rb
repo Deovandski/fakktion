@@ -2,23 +2,23 @@ class Api::V1::TopicsController < ApplicationController
 	respond_to :json
 
 	def index
-		respond_with Topic.all
+		render json: Topic.all
 	end
 
 	def show
-		respond_with topic
+		render json: topic
 	end
 
 	def create
-		respond_with :api, :v1, Topic.create(topic_params)
+		render json: Topic.create(topic_params)
 	end
 
 	def update
-		respond_with topic.update(topic_params)
+		render json: topic.update(topic_params)
 	end
 
 	def destroy
-		respond_with topic.destroy
+		render json: topic.destroy
 	end
 
 	private

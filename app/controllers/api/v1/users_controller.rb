@@ -2,11 +2,11 @@ class Api::V1::UsersController < ApplicationController
 	respond_to :json
 
 	def index
-		respond_with User.all
+		render json: User.all
 	end
 
 	def show
-		respond_with user
+		render json: user
 	end
 
 	def create
@@ -18,7 +18,7 @@ class Api::V1::UsersController < ApplicationController
 		params[:user][:is_admin] = false
 		params[:user][:is_super_user] = false
 		params[:user][:personal_message] = ""
-		respond_with :api, :v1, User.create(user_params)
+		render json: User.create(user_params)
 	end
 
 	def update
@@ -29,14 +29,14 @@ class Api::V1::UsersController < ApplicationController
 			user_params.delete(:current_password)
 		end
 		if needs_password?(user, user_params)
-			respond_with user.update_with_password(user_params)
+			render json: user.update_with_password(user_params)
 		else
-			respond_with user.update_without_password(user_params)
+			render json: user.update_without_password(user_params)
 		end
 	end
 
 	def destroy
-		respond_with user.destroy
+		render json: user.destroy
 	end
 
 	private

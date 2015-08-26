@@ -6,7 +6,6 @@ gem "foreman"
 gem "local_time"
 gem "puma"
 gem 'neat'
-gem 'responders', '~> 2.1'
 
 group :development do
   # Graph generation tool

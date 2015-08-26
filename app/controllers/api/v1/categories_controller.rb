@@ -2,23 +2,23 @@ class Api::V1::CategoriesController < ApplicationController
 	respond_to :json # default to Active Model Serializers
 
 	def index
-		respond_with Category.all
+		render json: Category.all
 	end
 
 	def show
-		respond_with category
+		render json: category
 	end
 
 	def create
-		respond_with :api, :v1, Category.create(category_params)
+		render json: Category.create(category_params)
 	end
 
 	def update
-		respond_with category.update(categorie_params)
+		render json: category.update(categorie_params)
 	end
 
 	def destroy
-		respond_with category.destroy
+		render json: category.destroy
 	end
 
 	private

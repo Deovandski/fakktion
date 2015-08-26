@@ -2,23 +2,23 @@ class Api::V1::GenresController < ApplicationController
 	respond_to :json
 
 	def index
-		respond_with Genre.all
+		render json: Genre.all
 	end
 
 	def show
-		respond_with genre
+		render json: genre
 	end
 
 	def create
-		respond_with :api, :v1, Genre.create(genre_params)
+		render json: Genre.create(genre_params)
 	end
 
 	def update
-		respond_with genre.update(genre_params)
+		render json: genre.update(genre_params)
 	end
 
 	def destroy
-		respond_with genre.destroy
+		render json: genre.destroy
 	end
 
 	private

@@ -2,23 +2,23 @@ class Api::V1::FactTypesController < ApplicationController
 	respond_to :json
 	
 	def index
-		respond_with FactType.all
+		render json: FactType.all
 	end
 
 	def show
-		respond_with factType
+		render json: factType
 	end
 
 	def create
-		respond_with :api, :v1, FactType.create(factType_params)
+		render json: FactType.create(factType_params)
 	end
 
 	def update
-		respond_with factType.update(factType_params)
+		render json: factType.update(factType_params)
 	end
 
 	def destroy
-		respond_with factType.destroy
+		render json: factType.destroy
 	end
 
 	private

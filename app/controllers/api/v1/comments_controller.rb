@@ -2,23 +2,23 @@ class Api::V1::CommentsController < ApplicationController
 	respond_to :json # default to Active Model Serializers
 
 	def index
-		respond_with Comment.all
+		render json: Comment.all
 	end
 
 	def show
-		respond_with comment
+		render json: comment
 	end
 
 	def create
-		respond_with :api, :v1, Comment.create(comment_params)
+		render json: Comment.create(comment_params)
 	end
 
 	def update
-		respond_with comment.update(comment_params)
+		render json: comment.update(comment_params)
 	end
 
 	def destroy
-		respond_with comment.destroy
+		render json: comment.destroy
 	end
 
 	private

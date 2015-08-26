@@ -273,7 +273,7 @@ end
 Rails.logger.info 'Creating Comments'
 if Comment.count == 0
 Comment.create!(hidden: false,
-				post_id: 0,
+				post_id: 1,
 				soft_delete: false,
 				soft_delete_date: nil,
 				text: 'Sample Text #1',
@@ -283,20 +283,20 @@ Comment.create!(hidden: false,
 				post_id: 0,
 				soft_delete: false,
 				soft_delete_date: nil,
-				text: 'Sample Text #2 by Admin',
+				text: 'Sample Text',
 				user_id: 0,
 				empathy_level: 0)
 Rails.logger.info 'Comments created'
 else
 Comment.create!(hidden: false,
-				post_id: 0,
+				post_id: 2,
 				soft_delete: false,
 				soft_delete_date: nil,
 				text: 'Sample Text #1',
 				user_id: 1,
 				empathy_level: 0)
 Comment.create!(hidden: false,
-				post_id: 0,
+				post_id: 1,
 				soft_delete: false,
 				soft_delete_date: nil,
 				text: 'Sample Text #2 by Admin',

@@ -2,23 +2,23 @@ class Api::V1::AdminMessagesController < ApplicationController
 	respond_to :json
 
 	def index
-		respond_with AdminMessage.all
+		render json: AdminMessage.all
 	end
 
 	def show
-		respond_with adminMessage
+		render json: adminMessage
 	end
 
 	def create
-		respond_with :api, :v1, AdminMessage.create(adminMessage_params)
+		render json: AdminMessage.create(adminMessage_params)
 	end
 
 	def update
-		respond_with adminMessage.update(adminMessage_params)
+		render json: adminMessage.update(adminMessage_params)
 	end
 
 	def destroy
-		respond_with adminMessage.destroy
+		render json: adminMessage.destroy
 	end
 
 	private

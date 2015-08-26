@@ -2,27 +2,27 @@ class Api::V1::PostsController < ApplicationController
 	respond_to :json # default to Active Model Serializers
 
 	def index
-		respond_with Post.all
+		render json: Post.all
 	end
 
 	def show
-		respond_with post
+		render json: post
 	end
 
 	def create
-		respond_with :api, :v1, Post.create(post_params)
+		render json: Post.create(post_params)
 	end
 
 	def update
 		if post.update(post_params)
-			respond_with post, status: :ok
+			render json: post, status: :ok
 		else
-			respond_with post.errors, status: :unprocessable_entity
+			render json: post.errors, status: :unprocessable_entity
 		end
 	end
 
 	def destroy
-		respond_with post.destroy
+		render json: post.destroy
 	end
 
 	private
