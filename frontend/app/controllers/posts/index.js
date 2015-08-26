@@ -28,7 +28,7 @@ export default Ember.Controller.extend
 		this.set('topicID', this.get('application.selectedTID'));
 		this.set('postDateID', this.get('application.selectedPDID'));
 		
-		/*
+		
 		console.log('Variables Debug: ');
 		console.log('genreID DEBUG: ' + this.get('genreID'));
 		console.log('factTypeID DEBUG: ' + this.get('factTypeID'));
@@ -36,7 +36,7 @@ export default Ember.Controller.extend
 		console.log('topicID DEBUG: ' + this.get('topicID'));
 		console.log('postDateID DEBUG: ' + this.get('postDateID'));
 		console.log('Filter called');
-		*/
+		
 		
 		// RETURN ALL POSTS
 		// 00000

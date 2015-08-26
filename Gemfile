@@ -8,12 +8,14 @@ gem "puma"
 gem 'neat'
 
 group :development do
-  # Graph generation tool
-  gem "rails-erd"
-  # Travis CI
-  gem "travis"
-  # CodeClimate
-  gem "codeclimate-test-reporter", group: :test, require: nil
+	# Graph generation tool
+	gem "rails-erd"
+	# Travis CI
+	gem "travis"
+	# CodeClimate
+	gem "codeclimate-test-reporter", group: :test, require: nil
+	#http://docs.travis-ci.com/user/travis-lint/
+	gem 'travis-lint'
 end
 
 #EmberCLI
@@ -22,8 +24,6 @@ gem 'ember-cli-rails'
 #https://github.com/rails-api/active_model_serializers
 gem 'active_model_serializers', '0.10.0.rc2'
 
-#http://docs.travis-ci.com/user/travis-lint/
-gem 'travis-lint'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'

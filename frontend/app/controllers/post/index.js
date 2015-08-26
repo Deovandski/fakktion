@@ -12,6 +12,8 @@ export default Ember.Controller.extend
 	}),
 	updatedDate: Ember.computed('model.updated_at', function()
 	{
+		console.log(this.get('model.comments'));
+		console.log(this.get('model.comments.length'));
 		return moment(this.get("model.updated_at")).format('L');
 	}),
 	createdDate: Ember.computed('model.created_at', function()

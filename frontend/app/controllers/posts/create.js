@@ -151,16 +151,15 @@ export default Ember.Controller.extend
 			if(this.get('clientSideValidationComplete') === true)
 			{
 				var store = this.store;
-				console.log(this.get('genreID'));
 				var post = store.createRecord('post',
 				{
-					user_id: this.get('session.secure.userId'),
 					title: this.get('title'),
 					text: this.get('text'),
 					fact_link: this.get('factLink'),
 					fiction_link: this.get('fictionLink'),
 					hidden: false,
 					softDelete: false,
+					user: store.peekRecord('user', this.get('session.secure.userId')),
 					genre: store.peekRecord('genre', this.get('genreID')),
 					fact_type: store.peekRecord('fact_type', this.get('factTypeID')),
 					topic: store.peekRecord('topic', this.get('topicID')),

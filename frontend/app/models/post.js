@@ -13,6 +13,14 @@ export default DS.Model.extend
 	text: DS.attr ('string'),
 	comments_count: DS.attr ('number'),
 	
+	// For quick search
+	updated_at: DS.attr ('date'),
+	created_at: DS.attr ('date'),
+	genre_id: DS.attr ('number'),
+	category_id: DS.attr ('number'),
+	fact_type_id: DS.attr ('number'),
+	topic_id: DS.attr ('number'),
+	
 	// Relationships
 	comments: DS.hasMany('comment', {async: true}),
 	user: DS.belongsTo('user', {async: true}),

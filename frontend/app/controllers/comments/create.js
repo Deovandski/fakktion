@@ -2,6 +2,7 @@ import Ember from "ember";
 
 export default Ember.Controller.extend
 ({
+	application: Ember.inject.controller('application'),
 	text: "",
 	clientSideValidationComplete: false,
 	verifyText: Ember.computed('text', function()
@@ -27,7 +28,7 @@ export default Ember.Controller.extend
 				var comment = this.store.createRecord('comment',
 				{
 					post: store.peekRecord('post', this.get('model.id')),
-					user_id: this.get('session.secure.userId'),
+					user: store.peekRecord('user', this.get('session.secure.userId')),
 					text: this.get('text'),
 					hidden: false,
 					empathy_level: 0,
