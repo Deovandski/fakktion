@@ -6,9 +6,9 @@ export default Ember.Controller.extend
 	clientSideValidationComplete: false,
 	verifyGenreName: Ember.computed('name', function()
 	{
-		if(this.get('model.name').length < 4)
+		if(this.get('name').length < 4)
 		{
-			if(this.get('model.name').length === 0)
+			if(this.get('name').length === 0)
 			{
 				this.set('clientSideValidationComplete',false);
 				return 'Cannot be empty';
