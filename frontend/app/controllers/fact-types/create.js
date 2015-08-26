@@ -2,8 +2,9 @@ import Ember from "ember";
 
 export default Ember.Controller.extend
 ({
+	name: "",
 	clientSideValidationComplete: false,
-	verifyGenreName: Ember.computed('model.name', function()
+	verifyFactTypeName: Ember.computed('name', function()
 	{
 		if(this.get('model.name').length < 4)
 		{
@@ -20,11 +21,10 @@ export default Ember.Controller.extend
 		}
 		else
 		{
-			var possibleGenre = this.get('genres').filterBy('name', this.get('model.name'));
-			if(possibleGenre.length > 1)
+			if(this.model.get('factTypes').isAny('name', this.get('name')))
 			{
 				this.set('clientSideValidationComplete',false);
-				return 'This genre model.name is already in use...';
+				return 'This Fact Type Name is already in use...';
 			}
 			else
 			{
@@ -35,24 +35,27 @@ export default Ember.Controller.extend
 	}),
 	actions:
 	{
-		update: function()
+		create: function()
 		{
 			if(this.get('clientSideValidationComplete') === true)
 			{
-				var genre = this.get('content');
-				genre.set('name', this.get('model.name'));
-				var self = this;
-				genre.save().then(function()
+				var store = this.store;
+				var factType = store.createRecord('fact_type',
 				{
-					self.transitionToRoute('genre', genre);
+					name: this.get('name'),
+				});
+				var self = this;
+				factType.save().then(function()
+				{
+					self.transitionToRoute('factType', factType);
 				}, function()
 				{
-					alert('(Server 402) failed to update genre... Check your input and try again!');
+					alert('(Server 402) failed to create Fact Type... Check your input and try again!');
 				});
 			}
 			else
 			{
-				alert("(Client 402) Failed to update genre... Check any warning messages (to the right of each textbox) otherwise contact support if you don't see any");
+				alert("(Client 402) Failed to create Fact Type... Check any warning messages (to the right of each textbox) otherwise contact support if you don't see any");
 			}
 		}
 	}

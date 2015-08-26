@@ -1,5 +1,5 @@
 DONE items were written in order of when it was implemented. Each item does not mean a commit.
-Last Updated on 8/21 1:18PM
+Last Updated on 8/26 6:36PM
 
 DONE:
 
@@ -71,4 +71,4 @@ DONE:
 65. Comments resource has been implemented on posts.
 66. Raw post.index implemented and post edit route is complete
 67. Active Model Serializers upgrade to 0.10.0.rc2 including entire project plural/singular and relationships normalization.
-
+68. Fact Types, Genres and Topics RESTful links implementation

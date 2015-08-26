@@ -4,6 +4,6 @@ export default Ember.Route.extend
 ({
 	model: function()
 	{
-		return this.store.findAll('genre');
+		return this.store.findAll('fact_type');
 	}
 });

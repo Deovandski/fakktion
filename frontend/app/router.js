@@ -51,7 +51,7 @@ Router.map(function()
 
 	//Fact Type
 	this.resource('factTypes', function(){
-		this.resource('factType', { path:'/:_id' }, function()
+		this.resource('factType', { path:'/:factType_id' }, function()
 		{
 			this.route('edit');
 		});
@@ -60,7 +60,7 @@ Router.map(function()
 
 	//Topic
 	this.resource('topics', function(){
-		this.resource('topics', { path:'/:_id' }, function()
+		this.resource('topic', { path:'/:topic_id' }, function()
 		{
 			this.route('edit');
 		});

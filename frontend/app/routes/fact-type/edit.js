@@ -3,12 +3,9 @@ import AuthenticatedRouteMixin from 'simple-auth/mixins/authenticated-route-mixi
 
 export default Ember.Route.extend
 (AuthenticatedRouteMixin,{
-	model: function()
+	setupController: function(controller, model)
 	{
-		return Ember.Object.create
-		({
-			genre: this.modelFor('genre'),
-			genres: this.store.findAll('genre')
-		});
-	}
+		controller.set('content', model);
+        controller.set('factTypes', this.store.findAll('fact_type'));
+    }
 });

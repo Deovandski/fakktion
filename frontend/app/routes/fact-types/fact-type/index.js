@@ -4,6 +4,6 @@ export default Ember.Route.extend
 ({
 	model: function(params)
 	{
-		return this.store.find('genre', params.genre_id);
+		return this.store.find('fact_type', params.factType_id);
 	}
 });

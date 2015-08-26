@@ -7,8 +7,8 @@ export default Ember.Route.extend
 	{
 		return Ember.Object.create
 		({
-			genre: this.modelFor('genre'),
-			genres: this.store.findAll('genre')
+			factType: this.modelFor('fact_type'),
+			factTypes: this.store.findAll('fact_type')
 		});
 	}
 });

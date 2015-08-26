@@ -42,14 +42,14 @@ export default Ember.Controller.extend
 	// Paths to show central Panel and Sidebars Panels:
 	centralPanelPaths: ['index',
 	'posts.index', 'posts.create', 'posts.post.edit',
-	'genres.index', 'genres.create', 'genre.edit',
-	'topics.index', 'topics.create', 'topics.edit',
-	'factTypes.index', 'factTypes.create', 'factType.edit'],
+	'genres.index', 'genres.create', 'genres.genre.index', 'genres.genre.edit',
+	'topics.index', 'topics.create', 'topics.topic.index', 'topics.topic.edit',
+	'factTypes.index', 'factTypes.create', 'factTypes.factType.index', 'factTypes.factType.edit'],
 	sidebarsPanelPaths: ['index',
 	'posts.index', 'posts.create', 'posts.post.edit',
-	'genres.index', 'genres.create', 'genre.edit',
-	'topics.index', 'topics.create', 'topic.edit',
-	'factTypes.index', 'factTypes.create', 'factType.edit'],
+	'genres.index', 'genres.create', 'genres.genre.index', 'genres.genre.edit',
+	'topics.index', 'topics.create', 'topics.topic.index', 'topics.topic.edit',
+	'factTypes.index', 'factTypes.create', 'factTypes.factType.index', 'factTypes.factType.edit'],
 	// Central Panel and Sidebars Visibility Boolean Check
 	displayCentralPanel: Ember.computed('currentPath', function()
 	{

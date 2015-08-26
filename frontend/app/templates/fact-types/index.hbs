@@ -1,5 +1,12 @@
+<h1>Fact Types Management</h1>
 <ul>
-  {{#each model.factTypes as |factType|}}
-    <li><button{{action "setFTID" factType}}>{{factType.name}}</button></li>
-  {{/each}}
+    {{#each model as |factType|}}
+      <li>{{#link-to 'factType' factType}}{{factType.name}}{{/link-to}}</li>
+    {{/each}}
 </ul>
+
+{{#if session.isAuthenticated}}
+	<p class="inner_info_button">{{#link-to 'factTypes.create'}}Create Fact type{{/link-to}}</p>
+{{else}}
+	<p>Please login to create a Fact Type</p>
+{{/if}}

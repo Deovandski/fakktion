@@ -1,12 +1,12 @@
-<h1>Forum</h1>
+<h1>Topics Management</h1>
 <ul>
-    {{#each filteredPosts as |post|}}
-      <li>{{#link-to 'post' post}}{{post.title}}{{/link-to}}</li>
+    {{#each model as |topic|}}
+      <li>{{#link-to 'topic' topic}}{{topic.name}}{{/link-to}}</li>
     {{/each}}
 </ul>
 
 {{#if session.isAuthenticated}}
-	<p class="inner_info_button">{{#link-to  'posts.create'}}Create Post{{/link-to}}</p>
+	<p class="inner_info_button">{{#link-to 'topics.create'}}Create topic{{/link-to}}</p>
 {{else}}
-	<p>Please login to create a post</p>
+	<p>Please login to create a topic</p>
 {{/if}}

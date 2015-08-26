@@ -1,6 +1,12 @@
-<h5>Genres Tag Management</h5>
-<ul class="tag_listing">
-  {{#each model as |genre|}}
-    <li><button class="button_type1" {{action "setGID" genre}}>{{genre.name}}</button></li>
-  {{/each}}
+<h1>Genres Management</h1>
+<ul>
+    {{#each model as |genre|}}
+      <li>{{#link-to 'genre' genre}}{{genre.name}}{{/link-to}}</li>
+    {{/each}}
 </ul>
+
+{{#if session.isAuthenticated}}
+	<p class="inner_info_button">{{#link-to 'genres.create'}}Create Genre{{/link-to}}</p>
+{{else}}
+	<p>Please login to create a genre</p>
+{{/if}}
