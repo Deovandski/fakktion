@@ -1,5 +1,4 @@
 class UserSerializer < ActiveModel::Serializer
-	ActiveModel::Serializer.config.adapter = :json
 	has_many	:posts,
 				:comments,
 				:admin_messages

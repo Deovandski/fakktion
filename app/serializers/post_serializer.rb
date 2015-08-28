@@ -1,5 +1,4 @@
 class PostSerializer < ActiveModel::Serializer
-	ActiveModel::Serializer.config.adapter = :json
 	has_many :comments
 	belongs_to :genre
 	belongs_to :fact_type
