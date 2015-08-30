@@ -1,4 +1,4 @@
-class Api::V1::PostsController < ApplicationController
+class Api::V1::PostsController < MasterApiController
 	respond_to :json # default to Active Model Serializers
 
 	def index

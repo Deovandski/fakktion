@@ -1,5 +1,5 @@
-class Api::V1::CommentsController < ApplicationController
-	respond_to :json # default to Active Model Serializers
+class Api::V1::CommentsController < MasterApiController
+	respond_to :json
 
 	def index
 		render json: Comment.all

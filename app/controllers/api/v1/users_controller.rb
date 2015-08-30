@@ -1,4 +1,4 @@
-class Api::V1::UsersController < ApplicationController
+class Api::V1::UsersController < MasterApiController
 	respond_to :json
 
 	def index

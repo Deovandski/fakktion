@@ -1,15 +1,9 @@
 class ApplicationController < ActionController::Base
-	# Prevent CSRF attacks by raising an exception.
-	# For APIs, you may want to use :null_session instead.
-	before_filter :authenticate_user_from_token!
-	protect_from_forgery with: :null_session
-	skip_before_action :verify_authenticity_token, if: :json_request?
+	# Prevent CSRF attacks || Check API controller for JSON protect_from_forgery customization
+	protect_from_forgery
+	before_filter :authenticate_user_from_token! # Devise inner workings
 
 	protected
-
-	def json_request?
-		request.format.json?
-	end
 
 	def authenticate_user_from_token!
 		authenticate_with_http_token do |token, options|

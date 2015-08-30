@@ -2,12 +2,13 @@ import DS from "ember-data";
 import Ember from "ember";
 import $ from 'jquery';
 
+var token = $('meta[name="csrf-token"]').attr('content');
 export default DS.JSONAPIAdapter.extend
 ({
+    headers: {
+        "X-CSRF-Token": token
+    },
 	namespace: 'api/v1',
-	headers: {
-		"X-CSRF-Token": $('meta[name="csrf-token"]').attr('content')
-	},
 	pathForType: function(type) {
 		var underscored = Ember.String.underscore(type);
 		return Ember.String.pluralize(underscored);

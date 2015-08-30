@@ -1,5 +1,5 @@
-class Api::V1::CategoriesController < ApplicationController
-	respond_to :json # default to Active Model Serializers
+class Api::V1::CategoriesController < MasterApiController
+	respond_to :json
 
 	def index
 		render json: Category.all

@@ -1,4 +1,4 @@
-class Api::V1::AdminMessagesController < ApplicationController
+class Api::V1::AdminMessagesController < MasterApiController
 	respond_to :json
 
 	def index
