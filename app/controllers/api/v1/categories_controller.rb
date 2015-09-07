@@ -28,6 +28,7 @@ class Api::V1::CategoriesController < MasterApiController
 	end
 
 	def category_params
-		params.require(:data).require(:attributes).permit(:category).permit(:name, :posts_count) # only allow these for now
+		#Deserialization issues for relationships. Waiting for #950 https://github.com/rails-api/active_model_serializers/pull/950
+		params.require(:data).require(:attributes).permit(:name, :posts_count)
 	end
 end
