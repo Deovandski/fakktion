@@ -28,6 +28,6 @@ class Api::V1::AdminMessagesController < MasterApiController
 	end
 
 	def adminMessage_params
-		params.require(:adminMessage).permit(:message, :title)
+		params.require(:data).require(:attributes).permit(:adminMessage).permit(:message, :title)
 	end
 end

@@ -28,6 +28,6 @@ class Api::V1::CommentsController < MasterApiController
 	end
 
 	def comment_params
-		params.require(:comment).permit(:text, :user_id, :post_id, :empathy_level, :soft_delete_date, :soft_delete, :hidden)
+		params.require(:data).require(:attributes).permit(:comment).permit(:text, :user_id, :post_id, :empathy_level, :soft_delete_date, :soft_delete, :hidden)
 	end
 end

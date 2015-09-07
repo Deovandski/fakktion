@@ -10,14 +10,14 @@ class Api::V1::UsersController < MasterApiController
 	end
 
 	def create
-		params[:data][:sign_in_count] = 0
-		params[:data][:webpage_url] = ""
-		params[:data][:is_banned] = false
-		params[:data][:facebook_url] = ""
-		params[:data][:twitter_url] = ""
-		params[:data][:is_admin] = false
-		params[:data][:is_super_user] = false
-		params[:data][:personal_message] = ""
+		params[:data][:attributes][:sign_in_count] = 0
+		params[:data][:attributes][:webpage_url] = ""
+		params[:data][:attributes][:is_banned] = false
+		params[:data][:attributes][:facebook_url] = ""
+		params[:data][:attributes][:twitter_url] = ""
+		params[:data][:attributes][:is_admin] = false
+		params[:data][:attributes][:is_super_user] = false
+		params[:data][:attributes][:personal_message] = ""
 		render json: User.create(user_params)
 	end
 

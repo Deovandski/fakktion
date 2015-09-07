@@ -28,6 +28,6 @@ class Api::V1::CategoriesController < MasterApiController
 	end
 
 	def category_params
-		params.require(:category).permit(:name, :posts_count) # only allow these for now
+		params.require(:data).require(:attributes).permit(:category).permit(:name, :posts_count) # only allow these for now
 	end
 end

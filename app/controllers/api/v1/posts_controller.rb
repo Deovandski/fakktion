@@ -31,6 +31,6 @@ class Api::V1::PostsController < MasterApiController
 	end
 
 	def post_params
-		params.require(:post).permit(:genre_id, :text, :views_count, :title, :category_id, :topic_id, :user_id, :fact_type_id, :fact_link, :fiction_link, :importance, :soft_delete, :soft_delete_date, :hidden, :comments_count)
+		params.require(:data).require(:attributes).permit(:post).permit(:genre_id, :text, :views_count, :title, :category_id, :topic_id, :user_id, :fact_type_id, :fact_link, :fiction_link, :importance, :soft_delete, :soft_delete_date, :hidden, :comments_count)
 	end
 end
