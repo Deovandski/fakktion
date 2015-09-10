@@ -1,7 +1,7 @@
 class FactTypeSerializer < ActiveModel::Serializer
-	has_many :posts
-	attributes  :id,
-				:name,
+	attributes  :name,
 				:eligibility_counter,
 				:posts_count
+						
+	has_many :posts
 end

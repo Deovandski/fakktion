@@ -2,12 +2,12 @@ import DS from "ember-data";
 import Ember from "ember";
 import $ from 'jquery';
 var token = $('meta[name="csrf-token"]').attr('content');
-DS.RESTAdapter.reopen({
+DS.JSONAPIAdapter.reopen({
     headers: {
         "X-CSRF-Token": token
     }
 });
-export default DS.RESTAdapter.extend
+export default DS.JSONAPIAdapter.extend
 ({
 	namespace: 'api/v1',
 	pathForType: function(type) {

@@ -1,6 +1,6 @@
 class AdminMessageSerializer < ActiveModel::Serializer
-	belongs_to :user
-	attributes  :id,
-				:title,
+	attributes  :title,
 				:message
+				
+	belongs_to :user
 end
