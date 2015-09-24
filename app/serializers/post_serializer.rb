@@ -8,7 +8,9 @@ class PostSerializer < ActiveModel::Serializer
 				:hidden,
 				:views_count,
 				:text,
-				:comments_count
+				:comments_count,
+				:created_at,
+				:updated_at
 	
 	has_many :comments
 	belongs_to :genre
