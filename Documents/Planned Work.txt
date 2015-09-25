@@ -1,13 +1,12 @@
 ﻿TODO items are written in order of importance.
-Last Updated on 8/26 6:35PM
+Last Updated on 9/25 1:05AM
 
 TODO:
-Update ember-cli so that Ember.js uses 2.0 as the upgrade with 1.x caused several issues.
+Update Ember-cli to 2.0 (HOLD)
 Update Delete command to use softDelete for posts
 Create raw moderation page for admins and superUser
 Create raw admin moderation page for superUser
 Complete the setup for all RESTful links for posts
-Users able to create Posts from the current selected tags story implementation (Topic and Post Date missing)
 setup RESTful links for comments
 Remove any unwanted ~ files
 Through code cleanup and indentation.

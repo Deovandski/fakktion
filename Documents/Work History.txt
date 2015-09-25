@@ -1,5 +1,5 @@
 DONE items were written in order of when it was implemented. Each item does not mean a commit.
-Last Updated on 8/26 6:36PM
+Last Updated on 9/25 1:00AM
 
 DONE:
 
@@ -61,14 +61,16 @@ DONE:
 55. Index Page is now just a welcome page while posts.index became the new forum.
 56. Genre Manage button redirects to the genres.index for future development.
 57. Fixed error caused by null default values and fixed a possible exploit of a new user becoming admin or super user on users/create.
-58. 40% Complete the setup for all RESTful links for tags
+58. Complete the setup for all RESTful links for tags
 59. Rails Asset Pipeline is now working!
 60. Hide/shows buttons changed to match initial expectation (see research link on Readme.md)
 61. Rails counter_cache has been set accross the application.
 62. Search by Topic name has been implemented.
-63. Search by Post date is now setup (only missing Moment.js posts.index query)
+63. Search by Post date is now setup
 64. Ember-cli updated to 1.13.8
 65. Comments resource has been implemented on posts.
 66. Raw post.index implemented and post edit route is complete
 67. Active Model Serializers upgrade to 0.10.0.rc2 including entire project plural/singular and relationships normalization.
 68. Fact Types, Genres and Topics RESTful links implementation
+69. Active Model Serializers upgrade to 0.10.0.rc3.
+70. JSON API Implementation (JSONAPI branch has all the details)
