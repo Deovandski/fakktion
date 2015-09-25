@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import Session from 'simple-auth/session';
 /* Abbreviations:
 GID: Genre_id
 CID: category_id
