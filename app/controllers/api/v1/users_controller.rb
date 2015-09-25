@@ -1,4 +1,4 @@
-class Api::V1::UsersController < ApplicationController
+class Api::V1::UsersController < MasterApiController
 	respond_to :json
 
 	def index
@@ -10,14 +10,15 @@ class Api::V1::UsersController < ApplicationController
 	end
 
 	def create
-		params[:user][:sign_in_count] = 0
-		params[:user][:webpage_url] = ""
-		params[:user][:is_banned] = false
-		params[:user][:facebook_url] = ""
-		params[:user][:twitter_url] = ""
-		params[:user][:is_admin] = false
-		params[:user][:is_super_user] = false
-		params[:user][:personal_message] = ""
+		# Not working due to issue described on params...
+		#params[:data][:sign_in_count] = 0
+		#params[:data][:webpage_url] = ""
+		#params[:data][:is_banned] = false
+		#params[:data][:facebook_url] = ""
+		#params[:data][:twitter_url] = ""
+		#params[:data][:is_admin] = false
+		#params[:data][:is_super_user] = false
+		#params[:data][:personal_message] = ""
 		render json: User.create(user_params)
 	end
 
@@ -50,6 +51,7 @@ class Api::V1::UsersController < ApplicationController
 	end
 	
 	def user_params
-		params.require(:user).permit(:id, :show_full_name, :full_name, :display_name, :email, :date_of_birth, :gender, :facebook_url, :twitter_url, :personal_message, :webpage_url, :is_banned, :is_banned_date, :legal_terms_read, :privacy_terms_read, :is_admin, :is_super_user, :sign_in_count, :password, :last_sign_in_at, :reset_password_sent_at, :reset_password_token, :updated_at, :created_at, :current_password, :posts_count, :comments_count, :admin_messages_count )
+		#Deserialization issues for relationships. Waiting for #950 https://github.com/rails-api/active_model_serializers/pull/950
+		params.require(:data).require(:attributes).permit(:show_full_name, :full_name, :display_name, :email, :date_of_birth, :gender, :facebook_url, :twitter_url, :personal_message, :webpage_url, :is_banned, :is_banned_date, :legal_terms_read, :privacy_terms_read, :is_admin, :is_super_user, :sign_in_count, :password, :last_sign_in_at, :reset_password_sent_at, :reset_password_token, :updated_at, :created_at, :current_password, :posts_count, :comments_count, :admin_messages_count )
 	end
 end

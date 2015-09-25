@@ -1,5 +1,5 @@
-class Api::V1::CategoriesController < ApplicationController
-	respond_to :json # default to Active Model Serializers
+class Api::V1::CategoriesController < MasterApiController
+	respond_to :json
 
 	def index
 		render json: Category.all
@@ -28,6 +28,7 @@ class Api::V1::CategoriesController < ApplicationController
 	end
 
 	def category_params
-		params.require(:category).permit(:name, :posts_count) # only allow these for now
+		#Deserialization issues for relationships. Waiting for #950 https://github.com/rails-api/active_model_serializers/pull/950
+		params.require(:data).require(:attributes).permit(:name, :posts_count)
 	end
 end

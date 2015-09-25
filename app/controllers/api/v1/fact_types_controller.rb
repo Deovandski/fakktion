@@ -1,4 +1,4 @@
-class Api::V1::FactTypesController < ApplicationController
+class Api::V1::FactTypesController < MasterApiController
 	respond_to :json
 	
 	def index
@@ -28,6 +28,6 @@ class Api::V1::FactTypesController < ApplicationController
 	end
 
 	def factType_params
-		params.require(:fact_type).permit(:name, :posts_count, :eligibility_counter) # only allow these for now
+		params.require(:data).require(:attributes).permit(:fact_type).permit(:name, :posts_count, :eligibility_counter) # only allow these for now
 	end
 end

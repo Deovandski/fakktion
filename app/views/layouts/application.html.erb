@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
-	<%= stylesheet_link_tag 'application', media: 'all'%>
-	<%= stylesheet_link_tag :frontend%>
-	<%= include_ember_script_tags :frontend %>
-	<%= include_ember_stylesheet_tags :frontend %>
-	<%= csrf_meta_tags %>
+	<head>
+		<%= stylesheet_link_tag 'application', media: 'all'%>
+		<%= stylesheet_link_tag :frontend%>
+		<%= include_ember_script_tags :frontend %>
+		<%= include_ember_stylesheet_tags :frontend %>
+		<%= csrf_meta_tags %>
+	</head>
 	<%= yield %>  
 	<%= render partial: "layouts/shared/analytics" %>
 </html>

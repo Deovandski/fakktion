@@ -1,4 +1,4 @@
-class Api::V1::TopicsController < ApplicationController
+class Api::V1::TopicsController < MasterApiController
 	respond_to :json
 
 	def index
@@ -28,6 +28,7 @@ class Api::V1::TopicsController < ApplicationController
 	end
 
 	def topic_params
-		params.require(:topic).permit(:name, :posts_count, :eligibility_counter) # only allow these for now
+		#Deserialization issues for relationships. Waiting for #950 https://github.com/rails-api/active_model_serializers/pull/950
+		params.require(:data).require(:attributes).permit(:name, :posts_count, :eligibility_counter) # only allow these for now
 	end
 end

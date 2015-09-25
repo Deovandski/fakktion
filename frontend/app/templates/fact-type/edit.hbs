@@ -1,9 +1,21 @@
-<h2>Edit Fact Type</h2>
+<h2>Edit <b>{{model.name}}</b> Fact Type</h2>
 <form>
 	<div class="input_block_type1">
 		<label class="first_label">Name:</label>
 		<label class="input_wrapper">{{input value=model.name}}</label>
 		<label class="second_label">{{verifyFactTypeName}}</label>
 	</div><br/>
-  <button class="button_type1" {{action "update"}}>Update Fact Type</button>
 </form>
+{{#if session.isAuthenticated}}
+	{{#if session.currentUser.is_admin}}
+		<button class="button_type1" {{action "update"}}>Update Fact Type</button>
+	{{else}}
+		{{#if session.currentUser.is_super_user}}
+			<button class="button_type1" {{action "update"}}>Update Fact Type</button>
+		{{else}}
+			<label class="second_label">Only Admins can edit</label>
+		{{/if}}
+	{{/if}}
+{{else}}
+	<label class="second_label">Please Login</label>
+{{/if}}

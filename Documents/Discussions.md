@@ -14,6 +14,10 @@
 
 [August 21 2015 - Handling Store.save() for records that contains DS.BelongsTo](http://stackoverflow.com/questions/32146860/handling-store-save-for-records-that-contains-ds-belongsto)
 
+"Active Model Serializers" (See JSONAPI branch)
+
+[September 9 2015 - Deserializing Json-Api with Rails Strong Parameters](http://stackoverflow.com/questions/32491360/deserializing-json-api-with-rails-strong-parameters)
+
 "Related"
 
 [July 19 2015 - Ember.js IF statement with OR conditional causing unexpected behaviour](http://stackoverflow.com/questions/31504710/ember-js-if-statement-with-or-conditional-causing-unexpected-behaviour)

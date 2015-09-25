@@ -1,17 +1,5 @@
 class PostSerializer < ActiveModel::Serializer
-	ActiveModel::Serializer.config.adapter = :json
-	has_many :comments
-	belongs_to :genre
-	belongs_to :fact_type
-	belongs_to :category
-	belongs_to :topic
-	attributes  :id,
-				:user_id,
-				:genre_id,
-				:topic_id,
-				:category_id,
-				:fact_type_id,
-				:fact_link,
+	attributes  :fact_link,
 				:fiction_link,
 				:title,
 				:importance, 
@@ -20,5 +8,14 @@ class PostSerializer < ActiveModel::Serializer
 				:hidden,
 				:views_count,
 				:text,
-				:comments_count
+				:comments_count,
+				:created_at,
+				:updated_at
+	
+	has_many :comments
+	belongs_to :genre
+	belongs_to :fact_type
+	belongs_to :category
+	belongs_to :topic
+	belongs_to :user
 end
