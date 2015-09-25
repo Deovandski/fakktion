@@ -1,4 +1,16 @@
-<p>Fact Type Page</p>
-<p>Fact Type Name: {{model.name}}</p>
-<p>Number of Posts using this tag: {{model.posts_count}}</p>
-<p>{{#link-to 'factType.edit' }}Edit Fact Type{{/link-to}}</p>
+<h2><b>{{model.name}} Fact Type</b></h2>
+<p>Number of Posts using this tag: <b>{{model.posts_count}}</b></p>
+{{#if session.isAuthenticated}}
+	{{#if session.currentUser.is_admin}}
+		<p>{{#link-to 'factType.edit' }}Edit Fact Type{{/link-to}}</p>
+	{{else}}
+		{{#if session.currentUser.is_super_user}}
+			<p>{{#link-to 'factType.edit' }}Edit Fact Type{{/link-to}}</p>
+		{{else}}
+			<label class="second_label">Only Admins can edit</label>
+		{{/if}}
+	{{/if}}
+{{else}}
+	<label class="second_label">Please Login</label>
+{{/if}}
+

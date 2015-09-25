@@ -1,4 +1,15 @@
-<p>Genre Page</p>
-<p>Genre Name: {{model.name}}</p>
-<p>Number of Posts using this tag: {{model.posts_count}}</p>
-<p>{{#link-to 'genre.edit' }}Edit Genre{{/link-to}}</p>
+<h2><b>{{model.name}} Genre</b></h2>
+<p>Number of Posts using this tag: <b>{{model.posts_count}}</b></p>
+{{#if session.isAuthenticated}}
+	{{#if session.currentUser.is_admin}}
+		<p>{{#link-to 'genre.edit' }}Edit Genre{{/link-to}}</p>
+	{{else}}
+		{{#if session.currentUser.is_super_user}}
+			<p>{{#link-to 'genre.edit' }}Edit Genre{{/link-to}}</p>
+		{{else}}
+			<label class="second_label">Only Admins can edit</label>
+		{{/if}}
+	{{/if}}
+{{else}}
+	<label class="second_label">Please Login</label>
+{{/if}}
