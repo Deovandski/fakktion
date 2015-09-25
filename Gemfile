@@ -26,7 +26,7 @@ group :development, :test do
 end
 
 #https://github.com/rails-api/active_model_serializers
-gem 'active_model_serializers', '0.10.0.rc2'
+gem 'active_model_serializers', '0.10.0.rc3'
 
 #EmberCLI
 gem 'ember-cli-rails'
