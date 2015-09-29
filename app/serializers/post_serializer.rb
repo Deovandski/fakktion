@@ -1,3 +1,4 @@
+# Post Serializer
 class PostSerializer < ActiveModel::Serializer
 	attributes  :fact_link,
 				:fiction_link,
@@ -11,7 +12,8 @@ class PostSerializer < ActiveModel::Serializer
 				:comments_count,
 				:created_at,
 				:updated_at
-	
+
+	# Relationships
 	has_many :comments
 	belongs_to :genre
 	belongs_to :fact_type

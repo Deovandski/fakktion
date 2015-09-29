@@ -1,3 +1,4 @@
+# Create Tags Migration
 class CreateTags < ActiveRecord::Migration
     create_table :categories do |t|
       t.string	 :name

@@ -1,3 +1,4 @@
+# Genres Controller: JSON response through Active Model Serializers
 class Api::V1::GenresController < MasterApiController
 	respond_to :json
 
@@ -28,6 +29,6 @@ class Api::V1::GenresController < MasterApiController
 	end
 
 	def genre_params
-		params.require(:data).require(:attributes).permit(:genre).permit(:name, :posts_count, :eligibility_counter) # only allow these for now
+		params.require(:data).require(:attributes).permit(:genre).permit(:name, :posts_count, :eligibility_counter)
 	end
 end

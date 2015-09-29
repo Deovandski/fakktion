@@ -1,7 +1,6 @@
 @import "imports";
 
-body.ember-application header
-{
+body.ember-application header {
 	@include clearfix;
 	background-color: $header-background-color;
 	color: #fff;
@@ -12,52 +11,43 @@ body.ember-application header
 	width:100%;
 	height: 50px;
 	position:absolute;
-	.outer-container 
-	{
+	.outer-container {
 		width: 100%;
 		height:100%;
 	}
-	a 
-	{
+	a {
 		@include transition(all 0.1s ease);
 	}
-	.branding
-	{
+	.branding {
 		width: 50%;
 		display: inline-block;
 		float: left;
 		text-align: left;
-		.image_branding
-		{
+		.image_branding {
 			float: left;
 			margin-right: 10px;
 		}
-		.text_branding
-		{
+		.text_branding {
 			line-height: 50px;
 			text-align: center;
 			float: left;
 			font-size: 16px;
 			letter-spacing: 6px;
 			text-transform: uppercase;
-			a
-			{
+			a {
 				color: $header-font-color;
 				display: inline-block;
 				margin: 13px 17px;
 				padding: 5px 1px;
 				text-decoration: none;
-				i
-				{
+				i {
 					position: relative;
 					top: -2px;
 					@include transition(color 0.1s linear);
 				}
-				&:hover
-				{
+				&:hover {
 					color: lighten($header-font-color, 12%);
-					i
-					{
+					i {
 						color: lighten($base-accent-color, 12%);
 					}
 				}
@@ -65,30 +55,26 @@ body.ember-application header
 		}
 	}
 
-	nav
-	{
+	nav {
 		height:100%;
 		width:50%;
 		float: right;
 		text-align: right;
 	}
-	ul
-	{
+	ul {
 		width:100%;
 		height:100%;
 		display: inline-block;
 		list-style-type: none;
 	}
-	li 
-	{
+	li {
 		line-height: 50px;
 		text-align: center;
 		height:100%;
 		display: inline-block;
 		margin-left: 6px;
 		margin-right: 6px;
-		a 
-		{
+		a {
 			line-height: 50px;
 			text-align: center;
 			border-bottom: 2px solid $header-background-color;
@@ -97,14 +83,12 @@ body.ember-application header
 			letter-spacing: 2px;
 			text-decoration: none;
 			text-transform: uppercase;
-			&:hover
-			{
+			&:hover {
 				border-bottom: 2px solid $header-font-color;
 				color: lighten($header-font-color, 12%);
 			}
 		}
-		&.active a 
-		{
+		&.active a {
 			color: #fff;
 			font-weight: 400;
 		}

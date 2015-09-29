@@ -1,3 +1,4 @@
+# User Serializer
 class UserSerializer < ActiveModel::Serializer
 	attributes  :full_name,
 				:display_name,
@@ -25,6 +26,7 @@ class UserSerializer < ActiveModel::Serializer
 				:admin_messages_count,
 				:comments_count
 
+	# Relationships
 	has_many	:posts,
 				:comments,
 				:admin_messages

@@ -1,11 +1,8 @@
-(function()
-{
+(function(){
 	"use strict";
-	$('.flash-alert i, .flash-notice i').click(function()
-	{
+	$('.flash-alert i, .flash-notice i').click(function(){
 		var flashElement = $(this).parent();
-		flashElement.animate
-		({
+		flashElement.animate({
 			borderWidth:   0,
 			height:        0,
 			marginBottom:  0,

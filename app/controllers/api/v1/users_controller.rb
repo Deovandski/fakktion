@@ -1,3 +1,4 @@
+# Users Controller: JSON response through Active Model Serializers
 class Api::V1::UsersController < MasterApiController
 	respond_to :json
 
@@ -51,7 +52,6 @@ class Api::V1::UsersController < MasterApiController
 	end
 	
 	def user_params
-		#Deserialization issues for relationships. Waiting for #950 https://github.com/rails-api/active_model_serializers/pull/950
 		params.require(:data).require(:attributes).permit(:show_full_name, :full_name, :display_name, :email, :date_of_birth, :gender, :facebook_url, :twitter_url, :personal_message, :webpage_url, :is_banned, :is_banned_date, :legal_terms_read, :privacy_terms_read, :is_admin, :is_super_user, :sign_in_count, :password, :last_sign_in_at, :reset_password_sent_at, :reset_password_token, :updated_at, :created_at, :current_password, :posts_count, :comments_count, :admin_messages_count )
 	end
 end

@@ -1,7 +1,8 @@
+# Application Controller: User Authentication from token control
+# + CSRF protection for all HTTP requests. Check master_api for JSON.
 class ApplicationController < ActionController::Base
-	# Prevent CSRF attacks || Check API controller for JSON protect_from_forgery customization
 	protect_from_forgery
-	before_filter :authenticate_user_from_token! # Devise inner workings
+	before_filter :authenticate_user_from_token!
 
 	protected
 

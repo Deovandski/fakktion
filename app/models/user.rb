@@ -1,3 +1,4 @@
+# User Model
 require 'bcrypt'
 class User < ActiveRecord::Base
 	before_save :ensure_authentication_token
@@ -7,11 +8,8 @@ class User < ActiveRecord::Base
 	include BCrypt
 	devise :database_authenticatable, :registerable,
 		 :recoverable, :rememberable, :trackable, :validatable
-		 
-	has_many :admin_messages
-	has_many :posts
-	has_many :comments
 
+	# Validations
 	validates :gender, presence: true
 	validates :password, presence: true, length: { minimum: 8 }, on: :create
 	validates :password, length: {minimum: 8}, on: :update, allow_blank: true
@@ -20,6 +18,11 @@ class User < ActiveRecord::Base
 	validates_acceptance_of :privacy_terms_read, :on => :create, :accept => true, :allow_nil => false
 	validates_acceptance_of :legal_terms_read, :on => :create, :accept => true, :allow_nil => false
 	enum gender: { male: 0, female: 1, other: 2 }
+	
+	# Relationships
+	has_many :admin_messages
+	has_many :posts
+	has_many :comments
 
 	def ensure_authentication_token
 		if authentication_token.blank?

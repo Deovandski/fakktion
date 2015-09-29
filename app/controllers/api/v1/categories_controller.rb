@@ -1,3 +1,4 @@
+# Categories Controller: JSON response through Active Model Serializers
 class Api::V1::CategoriesController < MasterApiController
 	respond_to :json
 
@@ -28,7 +29,6 @@ class Api::V1::CategoriesController < MasterApiController
 	end
 
 	def category_params
-		#Deserialization issues for relationships. Waiting for #950 https://github.com/rails-api/active_model_serializers/pull/950
 		params.require(:data).require(:attributes).permit(:name, :posts_count)
 	end
 end

@@ -1,3 +1,4 @@
+# Sessions Controller: Devise Custom Session Controller.
 class SessionsController < Devise::SessionsController
 	respond_to :json
 	

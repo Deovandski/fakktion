@@ -1,7 +1,6 @@
 @import "imports";
 
-body.ember-application footer
-{
+body.ember-application footer {
 	@include clearfix;
 	border-top: 1px solid $base-border-color;
 	padding: 0.2em 0;
@@ -13,39 +12,32 @@ body.ember-application footer
 	left:0px;
 	width:100%;
 	background-color: #F8F8F8;
-	.outer-container
-	{
+	.outer-container {
 		width: 100%;
 	}
-	nav
-	{
+	nav {
 		float: left;
 	}
-	ul
-	{
+	ul {
 		display: block;
 		list-style-type: none;
 		padding: 0;
 	}
-	li
-	{
+	li {
 	display: inline-block;
-		a
-		{
+		a {
 			color: #aaa;
 			display: inline-block;
 			font-size: 14px;
 			letter-spacing: 1px;
 			padding: 10px;
 			text-decoration: none;
-			&:hover
-			{
+			&:hover {
 				color: #888;
 			}
 		}
 	}
-	label
-	{
+	label {
 		color: #aaa;
 		display: inline-block;
 		font-size: 14px;

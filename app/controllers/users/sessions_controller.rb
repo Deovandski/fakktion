@@ -1,3 +1,4 @@
+# Devise Default Sessions Controller: Not in use... See Custom Sessions Controller.
 class Users::SessionsController < Devise::SessionsController
   # GET /resource/sign_in
   # def new

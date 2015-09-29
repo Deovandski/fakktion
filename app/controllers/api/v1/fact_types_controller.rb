@@ -1,3 +1,4 @@
+# Fact Types Controller: JSON response through Active Model Serializers
 class Api::V1::FactTypesController < MasterApiController
 	respond_to :json
 	
@@ -28,6 +29,6 @@ class Api::V1::FactTypesController < MasterApiController
 	end
 
 	def factType_params
-		params.require(:data).require(:attributes).permit(:fact_type).permit(:name, :posts_count, :eligibility_counter) # only allow these for now
+		params.require(:data).require(:attributes).permit(:fact_type).permit(:name, :posts_count, :eligibility_counter)
 	end
 end

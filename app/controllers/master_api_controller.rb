@@ -1,3 +1,4 @@
+# MasterAPI Controller: CSRF protection for all JSON requests (See comments below.)
 class MasterApiController < ApplicationController
 	# Prevent CSRF attacks by raising an exception.
 	# For APIs, you may want to use :null_session instead.

@@ -1,27 +1,25 @@
-// Place all the styles related to the forums controller here.
+// Place all the styles related to the shared controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import "imports";
 
-.visibility_button_div_show
-{
+//Tags shared code
+.visibility_button_div_show {
     position: absolute;
     bottom: 0;
 	height:25px;
 	width:100%;
 	
 }
-.visibility_button_div_hide
-{
+.visibility_button_div_hide {
     position: absolute;
     bottom: 0;
 	height:25px;
 	width:100%;
 	
 }
-.inner_info_button
-{
+.inner_info_button {
 	text-align: center;
 	font-weight: bold;
 	border-left-style: solid; 
@@ -30,44 +28,38 @@
 	border-bottom-style: solid;
 	border-width: 1px;
 }
-.tag_listing
-{
+.tag_listing {
 	height:calc(100% - 50px);
     top: 25px;
 	width:100%;
 	overflow-y: scroll;
 	list-style-type:none;
 	text-align: center;
-	li:nth-child(n)
-	{
+	li:nth-child(n) {
 		margin-top: 7px;
 		margin-bottom: 7px;
 	}
 }
-.button_listing
-{
+.button_listing {
 	height:calc(100% - 50px);
     top: 25px;
 	width:100%;
 	overflow-y: scroll;
 	list-style-type:none;
 	text-align: center;
-	li:nth-child(n)
-	{
+	li:nth-child(n) {
 		margin-top: 7px;
 		margin-bottom: 7px;
 	}
 }
-.tag_h5
-{
+.tag_h5 {
     position: relative;
 	width: 100%;
     top: 0;
 	height:25px;
 	text-align: center;
 }
-.tag_listing_hidden
-{
+.tag_listing_hidden {
 	height: 10%;
 	width: 100%;
 	border-width: 3px;
@@ -75,32 +67,28 @@
 	position: relative;
 	width: 100%;
 }
-// Standard size
-.input_block_type1
-{
+
+// Standard size input blocks
+.input_block_type1 {
 	width: 100%;
 	line-height: 40px;
 	text-align: left;
 	height: 40px;
-	.first_label
-	{
+	.first_label {
 		float: left;
 		vertical-align: middle;
 		width: 25%;
 		height: 100%;
 	}
-	.input_wrapper
-	{
+	.input_wrapper {
 		height: 100%;
 		width: 50%;
-		.ember-text-field
-		{
+		.ember-text-field {
 			float: center;
 			height: 100%;
 		}
 	}
-	.second_label
-	{
+	.second_label {
 		text-align: left;
 		float: right;
 		width: 25%;
@@ -109,31 +97,26 @@
 	}
 }
 
-.input_block_type2
-{
+.input_block_type2 {
 	width: 100%;
 	line-height: 40px;
 	text-align: left;
 	height: 40px;
-	.first_label
-	{
+	.first_label {
 		float: left;
 		vertical-align: middle;
 		width: 25%;
 		height: 100%;
 	}
-	.input_wrapper
-	{
+	.input_wrapper {
 		height: 100%;
 		width: 50%;
-		.ember-text-field
-		{
+		.ember-text-field {
 			float: center;
 			height: 100%;
 		}
 	}
-	.second_label
-	{
+	.second_label {
 		text-align: left;
 		float: right;
 		width: 25%;
@@ -141,56 +124,47 @@
 		font-size: 80%;
 	}
 }
-.input_block_typeLogin
-{
+.input_block_typeLogin {
 	width: 100%;
 	line-height: 40px;
 	text-align: right;
 	height: 40px;
-	.first_label
-	{
+	.first_label {
 		float: left;
 		vertical-align: middle;
 		margin-right: 10px;
 		width: 30%;
 		height: 100%;
 	}
-	.input_wrapper
-	{
+	.input_wrapper {
 		float: left;
 		height: 100%;
 		width: 40%;
-		.ember-text-field
-		{
+		.ember-text-field {
 			height: 100%;
 		}
 	}
 }
-.input_block_type3
-{
+.input_block_type3 {
 	width: 100%;
 	line-height: 40px;
 	text-align: left;
 	height: 40px;
-	.first_label
-	{
+	.first_label {
 		float: left;
 		vertical-align: middle;
 		width: 25%;
 		height: 100%;
 	}
-	.input_wrapper
-	{
+	.input_wrapper {
 		height: 100%;
 		width: 50%;
-		.ember-text-field
-		{
+		.ember-text-field {
 			float: center;
 			height: 100%;
 		}
 	}
-	.second_label
-	{
+	.second_label {
 		text-align: left;
 		float: right;
 		width: 25%;
@@ -199,31 +173,26 @@
 	}
 }
 
-.input_block_typeUser
-{
+.input_block_typeUser {
 	width: 100%;
 	line-height: 40px;
 	text-align: left;
 	height: 40px;
-	.first_label
-	{
+	.first_label {
 		float: left;
 		vertical-align: middle;
 		width: 25%;
 		height: 100%;
 	}
-	.input_wrapper
-	{
+	.input_wrapper {
 		height: 100%;
 		width: 50%;
-		.ember-text-field
-		{
+		.ember-text-field {
 			float: center;
 			height: 100%;
 		}
 	}
-	.second_label
-	{
+	.second_label {
 		text-align: left;
 		float: right;
 		width: 25%;
@@ -231,26 +200,22 @@
 		font-size: 80%;
 	}
 }
-.input_block_checkbox_typeUser
-{
+.input_block_checkbox_typeUser {
 	width: 100%;
 	line-height: 40px;
 	text-align: left;
 	height: 40px;
-	.first_label
-	{
+	.first_label {
 		float: left;
 		vertical-align: middle;
 		width: 30%;
 		height: 100%;
 	}
-	.input_wrapper
-	{
+	.input_wrapper {
 		height: 100%;
 		width: 10%;
 	}
-	.second_label
-	{
+	.second_label {
 		text-align: left;
 		float: right;
 		width: 60%;

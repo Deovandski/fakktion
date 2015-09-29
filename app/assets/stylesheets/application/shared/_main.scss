@@ -1,7 +1,6 @@
 @import "imports";
 
-body.ember-application main
-{
+body.ember-application main {
 	bottom:50px;
 	top:50px;
 	left:0px;
@@ -10,40 +9,35 @@ body.ember-application main
 	position:absolute;
 	overflow-x: hidden;
 	overflow-y: hidden;
-	.left_sidebar
-	{
+	.left_sidebar {
 		width: 225px;
 		height: 100%;
 		float: left;
 		text-align: center;
 		border-width: 2px;
 		border-style: solid;
-		.genres_div_type_solo
-		{
+		.genres_div_type_solo {
 			height: 90%;
 			width: 100%;
 			border-width: 3px;
 			border-bottom-style: solid;
 			position: relative;
 		}
-		.categories_div_type_solo
-		{
+		.categories_div_type_solo {
 			width: 100%;
 			height: 90%;
 			border-width: 3px;
 			border-bottom-style: solid;
 			position: relative;
 		}
-		.genres_div_type_dual
-		{
+		.genres_div_type_dual {
 			height: 50%;
 			width: 100%;
 			border-width: 3px;
 			border-bottom-style: solid;
 			position: relative;
 		}
-		.categories_div_type_dual
-		{
+		.categories_div_type_dual {
 			height: 50%;
 			width: 100%;
 			border-width: 3px;
@@ -51,8 +45,7 @@ body.ember-application main
 			position: relative;
 		}
 	}
-	.central
-	{
+	.central {
 		overflow-x: hidden;
 		overflow-y: hidden;
 		float: left;
@@ -65,20 +58,16 @@ body.ember-application main
 		border-bottom-style: solid;
 		border-top-style: solid;
 		border-width: 3px; 
-		.central_panel
-		{
+		.central_panel {
 			height: 80px;
 			border-bottom-style: solid;
 			border-width: 2px;
-			.central_upper_panel
-			{
+			.central_upper_panel {
 				
 				height: 30px;
 				width: 100%;
-				.genre_tagging
-				{
-					label
-					{
+				.genre_tagging {
+					label {
 						font-size: 15px;
 						font-style: normal;
 						overflow:hidden;
@@ -92,28 +81,8 @@ body.ember-application main
 					border-bottom-style: solid;
 					border-width: 1px;
 				}
-				.fact_type_tagging
-				{
-					label
-					{
-						font-size: 15px;
-						font-style: normal;
-						overflow:hidden;
-						text-overflow:ellipsis;
-					}
-					float: left;
-					width: 25%;
-					height: 100%;
-					margin-top: 3px;
-					border-left-style: solid; 
-					border-right-style: solid;
-					border-bottom-style: solid;
-					border-width: 1px;
-				}
-				.category_tagging
-				{
-					label
-					{
+				.fact_type_tagging{
+					label {
 						font-size: 15px;
 						font-style: normal;
 						overflow:hidden;
@@ -128,10 +97,24 @@ body.ember-application main
 					border-bottom-style: solid;
 					border-width: 1px;
 				}
-				.post_date_tagging
-				{
-					label
-					{
+				.category_tagging {
+					label {
+						font-size: 15px;
+						font-style: normal;
+						overflow:hidden;
+						text-overflow:ellipsis;
+					}
+					float: left;
+					width: 25%;
+					height: 100%;
+					margin-top: 3px;
+					border-left-style: solid; 
+					border-right-style: solid;
+					border-bottom-style: solid;
+					border-width: 1px;
+				}
+				.post_date_tagging {
+					label {
 						font-size: 15px;
 						font-style: normal;
 						overflow:hidden;
@@ -146,14 +129,12 @@ body.ember-application main
 					border-width: 1px;
 				}
 			}
-			.central_lower_panel
-			{
+			.central_lower_panel {
 				height: 50px;
 				width: 100%;
 				border-bottom-style: solid;
 				border-width: 3px;
-				.topic_search
-				{
+				.topic_search {
 					height: 100%;
 					width: 60%;
 					float: left;
@@ -161,25 +142,21 @@ body.ember-application main
 					border-top-style: solid; 
 					border-bottom-style: solid;
 					border-width: 1px;
-					.topic_search_input
-					{
+					.topic_search_input {
 						height: 100%;
 						width: 30%;
 						float: left;
 						border-left-style: solid;
 						border-right-style: solid;
 					}
-					.topic_search_text
-					{
+					.topic_search_text {
 						height: 100%;
 						width: 70%;
 						float: left;
 					}
 				}
-				.topic_tagging
-				{
-					label
-					{
+				.topic_tagging {
+					label {
 						font-size: 14px;
 						font-style: normal;
 						overflow:hidden;
@@ -192,8 +169,7 @@ body.ember-application main
 					border-bottom-style: solid;
 					border-width: 1px;
 				}
-				.topic_tagging_settings
-				{
+				.topic_tagging_settings {
 					float: left;
 					width: 5%;
 					height: 100%;
@@ -203,55 +179,48 @@ body.ember-application main
 				}
 			}
 		}      
-		.shared_panel
-		{
+		.shared_panel {
 			overflow-x: hidden;
 			overflow-y: auto;
 			height: 100%;
 		}
 	}
-	.body_panel
-	{
+	.body_panel {
 		overflow-x: hidden;
 		overflow-y: auto;
 		width: 100%;
 		height: 100%;
 		text-align: center;
 	}
-	.right_sidebar
-	{
+	.right_sidebar {
 		width: 225px;
 		height: 100%;
 		float: left;
 		text-align: center;
 		border-width: 2px;
 		border-style: solid;
-		.fact_types_div_type_solo
-		{
+		.fact_types_div_type_solo {
 			height: 90%;
 			width: 100%;
 			border-width: 3px;
 			border-bottom-style: solid;
 			position: relative;
 		}      
-		.posting_dates_div_type_solo
-		{
+		.posting_dates_div_type_solo {
 			height: 90%;
 			width: 100%;
 			border-width: 3px;
 			border-bottom-style: solid;
 			position: relative;
 		}
-		.fact_types_div_type_dual
-		{
+		.fact_types_div_type_dual {
 			width: 100%;
 			height: 50%;
 			border-width: 3px;
 			border-bottom-style: solid;
 			position: relative;
 		}      
-		.posting_dates_div_type_dual
-		{
+		.posting_dates_div_type_dual {
 			width: 100%;
 			height: 50%;
 			border-width: 3px;

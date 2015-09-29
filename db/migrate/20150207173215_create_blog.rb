@@ -1,3 +1,4 @@
+# Create Blog Migration
 class CreateBlog < ActiveRecord::Migration
   def up
     create_table :users do |t|

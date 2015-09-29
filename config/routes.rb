@@ -1,24 +1,19 @@
+# Router
 Rails.application.routes.draw do
 	mount EmberCLI::Engine => "ember-tests" if Rails.env.development?
 	#http://localhost:3000/ember-tests/frontend
 
 	root 'forums#index'
 
-	##            Information              ##
-	#########################################
-	# get '/*path' => 'forums#index' || get '/*path', to: 'forums#index'
-	# Does not work as it causes SyntaxError: Unexpected token < 
-	# reported by ember.debug.js:31686
-	#########################################
-	##   Redirect all routes to Ember.js   ##
-	
-	# "Static routes"
+	# Redirect all routes to Ember.js
+
+	# Static routes
 	get '/login', to: 'forums#index'
 	get '/about', to: 'forums#index'
 	get '/privacy_info', to: 'forums#index'
 	get '/legal_info', to: 'forums#index'
 	
-	# "Resource routes"
+	# Resource routes
 	get '/posts', to: 'forums#index'
 	get '/posts/create', to: 'forums#index'
 		get '/posts/:id', to: 'forums#index'
@@ -55,8 +50,10 @@ Rails.application.routes.draw do
 	get '/assets/Small_FakktionLogo.png', to: 'forums#index'
 	get '/assets/UltraSmall_FakktionLogo.png', to: 'forums#index'
 	
+	# Devise
 	devise_for :users, controllers: {sessions: 'sessions'}
 
+	# API Routes
 	namespace :api do
 		namespace :v1 do
 			resources :admin_messages

@@ -1,14 +1,16 @@
+// Adapter
 import DS from "ember-data";
 import Ember from "ember";
 import $ from 'jquery';
 var token = $('meta[name="csrf-token"]').attr('content');
-DS.JSONAPIAdapter.reopen({
+
+DS.JSONAPIAdapter.reopen ({
     headers: {
         "X-CSRF-Token": token
     }
 });
-export default DS.JSONAPIAdapter.extend
-({
+
+export default DS.JSONAPIAdapter.extend ({
 	namespace: 'api/v1',
 	pathForType: function(type) {
 		var underscored = Ember.String.underscore(type);
@@ -17,7 +19,7 @@ export default DS.JSONAPIAdapter.extend
 	shouldReloadAll() {
 		return true;
 	},
-	shouldBackgroundReloadRecord(){
+	shouldBackgroundReloadRecord() {
 		return true;
 	}
 });
