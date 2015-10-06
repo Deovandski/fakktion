@@ -27,7 +27,7 @@ class UserSerializer < ActiveModel::Serializer
 				:comments_count
 
 	# Relationships
-	has_many	:posts,
-				:comments,
-				:admin_messages
+	has_many	:posts
+	has_many	:comments
+	has_many	:admin_messages
 end
