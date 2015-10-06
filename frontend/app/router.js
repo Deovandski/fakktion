@@ -8,11 +8,15 @@ var Router = Ember.Router.extend
 
 Router.map(function()
 {
-	//Login related
+	// Login related
 	this.route('header');
 	this.route('login', { path: '/login' });
 
-	//User
+	// Admin and Super User related
+	this.route('adminPanel', { path: '/adminPanel' });
+	this.route('superUserPanel', { path: '/superUserPanel' });
+	
+	// User
 	this.resource('users', function(){
 		this.resource('user', { path:'/:user_id' }, function()
 		{
@@ -22,13 +26,13 @@ Router.map(function()
 		});
 		this.route('create');
 	});
-
-	//Posts
+	
+	// Posts
 	this.resource('posts', function(){
 		this.resource('post', { path:'/:post_id' }, function()
 		{
 			this.route('edit');
-			//Comments
+			// Comments
 			this.resource('comments', function(){
 				this.resource('comment', { path:'/:comment_id' }, function()
 				{
@@ -40,7 +44,7 @@ Router.map(function()
 		this.route('create');
 	});
 	
-	//Genres
+	// Genres
 	this.resource('genres', function(){
 		this.resource('genre', { path:'/:genre_id' }, function()
 		{
@@ -49,7 +53,7 @@ Router.map(function()
 		this.route('create');
 	});
 
-	//Fact Type
+	// Fact Type
 	this.resource('factTypes', function(){
 		this.resource('factType', { path:'/:factType_id' }, function()
 		{
@@ -58,7 +62,7 @@ Router.map(function()
 		this.route('create');
 	});
 
-	//Topic
+	// Topic
 	this.resource('topics', function(){
 		this.resource('topic', { path:'/:topic_id' }, function()
 		{

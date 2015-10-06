@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 	get '/about', to: 'forums#index'
 	get '/privacy_info', to: 'forums#index'
 	get '/legal_info', to: 'forums#index'
+	get '/superUserPanel', to: 'forums#index'
+	get '/adminPanel', to: 'forums#index'
 	
 	# Resource routes
 	get '/posts', to: 'forums#index'

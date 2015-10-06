@@ -62,18 +62,18 @@ body.ember-application header {
 		text-align: right;
 	}
 	ul {
-		width:100%;
-		height:100%;
+		width: 100%;
+		height: 100%;
 		display: inline-block;
 		list-style-type: none;
 	}
 	li {
 		line-height: 50px;
 		text-align: center;
-		height:100%;
+		height: 100%;
 		display: inline-block;
-		margin-left: 6px;
-		margin-right: 6px;
+		margin-left: 3px;
+		margin-right: 3px;
 		a {
 			line-height: 50px;
 			text-align: center;
@@ -92,6 +92,15 @@ body.ember-application header {
 			color: #fff;
 			font-weight: 400;
 		}
+	}
+	li.small_login_info{
+		font-weight: 50;
+		line-height: 50px;
+		text-align: center;
+		height:100%;
+		display: inline-block;
+		margin-right: 3px;
+		color: darken($header-font-color, 12%);
 	}
 }
 

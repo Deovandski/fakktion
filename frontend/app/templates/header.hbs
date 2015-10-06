@@ -12,22 +12,32 @@
 	<nav>
 		<ul>
 			{{#if session.isAuthenticated}}
-			<li>
-            Signed in as {{session.currentUser.display_name}}
-			</li>
-			<li>
-				{{#link-to 'user.index' session.currentUser.id}}Profile{{/link-to}}
-			</li>
-			<li>
-				<a {{ action 'invalidateSession' }}>Logout</a>
-			</li>
+				<li class="small_login_info">
+					{{session.currentUser.display_name}}
+				</li>
+				{{#if isSuperUser}}
+					<li>
+						{{#link-to 'superUserPanel'}}S.U.{{/link-to}}
+					</li>
+				{{/if}}
+				{{#if isAdmin}}
+					<li>
+						{{#link-to 'adminPanel'}}Admin{{/link-to}}
+					</li>
+				{{/if}}
+				<li>
+					{{#link-to 'user.index' session.currentUser.id}}Profile{{/link-to}}
+				</li>
+				<li>
+					<a {{ action 'invalidateSession' }}>Logout</a>
+				</li>
 			{{else}}
-			<li>
-				{{#link-to 'users.create'}}SignUp{{/link-to}}
-			</li>
-			<li>
-				{{#link-to 'login'}}Login{{/link-to}}
-			</li>
+				<li>
+					{{#link-to 'users.create'}}SignUp{{/link-to}}
+				</li>
+				<li>
+					{{#link-to 'login'}}Login{{/link-to}}
+				</li>
 			{{/if}}
 		</ul>
 	</nav>

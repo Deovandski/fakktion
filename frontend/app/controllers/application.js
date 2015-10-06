@@ -68,6 +68,24 @@ export default Ember.Controller.extend ({
 			return false;
 		}
 	}),
+	// Verify if the user is a Super User.
+	isSuperUser: Ember.computed('session.currentUser.is_super_user', function() {
+		if(this.get('session.currentUser.is_super_user') === true) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}),
+	// Verify if the user is a Admin.
+	isAdmin: Ember.computed('session.currentUser.is_admin', function() {
+		if(this.get('session.currentUser.is_admin') === true) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}),
 	// Tags Selected Boolean check.
 	isGenreSelected: Ember.computed('selectedGID', function() {
 		if(this.get('selectedGID') !== 0) {
