@@ -14,6 +14,14 @@ export default Ember.Controller.extend ({
 			return '';
 		}
 	}),
+	validComment: Ember.computed('text', function() {
+		if(this.get('text').length < 10) {
+			return false;
+		}
+		else {
+			return true;
+		}
+	}),
 	actions: {
 		create: function() {
 			if(this.get('clientSideValidationComplete') === true) {

@@ -1,32 +1,93 @@
-<h5>Post</h5>
+<h5>Blog Post</h5>
+<div class="post_index">
 
-<label class="first_label">Title: {{model.title}}</label><br/>
-<label class="first_label">Text: {{model.text}}</label><br/>
-<label class="first_label">Fact Link: {{model.fact_link}}</label><br/>
-<label class="first_label">Fiction Link: {{model.fiction_link}}</label><br/>
-<label class="first_label">Genre: {{model.genre.name}}</label><br/>
-<label class="first_label">Fact Type: {{model.fact_type.name}}</label><br/>
-<label class="first_label">Category: {{model.category.name}}</label><br/>
-<label class="first_label">Topic: {{model.topic.name}}</label><br/><br/>
-<p><label class="inner_label">Profile Created on:</label>  {{createdDate}}</p>
-<p><label class="inner_label">Profile Updated on:</label>  {{updatedDate}}</p>
-
-{{#if isOwner}}
-	<p>{{#link-to 'post.edit' }}Edit Post{{/link-to}}</p>
-{{else}}
-	<p class="inner_edit_info">Fakktion</p>
-{{/if}}
-
-<br/><br/>
-<h5>Comments</h5>
-<ul>
-    {{#each model.comments as |comment|}}
-      <li>{{comment.text}}</li>
-    {{/each}}
-</ul>
-<br/>
-{{#if session.isAuthenticated}}
-	<p>{{render "comments.create"}}</p>
-{{else}}
-	<p class="inner_edit_info">Please login to comment</p>
-{{/if}}
+	<div class="post_title_container">
+		<div class="title_info">
+			<label class="first_label">{{model.title}}</label>
+		</div>
+		<div class="owner_info">
+				{{#if canEdit}}
+					<div class="owner_text_info_partial">
+						<label class="first_label">By {{model.user.display_name}}</label>
+					</div>
+					<div class="owner_edit">
+						<p>{{#link-to 'post.edit' }}Edit Post{{/link-to}}</p>
+						<p class="inner_edit_info">Fakktion</p>
+					</div>
+				{{else}}
+					<div class="owner_text_info">
+						<label class="first_label">By {{model.user.display_name}}</label>
+					</div>
+				{{/if}}
+		</div>
+	</div>
+	
+	<div class="post_buttons_container">
+		{{#if notExpandInfo}}
+			<div class="more_info_button">
+				<label class="first_label"><button class="button_type2_large" {{action "setNotExpandInfo" false}}>Show Post Information</button></label>
+			</div>
+		{{else}}
+			<div class="more_info_button">
+				<label class="first_label"><button class="button_type2_large" {{action "setNotExpandInfo" true}}>Hide Post Information</button></label>
+			</div>
+		{{/if}}
+		
+		<div class="fact_link_button">
+			<label class="first_label">Fact Link: {{model.fact_link}}</label>
+		</div>
+		<div class="fiction_link_button">
+			<label class="first_label">Fiction Link: {{model.fiction_link}}</label>
+		</div>
+	</div>
+	
+	{{#if notExpandInfo}}
+	
+	{{else}}
+		<div class="post_tags_container">
+			<div class="genre_topic_container">
+				<div class="genre_info_container">
+					<label class="first_label">Genre: {{model.genre.name}}</label>
+				</div>
+				<div class="topic_info_container">
+					<label class="first_label">Topic: {{model.topic.name}}</label>
+				</div>
+			</div>
+			<div class="fact_type_created_on_container">
+				<div class="fact_Type_info_container">
+					<label class="first_label">Fact Type: {{model.fact_type.name}}</label>
+				</div>
+				<div class="created_on_info_container">
+					<label class="first_label">Post Created on: {{createdDate}}</label>  
+				</div>
+			</div>
+			<div class="category_updated_on_container">
+				<div class="category_info_container">
+					<label class="first_label">Fact Type: {{model.category.name}}</label>
+				</div>
+				<div class="updated_on_info_container">
+					<label class="first_label">Post Updated on: {{updatedDate}}</label>  
+				</div>
+			</div>
+		</div>
+	{{/if}}
+	
+	<div class="post_text_container">
+		<label>{{model.text}}</label>
+	</div>
+	
+	<div class="post_comments_container">
+		<h5>Comments</h5>
+		<ol>
+			{{#each model.comments as |comment|}}
+			  <li>{{comment.text}}</li>
+			{{/each}}
+		</ol>
+		<br/>
+		{{#if session.isAuthenticated}}
+			<p>{{render "comments.create"}}</p>
+		{{else}}
+			<p class="inner_edit_info">Please login to comment</p>
+		{{/if}}
+	</div>
+</div>
