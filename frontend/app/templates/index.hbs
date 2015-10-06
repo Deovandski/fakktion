@@ -4,15 +4,28 @@
 <label>Please use a unique password and if possible dummy data like random birthdates, display names and full name.</label><br/>
 <label>Recommendations or if you just want to stop by to say hi, please contact me on <a href="https://twitter.com/Deovandski">Twitter</a> or <a href="https://github.com/deovandski/fakktion">Github</a>.</label>
 
-<h1>Forum</h1>
-<ul>
-    {{#each filteredPosts as |post|}}
-      <li>{{#link-to 'post' post}}{{post.title}}{{/link-to}}</li>
-    {{/each}}
-</ul>
+<h2>Forum</h2>
+<label class="label_forum_info">V: Views | C: Comments</label>
+<div class="posts_info">
+	<ul>
+		{{#each filteredPosts as |post|}}
+		<li>
+			<label class="label_title">
+				{{#link-to 'post' post}}{{post.title}}{{/link-to}}
+			</label>
+			<label class="label_views">
+				V:{{post.views_count}}
+			</label>
+			<label class="label_comments_count">
+				C:{{post.comments_count}}
+			</label>
+		</li>
+		{{/each}}
+	</ul>
+</div>
 
 {{#if session.isAuthenticated}}
-	<p class="inner_info_button">{{#link-to  'posts.create'}}Create Post{{/link-to}}</p>
+	<p class="inner_info_redux">{{#link-to  'posts.create'}}Create Post{{/link-to}}</p>
 {{else}}
 	<p>Please login to create a post</p>
 {{/if}}

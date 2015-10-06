@@ -26,7 +26,7 @@
 </ul>
 <br/>
 {{#if session.isAuthenticated}}
-	<p>{{#link-to 'comments.create' }}Add comment{{/link-to}}</p>
+	<p>{{render "comments.create"}}</p>
 {{else}}
 	<p class="inner_edit_info">Please login to comment</p>
 {{/if}}

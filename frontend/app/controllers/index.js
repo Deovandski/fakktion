@@ -47,7 +47,8 @@ export default Ember.Controller.extend ({
      	// INDIVIDUAL SELECTION
 		// 10000
 		else if(this.get('genreID') !== 0 && this.get('factTypeID') === 0 && this.get('categoryID') === 0 && this.get('topicID') === 0  && this.get('postDateID') === 0) {
-			return posts.filterBy('genre.id', parseInt(this.get('genreID')));
+			console.log('Filter called');
+			return posts.filterBy('genre_id', parseInt(this.get('genreID')));
      	}
 		// 01000
   		else if(this.get('genreID') === 0 && this.get('factTypeID') !== 0 && this.get('categoryID') === 0 && this.get('topicID') === 0  && this.get('postDateID') === 0) {

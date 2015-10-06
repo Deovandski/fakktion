@@ -11,7 +11,13 @@ class PostSerializer < ActiveModel::Serializer
 				:text,
 				:comments_count,
 				:created_at,
-				:updated_at
+				:updated_at,
+				
+				# For index filter purpose... May changed on beta or v1 release as dependencies are updated.
+				:genre_id,
+				:category_id,
+				:topic_id,
+				:fact_type_id
 
 	# Relationships
 	has_many :comments

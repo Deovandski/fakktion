@@ -1,7 +1,7 @@
 # Application Controller: User Authentication from token control
 # + CSRF protection for all HTTP requests. Check master_api for JSON.
 class ApplicationController < ActionController::Base
-	protect_from_forgery
+	protect_from_forgery with: :exception
 	before_filter :authenticate_user_from_token!
 
 	protected
