@@ -11,8 +11,7 @@
 						<label class="first_label">By {{model.user.display_name}}</label>
 					</div>
 					<div class="owner_edit">
-						<p>{{#link-to 'post.edit' }}Edit Post{{/link-to}}</p>
-						<p class="inner_edit_info">Fakktion</p>
+						<p class="button_type2_small">{{#link-to 'post.edit' }}Edit{{/link-to}}</p>
 					</div>
 				{{else}}
 					<div class="owner_text_info">
@@ -34,10 +33,10 @@
 		{{/if}}
 		
 		<div class="fact_link_button">
-			<label class="first_label">Fact Link: {{model.fact_link}}</label>
+			<label class="first_label"><a class="button_type2_large" href="{{model.fact_link}}">Fact Link</a></label>
 		</div>
 		<div class="fiction_link_button">
-			<label class="first_label">Fiction Link: {{model.fiction_link}}</label>
+			<label class="first_label"><a class="button_type2_large" href="{{model.fiction_link}}">Fiction Link</a></label>
 		</div>
 	</div>
 	
@@ -63,7 +62,7 @@
 			</div>
 			<div class="category_updated_on_container">
 				<div class="category_info_container">
-					<label class="first_label">Fact Type: {{model.category.name}}</label>
+					<label class="first_label">Category: {{model.category.name}}</label>
 				</div>
 				<div class="updated_on_info_container">
 					<label class="first_label">Post Updated on: {{updatedDate}}</label>  
