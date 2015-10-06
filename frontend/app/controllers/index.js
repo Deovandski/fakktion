@@ -39,6 +39,7 @@ export default Ember.Controller.extend ({
 		*/
 		
 		// RETURN ALL POSTS
+		// Genre Boolean | FactType Boolean | Category Boolean | Post Date Boolean
 		// 00000
 		if(this.get('genreID') === 0 && this.get('factTypeID') === 0 && this.get('categoryID') === 0 && this.get('topicID') === 0  && this.get('postDateID') === 0) {
 			return posts;
@@ -56,7 +57,7 @@ export default Ember.Controller.extend ({
 	  	}
 		// 00100
      	else if(this.get('genreID') === 0 && this.get('factTypeID') === 0 && this.get('categoryID') !== 0 && this.get('topicID') === 0  && this.get('postDateID') === 0) {
-			return posts.filterBy('categorie_id', parseInt(this.get('categoryID')));
+			return posts.filterBy('category_id', parseInt(this.get('categoryID')));
      	}
 		// 00010
      	else if(this.get('genreID') === 0 && this.get('factTypeID') === 0 && this.get('categoryID') === 0 && this.get('topicID') !== 0  && this.get('postDateID') === 0) {
@@ -115,19 +116,19 @@ export default Ember.Controller.extend ({
      	}
 		// 01100
      	else if(this.get('genreID') === 0 && this.get('factTypeID') !== 0 && this.get('categoryID') !== 0 && this.get('topicID') === 0  && this.get('postDateID') === 0) {
-			return posts.filterBy('fact_type_id', parseInt(this.get('factTypeID'))).filterBy('categorie_id', parseInt(this.get('categoryID')));
+			return posts.filterBy('fact_type_id', parseInt(this.get('factTypeID'))).filterBy('category_id', parseInt(this.get('categoryID')));
      	}
 		// 00110
      	else if(this.get('genreID') === 0 && this.get('factTypeID') === 0 && this.get('categoryID') !== 0 && this.get('topicID') !== 0  && this.get('postDateID') === 0) {
-			return posts.filterBy('categorie_id', parseInt(this.get('categoryID'))).filterBy('topic_id', parseInt(this.get('topicID')));
+			return posts.filterBy('category_id', parseInt(this.get('categoryID'))).filterBy('topic_id', parseInt(this.get('topicID')));
      	}
 		// 00011
      	else if(this.get('genreID') === 0 && this.get('factTypeID') === 0 && this.get('categoryID') === 0 && this.get('topicID') !== 0  && this.get('postDateID') !== 0) {
-			return posts.filterBy('categorie_id', parseInt(this.get('categoryID'))).filterBy('topic_id', parseInt(this.get('topicID'))); ///////////////////////////////////////////
+			return posts.filterBy('category_id', parseInt(this.get('categoryID'))).filterBy('topic_id', parseInt(this.get('topicID'))); ///////////////////////////////////////////
      	}
 		// 10100
      	else if(this.get('genreID') !== 0 && this.get('factTypeID') === 0 && this.get('categoryID') !== 0 && this.get('topicID') === 0  && this.get('postDateID') === 0) {
-			return posts.filterBy('genre_id', parseInt(this.get('genreID'))).filterBy('fact_type_id', parseInt(this.get('factTypeID')));
+			return posts.filterBy('genre_id', parseInt(this.get('genreID'))).filterBy('category_id', parseInt(this.get('categoryID')));
      	}
 		// 01010
      	else if(this.get('genreID') === 0 && this.get('factTypeID') !== 0 && this.get('categoryID') === 0 && this.get('topicID') !== 0  && this.get('postDateID') === 0) {
@@ -150,11 +151,11 @@ export default Ember.Controller.extend ({
 
 		// 01110
      	else if(this.get('genreID') === 0 && this.get('factTypeID') !== 0 && this.get('categoryID') !== 0 && this.get('topicID') !== 0  && this.get('postDateID') === 0) {
-			return posts.filterBy('fact_type_id', parseInt(this.get('factTypeID'))).filterBy('categorie_id', parseInt(this.get('categoryID'))).filterBy('topic_id', parseInt(this.get('topicID')));
+			return posts.filterBy('fact_type_id', parseInt(this.get('factTypeID'))).filterBy('category_id', parseInt(this.get('categoryID'))).filterBy('topic_id', parseInt(this.get('topicID')));
      	}
 		// 10110
      	else if(this.get('genreID') !== 0 && this.get('factTypeID') === 0 && this.get('categoryID') !== 0 && this.get('topicID') !== 0  && this.get('postDateID') === 0) {
-			return posts.filterBy('genre_id', parseInt(this.get('genreID'))).filterBy('categorie_id', parseInt(this.get('categoryID'))).filterBy('topic_id', parseInt(this.get('topicID')));
+			return posts.filterBy('genre_id', parseInt(this.get('genreID'))).filterBy('category_id', parseInt(this.get('categoryID'))).filterBy('topic_id', parseInt(this.get('topicID')));
      	}
 		// 11010
      	else if(this.get('genreID') !== 0 && this.get('factTypeID') !== 0 && this.get('categoryID') === 0 && this.get('topicID') !== 0  && this.get('postDateID') === 0) {
@@ -162,11 +163,11 @@ export default Ember.Controller.extend ({
      	}	
 		// 11100
      	else if(this.get('genreID') !== 0 && this.get('factTypeID') !== 0 && this.get('categoryID') !== 0 && this.get('topicID') === 0  && this.get('postDateID') === 0) {
-			return posts.filterBy('genre_id', parseInt(this.get('genreID'))).filterBy('fact_type_id', parseInt(this.get('factTypeID'))).filterBy('categorie_id', parseInt(this.get('categoryID')));
+			return posts.filterBy('genre_id', parseInt(this.get('genreID'))).filterBy('fact_type_id', parseInt(this.get('factTypeID'))).filterBy('category_id', parseInt(this.get('categoryID')));
      	}
 		// 00111
      	else if(this.get('genreID') === 0 && this.get('factTypeID') === 0 && this.get('categoryID') !== 0 && this.get('topicID') !== 0  && this.get('postDateID') !== 0) {
-			return posts.filterBy('categorie_id', parseInt(this.get('categoryID'))).filterBy('topic_id', parseInt(this.get('topicID'))); ////////////////////////////////////////
+			return posts.filterBy('category_id', parseInt(this.get('categoryID'))).filterBy('topic_id', parseInt(this.get('topicID'))); ////////////////////////////////////////
      	}		
 		// 11001
 		else if(this.get('genreID') !== 0 && this.get('factTypeID') !== 0 && this.get('categoryID') === 0 && this.get('topicID') === 0  && this.get('postDateID') !== 0) {
@@ -181,11 +182,11 @@ export default Ember.Controller.extend ({
 		
 		// 11110
 		else if(this.get('genreID') !== 0 && this.get('factTypeID') !== 0 && this.get('categoryID') !== 0 && this.get('topicID') !== 0  && this.get('postDateID') === 0) {
-			return posts.filterBy('genre_id', parseInt(this.get('genreID'))).filterBy('fact_type_id', parseInt(this.get('factTypeID'))).filterBy('categorie_id', parseInt(this.get('categoryID'))).filterBy('topic_id', parseInt(this.get('topicID')));
+			return posts.filterBy('genre_id', parseInt(this.get('genreID'))).filterBy('fact_type_id', parseInt(this.get('factTypeID'))).filterBy('category_id', parseInt(this.get('categoryID'))).filterBy('topic_id', parseInt(this.get('topicID')));
      	}
 		// 11101
 		else if(this.get('genreID') !== 0 && this.get('factTypeID') !== 0 && this.get('categoryID') !== 0 && this.get('topicID') === 0  && this.get('postDateID') !== 0) {
-			return posts.filterBy('genre_id', parseInt(this.get('genreID'))).filterBy('fact_type_id', parseInt(this.get('factTypeID'))).filterBy('categorie_id', parseInt(this.get('categoryID'))); /////////////////////////////////////////////////////////
+			return posts.filterBy('genre_id', parseInt(this.get('genreID'))).filterBy('fact_type_id', parseInt(this.get('factTypeID'))).filterBy('category_id', parseInt(this.get('categoryID'))); /////////////////////////////////////////////////////////
      	}		
 		// 11011
 		else if(this.get('genreID') !== 0 && this.get('factTypeID') !== 0 && this.get('categoryID') === 0 && this.get('topicID') !== 0  && this.get('postDateID') === 0) {
@@ -193,15 +194,15 @@ export default Ember.Controller.extend ({
      	}		
 		// 10111
 		else if(this.get('genreID') !== 0 && this.get('factTypeID') !== 0 && this.get('categoryID') === 0 && this.get('topicID') !== 0  && this.get('postDateID') === 0) {
-			return posts.filterBy('genre_id', parseInt(this.get('genreID'))).filterBy('categorie_id', parseInt(this.get('categoryID'))).filterBy('topic_id', parseInt(this.get('topicID'))); /////////////////////////////////////////////////////////
+			return posts.filterBy('genre_id', parseInt(this.get('genreID'))).filterBy('category_id', parseInt(this.get('categoryID'))).filterBy('topic_id', parseInt(this.get('topicID'))); /////////////////////////////////////////////////////////
      	}			
 		// 01111
 		else if(this.get('genreID') === 0 && this.get('factTypeID') !== 0 && this.get('categoryID') === 0 && this.get('topicID') !== 0  && this.get('postDateID') === 0) {
-			return posts.filterBy('fact_type_id', parseInt(this.get('factTypeID'))).filterBy('categorie_id', parseInt(this.get('categoryID'))).filterBy('topic_id', parseInt(this.get('topicID'))); /////////////////////////////////////////////////////////
+			return posts.filterBy('fact_type_id', parseInt(this.get('factTypeID'))).filterBy('category_id', parseInt(this.get('categoryID'))).filterBy('topic_id', parseInt(this.get('topicID'))); /////////////////////////////////////////////////////////
      	}			
 		// 11111
 		else {
-			return posts.filterBy('genre_id', parseInt(this.get('genreID'))).filterBy('fact_type_id', parseInt(this.get('factTypeID'))).filterBy('categorie_id', parseInt(this.get('categoryID'))).filterBy('topic_id', parseInt(this.get('topicID')));
+			return posts.filterBy('genre_id', parseInt(this.get('genreID'))).filterBy('fact_type_id', parseInt(this.get('factTypeID'))).filterBy('category_id', parseInt(this.get('categoryID'))).filterBy('topic_id', parseInt(this.get('topicID')));
 		}
 	})
 });

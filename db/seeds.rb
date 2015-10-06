@@ -19,7 +19,7 @@ case Rails.env
 					facebook_url: '',
 					personal_message: 'sample personal message',
 					twitter_url: 'https://twitter.com/Deovandski',
-					webpage_url: 'www.google.com',
+					webpage_url: 'https://www.google.com',
 					privacy_terms_read: true,
 					legal_terms_read: true)
 		# User #2 - Admin User:
@@ -36,7 +36,7 @@ case Rails.env
 					facebook_url: '',
 					personal_message: 'Vocaloid Rules!',
 					twitter_url: 'https://twitter.com/Deo',
-					webpage_url: 'www.deovandski.blogspot.com',
+					webpage_url: 'https://www.deovandski.blogspot.com',
 					privacy_terms_read: true,
 					legal_terms_read: true)
 		# User #3 - Normal User:
@@ -72,7 +72,7 @@ case Rails.env
 					facebook_url: '',
 					personal_message: 'sample personal message',
 					twitter_url: 'https://twitter.com/Deovandski',
-					webpage_url: 'www.google.com',
+					webpage_url: 'https://www.google.com',
 					privacy_terms_read: true,
 					legal_terms_read: true)
 		# User #2 - Admin User:
@@ -106,7 +106,7 @@ case Rails.env
 					facebook_url: '',
 					personal_message: 'Vocaloid Rules!',
 					twitter_url: 'https://twitter.com/Deo',
-					webpage_url: 'www.deovandski.blogspot.com',
+					webpage_url: 'https://www.deovandski.blogspot.com',
 					privacy_terms_read: true,
 					legal_terms_read: true)
 	Rails.logger.info 'All current users deleted and created again from seed file.'
@@ -115,57 +115,57 @@ case Rails.env
 	# CATEGORIES RELATED SEED
 	Rails.logger.info 'Creating Categories'
 	if Category.count == 0
-		Category.create!(name: 'A-B-C')
-		Category.create!(name: 'D-E-F')
-		Category.create!(name: 'G-H-I')
-		Category.create!(name: 'J-K-L')
-		Category.create!(name: 'M-N-O')
-		Category.create!(name: 'P-Q-R')
-		Category.create!(name: 'S-T-U')
-		Category.create!(name: 'V-W-X')
-		Category.create!(name: 'Y-Z-?')
+		Category.create!(name: 'A-B-C') # ID 1
+		Category.create!(name: 'D-E-F') # ID 2
+		Category.create!(name: 'G-H-I') # ID 3
+		Category.create!(name: 'J-K-L') # ID 4
+		Category.create!(name: 'M-N-O') # ID 5
+		Category.create!(name: 'P-Q-R') # ID 6
+		Category.create!(name: 'S-T-U') # ID 7
+		Category.create!(name: 'V-W-X') # ID 8
+		Category.create!(name: 'Y-Z-?') # ID 9
 		Rails.logger.info 'Categories created'
 	else
 		Category.delete_all
-		Category.create!(name: 'A-B-C')
-		Category.create!(name: 'D-E-F')
-		Category.create!(name: 'G-H-I')
-		Category.create!(name: 'J-K-L')
-		Category.create!(name: 'M-N-O')
-		Category.create!(name: 'P-Q-R')
-		Category.create!(name: 'S-T-U')
-		Category.create!(name: 'V-W-X')
-		Category.create!(name: 'Y-Z-?')
+		Category.create!(name: 'A-B-C') # ID 1
+		Category.create!(name: 'D-E-F') # ID 2
+		Category.create!(name: 'G-H-I') # ID 3
+		Category.create!(name: 'J-K-L') # ID 4
+		Category.create!(name: 'M-N-O') # ID 5
+		Category.create!(name: 'P-Q-R') # ID 6
+		Category.create!(name: 'S-T-U') # ID 7
+		Category.create!(name: 'V-W-X') # ID 8
+		Category.create!(name: 'Y-Z-?') # ID 9
 		Rails.logger.info 'All current Categories deleted and created again from seed file.'
 	end
 
 	# FACT TYPE RELATED SEED
 	Rails.logger.info 'Creating fact types'
 	if FactType.count == 0
-		FactType.create!(name: 'Business')
-		FactType.create!(name: 'Technology')
-		FactType.create!(name: 'International')
+		FactType.create!(name: 'Business') # ID 1
+		FactType.create!(name: 'Technology') # ID 2
+		FactType.create!(name: 'International') # ID 3
 		Rails.logger.info 'Fact types created'
 	else
 		FactType.delete_all
-		FactType.create!(name: 'Business')
-		FactType.create!(name: 'Technology')
-		FactType.create!(name: 'International')
+		FactType.create!(name: 'Business') # ID 1
+		FactType.create!(name: 'Technology') # ID 2
+		FactType.create!(name: 'International') # ID 3
 		Rails.logger.info 'All current fact types deleted and created again from seed file.'
 	end
 
 	# GENRE RELATED SEED
 	Rails.logger.info 'Creating Genres'
 	if Genre.count == 0
-		Genre.create!(name: 'Song')
-		Genre.create!(name: 'Novel')
-		Genre.create!(name: 'Movie')
+		Genre.create!(name: 'Song') # ID 1
+		Genre.create!(name: 'Novel') # ID 2
+		Genre.create!(name: 'Movie') # ID 3
 		Rails.logger.info 'Genres created'
 	else
 		Genre.delete_all
-		Genre.create!(name: 'Song')
-		Genre.create!(name: 'Novel')
-		Genre.create!(name: 'Movie')
+		Genre.create!(name: 'Song') # ID 1
+		Genre.create!(name: 'Novel') # ID 2
+		Genre.create!(name: 'Movie') # ID 3
 		Rails.logger.info 'All current genres deleted and created again from seed file.'
 	end
 
@@ -186,17 +186,17 @@ case Rails.env
 	Rails.logger.info 'Creating posts'
 	if Post.count == 0
 		Post.create!(fact_link: 'test fact link',
-					fact_type_id: 1,
+					fact_type_id: 2,
 					fiction_link: 'test fiction link',
 					text: 'Miku is love! Miku is Life! No seriously, Miku is the result of how community driven creativity can bring a virtual being into life.',
 					genre_id: 1,
 					hidden: false,
-					importance: 0,
+					importance: 10,
 					title: 'The concept of reality behind Hatsune Miku',
 					soft_delete: false,
 					soft_delete_date: nil,
 					topic_id: 1,
-					user_id: 0,
+					user_id: 1,
 					category_id: 2)
 		Post.create!(fact_link: 'test fact link',
 					fact_type_id: 2,
