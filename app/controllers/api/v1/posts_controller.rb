@@ -7,6 +7,7 @@ class Api::V1::PostsController < MasterApiController
 	end
 
 	def show
+		post.increment!(:views_count)
 		render json: post
 	end
 
@@ -32,6 +33,6 @@ class Api::V1::PostsController < MasterApiController
 	end
 
 	def post_params
-		params.require(:data).require(:attributes).permit(:text, :views_count, :title, :fact_link, :fiction_link, :importance, :soft_delete, :soft_delete_date, :hidden, :comments_count)
+		params.require(:data).require(:attributes).permit(:updated_at, :created_at, :genre_id, :fact_type_id, :category_id, :topic_id, :text, :views_count, :title, :fact_link, :fiction_link, :importance, :soft_delete, :soft_delete_date, :hidden, :comments_count)
 	end
 end

@@ -1,0 +1,10 @@
+<h2>Admin Messages</h2>
+<ul>
+    {{#each model as |adminMessage|}}
+      <li>{{#link-to 'adminMessage' adminMessage}}{{adminMessage.message}}{{/link-to}}</li>
+    {{/each}}
+</ul>
+
+{{#if canCreate}}
+<p>{{render "adminMessages.create"}}</p>
+{{/if}}

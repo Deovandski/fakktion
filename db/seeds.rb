@@ -308,14 +308,18 @@ case Rails.env
 	# ADMIN MESSAGES RELATED SEED
 	Rails.logger.info 'Creating admin messages'
 	if AdminMessage.count == 0
-		AdminMessage.create!(title: 'Welcome Message',
-							message: 'Welcome to Fakktion! This is the first Admin Message',
-							user_id: 0)
+		AdminMessage.create!(title: 'Welcome to Fakktion Experimental!',
+							message: 'Check Github for progress and Active Model Serializers #1238 for Deserialization. 
+							Please use a unique password and if possible dummy data like random birthdates, display names and full name.
+							Recommendations or if you just want to stop by to say hi, please contact me on Twitter or Github.',
+							user_id: 1)
 		Rails.logger.info 'Admin messages created'
 	else
-		AdminMessage.create!(title: 'Welcome Message',
-							message: 'Welcome to Fakktion! This is the first Admin Message',
-							user_id: 0)
+		AdminMessage.create!(title: 'Welcome to Fakktion Experimental!',
+							message: 'Check Github for progress and Active Model Serializers #1238 for Deserialization. 
+							Please use a unique password and if possible dummy data like random birthdates, display names and full name.
+							Recommendations or if you just want to stop by to say hi, please contact me on Twitter or Github.',
+							user_id: 1)
 		Rails.logger.info 'All current admin messages deleted and created again from seed file.'
 	end
 
