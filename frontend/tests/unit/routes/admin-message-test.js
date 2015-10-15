@@ -1,6 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('route:adminMessages.index', 'Unit | Route | Admin Messages Index', {
+moduleFor('route:adminMessages.adminMessage.index', 'Unit | Route | Admin Messages Index', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
 });
