@@ -32,8 +32,9 @@ This project once used [Ember-Rails](https://github.com/emberjs/ember-rails), bu
 6. cd frontend
 7. npm install
 8. bower install
+9. npm install --save-dev ember-cli-rails-addon@0.0.13
 
-Start the Server with '''rake start'''. To quickly login under Development mode, please use the email as user@example.com and password as 12345678.
+Start the Server with '''rake start'''. To quickly login under Development mode, use the default account user@example.com with password 12345678.
 
 ## Documents
 

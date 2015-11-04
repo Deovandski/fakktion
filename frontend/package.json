@@ -33,7 +33,7 @@
     "ember-cli-moment": "0.0.2",
     "ember-cli-moment-shim": "0.6.1",
     "ember-cli-qunit": "^1.0.0",
-    "ember-cli-rails-addon": "0.0.12",
+    "ember-cli-rails-addon": "0.0.13",
     "ember-cli-release": "0.2.3",
     "ember-cli-simple-auth": "0.8.0",
     "ember-cli-simple-auth-devise": "0.8.0",
