@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.2.1"
+ruby "2.2.3"
 
 # Check for new releases...
 # https://github.com/ember-cli/ember-cli/releases
