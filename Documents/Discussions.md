@@ -14,7 +14,10 @@
 
 [August 21 2015 - Handling Store.save() for records that contains DS.BelongsTo](http://stackoverflow.com/questions/32146860/handling-store-save-for-records-that-contains-ds-belongsto)
 
-"Active Model Serializers" (See JSONAPI branch)
+[December 17 2015 - stylesheet_link_tag returns <base href=“/”> instead of <link>](http://stackoverflow.com/questions/34330704/stylesheet-link-tag-returns-base-href-instead-of-link)
+
+
+"Active Model Serializers"
 
 [September 9 2015 - Deserializing Json-Api with Rails Strong Parameters](http://stackoverflow.com/questions/32491360/deserializing-json-api-with-rails-strong-parameters)
 
