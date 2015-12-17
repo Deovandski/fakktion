@@ -27,7 +27,6 @@ group :development, :test do
 	# Travis CI
 		gem "travis"
 end
-
 # https://github.com/rails-api/active_model_serializers
 gem 'active_model_serializers', '0.10.0.rc3'
 
@@ -47,7 +46,7 @@ gem "font-awesome-rails"
 gem 'neat'
 
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 2.7.1'
+gem 'uglifier'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -58,3 +57,5 @@ gem 'devise'
 # Use unicorn as the app server
 # gem 'unicorn'
 
+
+gem 'rails_12factor', group: [:staging, :production]

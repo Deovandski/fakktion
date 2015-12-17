@@ -1,5 +1,3 @@
-@import "imports";
-
 body.ember-application header {
 	@include clearfix;
 	background-color: $header-background-color;

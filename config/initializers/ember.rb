@@ -1,4 +1,4 @@
 # Ember-Cli-Rails Initializer
 EmberCLI.configure do |config|
-  config.app :frontend, path: Rails.root.join('frontend').to_s, build_timeout: 30
+  config.app :frontend, build_timeout: 30
 end
