@@ -11,12 +11,10 @@ module Fakktion
 
 		# Enable the asset pipeline
 		config.assets.enabled = true
-
+		
 		# Fallback to assets pipeline if a precompiled asset is missed.
 		config.assets.compile = true
 
-		# Serve Static Assets. 
-		config.serve_static_files = true
 		# Settings in config/environments/* take precedence over those specified here.
 		# Application configuration should go into files in config/initializers
 		# -- all .rb files in that directory are automatically loaded.

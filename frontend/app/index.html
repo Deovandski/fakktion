@@ -9,17 +9,18 @@
 
     {{content-for 'head'}}
 
-    <link rel="stylesheet" href="assets/vendor.css">
-    <link rel="stylesheet" href="assets/frontend.css">
+	<%= stylesheet_link_tag 'application', media: 'all'%>
+	<%= javascript_include_tag 'application' %>
+	<%= include_ember_stylesheet_tags :frontend %>
+	<%= include_ember_script_tags :frontend %>
+	<%= csrf_meta_tags %>
 
+    <link rel="stylesheet" href="assets/vendor.css">
     {{content-for 'head-footer'}}
   </head>
   <body>
     {{content-for 'body'}}
-
-    <script src="assets/vendor.js"></script>
-    <script src="assets/frontend.js"></script>
-
     {{content-for 'body-footer'}}
+	<%= render partial: "layouts/shared/analytics" %>
   </body>
 </html>

@@ -1,16 +1,20 @@
 /* Start of all @imports */
 
-// Vendor imports
-@import "bourbon";
-@import "neat";
+/* Vendors... */
 
-// Variables, Scaffolds, etc...
+@import 'bourbon';
+@import 'neat';
+
+/* Globals... */
+
 @import 'globals/**/*';
 
-// Mixins
+/* Mixins... */
+
 @import 'mixins/**/*';
 
-// Frontend stuff...
+/* Frontend stuff... */
+
 @import 'frontend/**/*';
 /* End of all @imports */
 
