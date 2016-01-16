@@ -1,10 +1,7 @@
 # Router
 Rails.application.routes.draw do
 
-	mount EmberCLI::Engine => "ember-tests" if Rails.env.development?
-	#http://localhost:3000/ember-tests/frontend
-
-  	mount_ember_app :frontend, to: "/", controller: "application"
+	mount_ember_app :frontend, to: "/", controller: "application"
 
 	# Devise
 	devise_for :users, controllers: {sessions: 'sessions'}
