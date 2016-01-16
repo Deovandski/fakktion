@@ -61,3 +61,10 @@ travis encrypt-file config/secrets.yml --add
 ```
 sudo chown -R username file
 ```
+
+### Bcrypt installation with native extensions troubleshoot
+```
+sudo apt-get install aptitude
+sudo aptitude install libgmp-dev
+sudo aptitude install build-essential
+```
