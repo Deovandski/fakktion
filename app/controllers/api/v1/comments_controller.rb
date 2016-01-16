@@ -1,5 +1,5 @@
 # Comments Controller: JSON response through Active Model Serializers
-class Api::V1::CommentsController < MasterApiController
+class Api::V1::CommentsController < ApplicationController
 	respond_to :json
 
 	def index

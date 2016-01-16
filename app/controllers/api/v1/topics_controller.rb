@@ -1,5 +1,5 @@
 # Topics Controller: JSON response through Active Model Serializers
-class Api::V1::TopicsController < MasterApiController
+class Api::V1::TopicsController < ApplicationController
 	respond_to :json
 
 	def index

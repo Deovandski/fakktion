@@ -1,12 +1,16 @@
 # Application Controller: User Authentication from token control
-# + CSRF protection for all HTTP requests. Check master_api for JSON.
+# + CSRF protection for all requests.
 class ApplicationController < ActionController::Base
 
 	# Full CSRF protection is not working....
 	# Currently using a temporary CSRF protection
-	protect_from_forgery
+	protect_from_forgery with: :null_session
 	# Replace with protect_from_forgery with: :exception later on...
 	before_filter :authenticate_user_from_token!
+
+	def index
+		render layout: false
+	end
 
 	protected
 
