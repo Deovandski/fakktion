@@ -29,12 +29,11 @@ This project once used [Ember-Rails](https://github.com/emberjs/ember-rails), bu
 	2. sudo apt-get install nodejs-legacy (For Bower to work)
 	3. sudo npm install -g bower
 3. Bundle Install
-4. Create new Secrets.yml. See [Extra Commands](Documents/Extra Commands.md) for more info.
-5. Rake db:setup
-6. cd frontend
-7. npm install
-8. bower install
-9. npm install --save-dev ember-cli-rails-addon@0.7.0
+4. Rake db:setup
+5. cd frontend
+6. npm install
+7. bower install
+8. npm install --save-dev ember-cli-rails-addon@0.7.0
 
 Start the Server with '''rake start'''. To quickly login under Development mode, use the default account user@example.com with password 12345678.
 

@@ -10,10 +10,6 @@ rake db:migrate:reset
 ```
 git reset --hard
 ```
-### Rebuild Secrets.yml
-	*Rename secrets-base.yml to secrets.yml
-	*Use rake secret for new keys
-
 ### Bundler commands
 ```
 http://bundler.io/v1.5/commands.html
