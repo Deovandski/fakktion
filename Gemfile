@@ -7,9 +7,6 @@ gem "local_time"
 # Webserver
 gem "puma"
 
-# Postgres (Database)
-gem "pg"
-
 # https://github.com/rails-api/active_model_serializers
 gem 'active_model_serializers', '0.10.0.rc3'
 
@@ -58,7 +55,9 @@ end
 
 # Production Group
 group :production, :staging do
-	# Code Climate
+	# Heroku related gem
 	gem 'rails_12factor'
+	# Postgres (Database)
+	gem "pg"
 end
 
