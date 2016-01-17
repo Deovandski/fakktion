@@ -68,3 +68,11 @@ sudo apt-get install aptitude
 sudo aptitude install libgmp-dev
 sudo aptitude install build-essential
 ```
+### Heroku pushing new version to heroku:master 
+```
+[Heroku Toolbelt link in case it is not installed](https://toolbelt.heroku.com/)
+git push heroku master
+heroku ps:scale web=1
+heroku ps
+heroku open
+```

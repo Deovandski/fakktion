@@ -129,6 +129,7 @@ GEM
     nokogiri (1.6.7.1)
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
+    pg (0.18.4)
     puma (2.15.3)
     pusher-client (0.6.2)
       json
@@ -238,6 +239,7 @@ DEPENDENCIES
   jquery-rails
   local_time
   neat
+  pg
   puma
   rails
   rails-erd
