@@ -332,7 +332,76 @@ when 'test'
 
 ######## Production ENV SEED
 when 'production'
+	# CATEGORIES SEED
 	Rails.logger.info 'seeds.db operating on production mode...'
-	# TODO
+		Rails.logger.info 'Creating Categories'
+	if Category.count == 0
+		Category.create!(name: 'A-B-C') # ID 1
+		Category.create!(name: 'D-E-F') # ID 2
+		Category.create!(name: 'G-H-I') # ID 3
+		Category.create!(name: 'J-K-L') # ID 4
+		Category.create!(name: 'M-N-O') # ID 5
+		Category.create!(name: 'P-Q-R') # ID 6
+		Category.create!(name: 'S-T-U') # ID 7
+		Category.create!(name: 'V-W-X') # ID 8
+		Category.create!(name: 'Y-Z-?') # ID 9
+		Rails.logger.info 'Categories created'
+	else
+		Category.delete_all
+		Category.create!(name: 'A-B-C') # ID 1
+		Category.create!(name: 'D-E-F') # ID 2
+		Category.create!(name: 'G-H-I') # ID 3
+		Category.create!(name: 'J-K-L') # ID 4
+		Category.create!(name: 'M-N-O') # ID 5
+		Category.create!(name: 'P-Q-R') # ID 6
+		Category.create!(name: 'S-T-U') # ID 7
+		Category.create!(name: 'V-W-X') # ID 8
+		Category.create!(name: 'Y-Z-?') # ID 9
+		Rails.logger.info 'All current Categories deleted and created again from seed file.'
+	end
+
+	# FACT TYPE RELATED SEED
+	Rails.logger.info 'Creating fact types'
+	if FactType.count == 0
+		FactType.create!(name: 'Business') # ID 1
+		FactType.create!(name: 'Technology') # ID 2
+		FactType.create!(name: 'International') # ID 3
+		Rails.logger.info 'Fact types created'
+	else
+		FactType.delete_all
+		FactType.create!(name: 'Business') # ID 1
+		FactType.create!(name: 'Technology') # ID 2
+		FactType.create!(name: 'International') # ID 3
+		Rails.logger.info 'All current fact types deleted and created again from seed file.'
+	end
+
+	# GENRE RELATED SEED
+	Rails.logger.info 'Creating Genres'
+	if Genre.count == 0
+		Genre.create!(name: 'Song') # ID 1
+		Genre.create!(name: 'Novel') # ID 2
+		Genre.create!(name: 'Movie') # ID 3
+		Rails.logger.info 'Genres created'
+	else
+		Genre.delete_all
+		Genre.create!(name: 'Song') # ID 1
+		Genre.create!(name: 'Novel') # ID 2
+		Genre.create!(name: 'Movie') # ID 3
+		Rails.logger.info 'All current genres deleted and created again from seed file.'
+	end
+
+	# TOPIC RELATED SEED
+	Rails.logger.info 'Creating topics'
+	if Topic.count == 0
+		Topic.create!(name: 'hatsune miku')
+		Topic.create!(name: 'megurine luka')
+		Rails.logger.info 'Topics created'
+	else
+		Topic.delete_all
+		Topic.create!(name: 'hatsune miku')
+		Topic.create!(name: 'megurine luka')
+		Rails.logger.info 'All current topics deleted and created again from seed file.'
+	end
+
 	Rails.logger.info 'seeding on production ENV ended...'
 end
