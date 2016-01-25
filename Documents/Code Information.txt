@@ -1,5 +1,4 @@
-This document is under development... Some changes may not fully reflect the actual status.
-Last Updated 7/18/15 at 7:10PM
+Last Updated 1/25/16 at 3:56PM
 
 Summary:
 
@@ -10,21 +9,12 @@ Server Structure:
 
 -Rails
 --Ember-cli-rails
----EMberCLI
+---EmberCLI
 ----Ember.js
 
 For people forking the project:
 1. Review .travis.yml and follow the instructions on Extra Commands to generate new secrets.yml and secrets.yml.enc, and also change or remove the code climate token.
 
-Overall Rules:
-1. Production environment must be done using HTTPS!
+Notes:
 
-Rails Rules:
-1. All Rails related code are located under app folder. For resources, please follow the other implemented resources.
-2. All routes must be redirected to EMber.js on Routes.rb
-	2.1 All resources must be under :api
-3. Do not disable csrf_meta_tags since it can create an easily exploitable vulnerability.
-
-Ember Rules:
-1. All Ember related code are located under Frontend/app folder, and all Ember related commands must be done on Frontend folder.
-
+package,json on root folder is used by Heroku only! Updates on package.json under frontend must be manually changed on root package.json for proper installation on Heroku.

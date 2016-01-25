@@ -1,7 +1,4 @@
 {
-  "name": "Frontend Fakktion Heroku install dependencies",
-  "version": "0.1.0",
-  "description": "File is not updated by Ember-Cli-Rails! Sync dependencies with package.json on frontend!",
   "scripts": {
     "postinstall": "./bin/heroku_install"
   },
@@ -48,7 +45,6 @@
   },
   "cacheDirectories": [
     "frontend/node_modules",
-    "frontend/bower_components",
-    "node_modules"
+    "frontend/bower_components"
   ]
 }
