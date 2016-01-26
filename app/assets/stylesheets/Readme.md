@@ -3,7 +3,7 @@
 ```
 <html>
 	<head>
-	// No SCSS -- Under Rails control
+	// SCSS -- Under Rails control
 	</head>
 	<body class="ember-application">
 		<header>

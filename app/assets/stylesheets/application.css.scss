@@ -1,3 +1,5 @@
+/* Application.css.scss will be compiled to application.css upon rake pre:compile.*/
+
 /* Start of all @imports */
 
 /* Vendors... */
@@ -16,6 +18,5 @@
 /* Frontend stuff... */
 
 @import 'frontend/**/*';
+
 /* End of all @imports */
-
-

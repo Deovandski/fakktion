@@ -1,6 +1,0 @@
-/* Application.css is the bridge between Sprockets and all Project SASS code
-* This split allows full usage of @imports without have to worry about Sprockets.
-*= require_self
-*= require '_imports.scss'
-*/
-
