@@ -11,7 +11,11 @@
 @import "globals/scaffolds";
 @import "globals/buttons";
 
-/* #3 -- Frontend stuff... */
+/* #3 -- Shared stuff... */
+
+@import "shared/**/*";
+
+/* #4 -- Frontend stuff... */
 
 @import "frontend/**/*";
 
