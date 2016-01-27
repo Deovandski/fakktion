@@ -35,8 +35,9 @@ Rails.application.configure do
   config.sass.cache = true
   config.assets.compress = true
 
-  # Do not Fallback to assets pipeline if a precompiled asset is missing.
-  config.assets.compile = false
+  # Do Fallback to assets pipeline if a precompiled asset is missing.
+  # For Fakktion, this implies that we need the assets pipeline ready for ember-cli-rails calls.
+  config.assets.compile = true
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
