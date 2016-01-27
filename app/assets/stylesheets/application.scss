@@ -1,0 +1,18 @@
+/* Application.scss -- Below are the @imports groups */
+
+/* #1 -- Vendors... */
+
+@import "bourbon/bourbon";
+@import "neat/neat";
+
+/* #2 -- Globals... */
+
+@import "globals/variables";
+@import "globals/scaffolds";
+@import "globals/buttons";
+
+/* #3 -- Frontend stuff... */
+
+@import "frontend/**/*";
+
+/* And this is how the SASS compiler had a beautiful CSS3 Child... */

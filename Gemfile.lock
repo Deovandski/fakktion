@@ -231,6 +231,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (= 0.10.0.rc3)
   awesome_print (>= 1.6)
+  bourbon
   codeclimate-test-reporter
   devise (>= 3.5)
   ember-cli-rails (>= 0.7.0)
@@ -238,7 +239,7 @@ DEPENDENCIES
   foreman (>= 0.78)
   jquery-rails (>= 4.1)
   local_time (>= 1.0)
-  neat (>= 1.7)
+  neat
   pg (>= 0.18)
   puma (>= 2.15)
   rails

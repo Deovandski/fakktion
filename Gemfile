@@ -23,7 +23,8 @@ gem 'rails'
 gem 'sass-rails', '>=5.0'
 gem "awesome_print", '>=1.6'
 gem "font-awesome-rails", '>=4.5'
-gem 'neat', '>=1.7'
+gem 'bourbon'
+gem 'neat'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>=2.7'

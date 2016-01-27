@@ -1,0 +1,32 @@
+@import "buttons_mixins/**/*";
+
+.button_type1,
+button_type1,
+input[type="submit"] {
+  @include button_type1;
+}
+.button_type2_large,
+button_type2_large,
+input[type="submit"] {
+  @include button_type2_large;
+}
+.button_type2_small,
+button_type2_small,
+input[type="submit"] {
+  @include button_type2_small;
+}
+.button_type2_smallest,
+button_type2_smallest,
+input[type="submit"] {
+  @include button_type2_smallest;
+}
+.button_type3,
+button_type3,
+input[type="submit"] {
+  @include button_type3;
+}
+.button_type4,
+button_type4,
+input[type="submit"] {
+  @include button_type4;
+}
