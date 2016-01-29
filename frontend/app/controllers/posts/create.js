@@ -166,6 +166,14 @@ export default Ember.Controller.extend
 					category: store.peekRecord('category', this.get('categoryID'))
 				});
 				var self = this;
+
+				// COnsole debug for later
+				console.log(store.peekRecord('genre', this.get('genreID')));
+				console.log(store.peekRecord('genre', this.get('genreID')));
+				console.log(store.peekRecord('user', this.get('session.secure.userId')));
+				console.log(store.peekRecord('user', this.get('session.secure.userId')));
+
+
 				post.save().then(function()
 				{
 					self.transitionToRoute('post', post);

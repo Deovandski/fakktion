@@ -6,5 +6,5 @@ export default DS.Model.extend
 	posts_count: DS.attr ('number'),
 	
 	// Relationships
-	posts: DS.hasMany('post', {async: true})
+	posts: DS.hasMany('post')
 });

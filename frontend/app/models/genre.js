@@ -7,5 +7,5 @@ export default DS.Model.extend
 	eligibility_counter: DS.attr ('number'),
 	
 	// Relationships
-	posts: DS.hasMany('post', {async: true})
+	posts: DS.hasMany('post')
 });

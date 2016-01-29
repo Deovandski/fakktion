@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Api::V1::CsrfControllerTest < ActionController::TestCase
+class Api::V1::GenresControllerTest < ActionController::TestCase
 	test "should get index" do
 		get :index
 		assert_response :success

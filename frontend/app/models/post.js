@@ -1,7 +1,6 @@
 import DS from "ember-data";
 
-export default DS.Model.extend
-({
+export default DS.Model.extend ({
 	fact_link: DS.attr ('string'),
 	fiction_link: DS.attr ('string'),
 	title: DS.attr ('string'),
@@ -14,17 +13,12 @@ export default DS.Model.extend
 	updated_at: DS.attr ('date'),
 	created_at: DS.attr ('date'),
 	comments_count: DS.attr ('number'),
-	//For index filter purpose... May changed on beta or v1 release as dependencies are updated.
-	genre_id: DS.attr ('number'),
-	category_id: DS.attr ('number'),
-	topic_id: DS.attr ('number'),
-	fact_type_id: DS.attr ('number'),
 	
 	// Relationships
 	comments: DS.hasMany('comment', {async: true}),
-	user: DS.belongsTo('user', {async: true}),
-	genre: DS.belongsTo('genre', {async: true}),
-	fact_type: DS.belongsTo('fact_type', {async: true}),
-	category: DS.belongsTo('category', {async: true}),
-	topic: DS.belongsTo('topic', {async: true})
+	user: DS.belongsTo('user'),
+	genre: DS.belongsTo('genre'),
+	fact_type: DS.belongsTo('fact_type'),
+	category: DS.belongsTo('category'),
+	topic: DS.belongsTo('topic')
 });
