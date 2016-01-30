@@ -17,8 +17,8 @@ Router.map(function()
   this.route('superUserPanel', { path: '/superUserPanel' });
 
   // User
-  this.resource('users', function(){
-      this.resource('user', { path:'/:user_id' }, function()
+  this.route('users', function(){
+      this.route('user', { path:'/:user_id' }, function()
       {
           this.route('edit');
           this.route('posts');
@@ -28,8 +28,8 @@ Router.map(function()
 	});
 
   // Admin Messages
-  this.resource('adminMessages', function(){
-      this.resource('adminMessage', { path:'/:admin_message_id' }, function()
+  this.route('adminMessages', function(){
+      this.route('adminMessage', { path:'/:admin_message_id' }, function()
       {
           this.route('edit');
       });
@@ -37,13 +37,13 @@ Router.map(function()
 	});
 
   // Posts
-  this.resource('posts', function(){
-      this.resource('post', { path:'/:post_id' }, function()
+  this.route('posts', function(){
+      this.route('post', { path:'/:post_id' }, function()
       {
           this.route('edit');
           // Comments
-          this.resource('comments', function(){
-              this.resource('comment', { path:'/:comment_id' }, function()
+          this.route('comments', function(){
+              this.route('comment', { path:'/:comment_id' }, function()
               {
                   this.route('edit');
               });
@@ -54,8 +54,8 @@ Router.map(function()
 	});
 
   // Genres
-  this.resource('genres', function(){
-      this.resource('genre', { path:'/:genre_id' }, function()
+  this.route('genres', function(){
+      this.route('genre', { path:'/:genre_id' }, function()
       {
           this.route('edit');
       });
@@ -63,8 +63,8 @@ Router.map(function()
 	});
 
   // Fact Type
-  this.resource('factTypes', function(){
-      this.resource('factType', { path:'/:factType_id' }, function()
+  this.route('factTypes', function(){
+      this.route('factType', { path:'/:factType_id' }, function()
       {
           this.route('edit');
       });
@@ -72,8 +72,8 @@ Router.map(function()
 	});
 
   // Topic
-  this.resource('topics', function(){
-      this.resource('topic', { path:'/:topic_id' }, function()
+  this.route('topics', function(){
+      this.route('topic', { path:'/:topic_id' }, function()
       {
           this.route('edit');
       });

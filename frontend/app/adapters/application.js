@@ -18,12 +18,6 @@ export default DS.JSONAPIAdapter.extend ({
 	// in production, the host for both rails and ember should be the same.
 	host: ENV.host,
 
-	// allows the multiword paths in urls to be underscored
-	pathForType: function(type) {
-		let underscored = Ember.String.underscore(type);
-		return Ember.String.pluralize(underscored);
-	},
-
 	// allows queries to be sent along with a findRecord
 	// hopefully Ember / EmberData will soon have this built in
 	// ember-data issue tracked here:

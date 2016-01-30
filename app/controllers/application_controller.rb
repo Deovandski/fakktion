@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 	# Currently using a temporary CSRF protection
 	protect_from_forgery with: :null_session
 	# Replace with protect_from_forgery with: :exception later on...
-	before_filter :authenticate_user_from_token!
+	before_action :authenticate_user_from_token!
 
 	def index
 		render layout: false
