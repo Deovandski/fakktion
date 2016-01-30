@@ -45,6 +45,7 @@
     "moment-timezone": "0.5.0"
   },
   "dependencies": {
+    "abbrev": "^1.0.7",
     "moment": "^2.11.1"
   }
 }
