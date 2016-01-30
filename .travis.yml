@@ -8,7 +8,9 @@ rvm:
 - 2.3.0
 before_install:
 - openssl aes-256-cbc -K $encrypted_f7320bcbcc32_key -iv $encrypted_f7320bcbcc32_iv
-  -in secrets.yml.enc -out config/secrets.yml -d
+- in secrets.yml.enc -out config/secrets.yml -d
+- nvm install 5.4
+- nvm use 5.4
 before_script:
 - npm install -g bower
 - cd frontend
@@ -16,9 +18,6 @@ before_script:
 - npm install
 - bower install
 - npm install --save-dev ember-cli-rails-addon
-- ember install ember-cli-simple-auth
-- ember install ember-cli-simple-auth-devise
-- npm install ember-moment
 - npm install
 - cd ..
 - bundle exec rake db:migrate
@@ -30,9 +29,3 @@ script:
 addons:
   code_climate:
     repo_token: c3055c2ba9d4366d62a766320aad9097184a33532676588a5fd68536f85dc048
-#nodejs and npm not apt whitelisted... Check again if build fails due to nodejs deprecations on Travis CI.
-#  apt:
-#    sources:
-#    - nodejs:
-#      - "0.12"
-#    - npm
