@@ -1,6 +1,5 @@
 <h2>Forum</h2>
-<p>ONLY GET REQUESTS WORKS!</p>
-<p>ALL POST REQUESTS (except login) ARE BROKEN DUE TO AMS.</p>
+<p><strong>UNSTABLE STATUS! Massive underhood upgrading is under way!</strong></p>
 <label class="label_forum_info">{{#link-to 'adminMessages'}}Check Admin Messages{{/link-to}}</label><br/>
 <label class="label_forum_info">V: Views | C: Comments</label>
 <div class="posts_info">
@@ -8,7 +7,7 @@
 		{{#each filteredPosts as |post|}}
 		<li>
 			<label class="label_title">
-				{{#link-to 'post' post}}{{post.title}}{{/link-to}}
+				{{#link-to 'posts.post' post}}{{post.title}}{{/link-to}}
 			</label>
 			<label class="label_views">
 				V:{{post.views_count}}

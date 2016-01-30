@@ -1,7 +1,7 @@
 <h1>Topics Management</h1>
 <ul>
     {{#each model as |topic|}}
-      <li>{{#link-to 'topic' topic}}{{topic.name}}{{/link-to}}</li>
+      <li>{{#link-to 'topics.topic' topic}}{{topic.name}}{{/link-to}}</li>
     {{/each}}
 </ul>
 

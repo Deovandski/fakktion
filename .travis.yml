@@ -12,8 +12,8 @@ before_install:
 before_script:
 - nvm install 5.4
 - nvm use 5.4
-- npm install -g bower
 - cd frontend
+- npm install -g bower
 - npm install -g ember-cli
 - npm install
 - bower install
