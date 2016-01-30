@@ -9,7 +9,7 @@ Bundler.require(*Rails.groups)
 module Fakktion
 	class Application < Rails::Application
 
-		# Enable the asset pipeline
+		# Enable the asset pipeline due to images going Pipeline >> Ember.js
 		config.assets.enabled = true
 		
 		# Settings in config/environments/* take precedence over those specified here.

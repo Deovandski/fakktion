@@ -1,7 +1,7 @@
 # Router
 Rails.application.routes.draw do
 
-	mount_ember_app :frontend, to: "/", controller: "application"
+	mount_ember_app :frontend, to: "/"
 
 	# Devise
 	devise_for :users, controllers: {sessions: 'sessions'}

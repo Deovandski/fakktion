@@ -1,15 +1,10 @@
-<%= render_ember_app :frontend do |head| %>
+<%= render_ember_app :frontend do |head, body| %>
   <% head.append do %>
 
 	<%# Rails Asset Pipeline%>
 
 	<%= stylesheet_link_tag 'application', media: 'all'%>
 	<%= javascript_include_tag 'application' %>
-
-	<%# Ember-cli-rails Pipeline - Frontend Stylesheet is not used.%>
-
-	<%= include_ember_script_tags :frontend %>
-	<% include_ember_stylesheet_tags :frontend %>
 
 	<%# META Stuff %>
 
@@ -19,5 +14,8 @@
     <meta name="description" content="Fakktion is a relational blog with purpose of bringing the discussion of fiction and fact closer!">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <% end %>
+  <% body.append do %>
+	<%= render partial: "layouts/shared/analytics" %>
   <% end %>
 <% end %>
