@@ -8,10 +8,10 @@ rvm:
 - 2.3.0
 before_install:
 - openssl aes-256-cbc -K $encrypted_f7320bcbcc32_key -iv $encrypted_f7320bcbcc32_iv
-- in secrets.yml.enc -out config/secrets.yml -d
+  -in secrets.yml.enc -out config/secrets.yml -d
+before_script:
 - nvm install 5.4
 - nvm use 5.4
-before_script:
 - npm install -g bower
 - cd frontend
 - npm install -g ember-cli
