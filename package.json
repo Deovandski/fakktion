@@ -1,4 +1,10 @@
 {
+	"name": "Fakktion",
+	"description": "Relational Blog",
+	"version": "0.1.0",
+	"engines": {
+	"node": "5.4.0"
+	},
   "scripts": {
     "postinstall": "./bin/heroku_install"
   },
@@ -20,6 +26,7 @@
     "ember-cli-sri": "^2.0.0",
     "ember-cli-uglify": "^1.2.0",
     "ember-data": "^2.3.0",
+    "ember-inflector": "^1.9.4",
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
     "ember-moment": "3.3.0",
