@@ -46,6 +46,7 @@
   },
   "dependencies": {
     "abbrev": "^1.0.7",
-    "moment": "^2.11.1"
+    "moment": "^2.11.1",
+    "ember-cli": "~2.3.0-beta.1"
   }
 }
