@@ -1,5 +1,3 @@
-{{!class="flash-alert" for future use}}
-
 <form {{action 'authenticate' on='submit'}}>
 	<h1>Login</h1>
 	<div class="input_block_typeLogin">
@@ -13,4 +11,8 @@
   <button type="submit" class="button_type1">Login</button>
 </form>
 <br/>
+
+{{#if errorMessage}}
+  {{errorMessage}}
+{{/if}}
 <button class="button_type1">Forgot Password?</button>

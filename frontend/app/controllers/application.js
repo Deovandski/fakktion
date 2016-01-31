@@ -22,7 +22,10 @@ CPV: Category Partial Visibility
 FTPV: FactType Partial Visibility
 PDPV: PostingDate Partial Visibility
 */
+const { service } = Ember.inject;
 export default Ember.Controller.extend ({
+	session:        service('session'),
+	sessionAccount: service('session-account'),
 	// Variables Section
 	selectedGID: 0,
 	selectedCID: 0,
@@ -263,13 +266,8 @@ export default Ember.Controller.extend ({
 			this.set('selectedPDID', 0);
 			this.set('selectedPDN', 'None');
 		},
-		//Logout method
-		invalidateSession: function() {
-			var shouldInvalidate = window.confirm('Really want to Logout? You will be returned to the homepage if you do.');
-			if(shouldInvalidate) {
-				this.get('session').invalidate();
-				this.transitionToRoute('index');
-			}
+		logout() {
+		  this.get('session').invalidate();
 		}
 	}
 });

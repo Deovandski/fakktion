@@ -13,7 +13,9 @@
 		<ul>
 			{{#if session.isAuthenticated}}
 				<li class="small_login_info">
-					{{session.currentUser.display_name}}
+					{{#if sessionAccount.user}}
+						Signed in as {{sessionAccount.user.display_name}}
+					{{/if}}
 				</li>
 				{{#if isSuperUser}}
 					<li>
@@ -29,14 +31,14 @@
 					{{#link-to 'user.index' session.currentUser.id}}Profile{{/link-to}}
 				</li>
 				<li>
-					<a {{ action 'invalidateSession' }}>Logout</a>
+     				<a {{action 'logout'}}>Logout</a>
 				</li>
 			{{else}}
 				<li>
 					{{#link-to 'users.create'}}SignUp{{/link-to}}
 				</li>
 				<li>
-					{{#link-to 'login'}}Login{{/link-to}}
+					{{#link-to "login"}}Login{{/link-to}}
 				</li>
 			{{/if}}
 		</ul>

@@ -1,6 +1,15 @@
 import Ember from 'ember';
+import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 
-export default Ember.Route.extend ({
+const { service } = Ember.inject;
+
+export default Ember.Route.extend(ApplicationRouteMixin, {
+	sessionAccount: service('session-account'),
+
+	beforeModel() {
+		return this._loadCurrentUser();
+	},
+
 	model: function() {
 		return Ember.Object.create ({
 			genres: this.store.findAll('genre'),
@@ -8,5 +17,14 @@ export default Ember.Route.extend ({
 			categories: this.store.findAll('category'),
 			topics: this.store.findAll('topic')
 		});
+	},
+
+	sessionAuthenticated() {
+		this._super(...arguments);
+		this._loadCurrentUser().catch(() => this.get('session').invalidate());
+	},
+
+	_loadCurrentUser() {
+		return this.get('sessionAccount').loadCurrentUser();
 	}
 });
