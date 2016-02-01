@@ -17,7 +17,6 @@ Rails.application.routes.draw do
 			resources :categories
 			resources :genres
 			resources :users
-			get :csrf, to: 'csrf#index'
 		end
 	end
 end
