@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
 	# Full CSRF protection is not working....
 	# Currently using a temporary CSRF protection
-	protect_from_forgery with: :exception
+	protect_from_forgery with: :null_session
 	# Replace with protect_from_forgery with: :exception later on...
 	before_action :authenticate_user_from_token!
 

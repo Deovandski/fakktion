@@ -6,7 +6,8 @@
 
 ######Code Coverage, Docs and Dependencies badges are for Rails only...
 
-[Live Website](http://fakktion.herokuapp.com/) (Initial will be slow due to Dyno sleep mode implemented by Heroku [(More Information)](https://www.heroku.com/pricing).)
+[Live Website](http://fakktion.herokuapp.com/) (Initial load may be slow due to Dyno sleep mode implemented by [Heroku](https://www.heroku.com/pricing).)
+
 
 All information about this project can be found on this [published paper](http://www.micsymposium.org/mics2015/ProceedingsMICS_2015/Skibinski_3C1_31.pdf). Information regarding the Database Design can be seen [Here](erd.pdf) while any other information can be seen in the documents below. However, if you prefer to watch a video, please check the [Fakktion Playlist](https://www.youtube.com/playlist?list=PLqBsvsbzH-lwDzspLWJwl2fdw61UO45j3) or watch the latest released [video](https://youtu.be/3da64yhFi4M). (Latest video represents progress until 8/26/2015.)
 
