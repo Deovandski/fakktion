@@ -29,6 +29,6 @@ class Api::V1::GenresController < ApplicationController
 	end
 
 	def genre_params
-		params.require(:data).require(:attributes).permit(:genre).permit(:name, :posts_count, :eligibility_counter)
+		ActiveModel::Serializer::Adapter::JsonApi::Deserialization.parse(params.to_h)
 	end
 end

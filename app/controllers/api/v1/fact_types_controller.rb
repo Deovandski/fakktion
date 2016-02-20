@@ -29,6 +29,6 @@ class Api::V1::FactTypesController < ApplicationController
 	end
 
 	def factType_params
-		params.require(:data).require(:attributes).permit(:fact_type).permit(:name, :posts_count, :eligibility_counter)
+		ActiveModel::Serializer::Adapter::JsonApi::Deserialization.parse(params.to_h)
 	end
 end

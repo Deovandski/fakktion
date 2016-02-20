@@ -29,6 +29,6 @@ class Api::V1::AdminMessagesController < ApplicationController
 	end
 
 	def adminMessage_params
-		params.require(:data).require(:attributes).permit(:message, :title)
+		ActiveModel::Serializer::Adapter::JsonApi::Deserialization.parse(params.to_h)
 	end
 end

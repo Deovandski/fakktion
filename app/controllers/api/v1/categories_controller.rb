@@ -29,6 +29,6 @@ class Api::V1::CategoriesController < ApplicationController
 	end
 
 	def category_params
-		params.require(:data).require(:attributes).permit(:name, :posts_count)
+		ActiveModel::Serializer::Adapter::JsonApi::Deserialization.parse(params.to_h)
 	end
 end

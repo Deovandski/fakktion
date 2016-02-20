@@ -29,6 +29,6 @@ class Api::V1::CommentsController < ApplicationController
 	end
 
 	def comment_params
-		 params.require(:data).require(:attributes).permit(:text, :user_id, :post_id, :empathy_level, :soft_delete_date, :soft_delete, :hidden)
+		ActiveModel::Serializer::Adapter::JsonApi::Deserialization.parse(params.to_h)
 	end
 end

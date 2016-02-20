@@ -29,6 +29,6 @@ class Api::V1::TopicsController < ApplicationController
 	end
 
 	def topic_params
-		params.require(:data).require(:attributes).permit(:name, :posts_count, :eligibility_counter)
+		ActiveModel::Serializer::Adapter::JsonApi::Deserialization.parse(params.to_h)
 	end
 end
