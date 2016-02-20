@@ -7,7 +7,7 @@
 		{{#each filteredPosts as |post|}}
 		<li>
 			<label class="label_title">
-				{{#link-to 'posts.post' post}}{{post.title}}{{/link-to}}
+				{{#link-to 'post' post}}{{post.title}}{{/link-to}}
 			</label>
 			<label class="label_views">
 				V:{{post.views_count}}

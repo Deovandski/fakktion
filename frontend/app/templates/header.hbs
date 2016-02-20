@@ -6,7 +6,7 @@
 			{{/link-to}}
 		</div>
 		<div class="text_branding">
-			EXPERIMENTAL
+			EXPERIMENTAL_v0.4
 		</div>
 	</div>
 	<nav>
@@ -28,7 +28,7 @@
 					</li>
 				{{/if}}
 				<li>
-					{{#link-to 'user.index' session.currentUser.id}}Profile{{/link-to}}
+					{{#link-to 'user' sessionAccount.user.id}}Profile{{/link-to}}
 				</li>
 				<li>
      				<a {{action 'logout'}}>Logout</a>
