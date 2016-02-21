@@ -242,11 +242,11 @@ export default Ember.Controller.extend ({
 				else {
 					user.set('current_password', "");
 				}
-				user.save().then(function() {
-					alert('User Updated!');
-					// this.transitionToRoute('user', user);	 Not working...
-				}, function() {
-					alert('failed to update user!');
+				user.save().then(() => {
+					this.transitionToRoute('user', user);
+				}).catch((reason) => {
+					console.log(reason);
+					alert('User Not Updated!');
 				});
 			}
 			else {

@@ -32,9 +32,11 @@ class Api::V1::UsersController < ApiController
 			user_params.delete(:current_password)
 		end
 		if needs_password?(user, user_params)
-			render json: user.update_with_password(user_params)
+			user.update_with_password(user_params)
+			render json: user
 		else
-			render json: user.update_without_password(user_params)
+			user.update_without_password(user_params)
+			render json: user
 		end
 	end
 
