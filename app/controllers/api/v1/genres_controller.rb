@@ -1,5 +1,5 @@
 # Genres Controller: JSON response through Active Model Serializers
-class Api::V1::GenresController < ApplicationController
+class Api::V1::GenresController < ApiController
 	respond_to :json
 
 	def index

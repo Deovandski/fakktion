@@ -1,5 +1,5 @@
 # Categories Controller: JSON response through Active Model Serializers
-class Api::V1::CategoriesController < ApplicationController
+class Api::V1::CategoriesController < ApiController
 	respond_to :json
 
 	def index

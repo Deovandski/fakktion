@@ -1,5 +1,5 @@
 # Fact Types Controller: JSON response through Active Model Serializers
-class Api::V1::FactTypesController < ApplicationController
+class Api::V1::FactTypesController < ApiController
 	respond_to :json
 	
 	def index

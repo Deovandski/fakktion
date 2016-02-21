@@ -1,5 +1,5 @@
 # Posts Controller: JSON response through Active Model Serializers
-class Api::V1::PostsController < ApplicationController
+class Api::V1::PostsController < ApiController
 	respond_to :json 
 
 	def index

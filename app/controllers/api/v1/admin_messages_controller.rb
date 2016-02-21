@@ -1,5 +1,5 @@
 # Admin Messages Controller: JSON response through Active Model Serializers
-class Api::V1::AdminMessagesController < ApplicationController
+class Api::V1::AdminMessagesController < ApiController
 	respond_to :json
 
 	def index

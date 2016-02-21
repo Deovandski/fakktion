@@ -1,5 +1,5 @@
 # Users Controller: JSON response through Active Model Serializers
-class Api::V1::UsersController < ApplicationController
+class Api::V1::UsersController < ApiController
 	respond_to :json
 
 	def index
