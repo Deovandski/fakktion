@@ -11,15 +11,17 @@ class Api::V1::UsersController < ApiController
 	end
 
 	def create
-		params[:sign_in_count] = 0
-		params[:webpage_url] = ""
-		params[:is_banned] = false
-		params[:facebook_url] = ""
-		params[:twitter_url] = ""
-		params[:is_admin] = false
-		params[:is_super_user] = false
-		params[:personal_message] = ""
-		render json: User.create(user_params)
+		tempUser = User.new(user_params)
+		tempUser.sign_in_count = 0
+		tempUser.webpage_url = ""
+		tempUser.is_banned = false
+		tempUser.facebook_url = ""
+		tempUser.twitter_url = ""
+		tempUser.is_admin = false
+		tempUser.is_super_user = false
+		tempUser.personal_message = "This person did not write anything here yet..."
+		tempUser.save
+		render json: tempUser
 	end
 
 	def update
@@ -51,6 +53,6 @@ class Api::V1::UsersController < ApiController
 	end
 	
 	def user_params
-		ActiveModel::Serializer::Adapter::JsonApi::Deserialization.parse(params.to_h)
+		ActiveModelSerializers::Deserialization.jsonapi_parse!(params.to_unsafe_h)
 	end
 end

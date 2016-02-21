@@ -27,6 +27,7 @@ export default DS.JSONAPIAdapter.extend (DataAdapterMixin,{
 		}
 		return url;
 	},
+	// allows the multiword paths in urls to be underscored
 	pathForType: function(type) {
 		var underscored = Ember.String.underscore(type);
 		return Ember.String.pluralize(underscored);

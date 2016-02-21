@@ -1,14 +1,14 @@
 // app/serializers/application.js
+import Ember from 'ember';
 import DS from 'ember-data';
-import Ember from "ember";
-
+var underscore = Ember.String.underscore;
 
 export default DS.JSONAPISerializer.extend({
-	keyForAttribute: function(key) {
-		return Ember.String.underscore(key);
-	},
+  keyForAttribute: function(attr) {
+    return underscore(attr);
+  },
 
-	keyForRelationship: function(key) {
-		return Ember.String.underscore(key);
-	}
+  keyForRelationship: function(rawKey) {
+    return underscore(rawKey);
+  }
 });
