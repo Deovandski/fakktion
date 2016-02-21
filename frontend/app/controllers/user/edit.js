@@ -1,8 +1,8 @@
 import Ember from "ember";
 import moment from 'moment';
+const { service } = Ember.inject;
 
-export default Ember.Controller.extend
-({
+export default Ember.Controller.extend ({
 	currentPassword: "",
 	newPassword: "",
 	newPasswordConfirmation: "",
@@ -10,319 +10,244 @@ export default Ember.Controller.extend
 	clientSideValidationComplete: false,
 	showPassword: false,
 	showExtra: false,
-	verifyFullName: Ember.computed('model.full_name', function()
-	{
-		if(this.get('model.full_name').length < 1)
-		{
+	verifyFullName: Ember.computed('model.full_name', function() {
+		if(this.get('model.full_name').length < 1) {
 			this.set("clientSideValidationComplete",false);
 			return "Cannot be empty";
 		}
-		else
-		{
+		else {
 			this.set("clientSideValidationComplete",true);
 			return "";
 		}
 	}),
-	verifyDisplayName: Ember.computed('model.display_name', function()
-	{
-		if(this.get('model.display_name').length < 5)
-		{
+	verifyDisplayName: Ember.computed('model.display_name', function() {
+		if(this.get('model.display_name').length < 5) {
 			this.set("clientSideValidationComplete",false);
-			if(this.get('model.display_name').length !== 0)
-			{
+			if(this.get('model.display_name').length !== 0) {
 				return "Too few characters";
 			}
-			else
-			{
+			else {
 				return "Cannot be empty";
 			}
 		}
-		else
-		{
+		else {
 			var possibleUser = this.get('users').filterBy('display_name', this.get('model.display_name'));
-			if(possibleUser.length > 1)
-			{
+			if(possibleUser.length > 1) {
 				this.set("clientSideValidationComplete",false);
 				return "Another User has this display name!";
 			}
-			else
-			{
+			else {
 				this.set("clientSideValidationComplete",true);
 				return "";
 			}
 		}
 	}),
-	verifyDateOfBirth: Ember.computed('dateOfBirth', function()
-	{
-		if(this.get('dateOfBirth') === null)
-		{
+	verifyDateOfBirth: Ember.computed('dateOfBirth', function() {
+		if(this.get('dateOfBirth') === null) {
 			this.set("clientSideValidationComplete",true);
 		}
-		else
-		{
-			if(this.get('dateOfBirth') === '')
-			{
+		else {
+			if(this.get('dateOfBirth') === '') {
 				this.set('dateOfBirth', null);
 				this.set("clientSideValidationComplete",true);
 				return "";
 			}
-			else if(moment(this.get('dateOfBirth')).format() === "Invalid date")
-			{
+			else if(moment(this.get('dateOfBirth')).format() === "Invalid date") {
 				this.set("clientSideValidationComplete",false);
 				return "MM/DD/YYYY";
 			}
-			else
-			{
+			else {
 				var minAge = moment().subtract(12,'y');
 				var maxAge = moment().subtract(200,'y');
 				var currentAge = moment(this.get('dateOfBirth'));
-				if(minAge.diff(currentAge) < 0)
-				{
+				if(minAge.diff(currentAge) < 0) {
 					this.set("clientSideValidationComplete",false);
 					return "You must be at least 13 to signup";
 				}
-				else if(maxAge.diff(currentAge) > 200)
-				{
+				else if(maxAge.diff(currentAge) > 200) {
 					this.set("clientSideValidationComplete",false);
 					return moment(currentAge).format('LL') + " is more than 200 years";
 				}
-				else
-				{
+				else {
 					this.set("clientSideValidationComplete",true);
 					return "";
 				}
 			}
 		}	
 	}),
-	verifyEmail: Ember.computed('model.email', function()
-	{
-		if(this.get('model.email').length < 4)
-		{
+	verifyEmail: Ember.computed('model.email', function() {
+		if(this.get('model.email').length < 4) {
 			this.set("clientSideValidationComplete",false);
 			return "user@sample.com";
 		}
-		else
-		{
+		else {
 			var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-			if(emailRegex.test(this.get('model.email')))
-			{
+			if(emailRegex.test(this.get('model.email'))) {
 				var possibleUser = this.get('users').filterBy('email', this.get('model.email'));
-				if(possibleUser.length > 1)
-				{
+				if(possibleUser.length > 1) {
 					this.set("clientSideValidationComplete",false);
 					return "Another user has this email!";
 				}
-				else
-				{
+				else {
 					this.set("clientSideValidationComplete",true);
 					return "";
 				}
 			}
-			else
-			{
+			else {
 				this.set("clientSideValidationComplete",false);
 				return "Not a valid email";
 			}
 		}
 	}),
-	verifyCurrentPassword: Ember.computed('currentPassword', function()
-	{
-		if(this.get('currentPassword').length < 8)
-		{
-			if(this.get('currentPassword').length === 0)
-			{
+	verifyCurrentPassword: Ember.computed('currentPassword', function() {
+		if(this.get('currentPassword').length < 8) {
+			if(this.get('currentPassword').length === 0) {
 				this.set("clientSideValidationComplete",true);
 				return "";
 			}
-			else
-			{
+			else {
 				this.set("clientSideValidationComplete",false);
 				return "Too Short";
 			}
 		}
-		else
-		{
+		else {
 			this.set("clientSideValidationComplete",true);
 			return "";
 		}
 	}),
-	verifyNewPassword: Ember.computed('newPassword', 'currentPassword', function()
-	{
-		if(this.get('newPassword').length < 8)
-		{
-			if(this.get('newPassword').length === 0)
-			{
-				if(this.get('currentPassword').length !== 0)
-				{
+	verifyNewPassword: Ember.computed('newPassword', 'currentPassword', function() {
+		if(this.get('newPassword').length < 8) {
+			if(this.get('newPassword').length === 0) {
+				if(this.get('currentPassword').length !== 0) {
 					this.set("clientSideValidationComplete",false);
 					return "Cannot be left empty!";
 				}
-				else
-				{
+				else {
 					this.set("clientSideValidationComplete",true);
 					return "";
 				}
 			}
-			else
-			{
+			else {
 				this.set("clientSideValidationComplete",false);
 				return "Too Short";
 			}
 		}
-		else
-		{
+		else {
 			this.set("clientSideValidationComplete",true);
 			return "";
 		}
 	}),
-	verifyNewPasswordConfirmation: Ember.computed('newPasswordConfirmation', 'newPassword', function()
-	{
-		if(this.get('newPasswordConfirmation') !== this.get('newPassword'))
-		{
+	verifyNewPasswordConfirmation: Ember.computed('newPasswordConfirmation', 'newPassword', function() {
+		if(this.get('newPasswordConfirmation') !== this.get('newPassword')) {
 			this.set("clientSideValidationComplete",false);
 			return "Does not match!";
 		}
-		else
-		{
+		else {
 			this.set("clientSideValidationComplete",true);
 			return "";
 		}
 	}),
-	verifyGender: Ember.computed('model.gender', function()
-	{
-		if(this.get('model.gender').toLowerCase() !== "male" && this.get('model.gender').toLowerCase() !== "female" && this.get('model.gender').toLowerCase() !== "other")
-		{
+	verifyGender: Ember.computed('model.gender', function() {
+		if(this.get('model.gender').toLowerCase() !== "male" && this.get('model.gender').toLowerCase() !== "female" && this.get('model.gender').toLowerCase() !== "other") {
 			this.set("clientSideValidationComplete",false);
 			return "male/female/other";
 		}
-		else
-		{
+		else {
 			this.set("clientSideValidationComplete",true);
 			return "";
 		}
 	}),
-	verifyFacebookURL: Ember.computed('model.facebook_url', function()
-	{
-		if(this.get('model.facebook_url') !== '')
-		{
-			if(this.get('model.facebook_url').indexOf("facebook") !== -1)
-			{
+	verifyFacebookURL: Ember.computed('model.facebook_url', function() {
+		if(this.get('model.facebook_url') !== '') {
+			if(this.get('model.facebook_url').indexOf("facebook") !== -1) {
 				this.set("clientSideValidationComplete", true);
 				return "";
 			}
-			else
-			{
+			else {
 				this.set("clientSideValidationComplete", false);
 				return "Invalid Facebook URL";
 			}
 		}
-		else
-		{
+		else {
 			this.set("clientSideValidationComplete", true);
 			return "https://www.facebook.com/example";
 		}
 	}),
-	verifyTwitterURL: Ember.computed('model.twitter_url', function()
-	{
-		if(this.get('model.twitter_url') !== '')
-		{
-			if(this.get('model.twitter_url').indexOf("twitter") !== -1)
-			{
+	verifyTwitterURL: Ember.computed('model.twitter_url', function() {
+		if(this.get('model.twitter_url') !== '') {
+			if(this.get('model.twitter_url').indexOf("twitter") !== -1) {
 				this.set("clientSideValidationComplete", true);
 				return "";
 			}
-			else
-			{
+			else {
 				this.set("clientSideValidationComplete", false);
 				return "Invalid Twitter URL";
 			}
 		}
-		else
-		{
+		else {
 			this.set("clientSideValidationComplete", true);
 			return "https://twitter.com/example";
 		}
 	}),
-	verifyWebpageURL: Ember.computed('model.webpage_url', function()
-	{
+	verifyWebpageURL: Ember.computed('model.webpage_url', function() {
 		
-		if(this.get('model.webpage_url') !== '')
-		{
-			if(this.get('model.webpage_url').length < 10)
-			{
+		if(this.get('model.webpage_url') !== '') {
+			if(this.get('model.webpage_url').length < 10) {
 				this.set("clientSideValidationComplete", false);
 				return "Invalid URL";
 			}
-			else
-			{
+			else {
 				this.set("clientSideValidationComplete", true);
 				return "";
 			}
 		}
-		else
-		{
+		else {
 			this.set("clientSideValidationComplete",true);
 			return "http://www.example.com https://www.example.com";
 		}
 	}),
-	verifyShowFullName: Ember.computed('model.showFullName', function()
-	{
-		if(this.get('model.showFullName') !== true)
-		{
+	verifyShowFullName: Ember.computed('model.showFullName', function() {
+		if(this.get('model.showFullName') !== true) {
 			return "";
 		}
-		else
-		{
+		else {
 			return "";
 		}
 	}),
-	actions:
-	{
-		setShowPassword: function(password)
-		{
+	actions: {
+		setShowPassword: function(password) {
 			this.set('showPassword', password);
 		},
-		setExtraPassword: function(extra)
-		{
+		setExtraPassword: function(extra) {
 			this.set('showExtra', extra);
 		},
-		update: function()
-		{
-			if(this.get('clientSideValidationComplete'))
-			{
+		update: function() {
+			if(this.get('clientSideValidationComplete')) {
 				var user = this.get('content');
-				if(this.get('dateOfBirth') !== null && this.get('dateOfBirth') !== '')
-				{
+				if(this.get('dateOfBirth') !== null && this.get('dateOfBirth') !== '') {
 					user.set('date_of_birth', moment(this.get('dateOfBirth')).toDate());	
 				}
-				if(this.get('newPassword') !== null && this.get('newPassword') !== '')
-				{
+				if(this.get('newPassword') !== null && this.get('newPassword') !== '') {
 					user.set('password', this.get('newPassword'));	
 				}
-				else
-				{
+				else {
 					user.set('password', "");
 				}
-				if(this.get('currentPassword') !== null && this.get('currentPassword') !== '')
-				{
+				if(this.get('currentPassword') !== null && this.get('currentPassword') !== '') {
 					user.set('current_password', this.get('currentPassword'));
 				}
-				else
-				{
+				else {
 					user.set('current_password', "");
 				}
 				var controller = this;
-				user.save().then(function()
-				{
+				user.save().then(function() {
 					this.model.reload();
 					controller.transitionToRoute('user', user);	
-				}, function()
-				{
+				}, function() {
 					alert('failed to save user!');
 				});
 			}
-			else
-			{
+			else {
 				alert("(Client 402) Failed to save user... Check any warning messages (to the right of each textbox) otherwise contact support if you don't see any");
 			}
 		}

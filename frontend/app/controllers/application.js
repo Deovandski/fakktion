@@ -1,5 +1,7 @@
 // Application Controller
 import Ember from 'ember';
+const { service } = Ember.inject;
+
 /* Abbreviations:
 GID: Genre_id
 CID: category_id
@@ -22,7 +24,6 @@ CPV: Category Partial Visibility
 FTPV: FactType Partial Visibility
 PDPV: PostingDate Partial Visibility
 */
-const { service } = Ember.inject;
 export default Ember.Controller.extend ({
 	session:        service('session'),
 	sessionAccount: service('session-account'),

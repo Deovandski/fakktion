@@ -1,7 +1,8 @@
 import Ember from "ember";
+const { service } = Ember.inject;
 
-export default Ember.Controller.extend
-({
+export default Ember.Controller.extend ({
+	session: service('session'),
 	clientSideValidationComplete: false,
 	verifyGenreName: Ember.computed('model.name', function(){
 		if(this.get('model.name').length < 4){
@@ -16,7 +17,7 @@ export default Ember.Controller.extend
 		}
 		else{
 			var possibleGenre = this.get('genres').filterBy('name', this.get('model.name'));
-			if(possibleGenre.length > 1){
+			if(possibleGenre.length > 1) {
 				this.set('clientSideValidationComplete',false);
 				return 'This genre model.name is already in use...';
 			}
@@ -26,8 +27,8 @@ export default Ember.Controller.extend
 			}
 		}
 	}),
-	actions:{
-		update: function(){
+	actions: {
+		update: function() {
 			if(this.get('clientSideValidationComplete') === true){
 				var genre = this.get('content');
 				genre.set('name', this.get('model.name'));

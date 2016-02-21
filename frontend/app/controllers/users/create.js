@@ -1,8 +1,8 @@
 import Ember from 'ember';
 import moment from 'moment';
+const { service } = Ember.inject;
 
-export default Ember.Controller.extend
-({
+export default Ember.Controller.extend ({
 	fullName: '',
 	displayName: '',
 	email: '',
@@ -15,190 +15,146 @@ export default Ember.Controller.extend
 	showFullName: false,
 	clientSideValidationComplete: false,
 	
-	verifyFullName: Ember.computed('fullName', function()
-	{
-		if(this.get('fullName').length < 1)
-		{
+	verifyFullName: Ember.computed('fullName', function() {
+		if(this.get('fullName').length < 1) {
 			this.set('clientSideValidationComplete',false);
 			return 'Cannot be empty';
 		}
-		else
-		{
+		else {
 			this.set('clientSideValidationComplete',true);
 			return '';
 		}
 	}),
-	verifyDisplayName: Ember.computed('displayName', function()
-	{
-		if(this.get('displayName').length < 5)
-		{
+	verifyDisplayName: Ember.computed('displayName', function() {
+		if(this.get('displayName').length < 5) {
 			this.set('clientSideValidationComplete',false);
 			return 'Cannot be empty';
 		}
-		else
-		{
-			if(this.model.get('users').isAny('display_name', this.get('displayName')))
-			{
+		else {
+			if(this.model.get('users').isAny('display_name', this.get('displayName'))) {
 				this.set('clientSideValidationComplete',false);
 				return 'This Display Name is already in use...';
 			}
-			else
-			{
+			else {
 				this.set('clientSideValidationComplete',true);
 				return '';
 			}
 		}
 	}),
-	verifyDateOfBirth: Ember.computed('dateOfBirth',  function()
-	{
-		if(this.get('dateOfBirth') === null)
-		{
+	verifyDateOfBirth: Ember.computed('dateOfBirth',  function() {
+		if(this.get('dateOfBirth') === null) {
 			this.set('clientSideValidationComplete',false);
 			return 'MM/DD/YYYY';
 		}
-		else
-		{
-			if(moment(this.get('dateOfBirth')).format() === 'Invalid date')
-			{
+		else {
+			if(moment(this.get('dateOfBirth')).format() === 'Invalid date') {
 				this.set('clientSideValidationComplete',false);
 				return 'Date must be Month/Day/Year';
 			}
-			else
-			{
+			else {
 				var minAge = moment().subtract(12,'y');
 				var maxAge = moment().subtract(200,'y');
 				var currentAge = moment(this.get('dateOfBirth'));
 				//console.log(minAge.diff(currentAge,'years'));
-				if(minAge.diff(currentAge) < 0)
-				{
+				if(minAge.diff(currentAge) < 0) {
 					this.set('clientSideValidationComplete',false);
 					return 'You must be at least 13 to signup';
 				}
-				else if(maxAge.diff(currentAge) > 200)
-				{
+				else if(maxAge.diff(currentAge) > 200) {
 					this.set('clientSideValidationComplete',false);
 					return moment(currentAge).format('LL') + ' is more than 200 years';
 				}
-				else
-				{
+				else {
 					this.set('clientSideValidationComplete',true);
 					return '';
 				}
 			}
 		}	
 	}),
-	verifyEmail: Ember.computed('email', function()
-	{
-		if(this.get('email').length < 4)
-		{
+	verifyEmail: Ember.computed('email', function() {
+		if(this.get('email').length < 4) {
 			this.set('clientSideValidationComplete',false);
 			return 'user@sample.com';
 		}
-		else
-		{
+		else {
 			var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-			if(emailRegex.test(this.get('email')))
-			{
-				if(this.model.get('users').isAny('email', this.get('email')))
-				{
+			if(emailRegex.test(this.get('email'))) {
+				if(this.model.get('users').isAny('email', this.get('email'))) {
 					this.set('clientSideValidationComplete',false);
 					return 'This Email is already in use...';
 				}
-				else
-				{
+				else {
 					this.set('clientSideValidationComplete',true);
 					return '';
 				}
 			}
-			else
-			{
+			else {
 				this.set('clientSideValidationComplete',false);
 				return 'Not a valid email';
 			}
 		}
 	}),
-	verifyPassword: Ember.computed('password', function()
-	{
-		if(this.get('password').length < 8)
-		{
+	verifyPassword: Ember.computed('password', function() {
+		if(this.get('password').length < 8) {
 			this.set('clientSideValidationComplete',false);
 			return 'Too Short';
 		}
-		else
-		{
+		else {
 			this.set('clientSideValidationComplete',true);
 			return '';
 		}
 	}),
-	verifyPasswordConfirmation: Ember.computed('passwordConfirmation', 'password', function()
-	{
-		if(this.get('passwordConfirmation') !== this.get('password'))
-		{
+	verifyPasswordConfirmation: Ember.computed('passwordConfirmation', 'password', function() {
+		if(this.get('passwordConfirmation') !== this.get('password')) {
 			this.set('clientSideValidationComplete',false);
 			return 'Does not match!';
 		}
-		else
-		{
+		else {
 			this.set('clientSideValidationComplete',true);
 			return '';
 		}
 	}),
-	verifyGender: Ember.computed('gender', function()
-	{
+	verifyGender: Ember.computed('gender', function() {
 		//console.log(this.get('gender').toLowerCase());
 		if(this.get('gender').toLowerCase() !== 'male' && this.get('gender').toLowerCase() !== 'female' && this.get('gender').toLowerCase() !== 'other')
 			{return 'male/female/other';}
-		else
-		{
+		else {
 			this.set('clientSideValidationComplete',true);
 			return '';
 		}
 	}),
-	verifyShowFullName: Ember.computed('showFullName', function()
-	{
-		if(this.get('showFullName') !== true)
-		{
+	verifyShowFullName: Ember.computed('showFullName', function() {
+		if(this.get('showFullName') !== true) {
 			return '';
 		}
-		else
-		{
+		else {
 			return '';
 		}
 	}),
-	verifyLegalTermsRead: Ember.computed('legalTermsRead', function()
-	{
-		if(this.get('legalTermsRead') !== true)
-		{
+	verifyLegalTermsRead: Ember.computed('legalTermsRead', function() {
+		if(this.get('legalTermsRead') !== true) {
 			this.set('clientSideValidationComplete',false);
 			return 'Must Accept';
 		}
-		else
-		{
+		else {
 			this.set('clientSideValidationComplete',true);
 			return '';
 		}
 	}),
-	verifyPrivacyTermsRead: Ember.computed('privacyTermsRead', function()
-	{
-		if(this.get('privacyTermsRead') !== true)
-		{
+	verifyPrivacyTermsRead: Ember.computed('privacyTermsRead', function() {
+		if(this.get('privacyTermsRead') !== true) {
 			this.set('clientSideValidationComplete',false);
 			return 'Must Accept';
 		}
-		else
-		{
+		else {
 			this.set('clientSideValidationComplete',true);
 			return '';
 		}
 	}),
-	actions:
-	{
-		create: function()
-		{
-			if(this.get('clientSideValidationComplete') === true)
-			{
-				var user = this.store.createRecord('user',
-				{
+	actions: {
+		create: function() {
+			if(this.get('clientSideValidationComplete') === true) {
+				var user = this.store.createRecord('user', {
 					full_name: this.get('fullName'),
 					display_name: this.get('displayName'),
 					gender: this.get('gender'),
@@ -213,17 +169,14 @@ export default Ember.Controller.extend
 					is_super_user: false,
 				});
 				var self = this;
-				user.save().then(function()
-				{
+				user.save().then(function() {
 				console.log('user created!');
 				self.transitionToRoute('user', user);
-				}, function()
-				{
+				}, function() {
 					alert('(Server 402) failed to create User... Check your input and try again!');
 				});
 			}
-			else
-			{
+			else {
 				alert("(Client 402) Failed to create User... Check any warning messages (to the right of each textbox) otherwise contact support if you don't see any");
 			}
 		}

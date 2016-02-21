@@ -46,12 +46,13 @@ Router.map(function() {
 	this.route('post', function() {
 		this.route('index', { path:'/:post_id' });
 		this.route('edit');
-		// Comments related to x Post
+		// POST COMMENTS(S) ROUTES
 		this.route('comments', function(){
-			this.route('comment', { path:'/:comment_id' }, function() {
-				this.route('edit');
 			this.route('create');
-			});
+		});
+		this.route('comment', function() {
+			this.route('index', { path:'/:comment_id' });
+			this.route('edit');
 		});
 	});
 

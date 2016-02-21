@@ -1,7 +1,7 @@
 <h5>Comments</h5>
 <ul>
     {{#each model as |comment|}}
-      <li>{{#link-to 'comments.comment' comment}}{{comment.text}}{{/link-to}}</li>
+      <li>{{#link-to 'comment' comment}}{{comment.text}}{{/link-to}}</li>
     {{/each}}
 </ul>
 

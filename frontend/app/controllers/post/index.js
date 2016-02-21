@@ -1,12 +1,12 @@
 import Ember from "ember";
 import moment from 'moment';
+const { service } = Ember.inject;
 
-export default Ember.Controller.extend
-({
+export default Ember.Controller.extend ({
+	session: service('session'),
 	application: Ember.inject.controller('application'),
 	notExpandInfo: true,
-	canEdit: Ember.computed('model.user_id','application.isSuperUser', 'application.isAdmin', function()
-	{
+	canEdit: Ember.computed('model.user_id','application.isSuperUser', 'application.isAdmin', function() {
 		if(this.get('session.secure.userId') === this.get('model.user_id')){
 			return true;
 		}
@@ -20,14 +20,12 @@ export default Ember.Controller.extend
 			return false;
 		}
 	}),
-	updatedDate: Ember.computed('model.updated_at', function()
-	{
+	updatedDate: Ember.computed('model.updated_at', function() {
 		console.log(this.get('model.comments'));
 		console.log(this.get('model.comments.length'));
 		return moment(this.get("model.updated_at")).format('L');
 	}),
-	createdDate: Ember.computed('model.created_at', function()
-	{
+	createdDate: Ember.computed('model.created_at', function() {
 		return moment(this.get("model.created_at")).format('L');
 	}),
 	actions: {
