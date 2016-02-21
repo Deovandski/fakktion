@@ -23,8 +23,7 @@ Router.map(function() {
 	this.route('users', function(){
 		this.route('create');
 	});
-	this.route('user', function() {
-		this.route('index', { path:'/:user_id' });
+	this.route('user', { path:'user/:user_id' }, function() {
 		this.route('edit');
 		this.route('posts'); // view all posts by x User
 		this.route('comments'); // View all Comments by x User

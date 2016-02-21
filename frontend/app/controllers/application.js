@@ -73,8 +73,8 @@ export default Ember.Controller.extend ({
 		}
 	}),
 	// Verify if the user is a Super User.
-	isSuperUser: Ember.computed('session.currentUser.is_super_user', function() {
-		if(this.get('session.currentUser.is_super_user') === true) {
+	isSuperUser: Ember.computed('sessionAccount.user.is_super_user', function() {
+		if(this.get('sessionAccount.user.is_super_user') === true) {
 			return true;
 		}
 		else {
@@ -82,8 +82,8 @@ export default Ember.Controller.extend ({
 		}
 	}),
 	// Verify if the user is a Admin.
-	isAdmin: Ember.computed('session.currentUser.is_admin', function() {
-		if(this.get('session.currentUser.is_admin') === true) {
+	isAdmin: Ember.computed('sessionAccount.user.is_admin', function() {
+		if(this.get('sessionAccount.user.is_admin') === true) {
 			return true;
 		}
 		else {
