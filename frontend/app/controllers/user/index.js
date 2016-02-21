@@ -3,6 +3,7 @@ import moment from 'moment';
 const { service } = Ember.inject;
 
 export default Ember.Controller.extend ({
+	session: service('session'),
 	verifyFacebookURL: Ember.computed('model.facebook_url', function() {
 		if(this.get('model.facebook_url') !== '') {
 			if(this.get('model.facebook_url').indexOf("facebook") !== -1)

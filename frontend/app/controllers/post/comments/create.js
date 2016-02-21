@@ -2,6 +2,7 @@ import Ember from "ember";
 const { service } = Ember.inject;
 
 export default Ember.Controller.extend ({
+	session: service('session'),
 	application: Ember.inject.controller('application'),
 	text: "",
 	clientSideValidationComplete: false,

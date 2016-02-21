@@ -3,6 +3,7 @@ import moment from 'moment';
 const { service } = Ember.inject;
 
 export default Ember.Controller.extend ({
+	session: service('session'),
 	fullName: '',
 	displayName: '',
 	email: '',
