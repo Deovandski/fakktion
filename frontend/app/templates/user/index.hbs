@@ -4,15 +4,15 @@
 		<div class="basic_info_div">
 			<h4 class="inner_heading">Basic Information</h4>
 			{{#if isOwner}}
-				<p><label class="inner_label">Full Name:</label>  {{model.full_name}}</p>
+				<p><label class="inner_label">Full Name:</label>  {{capitalize model.full_name}}</p>
 			{{else}}
 				{{#if model.show_full_name}}
-					<p><label class="inner_label">Full Name:</label>  {{model.full_name}}</p>
+					<p><label class="inner_label">Full Name:</label>  {{capitalize model.full_name}}</p>
 				{{else}}
-					<p><label class="inner_label">Full Name:</label> Hidden</p>
+					<p><label class="inner_label">Full Name: Hidden</label></p>
 				{{/if}}
 			{{/if}}
-			<p><label class="inner_label">Display Name:</label>  {{model.display_name}}</p>
+			<p><label class="inner_label">Display Name:</label>  {{capitalize model.display_name}}</p>
 			<p><label class="inner_label">Gender:</label>  {{model.gender}}</p>
 			<p><label class="inner_label">Age:</label>  {{ageDate}}</p>
 			<p><label class="inner_label">About Me:</label></p>
@@ -37,7 +37,7 @@
 			{{#if verifyPosts}}
 			<ul class="posts_ul">
 				{{#each model.posts as |post|}}
-					<li>{{#link-to 'post' post}}{{post.title}}{{/link-to}}</li>
+					<li>{{#link-to 'post' post}}{{upper-case post.title}}{{/link-to}}</li>
 				{{/each}}
 			</ul>
 			{{else}}

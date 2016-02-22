@@ -11,6 +11,7 @@ one:
   gender: male
   is_admin: true
   is_super_user: true
+  is_banned: false
   facebook_url: test
   personal_message: sample personal message
   twitter_url: https://twitter.com/Deovandski
@@ -29,6 +30,7 @@ two:
   gender: male
   is_admin: true
   is_super_user: false
+  is_banned: false
   facebook_url: test
   personal_message: sample personal message
   twitter_url: https://twitter.com/Deovandski
@@ -47,6 +49,7 @@ three:
   gender: male
   is_admin: false
   is_super_user: false
+  is_banned: false
   facebook_url: test
   personal_message: sample personal message
   twitter_url: https://twitter.com/Deovandski

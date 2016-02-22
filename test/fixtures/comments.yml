@@ -1,7 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  soft_delete: false
   text: MyString #1
   hidden: false
   empathy_level: 1
@@ -9,7 +8,6 @@ one:
   user_id: 1
 
 two:
-  soft_delete: false
   text: MyString #2 by Admin
   hidden: false
   empathy_level: 1

@@ -46,17 +46,13 @@ Start the Server with '''rake start'''. To quickly login under Development mode,
 
 [Design Information](Documents/Design Information.txt)
 
-[Planned Work](Documents/Planned Work.txt)
-
-[Work History](Documents/Work History.txt)
-
 [Extra Commands](Documents/Extra Commands.md)
 
 ## License
 
 [The MIT License (MIT)](Documents/License.md)
 
-Copyright (c) 2014 - 2015, Deovandski Skibinski Junior and Dr. Anne Denton
+Copyright (c) 2014 - 2016, Deovandski Skibinski Junior and Dr. Anne Denton
 All rights reserved.
 
 [travis]: https://travis-ci.org/Deovandski/Fakktion

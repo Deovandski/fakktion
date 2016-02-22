@@ -4,7 +4,7 @@
 			<h5 class="tag_h5">Fact Types {{#link-to "factTypes.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
 			<ul class="tag_listing">
 				{{#each model.factTypes as |factType|}}
-					<li><button class="button_type1" {{action "setFTID" factType}}>{{factType.name}}</button>  ({{factType.posts_count}})</li>
+					<li><button class="button_type1" {{action "setFTID" factType}}>{{capitalize factType.name}}</button>  ({{factType.posts_count}})</li>
 				{{/each}}
 			</ul>
 			<div class="visibility_button_div_hide">
@@ -16,7 +16,7 @@
 			<h5 class="tag_h5">Fact Types {{#link-to "factTypes.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
 			<ul class="tag_listing">
 				{{#each model.factTypes as |factType|}}
-					<li><button class="button_type1" {{action "setFTID" factType}}>{{factType.name}}</button>  ({{factType.posts_count}})</li>
+					<li><button class="button_type1" {{action "setFTID" factType}}>{{capitalize factType.name}}</button>  ({{factType.posts_count}})</li>
 				{{/each}}
 			</ul>
 			<div class="visibility_button_div_hide">

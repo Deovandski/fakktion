@@ -6,7 +6,7 @@
 			{{/link-to}}
 		</div>
 		<div class="text_branding">
-			EXPERIMENTAL_v0.4
+			EXPERIMENTAL_v0.5
 		</div>
 	</div>
 	<nav>
@@ -14,7 +14,7 @@
 			{{#if session.isAuthenticated}}
 				<li class="small_login_info">
 					{{#if sessionAccount.user}}
-						Signed in as {{sessionAccount.user.display_name}}
+						Signed in as {{capitalize sessionAccount.user.display_name}}
 					{{/if}}
 				</li>
 				{{#if isSuperUser}}

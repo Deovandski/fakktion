@@ -30,12 +30,10 @@ ActiveRecord::Schema.define(version: 20150628051759) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "text"
-    t.date     "soft_delete_date"
-    t.integer  "empathy_level"
-    t.boolean  "soft_delete"
-    t.boolean  "hidden"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.integer  "empathy_level", default: 0
+    t.boolean  "hidden",        default: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "post_id"
     t.integer  "user_id"
   end
@@ -60,14 +58,12 @@ ActiveRecord::Schema.define(version: 20150628051759) do
     t.string   "fiction_link"
     t.string   "title"
     t.string   "text"
-    t.date     "soft_delete_date"
-    t.integer  "importance"
-    t.integer  "comments_count",   default: 0
-    t.integer  "views_count",      default: 0
-    t.boolean  "soft_delete"
+    t.integer  "importance",     default: 0
+    t.integer  "comments_count", default: 0
+    t.integer  "views_count",    default: 0
     t.boolean  "hidden"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "user_id"
     t.integer  "fact_type_id"
     t.integer  "genre_id"

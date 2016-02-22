@@ -1,8 +1,6 @@
 # Comment Serializer
 class CommentSerializer < ActiveModel::Serializer
-	attributes  :soft_delete,
-				:soft_delete_date,
-				:text,
+	attributes  :text,
 				:hidden,
 				:empathy_level
 

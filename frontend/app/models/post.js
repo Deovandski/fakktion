@@ -5,8 +5,6 @@ export default DS.Model.extend ({
 	fiction_link: DS.attr ('string'),
 	title: DS.attr ('string'),
 	importance: DS.attr ('number'),
-	soft_delete: DS.attr ('boolean'),
-	soft_delete_date: DS.attr ('date'),
 	hidden: DS.attr ('boolean'),
 	views_count: DS.attr ('number'),
 	text: DS.attr ('string'),

@@ -25,9 +25,7 @@ class CreateBlog < ActiveRecord::Migration
  
     create_table :comments do |t|
       t.string :text
-      t.date :soft_delete_date
       t.integer :empathy_level, default: 0
-      t.boolean :soft_delete
       t.boolean :hidden, default: false
       t.timestamps null: false
     end
@@ -37,11 +35,9 @@ class CreateBlog < ActiveRecord::Migration
       t.string :fiction_link
       t.string :title
       t.string :text
-      t.date :soft_delete_date
       t.integer :importance, default: 0
 	  t.integer  :comments_count, default: 0
       t.integer  :views_count, default: 0
-      t.boolean :soft_delete
       t.boolean :hidden
       t.timestamps null: false
     end
