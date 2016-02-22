@@ -41,7 +41,12 @@ class Api::V1::UsersController < ApiController
 	end
 
 	def destroy
-		render json: user.destroy
+		# Proper Way To Destroy?
+		if user.destroy
+			render json: {}, status: :no_content
+		else
+			render json: user.errors, status: :unprocessable_entity
+		end
 	end
 
 	private

@@ -169,10 +169,10 @@ export default Ember.Controller.extend ({
 					is_admin: false,
 					is_super_user: false,
 				});
-				var self = this;
+				var self = this; // Controller instance for route transitioning.
 				user.save().then(function() {
-				console.log('user created!');
-				self.transitionToRoute('user', user);
+					// Automatically login user?
+					self.transitionToRoute('user', user);
 				}, function() {
 					alert('(Server 402) failed to create User... Check your input and try again!');
 				});

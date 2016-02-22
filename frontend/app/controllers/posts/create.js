@@ -3,6 +3,7 @@ const { service } = Ember.inject;
 
 export default Ember.Controller.extend ({
 	session: service('session'),
+	sessionAccount: service('session-account'),
 	application: Ember.inject.controller('application'),
 	title: "",
 	text: "",
@@ -124,7 +125,7 @@ export default Ember.Controller.extend ({
 					fiction_link: this.get('fictionLink'),
 					hidden: false,
 					softDelete: false,
-					user: store.peekRecord('user', this.get('session.secure.userId')),
+					user: store.peekRecord('user', this.get('sessionAccount.user.id')),
 					genre: store.peekRecord('genre', this.get('genreID')),
 					fact_type: store.peekRecord('fact_type', this.get('factTypeID')),
 					topic: store.peekRecord('topic', this.get('topicID')),
@@ -132,11 +133,9 @@ export default Ember.Controller.extend ({
 				});
 				var self = this;
 
-				// COnsole debug for later
+				// Console debug
 				console.log(store.peekRecord('genre', this.get('genreID')));
-				console.log(store.peekRecord('genre', this.get('genreID')));
-				console.log(store.peekRecord('user', this.get('session.secure.userId')));
-				console.log(store.peekRecord('user', this.get('session.secure.userId')));
+				console.log(store.peekRecord('user', this.get('sessionAccount.user.id')));
 
 
 				post.save().then(function() {

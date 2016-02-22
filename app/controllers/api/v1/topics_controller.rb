@@ -11,15 +11,22 @@ class Api::V1::TopicsController < ApiController
 	end
 
 	def create
-		render json: Topic.create(topic_params)
+		topic = Topic.create(topic_params)
+		render json: topic
 	end
 
 	def update
-		render json: topic.update(topic_params)
+		tempTopic = topic.update(topic_params)
+		render json: tempTopic
 	end
 
 	def destroy
-		render json: topic.destroy
+		# Proper Way To Destroy?
+		if topic.destroy
+			render json: {}, status: :no_content
+		else
+			render json: topic.errors, status: :unprocessable_entity
+		end
 	end
 
 	private
@@ -29,6 +36,6 @@ class Api::V1::TopicsController < ApiController
 	end
 
 	def topic_params
-		ActiveModel::Serializer::Adapter::JsonApi::Deserialization.parse(params.to_h)
+		ActiveModelSerializers::Deserialization.jsonapi_parse!(params.to_unsafe_h)
 	end
 end

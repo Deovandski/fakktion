@@ -11,15 +11,22 @@ class Api::V1::CommentsController < ApiController
 	end
 
 	def create
-		render json: Comment.create(comment_params)
+		comment = Comment.create(comment_params)
+		render json: comment
 	end
 
 	def update
-		render json: comment.update(comment_params)
+		tempComment = comment.update(comment_params)
+		render json: tempComment
 	end
 
 	def destroy
-		render json: comment.destroy
+		# Proper Way To Destroy?
+		if comment.destroy
+			render json: {}, status: :no_content
+		else
+			render json: comment.errors, status: :unprocessable_entity
+		end
 	end
 
 	private
@@ -29,6 +36,6 @@ class Api::V1::CommentsController < ApiController
 	end
 
 	def comment_params
-		ActiveModel::Serializer::Adapter::JsonApi::Deserialization.parse(params.to_h)
+		ActiveModelSerializers::Deserialization.jsonapi_parse!(params.to_unsafe_h)
 	end
 end

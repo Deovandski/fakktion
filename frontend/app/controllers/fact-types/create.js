@@ -30,15 +30,14 @@ export default Ember.Controller.extend ({
 	actions: {
 		create: function() {
 			if(this.get('clientSideValidationComplete') === true) {
-				var store = this.store;
-				var factType = store.createRecord('fact_type', {
+				var factType = this.store.createRecord('fact_type', {
 					name: this.get('name'),
 				});
-				var self = this;
+				var self = this; // Controller instance for route transitioning.
 				factType.save().then(function() {
-					self.transitionToRoute('factType', factType);
+					self.transitionToRoute('index');
 				}, function() {
-					alert('(Server 402) failed to create Fact Type... Check your input and try again!');
+					alert('(Server 402) failed to create User... Check your input and try again!');
 				});
 			}
 			else {

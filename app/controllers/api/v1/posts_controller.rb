@@ -12,7 +12,8 @@ class Api::V1::PostsController < ApiController
 	end
 
 	def create
-		render json: Post.create(post_params)
+		post = Post.create(post_params)
+		render json: post
 	end
 
 	def update
@@ -24,7 +25,12 @@ class Api::V1::PostsController < ApiController
 	end
 
 	def destroy
-		render json: post.destroy
+		# Proper Way To Destroy?
+		if post.destroy
+			render json: {}, status: :no_content
+		else
+			render json: post.errors, status: :unprocessable_entity
+		end
 	end
 
 	private
@@ -33,6 +39,6 @@ class Api::V1::PostsController < ApiController
 	end
 
 	def post_params
-		ActiveModel::Serializer::Adapter::JsonApi::Deserialization.parse(params.to_h)
+		ActiveModelSerializers::Deserialization.jsonapi_parse!(params.to_unsafe_h)
 	end
 end

@@ -11,15 +11,22 @@ class Api::V1::CategoriesController < ApiController
 	end
 
 	def create
-		render json: Category.create(category_params)
+		category = Category.create(category_params)
+		render json: category
 	end
 
 	def update
-		render json: category.update(categorie_params)
+		tempCategory = category.update(category_params)
+		render json: tempCategory
 	end
 
 	def destroy
-		render json: category.destroy
+		# Proper Way To Destroy?
+		if category.destroy
+			render json: {}, status: :no_content
+		else
+			render json: category.errors, status: :unprocessable_entity
+		end
 	end
 
 	private
@@ -29,6 +36,6 @@ class Api::V1::CategoriesController < ApiController
 	end
 
 	def category_params
-		ActiveModel::Serializer::Adapter::JsonApi::Deserialization.parse(params.to_h)
+		ActiveModelSerializers::Deserialization.jsonapi_parse!(params.to_unsafe_h)
 	end
 end

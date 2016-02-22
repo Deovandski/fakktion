@@ -11,15 +11,22 @@ class Api::V1::AdminMessagesController < ApiController
 	end
 
 	def create
-		render json: AdminMessage.create(adminMessage_params)
+		adminMessage = AdminMessage.create(adminMessage_params)
+		render json: adminMessage
 	end
 
 	def update
-		render json: adminMessage.update(adminMessage_params)
+		tempAdminMessage = adminMessage.update(adminMessage_params)
+		render json: tempAdminMessage
 	end
 
 	def destroy
-		render json: adminMessage.destroy
+		# Proper Way To Destroy?
+		if adminMessage.destroy
+			render json: {}, status: :no_content
+		else
+			render json: adminMessage.errors, status: :unprocessable_entity
+		end
 	end
 
 	private
@@ -29,6 +36,6 @@ class Api::V1::AdminMessagesController < ApiController
 	end
 
 	def adminMessage_params
-		ActiveModel::Serializer::Adapter::JsonApi::Deserialization.parse(params.to_h)
+		ActiveModelSerializers::Deserialization.jsonapi_parse!(params.to_unsafe_h)
 	end
 end

@@ -33,8 +33,7 @@ Router.map(function() {
 	this.route('adminMessages', function(){
 		this.route('create');
 	});
-	this.route('adminMessage', function() {
-		this.route('index', { path:'/:admin_message_id' });
+	this.route('adminMessage', { path:'adminMessage/:admin_message_id' }, function() {
 		this.route('edit');
 	});
 
@@ -42,15 +41,13 @@ Router.map(function() {
 	this.route('posts', function(){
 		this.route('create');
 	});
-	this.route('post', function() {
-		this.route('index', { path:'/:post_id' });
+	this.route('post', { path:'post/:post_id' }, function() {
 		this.route('edit');
 		// POST COMMENTS(S) ROUTES
 		this.route('comments', function(){
 			this.route('create');
 		});
-		this.route('comment', function() {
-			this.route('index', { path:'/:comment_id' });
+		this.route('comment', { path:'comment/:comment_id' }, function() {
 			this.route('edit');
 		});
 	});
@@ -59,8 +56,7 @@ Router.map(function() {
 	this.route('genres', function(){
 		this.route('create');
 	});
-	this.route('genre', function(){
-		this.route('index', { path:'/:genre_id' });
+	this.route('genre', { path:'genre/:genre_id' }, function() {
 		this.route('edit');
 	});
 	
@@ -68,8 +64,7 @@ Router.map(function() {
 	this.route('factTypes', function(){
 		this.route('create');
 	});
-	this.route('factType', function(){
-		this.route('index', { path:'/:factType_id' });
+	this.route('factType', { path:'factType/:factType_id' }, function() {
 		this.route('edit');
 	});
 	
@@ -77,8 +72,7 @@ Router.map(function() {
 	this.route('topics', function(){
 		this.route('create');
 	});
-	this.route('topic', function() {
-		this.route('index', { path:'/:topic_id' });
+	this.route('topic', { path:'topic/:topic_id' }, function() {
 		this.route('edit');
 	});
 	

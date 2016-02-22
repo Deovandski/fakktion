@@ -11,15 +11,22 @@ class Api::V1::FactTypesController < ApiController
 	end
 
 	def create
-		render json: FactType.create(factType_params)
+		factType = Topic.create(factType_params)
+		render json: factType
 	end
 
 	def update
-		render json: factType.update(factType_params)
+		tempFactType = factType.update(factType_params)
+		render json: tempFactType
 	end
 
 	def destroy
-		render json: factType.destroy
+		# Proper Way To Destroy?
+		if factType.destroy
+			render json: {}, status: :no_content
+		else
+			render json: factType.errors, status: :unprocessable_entity
+		end
 	end
 
 	private
@@ -29,6 +36,6 @@ class Api::V1::FactTypesController < ApiController
 	end
 
 	def factType_params
-		ActiveModel::Serializer::Adapter::JsonApi::Deserialization.parse(params.to_h)
+		ActiveModelSerializers::Deserialization.jsonapi_parse!(params.to_unsafe_h)
 	end
 end

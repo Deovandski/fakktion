@@ -11,15 +11,29 @@ class Api::V1::GenresController < ApiController
 	end
 
 	def create
-		render json: Genre.create(genre_params)
+		genre = Genre.new(genre_params)
+		if genre.save
+			render json: genre, status: :ok
+		else
+			render json: genre.errors, status: :unprocessable_entity
+		end
 	end
 
 	def update
-		render json: genre.update(genre_params)
+		if genre.update(genre_params)
+			render json: genre, status: :ok
+		else
+			render json: genre.errors, status: :unprocessable_entity
+		end
 	end
 
 	def destroy
-		render json: genre.destroy
+		# Proper Way To Destroy?
+		if genre.destroy
+			render json: {}, status: :no_content
+		else
+			render json: genre.errors, status: :unprocessable_entity
+		end
 	end
 
 	private
@@ -29,6 +43,6 @@ class Api::V1::GenresController < ApiController
 	end
 
 	def genre_params
-		ActiveModel::Serializer::Adapter::JsonApi::Deserialization.parse(params.to_h)
+		ActiveModelSerializers::Deserialization.jsonapi_parse!(params.to_unsafe_h)
 	end
 end
