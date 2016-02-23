@@ -15,6 +15,7 @@ class CreateBlog < ActiveRecord::Migration
 	  t.integer  :posts_count, default: 0
 	  t.integer  :comments_count, default: 0
       t.boolean :is_banned, default: false
+      t.boolean :times_banned, default: 0
       t.boolean :legal_terms_read, default: false
       t.boolean :privacy_terms_read, default: false
       t.boolean :is_super_user, default: false

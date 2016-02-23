@@ -13,6 +13,7 @@ one:
   is_super_user: true
   is_banned: false
   facebook_url: test
+  times_banned: 0
   personal_message: sample personal message
   twitter_url: https://twitter.com/Deovandski
   webpage_url: www.google.com
@@ -32,6 +33,7 @@ two:
   is_super_user: false
   is_banned: false
   facebook_url: test
+  times_banned: 0
   personal_message: sample personal message
   twitter_url: https://twitter.com/Deovandski
   webpage_url: www.google.com
@@ -50,6 +52,7 @@ three:
   is_admin: false
   is_super_user: false
   is_banned: false
+  times_banned: 0
   facebook_url: test
   personal_message: sample personal message
   twitter_url: https://twitter.com/Deovandski
