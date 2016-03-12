@@ -12,7 +12,13 @@ module.exports = function(environment) {
         // e.g. 'with-controller': true
       }
     },
-
+    moment: {
+      // Options:
+      // 'all' - all years, all timezones
+      // '2010-2020' - 2010-2020, all timezones
+      // 'none' - no data, just timezone API
+      includeTimezone: 'all'
+    },
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
@@ -45,6 +51,7 @@ module.exports = function(environment) {
   if (environment === 'production') {
 
   }
+
   ENV['ember-simple-auth'] = {
   	routeAfterAuthentication: 'index',
   	routeIfAlreadyAuthenticated: 'index'

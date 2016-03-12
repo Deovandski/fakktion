@@ -14,7 +14,7 @@ gem "puma", '>=2.16'
 gem 'active_model_serializers', '0.10.0.rc4'
 
 # EmberCLI
-gem 'ember-cli-rails', '>=0.7.0'
+gem 'ember-cli-rails', '0.7.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'

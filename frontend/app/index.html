@@ -2,17 +2,20 @@
 <html>
   <head>
     <title>Frontend</title>
+
     {{content-for "head"}}
+
     <link rel="stylesheet" href="assets/vendor.css">
     <link rel="stylesheet" href="assets/frontend.css">
-    <script src="assets/vendor.js"></script>
-    <script src="assets/frontend.js"></script>
 
     {{content-for "head-footer"}}
   </head>
   <body>
     {{content-for "body"}}
-    {{content-for "body-footer"}}
 
+    <script src="assets/vendor.js"></script>
+    <script src="assets/frontend.js"></script>
+
+    {{content-for "body-footer"}}
   </body>
 </html>
