@@ -74,19 +74,5 @@
 	<div class="post_text_container">
 		<label>{{model.text}}</label>
 	</div>
-	
-	<div class="post_comments_container">
-		<h5>Comments</h5>
-		<ol>
-			{{#each model.comments as |comment|}}
-			  <li>{{comment.text}}</li>
-			{{/each}}
-		</ol>
-		<br/>
-		{{#if session.isAuthenticated}}
-			<p>{{render "post.comments.create"}}</p>
-		{{else}}
-			<p class="inner_edit_info">Please login to comment</p>
-		{{/if}}
-	</div>
+	{{render "post.comments.index" model}}
 </div>

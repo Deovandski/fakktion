@@ -8,6 +8,8 @@ class CreateRelationships < ActiveRecord::Migration
 		add_reference :posts, :category, index: true
 		add_reference :comments, :post, index: true
 		add_reference :comments, :user, index: true
+		add_reference :inner_comments, :comment, index: true
+		add_reference :inner_comments, :user, index: true
 		add_reference :admin_messages, :user, index: true
 	end
 
@@ -19,6 +21,8 @@ class CreateRelationships < ActiveRecord::Migration
 		remove_reference :posts, :category, index: true
 		remove_reference :comments, :post, index: true
 		remove_reference :comments, :user, index: true
+		remove_reference :inner_comments, :comment, index: true
+		remove_reference :inner_comments, :user, index: true
 		remove_reference :admin_messages, :user, index: true
 	end
 end

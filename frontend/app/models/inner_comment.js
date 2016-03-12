@@ -8,6 +8,5 @@ export default DS.Model.extend
 	
 	// Relationships
 	user: DS.belongsTo('user', {async: true}),
-	post: DS.belongsTo('post', {async: true}),
-	inner_comments: DS.hasMany('inner_comment')
+	comment: DS.belongsTo('comment', {async: true})
 });

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 			resources :admin_messages
 			resources :posts
 			resources :comments
+			resources :inner_comments
 			resources :fact_types
 			resources :topics
 			resources :categories

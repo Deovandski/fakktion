@@ -30,10 +30,11 @@ ActiveRecord::Schema.define(version: 20150628051759) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "text"
-    t.integer  "empathy_level", default: 0
-    t.boolean  "hidden",        default: false
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.integer  "empathy_level",        default: 0
+    t.boolean  "hidden",               default: false
+    t.integer  "inner_comments_count", default: 0
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.integer  "post_id"
     t.integer  "user_id"
   end
@@ -52,6 +53,19 @@ ActiveRecord::Schema.define(version: 20150628051759) do
     t.integer "eligibility_counter", default: 0
     t.integer "posts_count",         default: 0
   end
+
+  create_table "inner_comments", force: :cascade do |t|
+    t.string   "text"
+    t.integer  "empathy_level", default: 0
+    t.boolean  "hidden",        default: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "comment_id"
+    t.integer  "user_id"
+  end
+
+  add_index "inner_comments", ["comment_id"], name: "index_inner_comments_on_comment_id"
+  add_index "inner_comments", ["user_id"], name: "index_inner_comments_on_user_id"
 
   create_table "posts", force: :cascade do |t|
     t.string   "fact_link"

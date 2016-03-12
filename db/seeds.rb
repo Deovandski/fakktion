@@ -178,6 +178,24 @@ case Rails.env
 						empathy_level: 0)
 		Rails.logger.info 'Default comments created!'
 
+		# INNER COMMENTS RELATED SEED
+
+		if InnerComment.count == 0
+			InnerComment.delete_all
+			Rails.logger.info 'All previous comments deleted...'
+		end
+		InnerComment.create!(hidden: false,
+						comment_id: 1,
+						text: 'Sample Inner Text',
+						user_id: 1,
+						empathy_level: 0)
+		InnerComment.create!(hidden: false,
+						comment_id: 2,
+						text: 'Sample Inner Text #1',
+						user_id: 2,
+						empathy_level: 0)
+		Rails.logger.info 'Default comments created!'
+		
 		# ADMIN MESSAGES RELATED SEED
 
 		if AdminMessage.count != 0
@@ -383,6 +401,24 @@ case Rails.env
 						empathy_level: 0)
 		Rails.logger.info 'Default comments created!'
 
+		# INNER COMMENTS RELATED SEED
+
+		if InnerComment.count == 0
+			InnerComment.delete_all
+			Rails.logger.info 'All previous comments deleted...'
+		end
+		InnerComment.create!(hidden: false,
+						comment_id: 1,
+						text: 'Sample Inner Text',
+						user_id: 1,
+						empathy_level: 0)
+		InnerComment.create!(hidden: false,
+						comment_id: 2,
+						text: 'Sample Inner Text #1',
+						user_id: 2,
+						empathy_level: 0)
+		Rails.logger.info 'Default comments created!'
+		
 		# ADMIN MESSAGES RELATED SEED
 
 		if AdminMessage.count != 0
