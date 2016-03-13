@@ -37,23 +37,11 @@
 			{{#if verifyPosts}}
 			<ul class="posts_ul">
 				{{#each model.posts as |post|}}
-					<li>{{#link-to 'post' post}}{{upper-case post.title}}{{/link-to}}</li>
+					<li>{{#link-to 'post' post}}{{post.title}}{{/link-to}}</li>
 				{{/each}}
 			</ul>
 			{{else}}
 				<p>No posts to show</p>
-			{{/if}}
-		</div>
-		<div class="comments_info_div">
-			<h4 class="inner_heading">Comments by this user</h4>
-			{{#if verifyComments}}
-			<ul class="comments_ul">
-				{{#each model.comments as |comment|}}
-					<li>{{#link-to 'post' comment.post_id}}{{comment.text}}{{/link-to}}</li>
-				{{/each}}
-			</ul>
-			{{else}}
-				<p>No comments to show</p>
 			{{/if}}
 		</div>
 		<div class="links_info_div">

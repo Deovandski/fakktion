@@ -4,6 +4,7 @@ const { service } = Ember.inject;
 
 export default Ember.Controller.extend ({
 	session: service('session'),
+	sessionAccount: service('session-account'),
 	currentPassword: "",
 	newPassword: "",
 	newPasswordConfirmation: "",
@@ -175,7 +176,7 @@ export default Ember.Controller.extend ({
 	}),
 	verifyTwitterURL: Ember.computed('model.user.twitter_url', function() {
 		if(this.get('model.user.twitter_url') !== '') {
-			if(this.get('model.twitter_url').indexOf("twitter") !== -1) {
+			if(this.get('model.user.twitter_url').indexOf("twitter") !== -1) {
 				this.set("clientSideValidationComplete", true);
 				return "";
 			}
@@ -214,9 +215,6 @@ export default Ember.Controller.extend ({
 			return "";
 		}
 	}),
-	userRetriever: function() {
-		return this.get('model.user');
-	},
 	actions: {
 		setShowPassword: function(password) {
 			this.set('showPassword', password);

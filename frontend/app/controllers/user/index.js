@@ -45,17 +45,14 @@ export default Ember.Controller.extend ({
 	}),
 	isOwner: Ember.computed('model.id', function() {
 		if(this.get('sessionAccount.user.email') === this.get('model.email'))
-		{
-			console.log(this.get('model.posts.length'));
-			return true;
-		}
+		{return true;}
 		else
 		{return false;}
 	}),
 	ageDate: Ember.computed('model.date_of_birth', function() {
 		var currentDate= moment();
-		var tempDate= moment(this.get("model.date_of_birth"));
-		var age= currentDate.diff(tempDate, 'years');
+		var tempDate = moment(this.get("model.date_of_birth"));
+		var age = currentDate.diff(tempDate, 'years');
 		return age;
 	}),
 	updatedDate: Ember.computed('model.updated_at', function() {
