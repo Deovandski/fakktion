@@ -2,7 +2,7 @@
 	<h5>Comments</h5>
 	<ol>
 		{{#each model.comments as |comment|}}
-		  <li>{{comment.text}}</li>
+			<li>{{render "post.comment.index" comment}}</li>
 		{{/each}}
 	</ol>
 	<br/>

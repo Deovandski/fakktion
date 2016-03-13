@@ -48,7 +48,6 @@ Router.map(function() {
 			this.route('create');
 		});
 		this.route('comment', { path:'comment/:comment_id' }, function() {
-			this.route('edit');
 		});
 	});
 

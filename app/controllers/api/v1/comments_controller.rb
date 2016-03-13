@@ -1,4 +1,6 @@
 # Comments Controller: JSON response through Active Model Serializers
+# NOTES:
+# Response needs to include the JSON serialization of the object instead of only a 200 OK.
 class Api::V1::CommentsController < ApiController
 	respond_to :json
 
@@ -16,8 +18,8 @@ class Api::V1::CommentsController < ApiController
 	end
 
 	def update
-		tempComment = comment.update(comment_params)
-		render json: tempComment
+		comment.update(comment_params)
+		render json: comment
 	end
 
 	def destroy

@@ -40,7 +40,7 @@ export default Ember.Controller.extend ({
 				});
 				var self = this;
 				comment.save().then(function() {
-					console.log('comment created');
+					self.set('text', "");
 				}, function() {
 					alert('failed to create comment!');
 				});
