@@ -16,10 +16,13 @@ class Api::V1::CategoriesController < ApiController
 	end
 
 	def update
-		tempCategory = category.update(category_params)
-		render json: tempCategory
+		if category.update(category_params)
+			render json: category, status: :ok
+		else
+			render json: category.errors, status: :unprocessable_entity
+		end
 	end
-
+	
 	def destroy
 		# Proper Way To Destroy?
 		if category.destroy

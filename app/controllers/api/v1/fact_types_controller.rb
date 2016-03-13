@@ -16,10 +16,13 @@ class Api::V1::FactTypesController < ApiController
 	end
 
 	def update
-		tempFactType = factType.update(factType_params)
-		render json: tempFactType
+		if factType.update(factType_params)
+			render json: factType, status: :ok
+		else
+			render json: factType.errors, status: :unprocessable_entity
+		end
 	end
-
+	
 	def destroy
 		# Proper Way To Destroy?
 		if factType.destroy

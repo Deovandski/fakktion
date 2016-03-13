@@ -7,7 +7,7 @@ export default DS.Model.extend
 	empathy_level: DS.attr ('number'),
 	
 	// Relationships
+	inner_comments: DS.hasMany('inner_comment', {async: true}),
 	user: DS.belongsTo('user', {async: true}),
-	post: DS.belongsTo('post', {async: true}),
-	inner_comments: DS.hasMany('inner_comment')
+	post: DS.belongsTo('post', {async: true})
 });

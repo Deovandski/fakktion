@@ -48,6 +48,14 @@ Router.map(function() {
 			this.route('create');
 		});
 		this.route('comment', { path:'comment/:comment_id' }, function() {
+			// Comment EDIT has been merged into INDEX
+			// POST INNER COMMENTS(S) ROUTES
+			this.route('innerComments', function(){
+				this.route('create');
+			});
+			this.route('innerComment', { path:'innerComment/:inner_comment_id' }, function() {
+				// inner_comment EDIT has been merged into INDEX
+			});
 		});
 	});
 

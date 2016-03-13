@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
 	has_many :admin_messages
 	has_many :posts
 	has_many :comments
+	has_many :inner_comments
 
 	def ensure_authentication_token
 		if authentication_token.blank?

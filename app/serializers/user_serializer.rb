@@ -30,5 +30,6 @@ class UserSerializer < ActiveModel::Serializer
 	# Relationships
 	has_many	:posts
 	has_many	:comments
+	has_many	:inner_comments
 	has_many	:admin_messages
 end

@@ -16,12 +16,15 @@ class Api::V1::CommentsController < ApiController
 		comment = Comment.create(comment_params)
 		render json: comment
 	end
-
+	
 	def update
-		comment.update(comment_params)
-		render json: comment
+		if comment.update(comment_params)
+			render json: comment, status: :ok
+		else
+			render json: comment.errors, status: :unprocessable_entity
+		end
 	end
-
+	
 	def destroy
 		# Proper Way To Destroy?
 		if comment.destroy

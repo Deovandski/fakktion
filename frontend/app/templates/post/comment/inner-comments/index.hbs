@@ -1,0 +1,14 @@
+<div class="post_comments_container">
+	<p><strong>Inner Comments</strong></p>
+	<ol>
+		{{#each model.inner_comments as |comment|}}
+			<li>{{render "post.comment.innerComment.index" comment}}</li>
+		{{/each}}
+	</ol>
+	<br/>
+	{{#if session.isAuthenticated}}
+		<p>{{render "post.comment.innerComments.create" model}}</p>
+	{{else}}
+		<p class="inner_edit_info">Please login to inner comment</p>
+	{{/if}}
+</div>

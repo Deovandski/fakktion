@@ -14,12 +14,15 @@ class Api::V1::TopicsController < ApiController
 		topic = Topic.create(topic_params)
 		render json: topic
 	end
-
+	
 	def update
-		tempTopic = topic.update(topic_params)
-		render json: tempTopic
+		if topic.update(topic_params)
+			render json: topic, status: :ok
+		else
+			render json: topic.errors, status: :unprocessable_entity
+		end
 	end
-
+	
 	def destroy
 		# Proper Way To Destroy?
 		if topic.destroy

@@ -55,11 +55,11 @@ export default Ember.Controller.extend ({
 					this.set('editMode', false);
 				}).catch((reason) => {
 					console.log(reason);
-					alert('Comment Not Updated!');
+					alert('Inner Comment Not Updated!');
 				});
 			}
 			else {
-				alert("(Client 402) Failed to create Comment... Check any warning messages (to the right of each textbox) otherwise contact support if you don't see any");
+				alert("(Client 402) Failed to create Inner Comment... Check any warning messages (to the right of each textbox) otherwise contact support if you don't see any");
 			}
 		}
 	}

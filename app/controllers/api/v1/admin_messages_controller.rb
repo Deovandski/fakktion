@@ -14,10 +14,13 @@ class Api::V1::AdminMessagesController < ApiController
 		adminMessage = AdminMessage.create(adminMessage_params)
 		render json: adminMessage
 	end
-
+	
 	def update
-		tempAdminMessage = adminMessage.update(adminMessage_params)
-		render json: tempAdminMessage
+		if adminMessage.update(adminMessage_params)
+			render json: adminMessage, status: :ok
+		else
+			render json: adminMessage.errors, status: :unprocessable_entity
+		end
 	end
 
 	def destroy

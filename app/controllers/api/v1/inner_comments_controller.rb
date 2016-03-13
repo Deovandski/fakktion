@@ -11,14 +11,18 @@ class Api::V1::InnerCommentsController < ApiController
 	end
 
 	def create
-		innerComment = InnerComment.create(comment_params)
-		render json: comment
+		innerComment = InnerComment.create(innerComment_params)
+		render json: innerComment
 	end
 
 	def update
-		tempInnerComment = innerComment.update(comment_params)
-		render json: tempInnerComment
+		if innerComment.update(innerComment_params)
+			render json: innerComment, status: :ok
+		else
+			render json: innerComment.errors, status: :unprocessable_entity
+		end
 	end
+	
 
 	def destroy
 		# Proper Way To Destroy?
@@ -35,7 +39,7 @@ class Api::V1::InnerCommentsController < ApiController
 		InnerComment.find(params[:id])
 	end
 
-	def comment_params
+	def innerComment_params
 		ActiveModelSerializers::Deserialization.jsonapi_parse!(params.to_unsafe_h)
 	end
 end

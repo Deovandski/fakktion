@@ -30,5 +30,6 @@ export default DS.Model.extend ({
 	// Relationships
 	admin_messages: DS.hasMany('admin_message', {async: true}),
 	posts: DS.hasMany('post', {async: true}),
-	comments: DS.hasMany('comment', {async: true})
+	comments: DS.hasMany('comment', {async: true}),
+	inner_comments: DS.hasMany('inner_comment', {async: true})
 });
