@@ -16,10 +16,17 @@
 
 [December 17 2015 - stylesheet_link_tag returns <base href=“/”> instead of <link>](http://stackoverflow.com/questions/34330704/stylesheet-link-tag-returns-base-href-instead-of-link)
 
+[February 19 2016 - How crawlable is Ember Cli?](https://stackoverflow.com/questions/35495261/how-crawlable-is-ember-cli)
+
+[March 12 2016 - Ember.js has many not being loaded on deep nested routes.](https://stackoverflow.com/questions/35967672/ember-js-has-many-not-being-loaded-on-deep-nested-routes)
 
 "Active Model Serializers"
 
 [September 9 2015 - Deserializing Json-Api with Rails Strong Parameters](http://stackoverflow.com/questions/32491360/deserializing-json-api-with-rails-strong-parameters)
+
+"Ember-Simple-Auth"
+
+[March 13 2016 - Is there a way to prevent users from editing the local Storage?](https://stackoverflow.com/questions/35973302/is-there-a-way-to-prevent-users-from-editing-the-local-storage-session)
 
 "Related"
 
