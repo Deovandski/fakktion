@@ -2,9 +2,21 @@
 
 ![](/FakktionLogo.png)
 
-[![Build Status][travis-badge]][travis] [![Test Coverage][testCoverage-badge]][testCoverage] [![Code Climate][codeClimate-badge]][codeClimate] [![Dependency Status][dependency-badge]][dependency] [![Security][security-badge]][security] [![Docs][docs-badge]][docs]
-
-######Coverage and Docs are for Rails only...
+<table>
+  <tr>
+    <td>Project Wide/td>
+    <td>[![Build Status][travis-badge]][travis]</td>
+    <td>[![Code Climate][codeClimate-badge]][codeClimate]</td>
+    <td>[![Dependency Status][dependency-badge]][dependency]</td>
+    <td>[![Codebeat][codebeat-badge]][codebeat]</td>
+  </tr>
+  <tr>
+    <td>Rails Only</td>
+    <td>[![Test Coverage][testCoverage-badge]][testCoverage]</td>
+    <td>[![Security][security-badge]][security]</td>
+    <td>[![Docs][docs-badge]][docs]</td>
+  </tr>
+</table>
 
 [Live Website](http://fakktion.herokuapp.com/) (Initial load may be slow due to Dyno sleep mode implemented by [Heroku](https://www.heroku.com/pricing).)
 
@@ -65,5 +77,7 @@ All rights reserved.
 [security-badge]: https://hakiri.io/github/Deovandski/Fakktion/master.svg
 [dependency]: https://gemnasium.com/Deovandski/Fakktion
 [dependency-badge]: https://gemnasium.com/Deovandski/Fakktion.svg
+[codebeat]: https://codebeat.co/projects/github-com-deovandski-fakktion
+[codebeat-badge]: https://codebeat.co/badges/21ac6d47-4e3b-4b35-ae94-a5901fa8e334
 [docs]: http://inch-ci.org/github/deovandski/fakktion/branch/master
 [docs-badge]: https://inch-ci.org/github/deovandski/fakktion.svg?branch=master
