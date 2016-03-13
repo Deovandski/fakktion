@@ -114,7 +114,6 @@ ActiveRecord::Schema.define(version: 20150628051759) do
     t.integer  "times_banned",           default: 0
     t.boolean  "legal_terms_read",       default: false
     t.boolean  "privacy_terms_read",     default: false
-    t.boolean  "is_super_user",          default: false
     t.boolean  "is_admin",               default: false
     t.boolean  "show_full_name",         default: false
     t.datetime "created_at",                             null: false

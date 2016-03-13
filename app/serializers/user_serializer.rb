@@ -15,7 +15,6 @@ class UserSerializer < ActiveModel::Serializer
 				:legal_terms_read,
 				:privacy_terms_read,
 				:is_admin,
-				:is_super_user,
 				:sign_in_count,
 				:current_password,
 				:password,

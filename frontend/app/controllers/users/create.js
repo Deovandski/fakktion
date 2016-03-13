@@ -167,7 +167,6 @@ export default Ember.Controller.extend ({
 					show_full_name: this.get('showFullName'),
 					is_banned: false,
 					is_admin: false,
-					is_super_user: false,
 				});
 				var self = this; // Controller instance for route transitioning.
 				user.save().then(function() {

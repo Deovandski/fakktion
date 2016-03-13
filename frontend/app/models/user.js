@@ -16,7 +16,6 @@ export default DS.Model.extend ({
 	legal_terms_read: DS.attr ('boolean'),
 	privacy_terms_read: DS.attr ('boolean'),
 	is_admin: DS.attr ('boolean'),
-	is_super_user: DS.attr ('boolean'),
 	sign_in_count: DS.attr ('number'),
 	last_sign_in_at: DS.attr ('date'),
 	updated_at: DS.attr ('date'),

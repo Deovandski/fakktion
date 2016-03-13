@@ -17,14 +17,9 @@
 						Signed in as {{capitalize sessionAccount.user.display_name}}
 					{{/if}}
 				</li>
-				{{#if isSuperUser}}
-					<li>
-						{{#link-to 'superUserPanel'}}S.U.{{/link-to}}
-					</li>
-				{{/if}}
 				{{#if isAdmin}}
 					<li>
-						{{#link-to 'adminPanel'}}Admin{{/link-to}}
+						{{#link-to 'adminPanel'}}Admin Panel{{/link-to}}
 					</li>
 				{{/if}}
 				<li>

@@ -18,7 +18,6 @@ class Api::V1::UsersController < ApiController
 		tempUser.facebook_url = ""
 		tempUser.twitter_url = ""
 		tempUser.is_admin = false
-		tempUser.is_super_user = false
 		tempUser.personal_message = "This person did not write anything here yet..."
 		tempUser.save
 		render json: tempUser

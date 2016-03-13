@@ -1,6 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# User #1 - Super User:
+# User #1 - Admin User:
 
 one:
   full_name: Sample User
@@ -10,7 +10,6 @@ one:
   date_of_birth: 2015-02-24
   gender: male
   is_admin: true
-  is_super_user: true
   is_banned: false
   facebook_url: test
   times_banned: 0
@@ -20,37 +19,16 @@ one:
   privacy_terms_read: true
   legal_terms_read: true
 
-# User #2 - Admin User:
-
-two:
-  full_name: Sample User
-  display_name: User#2
-  email: userFIXTURE2@example.com
-  encrypted_password: $2a$10$G3Vvxp7Ek6nkwb4JoG1C6uIwncnbM0hGusIHBbMbo1v3bzMfBs9Zu
-  date_of_birth: 2015-02-24
-  gender: male
-  is_admin: true
-  is_super_user: false
-  is_banned: false
-  facebook_url: test
-  times_banned: 0
-  personal_message: sample personal message
-  twitter_url: https://twitter.com/Deovandski
-  webpage_url: www.google.com
-  privacy_terms_read: true
-  legal_terms_read: true
-
-# User #3 - Normal User:
+# User #2 - Normal User:
 
 three:
   full_name: Sample User
-  display_name: User#3
+  display_name: User#2
   email: userFIXTURE3@example.com
   encrypted_password: $2a$10$G3Vvxp7Ek6nkwb4JoG1C6uIwncnbM0hGusIHBbMbo1v3bzMfBs9Zu
   date_of_birth: 2015-02-24
   gender: male
   is_admin: false
-  is_super_user: false
   is_banned: false
   times_banned: 0
   facebook_url: test

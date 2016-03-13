@@ -11,7 +11,7 @@ case Rails.env
 			User.delete_all
 			Rails.logger.info 'All previous users deleted....'
 		end
-		# User #1 - Super User:
+		# User #1 - Admin User:
 		User.create!(full_name: 'Sample User',
 					show_full_name: true,
 					display_name: 'User#1',
@@ -21,7 +21,6 @@ case Rails.env
 					date_of_birth: DateTime.strptime('09/14/2001', '%m/%d/%Y'),
 					gender: 'male',
 					is_admin: true,
-					is_super_user: true,
 					is_banned: false,
 					facebook_url: '',
 					times_banned: 0,
@@ -41,7 +40,6 @@ case Rails.env
 					date_of_birth: DateTime.strptime('09/14/2002', '%m/%d/%Y'),
 					gender: 'female',
 					is_admin: true,
-					is_super_user: false,
 					is_banned: false,
 					facebook_url: '',
 					personal_message: 'Vocaloid Rules!',
@@ -59,7 +57,6 @@ case Rails.env
 					date_of_birth: DateTime.strptime('09/14/2003', '%m/%d/%Y'),
 					gender: 'male',
 					is_admin: false,
-					is_super_user: false,
 					is_banned: false,
 					times_banned: 0,
 					facebook_url: '',
@@ -234,7 +231,7 @@ case Rails.env
 			User.delete_all
 			Rails.logger.info 'All previous users deleted....'
 		end
-		# User #1 - Super User:
+		# User #1 - Admin User:
 		User.create!(full_name: 'Sample User',
 					show_full_name: true,
 					display_name: 'User#1',
@@ -244,7 +241,6 @@ case Rails.env
 					date_of_birth: DateTime.strptime('09/14/2001', '%m/%d/%Y'),
 					gender: 'male',
 					is_admin: true,
-					is_super_user: true,
 					facebook_url: '',
 					is_banned: false,
 					times_banned: 0,
@@ -263,7 +259,6 @@ case Rails.env
 					date_of_birth: DateTime.strptime('09/14/2002', '%m/%d/%Y'),
 					gender: 'female',
 					is_admin: true,
-					is_super_user: false,
 					is_banned: false,
 					facebook_url: '',
 					times_banned: 0,
@@ -282,7 +277,6 @@ case Rails.env
 					date_of_birth: DateTime.strptime('09/14/2003', '%m/%d/%Y'),
 					gender: 'male',
 					is_admin: false,
-					is_super_user: false,
 					is_banned: false,
 					facebook_url: '',
 					times_banned: 0,

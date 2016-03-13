@@ -72,15 +72,6 @@ export default Ember.Controller.extend ({
 			return false;
 		}
 	}),
-	// Verify if the user is a Super User.
-	isSuperUser: Ember.computed('sessionAccount.user.is_super_user', function() {
-		if(this.get('sessionAccount.user.is_super_user') === true) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}),
 	// Verify if the user is a Admin.
 	isAdmin: Ember.computed('sessionAccount.user.is_admin', function() {
 		if(this.get('sessionAccount.user.is_admin') === true) {

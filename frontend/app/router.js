@@ -17,7 +17,6 @@ Router.map(function() {
 
 	// Admin and Super User related
 	this.route('adminPanel', { path: '/adminPanel' });
-	this.route('superUserPanel', { path: '/superUserPanel' });
 
 	// USER(S) ROUTES
 	this.route('users', function(){
