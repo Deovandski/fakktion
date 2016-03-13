@@ -25,7 +25,8 @@ class UserSerializer < ActiveModel::Serializer
 				:show_full_name,
 				:posts_count,
 				:admin_messages_count,
-				:comments_count
+				:comments_count,
+				:authentication_token
 
 	# Relationships
 	has_many	:posts

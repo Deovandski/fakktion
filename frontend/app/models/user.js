@@ -26,6 +26,7 @@ export default DS.Model.extend ({
 	posts_count: DS.attr ('number'),
 	comments_count: DS.attr ('number'),
 	times_banned: DS.attr ('number'),
+	authentication_token: DS.attr ('string'),
 	
 	// Relationships
 	admin_messages: DS.hasMany('admin_message', {async: true}),

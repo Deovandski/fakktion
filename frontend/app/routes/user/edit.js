@@ -1,3 +1,5 @@
+/*jshint unused:false*/
+// JSHINT unused:false due to a false postive on transitionTo.
 import Ember from 'ember';
 const { service } = Ember.inject;
 
@@ -12,15 +14,10 @@ export default Ember.Route.extend ({
 	},
 	afterModel(model, transition) {
 		if (model.user.get('id') === this.get('sessionAccount.user.id')) {
-			// Do Nothing
+			// Allow Editing
 		}
 		else{
-			if(this.get('sessionAccount.user.is_super_user')){
-				//Do nothing
-			}
-			else{
 			this.transitionTo('index');
-			}
 		}
 	}
 });
