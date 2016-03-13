@@ -4,7 +4,7 @@
 
 <table>
   <tr>
-    <td>Project Wide/td>
+    <td>Project Wide</td>
     <td>[![Build Status][travis-badge]][travis]</td>
     <td>[![Code Climate][codeClimate-badge]][codeClimate]</td>
     <td>[![Dependency Status][dependency-badge]][dependency]</td>
