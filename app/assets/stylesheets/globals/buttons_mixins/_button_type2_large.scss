@@ -12,7 +12,8 @@
 	font-size: $base-font-size;
 	font-weight: bold;
 	outline: none;
-	padding: 0.1em 0.5em;
+	margin: 0px;
+	padding: 0.1em 0.3em;
 	text-align: center;
 	text-decoration: none;
 	user-select: none;
@@ -21,8 +22,8 @@
 	-webkit-font-smoothing: antialiased;
 
 	&:hover {
-		background-color: lighten($background-color, 10%);
-		border-color: lighten($background-color, 10%);
+		background-color: lighten($background-color, 18%);
+		border-color: lighten($background-color, 25%);
 		color: $text-color;
 	}
 
@@ -34,7 +35,7 @@
 	}
 
 	&.animate {
-		@include transition(all 0.2s ease);
+		@include transition(all 2s ease);
 		&:hover {
 			@include transform(scale(1.1));
 		}

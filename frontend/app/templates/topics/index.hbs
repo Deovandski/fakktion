@@ -1,7 +1,12 @@
-<h1>Topics Management</h1>
+<h3>Topics Management</h3>
+<p>All topics below are being filtered based on your Topic search.</p>
+<p>{{#link-to 'index' class="button_type2_small"}}Return to Forum{{/link-to}}</p>
 <ul>
-    {{#each model as |topic|}}
-      <li>{{#link-to 'topic' topic}}{{capitalize topic.name}}{{/link-to}}</li>
+    {{#each filteredTopics as |topic|}}
+	<li>
+		{{#link-to 'topic' topic}}{{capitalize topic.name}}{{/link-to}}
+		<button class="button_type2_small" {{action "setTopic" topic}}>Select</button>
+	</li>
     {{/each}}
 </ul>
 

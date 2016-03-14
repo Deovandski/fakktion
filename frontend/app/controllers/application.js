@@ -124,12 +124,12 @@ export default Ember.Controller.extend ({
 	}),
 	topicStatus: Ember.computed('selectedTN', function() {
 		if(this.get('selectedTN') === 'None') {
-			return 'Search or manage topics';
+			return '< Search or manage topics >';
 		}
-		if(this.get('selectedTN') === 'Invalid') {
-			return 'Topic does not exist. Please create one >';
+		else if(this.get('selectedTN') === 'Invalid') {
+			return 'Not found. Check Settings >';
 		}
-		if(this.get('selectedTN') === '') {
+		else if(this.get('selectedTN') === '') {
 			return 'Search or manage topics!';
 		}
 		else {
@@ -253,6 +253,7 @@ export default Ember.Controller.extend ({
 		clearTopic: function() { 
 			this.set('selectedTID', 0);
 			this.set('selectedTN', 'None');
+			this.set('topicInputText', '');
 		},
 		clearPostDate: function() { 
 			this.set('selectedPDID', 0);
