@@ -5,6 +5,7 @@ class CommentSerializer < ActiveModel::Serializer
 				:empathy_level
 
 	# Relationships
+	has_many :inner_comments
 	belongs_to :post
 	belongs_to :user
 end

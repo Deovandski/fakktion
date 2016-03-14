@@ -36,7 +36,7 @@ export default Ember.Controller.extend ({
 		}
 		
 		if(categoryID !== 0) {
-			tempPost = tempPost.filterBy('category_id', categoryID)
+			tempPost = tempPost.filterBy('category_id', categoryID);
 		}
 		
 		if(topicID !== 0) {
@@ -79,9 +79,6 @@ export default Ember.Controller.extend ({
 				tempPost = tempPost.filter(function(post) {
 					return (post.get('created_at') >= pastYear);
 				});
-			}
-			else {
-				
 			}
 		}
 		return tempPost;
