@@ -30,25 +30,8 @@ body.ember-application header {
 			text-align: center;
 			float: left;
 			font-size: 16px;
-			letter-spacing: 6px;
-			text-transform: uppercase;
-			a {
-				color: $header-font-color;
-				display: inline-block;
-				margin: 13px 17px;
-				padding: 5px 1px;
-				text-decoration: none;
-				i {
-					position: relative;
-					top: -2px;
-					@include transition(color 0.1s linear);
-				}
-				&:hover {
-					color: lighten($header-font-color, 12%);
-					i {
-						color: lighten($base-accent-color, 12%);
-					}
-				}
+			li {
+				color: darken($header-font-color,15%);
 			}
 		}
 	}
@@ -90,15 +73,6 @@ body.ember-application header {
 			color: #fff;
 			font-weight: 400;
 		}
-	}
-	li.small_login_info{
-		font-weight: 50;
-		line-height: 50px;
-		text-align: center;
-		height:100%;
-		display: inline-block;
-		margin-right: 3px;
-		color: darken($header-font-color, 12%);
 	}
 }
 

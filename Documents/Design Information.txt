@@ -14,11 +14,11 @@ Copy of the existing design, but with a smaller padding with a light blue color 
 
 -Button3:
 
-TODO:
+//TODO
 
 -Button4:
 
-TODO:
+//TODO
 
 -Usage:
 
@@ -26,21 +26,17 @@ TODO:
 
 -Adding more types:
 
-app>assets>stylesheets> _imports
-
-insert @import "mixins/button_typeX";
-
-app>assets>stylesheets>mixins
-
-Create button_typeX.scss and follow the examples. Make sure to change the inner mixin identification!
-
-app>assets>stylesheets>shared
+app>assets>stylesheets>globals>_buttons.scss
 
 .button_typeX,
 button_typeX,
 input[type="submit"] {
   @include button_typeX;
 }
+
+app>assets>stylesheets>globals>buttons_mixins>
+
+Create button_typeX.scss and follow the examples. Make sure to change the mixin identification!
 
 ---[Design Structure](app/assets/stylesheets/Readme.md):
 

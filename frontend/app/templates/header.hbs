@@ -6,17 +6,22 @@
 			{{/link-to}}
 		</div>
 		<div class="text_branding">
-			EXPERIMENTAL_v0.5
+			{{#if session.isAuthenticated}}
+				<li class="small_login_info">
+					{{#if sessionAccount.user}}
+						Signed in as {{sessionAccount.user.display_name}}
+					{{/if}}
+				</li>
+			{{else}}
+				<li class="small_login_info">
+					EXP v0.5
+				</li>
+			{{/if}}
 		</div>
 	</div>
 	<nav>
 		<ul>
 			{{#if session.isAuthenticated}}
-				<li class="small_login_info">
-					{{#if sessionAccount.user}}
-						Signed in as {{capitalize sessionAccount.user.display_name}}
-					{{/if}}
-				</li>
 				{{#if isAdmin}}
 					<li>
 						{{#link-to 'adminPanel'}}Admin Panel{{/link-to}}
