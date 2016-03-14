@@ -29,7 +29,13 @@ export default Ember.Service.extend ({
 						this.get('session').invalidate();
 						resolve();
 					}
-				}, reject);
+				}).catch((reason) => {
+					var possible404 = reason.errors.filterBy('status','404');
+					if(possible404 !== undefined) {
+						this.get('session').invalidate();
+					}
+					reject;
+				});
 			} else {
 				resolve();
 			}
