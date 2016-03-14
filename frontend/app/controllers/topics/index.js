@@ -11,7 +11,6 @@ export default Ember.Controller.extend ({
 		else{
 			var rx = new RegExp(this.get('application.topicInputText').toLowerCase()
 			);
-			var countries = this.get('arrangedContent');
 
 			return this.model.filter(function(topic) {
 			  return topic.get('name').match(rx);
