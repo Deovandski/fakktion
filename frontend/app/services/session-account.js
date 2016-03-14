@@ -30,8 +30,15 @@ export default Ember.Service.extend ({
 						resolve();
 					}
 				}).catch((reason) => {
+					console.log(reason.errors);
 					var possible404 = reason.errors.filterBy('status','404');
-					if(possible404 !== undefined) {
+					var possible500 = reason.errors.filterBy('status','500');
+					if(possible404.length !== 0) {
+						alert('404 | Sign In Error');
+						this.get('session').invalidate();
+					}
+					else if(possible500.length !== 0) {
+						alert('500 | Sign In Server Error');
 						this.get('session').invalidate();
 					}
 					reject;

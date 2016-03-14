@@ -1,5 +1,5 @@
-# User Serializer
-class UserSerializer < ActiveModel::Serializer
+# User Token Serializer
+class UserTokenSerializer < ActiveModel::Serializer
 	attributes  :full_name,
 				:display_name,
 				:email,
@@ -24,7 +24,8 @@ class UserSerializer < ActiveModel::Serializer
 				:show_full_name,
 				:posts_count,
 				:admin_messages_count,
-				:comments_count
+				:comments_count,
+				:authentication_token
 
 	# Relationships
 	has_many	:posts
