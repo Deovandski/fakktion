@@ -11,6 +11,12 @@ export default DS.Model.extend ({
 	updated_at: DS.attr ('date'),
 	created_at: DS.attr ('date'),
 	comments_count: DS.attr ('number'),
+	// Index filter purposes... See Ember Data #1865
+	user_id: DS.attr ('number'),
+	genre_id: DS.attr ('number'),
+	topic_id: DS.attr ('number'),
+	category_id: DS.attr ('number'),
+	fact_type_id: DS.attr ('number'),
 	
 	// Relationships
 	comments: DS.hasMany('comment', {async: true}),

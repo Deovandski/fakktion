@@ -15,7 +15,8 @@ class PostSerializer < ActiveModel::Serializer
 				:genre_id,
 				:category_id,
 				:topic_id,
-				:fact_type_id
+				:fact_type_id,
+				:user_id
 
 	# Relationships
 	has_many :comments
