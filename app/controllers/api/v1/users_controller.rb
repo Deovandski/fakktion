@@ -7,7 +7,7 @@ class Api::V1::UsersController < ApiController
 	end
 
 	def show
-		render json: user, serializer: UserTokenSerializer
+		render json: user
 	end
 
 	def create

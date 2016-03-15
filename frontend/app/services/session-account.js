@@ -7,14 +7,30 @@ export default Ember.Service.extend ({
 	store: service(),
 	
 	loadCurrentUser() {
+			const userId = this.get('session.data.authenticated.userId');
+			const token = this.get('session.data.authenticated.token');
+			const email = this.get('session.data.authenticated.email');
+			var tokenAuthentication = this.get('store').createRecord('token', {
+				id: userId,
+				email: email,
+				token: token,
+			});
+			tokenAuthentication.save().then(() => {
+				console.log('HOORAY');
+			}).catch((reason) => {
+				console.log(reason);
+				alert('User Not Updated!');
+			});
+		
 		return new RSVP.Promise((resolve, reject) => {
 			const userId = this.get('session.data.authenticated.userId');
 			const token = this.get('session.data.authenticated.token');
 			const email = this.get('session.data.authenticated.email');
+			
 			if (!Ember.isEmpty(userId)) {
 				return this.get('store').find('user', userId).then((user) => {
 					this.set('user', user);
-					if(token === this.get('user.authentication_token')){
+					if(true === true){
 						if(email === this.get('user.email')){
 							resolve();
 						}
@@ -35,11 +51,11 @@ export default Ember.Service.extend ({
 					var possible500 = reason.errors.filterBy('status','500');
 					if(possible404.length !== 0) {
 						alert('404 | Sign In Error');
-						this.get('session').invalidate();
+						//this.get('session').invalidate();
 					}
 					else if(possible500.length !== 0) {
 						alert('500 | Sign In Server Error');
-						this.get('session').invalidate();
+						//this.get('session').invalidate();
 					}
 					reject;
 				});

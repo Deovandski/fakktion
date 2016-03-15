@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 			resources :categories
 			resources :genres
 			resources :users
+			resources :tokens, only: [:create]
 		end
 	end
 end
