@@ -1,92 +1,92 @@
 <h2>Edit User Information</h2>
 <form>
-	<div class="input_block_typeUser">
-		<label class="first_label">Full Name:</label>
-		<label class="input_wrapper">{{input value=model.user.full_name}}</label>
-		<label class="second_label">{{verifyFullName}}</label>
-	</div><br/>
-	<div class="input_block_typeUser">
-		<label class="first_label">Display Name:</label>
-		<label class="input_wrapper">{{input value=model.user.display_name}}</label>
-		<label class="second_label">{{verifyDisplayName}}</label>
-	</div><br/>
-	<div class="input_block_typeUser">
-		<label class="first_label">Date of Birth:</label>
-		<label class="input_wrapper">{{input disabled=true type=date value=model.user.date_of_birth}}</label>
-		<label class="second_label">{{verifyDateOfBirth}}</label>
-	</div><br/>
-	<div class="input_block_typeUser">
-		<label class="first_label">Email:</label>
-		<label class="input_wrapper">{{input value=model.user.email}}</label>
-		<label class="second_label">{{verifyEmail}}</label>
-	</div><br/>
-	<div class="input_block_typeUser">
-		<label class="first_label">Gender:</label>
-		<label class="input_wrapper">{{input value=model.user.gender}}</label>
-		<label class="second_label">{{verifyGender}}</label>
-	</div><br/>
-		<div class="input_block_checkbox_typeUser">
-		<label class="first_label">Show full name on profile:</label>
-		<label class="input_wrapper">{{input type="checkbox" checked=model.user.show_full_name}}</label>
-		<label class="second_label">{{verifyShowFullName}}</label>
-	</div><br/>
+  <div class="input_block_typeUser">
+    <label class="first_label">Full Name:</label>
+    <label class="input_wrapper">{{input value=model.user.full_name}}</label>
+    <label class="second_label">{{verifyFullName}}</label>
+  </div><br/>
+  <div class="input_block_typeUser">
+    <label class="first_label">Display Name:</label>
+    <label class="input_wrapper">{{input value=model.user.display_name}}</label>
+    <label class="second_label">{{verifyDisplayName}}</label>
+  </div><br/>
+  <div class="input_block_typeUser">
+    <label class="first_label">Date of Birth:</label>
+    <label class="input_wrapper">{{input disabled=true type=date value=model.user.date_of_birth}}</label>
+    <label class="second_label">{{verifyDateOfBirth}}</label>
+  </div><br/>
+  <div class="input_block_typeUser">
+    <label class="first_label">Email:</label>
+    <label class="input_wrapper">{{input value=model.user.email}}</label>
+    <label class="second_label">{{verifyEmail}}</label>
+  </div><br/>
+  <div class="input_block_typeUser">
+    <label class="first_label">Gender:</label>
+    <label class="input_wrapper">{{input value=model.user.gender}}</label>
+    <label class="second_label">{{verifyGender}}</label>
+  </div><br/>
+    <div class="input_block_checkbox_typeUser">
+    <label class="first_label">Show full name on profile:</label>
+    <label class="input_wrapper">{{input type="checkbox" checked=model.user.show_full_name}}</label>
+    <label class="second_label">{{verifyShowFullName}}</label>
+  </div><br/>
 
-	{{#if showPassword}}
-		<div class="input_block_typeUser">
-			<label class="first_label"><button class="button_type2_large" {{action "setShowPassword" false}}>Cancel Password Change</button></label>
-		</div><br/>
-		<div class="show_password_form">
-			<div class="input_block_typeUser">
-				<label class="first_label">Current Password:</label>
-				<label class="input_wrapper">{{input type="password" value=currentPassword}}</label>
-				<label class="second_label">{{verifyCurrentPassword}}</label>
-			</div><br/>
-			<div class="input_block_typeUser">
-				<label class="first_label">Password:</label>
-				<label class="input_wrapper">{{input type="password" value=newPassword}}</label>
-				<label class="second_label">{{verifyNewPassword}}</label>
-			</div><br/>
-			<div class="input_block_typeUser">
-				<label class="first_label">Password Confirmation:</label>
-				<label class="input_wrapper">{{input type="password" value=newPasswordConfirmation}}</label>
-				<label class="second_label">{{verifyNewPasswordConfirmation}}</label>
-			</div><br/>
-		</div>
-	{{else}}
-		<div class="input_block_typeUser">
-			<label class="first_label"><button class="button_type2_large" {{action "setShowPassword" true}}>Change Password</button></label>
-		</div><br/>
-	{{/if}}
-	{{#if showExtra}}
-		<div class="input_block_typeUser">
-			<label class="first_label"><button class="button_type2_large" {{action "setExtraPassword" false}}>Hide Extra form</button></label>
-		</div><br/>
-		<div class="show_extra_form">
-			<div class="input_block_typeUser">
-				<label class="first_label">Personal Page:</label>
-				<label class="input_wrapper">{{input placeholder="Optional" value=model.user.personal_message}}</label>
-			</div><br/>
-			<div class="input_block_typeUser">
-				<label class="first_label">Facebook URL:</label>
-				<label class="input_wrapper">{{input placeholder="Optional" value=model.user.facebook_url}}</label>
-				<label class="second_label">{{verifyFacebookURL}}</label>
-			</div><br/>
-			<div class="input_block_typeUser">
-				<label class="first_label">Twitter URL:</label>
-				<label class="input_wrapper">{{input placeholder="Optional" value=model.user.twitter_url}}</label>
-				<label class="second_label">{{verifyTwitterURL}}</label>
-			</div><br/>
-			<div class="input_block_typeUser">
-				<label class="first_label">Webpage URL:</label>
-				<label class="input_wrapper">{{input placeholder="Optional" value=model.user.webpage_url}}</label>
-				<label class="second_label">{{verifyWebpageURL}}</label>
-			</div><br/>
-		</div>
-	{{else}}
-		<div class="input_block_typeUser">
-			<label class="first_label"><button class="button_type2_large" {{action "setExtraPassword" true}}>Show Extra form</button></label>
-		</div><br/>
-	{{/if}}
-	<button class="button_type1" {{action "update" model.user}}>Update User</button>
-	
+  {{#if showPassword}}
+    <div class="input_block_typeUser">
+      <label class="first_label"><button class="button_type2_large" {{action "setShowPassword" false}}>Cancel Password Change</button></label>
+    </div><br/>
+    <div class="show_password_form">
+      <div class="input_block_typeUser">
+        <label class="first_label">Current Password:</label>
+        <label class="input_wrapper">{{input type="password" value=currentPassword}}</label>
+        <label class="second_label">{{verifyCurrentPassword}}</label>
+      </div><br/>
+      <div class="input_block_typeUser">
+        <label class="first_label">Password:</label>
+        <label class="input_wrapper">{{input type="password" value=newPassword}}</label>
+        <label class="second_label">{{verifyNewPassword}}</label>
+      </div><br/>
+      <div class="input_block_typeUser">
+        <label class="first_label">Password Confirmation:</label>
+        <label class="input_wrapper">{{input type="password" value=newPasswordConfirmation}}</label>
+        <label class="second_label">{{verifyNewPasswordConfirmation}}</label>
+      </div><br/>
+    </div>
+  {{else}}
+    <div class="input_block_typeUser">
+      <label class="first_label"><button class="button_type2_large" {{action "setShowPassword" true}}>Change Password</button></label>
+    </div><br/>
+  {{/if}}
+  {{#if showExtra}}
+    <div class="input_block_typeUser">
+      <label class="first_label"><button class="button_type2_large" {{action "setExtraPassword" false}}>Hide Extra form</button></label>
+    </div><br/>
+    <div class="show_extra_form">
+      <div class="input_block_typeUser">
+        <label class="first_label">Personal Page:</label>
+        <label class="input_wrapper">{{input placeholder="Optional" value=model.user.personal_message}}</label>
+      </div><br/>
+      <div class="input_block_typeUser">
+        <label class="first_label">Facebook URL:</label>
+        <label class="input_wrapper">{{input placeholder="Optional" value=model.user.facebook_url}}</label>
+        <label class="second_label">{{verifyFacebookURL}}</label>
+      </div><br/>
+      <div class="input_block_typeUser">
+        <label class="first_label">Twitter URL:</label>
+        <label class="input_wrapper">{{input placeholder="Optional" value=model.user.twitter_url}}</label>
+        <label class="second_label">{{verifyTwitterURL}}</label>
+      </div><br/>
+      <div class="input_block_typeUser">
+        <label class="first_label">Webpage URL:</label>
+        <label class="input_wrapper">{{input placeholder="Optional" value=model.user.webpage_url}}</label>
+        <label class="second_label">{{verifyWebpageURL}}</label>
+      </div><br/>
+    </div>
+  {{else}}
+    <div class="input_block_typeUser">
+      <label class="first_label"><button class="button_type2_large" {{action "setExtraPassword" true}}>Show Extra form</button></label>
+    </div><br/>
+  {{/if}}
+  <button class="button_type1" {{action "update" model.user}}>Update User</button>
+  
 </form>

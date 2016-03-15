@@ -1,47 +1,47 @@
 body.ember-application footer {
-	@include clearfix;
-	border-top: 1px solid $base-border-color;
-	padding: 0.2em 0;
-	font-family: 'Questrial', sans-serif;
-	position:absolute;
-	height: 50px;
-	bottom:0;
-	right:0px;
-	left:0px;
-	width:100%;
-	background-color: #F8F8F8;
-	.outer-container {
-		width: 100%;
-	}
-	nav {
-		float: left;
-	}
-	ul {
-		display: block;
-		list-style-type: none;
-		padding: 0;
-	}
-	li {
-	display: inline-block;
-		a {
-			color: #aaa;
-			display: inline-block;
-			font-size: 14px;
-			letter-spacing: 1px;
-			padding: 10px;
-			text-decoration: none;
-			&:hover {
-				color: #888;
-			}
-		}
-	}
-	label {
-		color: #aaa;
-		display: inline-block;
-		font-size: 14px;
-		letter-spacing: 1px;
-		padding: 10px;
-		text-decoration: none;
-		float: right;
-	}
+  @include clearfix;
+  border-top: 1px solid $base-border-color;
+  padding: 0.2em 0;
+  font-family: 'Questrial', sans-serif;
+  position:absolute;
+  height: 50px;
+  bottom:0;
+  right:0px;
+  left:0px;
+  width:100%;
+  background-color: #F8F8F8;
+  .outer-container {
+    width: 100%;
+  }
+  nav {
+    float: left;
+  }
+  ul {
+    display: block;
+    list-style-type: none;
+    padding: 0;
+  }
+  li {
+  display: inline-block;
+    a {
+      color: #aaa;
+      display: inline-block;
+      font-size: 14px;
+      letter-spacing: 1px;
+      padding: 10px;
+      text-decoration: none;
+      &:hover {
+        color: #888;
+      }
+    }
+  }
+  label {
+    color: #aaa;
+    display: inline-block;
+    font-size: 14px;
+    letter-spacing: 1px;
+    padding: 10px;
+    text-decoration: none;
+    float: right;
+  }
 }

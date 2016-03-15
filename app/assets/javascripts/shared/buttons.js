@@ -1,4 +1,4 @@
 (function(){
-	"use strict";
-	$('.button, button, input[type="submit"]').addClass('animate');
+  "use strict";
+  $('.button, button, input[type="submit"]').addClass('animate');
 })();

@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend ({
-	model: function(params) {
-		return this.store.find('topic', params.topic_id);
-	}
+  model: function(params) {
+    return this.store.find('topic', params.topic_id);
+  }
 });

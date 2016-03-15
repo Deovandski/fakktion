@@ -1,7 +1,7 @@
 # Sessions Controller: Devise Custom Session Controller.
 class SessionsController < Devise::SessionsController
-	respond_to :json
-	
+  respond_to :json
+  
 # GET /resource/sign_in
 # def new
 #   super
@@ -24,17 +24,17 @@ class SessionsController < Devise::SessionsController
 #   devise_parameter_sanitizer.for(:sign_in) << :attribute
 # end
 
-	def create
-		super do |user|
-			if request.format.json?
-			data =
-			{
-				token: user.authentication_token,
-				email: user.email,
-				userId: user.id
-			}
-			render json: data, status: 201 and return
-			end
-		end
-	end
+  def create
+    super do |user|
+      if request.format.json?
+      data =
+      {
+        token: user.authentication_token,
+        email: user.email,
+        userId: user.id
+      }
+      render json: data, status: 201 and return
+      end
+    end
+  end
 end

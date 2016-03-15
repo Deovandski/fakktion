@@ -2,7 +2,7 @@ import Ember from 'ember';
 import config from './config/environment';
 
 var Router = Ember.Router.extend ({
-	location: config.locationType
+  location: config.locationType
 });
 
 /* ROUTING INFO
@@ -11,84 +11,84 @@ var Router = Ember.Router.extend ({
  * Index routes with dynamic slugs (dog_id) needs to be properly identified...
  */
 Router.map(function() {
-	// Login related
-	this.route('header');
-	this.route('login', { path: '/login' });
+  // Login related
+  this.route('header');
+  this.route('login', { path: '/login' });
 
-	// Admin and Super User related
-	this.route('adminPanel', { path: '/adminPanel' });
+  // Admin and Super User related
+  this.route('adminPanel', { path: '/adminPanel' });
 
-	// USER(S) ROUTES
-	this.route('users', function(){
-		this.route('create');
-	});
-	this.route('user', { path:'user/:user_id' }, function() {
-		this.route('edit');
-		this.route('posts'); // view all posts by x User
-		this.route('comments'); // View all Comments by x User
-	});
+  // USER(S) ROUTES
+  this.route('users', function(){
+    this.route('create');
+  });
+  this.route('user', { path:'user/:user_id' }, function() {
+    this.route('edit');
+    this.route('posts'); // view all posts by x User
+    this.route('comments'); // View all Comments by x User
+  });
 
-	// ADMIN MESSAGE(S) ROUTES
-	this.route('adminMessages', function(){
-		this.route('create');
-	});
-	this.route('adminMessage', { path:'adminMessage/:admin_message_id' }, function() {
-		this.route('edit');
-	});
+  // ADMIN MESSAGE(S) ROUTES
+  this.route('adminMessages', function(){
+    this.route('create');
+  });
+  this.route('adminMessage', { path:'adminMessage/:admin_message_id' }, function() {
+    this.route('edit');
+  });
 
-	// POST(S) ROUTES
-	this.route('posts', function(){
-		this.route('create');
-	});
-	this.route('post', { path:'post/:post_id' }, function() {
-		this.route('edit');
-		// POST COMMENTS(S) ROUTES
-		this.route('comments', function(){
-			this.route('create');
-		});
-		this.route('comment', { path:'comment/:comment_id' }, function() {
-			// Comment EDIT has been merged into INDEX
-			// POST INNER COMMENTS(S) ROUTES
-			this.route('innerComments', function(){
-				this.route('create');
-			});
-			this.route('innerComment', { path:'innerComment/:inner_comment_id' }, function() {
-				// inner_comment EDIT has been merged into INDEX
-			});
-		});
-	});
+  // POST(S) ROUTES
+  this.route('posts', function(){
+    this.route('create');
+  });
+  this.route('post', { path:'post/:post_id' }, function() {
+    this.route('edit');
+    // POST COMMENTS(S) ROUTES
+    this.route('comments', function(){
+      this.route('create');
+    });
+    this.route('comment', { path:'comment/:comment_id' }, function() {
+      // Comment EDIT has been merged into INDEX
+      // POST INNER COMMENTS(S) ROUTES
+      this.route('innerComments', function(){
+        this.route('create');
+      });
+      this.route('innerComment', { path:'innerComment/:inner_comment_id' }, function() {
+        // inner_comment EDIT has been merged into INDEX
+      });
+    });
+  });
 
-	// GENRE(S) ROUTES
-	this.route('genres', function(){
-		this.route('create');
-	});
-	this.route('genre', { path:'genre/:genre_id' }, function() {
-		this.route('edit');
-	});
-	
-	// Fact Type(S) ROUTES
-	this.route('factTypes', function(){
-		this.route('create');
-	});
-	this.route('factType', { path:'factType/:factType_id' }, function() {
-		this.route('edit');
-	});
-	
-	// TOPIC(S) ROUTES
-	this.route('topics', function(){
-		this.route('create');
-	});
-	this.route('topic', { path:'topic/:topic_id' }, function() {
-		this.route('edit');
-	});
-	
-	// Footer related
-	this.route('footer');
-	this.route('about');
-	this.route('legal_info');
-	this.route('privacy_info');
-	this.route('support');
-	this.route('about');
+  // GENRE(S) ROUTES
+  this.route('genres', function(){
+    this.route('create');
+  });
+  this.route('genre', { path:'genre/:genre_id' }, function() {
+    this.route('edit');
+  });
+  
+  // Fact Type(S) ROUTES
+  this.route('factTypes', function(){
+    this.route('create');
+  });
+  this.route('factType', { path:'factType/:factType_id' }, function() {
+    this.route('edit');
+  });
+  
+  // TOPIC(S) ROUTES
+  this.route('topics', function(){
+    this.route('create');
+  });
+  this.route('topic', { path:'topic/:topic_id' }, function() {
+    this.route('edit');
+  });
+  
+  // Footer related
+  this.route('footer');
+  this.route('about');
+  this.route('legal_info');
+  this.route('privacy_info');
+  this.route('support');
+  this.route('about');
 });
 
 export default Router;

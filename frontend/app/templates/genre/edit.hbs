@@ -1,15 +1,15 @@
 <h2>Edit <b>{{model.name}}</b> Genre</h2>
 <form>
-	<div class="input_block_type1">
-		<label class="first_label">Name:</label>
-		<label class="input_wrapper">{{input value=model.name}}</label>
-		<label class="second_label">{{verifyGenreName}}</label>
-	</div><br/>
+  <div class="input_block_type1">
+    <label class="first_label">Name:</label>
+    <label class="input_wrapper">{{input value=model.name}}</label>
+    <label class="second_label">{{verifyGenreName}}</label>
+  </div><br/>
 </form>
 {{#if session.isAuthenticated}}
-	{{#if sessionAccount.user.is_admin}}
-		<button class="button_type1" {{action "update"}}>Update Genre</button>
-	{{else}}
-		<label class="second_label">Only Admins can edit</label>
-	{{/if}}
+  {{#if sessionAccount.user.is_admin}}
+    <button class="button_type1" {{action "update"}}>Update Genre</button>
+  {{else}}
+    <label class="second_label">Only Admins can edit</label>
+  {{/if}}
 {{/if}}

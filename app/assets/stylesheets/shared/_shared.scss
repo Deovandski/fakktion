@@ -6,249 +6,249 @@
 .visibility_button_div_show {
     position: absolute;
     bottom: 0;
-	height:25px;
-	width:100%;
-	
+  height:25px;
+  width:100%;
+  
 }
 .visibility_button_div_hide {
     position: absolute;
     bottom: 0;
-	height:25px;
-	width:100%;
-	
+  height:25px;
+  width:100%;
+  
 }
 .inner_info_button {
-	text-align: center;
-	font-weight: bold;
-	border-left-style: solid; 
-	border-right-style: solid;
-	border-top-style: solid; 
-	border-bottom-style: solid;
-	border-width: 1px;
+  text-align: center;
+  font-weight: bold;
+  border-left-style: solid; 
+  border-right-style: solid;
+  border-top-style: solid; 
+  border-bottom-style: solid;
+  border-width: 1px;
 }
 .inner_info {
-	text-align: center;
-	font-weight: bold;
+  text-align: center;
+  font-weight: bold;
 }
 .tag_listing {
-	height:calc(100% - 50px);
+  height:calc(100% - 50px);
     top: 25px;
-	width:100%;
-	overflow-y: scroll;
-	list-style-type:none;
-	text-align: center;
-	li:nth-child(n) {
-		margin-top: 7px;
-		margin-bottom: 7px;
-	}
+  width:100%;
+  overflow-y: scroll;
+  list-style-type:none;
+  text-align: center;
+  li:nth-child(n) {
+    margin-top: 7px;
+    margin-bottom: 7px;
+  }
 }
 .button_listing {
-	height:calc(100% - 50px);
+  height:calc(100% - 50px);
     top: 25px;
-	width:100%;
-	overflow-y: scroll;
-	list-style-type:none;
-	text-align: center;
-	li:nth-child(n) {
-		margin-top: 7px;
-		margin-bottom: 7px;
-	}
+  width:100%;
+  overflow-y: scroll;
+  list-style-type:none;
+  text-align: center;
+  li:nth-child(n) {
+    margin-top: 7px;
+    margin-bottom: 7px;
+  }
 }
 .tag_h5 {
     position: relative;
-	width: 100%;
+  width: 100%;
     top: 0;
-	height:25px;
-	text-align: center;
+  height:25px;
+  text-align: center;
 }
 .tag_listing_hidden {
-	height: 10%;
-	width: 100%;
-	border-width: 3px;
-	border-bottom-style: solid;
-	position: relative;
-	width: 100%;
+  height: 10%;
+  width: 100%;
+  border-width: 3px;
+  border-bottom-style: solid;
+  position: relative;
+  width: 100%;
 }
 
 // Standard size input blocks
 .input_block_type1 {
-	width: 100%;
-	line-height: 40px;
-	text-align: left;
-	height: 40px;
-	.first_label {
-		float: left;
-		vertical-align: middle;
-		width: 25%;
-		height: 100%;
-	}
-	.input_wrapper {
-		height: 100%;
-		width: 50%;
-		.ember-text-field {
-			float: center;
-			height: 100%;
-		}
-	}
-	.second_label {
-		color: $orange;
-		text-align: left;
-		float: right;
-		width: 25%;
-		height: 100%;
-		font-size: 80%;
-	}
+  width: 100%;
+  line-height: 40px;
+  text-align: left;
+  height: 40px;
+  .first_label {
+    float: left;
+    vertical-align: middle;
+    width: 25%;
+    height: 100%;
+  }
+  .input_wrapper {
+    height: 100%;
+    width: 50%;
+    .ember-text-field {
+      float: center;
+      height: 100%;
+    }
+  }
+  .second_label {
+    color: $orange;
+    text-align: left;
+    float: right;
+    width: 25%;
+    height: 100%;
+    font-size: 80%;
+  }
 }
 
 .input_block_type2 {
-	width: 100%;
-	line-height: 40px;
-	text-align: left;
-	height: 40px;
-	.first_label {
-		float: left;
-		vertical-align: middle;
-		width: 25%;
-		height: 100%;
-	}
-	.input_wrapper {
-		height: 100%;
-		width: 50%;
-		.ember-text-field {
-			float: center;
-			height: 100%;
-		}
-	}
-	.second_label {
-		color: $orange;
-		text-align: left;
-		float: right;
-		width: 25%;
-		height: 100%;
-		font-size: 80%;
-	}
+  width: 100%;
+  line-height: 40px;
+  text-align: left;
+  height: 40px;
+  .first_label {
+    float: left;
+    vertical-align: middle;
+    width: 25%;
+    height: 100%;
+  }
+  .input_wrapper {
+    height: 100%;
+    width: 50%;
+    .ember-text-field {
+      float: center;
+      height: 100%;
+    }
+  }
+  .second_label {
+    color: $orange;
+    text-align: left;
+    float: right;
+    width: 25%;
+    height: 100%;
+    font-size: 80%;
+  }
 }
 .input_block_typeLogin {
-	width: 100%;
-	line-height: 40px;
-	text-align: right;
-	height: 40px;
-	.first_label {
-		float: left;
-		vertical-align: middle;
-		margin-right: 10px;
-		width: 30%;
-		height: 100%;
-	}
-	.input_wrapper {
-		float: left;
-		height: 100%;
-		width: 40%;
-		.ember-text-field {
-			height: 100%;
-		}
-	}
+  width: 100%;
+  line-height: 40px;
+  text-align: right;
+  height: 40px;
+  .first_label {
+    float: left;
+    vertical-align: middle;
+    margin-right: 10px;
+    width: 30%;
+    height: 100%;
+  }
+  .input_wrapper {
+    float: left;
+    height: 100%;
+    width: 40%;
+    .ember-text-field {
+      height: 100%;
+    }
+  }
 }
 .input_block_type3 {
-	width: 100%;
-	line-height: 40px;
-	text-align: left;
-	height: 40px;
-	.first_label {
-		float: left;
-		vertical-align: middle;
-		width: 25%;
-		height: 100%;
-	}
-	.input_wrapper {
-		height: 100%;
-		width: 50%;
-		.ember-text-field {
-			float: center;
-			height: 100%;
-		}
-	}
-	.second_label {
-		color: $orange;
-		text-align: left;
-		float: right;
-		width: 25%;
-		height: 100%;
-		font-size: 80%;
-	}
+  width: 100%;
+  line-height: 40px;
+  text-align: left;
+  height: 40px;
+  .first_label {
+    float: left;
+    vertical-align: middle;
+    width: 25%;
+    height: 100%;
+  }
+  .input_wrapper {
+    height: 100%;
+    width: 50%;
+    .ember-text-field {
+      float: center;
+      height: 100%;
+    }
+  }
+  .second_label {
+    color: $orange;
+    text-align: left;
+    float: right;
+    width: 25%;
+    height: 100%;
+    font-size: 80%;
+  }
 }
 
 .input_block_comment {
-	width: 100%;
-	line-height: 40px;
-	text-align: left;
-	height: 40px;
-	.input_wrapper {
-		height: 100%;
-		width: 75%;
-		.ember-text-field {
-			float: center;
-			height: 100%;
-		}
-	}
-	.feedback_wrapper {
-		text-align: left;
-		float: right;
-		width: 25%;
-		height: 100%;
-		font-size: 80%;
-	}
+  width: 100%;
+  line-height: 40px;
+  text-align: left;
+  height: 40px;
+  .input_wrapper {
+    height: 100%;
+    width: 75%;
+    .ember-text-field {
+      float: center;
+      height: 100%;
+    }
+  }
+  .feedback_wrapper {
+    text-align: left;
+    float: right;
+    width: 25%;
+    height: 100%;
+    font-size: 80%;
+  }
 }
 
 .input_block_typeUser {
-	width: 100%;
-	line-height: 40px;
-	text-align: left;
-	height: 40px;
-	.first_label {
-		float: left;
-		vertical-align: middle;
-		width: 25%;
-		height: 100%;
-	}
-	.input_wrapper {
-		height: 100%;
-		width: 50%;
-		.ember-text-field {
-			float: center;
-			height: 100%;
-		}
-	}
-	.second_label {
-		color: $orange;
-		text-align: left;
-		float: right;
-		width: 25%;
-		height: 100%;
-		font-size: 80%;
-	}
+  width: 100%;
+  line-height: 40px;
+  text-align: left;
+  height: 40px;
+  .first_label {
+    float: left;
+    vertical-align: middle;
+    width: 25%;
+    height: 100%;
+  }
+  .input_wrapper {
+    height: 100%;
+    width: 50%;
+    .ember-text-field {
+      float: center;
+      height: 100%;
+    }
+  }
+  .second_label {
+    color: $orange;
+    text-align: left;
+    float: right;
+    width: 25%;
+    height: 100%;
+    font-size: 80%;
+  }
 }
 .input_block_checkbox_typeUser {
-	width: 100%;
-	line-height: 40px;
-	text-align: left;
-	height: 40px;
-	.first_label {
-		float: left;
-		vertical-align: middle;
-		width: 30%;
-		height: 100%;
-	}
-	.input_wrapper {
-		height: 100%;
-		width: 10%;
-	}
-	.second_label {
-		color: $orange;
-		text-align: left;
-		float: right;
-		width: 60%;
-		height: 100%;
-		font-size: 80%;
-	}
+  width: 100%;
+  line-height: 40px;
+  text-align: left;
+  height: 40px;
+  .first_label {
+    float: left;
+    vertical-align: middle;
+    width: 30%;
+    height: 100%;
+  }
+  .input_wrapper {
+    height: 100%;
+    width: 10%;
+  }
+  .second_label {
+    color: $orange;
+    text-align: left;
+    float: right;
+    width: 60%;
+    height: 100%;
+    font-size: 80%;
+  }
 }

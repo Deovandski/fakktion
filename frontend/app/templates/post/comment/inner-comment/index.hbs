@@ -1,24 +1,24 @@
 {{#if session.isAuthenticated}}
-	{{#if canEdit}}
-		{{#if editMode}}
-			<div class="input_block_comment">
-			<label class="input_wrapper">{{input value=model.text}}</label>
+  {{#if canEdit}}
+    {{#if editMode}}
+      <div class="input_block_comment">
+      <label class="input_wrapper">{{input value=model.text}}</label>
 
-			<div class="feedback_wrapper">
-			{{#if validComment}}
-			<button class="button_type3" {{action "update"}}>Edit Comment</button>
-			{{else}}
-			<label>{{verifyText}}</label>
-			{{/if}}
-			</div>
-			</div>
-			<button class="button_type2_small" {{action "ToggleEditMode"}}>Cancel Edit</button>
-		{{else}}
-			{{model.text}}<button class="button_type2_small" {{action "ToggleEditMode"}}>Edit</button>
-		{{/if}}
-	{{else}}
-		{{model.text}}
-	{{/if}}
+      <div class="feedback_wrapper">
+      {{#if validComment}}
+      <button class="button_type3" {{action "update"}}>Edit Comment</button>
+      {{else}}
+      <label>{{verifyText}}</label>
+      {{/if}}
+      </div>
+      </div>
+      <button class="button_type2_small" {{action "ToggleEditMode"}}>Cancel Edit</button>
+    {{else}}
+      {{model.text}}<button class="button_type2_small" {{action "ToggleEditMode"}}>Edit</button>
+    {{/if}}
+  {{else}}
+    {{model.text}}
+  {{/if}}
 {{else}}
-	{{model.text}}
+  {{model.text}}
 {{/if}}

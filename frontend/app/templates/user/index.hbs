@@ -1,68 +1,68 @@
 <div class="user_show">
-	<h2 class="h2_top">User Page</h2>
-	<div class="user_show_left">
-		<div class="basic_info_div">
-			<h4 class="inner_heading">Basic Information</h4>
-			{{#if isOwner}}
-				<p><label class="inner_label">Full Name:</label>  {{capitalize model.full_name}}</p>
-			{{else}}
-				{{#if model.show_full_name}}
-					<p><label class="inner_label">Full Name:</label>  {{capitalize model.full_name}}</p>
-				{{else}}
-					<p><label class="inner_label">Full Name: Hidden</label></p>
-				{{/if}}
-			{{/if}}
-			<p><label class="inner_label">Display Name:</label>  {{capitalize model.display_name}}</p>
-			<p><label class="inner_label">Gender:</label>  {{model.gender}}</p>
-			<p><label class="inner_label">Age:</label>  {{ageDate}}</p>
-			<p><label class="inner_label">About Me:</label></p>
-			<p><label class="inner_label_message">{{model.personal_message}}</label></p>
-			<p><label class="inner_label">Number of Posts:</label>  {{model.posts_count}}</p>
-			<p><label class="inner_label">Number of Comments:</label>  {{model.comments_count}}</p>
-			<p><label class="inner_label">Profile Created on:</label>  {{createdDate}}</p>
-			<p><label class="inner_label">Profile Updated on:</label>  {{updatedDate}}</p>
-			{{#if model.is_admin}}
-				<p><label class="inner_label">User is an admin!</label></p>
-			{{/if}}
-		</div>
-			{{#if isOwner}}
-			<p class="inner_edit_info">{{#link-to 'user.edit'}}Edit Information{{/link-to}}</p>
-			{{else}}
-			<p class="inner_edit_info">Fakktion</p>
-			{{/if}}
-	</div>
-	<div class="user_show_right">
-		<div class="posts_info_div">
-			<h4 class="inner_heading">Posts by this user</h4>
-			{{#if verifyPosts}}
-			<ul class="posts_ul">
-				{{#each model.posts as |post|}}
-					<li>{{#link-to 'post' post}}{{post.title}}{{/link-to}}</li>
-				{{/each}}
-			</ul>
-			{{else}}
-				<p>No posts to show</p>
-			{{/if}}
-		</div>
-		<div class="links_info_div">
-			<h4 class="inner_heading">Social Network Links</h4>
-			<label>Fakktion is not responsible for the contents or the destination of the links below.<br/> More information on Legal Info.</label><br/>
-			{{#if verifyFacebookURL}}
-			<a href="{{model.facebook_url}}" target="_blank">Facebook</a>
-			{{else}}
-				<label>(No Facebook Link)</label>
-			{{/if}}
-			{{#if verifyTwitterURL}}
-			<a href="{{model.twitter_url}}" target="_blank">Twitter</a>
-			{{else}}
-				<label>(No Twitter Link)</label>
-			{{/if}}
-			{{#if verifyWebpageURL}}
-			<a href="{{model.webpage_url}}" target="_blank">Personal Page</a>
-			{{else}}
-				<label>(No Webpage Link)</label>
-			{{/if}}
-		</div>
-	</div>
-	
+  <h2 class="h2_top">User Page</h2>
+  <div class="user_show_left">
+    <div class="basic_info_div">
+      <h4 class="inner_heading">Basic Information</h4>
+      {{#if isOwner}}
+        <p><label class="inner_label">Full Name:</label>  {{capitalize model.full_name}}</p>
+      {{else}}
+        {{#if model.show_full_name}}
+          <p><label class="inner_label">Full Name:</label>  {{capitalize model.full_name}}</p>
+        {{else}}
+          <p><label class="inner_label">Full Name: Hidden</label></p>
+        {{/if}}
+      {{/if}}
+      <p><label class="inner_label">Display Name:</label>  {{capitalize model.display_name}}</p>
+      <p><label class="inner_label">Gender:</label>  {{model.gender}}</p>
+      <p><label class="inner_label">Age:</label>  {{ageDate}}</p>
+      <p><label class="inner_label">About Me:</label></p>
+      <p><label class="inner_label_message">{{model.personal_message}}</label></p>
+      <p><label class="inner_label">Number of Posts:</label>  {{model.posts_count}}</p>
+      <p><label class="inner_label">Number of Comments:</label>  {{model.comments_count}}</p>
+      <p><label class="inner_label">Profile Created on:</label>  {{createdDate}}</p>
+      <p><label class="inner_label">Profile Updated on:</label>  {{updatedDate}}</p>
+      {{#if model.is_admin}}
+        <p><label class="inner_label">User is an admin!</label></p>
+      {{/if}}
+    </div>
+      {{#if isOwner}}
+      <p class="inner_edit_info">{{#link-to 'user.edit'}}Edit Information{{/link-to}}</p>
+      {{else}}
+      <p class="inner_edit_info">Fakktion</p>
+      {{/if}}
+  </div>
+  <div class="user_show_right">
+    <div class="posts_info_div">
+      <h4 class="inner_heading">Posts by this user</h4>
+      {{#if verifyPosts}}
+      <ul class="posts_ul">
+        {{#each model.posts as |post|}}
+          <li>{{#link-to 'post' post}}{{post.title}}{{/link-to}}</li>
+        {{/each}}
+      </ul>
+      {{else}}
+        <p>No posts to show</p>
+      {{/if}}
+    </div>
+    <div class="links_info_div">
+      <h4 class="inner_heading">Social Network Links</h4>
+      <label>Fakktion is not responsible for the contents or the destination of the links below.<br/> More information on Legal Info.</label><br/>
+      {{#if verifyFacebookURL}}
+      <a href="{{model.facebook_url}}" target="_blank">Facebook</a>
+      {{else}}
+        <label>(No Facebook Link)</label>
+      {{/if}}
+      {{#if verifyTwitterURL}}
+      <a href="{{model.twitter_url}}" target="_blank">Twitter</a>
+      {{else}}
+        <label>(No Twitter Link)</label>
+      {{/if}}
+      {{#if verifyWebpageURL}}
+      <a href="{{model.webpage_url}}" target="_blank">Personal Page</a>
+      {{else}}
+        <label>(No Webpage Link)</label>
+      {{/if}}
+    </div>
+  </div>
+  
 </div>

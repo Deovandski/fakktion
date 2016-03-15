@@ -1,9 +1,9 @@
 <h2>Listing all Posts</h2>
 
 <div class="posts_info_redux">
-	<ul>
-		{{#each model.posts as |post|}}
-		<li>{{#link-to 'post' post}}{{post.title}}{{/link-to}}</li>
-		{{/each}}
-	</ul>
+  <ul>
+    {{#each model.posts as |post|}}
+    <li>{{#link-to 'post' post}}{{post.title}}{{/link-to}}</li>
+    {{/each}}
+  </ul>
 </div>

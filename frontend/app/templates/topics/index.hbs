@@ -3,15 +3,15 @@
 <p>{{#link-to 'index' class="button_type2_small"}}Return to Forum{{/link-to}}</p>
 <ul>
     {{#each filteredTopics as |topic|}}
-	<li>
-		{{#link-to 'topic' topic}}{{capitalize topic.name}}{{/link-to}}
-		<button class="button_type2_small" {{action "setTopic" topic}}>Select</button>
-	</li>
+  <li>
+    {{#link-to 'topic' topic}}{{capitalize topic.name}}{{/link-to}}
+    <button class="button_type2_small" {{action "setTopic" topic}}>Select</button>
+  </li>
     {{/each}}
 </ul>
 
 {{#if session.isAuthenticated}}
-	<p class="inner_info_button">{{#link-to 'topics.create'}}Create topic{{/link-to}}</p>
+  <p class="inner_info_button">{{#link-to 'topics.create'}}Create topic{{/link-to}}</p>
 {{else}}
-	<p>Please login to create a topic</p>
+  <p>Please login to create a topic</p>
 {{/if}}

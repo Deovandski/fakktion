@@ -1,78 +1,78 @@
 <h5>Blog Post</h5>
 <div class="post_index">
 
-	<div class="post_title_container">
-		<div class="title_info">
-			<label class="first_label">{{model.title}}</label>
-		</div>
-		<div class="owner_info">
-				{{#if canEdit}}
-					<div class="owner_text_info_partial">
-						<label class="first_label">By {{model.user.display_name}}</label>
-					</div>
-					<div class="owner_edit">
-						<p class="button_type2_small">{{#link-to 'post.edit' }}Edit{{/link-to}}</p>
-					</div>
-				{{else}}
-					<div class="owner_text_info">
-						<label class="first_label">By {{model.user.display_name}}</label>
-					</div>
-				{{/if}}
-		</div>
-	</div>
-	
-	<div class="post_buttons_container">
-		{{#if notExpandInfo}}
-			<div class="more_info_button">
-				<label class="first_label"><button class="button_type2_large" {{action "setNotExpandInfo" false}}>Show Post Information</button></label>
-			</div>
-		{{else}}
-			<div class="more_info_button">
-				<label class="first_label"><button class="button_type2_large" {{action "setNotExpandInfo" true}}>Hide Post Information</button></label>
-			</div>
-		{{/if}}
-		
-		<div class="fact_link_button">
-			<label class="first_label"><a class="button_type2_large" href="{{model.fact_link}}">Fact Link</a></label>
-		</div>
-		<div class="fiction_link_button">
-			<label class="first_label"><a class="button_type2_large" href="{{model.fiction_link}}">Fiction Link</a></label>
-		</div>
-	</div>
-	
-	{{#if notExpandInfo}}
-	
-	{{else}}
-		<div class="post_tags_container">
-			<div class="genre_topic_container">
-				<div class="genre_info_container">
-					<label class="first_label">Genre: {{model.genre.name}}</label>
-				</div>
-				<div class="topic_info_container">
-					<label class="first_label">Topic: {{model.topic.name}}</label>
-				</div>
-			</div>
-			<div class="fact_type_created_on_container">
-				<div class="fact_Type_info_container">
-					<label class="first_label">Fact Type: {{model.fact_type.name}}</label>
-				</div>
-				<div class="created_on_info_container">
-					<label class="first_label">Post Created on: {{createdDate}}</label>  
-				</div>
-			</div>
-			<div class="category_updated_on_container">
-				<div class="category_info_container">
-					<label class="first_label">Category: {{model.category.name}}</label>
-				</div>
-				<div class="updated_on_info_container">
-					<label class="first_label">Post Updated on: {{updatedDate}}</label>  
-				</div>
-			</div>
-		</div>
-	{{/if}}
-	
-	<div class="post_text_container">
-		<label>{{model.text}}</label>
-	</div>
-	{{render "post.comments.index" model}}
+  <div class="post_title_container">
+    <div class="title_info">
+      <label class="first_label">{{model.title}}</label>
+    </div>
+    <div class="owner_info">
+        {{#if canEdit}}
+          <div class="owner_text_info_partial">
+            <label class="first_label">By {{model.user.display_name}}</label>
+          </div>
+          <div class="owner_edit">
+            <p class="button_type2_small">{{#link-to 'post.edit' }}Edit{{/link-to}}</p>
+          </div>
+        {{else}}
+          <div class="owner_text_info">
+            <label class="first_label">By {{model.user.display_name}}</label>
+          </div>
+        {{/if}}
+    </div>
+  </div>
+  
+  <div class="post_buttons_container">
+    {{#if notExpandInfo}}
+      <div class="more_info_button">
+        <label class="first_label"><button class="button_type2_large" {{action "setNotExpandInfo" false}}>Show Post Information</button></label>
+      </div>
+    {{else}}
+      <div class="more_info_button">
+        <label class="first_label"><button class="button_type2_large" {{action "setNotExpandInfo" true}}>Hide Post Information</button></label>
+      </div>
+    {{/if}}
+    
+    <div class="fact_link_button">
+      <label class="first_label"><a class="button_type2_large" href="{{model.fact_link}}">Fact Link</a></label>
+    </div>
+    <div class="fiction_link_button">
+      <label class="first_label"><a class="button_type2_large" href="{{model.fiction_link}}">Fiction Link</a></label>
+    </div>
+  </div>
+  
+  {{#if notExpandInfo}}
+  
+  {{else}}
+    <div class="post_tags_container">
+      <div class="genre_topic_container">
+        <div class="genre_info_container">
+          <label class="first_label">Genre: {{model.genre.name}}</label>
+        </div>
+        <div class="topic_info_container">
+          <label class="first_label">Topic: {{model.topic.name}}</label>
+        </div>
+      </div>
+      <div class="fact_type_created_on_container">
+        <div class="fact_Type_info_container">
+          <label class="first_label">Fact Type: {{model.fact_type.name}}</label>
+        </div>
+        <div class="created_on_info_container">
+          <label class="first_label">Post Created on: {{createdDate}}</label>  
+        </div>
+      </div>
+      <div class="category_updated_on_container">
+        <div class="category_info_container">
+          <label class="first_label">Category: {{model.category.name}}</label>
+        </div>
+        <div class="updated_on_info_container">
+          <label class="first_label">Post Updated on: {{updatedDate}}</label>  
+        </div>
+      </div>
+    </div>
+  {{/if}}
+  
+  <div class="post_text_container">
+    <label>{{model.text}}</label>
+  </div>
+  {{render "post.comments.index" model}}
 </div>
