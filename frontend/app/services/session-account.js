@@ -1,67 +1,64 @@
 import Ember from 'ember';
 
 const { inject: { service }, RSVP } = Ember;
-// authentication_token
 export default Ember.Service.extend ({
 	session: service('session'),
 	store: service(),
+	serverValidation: false,
 	
+	// Create a Promise to handle a server request that validates the current LocalStorage
+	// If valid, then set SessionAccount User.
 	loadCurrentUser() {
-			const userId = this.get('session.data.authenticated.userId');
-			const token = this.get('session.data.authenticated.token');
-			const email = this.get('session.data.authenticated.email');
-			var tokenAuthentication = this.get('store').createRecord('token', {
-				id: userId,
-				email: email,
-				token: token,
-			});
-			tokenAuthentication.save().then(() => {
-				console.log('HOORAY');
-			}).catch((reason) => {
-				console.log(reason);
-				alert('User Not Updated!');
-			});
-		
-		return new RSVP.Promise((resolve, reject) => {
-			const userId = this.get('session.data.authenticated.userId');
-			const token = this.get('session.data.authenticated.token');
-			const email = this.get('session.data.authenticated.email');
-			
-			if (!Ember.isEmpty(userId)) {
-				return this.get('store').find('user', userId).then((user) => {
-					this.set('user', user);
-					if(true === true){
-						if(email === this.get('user.email')){
-							resolve();
+		if (!Ember.isEmpty(this.get('session.data.authenticated.userId'))) {
+			this.serverValidation().then(() => {
+				return new RSVP.Promise((resolve, reject) => {
+					const userId = this.get('session.data.authenticated.userId');
+						// Get User to Session-Account Block
+						if(this.get('serverValidation') === true) {
+							return this.get('store').find('user', userId).then((user) => {
+								this.set('user', user);
+								resolve();
+							}).catch((reason) => {
+								console.log(reason.errors);
+								var possible404 = reason.errors.filterBy('status','404');
+								var possible500 = reason.errors.filterBy('status','500');
+								if(possible404.length !== 0) {
+									alert('404 | Sign In Not Found Error');
+									this.get('session').invalidate();
+								}
+								else if(possible500.length !== 0) {
+									alert('500 | Sign In Server Error');
+									this.get('session').invalidate();
+								}
+								reject();
+							});
 						}
 						else{
-							alert('LOCAL STORAGE HAS BEEN TAMPERED ON VALIDATION #2! LOGGING OUT');
+							alert('Session for Server Validation failed! Logging out!');
 							this.get('session').invalidate();
 							resolve();
 						}
-					}
-					else{
-						alert('LOCAL STORAGE HAS BEEN TAMPERED ON VALIDATION #1! LOGGING OUT');
-						this.get('session').invalidate();
-						resolve();
-					}
-				}).catch((reason) => {
-					console.log(reason.errors);
-					var possible404 = reason.errors.filterBy('status','404');
-					var possible500 = reason.errors.filterBy('status','500');
-					if(possible404.length !== 0) {
-						alert('404 | Sign In Error');
-						//this.get('session').invalidate();
-					}
-					else if(possible500.length !== 0) {
-						alert('500 | Sign In Server Error');
-						//this.get('session').invalidate();
-					}
-					reject;
 				});
-			} else {
+			});
+		} else {
+			// Session is empty...
+		}
+	},
+	serverValidation() {
+		return new RSVP.Promise((resolve) => {
+			var tokenAuthentication = this.get('store').createRecord('token', {
+				id: this.get('session.data.authenticated.userId'),
+				email: this.get('session.data.authenticated.email'),
+				authenticity_token: this.get('session.data.authenticated.token'),
+			});
+			tokenAuthentication.save().then(() => {
+				this.set('serverValidation',true);
+				console.log('Server Validation complete with 200');
 				resolve();
-			}
+			}).catch((reason) => {
+				this.set('serverValidation',false);
+				resolve();
+			});
 		});
 	}
 });
