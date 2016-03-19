@@ -49,6 +49,8 @@ end
 
 # Test Group
 group :development, :test do
+
+	gem "json-schema"
 	# Code Climate
 	gem "codeclimate-test-reporter", require: nil
 	# Travis CI
