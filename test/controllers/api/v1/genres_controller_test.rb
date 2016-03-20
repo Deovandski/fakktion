@@ -40,11 +40,11 @@ class Api::V1::GenresControllerTest < ActionController::TestCase
     # TODO
   end
   test "API - Update a genre" do
-    #genre = Genre.find_by name: 'test'
-    #genre.name = "mikuchan"
-    #patch :update, id: genre.id, ActiveModel::SerializableResource.new(genre).as_json
-    #genreUpdated = Genre.find_by name: 'mikuchan'
-    #assert_response :success, genreUpdated
+    genre = Genre.find_by name: 'test'
+    genre.name = "mikuchan"
+    #post :update, id: genre.id, ActiveModel::SerializableResource.new(genre).as_json
+    genreUpdated = Genre.find_by name: 'mikuchan'
+    assert_response :success, genreUpdated
   end
   test "API - Trigger Unprocessable Entity (422) when attempting to update a genre to a name that already exists" do
       # TODO

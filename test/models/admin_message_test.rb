@@ -1,7 +1,5 @@
 require 'test_helper'
 
 class AdminMessageTest < ActiveSupport::TestCase
-   test "the truth" do
-     assert true
-   end
+# Waiting for Genres Test Controller to be finished
 end
