@@ -7,10 +7,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
   # Replace with protect_from_forgery with: :exception later on...
 
-  def index
-    render layout: false
-  end
-
   protected
   def authenticate_user_from_token!
     authenticate_with_http_token do |token, options|

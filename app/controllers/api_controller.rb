@@ -9,10 +9,6 @@ class ApiController < ActionController::Base
   
   before_action :authenticate_user_from_token!
 
-  def index
-    render layout: false
-  end
-
   protected
   def disable_devise_trackable
     request.env["devise.skip_trackable"] = true

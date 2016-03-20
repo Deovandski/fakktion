@@ -27,7 +27,7 @@ class CreateBlog < ActiveRecord::Migration
       t.string :text
       t.integer :empathy_level, default: 0
       t.boolean :hidden, default: false
-	  t.integer  :inner_comments_count, default: 0
+      t.integer  :inner_comments_count, default: 0
       t.timestamps null: false
     end
  
@@ -44,7 +44,7 @@ class CreateBlog < ActiveRecord::Migration
       t.string :title
       t.string :text
       t.integer :importance, default: 0
-	  t.integer  :comments_count, default: 0
+      t.integer  :comments_count, default: 0
       t.integer  :views_count, default: 0
       t.boolean :hidden
       t.timestamps null: false
