@@ -1,0 +1,11 @@
+{
+  "data": {
+    "id" : { "type" : "number" },
+    "type" : { "type" : "string" },
+    "attributes": {
+      "name" : { "type" : "string" },
+      "eligibility_counter" : { "type" : "number" },
+      "posts_count" : { "type" : "number" }
+    }
+  }
+}

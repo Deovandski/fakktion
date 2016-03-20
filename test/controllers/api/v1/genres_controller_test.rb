@@ -1,38 +1,50 @@
 require 'test_helper'
 
 class Api::V1::GenresControllerTest < ActionController::TestCase
-  test "should get index" do
-    genres = get :index
-    assert_response :success, genres
+  # Called before every test
+  setup do
+    @request.headers["Content-Type"] = "application/json; charset=utf-8"
+    @testGenre = Genre.new(name: 'TEST', eligibility_counter: 0, posts_count: 0)
+    @testGenre.save
+    @apiGenre = Genre.new(name: 'luka', eligibility_counter: 0, posts_count: 0)
   end
-  test "Check that all saved Genres are lowercase normalized" do
-    genre = Genre.new(name: 'TEST', eligibility_counter: 0, posts_count: 0)
-    genre.save
+  # Called after test
+  def teardown
+    @testGenre = nil
+    @apiGenre = nil
+    @genreSerialized = nil
+  end
+  test "API - should get index" do
+    get :index
+    assert_response_schema('genres/index.json')
+  end
+  test "API - Test Genre Serializer" do
+    sampleSenre = Genre.new
+    serializer = ActiveModel::Serializer.serializer_for(sampleSenre)
+    assert_equal GenreSerializer, serializer
+  end
+  test "API - Create a Genre" do
+    assert_difference('Genre.count', +1) do
+      post :create, ActiveModel::SerializableResource.new(@apiGenre).as_json
+    end
+  end
+  test "API - Get a genre" do
+    get :show, id: @testGenre.id
+    assert_response_schema('genres/show.json')
+  end
+  test "API - Check that all saved Genres are lowercase normalized" do
     genre = Genre.find_by name: 'TEST'
     assert_response :success, genre
   end
-  test "Get a genre" do
-    assert_response :success, Genre.first()
-  end
-  test "Save a Genre" do
-    genre = Genre.new(name: 'test genre', eligibility_counter: 0, posts_count: 0)
-    genre.save
-    genre = Genre.find_by name: 'test genre'
-    assert_response :success, genre
-  end
-  test "Update a genre" do
-    genre = Genre.new(name: 'test genre', eligibility_counter: 0, posts_count: 0)
-    genre.save
-    genre = Genre.find_by name: 'test genre'
-    genre.name = "mikuchan"
-    genre.save
+  test "API - Update a genre" do
+    @testGenre.name = "mikuchan"
+    @testGenre.save
     genre = Genre.find_by name: 'mikuchan'
     assert_response :success, genre
   end
-  test "Destroy a Genre" do
-    genre = Genre.new(name: 'test genre', eligibility_counter: 0, posts_count: 0)
-    genre.save
-    genre = Genre.find_by name: 'test genre'
-    assert_response :success, genre.destroy
+  test "API - Destroy a Genre" do
+    assert_difference('Genre.count', -1) do
+      delete :destroy, id: @testGenre.id
+    end
   end
 end

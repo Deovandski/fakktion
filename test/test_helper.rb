@@ -1,4 +1,6 @@
 require "codeclimate-test-reporter"
+require 'active_support/json'
+require 'active_model_serializers'
 
 CodeClimate::TestReporter.start
 ENV['RAILS_ENV'] ||= 'test'
