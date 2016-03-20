@@ -28,19 +28,26 @@ class Api::V1::GenresControllerTest < ActionController::TestCase
       post :create, ActiveModel::SerializableResource.new(@apiGenre).as_json
     end
   end
+  test "API - Trigger Unprocessable Entity (422) when attempting to creating a genre that already exists." do
+      post :create, ActiveModel::SerializableResource.new(@testGenre).as_json
+      assert_response(422)
+  end
   test "API - Get a genre" do
     get :show, id: @testGenre.id
     assert_response_schema('genres/show.json')
   end
   test "API - Check that all saved Genres are lowercase normalized" do
-    genre = Genre.find_by name: 'TEST'
-    assert_response :success, genre
+    # TODO
   end
   test "API - Update a genre" do
-    @testGenre.name = "mikuchan"
-    @testGenre.save
-    genre = Genre.find_by name: 'mikuchan'
-    assert_response :success, genre
+    #genre = Genre.find_by name: 'test'
+    #genre.name = "mikuchan"
+    #patch :update, id: genre.id, ActiveModel::SerializableResource.new(genre).as_json
+    #genreUpdated = Genre.find_by name: 'mikuchan'
+    #assert_response :success, genreUpdated
+  end
+  test "API - Trigger Unprocessable Entity (422) when attempting to update a genre to a name that already exists" do
+      # TODO
   end
   test "API - Destroy a Genre" do
     assert_difference('Genre.count', -1) do
