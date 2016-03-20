@@ -148,7 +148,7 @@ Rails.logger.info 'Default posts created!'
 
 # COMMENTS RELATED SEED
 
-if Comment.count == 0
+if Comment.count != 0
   Comment.delete_all
   Rails.logger.info 'All previous comments deleted...'
 end
@@ -171,7 +171,7 @@ Rails.logger.info 'Default comments created!'
 
 # INNER COMMENTS RELATED SEED
 
-if InnerComment.count == 0
+if InnerComment.count != 0
   InnerComment.delete_all
   Rails.logger.info 'All previous comments deleted...'
 end
