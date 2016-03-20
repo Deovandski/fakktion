@@ -1,0 +1,10 @@
+{
+  "data": {
+    "id" : { "type" : "number" },
+    "type" : { "type" : "string" },
+    "attributes": {
+      "name" : { "type" : "string" },
+      "posts_count" : { "type" : "number" }
+    }
+  }
+}

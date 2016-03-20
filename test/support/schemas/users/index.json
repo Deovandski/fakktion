@@ -1,0 +1,35 @@
+{
+  "data": {
+    "id" : { "type" : "number" },
+    "type" : { "type" : "string" },
+    "attributes": {
+      "admin_messages_count" : { "type" : "number" },
+      "authentication_token" : { "type" : "string" },
+      "comments_count" : { "type" : "number" },
+      "current_sign_in_at" : { "type" : "date" },
+      "current_sign_in_ip" : { "type" : "string" },
+      "date_of_birth" : { "type" : "date" },
+      "display_name" : { "type" : "string" },
+      "email" : { "type" : "string" },
+      "facebook_url" : { "type" : "string" },
+      "full_name" : { "type" : "string" },
+      "gender" : { "type" : "number" },
+      "is_admin" : { "type" : "boolean" },
+      "is_banned" : { "type" : "boolean" },
+      "is_banned_date" : { "type" : "date" },
+      "legal_terms_read" : { "type" : "boolean" },
+      "personal_message" : { "type" : "string" },
+      "posts_count" : { "type" : "number" },
+      "privacy_terms_read" : { "type" : "boolean" },
+      "remember_created_at" : { "type" : "date" },
+      "reset_password_sent_at" : { "type" : "date" },
+      "reset_password_token" : { "type" : "string" },
+      "show_full_name" : { "type" : "boolean" },
+      "sign_in_count" : { "type" : "number" },
+      "times_banned" : { "type" : "number" },
+      "posts_count" : { "type" : "number" },
+      "twitter_url" : { "type" : "string" },
+      "webpage_url" : { "type" : "string" }
+    }
+  }
+}

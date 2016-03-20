@@ -11,9 +11,9 @@ class CreateBlog < ActiveRecord::Migration
       t.date :date_of_birth
       t.date :is_banned_date
       t.integer :gender
-	  t.integer  :admin_messages_count, default: 0
-	  t.integer  :posts_count, default: 0
-	  t.integer  :comments_count, default: 0
+      t.integer  :admin_messages_count, default: 0
+      t.integer  :posts_count, default: 0
+      t.integer  :comments_count, default: 0
       t.boolean :is_banned, default: false
       t.integer :times_banned, default: 0
       t.boolean :legal_terms_read, default: false

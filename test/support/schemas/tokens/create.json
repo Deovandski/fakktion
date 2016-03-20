@@ -1,0 +1,10 @@
+{
+  "data": {
+    "id" : { "type" : "number" },
+    "type" : { "type" : "string" },
+    "attributes": {
+      "email" : { "type" : "string" },
+      "authenticity_token" : { "type" : "string" }
+    }
+  }
+}

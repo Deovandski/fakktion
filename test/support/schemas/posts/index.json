@@ -1,0 +1,16 @@
+{
+  "data": {
+    "id" : { "type" : "number" },
+    "type" : { "type" : "string" },
+    "attributes": {
+      "comments_count" : { "type" : "number" },
+      "fact_link" : { "type" : "string" },
+      "fiction_link" : { "type" : "string" },
+      "hidden" : { "type" : "boolean" },
+      "importance" : { "type" : "number" },
+      "text" : { "type" : "string" },
+      "title" : { "type" : "string" },
+      "views_count" : { "type" : "number" }
+    }
+  }
+}
