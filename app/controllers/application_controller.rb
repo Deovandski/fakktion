@@ -1,11 +1,10 @@
 # Application Controller: User Authentication from token control
-# + Mkay CSRF protection for all Devise requests.
+# + CSRF protection for all Devise requests.
 class ApplicationController < ActionController::Base
   before_action :authenticate_user_from_token!
-
-  # Full CSRF protection is not working....
-  protect_from_forgery with: :null_session
-  # Replace with protect_from_forgery with: :exception later on...
+  
+  # Full CSRF protection
+  protect_from_forgery with: :exception
 
   protected
   

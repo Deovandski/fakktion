@@ -3,12 +3,16 @@ import DS from "ember-data";
 import Ember from "ember";
 import ENV from "../config/environment";
 import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
+import $ from 'jquery';
 
 
 export default DS.JSONAPIAdapter.extend (DataAdapterMixin,{
   // Namespace.
   namespace: 'api/v1',
   authorizer: 'authorizer:devise',
+  headers: {
+    "X-CSRF-Token": $('meta[name="csrf-token"]').attr('content')
+  },
 
   // if your rails app is on a different port from your ember app
   // this can be helpful for development.

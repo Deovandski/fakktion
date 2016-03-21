@@ -14,6 +14,7 @@ class Api::V1::UsersController < ApiController
 
   # Render the created User using UserSerializer and the AMS Deserialization.
   def create
+    user_params.delete(:current_password)
     tempUser = User.new(user_params)
     tempUser.sign_in_count = 0
     tempUser.webpage_url = ""
