@@ -6,9 +6,9 @@ engines:
   gofmt:
     enabled: true
   eslint:
-    enabled: false
+    enabled: true
   csslint:
-    enabled: false
+    enabled: true
   bundler-audit:
     enabled: true
 ratings:
