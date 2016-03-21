@@ -14,8 +14,7 @@ class Api::V1::UsersController < ApiController
 
   # Render the created User using UserSerializer and the AMS Deserialization.
   def create
-    user_params.delete(:current_password)
-    tempUser = User.new(user_params)
+    tempUser = User.new(user_params.except(:current_password))
     tempUser.sign_in_count = 0
     tempUser.webpage_url = ""
     tempUser.is_banned = false
@@ -32,12 +31,7 @@ class Api::V1::UsersController < ApiController
     # Check if password is blank, if so, clear :current_password
     # and update without password, else updates password.
     if user_params[:password].blank? || user_params[:current_password].blank?
-      # user_params deletion not working... PW params must be emptied on
-      # client for now otherwise a 500 is triggered.
-      # Waiting on https://stackoverflow.com/questions/36121282/how-to-remove-parameters-from-ams-0-10-0-rc4-deserialization
-      user_params.delete(:password)
-      user_params.delete(:current_password)
-      user.update_without_password(user_params)
+      user.update_without_password(user_params.except(:current_password,:password))
       render json: user
     else
       if user.update_with_password(user_params)
