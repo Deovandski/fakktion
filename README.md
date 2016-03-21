@@ -3,7 +3,7 @@
 ![](/FakktionLogo.png)
 
 ####Project
-[![Build Status][travis-badge]][travis] [![Code Climate][codeClimate-badge]][codeClimate] [![Dependency Status][dependency-badge]][dependency] [![Codebeat][codebeat-badge]][codebeat]
+[![Build Status][travis-badge]][travis] [![Code Climate][codeClimate-badge]][codeClimate] [![Dependency Status][dependency-badge]][dependency] [![Issues][issues-badge]][issues] [![Codebeat][codebeat-badge]][codebeat]
 
 ####Rails Only
 [![Test Coverage][testCoverage-badge]][testCoverage] [![Security][security-badge]][security] [![Docs][docs-badge]][docs]
@@ -70,3 +70,5 @@ All rights reserved.
 [codebeat-badge]: https://codebeat.co/badges/21ac6d47-4e3b-4b35-ae94-a5901fa8e334
 [docs]: http://inch-ci.org/github/deovandski/fakktion/branch/master
 [docs-badge]: https://inch-ci.org/github/deovandski/fakktion.svg?branch=master
+[issues]: https://codeclimate.com/github/Deovandski/Fakktion
+[issues-badge]: https://codeclimate.com/github/Deovandski/Fakktion/badges/issue_count.svg
