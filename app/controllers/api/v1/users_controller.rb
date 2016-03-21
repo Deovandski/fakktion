@@ -2,14 +2,17 @@
 class Api::V1::UsersController < ApiController
   respond_to :json
 
+  # Render all Users using UserSerializer.
   def index
     render json: User.all
   end
 
+  # Render the specified User using UserSerializer.
   def show
     render json: user
   end
 
+  # Render the created User using UserSerializer and the AMS Deserialization.
   def create
     tempUser = User.new(user_params)
     tempUser.sign_in_count = 0
@@ -23,24 +26,29 @@ class Api::V1::UsersController < ApiController
     render json: tempUser
   end
 
+  # Render the updated User using UserSerializer and the AMS Deserialization.
   def update
-    #Remove password parameters if there was no request
-    #However, keep :current_password since it is always checked.
-    if user_params[:password].blank?
+    # Check if password is blank, if so, clear :current_password
+    # and update without password, else updates password.
+    if user_params[:password].blank? || user_params[:current_password].blank?
+      # user_params deletion not working... PW params must be emptied on
+      # client for now otherwise a 500 is triggered.
+      # Waiting on https://stackoverflow.com/questions/36121282/how-to-remove-parameters-from-ams-0-10-0-rc4-deserialization
       user_params.delete(:password)
       user_params.delete(:current_password)
-    end
-    if needs_password?(user, user_params)
-      user.update_with_password(user_params)
-      render json: user
-    else
       user.update_without_password(user_params)
       render json: user
+    else
+      if user.update_with_password(user_params)
+        render json: user, status: :ok
+      else
+        render json: user.errors, status: :unprocessable_entity
+      end
     end
   end
 
+  # Destroy User from the AMS Deserialization params.
   def destroy
-    # Proper Way To Destroy?
     if user.destroy
       render json: {}, status: :no_content
     else
@@ -50,14 +58,12 @@ class Api::V1::UsersController < ApiController
 
   private
   
+  # User object from the Deserialization params if there is an id.
   def user
     User.find(params[:id])
   end
   
-  def needs_password?(user, params)
-    params[:password].present?
-  end
-  
+  # AMS User Deserialization.
   def user_params
     ActiveModelSerializers::Deserialization.jsonapi_parse!(params.to_unsafe_h)
   end

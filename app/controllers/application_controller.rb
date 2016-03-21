@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
   # Replace with protect_from_forgery with: :exception later on...
 
   protected
+  
+  # Login User from token if there is one present on the Header.
   def authenticate_user_from_token!
     authenticate_with_http_token do |token, options|
       user_email = options[:email].presence

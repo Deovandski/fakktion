@@ -1,4 +1,5 @@
 <h2>Edit User Information</h2>
+
 <form>
   <div class="input_block_typeUser">
     <label class="first_label">Full Name:</label>
@@ -16,21 +17,20 @@
     <label class="second_label">{{verifyDateOfBirth}}</label>
   </div><br/>
   <div class="input_block_typeUser">
-    <label class="first_label">Email:</label>
-    <label class="input_wrapper">{{input value=model.user.email}}</label>
-    <label class="second_label">{{verifyEmail}}</label>
-  </div><br/>
-  <div class="input_block_typeUser">
     <label class="first_label">Gender:</label>
     <label class="input_wrapper">{{input value=model.user.gender}}</label>
     <label class="second_label">{{verifyGender}}</label>
   </div><br/>
-    <div class="input_block_checkbox_typeUser">
+  <div class="input_block_typeUser">
+    <label class="first_label">Email:</label>
+    <label class="input_wrapper">{{input value=model.user.email}}</label>
+    <label class="second_label">{{verifyEmail}}</label>
+  </div><br/>
+  <div class="input_block_checkbox_typeUser">
     <label class="first_label">Show full name on profile:</label>
     <label class="input_wrapper">{{input type="checkbox" checked=model.user.show_full_name}}</label>
     <label class="second_label">{{verifyShowFullName}}</label>
   </div><br/>
-
   {{#if showPassword}}
     <div class="input_block_typeUser">
       <label class="first_label"><button class="button_type2_large" {{action "setShowPassword" false}}>Cancel Password Change</button></label>

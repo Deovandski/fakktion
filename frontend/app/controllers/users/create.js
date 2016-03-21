@@ -170,8 +170,7 @@ export default Ember.Controller.extend ({
         });
         var self = this; // Controller instance for route transitioning.
         user.save().then(function() {
-          // Automatically login user?
-          self.transitionToRoute('user', user);
+          self.transitionToRoute('login');
         }, function() {
           alert('(Server 402) failed to create User... Check your input and try again!');
         });

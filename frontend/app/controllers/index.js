@@ -1,5 +1,6 @@
 import Ember from "ember";
 import moment from 'moment';
+const { service } = Ember.inject;
 
 /* The direct ids used on Index filter matching methodology
 * has been choosen due to how complex it can become when attempting
@@ -7,6 +8,8 @@ import moment from 'moment';
 */
 export default Ember.Controller.extend ({
   application: Ember.inject.controller('application'),
+  session:        service('session'),
+  sessionAccount: service('session-account'),
   filteredPosts: Ember.computed('application.selectedGID',
   'application.selectedCID', 'application.selectedFTID',
   'application.selectedTID', 'application.selectedPDID',

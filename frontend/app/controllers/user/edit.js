@@ -1,8 +1,13 @@
 import Ember from "ember";
 import moment from 'moment';
 const { service } = Ember.inject;
-
+/*
+ * TO HANDLE: When the current_password is invalid, Server replies InvalidError
+ * with the message below:
+ * "The adapter rejected the commit because it was invalid"
+*/
 export default Ember.Controller.extend ({
+  application: Ember.inject.controller('application'),
   session: service('session'),
   sessionAccount: service('session-account'),
   currentPassword: "",
@@ -160,7 +165,7 @@ export default Ember.Controller.extend ({
   }),
   verifyFacebookURL: Ember.computed('model.user.facebook_url', function() {
     if(this.get('model.user.facebook_url') !== '') {
-      if(this.get('model.facebook_url').indexOf("facebook") !== -1) {
+      if(this.get('model.user.facebook_url').indexOf("https://www.facebook.com") !== -1) {
         this.set("clientSideValidationComplete", true);
         return "";
       }
@@ -176,7 +181,7 @@ export default Ember.Controller.extend ({
   }),
   verifyTwitterURL: Ember.computed('model.user.twitter_url', function() {
     if(this.get('model.user.twitter_url') !== '') {
-      if(this.get('model.user.twitter_url').indexOf("twitter") !== -1) {
+      if(this.get('model.user.twitter_url').indexOf("https://twitter.com") !== -1) {
         this.set("clientSideValidationComplete", true);
         return "";
       }
@@ -193,7 +198,7 @@ export default Ember.Controller.extend ({
   verifyWebpageURL: Ember.computed('model.user.webpage_url', function() {
     
     if(this.get('model.user.webpage_url') !== '') {
-      if(this.get('model.user.webpage_url').length < 10) {
+      if(this.get('model.user.webpage_url').length < 8) {
         this.set("clientSideValidationComplete", false);
         return "Invalid URL";
       }
@@ -232,13 +237,13 @@ export default Ember.Controller.extend ({
         }
         else {
            //Identify Password as blank in order to trigger user.update_without_password(user_params)
-          user.set('password', "");
+          user.set('password', null);
         }
         if(this.get('currentPassword') !== null && this.get('currentPassword') !== '') {
           user.set('current_password', this.get('currentPassword'));
         }
         else {
-          user.set('current_password', "");
+          user.set('current_password', null);
         }
         user.save().then(() => {
           this.transitionToRoute('user', user);

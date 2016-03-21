@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
 	# Include default devise modules. Others available are:
 	# :confirmable, :lockable, :timeoutable and :omniauthable
 	# users.password_hash in the database is a :string
-	# users.password_hash in the database is a :string
 	include BCrypt
 	devise :database_authenticatable, :registerable,
 		 :recoverable, :rememberable, :trackable, :validatable
