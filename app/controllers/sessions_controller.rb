@@ -4,6 +4,8 @@ class SessionsController < Devise::SessionsController
 
   def create
     super do |user|
+      user.authentication_token = Devise.friendly_token
+      user.save
       if request.format.json?
       data =
       {
