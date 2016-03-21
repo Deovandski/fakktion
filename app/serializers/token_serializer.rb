@@ -1,4 +1,4 @@
 # Token Serializer
 class TokenSerializer < ActiveModel::Serializer
-  attributes  :email
+  attributes :email
 end
