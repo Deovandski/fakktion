@@ -8,7 +8,7 @@ gem "foreman", '>=0.78'
 gem "local_time", '>=1.0'
 
 # Webserver
-gem "puma", '>=2.16'
+gem "puma", '>=3.2'
 
 # Waiting for 0.10: https://github.com/rails-api/active_model_serializers
 gem 'active_model_serializers', '0.10.0.rc4'
