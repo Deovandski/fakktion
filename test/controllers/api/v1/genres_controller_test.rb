@@ -42,7 +42,8 @@ class Api::V1::GenresControllerTest < ActionController::TestCase
   test "API - Update a genre" do
     genre = Genre.find_by name: 'test'
     genre.name = "mikuchan"
-    #post :update, id: genre.id, ActiveModel::SerializableResource.new(genre).as_json
+    tempGenre = ActiveModel::SerializableResource.new(genre).serializable_hash
+    post :update, tempGenre.merge(id: genre.id)
     genreUpdated = Genre.find_by name: 'mikuchan'
     assert_response :success, genreUpdated
   end

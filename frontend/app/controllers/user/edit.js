@@ -247,9 +247,9 @@ export default Ember.Controller.extend ({
         }
         var self = this; // Controller instance for route transitioning.
         user.save().then(() => {
-          self.set('currentPassword', "")
-          self.set('newPassword', "")
-          self.set('newPasswordConfirmation', "")
+          self.set('currentPassword', "");
+          self.set('newPassword', "");
+          self.set('newPasswordConfirmation', "");
           self.transitionToRoute('user', user);
         }).catch((reason) => {
           console.log(reason);
