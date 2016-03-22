@@ -7,8 +7,7 @@ class SessionsController < Devise::SessionsController
       user.authentication_token = Devise.friendly_token
       user.save
       if request.format.json?
-      data =
-      {
+      data = {
         token: user.authentication_token,
         email: user.email,
         userId: user.id

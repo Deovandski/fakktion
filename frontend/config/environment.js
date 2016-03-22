@@ -24,7 +24,7 @@ module.exports = function(environment) {
       // when it is created
     },
     contentSecurityPolicy: {
-  		'connect-src': "*"
+      'connect-src': "*"
     }
   };
 
@@ -46,10 +46,6 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
-  }
-
-  if (environment === 'production') {
-
   }
 
   ENV['ember-simple-auth'] = {

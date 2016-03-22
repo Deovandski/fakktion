@@ -166,7 +166,7 @@ export default Ember.Controller.extend ({
           date_of_birth: moment(this.get('dateOfBirth')).toDate(),
           show_full_name: this.get('showFullName'),
           is_banned: false,
-          is_admin: false,
+          is_admin: false
         });
         var self = this; // Controller instance for route transitioning.
         user.save().then(function() {

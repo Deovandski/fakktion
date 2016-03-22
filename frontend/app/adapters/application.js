@@ -3,7 +3,6 @@ import DS from "ember-data";
 import Ember from "ember";
 import ENV from "../config/environment";
 import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
-import $ from 'jquery';
 
 
 export default DS.JSONAPIAdapter.extend (DataAdapterMixin,{
