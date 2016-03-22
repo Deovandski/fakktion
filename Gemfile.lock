@@ -131,7 +131,7 @@ GEM
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
     pg (0.18.4)
-    puma (3.1.0)
+    puma (3.2.0)
     pusher-client (0.6.2)
       json
       websocket (~> 1.0)
@@ -244,7 +244,7 @@ DEPENDENCIES
   local_time (>= 1.0)
   neat
   pg (>= 0.18)
-  puma (>= 2.16)
+  puma (>= 3.2)
   rails
   rails-erd (>= 1.4)
   rails_12factor (>= 0.0.3)

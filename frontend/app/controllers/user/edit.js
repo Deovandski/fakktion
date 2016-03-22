@@ -245,8 +245,12 @@ export default Ember.Controller.extend ({
         else {
           user.set('current_password', null);
         }
+        var self = this; // Controller instance for route transitioning.
         user.save().then(() => {
-          this.transitionToRoute('user', user);
+          self.set('currentPassword', "")
+          self.set('newPassword', "")
+          self.set('newPasswordConfirmation', "")
+          self.transitionToRoute('user', user);
         }).catch((reason) => {
           console.log(reason);
           alert('User Not Updated!');
