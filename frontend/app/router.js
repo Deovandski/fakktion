@@ -89,6 +89,9 @@ Router.map(function() {
   this.route('privacy_info');
   this.route('support');
   this.route('about');
+  
+  // 404 Handler
+  this.route('not-found', { path: '/*wildcard' });
 });
 
 export default Router;
