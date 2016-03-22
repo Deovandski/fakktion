@@ -31,7 +31,7 @@ export default Ember.Controller.extend ({
     create: function() {
       if(this.get('clientSideValidationComplete') === true) {
         var genre = this.store.createRecord('genre', {
-          name: this.get('name');
+          name: this.get('name')
         });
         var self = this;
         genre.save().then(function() {

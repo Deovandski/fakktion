@@ -32,7 +32,7 @@ export default Ember.Controller.extend ({
       if(this.get('clientSideValidationComplete') === true) {
         var store = this.store;
         var topic = store.createRecord('topic', {
-          name: this.get('name');
+          name: this.get('name')
         });
         var self = this;
         topic.save().then(function() {

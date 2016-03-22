@@ -31,7 +31,7 @@ export default Ember.Controller.extend ({
     create: function() {
       if(this.get('clientSideValidationComplete') === true) {
         var factType = this.store.createRecord('fact_type', {
-          name: this.get('name');
+          name: this.get('name')
         });
         var self = this; // Controller instance for route transitioning.
         factType.save().then(function() {
