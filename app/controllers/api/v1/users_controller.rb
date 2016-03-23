@@ -44,11 +44,7 @@ class Api::V1::UsersController < ApiController
 
   # Destroy User from the AMS Deserialization params.
   def destroy
-    if user.destroy
-      render json: {}, status: :no_content
-    else
-      render json: user.errors, status: :unprocessable_entity
-    end
+    json_destroy(genre)
   end
 
   private

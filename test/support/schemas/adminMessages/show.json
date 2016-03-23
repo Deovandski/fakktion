@@ -1,0 +1,10 @@
+{
+  "data": {
+    "id" : { "type" : "number" },
+    "type" : { "type" : "string" },
+    "attributes": {
+      "message" : { "type" : "string" },
+      "title" : { "type" : "string" }
+    }
+  }
+}

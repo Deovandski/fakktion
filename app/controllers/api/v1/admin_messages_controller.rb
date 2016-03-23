@@ -14,26 +14,17 @@ class Api::V1::AdminMessagesController < ApiController
 
   # Render the created AdminMessage using AdminMessageSerializer and the AMS Deserialization.
   def create
-    adminMessage = AdminMessage.create(adminMessage_params, AdminMessage)
-    render json: adminMessage
+    json_create(adminMessage_params, AdminMessage)
   end
-  
+
   # Render the updated AdminMessage using AdminMessageSerializer and the AMS Deserialization.
   def update
-    if adminMessage.update(adminMessage_params)
-      render json: adminMessage, status: :ok
-    else
-      render json: adminMessage.errors, status: :unprocessable_entity
-    end
+    json_update(adminMessage,adminMessage_params)
   end
 
   # Destroy AdminMessage from the AMS Deserialization params.
   def destroy
-    if adminMessage.destroy
-      render json: {}, status: :no_content
-    else
-      render json: adminMessage.errors, status: :unprocessable_entity
-    end
+    json_destroy(adminMessage)
   end
 
   private

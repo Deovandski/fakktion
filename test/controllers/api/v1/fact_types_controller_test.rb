@@ -11,7 +11,7 @@ class Api::V1::FactTypesControllerTest < ActionController::TestCase
   def teardown
     @testFactType = nil
     @apiFactType = nil
-    @genreSerialized = nil
+    @factTypeSerialized = nil
   end
   test "FactTypes - API - Get Index" do
     get :index
