@@ -14,30 +14,17 @@ class Api::V1::GenresController < ApiController
 
   # Render the created Genres using GenreSerializer and the AMS Deserialization.
   def create
-    genre = Genre.new(genre_params)
-    if genre.save
-      render json: genre, status: :ok
-    else
-      render json: genre.errors, status: :unprocessable_entity
-    end
+    json_create(genre_params)
   end
 
   # Render the updated Genre using GenreSerializer and the AMS Deserialization.
   def update
-    if genre.update(genre_params)
-      render json: genre, status: :ok
-    else
-      render json: genre.errors, status: :unprocessable_entity
-    end
+    json_update(genre,genre_params)
   end
 
   # Destroy Genre from the AMS Deserialization params.
   def destroy
-    if genre.destroy
-      render json: {}, status: :no_content
-    else
-      render json: genre.errors, status: :unprocessable_entity
-    end
+    json_destroy(genre)
   end
 
   private
