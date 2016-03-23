@@ -32,12 +32,11 @@ class Api::V1::UsersController < ApiController
     # and update without password, else updates password.
     if user_params[:password].blank? || user_params[:current_password].blank?
       user.update_without_password(user_params.except(:current_password,:password))
-      render json: user
-    else if user.update_with_password(user_params)
+      render json: user, status: :ok
+    elsif user.update_with_password(user_params)
       render json: user, status: :ok
     else
       render json: user.errors, status: :unprocessable_entity
-      end
     end
   end
 
