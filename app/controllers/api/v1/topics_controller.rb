@@ -14,28 +14,19 @@ class Api::V1::TopicsController < ApiController
 
   # Render the created Topic using TopicSerializer and the AMS Deserialization.
   def create
-    topic = Topic.create(topic_params)
-    render json: topic
+    json_create(topic_params, Topic)
   end
 
   # Render the updated Topic using TopicSerializer and the AMS Deserialization.
   def update
-    if topic.update(topic_params)
-      render json: topic, status: :ok
-    else
-      render json: topic.errors, status: :unprocessable_entity
-    end
-  end
-  
-  # Destroy Topic from the AMS Deserialization params.
-  def destroy
-    if topic.destroy
-      render json: {}, status: :no_content
-    else
-      render json: topic.errors, status: :unprocessable_entity
-    end
+    json_update(topic,topic_params)
   end
 
+  # Destroy Topic from the AMS Deserialization params.
+  def destroy
+    json_destroy(topic)
+  end
+  
   private
 
   # Topic object from the Deserialization params if there is an id.

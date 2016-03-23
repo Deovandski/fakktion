@@ -16,9 +16,8 @@ class Genre < ActiveRecord::Base
     self.name = name.downcase
   end
   
-  # Make sure that there are no posts using the tag before destruction.
+  # Make sure that there are no posts using this tag before destruction.
   def check_for_posts
-    puts self.posts_count
     if self.posts.any?
       errors[:base] << "cannot delete Genre tag when posts are using it!"
       return false

@@ -14,7 +14,7 @@ class Api::V1::GenresController < ApiController
 
   # Render the created Genres using GenreSerializer and the AMS Deserialization.
   def create
-    json_create(genre_params)
+    json_create(genre_params, Genre)
   end
 
   # Render the updated Genre using GenreSerializer and the AMS Deserialization.

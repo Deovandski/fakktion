@@ -14,7 +14,7 @@ class Api::V1::AdminMessagesController < ApiController
 
   # Render the created AdminMessage using AdminMessageSerializer and the AMS Deserialization.
   def create
-    adminMessage = AdminMessage.create(adminMessage_params)
+    adminMessage = AdminMessage.create(adminMessage_params, AdminMessage)
     render json: adminMessage
   end
   

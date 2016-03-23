@@ -11,30 +11,20 @@ class Api::V1::InnerCommentsController < ApiController
   def show
     render json: innerComment
   end
-
+  
   # Render the created InnerComment using InnerCommentSerializer and the AMS Deserialization.
   def create
-    innerComment = InnerComment.create(innerComment_params)
-    render json: innerComment
+    json_create(innerComment_params, innerComment)
   end
 
   # Render the updated InnerComment using InnerCommentSerializer and the AMS Deserialization.
   def update
-    if innerComment.update(innerComment_params)
-      render json: innerComment, status: :ok
-    else
-      render json: innerComment.errors, status: :unprocessable_entity
-    end
+    json_update(innerComment,innerComment_params)
   end
-  
 
   # Destroy InnerComment from the AMS Deserialization params.
   def destroy
-    if innerComment.destroy
-      render json: {}, status: :no_content
-    else
-      render json: comment.errors, status: :unprocessable_entity
-    end
+    json_destroy(innerComment)
   end
 
   private

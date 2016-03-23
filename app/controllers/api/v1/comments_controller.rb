@@ -16,28 +16,19 @@ class Api::V1::CommentsController < ApiController
 
   # Render the created Comment using CommentSerializer and the AMS Deserialization.
   def create
-    comment = Comment.create(comment_params)
-    render json: comment
-  end
-  
-  # Render the updated Comment using CommentSerializer and the AMS Deserialization.
-  def update
-    if comment.update(comment_params)
-      render json: comment, status: :ok
-    else
-      render json: comment.errors, status: :unprocessable_entity
-    end
-  end
-  
-  # Destroy Comment from the AMS Deserialization params.
-  def destroy
-    if comment.destroy
-      render json: {}, status: :no_content
-    else
-      render json: comment.errors, status: :unprocessable_entity
-    end
+    json_create(comment_params, Comment)
   end
 
+  # Render the updated Comment using CommentSerializer and the AMS Deserialization.
+  def update
+    json_update(comment,comment_params)
+  end
+
+  # Destroy Comment from the AMS Deserialization params.
+  def destroy
+    json_destroy(comment)
+  end
+  
   private
 
   # Comment object from the Deserialization params if there is an id.

@@ -6,8 +6,8 @@ class ApiController < ActionController::Base
   # Disable Devise Trackable for all API requests
   # Devise Trackable still tracks login since Devise is hooked to ApplicationController.
   
-  def json_create(resource_params)
-    resource_obj = Genre.new(resource_params)
+  def json_create(resource_params, resource_model)
+    resource_obj = resource_model.new(resource_params)
     if resource_obj.save
       return render json: resource_obj, status: :ok
     else

@@ -14,28 +14,19 @@ class Api::V1::FactTypesController < ApiController
 
   # Render the created FactType using FactTypeSerializer and the AMS Deserialization.
   def create
-    factType = Topic.create(factType_params)
-    render json: factType
+    json_create(factType_params, FactType)
   end
 
   # Render the updated FactType using FactTypeSerializer and the AMS Deserialization.
   def update
-    if factType.update(factType_params)
-      render json: factType, status: :ok
-    else
-      render json: factType.errors, status: :unprocessable_entity
-    end
-  end
-  
-  # Destroy FactType from the AMS Deserialization params.
-  def destroy
-    if factType.destroy
-      render json: {}, status: :no_content
-    else
-      render json: factType.errors, status: :unprocessable_entity
-    end
+    json_update(factType,factType_params)
   end
 
+  # Destroy FactType from the AMS Deserialization params.
+  def destroy
+    json_destroy(factType)
+  end
+  
   private
 
   # FactType object from the Deserialization params if there is an id.

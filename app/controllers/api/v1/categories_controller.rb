@@ -14,28 +14,19 @@ class Api::V1::CategoriesController < ApiController
 
   # Render the created Category using CategoriesSerializer and the AMS Deserialization.
   def create
-    category = Category.create(category_params)
-    render json: category
+    json_create(category_params, Category)
   end
 
   # Render the updated Category using CategoriesSerializer and the AMS Deserialization.
   def update
-    if category.update(category_params)
-      render json: category, status: :ok
-    else
-      render json: category.errors, status: :unprocessable_entity
-    end
-  end
-  
-  # Destroy Categories from the AMS Deserialization params.
-  def destroy
-    if category.destroy
-      render json: {}, status: :no_content
-    else
-      render json: category.errors, status: :unprocessable_entity
-    end
+    json_update(category,category_params)
   end
 
+  # Destroy Categories from the AMS Deserialization params.
+  def destroy
+    json_destroy(category)
+  end
+  
   private
 
   # Categories object from the Deserialization params if there is an id.
