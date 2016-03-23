@@ -12,7 +12,7 @@ class Api::V1::GenresController < ApiController
     render json: genre
   end
 
-  # Render the created Genresusing GenreSerializer and the AMS Deserialization.
+  # Render the created Genres using GenreSerializer and the AMS Deserialization.
   def create
     genre = Genre.new(genre_params)
     if genre.save
