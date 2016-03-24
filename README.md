@@ -3,10 +3,10 @@
 ![](/FakktionLogo.png)
 
 ####Project
-[![Build Status][travis-badge]][travis] [![Code Climate][codeClimate-badge]][codeClimate] [![Dependency Status][dependency-badge]][dependency] [![Issues][issues-badge]][issues] [![Codebeat][codebeat-badge]][codebeat]
+[![Build Status][travis-badge]][travis] [![Code Climate][codeClimate-badge]][codeClimate] [![Dependency Status][dependency-badge]][dependency] [![Issues][issues-badge]][issues] [![Codebeat][codebeat-badge]][codebeat] [![Test Coverage][testCoverage-badge]][testCoverage]
 
 ####Rails Only
-[![Test Coverage][testCoverage-badge]][testCoverage] [![Security][security-badge]][security] [![Docs][docs-badge]][docs]
+[![Security][security-badge]][security] [![Docs][docs-badge]][docs]
 
 [Live Website](http://fakktion.herokuapp.com/) (Initial load may be slow due to Dyno sleep mode implemented by [Heroku](https://www.heroku.com/pricing).)
 
@@ -27,9 +27,9 @@ This project once used [Ember-Rails](https://github.com/emberjs/ember-rails), bu
 
 1. Clone Project
 2. Install NPM, Bower and other requirements if you don't have them:
-	1. sudo apt-get install npm
-	2. sudo apt-get install nodejs-legacy (For Bower to work)
-	3. sudo npm install -g bower
+  1. sudo apt-get install npm
+  2. sudo apt-get install nodejs-legacy (For Bower to work)
+  3. sudo npm install -g bower
 3. Bundle Install
 4. Rake db:setup
 5. cd frontend

@@ -1,31 +1,28 @@
 language: ruby
 sudo: false
-cache: bundler
-branches:
-  only:
-  - master
+cache:
+  bundler: true
+  directories:
+    - frontend/node_modules
+    - frontend/bower_components
 rvm:
 - 2.3.0
 before_install:
 - openssl aes-256-cbc -K $encrypted_f7320bcbcc32_key -iv $encrypted_f7320bcbcc32_iv
   -in secrets.yml.enc -out config/secrets.yml -d
 before_script:
-- nvm install 5.4
-- nvm use 5.4
+- npm install -g npm@^3.6
 - cd frontend
-- npm install -g bower
-- npm install -g ember-cli
 - npm install
 - bower install
-- npm install --save-dev ember-cli-rails-addon
-- npm install
-- cd ..
-- bundle exec rake db:migrate
-- bundle exec rake db:seed
 script:
+- cd ..
+- bundle exec rake db:setup
 - bundle exec rake test
 - cd frontend
 - ember test
+after_script:
+  - CODECLIMATE_REPO_TOKEN=c3055c2ba9d4366d62a766320aad9097184a33532676588a5fd68536f85dc048 codeclimate-test-reporter < lcov.dat
 addons:
   code_climate:
     repo_token: c3055c2ba9d4366d62a766320aad9097184a33532676588a5fd68536f85dc048
