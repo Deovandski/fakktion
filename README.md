@@ -3,14 +3,14 @@
 ![](/FakktionLogo.png)
 
 ####Project
-[![Build Status][travis-badge]][travis] [![Code Climate][codeClimate-badge]][codeClimate] [![Dependency Status][dependency-badge]][dependency] [![Issues][issues-badge]][issues] [![Codebeat][codebeat-badge]][codebeat] [![Backend Coverage][backendCoverage-badge]][backendCoverage]
+[![Build Status][travis-badge]][travis] [![Code Climate][codeClimate-badge]][codeClimate] [![Dependency Status][dependency-badge]][dependency] [![Issues][issues-badge]][issues] [![Codebeat][codebeat-badge]][codebeat]
 
 ####Rails (Backend)
-[![Security][security-badge]][security] [![Docs][docs-badge]][docs]
+[![Security][security-badge]][security] [![Docs][docs-badge]][docs] [![Backend Coverage][backendCoverage-badge]][backendCoverage]
 
 ####Ember Cli (Frontend)
 
-[![Backend Coverage][backendCoverage-badge]] [backendCoverage]
+[![Frontend Coverage][frontendCoverage-badge]] [frontendCoverage]
  
 [Live Website](http://fakktion.herokuapp.com/) (Initial load may be slow due to Dyno sleep mode implemented by [Heroku](https://www.heroku.com/pricing).)
 
