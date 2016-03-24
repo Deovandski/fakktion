@@ -1,11 +1,11 @@
-require "codeclimate-test-reporter"
+require 'coveralls'
 require 'active_support/json'
 require 'active_model_serializers'
 
 # Quick Note: Make sure to create the JSON schemas under support/schemas
 # before procedding with the serialization tests.
 
-CodeClimate::TestReporter.start
+Coveralls.wear!
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'

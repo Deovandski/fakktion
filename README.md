@@ -3,11 +3,15 @@
 ![](/FakktionLogo.png)
 
 ####Project
-[![Build Status][travis-badge]][travis] [![Code Climate][codeClimate-badge]][codeClimate] [![Dependency Status][dependency-badge]][dependency] [![Issues][issues-badge]][issues] [![Codebeat][codebeat-badge]][codebeat] [![Test Coverage][testCoverage-badge]][testCoverage]
+[![Build Status][travis-badge]][travis] [![Code Climate][codeClimate-badge]][codeClimate] [![Dependency Status][dependency-badge]][dependency] [![Issues][issues-badge]][issues] [![Codebeat][codebeat-badge]][codebeat] [![Backend Coverage][backendCoverage-badge]][backendCoverage]
 
-####Rails Only
+####Rails (Backend)
 [![Security][security-badge]][security] [![Docs][docs-badge]][docs]
 
+####Ember Cli (Frontend)
+
+[![Backend Coverage][backendCoverage-badge]] [backendCoverage]
+ 
 [Live Website](http://fakktion.herokuapp.com/) (Initial load may be slow due to Dyno sleep mode implemented by [Heroku](https://www.heroku.com/pricing).)
 
 All information about this project can be found on this [published paper](http://www.micsymposium.org/mics2015/ProceedingsMICS_2015/Skibinski_3C1_31.pdf). Information regarding the Database Design can be seen [Here](erd.pdf) while any other information can be seen in the documents below.
@@ -58,8 +62,10 @@ All rights reserved.
 
 [travis]: https://travis-ci.org/Deovandski/Fakktion
 [travis-badge]: https://travis-ci.org/Deovandski/Fakktion.svg?branch=master
-[testCoverage]: https://codeclimate.com/github/Deovandski/Fakktion/coverage
-[testCoverage-badge]: https://codeclimate.com/github/Deovandski/Fakktion/badges/coverage.svg
+[frontendCoverage]: https://codeclimate.com/github/Deovandski/Fakktion/coverage
+[frontendCoverage-badge]: https://codeclimate.com/github/Deovandski/Fakktion/badges/coverage.svg
+[backendCoverage]: https://coveralls.io/github/Deovandski/Fakktion?branch=master
+[backendCoverage-badge]: https://coveralls.io/repos/github/Deovandski/Fakktion/badge.svg?branch=master
 [codeClimate]: https://codeclimate.com/github/Deovandski/Fakktion
 [codeClimate-badge]: https://codeclimate.com/github/Deovandski/Fakktion/badges/gpa.svg
 [security]: https://hakiri.io/github/Deovandski/Fakktion/master

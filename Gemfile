@@ -52,7 +52,7 @@ group :development, :test do
 
 	gem "json_schema"
 	# Code Climate
-	gem "codeclimate-test-reporter", require: nil
+	gem 'coveralls', require: false
 	# Travis CI
 	gem "travis", '>=1.8'
 	# Use sqlite3 as the database for Active Record
