@@ -23,6 +23,4 @@ script:
 - ember test
 after_script:
 - CODECLIMATE_REPO_TOKEN=c3055c2ba9d4366d62a766320aad9097184a33532676588a5fd68536f85dc048 codeclimate-test-reporter < lcov.dat
-addons:
-  code_climate:
-    repo_token: c3055c2ba9d4366d62a766320aad9097184a33532676588a5fd68536f85dc048
+
