@@ -12,8 +12,14 @@ export default Ember.Controller.extend ({
   gender: '',
   legalTermsRead: false,
   privacyTermsRead: false,
-  dateOfBirth: null,
   showFullName: false,
+  dateOfBirth: null,
+  dateOfBirth_day: null,
+  dateOfBirth_month: null,
+  dateOfBirth_year: null,
+  validDate_month: false,
+  validDate_day: false,
+  validDate_year: false,
   clientSideValidationComplete: false,
   
   verifyFullName: Ember.computed('fullName', function() {
@@ -42,35 +48,93 @@ export default Ember.Controller.extend ({
       }
     }
   }),
-  verifyDateOfBirth: Ember.computed('dateOfBirth',  function() {
-    if(this.get('dateOfBirth') === null) {
+  verifyDateOfBirth: Ember.computed('validDate_month', 'validDate_day', 'validDate_year', 'dateOfBirth_month', 'dateOfBirth_day','dateOfBirth_year',  function() {
+    if(this.get('validDate_month') === false || this.get('validDate_day') === false || this.get('validDate_year') === false) {
       this.set('clientSideValidationComplete',false);
-      return 'MM/DD/YYYY';
+      this.set('dateOfBirth', null);
+      return "";
     }
     else {
-      if(moment(this.get('dateOfBirth')).format() === 'Invalid date') {
+      var currentAge = this.get('dateOfBirth_month') + '/' + this.get('dateOfBirth_day') + '/' + this.get('dateOfBirth_year');
+      currentAge = moment(currentAge, 'MM/DD/YYY');
+      if(moment(currentAge).format() === 'Invalid date') {
+        console.log(currentAge);
         this.set('clientSideValidationComplete',false);
-        return 'Date must be Month/Day/Year';
+        this.set('dateOfBirth', null);
+        return "Invalid Date...";
       }
       else {
-        var minAge = moment().subtract(12,'y');
-        var maxAge = moment().subtract(200,'y');
-        var currentAge = moment(this.get('dateOfBirth'));
-        //console.log(minAge.diff(currentAge,'years'));
-        if(minAge.diff(currentAge) < 0) {
-          this.set('clientSideValidationComplete',false);
-          return 'You must be at least 13 to signup';
-        }
-        else if(maxAge.diff(currentAge) > 200) {
-          this.set('clientSideValidationComplete',false);
-          return moment(currentAge).format('LL') + ' is more than 200 years';
-        }
-        else {
-          this.set('clientSideValidationComplete',true);
-          return '';
-        }
+        this.set('dateOfBirth', currentAge);
+        this.set('clientSideValidationComplete',true);
       }
-    }  
+    }
+  }),
+  verifyDateOfBirth_month: Ember.computed('dateOfBirth_month',  function() {
+    if(this.get('dateOfBirth_month') === null || this.get('dateOfBirth_month') === "") {
+      this.set('validDate_month',false);
+      return 'MM';
+    }
+    else {
+      if(this.get('dateOfBirth_month') > 12){
+        this.set('validDate_month',false);
+        return 'MM';
+      }
+      else if(this.get('dateOfBirth_month') <= 12){
+        this.set('validDate_month',true);
+        return '';
+      }
+      else{
+        this.set('validDate_month',false);
+        return 'MM';
+      }
+    }
+  }),
+  verifyDateOfBirth_day: Ember.computed('dateOfBirth_day',  function() {
+    if(this.get('dateOfBirth_day') === null || this.get('dateOfBirth_day') === "") {
+      this.set('validDate_day',false);
+      return 'DD';
+    }
+    else {
+      if(this.get('dateOfBirth_day') > 31){
+        this.set('validDate_day',false);
+        return 'DD';
+      }
+      else if(this.get('dateOfBirth_day') <= 31){
+        this.set('validDate_day',true);
+        return '';
+      }
+      else{
+        this.set('validDate_day',false);
+        return 'DD';
+      }
+    }
+  }),
+  verifyDateOfBirth_year: Ember.computed('dateOfBirth_year',  function() {
+    if(this.get('dateOfBirth_year') === null || this.get('dateOfBirth_year') === "") {
+      this.set('validDate_year',false);
+      return 'YYYY';
+    }
+    else if(this.get('dateOfBirth_year') < 1900) {
+      this.set('validDate_year',false);
+      return 'YYYY';
+    }
+    else {
+      var minAge = moment().subtract(12,'y').format('YYYY');
+      var currentAge = moment(this.get('dateOfBirth_year'), 'YYYY').format('YYYY');
+      var dateComparison = minAge - currentAge;
+      if(dateComparison < 0 && dateComparison > -12) {
+        this.set('validDate_year',false);
+        return 'You must be at least 13';
+      }
+      else if(dateComparison <= -12) {
+        this.set('validDate_year',false);
+        return 'Were you born in the future?';
+      }
+      else {
+        this.set('validDate_year',true);
+        return '';
+      }
+    }
   }),
   verifyEmail: Ember.computed('email', function() {
     if(this.get('email').length < 4) {

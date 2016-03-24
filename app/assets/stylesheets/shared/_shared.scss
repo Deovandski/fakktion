@@ -228,6 +228,74 @@
     font-size: 80%;
   }
 }
+
+.input_block_typeUser_date {
+  width: 100%;
+  line-height: 40px;
+  text-align: left;
+  height: 40px;
+  .first_label {
+    float: left;
+    vertical-align: middle;
+    width: 25%;
+    height: 100%;
+  }
+  .input_wrapper_date {
+    height: 40px;
+    height: 100%;
+    width: 75%;
+    float: right;
+    .month_input {
+      height: 100%;
+      width: 60px;
+      float: left;
+    }
+    .month_input_label {
+      float: left;
+      color: $orange;
+      text-align: left;
+      height: 100%;
+      font-size: 80%;
+      width: 40px;
+      margin: 0px 0px 0px 10px;
+    }
+    .day_input {
+      float: left;
+      height: 100%;
+      width: 60px;
+    }
+    .day_input_label {
+      float: left;
+      color: $orange;
+      text-align: left;
+      height: 100%;
+      font-size: 80%;
+      width: 40px;
+      margin: 0px 0px 0px 10px;
+    }
+    .year_input {
+      float: left;
+      height: 100%;
+      width: 35px;
+      width: 75px;
+    }
+    .year_input_label {
+      float: left;
+      color: $orange;
+      text-align: left;
+      height: 100%;
+      font-size: 80%;
+      width: 200px;
+      margin: 0px 0px 0px 10px;
+    }
+   .input_separator{
+      float: left;
+      height: 100%;
+      margin: 0px 15px 0px 0px;
+    }
+  }
+}
+
 .input_block_checkbox_typeUser {
   width: 100%;
   line-height: 40px;

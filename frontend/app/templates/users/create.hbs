@@ -25,10 +25,15 @@
     <label class="input_wrapper">{{input type="password"  value=passwordConfirmation}}</label>
     <label class="second_label">{{verifyPasswordConfirmation}}</label>
   </div><br/>
-  <div class="input_block_typeUser">
+  <div class="input_block_typeUser_date">
     <label class="first_label">Date of Birth:</label>
-    <label class="input_wrapper">{{input type=date value=dateOfBirth}}</label>
-    <label class="second_label">{{verifyDateOfBirth}}</label>
+    <label class="input_wrapper_date">
+      <span class="month_input">{{input type=number value=dateOfBirth_month}}</span> <label class="month_input_label">{{verifyDateOfBirth_month}}</label>
+      <span class="input_separator">/</span>
+      <span class="day_input">{{input type=number value=dateOfBirth_day}}</span> <label class="day_input_label">{{verifyDateOfBirth_day}}</label>
+      <span class="input_separator">/</span>
+      <span class="year_input">{{input type=number value=dateOfBirth_year}}</span> <label class="year_input_label">{{verifyDateOfBirth_year}}{{verifyDateOfBirth}}</label>
+    </label>
   </div><br/>
   <div class="input_block_typeUser">
     <label class="first_label">Gender:</label>

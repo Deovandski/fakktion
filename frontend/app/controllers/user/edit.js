@@ -109,11 +109,11 @@ export default Ember.Controller.extend ({
     if(this.get('currentPassword').length < 8) {
       if(this.get('currentPassword').length === 0) {
         this.set("clientSideValidationComplete",true);
-        return "";
+        return "Please enter your password!";
       }
       else {
         this.set("clientSideValidationComplete",false);
-        return "Too Short";
+        return "8 characters minimum.";
       }
     }
     else {
@@ -124,18 +124,12 @@ export default Ember.Controller.extend ({
   verifyNewPassword: Ember.computed('newPassword', 'currentPassword', function() {
     if(this.get('newPassword').length < 8) {
       if(this.get('newPassword').length === 0) {
-        if(this.get('currentPassword').length !== 0) {
-          this.set("clientSideValidationComplete",false);
-          return "Cannot be left empty!";
-        }
-        else {
-          this.set("clientSideValidationComplete",true);
-          return "";
-        }
+        this.set("clientSideValidationComplete",true);
+        return "";
       }
       else {
         this.set("clientSideValidationComplete",false);
-        return "Too Short";
+        return "8 characters minimum.";
       }
     }
     else {
@@ -153,8 +147,17 @@ export default Ember.Controller.extend ({
       return "";
     }
   }),
+  current_password_check: Ember.computed('currentPassword', function() {
+    if(this.get('currentPassword').length > 0) {
+      return false;
+    }
+    else {
+      return true;
+    }
+  }),
   verifyGender: Ember.computed('model.user.gender', function() {
-    if(this.get('model.user.gender').toLowerCase() !== "male" && this.get('model.user.gender').toLowerCase() !== "female" && this.get('model.gender').toLowerCase() !== "other") {
+    var inputText = this.get('model.user.gender').toLowerCase();
+    if( inputText !== "male" && inputText !== "female" && inputText !== "other") {
       this.set("clientSideValidationComplete",false);
       return "male/female/other";
     }
@@ -209,7 +212,7 @@ export default Ember.Controller.extend ({
     }
     else {
       this.set("clientSideValidationComplete",true);
-      return "http://www.example.com https://www.example.com";
+      return "http(s)://www.example.com";
     }
   }),
   verifyShowFullName: Ember.computed('model.user.show_full_name', function() {
@@ -229,6 +232,8 @@ export default Ember.Controller.extend ({
     },
     update: function(user) {
       if(this.get('clientSideValidationComplete')) {
+        var reloadSession = null;
+        var self = this; // Controller instance for route transitioning.
         /*if(this.get('model.user.dateOfBirth') !== null && this.get('model.user.dateOfBirth') !== '') {
           user.set('model.user.date_of_birth', moment(this.get('model.user.dateOfBirth')).toDate());
         }*/
@@ -241,16 +246,22 @@ export default Ember.Controller.extend ({
         }
         if(this.get('currentPassword') !== null && this.get('currentPassword') !== '') {
           user.set('current_password', this.get('currentPassword'));
+          reloadSession = true;
         }
         else {
           user.set('current_password', null);
+          reloadSession = false;
         }
-        var self = this; // Controller instance for route transitioning.
         user.save().then(() => {
           self.set('currentPassword', "");
           self.set('newPassword', "");
           self.set('newPasswordConfirmation', "");
-          self.transitionToRoute('user', user);
+          if (reloadSession === true) {
+            self.get('session').invalidate();
+          }
+          else {
+            self.transitionToRoute('user', user);
+          }
         }).catch((reason) => {
           console.log(reason);
           alert('User Not Updated!');

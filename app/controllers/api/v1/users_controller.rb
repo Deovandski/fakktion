@@ -31,7 +31,11 @@ class Api::V1::UsersController < ApiController
     # Check if password is blank, if so, clear :current_password
     # and update without password, else updates password.
     if user_params[:password].blank? || user_params[:current_password].blank?
-      user.update_without_password(user_params.except(:current_password,:password))
+      if user.email == user_params[:email]
+        user.update_without_password(user_params.except(:current_password,:password))
+      else
+        user.update_without_password(user_params.except(:current_password,:password, :email))
+      end
       render json: user, status: :ok
     elsif user.update_with_password(user_params)
       render json: user, status: :ok
