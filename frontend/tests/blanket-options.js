@@ -1,8 +1,7 @@
 /* globals blanket, module */
 
 var options = {
-  modulePrefix: 'app',
-  filter: '//.*frontend/.*/',
+  modulePrefix: 'frontend',
   loaderExclusions: [],
   enableCoverage: true,
   cliOptions: {
