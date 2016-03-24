@@ -2,6 +2,7 @@
 
 var options = {
   modulePrefix: 'frontend',
+  filter: '//.*frontend/.*/',
   loaderExclusions: [],
   enableCoverage: true,
   cliOptions: {
