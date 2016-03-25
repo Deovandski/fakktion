@@ -14,9 +14,6 @@ export default Ember.Controller.extend ({
   newPassword: "",
   newPasswordConfirmation: "",
   dateOfBirth: null,
-  dateOfBirth_day: null,
-  dateOfBirth_month: null,
-  dateOfBirth_year: null,
   validDate_month: false,
   validDate_day: false,
   validDate_year: false,
@@ -77,11 +74,6 @@ export default Ember.Controller.extend ({
     }
   }),
   verifyDateOfBirth_month: Ember.computed('dateOfBirth_month',  function() {
-    if(this.get('dateOfBirth_month') === null) {
-      var month = moment(this.get('model.user.dateOfBirth')).format('MM');
-      this.set('dateOfBirth_month', month);
-      return '';
-    }
     if(this.get('dateOfBirth_month') === "") {
       this.set('validDate_month',false);
       return 'MM';
@@ -102,11 +94,6 @@ export default Ember.Controller.extend ({
     }
   }),
   verifyDateOfBirth_day: Ember.computed('dateOfBirth_day',  function() {
-    if(this.get('dateOfBirth_day') === null) {
-      var day = moment(this.get('model.user.dateOfBirth')).format('DD');
-      this.set('dateOfBirth_day', day);
-      return '';
-    }
     if(this.get('dateOfBirth_day') === "") {
       this.set('validDate_day',false);
       return 'DD';
@@ -127,11 +114,6 @@ export default Ember.Controller.extend ({
     }
   }),
   verifyDateOfBirth_year: Ember.computed('dateOfBirth_year',  function() {
-    if(this.get('dateOfBirth_year') === null) {
-      var year = moment(this.get('model.user.dateOfBirth')).format('YYYY');
-      this.set('dateOfBirth_year', year);
-      return '';
-    }
     if(this.get('dateOfBirth_year') === "") {
       this.set('validDate_year',false);
       return 'YYYY';
