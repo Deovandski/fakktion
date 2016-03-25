@@ -61,67 +61,54 @@ body.ember-application main {
       border-bottom-style: solid;
       border-width: 2px;
       .central_upper_panel {
-        
         height: 30px;
         width: 100%;
         .genre_tagging {
-          label {
-            font-size: 15px;
-            font-style: normal;
-            overflow:hidden;
-            text-overflow:ellipsis;
-          }
+          font-size: 12px;
+          font-style: normal;
+          overflow:hidden;
+          text-overflow:ellipsis;
           float: left;
           width: 25%;
           height: 100%;
-          margin-top: 3px;
           border-right-style: solid;
           border-bottom-style: solid;
           border-width: 1px;
         }
         .fact_type_tagging{
-          label {
-            font-size: 15px;
-            font-style: normal;
-            overflow:hidden;
-            text-overflow:ellipsis;
-          }
+          font-size: 12px;
+          font-style: normal;
+          overflow:hidden;
+          text-overflow:ellipsis;
           float: left;
           width: 25%;
           height: 100%;
-          margin-top: 3px;
           border-left-style: solid; 
           border-right-style: solid;
           border-bottom-style: solid;
           border-width: 1px;
         }
         .category_tagging {
-          label {
-            font-size: 15px;
-            font-style: normal;
-            overflow:hidden;
-            text-overflow:ellipsis;
-          }
+          font-size: 12px;
+          font-style: normal;
+          overflow:hidden;
+          text-overflow:ellipsis;
           float: left;
           width: 25%;
           height: 100%;
-          margin-top: 3px;
           border-left-style: solid; 
           border-right-style: solid;
           border-bottom-style: solid;
           border-width: 1px;
         }
         .post_date_tagging {
-          label {
-            font-size: 15px;
-            font-style: normal;
-            overflow:hidden;
-            text-overflow:ellipsis;
-          }
+          font-size: 12px;
+          font-style: normal;
+          overflow:hidden;
+          text-overflow:ellipsis;
           float: left;
           width: 25%;
           height: 100%;
-          margin-top: 3px;
           border-left-style: solid; 
           border-bottom-style: solid;
           border-width: 1px;

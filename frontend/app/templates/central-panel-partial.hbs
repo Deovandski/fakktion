@@ -1,42 +1,30 @@
 <div class="central_upper_panel">
 	<div class="genre_tagging">
 		{{#if isGenreSelected}}
-			<label>
-				{{selectedGN}}
-				<button class="button_type2_small" {{action "clearGenre"}}>X</button>
-			</label>
+			<button class="button_type2_tag_genre" {{action "clearGenre"}}>{{capitalize selectedGN}}</button>
 		{{else}}
-			<label>Genre</label>
+			Genre
 		{{/if}}
 	</div>
 	<div class="fact_type_tagging">
 		{{#if isFactTypeSelected}}
-			<label>
-				{{selectedFTN}}
-				<button class="button_type2_small" {{action "clearFactType"}}>X</button>
-			</label>
+			<button class="button_type2_tag_fact_Type" {{action "clearFactType"}}>{{capitalize selectedFTN}}</button>
 		{{else}}
-			<label>Fact Type</label>
+			Fact Type
 		{{/if}}
 	</div>
 	<div class="category_tagging">
 		{{#if isCategorySelected}}
-			<label>
-				{{selectedCN}}
-				<button class="button_type2_small" {{action "clearCategory"}}>X</button>
-			</label>
+			<button class="button_type2_tag_category" {{action "clearCategory"}}>{{capitalize selectedCN}}</button>
 		{{else}}
-			<label>Category</label>
+			Category
 		{{/if}}
 	</div>
 	<div class="post_date_tagging">
 		{{#if isPostDateSelected}}
-			<label>
-				{{selectedPDN}}
-				<button class="button_type2_small" {{action "clearPostDate"}}>X</button>
-			</label>
+			<button class="button_type2_tag_post_Date" {{action "clearPostDate"}}>{{selectedPDN}}</button>
 		{{else}}
-			<label>Post Date</label>
+			Post Date
 		{{/if}}
 	</div>
 </div>

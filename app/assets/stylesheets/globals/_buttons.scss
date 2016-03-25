@@ -15,6 +15,26 @@ button_type2_small,
 input[type="submit"] {
   @include button_type2_small;
 }
+.button_type2_tag_genre,
+button_type2_tag_genre,
+input[type="submit"] {
+  @include button_type2_tag_genre;
+}
+.button_type2_tag_fact_Type,
+button_type2_tag_fact_Type,
+input[type="submit"] {
+  @include button_type2_tag_fact_Type;
+}
+.button_type2_tag_category,
+button_type2_tag_category,
+input[type="submit"] {
+  @include button_type2_tag_category;
+}
+.button_type2_tag_post_Date,
+button_type2_tag_post_Date,
+input[type="submit"] {
+  @include button_type2_tag_post_Date;
+}
 .button_type2_smallest,
 button_type2_smallest,
 input[type="submit"] {

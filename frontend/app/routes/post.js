@@ -6,6 +6,6 @@ export default Ember.Route.extend ({
   },
   setupController: function(controller, model) {
     model.incrementProperty('views_count');
-    model.save;
+    model.save();
   }
 });
