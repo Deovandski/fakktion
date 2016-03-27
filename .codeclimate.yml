@@ -1,6 +1,8 @@
 engines:
   rubocop:
     enabled: true
+  brakeman:
+    enabled: true
   golint:
     enabled: true
   gofmt:
@@ -11,6 +13,14 @@ engines:
     enabled: true
   bundler-audit:
     enabled: true
+  fixme:
+    enabled: true
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - ruby
+      - javascript
 ratings:
   paths:
     - "app/**"
