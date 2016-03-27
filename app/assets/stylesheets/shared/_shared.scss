@@ -55,14 +55,15 @@
   }
 }
 .tag_h5 {
-    position: relative;
+  position: relative;
   width: 100%;
-    top: 0;
+  margin-top: 3px;
+  margin-bottom: 3px;
   height:25px;
   text-align: center;
 }
 .tag_listing_hidden {
-  height: 10%;
+  height: 15%;
   width: 100%;
   border-width: 3px;
   border-bottom-style: solid;

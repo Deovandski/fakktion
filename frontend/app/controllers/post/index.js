@@ -7,7 +7,7 @@ export default Ember.Controller.extend ({
   application: Ember.inject.controller('application'),
   notExpandInfo: true,
   canEdit: Ember.computed('model.user_id', 'application.isAdmin', function() {
-    if(this.get('session.secure.userId') === this.get('model.user_id')){
+    if(this.get('session.secure.userId') === this.get('model.user.id')){
       return true;
     }
     else if(this.get('application.isAdmin') === true) {
@@ -18,8 +18,6 @@ export default Ember.Controller.extend ({
     }
   }),
   updatedDate: Ember.computed('model.updated_at', function() {
-    console.log(this.get('model.comments'));
-    console.log(this.get('model.comments.length'));
     return moment(this.get("model.updated_at")).format('L');
   }),
   createdDate: Ember.computed('model.created_at', function() {

@@ -1,52 +1,82 @@
 @import "buttons_mixins/**/*";
 
+/* Shared Buttons */
+.button_bar,
+button_bar,
+input[type="submit"] {
+  @include button_bar;
+}
 .button_type1,
 button_type1,
 input[type="submit"] {
   @include button_type1;
-}
-.button_type2_large,
-button_type2_large,
-input[type="submit"] {
-  @include button_type2_large;
 }
 .button_type2_small,
 button_type2_small,
 input[type="submit"] {
   @include button_type2_small;
 }
-.button_type2_tag_genre,
-button_type2_tag_genre,
-input[type="submit"] {
-  @include button_type2_tag_genre;
-}
-.button_type2_tag_fact_Type,
-button_type2_tag_fact_Type,
-input[type="submit"] {
-  @include button_type2_tag_fact_Type;
-}
-.button_type2_tag_category,
-button_type2_tag_category,
-input[type="submit"] {
-  @include button_type2_tag_category;
-}
-.button_type2_tag_post_Date,
-button_type2_tag_post_Date,
-input[type="submit"] {
-  @include button_type2_tag_post_Date;
-}
 .button_type2_smallest,
 button_type2_smallest,
 input[type="submit"] {
   @include button_type2_smallest;
 }
-.button_type3,
-button_type3,
+
+/* Tag Specific buttons */
+
+.button_type1_genre,
+button_type1_genre,
 input[type="submit"] {
-  @include button_type3;
+  @include button_type1_genre;
 }
-.button_type4,
-button_type4,
+.button_type1_fact_type,
+button_type1_fact_type,
 input[type="submit"] {
-  @include button_type4;
+  @include button_type1_fact_type;
+}
+.button_type1_category,
+button_type1_category,
+input[type="submit"] {
+  @include button_type1_category;
+}
+.button_type1_post_date,
+button_type1_post_date,
+input[type="submit"] {
+  @include button_type1_post_date;
+}
+.button_type1_topic,
+button_type1_topic,
+input[type="submit"] {
+  @include button_type1_topic;
+}
+
+.button_bar_genre,
+button_bar_genre,
+input[type="submit"] {
+  @include button_bar_genre;
+}
+.button_bar_fact_type,
+button_bar_fact_type,
+input[type="submit"] {
+  @include button_bar_fact_type;
+}
+.button_bar_category,
+button_bar_category,
+input[type="submit"] {
+  @include button_bar_category;
+}
+.button_bar_post_date,
+button_bar_post_date,
+input[type="submit"] {
+  @include button_bar_post_date;
+}
+.button_bar_post_date,
+button_bar_post_date,
+input[type="submit"] {
+  @include button_bar_post_date;
+}
+.button_bar_topic,
+button_bar_topic,
+input[type="submit"] {
+  @include button_bar_topic;
 }

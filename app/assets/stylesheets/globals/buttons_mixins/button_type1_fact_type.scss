@@ -1,10 +1,10 @@
-@mixin button_type1() {
+@mixin button_type1_fact_type() {
   @include appearance(none);
-  bg: $button-type-1-bg;
-  border: 1px solid $button-type-1-bg;
+  background-color: $button-fact-type-bg;
+  border: 1px solid $button-fact-type-bg;
   border-radius: $base-border-radius;
   box-shadow: 0 1px 2px rgba(#000, 0.4);
-  color: $button-type-1-color;
+  color: $button-fact-type-color;
   cursor: pointer;
   display: inline-block;
   font-size: 14px;
@@ -19,15 +19,15 @@
   -webkit-font-smoothing: antialiased;
 
   &:hover {
-    bg: lighten($button-type-1-bg, 2%);
-    border-color: lighten($button-type-1-bg, 2%);
-    color: $button-type-1-color;
+    background-color: lighten($button-fact-type-bg, 2%);
+    border-color: lighten($button-fact-type-bg, 2%);
+    color: $button-fact-type-color;
   }
   &:active {
-    bg: $button-type-1-bg;
-    border-color: $button-type-1-bg;
+    background-color: $button-fact-type-bg;
+    border-color: $button-fact-type-bg;
     box-shadow: 0 1px 2px rgba(#000, 0.2);
-    color: $button-type-1-color;
+    color: $button-fact-type-color;
   }
   &.animate {
     @include transition(all 0.2s ease);

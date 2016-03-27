@@ -1,0 +1,41 @@
+@mixin button_bar_fact_type() {
+  width: 100%;
+  height: 100%;
+  @include appearance(none);
+  background-color: $button-fact-type-bg;
+  border: 1px solid darken($button-fact-type-bg, 15%);
+  color: $button-fact-type-color;
+  cursor: pointer;
+  display: inline-block;
+  font-size: $base-font-size;
+  font-weight: bold;
+  outline: none;
+  margin: 0;
+  padding: 0.1em 0.3em;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  -webkit-font-smoothing: antialiased;
+
+  &:hover {
+    background-color: darken($button-fact-type-bg, 18%);
+    border-color: darken($button-fact-type-bg, 25%);
+    color: $button-fact-type-color;
+  }
+
+  &:active {
+    background-color: $button-fact-type-bg;
+    border-color: $button-fact-type-bg;
+    box-shadow: 0 1px 2px rgba(#000, 0.2);
+    color: $button-fact-type-color;
+  }
+
+  &.animate {
+    @include transition(all 2s ease);
+    &:hover {
+      @include transform(scale(1.1));
+    }
+  }
+}

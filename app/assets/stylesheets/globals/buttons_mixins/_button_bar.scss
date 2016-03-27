@@ -1,16 +1,19 @@
-@mixin button_type1() {
+@mixin button_bar() {
+  width: 100%;
+  height: 100%;
   @include appearance(none);
-  bg: $button-type-1-bg;
-  border: 1px solid $button-type-1-bg;
+  bg: $button-bar-bg;
+  border: 1px solid darken($button-bar-bg, 15%);
   border-radius: $base-border-radius;
   box-shadow: 0 1px 2px rgba(#000, 0.4);
-  color: $button-type-1-color;
+  color: $button-bar-color;
   cursor: pointer;
   display: inline-block;
-  font-size: 14px;
+  font-size: $base-font-size;
   font-weight: bold;
   outline: none;
-  padding: 0.5em 0.7em;
+  margin: 0;
+  padding: 0.1em 0.3em;
   text-align: center;
   text-decoration: none;
   user-select: none;
@@ -19,18 +22,20 @@
   -webkit-font-smoothing: antialiased;
 
   &:hover {
-    bg: lighten($button-type-1-bg, 2%);
-    border-color: lighten($button-type-1-bg, 2%);
-    color: $button-type-1-color;
+    bg: darken($button-bar-bg, 18%);
+    border-color: darken($button-bar-bg, 25%);
+    color: $button-bar-color;
   }
+
   &:active {
-    bg: $button-type-1-bg;
-    border-color: $button-type-1-bg;
+    bg: $button-bar-bg;
+    border-color: $button-bar-bg;
     box-shadow: 0 1px 2px rgba(#000, 0.2);
-    color: $button-type-1-color;
+    color: $button-bar-color;
   }
+
   &.animate {
-    @include transition(all 0.2s ease);
+    @include transition(all 2s ease);
     &:hover {
       @include transform(scale(1.1));
     }

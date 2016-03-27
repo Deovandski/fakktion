@@ -1,16 +1,16 @@
-@mixin button_type3($background-color: $base-accent-color, $text-color: #222) {
+@mixin button_type1_category() {
   @include appearance(none);
-  background-color: $background-color;
-  border: 1px solid $background-color;
+  background-color: $button-category-bg;
+  border: 1px solid $button-category-bg;
   border-radius: $base-border-radius;
   box-shadow: 0 1px 2px rgba(#000, 0.4);
-  color: $text-color;
+  color: $button-category-color;
   cursor: pointer;
   display: inline-block;
-  font-size: $base-font-size;
+  font-size: 14px;
   font-weight: bold;
   outline: none;
-  padding: 0.5em 1em;
+  padding: 0.5em 0.7em;
   text-align: center;
   text-decoration: none;
   user-select: none;
@@ -19,15 +19,15 @@
   -webkit-font-smoothing: antialiased;
 
   &:hover {
-    background-color: lighten($background-color, 2%);
-    border-color: lighten($background-color, 2%);
-    color: $text-color;
+    background-color: lighten($button-category-bg, 2%);
+    border-color: lighten($button-category-bg, 2%);
+    color: $button-category-color;
   }
   &:active {
-    background-color: $background-color;
-    border-color: $background-color;
+    background-color: $button-category-bg;
+    border-color: $button-category-bg;
     box-shadow: 0 1px 2px rgba(#000, 0.2);
-    color: $text-color;
+    color: $button-category-color;
   }
   &.animate {
     @include transition(all 0.2s ease);

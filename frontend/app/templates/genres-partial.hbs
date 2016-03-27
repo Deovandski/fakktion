@@ -4,11 +4,11 @@
 			<h5 class="tag_h5">Genres {{#link-to "genres.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
 			<ul class="tag_listing">
 				{{#each model.genres as |genre|}}
-					<li><button class="button_type1" {{action "setGID" genre}}>{{capitalize genre.name}}</button>  ({{genre.posts_count}})</li>
+					<li><button class="button_type1_genre" {{action "setGID" genre}}>{{capitalize genre.name}}</button>  ({{genre.posts_count}})</li>
 				{{/each}}
 			</ul>
 			<div class="visibility_button_div_hide">
-				<button class="button_type2_large" {{action "setGPV" false}}>Hide</button>
+				<button class="button_bar" {{action "setGPV" false}}>Hide</button>
 			</div>
 		</div>
 	{{else}}
@@ -16,11 +16,11 @@
 			<h5 class="tag_h5">Genres {{#link-to "genres.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
 			<ul class="tag_listing">
 				{{#each model.genres as |genre|}}
-					<li><button class="button_type1" {{action "setGID" genre}}>{{capitalize genre.name}}</button>  ({{genre.posts_count}})</li>
+					<li><button class="button_type1_genre" {{action "setGID" genre}}>{{capitalize genre.name}}</button>  ({{genre.posts_count}})</li>
 				{{/each}}
 			</ul>
 			<div class="visibility_button_div_hide">
-				<button class="button_type2_large" {{action "setGPV" false}}>Hide</button>
+				<button class="button_bar" {{action "setGPV" false}}>Hide</button>
 			</div>
 		</div>
 	{{/if}}
@@ -28,7 +28,7 @@
 	<div class="tag_listing_hidden">
 		<h5 class="tag_h5">Genres {{#link-to "genres.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
 		<div class="visibility_button_div_show">
-			<button class="button_type2_large" {{action "setGPV" true}}>Show</button>
+			<button class="button_bar" {{action "setGPV" true}}>Show</button>
 		</div>
 	</div>
 {{/if}}

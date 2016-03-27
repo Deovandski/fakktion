@@ -7,11 +7,17 @@ import Ember from "ember";
  * But seriously, do not let the method be called 
  * on a undefined parameter!
 */
+
 export default Ember.Helper.helper(function([value]) {
   if (value === undefined) {
     return value;
   }
-  else {
-    return value.capitalize();
+  else {/*
+    var formattedText = "";
+    while(value.indexOf("<br>") !== -1){
+      
+    }*/
+    var test = "gfgfdgfdghfhg"+ Ember.String.htmlSafe("<br>");
+      return test;
   }
 });

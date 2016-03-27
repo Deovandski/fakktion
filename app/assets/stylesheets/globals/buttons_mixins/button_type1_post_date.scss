@@ -1,16 +1,16 @@
-@mixin button_type4($background-color: $base-accent-color, $text-color: #444) {
+@mixin button_type1_post_date() {
   @include appearance(none);
-  background-color: $background-color;
-  border: 1px solid $background-color;
+  background-color: $button-bar-post-date-bg;
+  border: 1px solid $button-bar-post-date-bg;
   border-radius: $base-border-radius;
   box-shadow: 0 1px 2px rgba(#000, 0.4);
-  color: $text-color;
+  color: $button-bar-post-date-color;
   cursor: pointer;
   display: inline-block;
-  font-size: $base-font-size;
+  font-size: 14px;
   font-weight: bold;
   outline: none;
-  padding: 0.5em 1em;
+  padding: 0.5em 0.7em;
   text-align: center;
   text-decoration: none;
   user-select: none;
@@ -19,15 +19,15 @@
   -webkit-font-smoothing: antialiased;
 
   &:hover {
-    background-color: lighten($background-color, 2%);
-    border-color: lighten($background-color, 2%);
-    color: $text-color;
+    background-color: lighten($button-bar-post-date-bg, 2%);
+    border-color: lighten($button-bar-post-date-bg, 2%);
+    color: $button-bar-post-date-color;
   }
   &:active {
-    background-color: $background-color;
-    border-color: $background-color;
+    background-color: $button-bar-post-date-bg;
+    border-color: $button-bar-post-date-bg;
     box-shadow: 0 1px 2px rgba(#000, 0.2);
-    color: $text-color;
+    color: $button-bar-post-date-color;
   }
   &.animate {
     @include transition(all 0.2s ease);

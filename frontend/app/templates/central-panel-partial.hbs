@@ -1,30 +1,30 @@
 <div class="central_upper_panel">
 	<div class="genre_tagging">
 		{{#if isGenreSelected}}
-			<button class="button_type2_tag_genre" {{action "clearGenre"}}>{{capitalize selectedGN}}</button>
+			<button class="button_bar_genre" {{action "clearGenre"}}>{{capitalize selectedGN}}</button>
 		{{else}}
-			Genre
+			<label class="button_bar_genre">- - -</label>
 		{{/if}}
 	</div>
 	<div class="fact_type_tagging">
 		{{#if isFactTypeSelected}}
-			<button class="button_type2_tag_fact_Type" {{action "clearFactType"}}>{{capitalize selectedFTN}}</button>
+			<button class="button_bar_fact_type" {{action "clearFactType"}}>{{capitalize selectedFTN}}</button>
 		{{else}}
-			Fact Type
+			<label class="button_bar_fact_type">- - -</label>
 		{{/if}}
 	</div>
 	<div class="category_tagging">
 		{{#if isCategorySelected}}
-			<button class="button_type2_tag_category" {{action "clearCategory"}}>{{capitalize selectedCN}}</button>
+			<button class="button_bar_category" {{action "clearCategory"}}>{{capitalize selectedCN}}</button>
 		{{else}}
-			Category
+			<label class="button_bar_category">- - -</label>
 		{{/if}}
 	</div>
 	<div class="post_date_tagging">
 		{{#if isPostDateSelected}}
-			<button class="button_type2_tag_post_Date" {{action "clearPostDate"}}>{{selectedPDN}}</button>
+			<button class="button_bar_post_date" {{action "clearPostDate"}}>{{selectedPDN}}</button>
 		{{else}}
-			Post Date
+			<label class="button_bar_post_date">- - -</label>
 		{{/if}}
 	</div>
 </div>
@@ -33,12 +33,12 @@
 		{{#if isTopicSelected}}
 			{{input class="topic_search_text" placeholder=topicInputText disabled="true"}}
 			<div class="topic_search_input">
-				<button class="button_type2_large" {{action "clearTopic"}}>Clear</button>		
+				<button class="button_bar_topic" {{action "clearTopic"}}>Clear</button>		
 			</div>
 		{{else}}
 			{{input class="topic_search_text" value=topicInputText placeholder="Topic"}}
 			<div class="topic_search_input">
-				<button class="button_type2_large" {{action "setTID"}}>Search</button>		
+				<button class="button_bar_topic" {{action "setTID"}}>Search</button>		
 			</div>
 		{{/if}}
 	</div>

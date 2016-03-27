@@ -1,21 +1,20 @@
-<h5>Blog Post</h5>
 <div class="post_index">
 
   <div class="post_title_container">
     <div class="title_info">
-      <label class="first_label">{{model.title}}</label>
+      <label class="first_label">{{capitalize model.title}}</label>
     </div>
     <div class="owner_info">
         {{#if canEdit}}
           <div class="owner_text_info_partial">
-            <label class="first_label">By {{model.user.display_name}}</label>
+            <label class="first_label">{{#link-to 'user.index' model.user}}{{capitalize model.user.display_name}}{{/link-to}}</label>
           </div>
           <div class="owner_edit">
-            <p class="button_type2_small">{{#link-to 'post.edit' }}Edit{{/link-to}}</p>
+          {{#link-to 'post.edit' class="button_type2_large"}}Edit{{/link-to}}
           </div>
         {{else}}
           <div class="owner_text_info">
-            <label class="first_label">By {{model.user.display_name}}</label>
+            <label class="first_label">{{#link-to 'user.index' model.user}}{{capitalize model.user.display_name}}{{/link-to}}</label>
           </div>
         {{/if}}
     </div>
@@ -33,10 +32,10 @@
     {{/if}}
     
     <div class="fact_link_button">
-      <label class="first_label"><a class="button_type2_large" href="{{model.fact_link}}">Fact Link</a></label>
+      <label class="first_label"><a class="button_type2_large" target="_blank" href="{{model.fact_link}}">Fact Link</a></label>
     </div>
     <div class="fiction_link_button">
-      <label class="first_label"><a class="button_type2_large" href="{{model.fiction_link}}">Fiction Link</a></label>
+      <label class="first_label"><a class="button_type2_large" target="_blank" href="{{model.fiction_link}}">Fiction Link</a></label>
     </div>
   </div>
   
@@ -46,15 +45,15 @@
     <div class="post_tags_container">
       <div class="genre_topic_container">
         <div class="genre_info_container">
-          <label class="first_label">Genre: {{model.genre.name}}</label>
+          <label class="first_label">Genre: {{capitalize model.genre.name}}</label>
         </div>
         <div class="topic_info_container">
-          <label class="first_label">Topic: {{model.topic.name}}</label>
+          <label class="first_label">Topic: {{capitalize model.topic.name}}</label>
         </div>
       </div>
       <div class="fact_type_created_on_container">
         <div class="fact_Type_info_container">
-          <label class="first_label">Fact Type: {{model.fact_type.name}}</label>
+          <label class="first_label">Fact Type: {{capitalize model.fact_type.name}}</label>
         </div>
         <div class="created_on_info_container">
           <label class="first_label">Post Created on: {{createdDate}}</label>  
@@ -62,7 +61,7 @@
       </div>
       <div class="category_updated_on_container">
         <div class="category_info_container">
-          <label class="first_label">Category: {{model.category.name}}</label>
+          <label class="first_label">Category: {{upper-case model.category.name}}</label>
         </div>
         <div class="updated_on_info_container">
           <label class="first_label">Post Updated on: {{updatedDate}}</label>  
@@ -72,7 +71,7 @@
   {{/if}}
   
   <div class="post_text_container">
-    <label>{{model.text}}</label>
+    <label>{{{model.text}}}</label>
   </div>
   {{render "post.comments.index" model}}
 </div>

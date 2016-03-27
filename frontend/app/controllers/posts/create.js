@@ -77,7 +77,7 @@ export default Ember.Controller.extend ({
   verifyGenre: Ember.computed('genreID', function() {
     if(this.get('genreID') === 0) {
       this.set('clientSideValidationComplete',false);
-      return "Missing Genre";
+      return "Genre";
     }
     else {
       this.set('clientSideValidationComplete',true);
@@ -87,7 +87,7 @@ export default Ember.Controller.extend ({
   verifyFactType: Ember.computed('factTypeID', function() {
     if(this.get('factTypeID') === 0) {
       this.set('clientSideValidationComplete',false);
-      return "Missing Fact Type";
+      return "Fact Type";
     }
     else {
       this.set('clientSideValidationComplete',true);
@@ -97,7 +97,7 @@ export default Ember.Controller.extend ({
   verifyCategory: Ember.computed('categoryID', function() {
     if(this.get('categoryID') === 0) {
       this.set('clientSideValidationComplete',false);
-      return "Missing Category";
+      return "Category";
     }
     else {
       this.set('clientSideValidationComplete',true);
@@ -107,7 +107,7 @@ export default Ember.Controller.extend ({
   verifyTopic: Ember.computed('topicID', function() {
     if(this.get('topicID') === 0) {
       this.set('clientSideValidationComplete',false);
-      return "Missing Topic";
+      return "Topic";
     }
     else {
       this.set('clientSideValidationComplete',true);
