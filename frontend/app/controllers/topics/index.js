@@ -19,9 +19,8 @@ export default Ember.Controller.extend ({
   }),
   actions: {
     setTopic: function(topic) {
-      this.set('application.selectedTID', topic.id);
-      this.set('application.selectedTN', topic.get('name'));
-      this.set('application.topicInputText', topic.get('name'));
+      this.set('application.selectedTopic', topic);
+      this.transitionToRoute('index');
     }
   }
 });

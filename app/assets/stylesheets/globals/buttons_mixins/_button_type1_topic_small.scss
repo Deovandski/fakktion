@@ -1,10 +1,10 @@
-@mixin button_type2_small($background-color: #39BDFF, $text-color: #000000) {
+@mixin button_type1_topic_small() {
   @include appearance(none);
-  background-color: $background-color;
-  border: 1px solid darken($background-color, 15%);
+  background-color: $button-topic-bg;
+  border: 1px solid darken($button-topic-bg, 15%);
   border-radius: $base-border-radius;
   box-shadow: 0 1px 2px rgba(#000, 0.4);
-  color: $text-color;
+  color: $button-topic-color;
   cursor: pointer;
   display: inline-block;
   font-size: 12px;
@@ -19,16 +19,16 @@
   -webkit-font-smoothing: antialiased;
 
   &:hover {
-    background-color: lighten($background-color, 10%);
-    border-color: lighten($background-color, 10%);
-    color: $text-color;
+    background-color: lighten($button-topic-bg, 10%);
+    border-color: lighten($button-topic-bg, 10%);
+    color: $button-topic-color;
   }
 
   &:active {
-    background-color: $background-color;
-    border-color: $background-color;
+    background-color: $button-topic-bg;
+    border-color: $button-topic-bg;
     box-shadow: 0 1px 2px rgba(#000, 0.2);
-    color: $text-color;
+    color: $button-topic-color;
   }
 
   &.animate {

@@ -1,10 +1,10 @@
-{{#if displayCP}}
-	{{#if displayGP}}
+{{#if showCP}}
+	{{#if showGP}}
 		<div class="categories_div_type_dual">
 			<h5 class="tag_h5">Categories</h5>
 			<ul class="tag_listing">
 				{{#each model.categories as |category|}}
-					<li><button class="button_type1_category" {{action "setCID" category}}>{{upper-case category.name}}</button>  ({{category.posts_count}})</li>
+					<li><button class="button_type1_category" {{action "setCategory" category}}>{{upper-case category.name}}</button>  ({{category.posts_count}})</li>
 				{{/each}}
 			</ul>
 			<div class="visibility_button_div_hide">
@@ -16,7 +16,7 @@
 			<h5 class="tag_h5">Categories</h5>
 			<ul class="tag_listing">
 				{{#each model.categories as |category|}}
-					<li><button class="button_type1_category" {{action "setCID" category}}>{{upper-case category.name}}</button>  ({{category.posts_count}})</li>
+					<li><button class="button_type1_category" {{action "setCategory" category}}>{{upper-case category.name}}</button>  ({{category.posts_count}})</li>
 				{{/each}}
 			</ul>
 			<div class="visibility_button_div_hide">

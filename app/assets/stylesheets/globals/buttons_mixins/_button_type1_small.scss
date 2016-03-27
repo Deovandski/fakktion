@@ -1,16 +1,16 @@
-@mixin button_type1() {
+@mixin button_type1_small() {
   @include appearance(none);
-  bg: $button-type-1-bg;
-  border: 1px solid $button-type-1-bg;
+  background-color: $button-type-1-bg;
+  border: 1px solid darken($button-type-1-bg, 15%);
   border-radius: $base-border-radius;
   box-shadow: 0 1px 2px rgba(#000, 0.4);
   color: $button-type-1-color;
   cursor: pointer;
   display: inline-block;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: bold;
   outline: none;
-  padding: 0.5em 0.7em;
+  padding: 0.1em 0.5em;
   text-align: center;
   text-decoration: none;
   user-select: none;
@@ -19,16 +19,18 @@
   -webkit-font-smoothing: antialiased;
 
   &:hover {
-    bg: lighten($button-type-1-bg, 2%);
-    border-color: lighten($button-type-1-bg, 2%);
+    background-color: lighten($button-type-1-bg, 10%);
+    border-color: lighten($button-type-1-bg, 10%);
     color: $button-type-1-color;
   }
+
   &:active {
-    bg: $button-type-1-bg;
+    background-color: $button-type-1-bg;
     border-color: $button-type-1-bg;
     box-shadow: 0 1px 2px rgba(#000, 0.2);
     color: $button-type-1-color;
   }
+
   &.animate {
     @include transition(all 0.2s ease);
     &:hover {

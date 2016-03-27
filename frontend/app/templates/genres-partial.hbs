@@ -1,10 +1,10 @@
-{{#if displayGP}}
-	{{#if displayCP}}
+{{#if showGP}}
+	{{#if showCP}}
 		<div class="genres_div_type_dual">
 			<h5 class="tag_h5">Genres {{#link-to "genres.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
 			<ul class="tag_listing">
 				{{#each model.genres as |genre|}}
-					<li><button class="button_type1_genre" {{action "setGID" genre}}>{{capitalize genre.name}}</button>  ({{genre.posts_count}})</li>
+					<li><button class="button_type1_genre" {{action "setGenre" genre}}>{{capitalize genre.name}}</button>  ({{genre.posts_count}})</li>
 				{{/each}}
 			</ul>
 			<div class="visibility_button_div_hide">
@@ -16,7 +16,7 @@
 			<h5 class="tag_h5">Genres {{#link-to "genres.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
 			<ul class="tag_listing">
 				{{#each model.genres as |genre|}}
-					<li><button class="button_type1_genre" {{action "setGID" genre}}>{{capitalize genre.name}}</button>  ({{genre.posts_count}})</li>
+					<li><button class="button_type1_genre" {{action "setGenre" genre}}>{{capitalize genre.name}}</button>  ({{genre.posts_count}})</li>
 				{{/each}}
 			</ul>
 			<div class="visibility_button_div_hide">

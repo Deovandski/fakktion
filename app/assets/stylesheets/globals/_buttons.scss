@@ -6,20 +6,20 @@ button_bar,
 input[type="submit"] {
   @include button_bar;
 }
-.button_type1,
-button_type1,
+.button_type1_normal,
+button_type1_normal,
 input[type="submit"] {
-  @include button_type1;
+  @include button_type1_normal;
 }
-.button_type2_small,
-button_type2_small,
+.button_type1_small,
+button_type1_small,
 input[type="submit"] {
-  @include button_type2_small;
+  @include button_type1_small;
 }
-.button_type2_smallest,
-button_type2_smallest,
+.button_type1_smallest,
+button_type1_smallest,
 input[type="submit"] {
-  @include button_type2_smallest;
+  @include button_type1_smallest;
 }
 
 /* Tag Specific buttons */
@@ -48,6 +48,11 @@ input[type="submit"] {
 button_type1_topic,
 input[type="submit"] {
   @include button_type1_topic;
+}
+.button_type1_topic_small,
+button_type1_topic_small,
+input[type="submit"] {
+  @include button_type1_topic_small;
 }
 
 .button_bar_genre,

@@ -28,15 +28,11 @@ export default Ember.Controller.extend ({
   session:        service('session'),
   sessionAccount: service('session-account'),
   // Variables Section
-  selectedGID: 0,
-  selectedCID: 0,
-  selectedTID: 0,
-  selectedFTID: 0,
+  selectedGenre: null,
+  selectedFactType: null,
+  selectedTopic: null,
+  selectedCategory: null,
   selectedPDID: 0,
-  selectedGN: 'None',
-  selectedCN: 'None',
-  selectedTN: 'None',
-  selectedFTN: 'None',
   selectedPDN: 'None',
   topicInputText: '',
   showGP: true,
@@ -82,32 +78,32 @@ export default Ember.Controller.extend ({
     }
   }),
   // Tags Selected Boolean check.
-  isGenreSelected: Ember.computed('selectedGID', function() {
-    if(this.get('selectedGID') !== 0) {
+  isGenreSelected: Ember.computed('selectedGenre', function() {
+    if(this.get('selectedGenre') !== null) {
       return true;
     }
     else {
       return false;
     }
   }),
-  isFactTypeSelected: Ember.computed('selectedFTID', function() {
-    if(this.get('selectedFTID') !== 0) {
+  isFactTypeSelected: Ember.computed('selectedFactType', function() {
+    if(this.get('selectedFactType') !== null) {
       return true;
     }
     else {
       return false;
     }
   }),
-  isCategorySelected: Ember.computed('selectedCID', function() {
-    if(this.get('selectedCID') !== 0) {
+  isCategorySelected: Ember.computed('selectedCategory', function() {
+    if(this.get('selectedCategory') !== null) {
       return true;
     }
     else {
       return false;
     }
   }),
-  isTopicSelected: Ember.computed('selectedTID', function() {
-    if(this.get('selectedTID') !== 0) {
+  isTopicSelected: Ember.computed('selectedTopic', function() {
+    if(this.get('selectedTopic') !== null && this.get('selectedTopic') !== 'invalid') {
       return true;
     }
     else {
@@ -122,82 +118,40 @@ export default Ember.Controller.extend ({
       return false;
     }
   }),
-  topicStatus: Ember.computed('selectedTN', function() {
-    if(this.get('selectedTN') === 'None') {
-      return '< Search or manage topics >';
-    }
-    else if(this.get('selectedTN') === 'Invalid') {
-      return 'Not found. Check Settings >';
-    }
-    else if(this.get('selectedTN') === '') {
-      return 'Search or manage topics!';
-    }
-    else {
+  topicStatus: Ember.computed('selectedTopic', function() {
+    if(this.get('selectedTopic') !== null && this.get('selectedTopic') !== 'invalid') {
       return 'Topic is selected!';
     }
-  }),
-  // Partials Visibility Boolean Check
-  displayGP: Ember.computed('showGP', function() {
-    if(this.get('showGP') === true) {
-      return true;
+    else if(this.get('selectedTopic') === 'invalid') {
+      return 'Not found. Check below:';
     }
     else {
-      return false;
-    }
-  }),
-  displayCP: Ember.computed('showCP', function() {
-    if(this.get('showCP') === true) {
-      return true;
-    }
-    else {
-      return false;
-    }
-  }),
-  displayFTP: Ember.computed('showFTP', function() {
-    if(this.get('showFTP') === true) {
-      return true;
-    }
-    else {
-      return false;
-    }
-  }),
-  displayPDP: Ember.computed('showPDP', function() {
-    if(this.get('showPDP') === true) {
-      return true;
-    }
-    else {
-      return false;
+      return '< Search or manage topics >';
     }
   }),
   actions: {
     //Set ID Tag Methods
-    setGID: function(genre) { 
-      this.set('selectedGID', genre.id);
-      this.set('selectedGN', genre.get('name'));
+    setGenre: function(genre) { 
+      this.set('selectedGenre', genre);
     },
-    setCID: function(category) { 
-      this.set('selectedCID', category.id);
-      this.set('selectedCN', category.get('name'));
+    setCategory: function(category) { 
+      this.set('selectedCategory', category);
     },
-    setFTID: function(factType) { 
-      this.set('selectedFTID', factType.id);
-      this.set('selectedFTN', factType.get('name'));
+    setFactType: function(factType) { 
+      this.set('selectedFactType', factType);
     },
-    setTID: function() {
+    setTopic: function() {
       if(this.get('topicInputText') !== '') {  
         var possibleTopic = this.model.get('topics').findBy('name', this.get('topicInputText').toLowerCase());
         if(possibleTopic === undefined) {
-          this.set('selectedTN', 'Invalid');
-          this.set('selectedTID', 0);
+          this.set('selectedTopic', 'invalid');
+          this.transitionToRoute('topics');
         }
         else {  
-          this.set('selectedTID', possibleTopic.id);
-          this.set('selectedTN', possibleTopic.get('name'));
+          this.set('selectedTopic', possibleTopic);
         }
       }
       else {
-        this.set('selectedTN', '');
-        this.set('selectedTID', 0);
       }
     },
     setPDID: function(varDayType) { 
@@ -239,20 +193,16 @@ export default Ember.Controller.extend ({
     },
     //Clear Tag Methods
     clearGenre: function() { 
-      this.set('selectedGID', 0);
-      this.set('selectedGN', 'None');
+      this.set('selectedGenre', null);
     },
     clearFactType: function() { 
-      this.set('selectedFTID', 0);
-      this.set('selectedFTN', 'None');
+      this.set('selectedFactType', null);
     },
     clearCategory: function() { 
-      this.set('selectedCID', 0);
-      this.set('selectedCN', 'None');
+      this.set('selectedCategory', null);
     },
     clearTopic: function() { 
-      this.set('selectedTID', 0);
-      this.set('selectedTN', 'None');
+      this.set('selectedTopic', null);
       this.set('topicInputText', '');
     },
     clearPostDate: function() { 

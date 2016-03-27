@@ -1,11 +1,10 @@
 <h3>Topics Management</h3>
-<p>All topics below are being filtered based on your Topic search.</p>
-<p>{{#link-to 'index' class="button_type2_small"}}Return to Forum{{/link-to}}</p>
-<ul>
+<p><strong>All topics displayed below are being filtered based on your search above</strong>.</p>
+<ul class="topics_index_ul">
     {{#each filteredTopics as |topic|}}
   <li>
-    {{#link-to 'topic' topic}}{{capitalize topic.name}}{{/link-to}}
-    <button class="button_type2_small" {{action "setTopic" topic}}>Select</button>
+    {{#link-to 'topic' topic class="button_type1_normal"}}{{capitalize topic.name}}{{/link-to}}
+    <button class="button_type1_topic_small" {{action "setTopic" topic}}>Set as search topic</button>
   </li>
     {{/each}}
 </ul>
