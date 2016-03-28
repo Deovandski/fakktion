@@ -9,6 +9,7 @@ import Ember from "ember";
 */
 
 export default Ember.Helper.helper(function([value]) {
+  var tempValue = null;
   if (value === undefined) {
     return value;
   }
@@ -17,15 +18,15 @@ export default Ember.Helper.helper(function([value]) {
       return value;
     }
     if(value >= 1000 && value < 1000000){
-      var tempValue = Math.floor(value * 0.001);
+      tempValue = Math.floor(value * 0.001);
       return tempValue + "k";
     }
     else if(value >= 1000000 && value < 1000000000){
-      var tempValue = Math.floor(value * 0.000001);
+      tempValue = Math.floor(value * 0.000001);
       return tempValue + "kk";
     }
     else if(value >= 1000000 && value < 1000000000){
-      var tempValue = Math.floor(value * 0.000001);
+      tempValue = Math.floor(value * 0.000001);
       return tempValue + "kk";
     }
     else{
