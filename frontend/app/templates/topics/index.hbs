@@ -10,7 +10,7 @@
 </ul>
 
 {{#if session.isAuthenticated}}
-  <p class="inner_info_button">{{#link-to 'topics.create'}}Create topic{{/link-to}}</p>
+  {{#link-to 'topics.create' class="button_type1_normal"}}Create topic{{/link-to}}
 {{else}}
   <p>Please login to create a topic</p>
 {{/if}}

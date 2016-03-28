@@ -6,7 +6,7 @@
 </ul>
 
 {{#if session.isAuthenticated}}
-  <p class="inner_info_button">{{#link-to 'factTypes.create'}}Create Fact type{{/link-to}}</p>
+  {{#link-to 'factTypes.create' class="button_type1_normal"}}Create Fact type{{/link-to}}
 {{else}}
   <p>Please login to create a Fact Type</p>
 {{/if}}

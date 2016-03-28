@@ -3,15 +3,6 @@ import Ember from 'ember';
 const { service } = Ember.inject;
 
 /* Abbreviations:
-GID: Genre_id
-CID: category_id
-TID: topic_id
-FTID: fact_type_id
-------------------
-GN: GenreName
-CN: CategoryName
-TN: Topicname
-FTN: FactTypeName
 PDN: PostingDateNaming
 ------------------
 GP: GenrePartial
@@ -39,35 +30,9 @@ export default Ember.Controller.extend ({
   showCP: true,
   showFTP: true,
   showPDP: true,
-  // Paths to show central Panel and Sidebars Panels:
-  centralPanelPaths: ['index',
-  'posts.index', 'posts.create', 'post.edit',
-  'genres.index', 'genres.create', 'genre.index', 'genre.edit',
-  'topics.index', 'topics.create', 'topic.index', 'topic.edit',
-  'factTypes.index', 'factTypes.create', 'factType.index', 'factType.edit'],
-  sidebarsPanelPaths: ['index',
-  'posts.index', 'posts.create', 'post.edit',
-  'genres.index', 'genres.create', 'genre.index', 'genre.edit',
-  'topics.index', 'topics.create', 'topic.index', 'topic.edit',
-  'factTypes.index', 'factTypes.create', 'factType.index', 'factType.edit'],
-  // Central Panel and Sidebars Visibility Boolean Check
-  displayCentralPanel: Ember.computed('currentPath', function() {
-    //console.log(this.get('currentPath'));
-    if(this.get('centralPanelPaths').indexOf(this.get('currentPath')) !== -1) {
-      return true;
-    }
-    else {
-      return false;
-    }
-  }),
-  displaySidebars: Ember.computed('currentPath', function(){
-    if(this.get('sidebarsPanelPaths').indexOf(this.get('currentPath')) !== -1) {
-      return true;
-    }
-    else {
-      return false;
-    }
-  }),
+  displayCentralPanel:true,
+  displayLeftSidebar: true,
+  displayRightSidebar: true,
   // Verify if the user is a Admin.
   isAdmin: Ember.computed('sessionAccount.user.is_admin', function() {
     if(this.get('sessionAccount.user.is_admin') === true) {
@@ -178,7 +143,7 @@ export default Ember.Controller.extend ({
         this.set('selectedPDN','None');
       }
     },
-    //Set Partial Visibility Methods
+    // Panel Controls
     setGPV: function(varBoolean) { 
       this.set('showGP', varBoolean);
     },
@@ -190,6 +155,15 @@ export default Ember.Controller.extend ({
     },
     setPDPV: function(varBoolean) { 
       this.set('showPDP', varBoolean);
+    },
+    toggleCentralPanel: function() {
+      this.toggleProperty('displayCentralPanel');
+    },
+    toggleLeftSidebar: function() {
+      this.toggleProperty('displayLeftSidebar');
+    },
+    toggleRightSidebar: function() {
+      this.toggleProperty('displayRightSidebar');
     },
     //Clear Tag Methods
     clearGenre: function() { 

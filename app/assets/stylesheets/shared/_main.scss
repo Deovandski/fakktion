@@ -5,12 +5,16 @@ body.ember-application main {
   right:0px;
   width: 100%;
   position:absolute;
+  display: flex;
   overflow-x: hidden;
   overflow-y: hidden;
   .left_sidebar {
-    width: 225px;
+    flex-grow: 1;
+    flex-direction: column;
+    flex-wrap: wrap;
+    min-width: 210px;
+    max-width: 230px;
     height: 100%;
-    float: left;
     text-align: center;
     border-width: 2px;
     border-style: solid;
@@ -45,21 +49,29 @@ body.ember-application main {
   }
   .central {
     overflow-x: hidden;
-    overflow-y: hidden;
-    float: left;
-    width: calc(100% - 450px);
-    height: 100%;
+    overflow-y: scroll;
+    flex-grow: 1;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: auto;
     list-style-type:none;
     text-align: center;
     border-left-style: solid;
     border-right-style: solid;
     border-bottom-style: solid;
     border-top-style: solid;
-    border-width: 3px; 
+    border-width: 3px;
+    padding-bottom: 20px;
     .central_panel {
+      width: auto;
+      max-width: 630px;
       height: 80px;
       border-bottom-style: solid;
+      border-left-style: solid;
+      border-right-style: solid;
       border-width: 2px;
+      margin-left: auto;
+      margin-right: auto;
       .central_upper_panel {
         height: 30px;
         width: 100%;
@@ -163,24 +175,41 @@ body.ember-application main {
           border-width: 1px;
         }
       }
-    }      
+    }
+    .panel_toggler{
+      margin: 10px auto 10px auto;
+      width: auto;
+      max-width: 210px;
+      height: 20px;
+      display: flex;
+      .panel_toggler_left{
+        flex-grow: 1;
+        flex-direction: column;
+        flex-wrap: wrap;
+      }
+      .panel_toggler_central{
+        flex-grow: 1;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin-right: 10px;
+        margin-left: 10px;
+      }
+      .panel_toggler_right{
+        flex-grow: 1;
+        flex-direction: column;
+        flex-wrap: wrap;
+      }
+    }
     .shared_panel {
-      overflow-x: hidden;
-      height: calc(100% - 80px);
-      padding-bottom: 20px;
-      width: 100%;
       margin: 0px;
     }
   }
-  .body_panel {
-    overflow-x: hidden;
-    overflow-y: auto;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-  }
   .right_sidebar {
-    width: 225px;
+    min-width: 210px;
+    max-width: 230px;
+    flex-grow: 1;
+    flex-direction: column;
+    flex-wrap: wrap;
     height: 100%;
     float: left;
     text-align: center;

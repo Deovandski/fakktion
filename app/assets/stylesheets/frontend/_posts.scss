@@ -66,6 +66,12 @@
 }
 .warning_tags{
 	color: #ff6a00;
+	margin-bottom: 5px;
+	span:nth-child(n) {
+        border-style: solid;
+        border-width: 1px;
+		margin: 5px;
+	}
 }
 
 

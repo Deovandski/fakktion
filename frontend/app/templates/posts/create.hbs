@@ -4,21 +4,16 @@
   {{else}}
   <p class="tag_warning_label">Post is missing the following tags: </p>
   <div class="warning_tags">
-    <div class="tag_warning_label_genre">{{verifyGenre}}</div>
-    <div class="tag_warning_label_fact_type">{{verifyFactType}}</div>
-    <div class="tag_warning_label_category">{{verifyCategory}}</div>
-    <div class="tag_warning_label_topic">{{verifyTopic}}</div>
+    {{#if verifyGenre}}<span>Genre</span>{{/if}}
+    {{#if verifyFactType}}<span>Fact Type</span>{{/if}}
+    {{#if verifyCategory}}<span>Category</span>{{/if}}
+    {{#if verifyTopic}}<span>Topic</span>{{/if}}
   </div>
   {{/if}}
   <div class="input_block_type1">
     <label class="first_label">Title:</label>
     <label class="input_wrapper">{{input value=title}}</label>
     <label class="second_label">{{verifyTitle}}</label>
-  </div><br/>
-  <div class="input_block_type1">
-    <label class="first_label">Text:</label>
-    <label class="input_wrapper">{{input value=text}}</label>
-    <label class="second_label">{{verifyText}}</label>
   </div><br/>
   <div class="input_block_type1">
     <label class="first_label">Fact Link:</label>
@@ -30,5 +25,15 @@
     <label class="input_wrapper">{{input value=fictionLink}}</label>
     <label class="second_label">{{verifyFictionLink}}</label>
   </div><br/>
-  <button class="button_type1" {{action "create"}}>Create</button>
+  <div class="input_block_textArea">
+    <div class="input_block_textArea_header">
+      <div class="left_header"><strong>Post Message</strong></div>
+      <div class="right_header"><strong>Preview</strong></div>
+    </div>
+    <div class="input_block_textArea_body">
+      <div class="input_wrapper">{{textarea value=text}}</div>
+      <div class="preview_wrapper">{{{text}}}</div>
+    </div>
+  </div><br/>
+  <button class="button_type1_normal" {{action "create"}}>Create</button>
 </form>

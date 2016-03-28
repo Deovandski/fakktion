@@ -73,41 +73,41 @@ export default Ember.Controller.extend ({
   verifyGenre: Ember.computed('application.selectedGenre.id', function() {
     if(this.get('application.selectedGenre.id') > 0) {
       this.set('clientSideValidationComplete',true);
-      return '';
+      return false;
     }
     else {
       this.set('clientSideValidationComplete',false);
-      return "Genre";
+      return true;
     }
   }),
   verifyFactType: Ember.computed('application.selectedFactType.id', function() {
     if(this.get('application.selectedFactType.id') > 0) {
       this.set('clientSideValidationComplete',true);
-      return '';
+      return false;
     }
     else {
       this.set('clientSideValidationComplete',false);
-      return "Fact Type";
+      return true;
     }
   }),
   verifyCategory: Ember.computed('application.selectedCategory.id', function() {
     if(this.get('application.selectedCategory.id') > 0) {
       this.set('clientSideValidationComplete',true);
-      return '';
+      return false;
     }
     else {
       this.set('clientSideValidationComplete',false);
-      return "Category";
+      return true;
     }
   }),
   verifyTopic: Ember.computed('application.selectedTopic.id', function() {
     if(this.get('application.selectedTopic.id') > 0) {
       this.set('clientSideValidationComplete',true);
-      return '';
+      return false;
     }
     else {
       this.set('clientSideValidationComplete',false);
-      return "Topic";
+      return true;
     }
   }),
   actions: {

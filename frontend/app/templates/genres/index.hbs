@@ -6,7 +6,7 @@
 </ul>
 
 {{#if session.isAuthenticated}}
-  <p class="inner_info_button">{{#link-to 'genres.create'}}Create Genre{{/link-to}}</p>
+  {{#link-to 'genres.create' class="button_type1_normal"}}Create Genre{{/link-to}}
 {{else}}
   <p>Please login to create a genre</p>
 {{/if}}

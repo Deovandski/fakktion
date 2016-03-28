@@ -15,7 +15,7 @@
 	</div>
 	<div class="category_tagging">
 		{{#if isCategorySelected}}
-			<button class="button_bar_category" {{action "clearCategory"}}>{{capitalize selectedCategory.name}}</button>
+			<button class="button_bar_category" {{action "clearCategory"}}>{{upper-case selectedCategory.name}}</button>
 		{{else}}
 			<label class="button_bar_category">- - -</label>
 		{{/if}}

@@ -8,7 +8,7 @@
 </form>
 {{#if session.isAuthenticated}}
   {{#if sessionAccount.user.is_admin}}
-    <button class="button_type1" {{action "update"}}>Update Topic</button>
+    <button class="button_type1_normal" {{action "update"}}>Update Topic</button>
   {{else}}
     <label class="second_label">Only Admins can edit</label>
   {{/if}}
