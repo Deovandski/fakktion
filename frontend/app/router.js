@@ -84,11 +84,9 @@ Router.map(function() {
   
   // Footer related
   this.route('footer');
-  this.route('about');
   this.route('legalInfo');
   this.route('privacyInfo');
   this.route('support');
-  this.route('about');
   this.route('help');
   
   // 404 Handler
