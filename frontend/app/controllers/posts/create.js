@@ -10,30 +10,6 @@ export default Ember.Controller.extend ({
   factLink: "",
   fictionLink: "",
   clientSideValidationComplete: false,
-  genreID: Ember.computed('application.selectedGID', function() {
-    return this.get('application.selectedGID');
-  }),
-  factTypeID: Ember.computed('application.selectedFTID', function() {
-    return this.get('application.selectedFTID');
-  }),
-  categoryID: Ember.computed('application.selectedCID', function() {
-    return this.get('application.selectedCID');
-  }),
-  topicID: Ember.computed('application.selectedTID', function() {
-    return this.get('application.selectedTID');
-  }),
-  genreName: Ember.computed('application.selectedGN', function() {
-    return this.get('application.selectedGN');
-  }),
-  factTypeName: Ember.computed('application.selectedFTN', function() {
-    return this.get('application.selectedFTN');
-  }),
-  categoryName: Ember.computed('application.selectedCN', function() {
-    return this.get('application.selectedCN');
-  }),
-  topicName: Ember.computed('application.selectedTN', function() {
-    return this.get('application.selectedTN');
-  }),
   verifyTitle: Ember.computed('title', function() {
     if(this.get('title').length < 10) {
       this.set('clientSideValidationComplete',false);
@@ -55,63 +31,83 @@ export default Ember.Controller.extend ({
     }
   }),
   verifyFactLink: Ember.computed('factLink', function() {
-    if(this.get('factLink').length < 4) {
-      this.set('clientSideValidationComplete',false);
-      return "Past Complete URL";
+    if(this.get('factLink') !== '') {
+      if(this.get('factLink').length < 8) {
+        this.set("clientSideValidationComplete", false);
+        return "Invalid URL";
+      }
+      else {
+        this.set("clientSideValidationComplete", true);
+        return "";
+      }
     }
     else {
-      this.set('clientSideValidationComplete',true);
-      return '';
+      this.set("clientSideValidationComplete",true);
+      return "http(s)://www.example.com";
     }
   }),
   verifyFictionLink: Ember.computed('fictionLink', function() {
-    if(this.get('fictionLink').length < 4) {
-      this.set('clientSideValidationComplete',false);
-      return "Past Complete URL";
+    if(this.get('fictionLink') !== '') {
+      if(this.get('fictionLink').length < 8) {
+        this.set("clientSideValidationComplete", false);
+        return "Invalid URL";
+      }
+      else {
+        this.set("clientSideValidationComplete", true);
+        return "";
+      }
     }
     else {
+      this.set("clientSideValidationComplete",true);
+      return "http(s)://www.example.com";
+    }
+  }),
+  allTagsValid: Ember.computed('application.selectedGenre.id','application.selectedFactType.id', 'application.selectedCategory.id','application.selectedTopic.id',  function() {
+    if(this.get('application.selectedGenre.id') > 0 && this.get('application.selectedFactType.id') > 0 && this.get('application.selectedCategory.id') > 0 && this.get('application.selectedTopic.id') > 0) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }),
+  verifyGenre: Ember.computed('application.selectedGenre.id', function() {
+    if(this.get('application.selectedGenre.id') > 0) {
       this.set('clientSideValidationComplete',true);
       return '';
     }
-  }),
-  verifyGenre: Ember.computed('genreID', function() {
-    if(this.get('genreID') === 0) {
+    else {
       this.set('clientSideValidationComplete',false);
       return "Genre";
     }
-    else {
+  }),
+  verifyFactType: Ember.computed('application.selectedFactType.id', function() {
+    if(this.get('application.selectedFactType.id') > 0) {
       this.set('clientSideValidationComplete',true);
       return '';
     }
-  }),
-  verifyFactType: Ember.computed('factTypeID', function() {
-    if(this.get('factTypeID') === 0) {
+    else {
       this.set('clientSideValidationComplete',false);
       return "Fact Type";
     }
-    else {
+  }),
+  verifyCategory: Ember.computed('application.selectedCategory.id', function() {
+    if(this.get('application.selectedCategory.id') > 0) {
       this.set('clientSideValidationComplete',true);
       return '';
     }
-  }),
-  verifyCategory: Ember.computed('categoryID', function() {
-    if(this.get('categoryID') === 0) {
+    else {
       this.set('clientSideValidationComplete',false);
       return "Category";
     }
-    else {
+  }),
+  verifyTopic: Ember.computed('application.selectedTopic.id', function() {
+    if(this.get('application.selectedTopic.id') > 0) {
       this.set('clientSideValidationComplete',true);
       return '';
     }
-  }),
-  verifyTopic: Ember.computed('topicID', function() {
-    if(this.get('topicID') === 0) {
+    else {
       this.set('clientSideValidationComplete',false);
       return "Topic";
-    }
-    else {
-      this.set('clientSideValidationComplete',true);
-      return '';
     }
   }),
   actions: {
@@ -125,20 +121,19 @@ export default Ember.Controller.extend ({
           fiction_link: this.get('fictionLink'),
           hidden: false,
           softDelete: false,
+          comments_count: 0,
           user: store.peekRecord('user', this.get('sessionAccount.user.id')),
-          genre: store.peekRecord('genre', this.get('genreID')),
-          fact_type: store.peekRecord('fact_type', this.get('factTypeID')),
-          topic: store.peekRecord('topic', this.get('topicID')),
-          category: store.peekRecord('category', this.get('categoryID'))
+          genre: store.peekRecord('genre', this.get('application.selectedGenre.id')),
+          fact_type: store.peekRecord('fact_type', this.get('application.selectedFactType.id')),
+          topic: store.peekRecord('topic', this.get('application.selectedTopic.id')),
+          category: store.peekRecord('category', this.get('application.selectedCategory.id'))
         });
         var self = this;
-
-        // Console debug
-        console.log(store.peekRecord('genre', this.get('genreID')));
-        console.log(store.peekRecord('user', this.get('sessionAccount.user.id')));
-
-
         post.save().then(function() {
+          self.set('title', '');
+          self.set('text', '');
+          self.set('factLink', '');
+          self.set('fictionLink', '');
           self.transitionToRoute('post', post);
         }, function() {
           alert('(Server 402) failed to create Post... Check your input and try again!');

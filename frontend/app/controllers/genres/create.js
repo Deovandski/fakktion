@@ -2,6 +2,7 @@ import Ember from "ember";
 const { service } = Ember.inject;
 
 export default Ember.Controller.extend ({
+  application: Ember.inject.controller('application'),
   session: service('session'),
   name: "",
   clientSideValidationComplete: false,
@@ -15,6 +16,10 @@ export default Ember.Controller.extend ({
         this.set('clientSideValidationComplete',false);
         return 'Too short...';
       }
+    }
+    else if(this.get('name').length > 10) {
+        this.set('clientSideValidationComplete',false);
+        return 'Max 10 characters.';
     }
     else {
       if(this.model.get('genres').isAny('name', this.get('name'))) {
@@ -35,7 +40,9 @@ export default Ember.Controller.extend ({
         });
         var self = this;
         genre.save().then(function() {
-          self.transitionToRoute('genre', genre);
+          self.set("application.selectedGenre",genre);
+          self.set("name","");
+          self.transitionToRoute('index');
         }, function() {
           alert('(Server 402) failed to create genre... Check your input and try again!');
         });

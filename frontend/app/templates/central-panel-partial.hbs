@@ -29,19 +29,19 @@
 	</div>
 </div>
 <div class="central_lower_panel">
-	<div class="topic_search">
+	<form class="topic_search">
 		{{#if isTopicSelected}}
 			{{input class="topic_search_text" placeholder=selectedTopic.name disabled="true"}}
 			<div class="topic_search_input">
-				<button class="button_bar_topic" {{action "clearTopic"}}>Clear</button>		
+				<button class="button_bar_topic" {{action "clearTopic"}}>Clear</button>
 			</div>
 		{{else}}
-			{{input class="topic_search_text" value=topicInputText placeholder="Topic"}}
+			{{input class="topic_search_text" value=topicInputText placeholder="Search Topic"}}
 			<div class="topic_search_input">
-				<button class="button_bar_topic" {{action "setTopic"}}>Search</button>		
+				<button class="button_bar_topic" {{action "setTopic"}}>Search</button>
 			</div>
 		{{/if}}
-	</div>
+	</form>
 	<div class="topic_tagging">
 		<label>{{topicStatus}}</label>
 	</div>

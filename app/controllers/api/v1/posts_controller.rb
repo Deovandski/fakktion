@@ -15,12 +15,12 @@ class Api::V1::PostsController < ApiController
 
   # Render the created Post using PostSerializer and the AMS Deserialization.
   def create
-    json_create(post_params, Post)
+    json_create_and_sanitize(post_params, Post)
   end
 
   # Render the updated Post using PostSerializer and the AMS Deserialization.
   def update
-    json_update(post,post_params)
+    json_update_and_sanitize(post,post_params)
   end
 
   # Destroy Post from the AMS Deserialization params.

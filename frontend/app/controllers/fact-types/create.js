@@ -2,6 +2,7 @@ import Ember from "ember";
 const { service } = Ember.inject;
 
 export default Ember.Controller.extend ({
+  application: Ember.inject.controller('application'),
   session: service('session'),
   name: "",
   clientSideValidationComplete: false,
@@ -13,8 +14,12 @@ export default Ember.Controller.extend ({
       }
       else {
         this.set('clientSideValidationComplete',false);
-        return 'Too short...';
+        return '4 characters minimum';
       }
+    }
+    else if(this.get('name').length > 10) {
+        this.set('clientSideValidationComplete',false);
+        return 'Max 10 characters.';
     }
     else {
       if(this.model.get('factTypes').isAny('name', this.get('name'))) {
@@ -35,6 +40,8 @@ export default Ember.Controller.extend ({
         });
         var self = this; // Controller instance for route transitioning.
         factType.save().then(function() {
+          self.set("application.selectedFactType",factType);
+          self.set("name","");
           self.transitionToRoute('index');
         }, function() {
           alert('(Server 402) failed to create User... Check your input and try again!');

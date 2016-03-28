@@ -1,5 +1,7 @@
 <h2>New Post</h2>
 <form>
+  {{#if allTagsValid}}
+  {{else}}
   <p class="tag_warning_label">Post is missing the following tags: </p>
   <div class="warning_tags">
     <div class="tag_warning_label_genre">{{verifyGenre}}</div>
@@ -7,6 +9,7 @@
     <div class="tag_warning_label_category">{{verifyCategory}}</div>
     <div class="tag_warning_label_topic">{{verifyTopic}}</div>
   </div>
+  {{/if}}
   <div class="input_block_type1">
     <label class="first_label">Title:</label>
     <label class="input_wrapper">{{input value=title}}</label>
