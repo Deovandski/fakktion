@@ -21,6 +21,9 @@ engines:
       languages:
       - ruby
       - javascript
+    checks:
+      Similar code:
+        enabled: false
 ratings:
   paths:
     - "app/**"
