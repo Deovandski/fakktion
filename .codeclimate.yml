@@ -16,14 +16,7 @@ engines:
   fixme:
     enabled: true
   duplication:
-    enabled: true
-    config:
-      languages:
-      - ruby
-      - javascript
-    checks:
-      Similar code:
-        enabled: false
+    enabled: false
 ratings:
   paths:
     - "app/**"
