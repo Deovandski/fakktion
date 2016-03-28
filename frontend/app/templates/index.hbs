@@ -1,7 +1,5 @@
 <p class="frontend_index"><strong>DO NOT USE PERSONAL INFORMATION!</strong></p>
 <p>SSL has not been yet activated since Fakktion is still on experimentals.</p>
-
-<label class="label_forum_info">{{#link-to 'adminMessages'}}Check Admin Messages{{/link-to}}</label><br/>
 <div class="posts_info">
 	<ul>
 		<li>
@@ -15,10 +13,10 @@
 				{{#link-to 'post' post}}{{capitalize post.title}}{{/link-to}}
 			</label>
 			<label class="label_views">
-				{{post.views_count}}
+				{{counter-styler post.views_count}}
 			</label>
 			<label class="label_comments_count">
-				{{post.comments_count}}
+				{{counter-styler post.comments_count}}
 			</label>
 		</li>
 		{{/each}}
