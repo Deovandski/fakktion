@@ -16,6 +16,27 @@
       list-style-type: none;
       margin: 15px;
       width: 100%;
+	  .label_title_header {
+  	    padding: 0;
+	    list-style-type: none;
+	    text-overflow:ellipsis;
+	    border-width: 1px;
+	    width: 70%;
+	  }
+	  .label_views_header {
+	    font-weight: normal;
+	    text-overflow:ellipsis;
+	    border-style: solid;
+	    border-width: 1px;
+	    width: 10%;
+	  }
+	  .label_comments_count_header {
+	    font-weight: normal;
+	    text-overflow:ellipsis;
+	    border-style: solid;
+	    border-width: 1px;
+	    width: 10%;
+	  }
       .label_title {
         padding: 0;
         list-style-type: none;
@@ -26,44 +47,6 @@
       .label_views {
         font-weight: normal;
         text-overflow:ellipsis;
-        border-style: solid;
-        border-width: 1px;
-        width: 10%;
-      }
-      .label_comments_count {
-        font-weight: normal;
-        text-overflow:ellipsis;
-        border-style: solid;
-        border-width: 1px;
-        width: 10%;
-      }
-    }
-  }
-}
-
-.posts_info_redux {
-  width: 100%;
-  ul {
-    overflow:hidden;
-    text-overflow:ellipsis;
-    padding: 0;
-    list-style-type: none;
-    width: 100%;
-    li {
-      padding: 0;
-      margin: 15px;
-      list-style-type: none;
-      width: 100%;
-      .label_title {
-        padding: 0;
-        list-style-type: none;
-        text-overflow:ellipsis;
-        border-width: 1px;
-        width: 70%;
-      }
-      .label_views {
-        text-overflow:ellipsis;
-        font-weight: normal;
         border-style: solid;
         border-width: 1px;
         width: 10%;

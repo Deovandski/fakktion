@@ -2,29 +2,32 @@
 <p>SSL has not been yet activated since Fakktion is still on experimentals.</p>
 
 <label class="label_forum_info">{{#link-to 'adminMessages'}}Check Admin Messages{{/link-to}}</label><br/>
-<label class="label_forum_info">V: Views | C: Comments</label>
 <div class="posts_info">
 	<ul>
+		<li>
+			<label class="label_title"><strong>Showing {{filteredPosts.length}} Posts</strong></label>
+			<label class="label_views_header"><img height="15px" src="/assets/views.svg"></label>
+			<label class="label_comments_count_header"><img height="15px" src="/assets/comments.png"></label>
+		</li>
 		{{#each filteredPosts as |post|}}
 		<li>
 			<label class="label_title">
 				{{#link-to 'post' post}}{{capitalize post.title}}{{/link-to}}
 			</label>
 			<label class="label_views">
-				V:{{post.views_count}}
+				{{post.views_count}}
 			</label>
 			<label class="label_comments_count">
-				C:{{post.comments_count}}
+				{{post.comments_count}}
 			</label>
 		</li>
 		{{/each}}
 	</ul>
+				{{#if session.isAuthenticated}}
+					{{#link-to  'posts.create' class="button_type1_normal"}}Create Post{{/link-to}}
+				{{else}}
+					<p>Please login to create a post</p>
+				{{/if}}
 </div>
-
-{{#if session.isAuthenticated}}
-	<p class="inner_info_redux">{{#link-to  'posts.create'}}Create Post{{/link-to}}</p>
-{{else}}
-	<p>Please login to create a post</p>
-{{/if}}
 
 {{outlet}}

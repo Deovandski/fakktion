@@ -166,11 +166,10 @@ body.ember-application main {
     }      
     .shared_panel {
       overflow-x: hidden;
-      overflow-y: auto;
-      height: 100%;
+      height: calc(100% - 80px);
+      padding-bottom: 20px;
       width: 100%;
       margin: 0px;
-      
     }
   }
   .body_panel {

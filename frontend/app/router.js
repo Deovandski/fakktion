@@ -85,10 +85,11 @@ Router.map(function() {
   // Footer related
   this.route('footer');
   this.route('about');
-  this.route('legal_info');
-  this.route('privacy_info');
+  this.route('legalInfo');
+  this.route('privacyInfo');
   this.route('support');
   this.route('about');
+  this.route('help');
   
   // 404 Handler
   this.route('not-found', { path: '/*wildcard' });
