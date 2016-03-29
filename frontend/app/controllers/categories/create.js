@@ -6,7 +6,7 @@ export default Ember.Controller.extend ({
   session: service('session'),
   name: "",
   clientSideValidationComplete: false,
-  verifyTopicName: Ember.computed('name', function() {
+  verifyCategoryName: Ember.computed('name', function() {
     if(this.get('name').length < 4) {
       if(this.get('name').length === 0) {
         this.set('clientSideValidationComplete',false);
@@ -17,14 +17,14 @@ export default Ember.Controller.extend ({
         return 'Too short...';
       }
     }
-    else if(this.get('name').length > 15) {
+    else if(this.get('name').length > 10) {
         this.set('clientSideValidationComplete',false);
-        return 'Max 15 characters.';
+        return 'Max 10 characters.';
     }
     else {
-      if(this.model.get('topics').isAny('name', this.get('name'))) {
+      if(this.model.get('categories').isAny('name', this.get('name'))) {
         this.set('clientSideValidationComplete',false);
-        return 'This Topic Name is already in use...';
+        return 'This genre Name is already in use...';
       }
       else {
         this.set('clientSideValidationComplete',true);
@@ -35,13 +35,12 @@ export default Ember.Controller.extend ({
   actions: {
     create: function() {
       if(this.get('clientSideValidationComplete') === true) {
-        var store = this.store;
-        var topic = store.createRecord('topic', {
+        var category = this.store.createRecord('category', {
           name: this.get('name')
         });
         var self = this;
-        topic.save().then(function() {
-          self.set("application.selectedTopic",topic);
+        category.save().then(function() {
+          self.set("application.selectedCategory",category);
           self.set("name","");
           self.transitionToRoute('index');
         }, function() {

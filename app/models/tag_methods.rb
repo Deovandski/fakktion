@@ -8,6 +8,10 @@ module TagMethods
     self.name = name.downcase
   end
   
+  def set_default_values
+    self.eligibility_counter = 0
+    self.posts_count = 0
+  end
   # Make sure that there are no posts using this tag before destruction.
   def check_for_posts
     if self.posts.any?

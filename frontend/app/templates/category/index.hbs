@@ -2,7 +2,7 @@
 <p>Number of Posts using this tag: <b>{{model.posts_count}}</b></p>
 {{#if session.isAuthenticated}}
   {{#if sessionAccount.user.is_admin}}
-    <p>{{#link-to 'genre.edit' }}Edit Genre{{/link-to}}</p>
+    <p>{{#link-to 'genre.edit' }}Edit Category{{/link-to}}</p>
   {{else}}
       <label class="second_label">Only Admins can edit</label>
   {{/if}}

@@ -1,7 +1,7 @@
-import Ember from 'ember';
+import Ember from "ember";
 const { service } = Ember.inject;
 
-export default Ember.Route.extend ({
+export default Ember.Controller.extend ({
   session: service('session'),
   sessionAccount: service('sessionAccount')
 });

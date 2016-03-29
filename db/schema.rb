@@ -25,7 +25,8 @@ ActiveRecord::Schema.define(version: 20150628051759) do
 
   create_table "categories", force: :cascade do |t|
     t.string  "name"
-    t.integer "posts_count", default: 0
+    t.integer "eligibility_counter", default: 0
+    t.integer "posts_count",         default: 0
   end
 
   create_table "comments", force: :cascade do |t|

@@ -44,11 +44,11 @@ export default Ember.Controller.extend ({
           self.set("name","");
           self.transitionToRoute('index');
         }, function() {
-          alert('(Server 402) failed to create genre... Check your input and try again!');
+          alert('Server Failure!');
         });
       }
       else {
-        alert("(Client 402) Failed to create genre... Check any warning messages (to the right of each textbox) otherwise contact support if you don't see any");
+        alert("Check any warning messages and try again! (Client Validation F)");
       }
     }
   }

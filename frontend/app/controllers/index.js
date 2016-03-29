@@ -49,50 +49,79 @@ export default Ember.Controller.extend ({
       tempPosts = tempPosts.filterBy('topic_id', topicID);
     }
     
-    /*
-      postDateID === 1 | Today
-      postDateID === 2 | Yesterday
-      postDateID === 3 | Past Week
-      postDateID === 4 | Past Month
-      postDateID === 5 | Past 6 Months
-      postDateID === 6 | Past Year
-    */
     if(postDateID !== 0) {
       var today = moment().subtract(1,'d').toDate();
       var yesterday = moment().subtract(2,'d').toDate();
       var pastWeek = moment().subtract(7,'d').toDate();
+      var pastTwoWeeks = moment().subtract(14,'d').toDate();
       var pastMonth = moment().subtract(1,'months').toDate();
+      var pastThreeMonths = moment().subtract(3,'months').toDate();
       var pastSixMonths = moment().subtract(6,'months').toDate();
       var pastYear = moment().subtract(1,'y').toDate();
-      if(postDateID === 1) { // Today 
-        tempPosts = tempPosts.filter(function(post) {
-          return ((post.get('created_at') >= today));
-        });
-      }
-      else if(postDateID === 2) { // Yesterday
-        tempPosts = tempPosts.filter(function(post) {
-          return ((post.get('created_at') >= yesterday && post.get('created_at') <= today));
-        });
-      }
-      else if(postDateID === 3) { // Past Week
-        tempPosts = tempPosts.filter(function(post) {
-          return (post.get('created_at') >= pastWeek);
-        });
-      }
-      else if(postDateID === 4) { // Past Month
-        tempPosts = tempPosts.filter(function(post) {
-          return (post.get('created_at') >= pastMonth);
-        });
-      }
-      else if(postDateID === 5) { // Past 6 months
-        tempPosts = tempPosts.filter(function(post) {
-          return (post.get('created_at') >= pastSixMonths);
-        });
-      }
-      else if(postDateID === 5) { // Past Year
-        tempPosts = tempPosts.filter(function(post) {
-          return (post.get('created_at') >= pastYear);
-        });
+      var pastTwoYears = moment().subtract(2,'y').toDate();
+      var pastThreeYears = moment().subtract(3,'y').toDate();
+      
+      switch(postDateID){
+        // Today
+        case 1:
+          tempPosts = tempPosts.filter(function(post) {
+            return ((post.get('created_at') >= today));
+          });
+          break;
+        // Yesterday
+        case 2:
+          tempPosts = tempPosts.filter(function(post) {
+            return ((post.get('created_at') >= yesterday && post.get('created_at') <= today));
+          });
+          break;
+        // Past Week
+        case 3:
+          tempPosts = tempPosts.filter(function(post) {
+            return (post.get('created_at') >= pastWeek);
+          });
+          break;
+        // Past 2 Weeks
+        case 4:
+          tempPosts = tempPosts.filter(function(post) {
+            return (post.get('created_at') >= pastTwoWeeks);
+          });
+          break;
+        // Past Month
+        case 5:
+          tempPosts = tempPosts.filter(function(post) {
+            return (post.get('created_at') >= pastMonth);
+          });
+          break;
+        // Past 3 Months
+        case 6:
+          tempPosts = tempPosts.filter(function(post) {
+            return (post.get('created_at') >= pastThreeMonths);
+          });
+          break;
+        // Past 6 Months
+        case 7:
+          tempPosts = tempPosts.filter(function(post) {
+            return (post.get('created_at') >= pastSixMonths);
+          });
+          break;
+        // Past Year
+        case 8:
+          tempPosts = tempPosts.filter(function(post) {
+            return (post.get('created_at') >= pastYear);
+          });
+          break;
+        // Past 2 Years
+        case 9:
+          tempPosts = tempPosts.filter(function(post) {
+            return (post.get('created_at') >= pastTwoYears);
+          });
+          break;
+        // Past 3 Years
+        case 10:
+          tempPosts = tempPosts.filter(function(post) {
+            return (post.get('created_at') >= pastThreeYears);
+          });
+          break;
       }
     }
     return tempPosts;

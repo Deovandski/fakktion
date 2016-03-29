@@ -1,0 +1,12 @@
+<h2>Categories Management</h2>
+<ul>
+    {{#each model as |category|}}
+      <li>{{#link-to 'category' category}}{{capitalize category.name}}{{/link-to}}</li>
+    {{/each}}
+</ul>
+
+{{#if session.isAuthenticated}}
+  {{#link-to 'categories.create' class="button_type1_normal"}}Create Category{{/link-to}}
+{{else}}
+  <p>Please login to create a genre</p>
+{{/if}}

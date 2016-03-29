@@ -188,29 +188,9 @@ export default Ember.Controller.extend ({
       else {
       }
     },
-    setPDID: function(varDayType) { 
+    setPDID: function(varDayType, varDayName) { 
       this.set('selectedPDID', varDayType);
-      if(varDayType === 1){
-        this.set('selectedPDN','Today');
-      }
-      else if(varDayType === 2) {
-        this.set('selectedPDN','Yesterday');
-      }
-      else if(varDayType === 3) {
-        this.set('selectedPDN','Past Week');
-      }
-      else if(varDayType === 4) {
-        this.set('selectedPDN','Past Month');
-      }
-      else if(varDayType === 5) {
-        this.set('selectedPDN','Past 6 Months');
-      }
-      else if(varDayType=== 6) {
-        this.set('selectedPDN','Past Year');
-      }
-      else {
-        this.set('selectedPDN','None');
-      }
+      this.set('selectedPDN', varDayName);
     },
     // Panel Controls
     setGPV: function() {

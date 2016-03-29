@@ -2,6 +2,7 @@
 class CreateTags < ActiveRecord::Migration
     create_table :categories do |t|
       t.string   :name
+      t.integer  :eligibility_counter, default: 0
       t.integer  :posts_count, default: 0
     end
   

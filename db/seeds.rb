@@ -42,7 +42,7 @@ User.create!(full_name: 'User Example',
   privacy_terms_read: true,
   legal_terms_read: true)
 # User #3 - Banned User:
-User.create!(full_name: 'User Example',
+User.create!(full_name: 'Banned User Example',
   show_full_name: true,
   email: 'user@user.com',
   display_name: 'User#3',
@@ -72,6 +72,8 @@ Category.create!(name: 'Movie')
 Category.create!(name: 'Television')
 Category.create!(name: 'Musical')
 Category.create!(name: 'Book')
+Category.create!(name: 'Radio')
+Category.create!(name: 'Newspaper')
 Category.create!(name: 'Vocaloid')
 Rails.logger.info 'Default categories created!'
 
@@ -80,10 +82,19 @@ if FactType.count != 0
   FactType.delete_all
   Rails.logger.info 'All previous fact types deleted...'
 end
-FactType.create!(name: 'Business')
 FactType.create!(name: 'Technology')
-FactType.create!(name: 'International')
+FactType.create!(name: 'Business')
+FactType.create!(name: 'Immigration')
 FactType.create!(name: 'Environment')
+FactType.create!(name: 'United States')
+FactType.create!(name: 'united kingdom')
+FactType.create!(name: 'canada')
+FactType.create!(name: 'brazil')
+FactType.create!(name: 'Argentina')
+FactType.create!(name: 'China')
+FactType.create!(name: 'Japan')
+FactType.create!(name: 'Indonesia')
+FactType.create!(name: 'taiwan')
 Rails.logger.info 'Default fact types created!'
 
 # GENRE RELATED SEED
@@ -123,12 +134,12 @@ Topic.create!(name: 'hatsune miku')
 Topic.create!(name: 'megurine luka')
 Rails.logger.info 'Default topics created!'
 
-# Post Relationships              # REVISE!!!!
-genre1 = Genre.find_by name: 'action'
-category1 = Category.find_by name: 'movie'
-topic1 = Topic.find_by name: 'hatsune miku'
-user1 = User.first
-factType1 = FactType.first
+# Post Relationships
+PhilosophicalGenre = Genre.find_by name: 'philosophical'
+songCategory = Category.find_by name: 'song'
+mikuTopic = Topic.find_by name: 'hatsune miku'
+firstUser = User.first
+technologyFactType = FactType.find_by name: 'technology'
 
 # POST RELATED SEED
 if Post.count != 0
@@ -137,15 +148,15 @@ if Post.count != 0
 end
 Post.create!(fact_link: 'https://en.wikipedia.org/wiki/Hatsune_Miku',
   fiction_link: 'http://www.cbsnews.com/news/hatsune-miku-the-worlds-fakest-pop-star/',
-  text: 'Miku is love! Miku is Life! No seriously, Miku is the result of how community driven creativity can bring a virtual being into real life. The Fiction article talks about Miku being a fake persona or a simple program, but if you ask the Vocaloid community, you will hear quite the different tale. Miku is not the only Vocaloid, but she is the logo of how community driven content management can not only bring people closer, but also breath life into a character that represents most of the Vocaloid community (as in all the people who have respect for her in an I-thou interpersonal relation.)',
+  text: '<h3>Miku is love! Miku is Life!</h3> <p>No seriously, Miku is the result of how community driven creativity can bring a virtual being into real life. The Fiction article talks about Miku being a fake persona or a simple program, but if you ask the Vocaloid community, you will hear quite the different tale. Miku is not the only Vocaloid, but she is the logo of how community driven content management can not only bring people closer, but also breath life into a character that represents most of the Vocaloid community (as in all the people who have respect for her in an I-thou interpersonal relation.)</p>',
   importance: 10,
   title: 'The concept of reality behind Hatsune Miku',
   hidden: false,
-  genre_id: genre1.id,
-  fact_type_id: factType1.id,
-  topic_id: topic1.id,
-  user_id: user1.id,
-  category_id: category1.id)
+  genre_id: PhilosophicalGenre.id,
+  fact_type_id: technologyFactType.id,
+  topic_id: mikuTopic.id,
+  user_id: firstUser.id,
+  category_id: songCategory.id)
 
 # COMMENTS RELATED SEED
 
@@ -153,20 +164,17 @@ if Comment.count != 0
   Comment.delete_all
   Rails.logger.info 'All previous comments deleted...'
 end
+
+mikuPost = Post.first
 Comment.create!(hidden: false,
-  post_id: 1,
+  post_id: mikuPost.id,
   text: 'Sample Text',
-  user_id: 1,
+  user_id: firstUser.id,
   empathy_level: 0)
 Comment.create!(hidden: false,
-  post_id: 2,
+  post_id: mikuPost.id,
   text: 'Sample Text #1',
-  user_id: 2,
-  empathy_level: 0)
-Comment.create!(hidden: false,
-  post_id: 1,
-  text: 'Sample Text #1',
-  user_id: 2,
+  user_id: firstUser.id,
   empathy_level: 0)
 Rails.logger.info 'Default comments created!'
 
@@ -176,15 +184,18 @@ if InnerComment.count != 0
   InnerComment.delete_all
   Rails.logger.info 'All previous comments deleted...'
 end
+
+firstComment = Comment.first
+
 InnerComment.create!(hidden: false,
-  comment_id: 1,
+  comment_id: firstComment.id,
  text: 'Sample Inner Text',
- user_id: 1,
+ user_id: firstUser.id,
   empathy_level: 0)
 InnerComment.create!(hidden: false,
-  comment_id: 2,
+  comment_id: firstComment.id,
   text: 'Sample Inner Text #1',
-  user_id: 2,
+  user_id: firstUser.id,
   empathy_level: 0)
 Rails.logger.info 'Default comments created!'
 

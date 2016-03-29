@@ -38,17 +38,17 @@ export default Ember.Controller.extend ({
         var factType = this.store.createRecord('fact_type', {
           name: this.get('name')
         });
-        var self = this; // Controller instance for route transitioning.
+        var self = this;
         factType.save().then(function() {
           self.set("application.selectedFactType",factType);
           self.set("name","");
           self.transitionToRoute('index');
         }, function() {
-          alert('(Server 402) failed to create User... Check your input and try again!');
+          alert('Server Failure!');
         });
       }
       else {
-        alert("(Client 402) Failed to create Fact Type... Check any warning messages (to the right of each textbox) otherwise contact support if you don't see any");
+        alert("Check any warning messages and try again! (Client Validation F)");
       }
     }
   }

@@ -4,11 +4,7 @@
   {{#if session.currentUser.is_admin}}
     <p>{{#link-to 'topics.topic.edit' }}Edit Topic{{/link-to}}</p>
   {{else}}
-    {{#if session.currentUser.is_super_user}}
-      <p>{{#link-to 'topics.topic.edit' }}Edit Topic{{/link-to}}</p>
-    {{else}}
-      <label class="second_label">Only Admins can edit</label>
-    {{/if}}
+    <label class="second_label">Only Admins can edit</label>
   {{/if}}
 {{else}}
   <label class="second_label">Please Login</label>

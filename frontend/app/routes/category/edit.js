@@ -6,6 +6,6 @@ export default Ember.Route.extend ({
   sessionAccount: service('sessionAccount'),
   setupController: function(controller, model) {
     controller.set('content', model);
-        controller.set('topics', this.store.findAll('topic'));
+        controller.set('categories', this.store.findAll('category'));
     }
 });
