@@ -1,4 +1,4 @@
-@mixin button_type1_genre($button-genre-bg: #0300a8, $button-genre-color: #fff) {
+@mixin button_type1_genre() {
   @include appearance(none);
   background-color: $button-genre-bg;
   border: 1px solid $button-genre-bg;

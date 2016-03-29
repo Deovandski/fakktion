@@ -22,6 +22,7 @@ export default Ember.Controller.extend ({
     var topicID = parseInt(this.get('application.selectedTopic.id'));
     var postDateID = this.get('application.selectedPDID');
     
+    /*
     // DEBUG
     console.log('Variables Debug: ');
     console.log('genreID DEBUG: ' + genreID);
@@ -30,6 +31,7 @@ export default Ember.Controller.extend ({
     console.log('topicID DEBUG: ' + topicID);
     console.log('postDateID DEBUG: ' + postDateID);
     console.log('Filter called');
+    */
     
     if(genreID > 0) {
       tempPosts = tempPosts.filterBy('genre_id', genreID);

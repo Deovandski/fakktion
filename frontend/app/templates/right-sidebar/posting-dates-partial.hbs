@@ -1,30 +1,10 @@
-{{#if showPDP}}
-	{{#if showFTP}}
-		<div class="posting_dates_div_type_dual">
-			<h5 class="tag_h5">Posting Dates</h5>
-			<ul class="button_listing">
-				{{partial 'right-sidebar/posting-dates-inputs-partial'}}
-			</ul>
-			<div class="visibility_button_div_hide">
-				<button class="button_bar" {{action "setPDPV" false}}>Hide</button>
-			</div>
-		</div>
-	{{else}}
-		<div class="posting_dates_div_type_solo">
-			<h5 class="tag_h5">Posting Dates</h5>
-			<ul class="button_listing">
-				{{partial 'right-sidebar/posting-dates-inputs-partial'}}
-			</ul>
-			<div class="visibility_button_div_hide">
-				<button class="button_bar" {{action "setPDPV" false}}>Hide</button>
-			</div>
-		</div>
+<div class="sidebar_sub">
+	<h5 class="tag_h5">Posting Dates</h5>
+		{{#if showPDP}}
+		<ul class="tag_listing">
+			{{partial 'right-sidebar/posting-dates-inputs-partial'}}
+		</ul>
 	{{/if}}
-{{else}}
-	<div class="tag_listing_hidden">
-		<h5 class="tag_h5">Posting Dates</h5>
-		<div class="visibility_button_div_show">
-			<button class="button_bar" {{action "setPDPV" true}}>Show</button>
-		</div>
-	</div>
-{{/if}}
+	<div class="button_toggler"><button class="button_bar" {{action "setPDPV"}}>{{#if showFTP}}Hide{{else}}Show{{/if}}</button></div>
+</div>
+

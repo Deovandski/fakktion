@@ -1,4 +1,4 @@
-@mixin button_bar_genre($button-genre-bg: #0300a8, $button-genre-color: #fff) {
+@mixin button_bar_genre() {
   width: 100%;
   height: 100%;
   @include appearance(none);

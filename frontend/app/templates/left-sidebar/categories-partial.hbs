@@ -1,34 +1,13 @@
-{{#if showCP}}
-	{{#if showGP}}
-		<div class="categories_div_type_dual">
-			<h5 class="tag_h5">Categories</h5>
-			<ul class="tag_listing">
-				{{#each model.categories as |category|}}
-					<li><button class="button_type1_category" {{action "setCategory" category}}>{{upper-case category.name}}</button>  ({{category.posts_count}})</li>
-				{{/each}}
-			</ul>
-			<div class="visibility_button_div_hide">
-				<button class="button_bar" {{action "setCPV" false}}>Hide</button>
-			</div>
-		</div>
-	{{else}}
-		<div class="categories_div_type_solo">
-			<h5 class="tag_h5">Categories</h5>
-			<ul class="tag_listing">
-				{{#each model.categories as |category|}}
-					<li><button class="button_type1_category" {{action "setCategory" category}}>{{upper-case category.name}}</button>  ({{category.posts_count}})</li>
-				{{/each}}
-			</ul>
-			<div class="visibility_button_div_hide">
-				<button class="button_bar" {{action "setCPV" false}}>Hide</button>
-			</div>
-		</div>
+<div class="sidebar_sub">
+	<h5 class="tag_h5">Categories {{#link-to "categories.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
+		{{#if showCP}}
+		<ul class="tag_listing">
+			<li class="tag_listing_search">{{input value=categoryInputText placeholder="Search Category" class="categoryInput"}}</li>
+			{{#each filteredCategories as |category|}}
+				<li><button class="button_type1_category" {{action "setCategory" category}}>{{capitalize category.name}}</button>  ({{genre.posts_count}})</li>
+			{{/each}}
+		</ul>
 	{{/if}}
-{{else}}
-	<div class="tag_listing_hidden">
-			<h5 class="tag_h5">Categories</h5>
-			<div class="visibility_button_div_show">
-			<button class="button_bar" {{action "setCPV" true}}>Show</button>
-		</div>
-	</div>
-{{/if}}
+	{{#if noCategories}}<div class="tag_no_result">No Results</div>{{/if}}
+	<div class="button_toggler"><button class="button_bar" {{action "setCPV"}}>{{#if showCP}}Hide{{else}}Show{{/if}}</button></div>
+</div>

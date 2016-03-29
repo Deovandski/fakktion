@@ -1,34 +1,12 @@
-{{#if showGP}}
-	{{#if showCP}}
-		<div class="genres_div_type_dual">
-			<h5 class="tag_h5">Genres {{#link-to "genres.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
-			<ul class="tag_listing">
-				{{#each model.genres as |genre|}}
-					<li><button class="button_type1_genre" {{action "setGenre" genre}}>{{capitalize genre.name}}</button>  ({{genre.posts_count}})</li>
-				{{/each}}
-			</ul>
-			<div class="visibility_button_div_hide">
-				<button class="button_bar" {{action "setGPV" false}}>Hide</button>
-			</div>
-		</div>
-	{{else}}
-		<div class="genres_div_type_solo">
-			<h5 class="tag_h5">Genres {{#link-to "genres.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
-			<ul class="tag_listing">
-				{{#each model.genres as |genre|}}
-					<li><button class="button_type1_genre" {{action "setGenre" genre}}>{{capitalize genre.name}}</button>  ({{genre.posts_count}})</li>
-				{{/each}}
-			</ul>
-			<div class="visibility_button_div_hide">
-				<button class="button_bar" {{action "setGPV" false}}>Hide</button>
-			</div>
-		</div>
+<div class="sidebar_sub">
+	<h5 class="tag_h5">Genres {{#link-to "genres.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
+		{{#if showGP}}
+		<ul class="tag_listing">
+			<li class="tag_listing_search">{{input value=genreInputText placeholder="Search Genre" class="genreInput"}}</li>
+			{{#each filteredGenres as |genre|}}
+				<li><button class="button_type1_genre" {{action "setGenre" genre}}>{{capitalize genre.name}}</button>  ({{genre.posts_count}})</li>
+			{{/each}}
+		</ul>
 	{{/if}}
-{{else}}
-	<div class="tag_listing_hidden">
-		<h5 class="tag_h5">Genres {{#link-to "genres.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
-		<div class="visibility_button_div_show">
-			<button class="button_bar" {{action "setGPV" true}}>Show</button>
-		</div>
-	</div>
-{{/if}}
+	<div class="button_toggler"><button class="button_bar" {{action "setGPV"}}>{{#if showGP}}Hide{{else}}Show{{/if}}</button></div>
+</div>

@@ -1,6 +1,7 @@
 @mixin button_bar() {
   width: 100%;
   height: 100%;
+  height: 25px;
   @include appearance(none);
   bg: $button-bar-bg;
   border: 1px solid darken($button-bar-bg, 15%);

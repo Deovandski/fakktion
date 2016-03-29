@@ -26,6 +26,9 @@ export default Ember.Controller.extend ({
   selectedPDID: 0,
   selectedPDN: 'None',
   topicInputText: '',
+  factTypeInputText: '',
+  genreInputText: '',
+  categoryInputText: '',
   showGP: true,
   showCP: true,
   showFTP: true,
@@ -33,6 +36,53 @@ export default Ember.Controller.extend ({
   displayCentralPanel:true,
   displayLeftSidebar: true,
   displayRightSidebar: true,
+  filteredCategories: Ember.computed('categoryInputText', function() {
+    if(this.get('categoryInputText') === '') {
+      return this.model.categories.slice(0,10);
+    }
+    else{
+      var rx = new RegExp(this.get('categoryInputText').toLowerCase()
+      );
+
+      var filteredCategories = this.model.categories.filter(function(category) {
+        return category.get('name').match(rx);
+      });
+      if (filteredCategories.length > 0) {
+        this.set('noCategories', false);
+        return filteredCategories;
+      }
+      else {
+        this.set('noCategories', true);
+       return null;
+      }
+    }
+  }),
+  filteredGenres: Ember.computed('genreInputText', function() {
+    if(this.get('genreInputText') === '') {
+      return this.model.genres.slice(0,10);
+    }
+    else{
+      var rx = new RegExp(this.get('genreInputText').toLowerCase()
+      );
+
+      return this.model.genres.filter(function(genre) {
+        return genre.get('name').match(rx);
+      });
+    }
+  }),
+  filteredFactTypes: Ember.computed('factTypeInputText', function() {
+    if(this.get('factTypeInputText') === '') {
+      return this.model.factTypes.slice(0,10);
+    }
+    else{
+      var rx = new RegExp(this.get('factTypeInputText').toLowerCase()
+      );
+
+      return this.model.factTypes.filter(function(factType) {
+        return factType.get('name').match(rx);
+      });
+    }
+  }),
   // Verify if the user is a Admin.
   isAdmin: Ember.computed('sessionAccount.user.is_admin', function() {
     if(this.get('sessionAccount.user.is_admin') === true) {
@@ -144,17 +194,17 @@ export default Ember.Controller.extend ({
       }
     },
     // Panel Controls
-    setGPV: function(varBoolean) { 
-      this.set('showGP', varBoolean);
+    setGPV: function() {
+      this.toggleProperty('showGP');
     },
-    setCPV: function(varBoolean) { 
-      this.set('showCP', varBoolean);
+    setCPV: function() {
+      this.toggleProperty('showCP');
     },
-    setFTPV: function(varBoolean) { 
-      this.set('showFTP', varBoolean);
+    setFTPV: function() {
+      this.toggleProperty('showFTP');
     },
-    setPDPV: function(varBoolean) { 
-      this.set('showPDP', varBoolean);
+    setPDPV: function() {
+      this.toggleProperty('showPDP');
     },
     toggleCentralPanel: function() {
       this.toggleProperty('displayCentralPanel');

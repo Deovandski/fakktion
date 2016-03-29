@@ -6,7 +6,7 @@ class Api::V1::CommentsController < ApiController
 
   # Render all Comments using CommentSerializer.
   def index
-    render json: Comment.all
+    json_render_all(Comment, :empathy_level)
   end
 
   # Render the specified Comment using CommentSerializer.

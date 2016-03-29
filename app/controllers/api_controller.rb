@@ -2,10 +2,11 @@
 class ApiController < ActionController::Base
   prepend_before_filter :disable_devise_trackable
 
+  # Shared JSON API render methods.
   protected
-  # Disable Devise Trackable for all API requests
-  # Devise Trackable still tracks login since Devise is hooked to ApplicationController.
-  
+  def json_render_all(resource_model, sortParam)
+      return render json: resource_model.all.sort_by{|x| x[:sortParam]}
+  end
   def json_create(resource_params, resource_model)
     resource_obj = resource_model.new(resource_params)
     if resource_obj.save
@@ -48,6 +49,8 @@ class ApiController < ActionController::Base
   
   private
   
+  # Disable Devise Trackable for all API requests
+  # Devise Trackable still tracks login since Devise is hooked to ApplicationController.
   def disable_devise_trackable
     request.env["devise.skip_trackable"] = true
   end

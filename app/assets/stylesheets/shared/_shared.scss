@@ -2,21 +2,154 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+p {
+  line-height: $base-line-height;
+  margin: 0 0 ($base-line-height * .5);
+}
+
+a {
+  color: $base-link-color;
+  @include transition(color 0.1s linear);
+
+  &:hover {
+    color: $hover-link-color;
+  }
+
+  &:active, &:focus {
+    color: $hover-link-color;
+    outline: none;
+  }
+}
+
+hr {
+  border-bottom: 1px solid $base-border-color;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  margin: $base-line-height 0;
+}
+
+img {
+  margin: 0;
+  max-width: 100%;
+}
+
+abbr, acronym {
+  border-bottom: 1px dotted $base-border-color;
+  cursor: help;
+}
+
+address {
+  display: block;
+  margin: 0 0 ($base-line-height / 2);
+}
+
+hgroup {
+  margin-bottom: $base-line-height / 2;
+}
+
+del {
+  color: lighten($base-font-color, 15);
+}
+
+pre {
+  font-family: "Menlo", "Monaco", monospace;
+  margin: 0;
+  padding: 0;
+}
+
+code {
+  background-color: darken($base-body-color, 3%);
+  border: 1px solid $base-border-color;
+  border-radius: $base-border-radius;
+  font-family: "Menlo", "Monaco", monospace;
+  font-size: 0.95em;
+  margin-left: 1px;
+  margin-right: 1px;
+  padding: 0 4px;
+}
+
+blockquote {
+  border-left: 2px solid $base-border-color;
+  color: lighten($base-font-color, 15);
+  margin: $base-line-height 0;
+  padding-left: $base-line-height / 2;
+}
+
+cite {
+  color: lighten($base-font-color, 25);
+  font-style: italic;
+
+  &:before {
+    content: '\\2014 \\00A0';
+  }
+}
+
+
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a {
+  color: #000;
+  &:visited {
+    color: #666;
+  }
+  &:hover {
+    color: #fff;
+    background-color: #000;
+  }
+}
+
+div {
+  &.field, &.actions {
+    margin-bottom: 10px;
+  }
+}
+
+#notice {
+  color: green;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff;
+  }
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }
+}
+
 //Tags shared code
-.visibility_button_div_show {
-    position: absolute;
-    bottom: 0;
-  height:25px;
-  width:100%;
-  
-}
-.visibility_button_div_hide {
-    position: absolute;
-    bottom: 0;
-  height:25px;
-  width:100%;
-  
-}
+
 .inner_info_button {
   text-align: center;
   font-weight: bold;
@@ -29,46 +162,6 @@
 .inner_info {
   text-align: center;
   font-weight: bold;
-}
-.tag_listing {
-  height:calc(100% - 50px);
-    top: 25px;
-  width:100%;
-  overflow-y: scroll;
-  list-style-type:none;
-  text-align: center;
-  li:nth-child(n) {
-    margin-top: 7px;
-    margin-bottom: 7px;
-  }
-}
-.button_listing {
-  height:calc(100% - 50px);
-    top: 25px;
-  width:100%;
-  overflow-y: scroll;
-  list-style-type:none;
-  text-align: center;
-  li:nth-child(n) {
-    margin-top: 7px;
-    margin-bottom: 7px;
-  }
-}
-.tag_h5 {
-  position: relative;
-  width: 100%;
-  margin-top: 3px;
-  margin-bottom: 3px;
-  height:25px;
-  text-align: center;
-}
-.tag_listing_hidden {
-  height: 15%;
-  width: 100%;
-  border-width: 3px;
-  border-bottom-style: solid;
-  position: relative;
-  width: 100%;
 }
 
 // Standard size input blocks

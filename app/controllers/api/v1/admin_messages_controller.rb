@@ -4,7 +4,7 @@ class Api::V1::AdminMessagesController < ApiController
   
   # Render all AdminMessages using AdminMessageSerializer.
   def index
-    render json: AdminMessage.all
+    json_render_all(AdminMessage, :created_at)
   end
 
   # Render the specified AdminMessage using AdminMessageSerializer.

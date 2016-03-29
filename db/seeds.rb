@@ -66,15 +66,13 @@ if Category.count != 0
   Category.delete_all
   Rails.logger.info 'All previous categories deleted...'
 end
-Category.create!(name: 'A-B-C') # ID 1
-Category.create!(name: 'D-E-F') # ID 2
-Category.create!(name: 'G-H-I') # ID 3
-Category.create!(name: 'J-K-L') # ID 4
-Category.create!(name: 'M-N-O') # ID 5
-Category.create!(name: 'P-Q-R') # ID 6
-Category.create!(name: 'S-T-U') # ID 7
-Category.create!(name: 'V-W-X') # ID 8
-Category.create!(name: 'Y-Z-?') # ID 9
+Category.create!(name: 'Gaming')
+Category.create!(name: 'Song')
+Category.create!(name: 'Movie')
+Category.create!(name: 'Television')
+Category.create!(name: 'Musical')
+Category.create!(name: 'Book')
+Category.create!(name: 'Vocaloid')
 Rails.logger.info 'Default categories created!'
 
 # FACT TYPE RELATED SEED
@@ -82,9 +80,10 @@ if FactType.count != 0
   FactType.delete_all
   Rails.logger.info 'All previous fact types deleted...'
 end
-FactType.create!(name: 'Business') # ID 1
-FactType.create!(name: 'Technology') # ID 2
-FactType.create!(name: 'International') # ID 3
+FactType.create!(name: 'Business')
+FactType.create!(name: 'Technology')
+FactType.create!(name: 'International')
+FactType.create!(name: 'Environment')
 Rails.logger.info 'Default fact types created!'
 
 # GENRE RELATED SEED
@@ -92,9 +91,27 @@ if Genre.count != 0
   Genre.delete_all
   Rails.logger.info 'All previous genres deleted...'
 end
-Genre.create!(name: 'Song') # ID 1
-Genre.create!(name: 'Novel') # ID 2
-Genre.create!(name: 'Movie') # ID 3
+Genre.create!(name: 'surreal')
+Genre.create!(name: 'Action')
+Genre.create!(name: 'Adventure')
+Genre.create!(name: 'Comedy')
+Genre.create!(name: 'Crime')
+Genre.create!(name: 'Drama')
+Genre.create!(name: 'Fantasy')
+Genre.create!(name: 'Historical')
+Genre.create!(name: 'Horror')
+Genre.create!(name: 'Mystery')
+Genre.create!(name: 'Paranoid')
+Genre.create!(name: 'Philosophical')
+Genre.create!(name: 'Political')
+Genre.create!(name: 'Romance')
+Genre.create!(name: 'Saga')
+Genre.create!(name: 'Satire')
+Genre.create!(name: 'Science')
+Genre.create!(name: 'Speculative')
+Genre.create!(name: 'Thriller')
+Genre.create!(name: 'Urban')
+Genre.create!(name: 'Western')
 Rails.logger.info 'Default genres created!'
 
 # TOPIC RELATED SEED

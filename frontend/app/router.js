@@ -82,6 +82,14 @@ Router.map(function() {
     this.route('edit');
   });
   
+  // CATEGORY(S) ROUTES
+  this.route('categories', function(){
+    this.route('create');
+  });
+  this.route('category', { path:'category/:category_id' }, function() {
+    this.route('edit');
+  });
+  
   // Footer related
   this.route('footer');
   this.route('legalInfo');

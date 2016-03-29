@@ -4,7 +4,7 @@ class Api::V1::FactTypesController < ApiController
 
   # Render all FactTypes using FactTypeSerializer.
   def index
-    render json: FactType.all
+    json_render_all(FactType, :name)
   end
 
   # Render the specified FactType using FactTypeSerializer.

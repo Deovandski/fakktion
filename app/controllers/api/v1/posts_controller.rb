@@ -4,7 +4,7 @@ class Api::V1::PostsController < ApiController
 
   # Render all Posts using PostSerializer.
   def index
-    render json: Post.all
+    json_render_all(Post, :importance)
   end
 
   # Render the specified Post using PostSerializer.

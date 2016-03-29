@@ -4,7 +4,7 @@ class Api::V1::GenresController < ApiController
 
   # Render all Genres using GenreSerializer.
   def index
-    render json: Genre.all
+    json_render_all(Genre, :name)
   end
 
   # Render the specified Genre using GenreSerializer.
