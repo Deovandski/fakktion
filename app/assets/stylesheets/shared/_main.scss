@@ -7,17 +7,26 @@ body.ember-application main {
   position:absolute;
   display: flex;
   overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-y: scroll;
+  .left_sidebar {
+    .sidebar_sub{
+      border-right-style: solid;
+    }
+  }
+  .right_sidebar {
+    .sidebar_sub{
+      border-left-style: solid;
+    }
+  }
   .left_sidebar, .right_sidebar {
     flex-grow: 1;
     flex-direction: column;
     flex-wrap: wrap;
     min-width: 210px;
     max-width: 230px;
-    height: 100%;
+    height: auto;
     text-align: center;
     border-width: 2px;
-    border-style: solid;
     .sidebar_sub {
       width: 100%;
       border-width: 3px;
@@ -197,7 +206,6 @@ body.ember-application main {
     .shared_panel {
       min-height: 100%;
       margin: 0px;
-  overflow-y: scroll;
     }
   }
 }
