@@ -7,6 +7,7 @@
 				<li><button class="button_type1_genre" {{action "setGenre" genre}}>{{capitalize genre.name}}</button>  ({{genre.posts_count}})</li>
 			{{/each}}
 		</ul>
+	{{#if noGenres}}<div class="tag_no_result_genre">No Results</div>{{/if}}
 	{{/if}}
 	<div class="button_toggler"><button class="button_bar" {{action "setGPV"}}>{{#if showGP}}Hide{{else}}Show{{/if}}</button></div>
 </div>

@@ -46,7 +46,7 @@ class Api::V1::GenresControllerTest < ActionController::TestCase
   end
   test "Genres - API - UPDATE 422" do
     genre = Genre.find_by name: 'test'
-    genre1 = Genre.find_by name: 'movie'
+    genre1 = Genre.find_by name: 'action'
     genre.name = "mikuchan"
     genre1.name = "mikuchan"
     tempGenre = ActiveModel::SerializableResource.new(genre).serializable_hash
@@ -61,7 +61,7 @@ class Api::V1::GenresControllerTest < ActionController::TestCase
     end
   end
   test "Genres - API - DELETE 422" do
-    genre = Genre.find_by name: 'song'
+    genre = Genre.find_by name: 'action'
     post = Post.first
     post.genre = genre
     post.save

@@ -46,7 +46,7 @@ class Api::V1::CategoriesControllerTest < ActionController::TestCase
   end
   test "Categories - API - UPDATE 422" do
     category = Category.find_by name: 'test'
-    category1 = Category.find_by name: 'a-b-c'
+    category1 = Category.find_by name: 'movie'
     category.name = "mikuchan"
     category1.name = "mikuchan"
     tempCategory = ActiveModel::SerializableResource.new(category).serializable_hash
@@ -61,7 +61,7 @@ class Api::V1::CategoriesControllerTest < ActionController::TestCase
     end
   end
   test "Categories - API - DELETE 422" do
-    category = Category.find_by name: 'a-b-c'
+    category = Category.find_by name: 'movie'
     post = Post.first
     post.category = category
     post.save

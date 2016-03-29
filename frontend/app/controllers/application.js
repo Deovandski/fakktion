@@ -38,6 +38,7 @@ export default Ember.Controller.extend ({
   displayRightSidebar: true,
   filteredCategories: Ember.computed('categoryInputText', function() {
     if(this.get('categoryInputText') === '') {
+      this.set('noCategories', false);
       return this.model.categories.slice(0,10);
     }
     else{
@@ -59,28 +60,46 @@ export default Ember.Controller.extend ({
   }),
   filteredGenres: Ember.computed('genreInputText', function() {
     if(this.get('genreInputText') === '') {
+      this.set('noGenres', false);
       return this.model.genres.slice(0,10);
     }
     else{
       var rx = new RegExp(this.get('genreInputText').toLowerCase()
       );
 
-      return this.model.genres.filter(function(genre) {
+      var filteredGenres =  this.model.genres.filter(function(genre) {
         return genre.get('name').match(rx);
       });
+      if (filteredGenres.length > 0) {
+        this.set('noGenres', false);
+        return filteredGenres;
+      }
+      else {
+        this.set('noGenres', true);
+       return null;
+      }
     }
   }),
   filteredFactTypes: Ember.computed('factTypeInputText', function() {
     if(this.get('factTypeInputText') === '') {
+      this.set('noFactTypes', false);
       return this.model.factTypes.slice(0,10);
     }
     else{
       var rx = new RegExp(this.get('factTypeInputText').toLowerCase()
       );
 
-      return this.model.factTypes.filter(function(factType) {
+      var filteredFactTypes =   this.model.factTypes.filter(function(factType) {
         return factType.get('name').match(rx);
       });
+      if (filteredFactTypes.length > 0) {
+        this.set('noFactTypes', false);
+        return filteredFactTypes;
+      }
+      else {
+        this.set('noFactTypes', true);
+        return null;
+      }
     }
   }),
   // Verify if the user is a Admin.

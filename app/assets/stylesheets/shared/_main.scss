@@ -6,6 +6,7 @@ body.ember-application main {
   width: 100%;
   position:absolute;
   display: flex;
+  flex-direction: row;
   overflow-x: hidden;
   overflow-y: scroll;
   .left_sidebar {
@@ -71,13 +72,32 @@ body.ember-application main {
           margin-bottom: 4px;
         }
       }
-      .tag_no_result{
+      .tag_no_result_genre{
         flex: 1;
         height: 25px;
         width: 100%;
         margin-top: 3px;
         margin-bottom: 3px;
         text-align: center;
+        color: $button-genre-bg;
+      }
+      .tag_no_result_category{
+        flex: 1;
+        height: 25px;
+        width: 100%;
+        margin-top: 3px;
+        margin-bottom: 3px;
+        text-align: center;
+        color: $button-category-bg;
+      }
+      .tag_no_result_fact_type{
+        flex: 1;
+        height: 25px;
+        width: 100%;
+        margin-top: 3px;
+        margin-bottom: 3px;
+        text-align: center;
+        color: $button-fact-type-bg;
       }
       .button_toggler{
         flex: none;
@@ -89,6 +109,8 @@ body.ember-application main {
     }
   }
   .central {
+    flex-grow: 2;
+    flex-wrap: wrap;
     min-height: 100%;
     list-style-type:none;
     text-align: center;

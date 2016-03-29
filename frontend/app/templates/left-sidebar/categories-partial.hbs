@@ -7,7 +7,7 @@
 				<li><button class="button_type1_category" {{action "setCategory" category}}>{{capitalize category.name}}</button>  ({{genre.posts_count}})</li>
 			{{/each}}
 		</ul>
+	{{#if noCategories}}<div class="tag_no_result_category">No Results</div>{{/if}}
 	{{/if}}
-	{{#if noCategories}}<div class="tag_no_result">No Results</div>{{/if}}
 	<div class="button_toggler"><button class="button_bar" {{action "setCPV"}}>{{#if showCP}}Hide{{else}}Show{{/if}}</button></div>
 </div>

@@ -119,9 +119,16 @@ if Topic.count != 0
   Topic.delete_all
   Rails.logger.info 'All previous topics deleted...'
 end
-Topic.create!(name: 'hatsune miku') # ID 1
-Topic.create!(name: 'megurine luka') # ID 2
+Topic.create!(name: 'hatsune miku')
+Topic.create!(name: 'megurine luka')
 Rails.logger.info 'Default topics created!'
+
+# Post Relationships              # REVISE!!!!
+genre1 = Genre.find_by name: 'action'
+category1 = Category.find_by name: 'movie'
+topic1 = Topic.find_by name: 'hatsune miku'
+user1 = User.first
+factType1 = FactType.first
 
 # POST RELATED SEED
 if Post.count != 0
@@ -134,34 +141,11 @@ Post.create!(fact_link: 'https://en.wikipedia.org/wiki/Hatsune_Miku',
   importance: 10,
   title: 'The concept of reality behind Hatsune Miku',
   hidden: false,
-  genre_id: 1,
-  fact_type_id: 2,
-  topic_id: 1,
-  user_id: 1,
-  category_id: 3)
-Post.create!(fact_link: 'https://www.google.com',
-  fact_type_id: 3,
-  fiction_link: 'https://www.google.com',
-  text: 'test Text',
-  genre_id: 2,
-  hidden: false, 
-  importance: 0,
-  title: 'International Novel Post with category D-E-F and topic Megurine Luka', 
-  topic_id: 2,
-  user_id: 3,
-  category_id: 2)
-Post.create!(fact_link: 'https://www.google.com',
-  fact_type_id: 1,
-  fiction_link: 'https://www.google.com',
-  text: 'test Text #2',
-  genre_id: 3,
-  hidden: false,
-  importance: 0,
-  title: 'Business Movie Post with category G-H-I and Megurine Luka topic',
-  topic_id: 2,
-  user_id: 2,
-  category_id: 3)
-Rails.logger.info 'Default posts created!'
+  genre_id: genre1.id,
+  fact_type_id: factType1.id,
+  topic_id: topic1.id,
+  user_id: user1.id,
+  category_id: category1.id)
 
 # COMMENTS RELATED SEED
 
