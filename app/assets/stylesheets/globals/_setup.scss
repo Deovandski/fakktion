@@ -1,5 +1,5 @@
 html {
-  min-width: 850px;
+  min-width: 800px;
   height: 100%;
   width: 100%;
   margin: 0px;
@@ -7,24 +7,10 @@ html {
   overflow-y: hidden;
 }
 body.ember-application {
-  min-width: 850px;
+  min-width: 800px;
   height: 100%;
   width: 100%;
   margin: 0px;
   padding: 0px;
-  background-color: #fff;
-  color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
   overflow-y: hidden;
-}
-header {
-    min-width: 850px;
-}
-main {
-    min-width: 850px;
-}
-footer {
-    min-width: 850px;
 }

@@ -9,7 +9,6 @@ class Api::V1::PostsController < ApiController
 
   # Render the specified Post using PostSerializer.
   def show
-    post.increment!(:views_count)
     render json: post
   end
 

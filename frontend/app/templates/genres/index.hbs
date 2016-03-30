@@ -8,5 +8,5 @@
 {{#if session.isAuthenticated}}
   {{#link-to 'genres.create' class="button_type1_normal"}}Create Genre{{/link-to}}
 {{else}}
-  <p>Please login to create a genre</p>
+  <p class="login_required_warning">Please login to create a genre</p>
 {{/if}}

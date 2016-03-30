@@ -4,7 +4,7 @@
 		<ul class="tag_listing">
 			<li class="tag_listing_search">{{input value=genreInputText placeholder="Search Genre" class="genreInput"}}</li>
 			{{#each filteredGenres as |genre|}}
-				<li><button class="button_type1_genre" {{action "setGenre" genre}}>{{capitalize genre.name}}</button>  ({{genre.posts_count}})</li>
+				<li><button class="button_type1_genre" {{action "setGenre" genre}}>{{capitalize genre.name}}</button><label class="tag_posts">{{counter-styler genre.posts_count}}</label></li>
 			{{/each}}
 		</ul>
 	{{#if noGenres}}<div class="tag_no_result_genre">No Results</div>{{/if}}

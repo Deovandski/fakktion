@@ -4,8 +4,8 @@
   {{#if sessionAccount.user.is_admin}}
     <p>{{#link-to 'genre.edit' }}Edit Genre{{/link-to}}</p>
   {{else}}
-      <label class="second_label">Only Admins can edit</label>
+      <label class="login_required_warning">Only Admins can edit</label>
   {{/if}}
 {{else}}
-  <label class="second_label">Please Login</label>
+  <label class="login_required_warning">Please Login</label>
 {{/if}}

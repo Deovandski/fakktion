@@ -8,10 +8,10 @@ export default Ember.Controller.extend ({
   editMode: false,
   verifyText: Ember.computed('model.text', function() {
     if(this.get('model.text').length === 0) {
-      return 'Cannot be empty';
+      return '';
     }
     else if(this.get('model.text').length < 10) {
-      return 'At least 10 characters';
+      return 'At least 10 chars.';
     }
     else {
       return '';
@@ -28,7 +28,8 @@ export default Ember.Controller.extend ({
     }
   }),
   canEdit: Ember.computed('sessionAccount', function() {
-    if(this.get('model.user_id') === this.get('sessionAccount.id')) {
+    console.log('InnerC UserID: ' + this.get('model.user.id'));
+    if(this.get('model.user.id') === this.get('sessionAccount.user.id') && this.get('model.user.id') !== undefined) {
       return true;
     }
     else {

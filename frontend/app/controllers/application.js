@@ -36,10 +36,23 @@ export default Ember.Controller.extend ({
   displayCentralPanel:true,
   displayLeftSidebar: true,
   displayRightSidebar: true,
+  
+  defaultCategories: Ember.computed.filter('model.categories', function(category, index) {
+      console.log('DEBUG --CT1');
+      return (index < 10);
+  }),
+  defaultGenres: Ember.computed.filter('model.genres', function(genre, index) {
+      return (index < 10);
+  }),
+  defaultFactTypes: Ember.computed.filter('model.factTypes', function(factType, index) {
+      return (index < 10);
+  }),
   filteredCategories: Ember.computed('categoryInputText', function() {
+      console.log('DEBUG --CT2');
     if(this.get('categoryInputText') === '') {
       this.set('noCategories', false);
-      return this.model.categories.slice(0,10);
+      console.log('DEBUG --CT3');
+      return this.get('defaultCategories');
     }
     else{
       var rx = new RegExp(this.get('categoryInputText').toLowerCase()
@@ -61,7 +74,7 @@ export default Ember.Controller.extend ({
   filteredGenres: Ember.computed('genreInputText', function() {
     if(this.get('genreInputText') === '') {
       this.set('noGenres', false);
-      return this.model.genres.slice(0,10);
+      return this.get('defaultGenres');
     }
     else{
       var rx = new RegExp(this.get('genreInputText').toLowerCase()
@@ -83,7 +96,7 @@ export default Ember.Controller.extend ({
   filteredFactTypes: Ember.computed('factTypeInputText', function() {
     if(this.get('factTypeInputText') === '') {
       this.set('noFactTypes', false);
-      return this.model.factTypes.slice(0,10);
+      return this.get('defaultFactTypes');
     }
     else{
       var rx = new RegExp(this.get('factTypeInputText').toLowerCase()

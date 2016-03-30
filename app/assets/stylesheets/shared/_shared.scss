@@ -5,10 +5,14 @@
 p {
   line-height: $base-line-height;
   margin: 0 0 ($base-line-height * .5);
+  font-family: $form-font-family;
+  font-size: $form-font-size;
 }
 
 a {
   color: $base-link-color;
+  font-family: $form-font-family;
+  font-size: $form-font-size;
   @include transition(color 0.1s linear);
 
   &:hover {
@@ -88,8 +92,9 @@ cite {
 
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
+  font-size: 16px;
   line-height: 18px;
+  text-align: left;
 }
 
 pre {
@@ -470,4 +475,22 @@ div {
   background-color: #000;
   width: 100%;
   height: 100%;
+}
+.login_required_warning{
+  text-align: center;
+  @include appearance(none);
+  border: 0.2px solid darken($button-type-1-bg, 15%);
+  border-radius: $base-border-radius;
+  box-shadow: 0 0.4px 1px rgba(#000, 0.4);
+  display: inline-block;
+  font-size: $base-font-size;
+  font-weight: bold;
+  outline: none;
+  padding: 0.2em 0.2em;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  -webkit-font-smoothing: antialiased;
 }

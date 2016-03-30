@@ -1,11 +1,11 @@
-<p class="frontend_index"><strong>DO NOT USE PERSONAL INFORMATION!</strong></p>
-<p class="frontend_index">Blog is undergoing massive transformation for v0.7, 
+<h4 class="frontend_index"><strong>DO NOT USE PERSONAL INFORMATION!</strong></h4>
+<p class="frontend_index">SSL has not been yet activated since Fakktion is still on experimentals.</p>
+<p >Blog is undergoing massive transformation for v0.7, 
 so some features are not currently working due to refactoring.</p>
-<p>SSL has not been yet activated since Fakktion is still on experimentals.</p>
 <div class="posts_info">
 	<ul>
 		<li>
-			<label class="label_title"><strong>Showing {{filteredPosts.length}} Posts</strong></label>
+			<label class="label_title_header"><strong>Showing {{filteredPosts.length}} Posts</strong></label>
 			<label class="label_views_header"><img height="15px" src="/assets/views.svg"></label>
 			<label class="label_comments_count_header"><img height="15px" src="/assets/comments.png"></label>
 		</li>
@@ -26,7 +26,7 @@ so some features are not currently working due to refactoring.</p>
 				{{#if session.isAuthenticated}}
 					{{#link-to  'posts.create' class="button_type1_normal"}}Create Post{{/link-to}}
 				{{else}}
-					<p>Please login to create a post</p>
+					<p class="login_required_warning">Please login to create a post</p>
 				{{/if}}
 </div>
 

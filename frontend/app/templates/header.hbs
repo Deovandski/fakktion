@@ -7,19 +7,19 @@
 		</div>
 		<div class="text_branding">
 			{{#if session.isAuthenticated}}
-				<li class="small_login_info">
+				<div class="small_login_info">
 					{{#if sessionAccount.user}}
 						Signed in as {{sessionAccount.user.display_name}}
 					{{/if}}
-				</li>
+				</div>
 			{{else}}
-				<li class="small_login_info">
-					EXP v0.6
-				</li>
+				<div class="small_login_info">
+					<strong>EXP v0.6 </strong>(56%)
+				</div>
 			{{/if}}
 		</div>
 	</div>
-	<nav>
+	<nav class="header_nav">
 		<ul>
 			{{#if session.isAuthenticated}}
 				{{#if isAdmin}}

@@ -4,7 +4,7 @@
 		<ul class="tag_listing">
 			<li class="tag_listing_search">{{input value=categoryInputText placeholder="Search Category" class="categoryInput"}}</li>
 			{{#each filteredCategories as |category|}}
-				<li><button class="button_type1_category" {{action "setCategory" category}}>{{capitalize category.name}}</button>  ({{genre.posts_count}})</li>
+				<li><button class="button_type1_category" {{action "setCategory" category}}>{{capitalize category.name}}</button><label class="tag_posts">{{counter-styler category.posts_count}}</label></li>
 			{{/each}}
 		</ul>
 	{{#if noCategories}}<div class="tag_no_result_category">No Results</div>{{/if}}

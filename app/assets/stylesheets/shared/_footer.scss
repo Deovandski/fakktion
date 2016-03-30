@@ -4,6 +4,7 @@ body.ember-application footer {
   padding: 0.2em 0;
   font-family: 'Questrial', sans-serif;
   position:absolute;
+  min-width: 800px;
   height: 50px;
   bottom:0;
   right:0px;
@@ -26,7 +27,6 @@ body.ember-application footer {
     a {
       color: #454545;
       display: inline-block;
-      font-size: 14px;
       letter-spacing: 1px;
       padding: 10px;
       text-decoration: none;
@@ -38,10 +38,10 @@ body.ember-application footer {
   label {
     color: #aaa;
     display: inline-block;
-    font-size: 14px;
     letter-spacing: 1px;
     padding: 10px;
     text-decoration: none;
     float: right;
+    font-size: 14px;
   }
 }

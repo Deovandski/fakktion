@@ -10,6 +10,6 @@
   {{#if sessionAccount.user.is_admin}}
     <button class="button_type1_normal" {{action "update"}}>Update Category</button>
   {{else}}
-    <label class="second_label">Only Admins can edit</label>
+    <label class="login_required_warning">Only Admins can edit Category</label>
   {{/if}}
 {{/if}}

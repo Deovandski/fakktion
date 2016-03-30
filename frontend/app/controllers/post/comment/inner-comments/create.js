@@ -8,10 +8,10 @@ export default Ember.Controller.extend ({
   clientSideValidationComplete: false,
   verifyText: Ember.computed('text', function() {
     if(this.get('text').length === 0) {
-      return 'Cannot be empty';
+      return '';
     }
     else if(this.get('text').length < 10) {
-      return 'At least 10 characters';
+      return 'At least 10 chars.';
     }
     else {
       return '';

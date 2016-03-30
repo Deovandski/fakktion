@@ -9,6 +9,6 @@
   {{#if session.isAuthenticated}}
     <p>{{render "post.comments.create" model}}</p>
   {{else}}
-    <p class="inner_edit_info">Please login to comment</p>
+    <p class="login_required_warning">Please login to comment</p>
   {{/if}}
 </div>

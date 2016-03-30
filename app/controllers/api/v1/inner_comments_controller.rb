@@ -14,7 +14,7 @@ class Api::V1::InnerCommentsController < ApiController
   
   # Render the created InnerComment using InnerCommentSerializer and the AMS Deserialization.
   def create
-    json_create(innerComment_params, innerComment)
+    json_create(innerComment_params, InnerComment)
   end
 
   # Render the updated InnerComment using InnerCommentSerializer and the AMS Deserialization.
