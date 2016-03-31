@@ -1,7 +1,8 @@
 # Sessions Controller: Devise Custom Session Controller.
 class SessionsController < Devise::SessionsController
   respond_to :json
-
+  skip_before_filter :verify_authenticity_token, only: [:destroy]
+  
   def create
     super do |user|
       # Generate and save a fresh token for 200 sign_in 
@@ -18,10 +19,9 @@ class SessionsController < Devise::SessionsController
     end
   end
   
-  # 422 CSRF token issue when frontend does not reload page before logging out
   def destroy
-    super do |user|
-      render json: {}, status: 204 and return
-    end
+    sign_out :user
+    session.try(:delete, :_csrf_token)
+    super
   end
 end
