@@ -7,15 +7,9 @@ export default Ember.Controller.extend ({
   name: "",
   clientSideValidationComplete: false,
   verifyCategoryName: Ember.computed('name', function() {
-    if(this.get('name').length < 4) {
-      if(this.get('name').length === 0) {
-        this.set('clientSideValidationComplete',false);
-        return 'Cannot be empty';
-      }
-      else {
-        this.set('clientSideValidationComplete',false);
-        return 'Too short...';
-      }
+    if(this.get('name').length === 0) {
+      this.set('clientSideValidationComplete',false);
+      return 'Cannot be empty!';
     }
     else if(this.get('name').length > 10) {
         this.set('clientSideValidationComplete',false);
@@ -24,7 +18,7 @@ export default Ember.Controller.extend ({
     else {
       if(this.model.get('categories').isAny('name', this.get('name'))) {
         this.set('clientSideValidationComplete',false);
-        return 'This genre Name is already in use...';
+        return 'This genre already exists...';
       }
       else {
         this.set('clientSideValidationComplete',true);

@@ -10,7 +10,6 @@ class CreateBlog < ActiveRecord::Migration
       t.string :webpage_url, default: ""
       t.date :date_of_birth
       t.date :is_banned_date
-      t.integer :gender
       t.integer  :admin_messages_count, default: 0
       t.integer  :posts_count, default: 0
       t.integer  :comments_count, default: 0

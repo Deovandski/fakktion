@@ -3,25 +3,26 @@ const { service } = Ember.inject;
 
 export default Ember.Controller.extend ({
   session: service('session'),
+  sessionAccount: service('session-account'),
   clientSideValidationComplete: false,
-  verifyTopicName: Ember.computed('model.name', function() {
-    if(this.get('model.name').length < 4) {
-      if(this.get('model.name').length === 0) {
+  verifyTopicName: Ember.computed('model.name', function(){
+    if(this.get('model.name').length < 4){
+      if(this.get('model.name').length === 0){
         this.set('clientSideValidationComplete',false);
         return 'Cannot be empty';
       }
-      else {
+      else{
         this.set('clientSideValidationComplete',false);
         return 'Too short...';
       }
     }
-    else {
+    else{
       var possibleTopic = this.get('topics').filterBy('name', this.get('model.name'));
       if(possibleTopic.length > 1) {
         this.set('clientSideValidationComplete',false);
-        return 'This Topic Name is already in use...';
+        return 'This Topic already exists!';
       }
-      else {
+      else{
         this.set('clientSideValidationComplete',true);
         return '';
       }
@@ -29,18 +30,18 @@ export default Ember.Controller.extend ({
   }),
   actions: {
     update: function() {
-      if(this.get('clientSideValidationComplete') === true) {
+      if(this.get('clientSideValidationComplete') === true){
         var topic = this.get('content');
         topic.set('name', this.get('model.name'));
         var self = this;
-        topic.save().then(function() {
+        topic.save().then(function(){
           self.transitionToRoute('topic', topic);
-        }, function() {
-          alert('(Server 402) failed to update topic... Check your input and try again!');
+        }, function(){
+          alert('(Server 402) failed to update genre.');
         });
       }
-      else {
-        alert("(Client 402) Failed to update topic... Check any warning messages (to the right of each textbox) otherwise contact support if you don't see any");
+      else{
+        alert("(Client 402) Failed to update genre.");
       }
     }
   }

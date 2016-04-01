@@ -1,9 +1,14 @@
 <h2>New Topic</h2>
+
 <form>
-  <div class="input_block_type1">
+  <div class="input_block_tags">
     <label class="first_label">Name:</label>
     <label class="input_wrapper">{{input value=name}}</label>
     <label class="second_label">{{verifyTopicName}}</label>
   </div><br/>
-  <button  class="button_type1_normal" {{action "create"}}>Create Topic</button>
+  {{#if session.isAuthenticated}}
+    <button class="button_type1_normal" {{action "create"}}>Create Topic</button>
+  {{else}}
+    <p class="login_required_warning">Please login to create a Topic</p>
+  {{/if}}
 </form>

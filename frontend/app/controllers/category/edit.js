@@ -3,6 +3,7 @@ const { service } = Ember.inject;
 
 export default Ember.Controller.extend ({
   session: service('session'),
+  sessionAccount: service('session-account'),
   clientSideValidationComplete: false,
   verifyCategoryName: Ember.computed('model.name', function(){
     if(this.get('model.name').length < 4){

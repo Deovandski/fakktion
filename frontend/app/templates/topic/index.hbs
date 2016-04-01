@@ -1,11 +1,21 @@
-<h2><b>{{model.name}} Topic</b></h2>
-<p>Number of Posts using this tag: <b>{{model.posts_count}}</b></p>
+<h2><b>Topic Info</b></h2>
+<p>Topic Name: <b>{{capitalize model.name}} </b></p>
+<p>Number of Posts using this tag: <b>{{counter-styler model.posts_count}}</b></p>
+<p>Eligibility counter for this tag: <b>{{counter-styler model.eligibility_counter}}</b></p>
 {{#if session.isAuthenticated}}
-  {{#if session.currentUser.is_admin}}
-    <p>{{#link-to 'topics.topic.edit' }}Edit Topic{{/link-to}}</p>
+  {{#if sessionAccount.user.is_admin}}
+    <p class="center_text">{{#link-to 'genre.edit' class="button_type1_normal"}}Edit Topic{{/link-to}}</p>
   {{else}}
-    <label class="login_required_warning">Only Admins can edit</label>
+      <label class="login_required_warning">Only Admins can edit</label>
   {{/if}}
 {{else}}
   <label class="login_required_warning">Please Login</label>
 {{/if}}
+<hr>
+<h4><b>Posts with this tag</b></h4>
+
+<ol class="tag_posts">
+    {{#each model.posts as |post|}}
+      <li>{{#link-to 'post' post class="button_bar"}}{{capitalize post.title}}{{/link-to}}</li>
+    {{/each}}
+</ol>

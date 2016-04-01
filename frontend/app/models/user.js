@@ -7,7 +7,6 @@ export default DS.Model.extend ({
   current_password: DS.attr ('string'),
   email: DS.attr ('string'),
   date_of_birth: DS.attr ('date'),
-  gender: DS.attr ('string'),
   facebook_url: DS.attr ('string'),
   twitter_url: DS.attr ('string'),
   personal_message: DS.attr ('string'),

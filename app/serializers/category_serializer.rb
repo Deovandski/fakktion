@@ -1,6 +1,7 @@
 # Category Serializer
 class CategorySerializer < ActiveModel::Serializer
   attributes  :name,
+              :eligibility_counter,
               :posts_count
 
   # Relationships

@@ -7,24 +7,18 @@ export default Ember.Controller.extend ({
   name: "",
   clientSideValidationComplete: false,
   verifyTopicName: Ember.computed('name', function() {
-    if(this.get('name').length < 4) {
-      if(this.get('name').length === 0) {
-        this.set('clientSideValidationComplete',false);
-        return 'Cannot be empty';
-      }
-      else {
-        this.set('clientSideValidationComplete',false);
-        return 'Too short...';
-      }
+    if(this.get('name').length === 0) {
+      this.set('clientSideValidationComplete',false);
+      return 'Cannot be empty!';
     }
-    else if(this.get('name').length > 15) {
+    else if(this.get('name').length > 20) {
         this.set('clientSideValidationComplete',false);
-        return 'Max 15 characters.';
+        return 'Max 20 characters.';
     }
     else {
       if(this.model.get('topics').isAny('name', this.get('name'))) {
         this.set('clientSideValidationComplete',false);
-        return 'This Topic Name is already in use...';
+        return 'This topic already exists...';
       }
       else {
         this.set('clientSideValidationComplete',true);
@@ -35,8 +29,7 @@ export default Ember.Controller.extend ({
   actions: {
     create: function() {
       if(this.get('clientSideValidationComplete') === true) {
-        var store = this.store;
-        var topic = store.createRecord('topic', {
+        var topic = this.store.createRecord('topic', {
           name: this.get('name')
         });
         var self = this;

@@ -2,25 +2,41 @@ import Ember from "ember";
 const { service } = Ember.inject;
 
 export default Ember.Controller.extend ({
-  session: service('session'),
-  application: Ember.inject.controller('application'),
-  filteredTopics: Ember.computed('application.topicInputText', function() {
-    if(this.get('application.topicInputText') === '') {
-      return this.model;
+  session:        service('session'),
+  sessionAccount: service('session-account'),
+  tagSearchText: "",
+  searchingTag: Ember.computed('tagSearchText', function() {
+    if(this.get('tagSearchText').length > 0 ){
+      return true;
     }
     else{
-      var rx = new RegExp(this.get('application.topicInputText').toLowerCase()
+      return false;
+    }
+  }),
+  filteredTags: Ember.computed('tagSearchText', function() {
+    if(this.get('TopicInputText') === '') {
+      this.set('noTags', false);
+      return this.get('model');
+    }
+    else{
+        var rx = new RegExp(this.get('tagSearchText').toLowerCase()
       );
-
-      return this.model.filter(function(topic) {
-        return topic.get('name').match(rx);
+      var filteredTags = this.model.filter(function(tag) {
+        return tag.get('name').match(rx);
       });
+      if (filteredTags.length > 0) {
+        this.set('noTags', false);
+        return filteredTags;
+      }
+      else {
+        this.set('noTags', true);
+        return null;
+      }
     }
   }),
   actions: {
-    setTopic: function(topic) {
-      this.set('application.selectedTopic', topic);
-      this.transitionToRoute('index');
-    }
+  clearTagSearchText: function() {
+    this.set('tagSearchText','');
+  }
   }
 });

@@ -7,15 +7,9 @@ export default Ember.Controller.extend ({
   name: "",
   clientSideValidationComplete: false,
   verifyFactTypeName: Ember.computed('name', function() {
-    if(this.get('name').length < 4) {
-      if(this.get('name').length === 0) {
-        this.set('clientSideValidationComplete',false);
-        return 'Cannot be empty';
-      }
-      else {
-        this.set('clientSideValidationComplete',false);
-        return '4 characters minimum';
-      }
+    if(this.get('name').length === 0) {
+      this.set('clientSideValidationComplete',false);
+      return 'Cannot be empty!';
     }
     else if(this.get('name').length > 10) {
         this.set('clientSideValidationComplete',false);
@@ -24,7 +18,7 @@ export default Ember.Controller.extend ({
     else {
       if(this.model.get('factTypes').isAny('name', this.get('name'))) {
         this.set('clientSideValidationComplete',false);
-        return 'This Fact Type Name is already in use...';
+        return 'This fact type already exists...';
       }
       else {
         this.set('clientSideValidationComplete',true);
@@ -35,7 +29,7 @@ export default Ember.Controller.extend ({
   actions: {
     create: function() {
       if(this.get('clientSideValidationComplete') === true) {
-        var factType = this.store.createRecord('fact_type', {
+        var factType = this.store.createRecord('factType', {
           name: this.get('name')
         });
         var self = this;

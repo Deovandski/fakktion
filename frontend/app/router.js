@@ -95,7 +95,6 @@ Router.map(function() {
   this.route('legalInfo');
   this.route('privacyInfo');
   this.route('support');
-  this.route('help');
   
   // 404 Handler
   this.route('not-found', { path: '/*wildcard' });

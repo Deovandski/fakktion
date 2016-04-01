@@ -13,12 +13,11 @@ class User < ActiveRecord::Base
   # Validations
   validates :password, presence: true, length: { minimum: 8 }, on: :create
   validates :password, length: {minimum: 8}, on: :update, allow_blank: true
-  validates_presence_of :full_name, :show_full_name, :email, :display_name, :date_of_birth, :gender
+  validates_presence_of :full_name, :show_full_name, :email, :display_name, :date_of_birth
   validates_inclusion_of :is_banned, :is_admin, :in => [true,false]
   validates_uniqueness_of :email, :display_name
   validates_acceptance_of :privacy_terms_read, :on => :create, :accept => true, :allow_nil => false
   validates_acceptance_of :legal_terms_read, :on => :create, :accept => true, :allow_nil => false
-  enum gender: { male: 0, female: 1, other: 2 }
 
   # Relationships
   has_many :admin_messages

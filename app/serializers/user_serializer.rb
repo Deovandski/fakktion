@@ -4,7 +4,6 @@ class UserSerializer < ActiveModel::Serializer
               :display_name,
               :email,
               :date_of_birth,
-              :gender,
               :facebook_url,
               :twitter_url,
               :personal_message,

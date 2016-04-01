@@ -1,56 +1,50 @@
 <h2>New User</h2>
 <form>
-  <div class="input_block_typeUser">
+  <div class="input_block_type1">
     <label class="first_label">Full Name:</label>
-    <label class="input_wrapper">{{input value=fullName}}</label>
+    <label class="input_wrapper">{{input value=fullName placeholder="Fikt Fakt"}}</label>
     <label class="second_label">{{verifyFullName}}</label>
   </div><br/>
-  <div class="input_block_typeUser">
+  <div class="input_block_type1">
     <label class="first_label">Display Name:</label>
-    <label class="input_wrapper">{{input value=displayName}}</label>
+    <label class="input_wrapper">{{input value=displayName placeholder="Mr. Fakktion"}}</label>
     <label class="second_label">{{verifyDisplayName}}</label>
   </div><br/>
-  <div class="input_block_typeUser">
+  <div class="input_block_type1">
     <label class="first_label">Email:</label>
-    <label class="input_wrapper">{{input value=email}}</label>
+    <label class="input_wrapper">{{input value=email placeholder="fakktion@fakktion.com"}}</label>
     <label class="second_label">{{verifyEmail}}</label>
   </div><br/>
-  <div class="input_block_typeUser">
+  <div class="input_block_type1">
     <label class="first_label">Password:</label>
     <label class="input_wrapper">{{input type="password" value=password}}</label>
     <label class="second_label">{{verifyPassword}}</label>
   </div><br/>
-  <div class="input_block_typeUser">
+  <div class="input_block_type1">
     <label class="first_label">Password Confirmation:</label>
     <label class="input_wrapper">{{input type="password"  value=passwordConfirmation}}</label>
     <label class="second_label">{{verifyPasswordConfirmation}}</label>
   </div><br/>
-  <div class="input_block_typeUser_date">
+  <div class="input_block_date">
     <label class="first_label">Date of Birth:</label>
-    <label class="input_wrapper_date">
-      <span class="month_input">{{input type=number value=dateOfBirth_month}}</span> <label class="month_input_label">{{verifyDateOfBirth_month}}</label>
-      <span class="input_separator">/</span>
-      <span class="day_input">{{input type=number value=dateOfBirth_day}}</span> <label class="day_input_label">{{verifyDateOfBirth_day}}</label>
-      <span class="input_separator">/</span>
-      <span class="year_input">{{input type=number value=dateOfBirth_year}}</span> <label class="year_input_label">{{verifyDateOfBirth_year}}{{verifyDateOfBirth}}</label>
-    </label>
+    <label class="month_input">{{input type=number value=dateOfBirth_month placeholder="MM"}}</label>{{verifyDateOfBirth_month}}
+    <label class="input_separator">/</label>
+    <label class="day_input">{{input type=number value=dateOfBirth_day placeholder="DD"}}</label>{{verifyDateOfBirth_day}}
+    <label class="input_separator">/</label>
+    <label class="year_input">{{input type=number value=dateOfBirth_year placeholder="YYYY"}}</label>{{verifyDateOfBirth_year}}
+    <label class="dob_label">{{verifyDateOfBirth}}</label>
   </div><br/>
-  <div class="input_block_typeUser">
-    <label class="first_label">Gender:</label>
-    <label class="input_wrapper">{{input value=gender}}</label>
-    <label class="second_label">{{verifyGender}}</label>
-  </div><br/>
-    <div class="input_block_checkbox_typeUser">
+    <div class="input_block_checkbox">
     <label class="first_label">Show full name on profile:</label>
     <label class="input_wrapper">{{input type="checkbox" checked=showFullName}}</label>
     <label class="second_label">{{verifyShowFullName}}</label>
   </div><br/>
-  <div class="input_block_checkbox_typeUser">
+  <div class="input_block_checkbox">
     <label class="first_label">I accept the Legal Terms:</label>
     <label class="input_wrapper">{{input type="checkbox" checked=legalTermsRead}}</label>
     <label class="second_label">{{verifyLegalTermsRead}}</label>
   </div><br/>
-  <div class="input_block_checkbox_typeUser">
+  <div class="input_block_checkbox">
     <label class="first_label">I accept the Privacy terms:</label>
     <label class="input_wrapper">{{input type="checkbox" checked=privacyTermsRead}}</label>
     <label class="second_label">{{verifyPrivacyTermsRead}}</label>

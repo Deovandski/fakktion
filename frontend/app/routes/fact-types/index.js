@@ -5,6 +5,6 @@ export default Ember.Route.extend ({
   session: service('session'),
   sessionAccount: service('sessionAccount'),
   model: function() {
-    return this.store.findAll('fact_type');
+    return this.store.findAll('factType');
   }
 });

@@ -136,11 +136,11 @@ export default Ember.Controller.extend ({
           self.set('fictionLink', '');
           self.transitionToRoute('post', post);
         }, function() {
-          alert('(Server 402) failed to create Post... Check your input and try again!');
+          alert('Server Failure!');
         });
       }
       else {
-        alert("(Client 402) Failed to create Post... Check any warning messages (to the right of each textbox) otherwise contact support if you don't see any");
+        alert("Check any warning messages and try again! (Client Validation F)");
       }
     }
   }

@@ -9,7 +9,7 @@ export default Ember.Controller.extend ({
   email: '',
   password: '',
   passwordConfirmation: '',
-  gender: '',
+  year_issue: "",
   legalTermsRead: false,
   privacyTermsRead: false,
   showFullName: false,
@@ -23,9 +23,13 @@ export default Ember.Controller.extend ({
   clientSideValidationComplete: false,
   
   verifyFullName: Ember.computed('fullName', function() {
-    if(this.get('fullName').length < 1) {
+    if(this.get('fullName').length === 0) {
       this.set('clientSideValidationComplete',false);
       return 'Cannot be empty';
+    }
+    else if(this.get('fullName').length < 5) {
+      this.set('clientSideValidationComplete',false);
+      return 'Min 5 Chars.';
     }
     else {
       this.set('clientSideValidationComplete',true);
@@ -33,14 +37,18 @@ export default Ember.Controller.extend ({
     }
   }),
   verifyDisplayName: Ember.computed('displayName', function() {
-    if(this.get('displayName').length < 5) {
+    if(this.get('displayName').length === 0) {
       this.set('clientSideValidationComplete',false);
       return 'Cannot be empty';
+    }
+    else if(this.get('displayName').length < 5) {
+      this.set('clientSideValidationComplete',false);
+      return 'Min 5 Chars.';
     }
     else {
       if(this.model.get('users').isAny('display_name', this.get('displayName'))) {
         this.set('clientSideValidationComplete',false);
-        return 'This Display Name is already in use...';
+        return 'This Display Name already exists...';
       }
       else {
         this.set('clientSideValidationComplete',true);
@@ -52,71 +60,72 @@ export default Ember.Controller.extend ({
     if(this.get('validDate_month') === false || this.get('validDate_day') === false || this.get('validDate_year') === false) {
       this.set('clientSideValidationComplete',false);
       this.set('dateOfBirth', null);
-      return "";
+      if(this.get('year_issue') !== ""){
+        return this.get('year_issue');
+      }
+      else {
+        return 'MM/DD/YYYY';
+      }
     }
     else {
       var currentAge = this.get('dateOfBirth_month') + '/' + this.get('dateOfBirth_day') + '/' + this.get('dateOfBirth_year');
-      currentAge = moment(currentAge, 'MM/DD/YYY');
+      currentAge = moment(currentAge, 'MM/DD/YYYY');
       if(moment(currentAge).format() === 'Invalid date') {
-        console.log(currentAge);
         this.set('clientSideValidationComplete',false);
         this.set('dateOfBirth', null);
-        return "Invalid Date...";
+        return "MM/DD/YYYY";
       }
       else {
         this.set('dateOfBirth', currentAge);
         this.set('clientSideValidationComplete',true);
+        return "";
       }
     }
   }),
   verifyDateOfBirth_month: Ember.computed('dateOfBirth_month',  function() {
     if(this.get('dateOfBirth_month') === null || this.get('dateOfBirth_month') === "") {
       this.set('validDate_month',false);
-      return 'MM';
     }
     else {
       if(this.get('dateOfBirth_month') > 12){
         this.set('validDate_month',false);
-        return 'MM';
       }
       else if(this.get('dateOfBirth_month') <= 12){
         this.set('validDate_month',true);
-        return '';
       }
       else{
         this.set('validDate_month',false);
-        return 'MM';
       }
     }
   }),
   verifyDateOfBirth_day: Ember.computed('dateOfBirth_day',  function() {
     if(this.get('dateOfBirth_day') === null || this.get('dateOfBirth_day') === "") {
       this.set('validDate_day',false);
-      return 'DD';
     }
     else {
       if(this.get('dateOfBirth_day') > 31){
         this.set('validDate_day',false);
-        return 'DD';
       }
       else if(this.get('dateOfBirth_day') <= 31){
         this.set('validDate_day',true);
-        return '';
       }
       else{
         this.set('validDate_day',false);
-        return 'DD';
       }
     }
   }),
   verifyDateOfBirth_year: Ember.computed('dateOfBirth_year',  function() {
     if(this.get('dateOfBirth_year') === null || this.get('dateOfBirth_year') === "") {
       this.set('validDate_year',false);
-      return 'YYYY';
+      this.set('year_issue', '');
     }
-    else if(this.get('dateOfBirth_year') < 1900) {
+    else if(this.get('dateOfBirth_year').length <= 3) {
       this.set('validDate_year',false);
-      return 'YYYY';
+      this.set('year_issue', '');
+    }
+    else if(this.get('dateOfBirth_year') <= 1900) {
+      this.set('validDate_year',false);
+        this.set('year_issue', 'Born before 1900? Really?');
     }
     else {
       var minAge = moment().subtract(12,'y').format('YYYY');
@@ -124,29 +133,29 @@ export default Ember.Controller.extend ({
       var dateComparison = minAge - currentAge;
       if(dateComparison < 0 && dateComparison > -12) {
         this.set('validDate_year',false);
-        return 'You must be at least 13';
+        this.set('year_issue', 'Must be at least 13');
       }
       else if(dateComparison <= -12) {
         this.set('validDate_year',false);
-        return 'Were you born in the future?';
+        this.set('year_issue', 'Were you born in the future?');
       }
       else {
         this.set('validDate_year',true);
-        return '';
+        this.set('year_issue', '');
       }
     }
   }),
   verifyEmail: Ember.computed('email', function() {
-    if(this.get('email').length < 4) {
+    if(this.get('email').length === 0) {
       this.set('clientSideValidationComplete',false);
-      return 'user@sample.com';
+      return 'Cannot be empty.';
     }
     else {
       var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
       if(emailRegex.test(this.get('email'))) {
         if(this.model.get('users').isAny('email', this.get('email'))) {
           this.set('clientSideValidationComplete',false);
-          return 'This Email is already in use...';
+          return 'This Email already exists...';
         }
         else {
           this.set('clientSideValidationComplete',true);
@@ -155,14 +164,14 @@ export default Ember.Controller.extend ({
       }
       else {
         this.set('clientSideValidationComplete',false);
-        return 'Not a valid email';
+        return 'Not Valid (user@sample.com)';
       }
     }
   }),
   verifyPassword: Ember.computed('password', function() {
     if(this.get('password').length < 8) {
       this.set('clientSideValidationComplete',false);
-      return 'Too Short';
+      return 'Min 8 chars.';
     }
     else {
       this.set('clientSideValidationComplete',true);
@@ -174,15 +183,6 @@ export default Ember.Controller.extend ({
       this.set('clientSideValidationComplete',false);
       return 'Does not match!';
     }
-    else {
-      this.set('clientSideValidationComplete',true);
-      return '';
-    }
-  }),
-  verifyGender: Ember.computed('gender', function() {
-    //console.log(this.get('gender').toLowerCase());
-    if(this.get('gender').toLowerCase() !== 'male' && this.get('gender').toLowerCase() !== 'female' && this.get('gender').toLowerCase() !== 'other')
-      {return 'male/female/other';}
     else {
       this.set('clientSideValidationComplete',true);
       return '';
@@ -222,7 +222,6 @@ export default Ember.Controller.extend ({
         var user = this.store.createRecord('user', {
           full_name: this.get('fullName'),
           display_name: this.get('displayName'),
-          gender: this.get('gender'),
           email: this.get('email'),
           password: this.get('password'),
           legal_terms_read: this.get('legalTermsRead'),
@@ -234,13 +233,25 @@ export default Ember.Controller.extend ({
         });
         var self = this; // Controller instance for route transitioning.
         user.save().then(function() {
+          self.set('fullName','');
+          self.set('displayName','');
+          self.set('email','');
+          self.set('password','');
+          self.set('passwordConfirmation','');
+          self.set('legal_terms_read',false);
+          self.set('privacy_terms_read',false);
+          self.set('show_full_name',false);
+          self.set('dateOfBirth','');
+          self.set('dateOfBirth_day','');
+          self.set('dateOfBirth_month','');
+          self.set('dateOfBirth_year','');
           self.transitionToRoute('login');
         }, function() {
-          alert('(Server 402) failed to create User... Check your input and try again!');
+          alert('Server Failure!');
         });
       }
       else {
-        alert("(Client 402) Failed to create User... Check any warning messages (to the right of each textbox) otherwise contact support if you don't see any");
+        alert("Check any warning messages and try again! (Client Validation F)");
       }
     }
   }

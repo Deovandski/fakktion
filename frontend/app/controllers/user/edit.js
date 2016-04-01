@@ -21,30 +21,35 @@ export default Ember.Controller.extend ({
   showPassword: false,
   showExtra: false,
   verifyFullName: Ember.computed('model.user.full_name', function() {
-    if(this.get('model.user.full_name').length < 1) {
-      this.set("clientSideValidationComplete",false);
-      return "Cannot be empty";
+    if(this.get('model.user.full_name').length === 0) {
+      this.set('clientSideValidationComplete',false);
+      return 'Cannot be empty';
+    }
+    else if(this.get('model.user.full_name').length < 5) {
+      this.set('clientSideValidationComplete',false);
+      return 'Min 5 Chars.';
     }
     else {
-      this.set("clientSideValidationComplete",true);
-      return "";
+      this.set('clientSideValidationComplete',true);
+      return '';
     }
   }),
   verifyDisplayName: Ember.computed('model.user.display_name', function() {
     if(this.get('model.user.display_name').length < 5) {
       this.set("clientSideValidationComplete",false);
       if(this.get('model.user.display_name').length !== 0) {
-        return "Too few characters";
+        return "Min 5 Chars.";
       }
       else {
         return "Cannot be empty";
       }
     }
     else {
+      // TODO = Change logic to check display names that were returned instead of the length?
       var possibleUser = this.get('model.users').filterBy('display_name', this.get('model.user.display_name'));
       if(possibleUser.length > 1) {
         this.set("clientSideValidationComplete",false);
-        return "Another User has this display name!";
+        return "This Display name already exists!";
       }
       else {
         this.set("clientSideValidationComplete",true);
@@ -56,71 +61,72 @@ export default Ember.Controller.extend ({
     if(this.get('validDate_month') === false || this.get('validDate_day') === false || this.get('validDate_year') === false) {
       this.set('clientSideValidationComplete',false);
       this.set('dateOfBirth', null);
-      return "";
+      if(this.get('year_issue') !== ""){
+        return this.get('year_issue');
+      }
+      else {
+        return 'MM/DD/YYYY';
+      }
     }
     else {
       var currentAge = this.get('dateOfBirth_month') + '/' + this.get('dateOfBirth_day') + '/' + this.get('dateOfBirth_year');
-      currentAge = moment(currentAge, 'MM/DD/YYY');
+      currentAge = moment(currentAge, 'MM/DD/YYYY');
       if(moment(currentAge).format() === 'Invalid date') {
-        console.log(currentAge);
         this.set('clientSideValidationComplete',false);
         this.set('dateOfBirth', null);
-        return "Invalid Date...";
+        return "MM/DD/YYYY";
       }
       else {
-        this.set('dateOfBirth', currentAge);
+        this.set('dateOfBirth', currentAge.toDate());
         this.set('clientSideValidationComplete',true);
+        return "";
       }
     }
   }),
   verifyDateOfBirth_month: Ember.computed('dateOfBirth_month',  function() {
-    if(this.get('dateOfBirth_month') === "") {
+    if(this.get('dateOfBirth_month') === null || this.get('dateOfBirth_month') === "") {
       this.set('validDate_month',false);
-      return 'MM';
     }
     else {
       if(this.get('dateOfBirth_month') > 12){
         this.set('validDate_month',false);
-        return 'MM';
       }
       else if(this.get('dateOfBirth_month') <= 12){
         this.set('validDate_month',true);
-        return '';
       }
       else{
         this.set('validDate_month',false);
-        return 'MM';
       }
     }
   }),
   verifyDateOfBirth_day: Ember.computed('dateOfBirth_day',  function() {
-    if(this.get('dateOfBirth_day') === "") {
+    if(this.get('dateOfBirth_day') === null || this.get('dateOfBirth_day') === "") {
       this.set('validDate_day',false);
-      return 'DD';
     }
     else {
       if(this.get('dateOfBirth_day') > 31){
         this.set('validDate_day',false);
-        return 'DD';
       }
       else if(this.get('dateOfBirth_day') <= 31){
         this.set('validDate_day',true);
-        return '';
       }
       else{
         this.set('validDate_day',false);
-        return 'DD';
       }
     }
   }),
   verifyDateOfBirth_year: Ember.computed('dateOfBirth_year',  function() {
-    if(this.get('dateOfBirth_year') === "") {
+    if(this.get('dateOfBirth_year') === null || this.get('dateOfBirth_year') === "") {
       this.set('validDate_year',false);
-      return 'YYYY';
+      this.set('year_issue', '');
     }
-    else if(this.get('dateOfBirth_year') < 1900) {
+    else if(this.get('dateOfBirth_year').length <= 3) {
       this.set('validDate_year',false);
-      return 'YYYY';
+      this.set('year_issue', '');
+    }
+    else if(this.get('dateOfBirth_year') <= 1900) {
+      this.set('validDate_year',false);
+        this.set('year_issue', 'Born before 1900? Really?');
     }
     else {
       var minAge = moment().subtract(12,'y').format('YYYY');
@@ -128,15 +134,15 @@ export default Ember.Controller.extend ({
       var dateComparison = minAge - currentAge;
       if(dateComparison < 0 && dateComparison > -12) {
         this.set('validDate_year',false);
-        return 'You must be at least 13';
+        this.set('year_issue', 'Must be at least 13');
       }
       else if(dateComparison <= -12) {
         this.set('validDate_year',false);
-        return 'Were you born in the future?';
+        this.set('year_issue', 'Were you born in the future?');
       }
       else {
         this.set('validDate_year',true);
-        return '';
+        this.set('year_issue', '');
       }
     }
   }),
@@ -293,9 +299,6 @@ export default Ember.Controller.extend ({
       if(this.get('clientSideValidationComplete')) {
         var reloadSession = null;
         var self = this; // Controller instance for route transitioning.
-        /*if(this.get('model.user.dateOfBirth') !== null && this.get('model.user.dateOfBirth') !== '') {
-          user.set('model.user.date_of_birth', moment(this.get('model.user.dateOfBirth')).toDate());
-        }*/
         if(this.get('newPassword') !== null && this.get('newPassword') !== '') {
           user.set('password', this.get('newPassword'));
         }
@@ -310,6 +313,9 @@ export default Ember.Controller.extend ({
         else {
           user.set('current_password', null);
           reloadSession = false;
+        }
+        if (this.get('model.user.date_of_birth') !== this.get('dateOfBirth')){
+          user.set('date_of_birth', this.get('dateOfBirth'));
         }
         user.save().then(() => {
           self.set('currentPassword', "");

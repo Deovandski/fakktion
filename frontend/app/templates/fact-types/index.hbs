@@ -1,12 +1,30 @@
-<h1>Fact Types Management</h1>
-<ul>
-    {{#each model as |factType|}}
-      <li>{{#link-to 'factType' factType}}{{capitalize factType.name}}{{/link-to}}</li>
+<h3>Fact Type Tag Management</h3>
+  <div class="input_block_typeUser">
+    <label class="first_label"></label>
+    <label class="input_wrapper">{{input value=tagSearchText placeholder="Search Fact Type"}}</label>
+    <label class="second_label"><button class="button_type1_smallest" {{action 'clearTagSearchText'}}>Clear</button></label>
+  </div><br/>
+  <p class="center_text">Tag Name | # Posts | Elegibility</p>
+{{#if searchingTag}}
+  <h5>Displaying all Fact Types that contains <b>{{tagSearchText}}</b></h5>
+{{else}}
+  <h5>Displaying all Fact Types...</h5>
+{{/if}}
+
+<ul class="flex_tags_display">
+    {{#each filteredTags as |tag|}}
+      <li>
+        <label class="flex_tags_display_name">{{#link-to 'factType' tag class="button_bar"}}{{capitalize tag.name}}{{/link-to}}</label>
+        <label class="flex_tags_display_posts">{{counter-styler tag.posts_count}}</label>
+        <label class="flex_tags_display_eligibility">{{counter-styler tag.posts_count}}</label>
+      </li>
     {{/each}}
 </ul>
-
+{{#if noTags}}
+  <h5>No Results...</h5>
+{{/if}}
 {{#if session.isAuthenticated}}
-  {{#link-to 'factTypes.create' class="button_type1_normal"}}Create Fact type{{/link-to}}
+  {{#link-to 'factTypes.create' class="button_type1_normal"}}Create Fact Type{{/link-to}}
 {{else}}
   <p class="login_required_warning">Please login to create a Fact Type</p>
 {{/if}}
