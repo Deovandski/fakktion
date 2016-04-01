@@ -8,7 +8,7 @@ export default Ember.Route.extend ({
     controller.set('content', model);
     controller.set('topics', this.store.findAll('topic'));
   },
-  afterModel(model, transition) {
+  afterModel() {
     if (this.get('sessionAccount.user.is_admin') === true) {
       // Allow Editing
     }
