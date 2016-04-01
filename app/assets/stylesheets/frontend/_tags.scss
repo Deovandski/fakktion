@@ -5,6 +5,10 @@
   text-overflow:ellipsis;
   flex-wrap: wrap;
   display: flex;
+  .set_topic_tag {
+    margin: 0px;
+    padding: 0px;
+  }
   li {
     padding: 1px;
     font-weight: bold;

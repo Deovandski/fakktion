@@ -14,12 +14,20 @@ class Api::V1::TopicsController < ApiController
 
   # Render the created Topic using TopicSerializer and the AMS Deserialization.
   def create
-    json_create(topic_params, Topic)
+    if topic_params[:name].length < 20
+      json_create(topic_params, Topic)
+    else
+      return render json: {}, status: :unprocessable_entity
+    end
   end
 
   # Render the updated Topic using TopicSerializer and the AMS Deserialization.
   def update
-    json_update(topic,topic_params)
+    if topic_params[:name].length < 20
+      json_update(topic,topic_params)
+    else
+      return render json: {}, status: :unprocessable_entity
+    end
   end
 
   # Destroy Topic from the AMS Deserialization params.

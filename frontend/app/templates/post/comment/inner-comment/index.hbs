@@ -6,15 +6,15 @@
 
       <div class="feedback_wrapper">
       {{#if validComment}}
-      <button class="button_type3" {{action "update"}}>Edit Comment</button>
+      <button class="button_type1_smallest" {{action "update"}}>Edit Comment</button>
       {{else}}
       <label>{{verifyText}}</label>
       {{/if}}
       </div>
       </div>
-      <button class="button_type2_small" {{action "ToggleEditMode"}}>Cancel Edit</button>
+      <button class="button_type1_smallest" {{action "ToggleEditMode"}}>Cancel Edit</button>
     {{else}}
-      {{model.text}}<button class="button_type2_small" {{action "ToggleEditMode"}}>Edit</button>
+      {{model.text}}<button class="button_type1_smallest" {{action "ToggleEditMode"}}>Edit</button>
     {{/if}}
   {{else}}
     {{model.text}}

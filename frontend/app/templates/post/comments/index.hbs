@@ -7,6 +7,7 @@
   </ol>
   <br/>
   {{#if session.isAuthenticated}}
+    <p><strong>Add Comment</strong></p>
     <p>{{render "post.comments.create" model}}</p>
   {{else}}
     <p class="login_required_warning">Please login to comment</p>

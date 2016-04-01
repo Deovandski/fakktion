@@ -14,12 +14,20 @@ class Api::V1::FactTypesController < ApiController
 
   # Render the created FactType using FactTypeSerializer and the AMS Deserialization.
   def create
-    json_create(factType_params, FactType)
+    if factType_params[:name].length < 10
+      json_create(factType_params, FactType)
+    else
+      return render json: {}, status: :unprocessable_entity
+    end
   end
 
   # Render the updated FactType using FactTypeSerializer and the AMS Deserialization.
   def update
+    if factType_params[:name].length < 10
     json_update(factType,factType_params)
+    else
+      return render json: {}, status: :unprocessable_entity
+    end
   end
 
   # Destroy FactType from the AMS Deserialization params.

@@ -4,6 +4,7 @@ const { service } = Ember.inject;
 export default Ember.Controller.extend ({
   session:        service('session'),
   sessionAccount: service('session-account'),
+  application: Ember.inject.controller('application'),
   tagSearchText: "",
   searchingTag: Ember.computed('tagSearchText', function() {
     if(this.get('tagSearchText').length > 0 ){
@@ -35,8 +36,12 @@ export default Ember.Controller.extend ({
     }
   }),
   actions: {
-  clearTagSearchText: function() {
-    this.set('tagSearchText','');
-  }
+    clearTagSearchText: function() {
+      this.set('tagSearchText','');
+    },
+    setTopic: function(topic) {
+      this.set('application.selectedTopic', topic);
+      this.transitionToRoute('index');
+    }
   }
 });

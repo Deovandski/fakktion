@@ -83,8 +83,8 @@ FactType.create!(name: 'Technology')
 FactType.create!(name: 'Business')
 FactType.create!(name: 'Immigration')
 FactType.create!(name: 'Environment')
-FactType.create!(name: 'United States')
-FactType.create!(name: 'united kingdom')
+FactType.create!(name: 'USA')
+FactType.create!(name: 'UK')
 FactType.create!(name: 'canada')
 FactType.create!(name: 'brazil')
 FactType.create!(name: 'Argentina')
@@ -110,13 +110,12 @@ Genre.create!(name: 'Historical')
 Genre.create!(name: 'Horror')
 Genre.create!(name: 'Mystery')
 Genre.create!(name: 'Paranoid')
-Genre.create!(name: 'Philosophical')
+Genre.create!(name: 'Philosophy')
 Genre.create!(name: 'Political')
 Genre.create!(name: 'Romance')
 Genre.create!(name: 'Saga')
 Genre.create!(name: 'Satire')
 Genre.create!(name: 'Science')
-Genre.create!(name: 'Speculative')
 Genre.create!(name: 'Thriller')
 Genre.create!(name: 'Urban')
 Genre.create!(name: 'Western')
@@ -132,7 +131,7 @@ Topic.create!(name: 'megurine luka')
 Rails.logger.info 'Default topics created!'
 
 # Post Relationships
-PhilosophicalGenre = Genre.find_by name: 'philosophical'
+ComedyGenre = Genre.find_by name: 'comedy'
 songCategory = Category.find_by name: 'song'
 mikuTopic = Topic.find_by name: 'hatsune miku'
 firstUser = User.first
@@ -149,7 +148,7 @@ Post.create!(fact_link: 'https://en.wikipedia.org/wiki/Hatsune_Miku',
   importance: 10,
   title: 'The concept of reality behind Hatsune Miku',
   hidden: false,
-  genre_id: PhilosophicalGenre.id,
+  genre_id: ComedyGenre.id,
   fact_type_id: technologyFactType.id,
   topic_id: mikuTopic.id,
   user_id: firstUser.id,

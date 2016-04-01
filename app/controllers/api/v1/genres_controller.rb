@@ -14,12 +14,20 @@ class Api::V1::GenresController < ApiController
 
   # Render the created Genres using GenreSerializer and the AMS Deserialization.
   def create
-    json_create(genre_params, Genre)
+    if genre_params[:name].length < 10
+      json_create(genre_params, Genre)
+    else
+      return render json: {}, status: :unprocessable_entity
+    end
   end
 
   # Render the updated Genre using GenreSerializer and the AMS Deserialization.
   def update
-    json_update(genre,genre_params)
+    if genre_params[:name].length < 10
+      json_update(genre,genre_params)
+    else
+      return render json: {}, status: :unprocessable_entity
+    end
   end
 
   # Destroy Genre from the AMS Deserialization params.
