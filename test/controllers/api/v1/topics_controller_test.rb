@@ -25,11 +25,11 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
   test "Topics - API - Create 200" do
     apiTopic = Topic.new(name: 'kagamine rin', eligibility_counter: 0, posts_count: 0)
     assert_difference('Topic.count', +1) do
-      post :create, ActiveModel::SerializableResource.new(apiTopic).as_json
+      post :create, ActiveModelSerializers::SerializableResource.new(apiTopic).as_json
     end
   end
   test "Topics - API - Create 422" do
-    post :create, ActiveModel::SerializableResource.new(@testTopic).as_json
+    post :create, ActiveModelSerializers::SerializableResource.new(@testTopic).as_json
     assert_response(422)
   end
   test "Topics - API - SHOW 200" do
@@ -39,7 +39,7 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
   test "Topics - API - UPDATE 200" do
     topic = Topic.find_by name: 'testing topic'
     topic.name = "mikuchan"
-    tempTopic = ActiveModel::SerializableResource.new(topic).serializable_hash
+    tempTopic = ActiveModelSerializers::SerializableResource.new(topic).serializable_hash
     post :update, tempTopic.merge(id: topic)
     topicUpdated = Topic.find_by name: 'mikuchan'
     assert_response :success, topicUpdated
@@ -49,8 +49,8 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     topic1 = Topic.find_by name: 'megurine luka'
     topic.name = "mikuchan"
     topic1.name = "mikuchan"
-    tempTopic = ActiveModel::SerializableResource.new(topic).serializable_hash
-    tempTopic1 = ActiveModel::SerializableResource.new(topic1).serializable_hash
+    tempTopic = ActiveModelSerializers::SerializableResource.new(topic).serializable_hash
+    tempTopic1 = ActiveModelSerializers::SerializableResource.new(topic1).serializable_hash
     post :update, tempTopic.merge(id: topic)
     post :update, tempTopic1.merge(id: topic1)
     assert_response(422)

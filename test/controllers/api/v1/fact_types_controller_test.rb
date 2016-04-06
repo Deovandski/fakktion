@@ -25,11 +25,11 @@ class Api::V1::FactTypesControllerTest < ActionController::TestCase
   test "FactTypes - API - Create 200" do
     apiFactType = FactType.new(name: 'luka', eligibility_counter: 0, posts_count: 0)
     assert_difference('FactType.count', +1) do
-      post :create, ActiveModel::SerializableResource.new(apiFactType).as_json
+      post :create, ActiveModelSerializers::SerializableResource.new(apiFactType).as_json
     end
   end
   test "FactTypes - API - Create 422" do
-      post :create, ActiveModel::SerializableResource.new(@testFactType).as_json
+      post :create, ActiveModelSerializers::SerializableResource.new(@testFactType).as_json
       assert_response(422)
   end
   test "FactTypes - API - SHOW 200" do
@@ -39,7 +39,7 @@ class Api::V1::FactTypesControllerTest < ActionController::TestCase
   test "FactTypes - API - UPDATE 200" do
     factType = FactType.find_by name: 'test'
     factType.name = "mikuchan"
-    tempFactType = ActiveModel::SerializableResource.new(factType).serializable_hash
+    tempFactType = ActiveModelSerializers::SerializableResource.new(factType).serializable_hash
     post :update, tempFactType.merge(id: factType)
     genreUpdated = FactType.find_by name: 'mikuchan'
     assert_response :success, genreUpdated
@@ -49,8 +49,8 @@ class Api::V1::FactTypesControllerTest < ActionController::TestCase
     factType1 = FactType.find_by name: 'technology'
     factType.name = "mikuchan"
     factType1.name = "mikuchan"
-    tempFactType = ActiveModel::SerializableResource.new(factType).serializable_hash
-    tempGenre1 = ActiveModel::SerializableResource.new(factType1).serializable_hash
+    tempFactType = ActiveModelSerializers::SerializableResource.new(factType).serializable_hash
+    tempGenre1 = ActiveModelSerializers::SerializableResource.new(factType1).serializable_hash
     post :update, tempFactType.merge(id: factType)
     post :update, tempGenre1.merge(id: factType1)
     assert_response(422)

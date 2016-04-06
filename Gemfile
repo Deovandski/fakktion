@@ -8,10 +8,10 @@ gem "foreman", '>=0.78'
 gem "local_time", '>=1.0'
 
 # Webserver
-gem "puma", '>=3.2'
+gem "puma", '>=3.3'
 
 # Waiting for 0.10: https://github.com/rails-api/active_model_serializers
-gem 'active_model_serializers', '0.10.0.rc4'
+gem 'active_model_serializers', '0.10.0.rc5'
 
 # EmberCLI
 gem 'ember-cli-rails', '0.7.0'
@@ -53,7 +53,8 @@ end
 # Test Group
 group :development, :test do
 
-	gem "json_schema"
+	# JSON Schema for comparison Assert test.
+	gem "json_schema", '0.12'
 	# Code Climate
 	gem 'coveralls', require: false
 	# Travis CI

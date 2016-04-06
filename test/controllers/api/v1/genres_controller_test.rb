@@ -25,11 +25,11 @@ class Api::V1::GenresControllerTest < ActionController::TestCase
   test "Genres - API - Create 200" do
     apiGenre = Genre.new(name: 'luka', eligibility_counter: 0, posts_count: 0)
     assert_difference('Genre.count', +1) do
-      post :create, ActiveModel::SerializableResource.new(apiGenre).as_json
+      post :create, ActiveModelSerializers::SerializableResource.new(apiGenre).as_json
     end
   end
   test "Genres - API - Create 422" do
-      post :create, ActiveModel::SerializableResource.new(@testGenre).as_json
+      post :create, ActiveModelSerializers::SerializableResource.new(@testGenre).as_json
       assert_response(422)
   end
   test "Genres - API - SHOW 200" do
@@ -39,7 +39,7 @@ class Api::V1::GenresControllerTest < ActionController::TestCase
   test "Genres - API - UPDATE 200" do
     genre = Genre.find_by name: 'test'
     genre.name = "mikuchan"
-    tempGenre = ActiveModel::SerializableResource.new(genre).serializable_hash
+    tempGenre = ActiveModelSerializers::SerializableResource.new(genre).serializable_hash
     post :update, tempGenre.merge(id: genre)
     genreUpdated = Genre.find_by name: 'mikuchan'
     assert_response :success, genreUpdated
@@ -49,8 +49,8 @@ class Api::V1::GenresControllerTest < ActionController::TestCase
     genre1 = Genre.find_by name: 'action'
     genre.name = "mikuchan"
     genre1.name = "mikuchan"
-    tempGenre = ActiveModel::SerializableResource.new(genre).serializable_hash
-    tempGenre1 = ActiveModel::SerializableResource.new(genre1).serializable_hash
+    tempGenre = ActiveModelSerializers::SerializableResource.new(genre).serializable_hash
+    tempGenre1 = ActiveModelSerializers::SerializableResource.new(genre1).serializable_hash
     post :update, tempGenre.merge(id: genre)
     post :update, tempGenre1.merge(id: genre1)
     assert_response(422)

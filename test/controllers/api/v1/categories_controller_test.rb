@@ -25,11 +25,11 @@ class Api::V1::CategoriesControllerTest < ActionController::TestCase
   test "Categories - API - Create 200" do
     categoryGenre = Category.new(name: 'luka', posts_count: 0)
     assert_difference('Category.count', +1) do
-      post :create, ActiveModel::SerializableResource.new(categoryGenre).as_json
+      post :create, ActiveModelSerializers::SerializableResource.new(categoryGenre).as_json
     end
   end
   test "Categories - API - Create 422" do
-      post :create, ActiveModel::SerializableResource.new(@testCategory).as_json
+      post :create, ActiveModelSerializers::SerializableResource.new(@testCategory).as_json
       assert_response(422)
   end
   test "Categories - API - SHOW 200" do
@@ -39,7 +39,7 @@ class Api::V1::CategoriesControllerTest < ActionController::TestCase
   test "Categories - API - UPDATE 200" do
     category = Category.find_by name: 'test'
     category.name = "mikuchan"
-    tempCategory = ActiveModel::SerializableResource.new(category).serializable_hash
+    tempCategory = ActiveModelSerializers::SerializableResource.new(category).serializable_hash
     post :update, tempCategory.merge(id: category)
     genreUpdated = Category.find_by name: 'mikuchan'
     assert_response :success, genreUpdated
@@ -49,8 +49,8 @@ class Api::V1::CategoriesControllerTest < ActionController::TestCase
     category1 = Category.find_by name: 'movie'
     category.name = "mikuchan"
     category1.name = "mikuchan"
-    tempCategory = ActiveModel::SerializableResource.new(category).serializable_hash
-    tempCategory1 = ActiveModel::SerializableResource.new(category1).serializable_hash
+    tempCategory = ActiveModelSerializers::SerializableResource.new(category).serializable_hash
+    tempCategory1 = ActiveModelSerializers::SerializableResource.new(category1).serializable_hash
     post :update, tempCategory.merge(id: category)
     post :update, tempCategory1.merge(id: category1)
     assert_response(422)
