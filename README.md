@@ -30,16 +30,23 @@ This project once used [Ember-Rails](https://github.com/emberjs/ember-rails), bu
 ## Installation
 
 1. Clone Project
-2. Install NPM, Bower and other requirements if you don't have them:
-  1. sudo apt-get install npm
-  2. sudo apt-get install nodejs-legacy (For Bower to work)
-  3. sudo npm install -g bower
-3. Bundle Install
-4. Rake db:setup
-5. cd frontend
-6. npm install
-7. bower install
-8. npm install --save-dev ember-cli-rails-addon@0.7.0
+2. Install NPM if you don't have it already:
+  1. `sudo apt-get install npm`
+  2. `sudo npm cache clean -f` (Clean cache to reduce issues.)
+  3. `sudo npm install -g n`
+  4. `sudo n stable`
+  5. `sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}` (Force npm to be non-sudo.)
+3. Install RVM, Ruby, Rails and Bundler if you don't have it already:
+  1. `gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3`
+  2. `\curl -sSL https://get.rvm.io | bash -s stable --ruby --rails` (Install RVM, Ruby and Rails)
+  3. Reopen the terminal.
+  4. `sudo apt-get install libpq-dev` (Requirement for pg gem)
+  5. `gem install bundler`
+4. Bundle Install
+5. Rake db:setup
+6. cd frontend
+7. npm install
+8. bower install
 
 Start the Server with '''rake start'''. To quickly login under Development mode, use the default account user@example.com with password 12345678.
 
