@@ -42,7 +42,6 @@ class CreateBlog < ActiveRecord::Migration
       t.string :fiction_link
       t.string :title
       t.string :text
-      t.integer :importance, default: 0
       t.integer  :comments_count, default: 0
       t.integer  :views_count, default: 0
       t.boolean :hidden

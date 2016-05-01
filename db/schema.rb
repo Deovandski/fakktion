@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20160501161006) do
   end
 
   create_table "comment_votes", force: :cascade do |t|
-    t.integer "vote",       default: 0
+    t.boolean "positive_vote"
     t.integer "user_id"
     t.integer "comment_id"
   end
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 20160501161006) do
   end
 
   create_table "inner_comment_votes", force: :cascade do |t|
-    t.integer "vote",             default: 0
+    t.boolean "positive_vote"
     t.integer "user_id"
     t.integer "inner_comment_id"
   end
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 20160501161006) do
   add_index "inner_comments", ["user_id"], name: "index_inner_comments_on_user_id"
 
   create_table "post_votes", force: :cascade do |t|
-    t.integer "vote",    default: 0
+    t.boolean "positive_vote"
     t.integer "user_id"
     t.integer "post_id"
   end
@@ -100,7 +100,6 @@ ActiveRecord::Schema.define(version: 20160501161006) do
     t.string   "fiction_link"
     t.string   "title"
     t.string   "text"
-    t.integer  "importance",     default: 0
     t.integer  "comments_count", default: 0
     t.integer  "views_count",    default: 0
     t.boolean  "hidden"

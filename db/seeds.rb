@@ -145,7 +145,6 @@ end
 Post.create!(fact_link: 'https://en.wikipedia.org/wiki/Hatsune_Miku',
   fiction_link: 'http://www.cbsnews.com/news/hatsune-miku-the-worlds-fakest-pop-star/',
   text: '<h3>Miku is love! Miku is Life!</h3> <p>No seriously, Miku is the result of how community driven creativity can bring a virtual being into real life. The Fiction article talks about Miku being a fake persona or a simple program, but if you ask the Vocaloid community, you will hear quite the different tale. Miku is not the only Vocaloid, but she is the logo of how community driven content management can not only bring people closer, but also breath life into a character that represents most of the Vocaloid community (as in all the people who have respect for her in an I-thou interpersonal relation.)</p>',
-  importance: 10,
   title: 'The concept of reality behind Hatsune Miku',
   hidden: false,
   genre_id: ComedyGenre.id,
