@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150628051759) do
+ActiveRecord::Schema.define(version: 20160501161006) do
 
   create_table "admin_messages", force: :cascade do |t|
     t.string   "title"
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(version: 20150628051759) do
     t.integer "eligibility_counter", default: 0
     t.integer "posts_count",         default: 0
   end
+
+  create_table "comment_votes", force: :cascade do |t|
+    t.integer "vote",       default: 0
+    t.integer "user_id"
+    t.integer "comment_id"
+  end
+
+  add_index "comment_votes", ["comment_id"], name: "index_comment_votes_on_comment_id"
+  add_index "comment_votes", ["user_id"], name: "index_comment_votes_on_user_id"
 
   create_table "comments", force: :cascade do |t|
     t.string   "text"
@@ -55,6 +64,15 @@ ActiveRecord::Schema.define(version: 20150628051759) do
     t.integer "posts_count",         default: 0
   end
 
+  create_table "inner_comment_votes", force: :cascade do |t|
+    t.integer "vote",             default: 0
+    t.integer "user_id"
+    t.integer "inner_comment_id"
+  end
+
+  add_index "inner_comment_votes", ["inner_comment_id"], name: "index_inner_comment_votes_on_inner_comment_id"
+  add_index "inner_comment_votes", ["user_id"], name: "index_inner_comment_votes_on_user_id"
+
   create_table "inner_comments", force: :cascade do |t|
     t.string   "text"
     t.integer  "empathy_level", default: 0
@@ -67,6 +85,15 @@ ActiveRecord::Schema.define(version: 20150628051759) do
 
   add_index "inner_comments", ["comment_id"], name: "index_inner_comments_on_comment_id"
   add_index "inner_comments", ["user_id"], name: "index_inner_comments_on_user_id"
+
+  create_table "post_votes", force: :cascade do |t|
+    t.integer "vote",    default: 0
+    t.integer "user_id"
+    t.integer "post_id"
+  end
+
+  add_index "post_votes", ["post_id"], name: "index_post_votes_on_post_id"
+  add_index "post_votes", ["user_id"], name: "index_post_votes_on_user_id"
 
   create_table "posts", force: :cascade do |t|
     t.string   "fact_link"
