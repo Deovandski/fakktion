@@ -45,7 +45,7 @@ export default Ember.Controller.extend ({
           self.set('votingID',possibleVote.get('id'));
         }
       });
-    };
+    }
   }),
   verifyText: Ember.computed('model.text', function() {
     if(this.get('model.text').length === 0) {
@@ -116,6 +116,7 @@ export default Ember.Controller.extend ({
           }).catch((reason) => {
             console.log(reason);
           });
+          voteRequest = null;
         });
       }
       // Create a new voting record
@@ -144,8 +145,8 @@ export default Ember.Controller.extend ({
             resolve();
           });
         });
+        votePromise = null;
       }
-      votePromise = null;
     },
     update: function() {
       if(this.get('clientSideValidationComplete') === true) {
