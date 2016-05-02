@@ -9,11 +9,13 @@ export default Ember.Controller.extend ({
   upvoteEnabled: false,
   downvoteEnabled: false,
   didUserVote: false,
+  votingID: -1,
   // Setup for initial allowed votings by the logged in User.
   votingSystemHandler: Ember.computed('sessionAccount.user.id', function() {
     if(this.get('sessionAccount.user.id') > 0){
       
       var self = this; // Controller instance for maniupulation with then()
+      
       // QueryRecord not working, using filter on clientside as a fallback...
       this.store.findAll('commentVote').then(function(possibleVotes) {
         possibleVotes = possibleVotes.filter(function(possibleVote) {
@@ -23,13 +25,16 @@ export default Ember.Controller.extend ({
         });
         var possibleVote = possibleVotes.objectAt(0);
         
-        console.log(possibleVote.get('positive_vote'));
         // Allow the opposite vote to be cast by the user.
         if (possibleVote.get('positive_vote') === true){
             self.set('downvoteEnabled',true);
+            self.set('didUserVote',true);
+            self.set('votingID',possibleVote.get('id'));
         }
         else if (possibleVote.get('positive_vote') === false){
             self.set('upvoteEnabled',true);
+            self.set('didUserVote',true);
+            self.set('votingID',possibleVote.get('id'));
         }
         else{
           self.set('upvoteEnabled',true);
@@ -86,43 +91,61 @@ export default Ember.Controller.extend ({
         this.set('editMode', false);
       }
     },
-    upvote: function(){
-      var upvotePromise = new Ember.RSVP.Promise((resolve) => {
-        var upvoteRequest = this.get('store').createRecord('commentVote', {
-          user: this.store.peekRecord('user', this.get('sessionAccount.user.id')),
-          comment: this.store.peekRecord('comment', this.get('model.id')),
-          positive_vote: true
+    castVote: function(userVote){
+      this.set('userVote', userVote);
+      // Update Voting record
+      if(this.get('didUserVote') === true){
+        var self = this; // Controller instance for maniupulation with then()
+        var voteRequest = this.get('store').findRecord('commentVote', parseInt(self.get('votingID'))).then(function(request) {
+          if (request.get('positive_vote') === true){
+            request.positive_vote = false;
+          }
+          else{
+            request.positive_vote = true;
+          }
+          request.save().then(() => {
+            console.log('Vote was updated');
+            self.get('model').reload();
+            if(self.get('userVote') === true){
+              self.set('upvoteEnabled',false);
+              self.set('downvoteEnabled',true);
+            }
+            else{
+              self.set('upvoteEnabled',true);
+              self.set('downvoteEnabled',false);
+            }
+          }).catch((reason) => {
+            console.log(reason);
+          });
         });
-        upvoteRequest.save().then(() => {
-          console.log('Vote was accepted');
-          this.get('model').reload();
-          this.set('upvoteEnabled',false);
-          resolve();
-        }).catch((reason) => {
-          console.log(reason);
-          resolve();
+      }
+      // Create a new voting record
+      else{
+        var votePromise = new Ember.RSVP.Promise((resolve) => {
+          var voteRequest = this.get('store').createRecord('commentVote', {
+            user: this.store.peekRecord('user', this.get('sessionAccount.user.id')),
+            comment: this.store.peekRecord('comment', this.get('model.id')),
+            positive_vote: self.userVote
+          });
+          voteRequest.save().then(() => {
+            console.log('Vote was accepted');
+            this.get('model').reload();
+            if(self.get('userVote') === true){
+              self.set('upvoteEnabled',false);
+              self.set('downvoteEnabled',true);
+            }
+            else{
+              self.set('upvoteEnabled',true);
+              self.set('downvoteEnabled',false);
+            }
+            resolve();
+          }).catch((reason) => {
+            console.log(reason);
+            resolve();
+          });
         });
-      });
-      upvotePromise = null;
-    },
-    downvote: function(){
-      var downvotePromise = new Ember.RSVP.Promise((resolve) => {
-        var downvoteRequest = this.get('store').createRecord('commentVote', {
-          user: this.store.peekRecord('user', this.get('sessionAccount.user.id')),
-          comment: this.store.peekRecord('comment', this.get('model.id')),
-          positive_vote: false
-        });
-        downvoteRequest.save().then(() => {
-          console.log('Vote was accepted');
-          this.get('model').reload();
-          this.set('downvoteEnabled',false);
-          resolve();
-        }).catch((reason) => {
-          console.log(reason);
-          resolve();
-        });
-      });
-      downvotePromise = null;
+      }
+      votePromise = null;
     },
     update: function() {
       if(this.get('clientSideValidationComplete') === true) {

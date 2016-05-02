@@ -1,13 +1,13 @@
 {{votingSystemHandler}}
 {{#if session.isAuthenticated}}
   {{#if upvoteEnabled}}
-    <button class="button_type1_normal" {{action "upvote"}}>+1</button>
+    <button class="button_type1_normal" {{action "castVote" true}}>+1</button>
   {{else}}
     <label class="test_class">Nope</label>
   {{/if}}
   {{model.empathy_level}}
   {{#if downvoteEnabled}}
-    <button class="button_type1_normal" {{action "downvote"}}>-1</button>
+    <button class="button_type1_normal" {{action "castVote" false}}>-1</button>
   {{else}}
     <label class="test_class">Nope</label>
   {{/if}}

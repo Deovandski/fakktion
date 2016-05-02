@@ -9,7 +9,7 @@ class Api::V1::CommentVotesController < ApiController
 
   # render specified CommentVote using CommentVoteSerializer.
   def show
-    render json: CommentVote
+    render json: commentVote
   end
 
   # Render the created CommentVote using CommentVoteSerializer and the AMS Deserialization.
@@ -21,7 +21,6 @@ class Api::V1::CommentVotesController < ApiController
       return render json: {}, status: :unprocessable_entity
     else
       comment = Comment.find(comment_vote_params[:comment_id])
-      puts comment_vote_params
       if comment_vote_params[:positive_vote]
         comment.increment(:empathy_level)
       else
@@ -35,17 +34,18 @@ class Api::V1::CommentVotesController < ApiController
   # Render the updated CommentVote using GenreSerializer and the AMS Deserialization.
   # Only allow the user to change vote from +1 to -1 through positiveVote boolean.
   def update
-    if commentVote.exists?
+    userVotedAlready = CommentVote.where(:comment_id => comment_vote_params[:comment_id], :user_id => comment_vote_params[:user_id]).exists?
+    if userVotedAlready
       if commentVote.positive_vote != comment_vote_params[:positive_vote]
         comment = Comment.find(comment_vote_params[:comment_id])
         # Negate previous vote from -1 to +1, and vice versa.
-        if comment.positive_vote
-          comment.decrement_counter(:empathy_level, 2)
+        if commentVote.positive_vote
+          comment.decrement(:empathy_level, 2)
         else
-          comment.increment_counter(:empathy_level, 2)
+          comment.increment(:empathy_level, 2)
         end
-        comment.save
-        json_update(comment_vote_params, CommentVote)
+        commentVote.save
+        json_update(commentVote, comment_vote_params)
       else
         return render json: {}, status: :ok
       end
