@@ -1,4 +1,16 @@
+{{votingSystemHandler}}
 {{#if session.isAuthenticated}}
+  {{#if upvoteEnabled}}
+    <button class="button_type1_normal" {{action "castVote" true}}>+1</button>
+  {{else}}
+    <label class="test_class">Nope</label>
+  {{/if}}
+  {{model.empathy_level}}
+  {{#if downvoteEnabled}}
+    <button class="button_type1_normal" {{action "castVote" false}}>-1</button>
+  {{else}}
+    <label class="test_class">Nope</label>
+  {{/if}}
   {{#if canEdit}}
     {{#if editMode}}
       <div class="input_block_comment">
@@ -18,7 +30,10 @@
     {{/if}}
   {{else}}
     {{model.text}}
+    {{capitalize model.user.display_name}}
   {{/if}}
 {{else}}
+  {{model.empathy_level}}
   {{model.text}}
+  {{capitalize model.user.display_name}}
 {{/if}}

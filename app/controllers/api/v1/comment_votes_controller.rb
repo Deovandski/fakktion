@@ -37,7 +37,7 @@ class Api::V1::CommentVotesController < ApiController
     end
   end
 
-  # Render the updated CommentVote using GenreSerializer and the AMS Deserialization.
+  # Render the updated CommentVote using CommentSerializer and the AMS Deserialization.
   # Only allow the user to change vote from +1 to -1 through positiveVote boolean.
   def update
     userVotedAlready = CommentVote.where(:comment_id => comment_vote_params[:comment_id], :user_id => comment_vote_params[:user_id]).exists?
@@ -70,12 +70,11 @@ class Api::V1::CommentVotesController < ApiController
   private
 
   # CommentVote object from the Deserialization params.
-  # This object always will look for the Comment vote by the logged in user on the frontend.
   def commentVote
     CommentVote.find(params[:id])
   end
 
-  # AMS Genre Deserialization.
+  # AMS Comment Deserialization.
   def comment_vote_params
     ActiveModelSerializers::Deserialization.jsonapi_parse!(params.to_unsafe_h)
   end

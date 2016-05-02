@@ -1,7 +1,7 @@
 import DS from "ember-data";
 
 export default DS.Model.extend ({
-  positivite_vote: DS.attr ('boolean'),
+  positive_vote: DS.attr ('boolean'),
   user_id: DS.attr ('number'),
   inner_comment_id: DS.attr ('number'),
   

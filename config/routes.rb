@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       resources :comments
       resources :comment_votes
       resources :inner_comments
+      resources :inner_comment_votes
       resources :fact_types
       resources :topics
       resources :categories
