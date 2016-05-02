@@ -25,20 +25,24 @@ export default Ember.Controller.extend ({
         });
         var possibleVote = possibleVotes.objectAt(0);
         
-        // Allow the opposite vote to be cast by the user.
-        if (possibleVote.get('positive_vote') === true){
-            self.set('downvoteEnabled',true);
-            self.set('didUserVote',true);
-            self.set('votingID',possibleVote.get('id'));
+        // Allow the opposite vote to be cast by the non author user.
+        if (self.get('sessionAccount.user.id') === self.get('model.user.id')){
+          self.set('upvoteEnabled',false);
+          self.set('downvoteEnabled',false);
         }
-        else if (possibleVote.get('positive_vote') === false){
-            self.set('upvoteEnabled',true);
-            self.set('didUserVote',true);
-            self.set('votingID',possibleVote.get('id'));
-        }
-        else{
+        else if (possibleVote === undefined){
           self.set('upvoteEnabled',true);
           self.set('downvoteEnabled',true);
+        }
+        else if (possibleVote.get('positive_vote') === true){
+          self.set('downvoteEnabled',true);
+          self.set('didUserVote',true);
+          self.set('votingID',possibleVote.get('id'));
+        }
+        else if (possibleVote.get('positive_vote') === false){
+          self.set('upvoteEnabled',true);
+          self.set('didUserVote',true);
+          self.set('votingID',possibleVote.get('id'));
         }
       });
     };
@@ -105,7 +109,6 @@ export default Ember.Controller.extend ({
           }
           request.save().then(() => {
             console.log('Vote was updated');
-            self.get('model').reload();
             if(self.get('userVote') === true){
               self.set('upvoteEnabled',false);
               self.set('downvoteEnabled',true);
@@ -114,6 +117,7 @@ export default Ember.Controller.extend ({
               self.set('upvoteEnabled',true);
               self.set('downvoteEnabled',false);
             }
+            self.get('model').reload();
           }).catch((reason) => {
             console.log(reason);
           });
@@ -125,11 +129,10 @@ export default Ember.Controller.extend ({
           var voteRequest = this.get('store').createRecord('commentVote', {
             user: this.store.peekRecord('user', this.get('sessionAccount.user.id')),
             comment: this.store.peekRecord('comment', this.get('model.id')),
-            positive_vote: self.userVote
+            positive_vote: this.userVote
           });
-          voteRequest.save().then(() => {
-            console.log('Vote was accepted');
-            this.get('model').reload();
+          var self = this; // Controller instance for maniupulation with then()
+          voteRequest.save().then((record) => {
             if(self.get('userVote') === true){
               self.set('upvoteEnabled',false);
               self.set('downvoteEnabled',true);
@@ -138,7 +141,9 @@ export default Ember.Controller.extend ({
               self.set('upvoteEnabled',true);
               self.set('downvoteEnabled',false);
             }
-            resolve();
+            self.get('model').reload();
+            self.set('didUserVote', true);
+            self.set('votingID',record.get('id'));
           }).catch((reason) => {
             console.log(reason);
             resolve();

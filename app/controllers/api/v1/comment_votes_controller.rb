@@ -17,10 +17,16 @@ class Api::V1::CommentVotesController < ApiController
   # positiveVote boolean vote change is propagated right before creating the vote.
   def create
     userVotedAlready = CommentVote.where(:comment_id => comment_vote_params[:comment_id], :user_id => comment_vote_params[:user_id]).exists?
-    if userVotedAlready
+    comment = Comment.find(comment_vote_params[:comment_id])
+    user = User.find(comment_vote_params[:user_id])
+    if user.id == comment.user.id
+      loggedUserIsAuthor = true
+    else
+      loggedUserIsAuthor = false
+    end
+    if userVotedAlready || loggedUserIsAuthor
       return render json: {}, status: :unprocessable_entity
     else
-      comment = Comment.find(comment_vote_params[:comment_id])
       if comment_vote_params[:positive_vote]
         comment.increment(:empathy_level)
       else
@@ -44,6 +50,7 @@ class Api::V1::CommentVotesController < ApiController
         else
           comment.increment(:empathy_level, 2)
         end
+        comment.save
         commentVote.save
         json_update(commentVote, comment_vote_params)
       else
