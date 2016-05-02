@@ -8,7 +8,6 @@ class Api::V1::CommentVotesController < ApiController
   end
 
   # render specified CommentVote using CommentVoteSerializer.
-  # It is not a standard SHOW! See CommentVote.
   def show
     render json: CommentVote
   end
@@ -17,14 +16,16 @@ class Api::V1::CommentVotesController < ApiController
   # Do not allow an user to vote multiple times on the same item!
   # positiveVote boolean vote change is propagated right before creating the vote.
   def create
-    if CommentVote.where(:comment_id => params[:comment_id], :user_id => params[:user_id]).exists?
+    userVotedAlready = CommentVote.where(:comment_id => comment_vote_params[:comment_id], :user_id => comment_vote_params[:user_id]).exists?
+    if userVotedAlready
       return render json: {}, status: :unprocessable_entity
     else
-      comment = Comment.find(:comment_id)
-      if params[:positive_vote]
-        comment.increment_counter(:eligibility_counter)
+      comment = Comment.find(comment_vote_params[:comment_id])
+      puts comment_vote_params
+      if comment_vote_params[:positive_vote]
+        comment.increment(:empathy_level)
       else
-        comment.decrement_counter(:eligibility_counter)
+        comment.decrement(:empathy_level)
       end
       comment.save
       json_create(comment_vote_params, CommentVote)
@@ -35,13 +36,13 @@ class Api::V1::CommentVotesController < ApiController
   # Only allow the user to change vote from +1 to -1 through positiveVote boolean.
   def update
     if commentVote.exists?
-      if commentVote.positive_vote != params[:positive_vote]
-        comment = Comment.find(:comment_id)
+      if commentVote.positive_vote != comment_vote_params[:positive_vote]
+        comment = Comment.find(comment_vote_params[:comment_id])
         # Negate previous vote from -1 to +1, and vice versa.
         if comment.positive_vote
-          comment.decrement_counter(:eligibility_counter, 2)
+          comment.decrement_counter(:empathy_level, 2)
         else
-          comment.increment_counter(:eligibility_counter, 2)
+          comment.increment_counter(:empathy_level, 2)
         end
         comment.save
         json_update(comment_vote_params, CommentVote)
@@ -64,7 +65,7 @@ class Api::V1::CommentVotesController < ApiController
   # CommentVote object from the Deserialization params.
   # This object always will look for the Comment vote by the logged in user on the frontend.
   def commentVote
-    CommentVote.where(:comment_id => params[:comment_id], :user_id => params[:user_id])
+    CommentVote.find(params[:id])
   end
 
   # AMS Genre Deserialization.

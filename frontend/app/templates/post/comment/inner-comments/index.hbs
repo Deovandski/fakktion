@@ -1,7 +1,7 @@
 <div class="post_comments_container">
 	<ul>
-		{{#each model.inner_comments as |comment|}}
-			<li>{{render "post.comment.innerComment.index" comment}}</li>
+		{{#each model.inner_comments as |innerComment|}}
+			<li>{{render "post.comment.innerComment.index" innerComment}}</li>
 		{{/each}}
 	</ul>
 	<br/>

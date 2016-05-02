@@ -86,15 +86,6 @@ ActiveRecord::Schema.define(version: 20160501161006) do
   add_index "inner_comments", ["comment_id"], name: "index_inner_comments_on_comment_id"
   add_index "inner_comments", ["user_id"], name: "index_inner_comments_on_user_id"
 
-  create_table "post_votes", force: :cascade do |t|
-    t.boolean "positive_vote"
-    t.integer "user_id"
-    t.integer "post_id"
-  end
-
-  add_index "post_votes", ["post_id"], name: "index_post_votes_on_post_id"
-  add_index "post_votes", ["user_id"], name: "index_post_votes_on_user_id"
-
   create_table "posts", force: :cascade do |t|
     t.string   "fact_link"
     t.string   "fiction_link"

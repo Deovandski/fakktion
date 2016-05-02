@@ -36,7 +36,6 @@ export default Ember.Controller.extend ({
   displayCentralPanel:true,
   displayLeftSidebar: true,
   displayRightSidebar: true,
-  
   defaultCategories: Ember.computed.filter('model.categories', function(category, index) {
       console.log('DEBUG --CT1');
       return (index < 10);

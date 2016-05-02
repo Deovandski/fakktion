@@ -4,6 +4,7 @@ const { service } = Ember.inject;
 
 export default Ember.Controller.extend ({
   session: service('session'),
+  sessionAccount: service('session-account'),
   application: Ember.inject.controller('application'),
   notExpandInfo: true,
   canEdit: Ember.computed('model.user_id', 'application.isAdmin', function() {
