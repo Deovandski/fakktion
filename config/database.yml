@@ -23,5 +23,5 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: db/production.postgresql
+  database: fakktion
   pool: 5
