@@ -81,3 +81,27 @@ rm -rf bower_components
 rm -rf frontend/bower_components
 npm start OR Push a commit to TravisCI (or even directly to Heroku) 
 ```
+
+## Ubuntu Server Deployment
+In order to deploy to Ubuntu Server, the following commands should be done first:
+1. Clone repo into /var/www or move it using ```sudo mv FROM /var/www```
+2. remove default site enabled with ```sudo rm /etc/nginx/conf.d/sites-enabled/default```
+3. Move fakktion.conf to ```/etc/nginx/sites-available/fakktion.conf```
+4. Create symbolic file ```sudo ln -sf /etc/nginx/sites-available/fakktion.conf /etc/nginx/sites-enabled/fakktion.conf```
+5. Restart NGINX with ```sudo service nginx restart```
+6. Set a new secret base with ```SECRET_KEY_BASE=$(rake secret)```
+### Start Server
+To run server on the background, use -d as a parameter after production.
+```
+bundle exec puma -e production -b unix:///var/run/fakktion.sock 
+```
+
+### Current Running Servers.
+```
+  ps aux | grep puma
+```
+### Kill server
+```
+# kill -s SIGTERM SERVERPID
+
+```
