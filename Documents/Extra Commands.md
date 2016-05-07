@@ -91,7 +91,11 @@ In order to deploy to Ubuntu Server, the following commands should be done first
 3. Move fakktion.conf to ```/etc/nginx/sites-available/fakktion.conf```
 4. Create symbolic file ```sudo ln -sf /etc/nginx/sites-available/fakktion.conf /etc/nginx/sites-enabled/fakktion.conf```
 5. Restart NGINX with ```sudo service nginx restart```
-6. Set a new secret base with ```SECRET_KEY_BASE=$(rake secret)```
+6. ~~Set a new secret base with ```SECRET_KEY_BASE=$(rake secret)```~~ Persisting ENV is not as straight forward, so instead edit the secrets.yml file, and don't make it available online under any circustance!!!
+7. Setup Postgres to work with your app:
+ - ```sudo -u postgres createuser --superuser $USER```
+ - ```sudo -u postgres createdb $USER```
+8. WIP
 
 #### Start Server
 To run server on the background, use -d as a parameter after production.
