@@ -106,6 +106,7 @@ In order to deploy an ember-cli-rails project to Ubuntu Server 14.04, the follow
  - Execute ```cd /home/$USER/Fakktion/Documents``` followed by  ```sudo ./ubuntu_deploy_script_2.sh```
  - Open your browser and navigate to ```http://server_public_IP/```
 
+8. Issues? Check the logs under /home/$USER/Fakktion/shared/log...
 #### PUMA Application control
 ```
   sudo start puma-manager
