@@ -84,7 +84,7 @@ npm start OR Push a commit to TravisCI (or even directly to Heroku)
 ```
 
 # Ubuntu Server Deployment
-In order to deploy an ember-cli-rails project to Ubuntu Server, the following commands should be done first: (Some info extracted from [Digital Ocean PUMA NGINX Guide](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-rails-app-with-puma-and-nginx-on-ubuntu-14-04))
+In order to deploy an ember-cli-rails project to Ubuntu Server 14.04, the following commands should be done first: (Some info extracted from [Digital Ocean PUMA NGINX Guide](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-rails-app-with-puma-and-nginx-on-ubuntu-14-04))
 
 1. Write the following ENV variables to .profile using ```nano ~/.profile``` (Make sure that there are no spaces between constant and value.) 
  - ```SKB="XXXXXXXXXXXXXXX"```
@@ -97,8 +97,7 @@ In order to deploy an ember-cli-rails project to Ubuntu Server, the following co
 6. PUMA SETUP: 
  - ```nano /home/$USER/puma.conf``` and replace **setuid** and **setgid** apps to the deploying user.
  - Go to your $USER folder with ```cd /home/$USER```
- - Copy scripts into upstart services directory with ```sudo cp puma.conf` puma-manager.conf /etc/init```
- - Run ```sudo start puma-manager```. If you receive an error saying **start: command not found**, run ```./ubuntu_upstart_fix.sh```.
+ - Copy scripts into upstart services directory with ```sudo cp puma.conf puma-manager.conf /etc/init```
  - Now create the INV file with ```sudo nano /etc/puma.conf``` and add ```/home/DEPLOYING_USER/Fakktion```. When finished save it, and perform ```sudo reboot```.
 7. NGINX SETUP: (Some info extracted from this [Digital Ocean Guide](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-rails-app-with-puma-and-nginx-on-ubuntu-14-04)) 
  - Navigate to Documents folder, and execute ```./ubuntu_deploy_script_2.sh```
