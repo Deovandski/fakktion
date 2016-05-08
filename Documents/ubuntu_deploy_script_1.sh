@@ -1,5 +1,5 @@
 #!/bin/bash
-# TODO comments
+# Script 1 taks care of creating the Postgres necessary stuff while also installing app wide dependencies.
 sudo -u postgres createuser --superuser $FAKKTION_DATABASE_USER
 sudo -u $FAKKTION_DATABASE_USER createdb $FAKKTION_PRODUCTION_DATABASE
 sudo apt-get install nginx libpq-dev

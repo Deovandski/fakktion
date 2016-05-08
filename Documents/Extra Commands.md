@@ -96,13 +96,13 @@ In order to deploy an ember-cli-rails project to Ubuntu Server, the following co
 5. Navigate to Documents folder, and execute ```./ubuntu_deploy_script_1.sh```
 6. PUMA SETUP: (Some info extracted from this [Digital Ocean Guide](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-rails-app-with-puma-and-nginx-on-ubuntu-14-04))
  - Navigate to Documents folder, and execute ```./ubuntu_deploy_script_2.sh```
- - Edit puma.conf through ```nano puma.conf``` and replace **setuid** and **setgid** apps to the deploying user (/home/$USER in this case)
- - ```sudo cp puma.conf puma-manager.conf /etc/init```
- - Edit the inventory file now through ```sudo nano /etc/puma.conf``` and add ```/home/$USER/Fakktion```
- - ```sudo start puma-manager```
+ - Execture ```nano /home/puma.conf``` and replace **setuid** and **setgid** apps to the deploying user
+ - Copy scripts into Upstart services directory with ```sudo cp puma.conf puma-manager.conf /etc/init```
+ - Now execute ```sudo nano /etc/puma.conf``` and add ```/home/DEPLOYING_USER/Fakktion```
+ - ```sudo reboot```
 7. NGINX SETUP: (Some info extracted from this [Digital Ocean Guide](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-rails-app-with-puma-and-nginx-on-ubuntu-14-04)) 
  - Navigate to Documents folder, and execute ```./ubuntu_deploy_script_3.sh```
- - Navigate to ```http://server_public_IP/tasks```
+ - Open your browser and navigate to ```http://server_public_IP/tasks```
 
 #### PUMA Application control
 ```

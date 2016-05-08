@@ -1,5 +1,5 @@
 #!/bin/bash
-# TODO comments
+# Puma configuration
 cd /home/$USER/Fakktion
 echo "" > config/puma.rb
 echo "workers $(grep -c processor /proc/cpuinfo)" >> config/puma.rb
