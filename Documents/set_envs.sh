@@ -5,7 +5,7 @@ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB8
 source ~/.rvm/scripts/rvm
 gem install bundler
 
-echo "SKB=\"$(rake secret)\"" >> ~/.profile
+echo "SECRET_KEY_BASE=\"$(rake secret)\"" >> ~/.profile
 echo "RAILS_ENV=\"production\"" >> ~/.profile
 echo "FAKKTION_DATABASE_USER=\"$USER\"" >> ~/.profile
 echo "FAKKTION_DATABASE_PASSWORD=\"CHANGE_ME\"" >> ~/.profile
