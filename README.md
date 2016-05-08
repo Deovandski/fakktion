@@ -50,6 +50,11 @@ This project once used [Ember-Rails](https://github.com/emberjs/ember-rails), bu
 
 Start the Server with '''rake start'''. To quickly login under Development mode, use the default account user@example.com with password 12345678.
 
+## Deployment
+
+[Heroku](Documents/heroku.md)
+[Ubuntu Server 14.04](Documents/Ubuntu Deployment.md)
+
 ## Documents
 
 [Discussions regarding this project](Documents/Discussions.md)
