@@ -86,16 +86,22 @@ npm start OR Push a commit to TravisCI (or even directly to Heroku)
 # Ubuntu Server Deployment
 In order to deploy to Ubuntu Server, the following commands should be done first:
 
-1. Clone repo into /var/www or move it using ```sudo mv FROM /var/www```
+1. Write the following ENV variables to .profile using ```nano ~/.profile```. 
+ - ```SKB="XXXXXXXXXXXXXXX"```
+ - ```RAILS_ENV="XXXXXXXXXXXXX"```
+ - ```FAKKTION_DATABASE_USER="XXXXXXXXXXXXXX"```
+ - ```FAKKTION_DATABASE_PASSWORD="XXXXXXXXXXXXXXXXX"```
+
+2. Setup Postgres to work with your app:
+ - ```sudo -u postgres createuser --superuser FAKKTION_DATABASE_USER```
+ - ```sudo -u FAKKTION_DATABASE_USER createdb fakktion```
+ 
+2. Clone repo into /var/www or move it using ```sudo mv FROM /var/www```
 2. remove default site enabled with ```sudo rm /etc/nginx/conf.d/sites-enabled/default```
 3. Move fakktion.conf to ```/etc/nginx/sites-available/fakktion.conf```
 4. Create symbolic file ```sudo ln -sf /etc/nginx/sites-available/fakktion.conf /etc/nginx/sites-enabled/fakktion.conf```
 5. Restart NGINX with ```sudo service nginx restart```
-6. ~~Set a new secret base with ```SECRET_KEY_BASE=$(rake secret)```~~ Persisting ENV is not as straight forward, so instead edit the secrets.yml file, and don't make it available online under any circustance!!!
-7. Setup Postgres to work with your app:
- - ```sudo -u postgres createuser --superuser $USER```
- - ```sudo -u postgres createdb $USER```
-8. WIP
+6. WIP
 
 #### Start Server
 To run server on the background, use -d as a parameter after production.
