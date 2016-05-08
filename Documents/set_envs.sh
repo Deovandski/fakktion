@@ -5,4 +5,7 @@
 #source ~/.rvm/scripts/rvm
 #gem install bundler
 
-cat envs.txt >> ~/.profile
+echo 'RAILS_ENV="production"' >> ~/.profile
+echo 'FAKKTION_DATABASE_USER="$USER"' >> ~/.profile
+echo 'FAKKTION_DATABASE_PASSWORD="CHANGE_ME"' >> ~/.profile
+echo 'FAKKTION_PRODUCTION_DATABASE="fakktion"' >> ~/.profile
