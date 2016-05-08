@@ -21,7 +21,10 @@ test:
   database: db/test.sqlite3
 
 production:
+  host: localhost
   adapter: postgresql
-  encoding: unicode
-  database: fakktion
+  encoding: utf8
+  database: <%= ENV['FAKKTION_PRODUCTION_DATABASE'] %>
   pool: 5
+  username: <%= ENV['FAKKTION_DATABASE_USER'] %>
+  password: <%= ENV['FAKKTION_DATABASE_PASSWORD'] %>
