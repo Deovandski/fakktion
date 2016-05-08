@@ -52,8 +52,9 @@ Start the Server with '''rake start'''. To quickly login under Development mode,
 
 ## Deployment
 
-[Heroku](Documents/heroku.md)
-[Ubuntu Server 14.04](Documents/Ubuntu Deployment.md)
+[Heroku](Documents/heroku.md) (~35 minutes for deployment)
+
+[Ubuntu Server 14.04](Documents/Ubuntu Deployment.md) (~2 hours for deployment)
 
 ## Documents
 
