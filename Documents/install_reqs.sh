@@ -1,7 +1,5 @@
 #!/bin/bash
-# Script 1 taks care of creating the Postgres necessary stuff while also installing app wide dependencies.
-sudo -u postgres createuser --superuser $FAKKTION_DATABASE_USER --pwprompt
-sudo -u $FAKKTION_DATABASE_USER createdb $FAKKTION_PRODUCTION_DATABASE
+# Install app wide dependencies.
 sudo apt-get install nginx libpq-dev
 cd /home/$USER
 sudo apt-get install npm
