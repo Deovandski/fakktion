@@ -100,7 +100,7 @@ In order to deploy an ember-cli-rails project to Ubuntu Server 14.04, the follow
  - Copy scripts into upstart services directory with ```sudo cp puma.conf puma-manager.conf /etc/init```
  - Now create the INV file with ```sudo nano /etc/puma.conf``` and add ```/home/DEPLOYING_USER/Fakktion```. When finished save it, and perform ```sudo reboot```.
 7. NGINX SETUP: (Some info extracted from this [Digital Ocean Guide](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-rails-app-with-puma-and-nginx-on-ubuntu-14-04)) 
- - Navigate to Documents folder, and execute ```./ubuntu_deploy_script_2.sh```
+ - Execute ```cd /home/$USER/Fakktion/Documents``` followed by  ```sudo ./ubuntu_deploy_script_2.sh```
  - Open your browser and navigate to ```http://server_public_IP/tasks```
 
 #### PUMA Application control
