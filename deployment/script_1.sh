@@ -1,3 +1,5 @@
+#!/bin/bash
+# TODO comments
 sudo -u postgres createuser --superuser FAKKTION_DATABASE_USER
 sudo -u FAKKTION_DATABASE_USER createdb FAKKTION_PRODUCTION_DATABASE
 sudo apt-get install nginx git-core libpq-dev
