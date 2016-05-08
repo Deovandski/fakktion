@@ -92,68 +92,21 @@ In order to deploy an ember-cli-rails project to Ubuntu Server, the following co
  - ```FAKKTION_DATABASE_USER="XXXXXXXXXXXXXX"```
  - ```FAKKTION_DATABASE_PASSWORD="XXXXXXXXXXXXXXXXX"```
  - ```FAKKTION_PRODUCTION_DATABASE="XXXXXXXXXXXXXXXXX"```
-2. Setup Postgres to work with your app:
- - ```sudo -u postgres createuser --superuser FAKKTION_DATABASE_USER```
- - ```sudo -u FAKKTION_DATABASE_USER createdb fakktion```
-3. Install NGNIX with ```sudo apt-get install nginx```
-4. Install Git Core ```sudo apt-get install git-core```, and clone repo via https into your user folder, then move it to /var/www using ```sudo mv /home/user/Fakktion /var/www``` (Because cloning straight to /var/www was not permitted, and I am against using sudo git clone...)
-5. Enter the folder and Install RVM, Rails, Bundler and all other related dependencies, then checkout steps 2, 3 and 4 of the [installation guide](https://github.com/Deovandski/Fakktion#installation).
-6. ```sudo reboot``` or follow the instructions on-screen to enable RVM on the current session.
-7. PUMA SETUP: (credits to this [Digital Ocean Guide](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-rails-app-with-puma-and-nginx-on-ubuntu-14-04))
- - Based on how many processors you currently have (```grep -c processor /proc/cpuinfo```), you should start to edit ```nano config/puma.rb``` with the following info: 
-   ```
-   # Change to match your CPU core count
-  workers 2
-  
-  # Min and Max threads per worker
-  threads 1, 6
-  
-  app_dir = File.expand_path("../..", __FILE__)
-  shared_dir = "#{app_dir}/shared"
-  
-  # Default to production
-  rails_env = ENV['RAILS_ENV'] || "production"
-  environment rails_env
-  
-  # Set up socket location
-  bind "unix://#{shared_dir}/sockets/puma.sock"
-  
-  # Logging
-  stdout_redirect "#{shared_dir}/log/puma.stdout.log", "#{shared_dir}/log/puma.stderr.log", true
-  
-  # Set master PID and state locations
-  pidfile "#{shared_dir}/pids/puma.pid"
-  state_path "#{shared_dir}/pids/puma.state"
-  activate_control_app
-  
-  on_worker_boot do
-    require "active_record"
-    ActiveRecord::Base.connection.disconnect! rescue ActiveRecord::ConnectionNotEstablished
-    ActiveRecord::Base.establish_connection(YAML.load_file("#{app_dir}/config/database.yml")[rails_env])
-  end
-   ```
- - ```mkdir -p shared/pids shared/sockets shared/log```
- - ```cd ~```
- - ```wget https://raw.githubusercontent.com/puma/puma/master/tools/jungle/upstart/puma-manager.conf```
- - ```wget https://raw.githubusercontent.com/puma/puma/master/tools/jungle/upstart/puma.conf```
-6. NGINX SETUP: (credits to this [Digital Ocean Guide](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-rails-app-with-puma-and-nginx-on-ubuntu-14-04)) 
- - WIP
- - remove default site enabled with ```sudo rm /etc/nginx/conf.d/sites-enabled/default```
- - Move fakktion.conf to ```/etc/nginx/sites-available/fakktion.conf```
- - Create symbolic file ```sudo ln -sf /etc/nginx/sites-available/fakktion.conf /etc/nginx/sites-enabled/fakktion.conf```
- - Restart NGINX with ```sudo service nginx restart```
+4. Install Git Core ```sudo apt-get install git-core```, and clone repo through ```git clone https://github.com/Deovandski/Fakktion.git```
+5. Navigate to Documents folder, and execute ```./ubuntu_deploy_script_1.sh```
+6. PUMA SETUP: (Some info extracted from this [Digital Ocean Guide](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-rails-app-with-puma-and-nginx-on-ubuntu-14-04))
+ - Navigate to Documents folder, and execute ```./ubuntu_deploy_script_2.sh```
+ - Edit puma.conf through ```nano puma.conf``` and replace **setuid** and **setgid** apps to the deploying user (/home/$USER in this case)
+ - ```sudo cp puma.conf puma-manager.conf /etc/init```
+ - Edit the inventory file now through ```sudo nano /etc/puma.conf``` and add ```/home/$USER/Fakktion```
+ - ```sudo start puma-manager```
+7. NGINX SETUP: (Some info extracted from this [Digital Ocean Guide](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-rails-app-with-puma-and-nginx-on-ubuntu-14-04)) 
+ - Navigate to Documents folder, and execute ```./ubuntu_deploy_script_3.sh```
+ - Navigate to ```http://server_public_IP/tasks```
 
-#### Start Server
-To run server on the background, use -d as a parameter after production.
+#### PUMA Application control
 ```
-bundle exec puma -e production -b unix:///var/run/fakktion.sock 
-```
-
-#### Current Running Servers.
-```
-  ps aux | grep puma
-```
-#### Kill server
-```
-# kill -s SIGTERM SERVERPID
+  sudo start puma-manager
+  sudo stop puma-manager
+  sudo restart puma-manager
 ```
