@@ -91,17 +91,23 @@ In order to deploy to Ubuntu Server, the following commands should be done first
  - ```RAILS_ENV="XXXXXXXXXXXXX"```
  - ```FAKKTION_DATABASE_USER="XXXXXXXXXXXXXX"```
  - ```FAKKTION_DATABASE_PASSWORD="XXXXXXXXXXXXXXXXX"```
-
+ - ```FAKKTION_PRODUCTION_DATABASE="XXXXXXXXXXXXXXXXX"```
 2. Setup Postgres to work with your app:
  - ```sudo -u postgres createuser --superuser FAKKTION_DATABASE_USER```
  - ```sudo -u FAKKTION_DATABASE_USER createdb fakktion```
- 
-2. Clone repo into /var/www or move it using ```sudo mv FROM /var/www```
-2. remove default site enabled with ```sudo rm /etc/nginx/conf.d/sites-enabled/default```
-3. Move fakktion.conf to ```/etc/nginx/sites-available/fakktion.conf```
-4. Create symbolic file ```sudo ln -sf /etc/nginx/sites-available/fakktion.conf /etc/nginx/sites-enabled/fakktion.conf```
-5. Restart NGINX with ```sudo service nginx restart```
-6. WIP
+3. Install NGNIX with ```sudo apt-get install nginx```
+4. Install Git Core ```sudo apt-get install git-core```, and clone repo via https into your user folder, then move it to /var/www using ```sudo mv /home/user/Fakktion /var/www``` (Because cloning straight to /var/www was not permitted, and I am against using sudo git clone...)
+5. Enter the folder and Install RVM, Rails, Bundler and all other related dependencies, then checkout steps 2, 3 and 4 of the [installation guide](https://github.com/Deovandski/Fakktion#installation).
+5. PUMA SETUP: 
+ - WIP
+ - WIP
+ - WIP
+6. NGINX Setup: 
+ - WIP
+ - remove default site enabled with ```sudo rm /etc/nginx/conf.d/sites-enabled/default```
+ - Move fakktion.conf to ```/etc/nginx/sites-available/fakktion.conf```
+ - Create symbolic file ```sudo ln -sf /etc/nginx/sites-available/fakktion.conf /etc/nginx/sites-enabled/fakktion.conf```
+ - Restart NGINX with ```sudo service nginx restart```
 
 #### Start Server
 To run server on the background, use -d as a parameter after production.
