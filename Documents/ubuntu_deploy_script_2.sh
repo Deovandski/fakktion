@@ -1,5 +1,6 @@
 #!/bin/bash
 # TODO comments
+cd /home/$USER/Fakktion
 > config/puma.rb
 workers $(grep -c processor /proc/cpuinfo) > config/puma.rb
 partial_puma.txt > config/puma.rb
