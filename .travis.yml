@@ -10,6 +10,7 @@ node_js:
 before_install:
 - gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 - \curl -sSL https://get.rvm.io | bash -s stable --rails
+- rvm get head --auto-dotfiles
 - openssl aes-256-cbc -K $encrypted_f7320bcbcc32_key -iv $encrypted_f7320bcbcc32_iv
   -in secrets.yml.enc -out config/secrets.yml -d
 before_script:
