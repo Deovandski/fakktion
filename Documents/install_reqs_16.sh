@@ -1,6 +1,6 @@
 #!/bin/bash
 # Install app wide dependencies. Ubuntu 16 Deployment
-cd /var/www/Fakktion # Make sure that we are in the proper place.
+cd /home/$USER/Fakktion # Make sure that we are in the proper place.
 # Install NPM and NODE
 sudo apt-get -y install npm
 sudo npm cache clean -f

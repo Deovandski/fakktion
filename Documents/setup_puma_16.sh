@@ -17,4 +17,4 @@ sudo /etc/init.d/puma add /var/www/Fakktion user /var/www/Fakktion/config/puma.r
 
 # Create necessary tmp folders.
 
-mkdir /var/www/Fakktion/tmp/puma
+sudo mkdir /var/www/Fakktion/tmp/puma
