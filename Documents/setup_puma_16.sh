@@ -13,7 +13,7 @@ sudo chmod +x /usr/local/bin/run-puma
 sudo touch /etc/puma.conf
 
 # Link Fakktion to Puma
-sudo /etc/init.d/puma add /var/www/Fakktion user /var/www/Fakktion/config/puma.rb /var/www/Fakktion/log/puma.log
+sudo /etc/init.d/puma add /var/www/Fakktion root /var/www/Fakktion/config/puma.rb /var/www/Fakktion/log/puma.log
 
 # Create necessary tmp folders.
 

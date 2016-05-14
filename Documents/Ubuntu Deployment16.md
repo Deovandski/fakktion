@@ -9,18 +9,17 @@ In order to deploy an ember-cli-rails project to Ubuntu Server 16.04, the follow
 6. Navigate to Fakktion/Documents folder, and execute ```./base_reqs_16.sh```.
 7. Now create a Postgres User with ```sudo -u postgres createuser --superuser $USER --pwprompt```. Don't forget to write down the password entered!
 8. ```sudo -u $USER createdb fakktion```
-9. Now navigate to secrets.yml, and change the production secret to not be an ENV var anymore. You can whether run ```rake secret``` and paste over the ENV VAR, or just smash your keyboard A-Z/0-9 until you have the same amount of characters as the development secret.
-10. Do the same thing for the database.yml with the info previously entered. You could use ```nano FILE```.
-11. Now add secrets.yml and database.yml to your .gitigone followed by 
-12. Navigate to Documents folder, and execute ```./install_reqs_16.sh```.
-13. Precompile Fakktion with ```rake assets:precompile```.
-14. Move your app from your home folder to /var/www with ```sudo mv /home/$USER/Fakktion /var/www```
+9. Now navigate to secrets.yml, and change the production secret to not be an ENV var anymore. You can whether run ```rake secret``` and paste over the ENV VAR, or just smash your keyboard A-Z/0-9 until you have the same amount of characters as the development secret. You could use ```nano FILE``` to edit the file.
+10. Do the same thing for the database.yml with the info previously entered when you created the database.
+11. Navigate to Documents folder, and execute ```./install_reqs_16.sh```.
+12. Precompile Fakktion with ```rake assets:precompile```.
+13. Move your app from your home folder to /var/www with ```sudo mv /home/$USER/Fakktion /var/www```
+14. Navigate to the documents location with ```/var/www/Fakktion/Documents```
 15. Execute ```sudo ./setup_puma_16.sh``` to setup PUMA Daemon service through init.d.
 16. If you need **SSL**, then open **fakktion_16_ssl.conf**. Otherwise open **fakktion_16_non_ssl.conf**.
 17. Change hostname on the conf file if desired. ALso, you will need to change the certificate details if using the SSL version.
 18. Execute ```sudo ./setup_nginx_16.sh``` to setup NGINX in order to put your app live.
 19. ```sudo reboot```
-20. WIP
 
 ### Running puma
 ```bundle exec puma -e production -d -b unix:///tmp/fakktion_puma.sock```
