@@ -19,6 +19,7 @@ before_script:
 - sudo n stable
 - sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
 - cd frontend
+- npm install -g bower
 - npm install
 - bower install
 script:
