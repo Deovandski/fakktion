@@ -1,5 +1,5 @@
 language: node_js
-sudo: false
+sudo: true
 cache:
   bundler: true
   directories:
