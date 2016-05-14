@@ -1,17 +1,17 @@
-language: ruby
-sudo: false
+language: node_js
+sudo: true
 cache:
   bundler: true
   directories:
     - frontend/node_modules
     - frontend/bower_components
-rvm:
-- 2.3.0
+node_js:
+- "4"
 before_install:
 - openssl aes-256-cbc -K $encrypted_f7320bcbcc32_key -iv $encrypted_f7320bcbcc32_iv
   -in secrets.yml.enc -out config/secrets.yml -d
 before_script:
-- npm install -g npm@^3.9
+- sudo apt-get install -y libpq-dev nginx ruby2.3 rails bundler
 - cd frontend
 - npm install
 - bower install
