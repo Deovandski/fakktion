@@ -1,19 +1,21 @@
-language: node_js
+language: ruby
 sudo: true
 cache:
   bundler: true
   directories:
     - frontend/node_modules
     - frontend/bower_components
-node_js:
-- "5"
+rvm:
+- 2.3.0
 before_install:
-- gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-- \curl -sSL https://get.rvm.io | bash -s stable --rails
-- rvm get head --auto-dotfiles
 - openssl aes-256-cbc -K $encrypted_f7320bcbcc32_key -iv $encrypted_f7320bcbcc32_iv
   -in secrets.yml.enc -out config/secrets.yml -d
 before_script:
+- sudo npm cache clean -f
+- sudo apt-get install npm
+- sudo npm install -g n
+- sudo n stable
+- sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
 - cd frontend
 - npm install
 - bower install
