@@ -6,11 +6,12 @@ cache:
     - frontend/node_modules
     - frontend/bower_components
 node_js:
-- "4"
+- "5"
 before_install:
 - openssl aes-256-cbc -K $encrypted_f7320bcbcc32_key -iv $encrypted_f7320bcbcc32_iv
   -in secrets.yml.enc -out config/secrets.yml -d
 before_script:
+- sudo apt-get update
 - sudo apt-get install -y libpq-dev nginx ruby2.3 rails bundler
 - cd frontend
 - npm install
