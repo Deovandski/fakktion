@@ -1,25 +1,26 @@
 # Ubuntu Server 16.04 Deployment
 In order to deploy an ember-cli-rails project to Ubuntu Server 16.04, the following commands should be done first:
 
-##WIP
+## Initial Deploy
 1. Fork this project if you have not done so already!
 2. Run ```sudo apt-get update```.
 3. Install Git Core ```sudo apt-get install -y git-core```
-5. Clone repo through ```git clone https://github.com/YOURUSERNAME/Fakktion.git```
+5. Clone repo through ```git clone https://github.com/YOURUSERNAME/Fakktion.git``` (HTTPS instead of SSH suggested as it will make it harder to accidently push commits back into origin master (or the branch that you use as master.)
 6. Navigate to Fakktion/Documents folder, and execute ```./base_reqs_16.sh```.
 7. Now create a Postgres User with ```sudo -u postgres createuser --superuser $USER --pwprompt```. Don't forget to write down the password entered!
 8. ```sudo -u $USER createdb fakktion```
 9. Now navigate to secrets.yml, and change the production secret to not be an ENV var anymore. You can whether run ```rake secret``` and paste over the ENV VAR, or just smash your keyboard A-Z/0-9 until you have the same amount of characters as the development secret.
 10. Do the same thing for the database.yml with the info previously entered. You could use ```nano FILE```.
-10. Navigate to Documents folder, and execute ```./install_reqs_16.sh```.
-11. Precompile Fakktion with ```rake assets:precompile```.
-12. Move your app from your home folder to /var/www with ```sudo mv /home/$USER/Fakktion /var/www```
-12. Execute ```sudo ./setup_puma_16.sh``` to setup PUMA Daemon service through init.d.
-13. If you need **SSL**, then open **fakktion_16_ssl.conf**. Otherwise open **fakktion_16_non_ssl.conf**.
-14. Change hostname on the conf file if desired. ALso, you will need to change the certificate details if using the SSL version.
-15. Execute ```sudo ./setup_nginx_16.sh``` to setup NGINX in order to put your app live.
-16. ```sudo reboot```
-17. WIP
+11. Now add secrets.yml and database.yml to your .gitigone followed by 
+12. Navigate to Documents folder, and execute ```./install_reqs_16.sh```.
+13. Precompile Fakktion with ```rake assets:precompile```.
+14. Move your app from your home folder to /var/www with ```sudo mv /home/$USER/Fakktion /var/www```
+15. Execute ```sudo ./setup_puma_16.sh``` to setup PUMA Daemon service through init.d.
+16. If you need **SSL**, then open **fakktion_16_ssl.conf**. Otherwise open **fakktion_16_non_ssl.conf**.
+17. Change hostname on the conf file if desired. ALso, you will need to change the certificate details if using the SSL version.
+18. Execute ```sudo ./setup_nginx_16.sh``` to setup NGINX in order to put your app live.
+19. ```sudo reboot```
+20. WIP
 
 ### Running puma
 ```bundle exec puma -e production -d -b unix:///tmp/fakktion_puma.sock```
