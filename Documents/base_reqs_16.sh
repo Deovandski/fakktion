@@ -10,3 +10,9 @@ sudo apt-get install -y libpq-dev nginx ruby2.3 rails bundler
 cd /home/$USER/Fakktion
 # Check GemFile.lock for exactly what is being installed from https://rubygems.org/.
 bundle install
+
+# Prepare /var/www permissions for the upcomig steps.
+sudo gpasswd -a "$USER" www-data
+sudo chown -R "$USER":www-data /var/www
+find /var/www -type f -exec chmod 0660 {} \;
+sudo find /var/www -type d -exec chmod 2770 {} \;
