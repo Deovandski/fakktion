@@ -1,10 +1,15 @@
 # Ubuntu Server 16.04 Deployment
-In order to deploy an ember-cli-rails project to Ubuntu Server 16.04, please follow the initial deploy section. All bash scripts used below are fully documented.
+In order to deploy an ember-cli-rails project to Ubuntu Server 16.04, please follow the initial deploy section.
 
 Notes:
+
 1. This guide is tailored for max performance on running only one app (and its workers) through PUMA. If you plan for multiple apps, you should use RVM (Ruby Version Manager) alongside NVM (Node Version Manager.) which this guide does not cover. Instead, this guide uses the latests stable ruby version alongside NPM (Node Package Manager) which also install the latest stable Node.js
+
 2. I do not recommend dropping usage of Bundler, or other package managers in favor of apt-get. You will face terrible consequences from non-available packages, micro-managing inter-dependencies to lack of edge versions and broken installs with no clear solution.
+
 3. At the end of the initial deploy, the minified Fakktion app will be roughly 110 MB (including dependencies), but you should reserve at least 5 GB for the deploy process.
+
+4. All bash scripts used below are fully documented.
 
 ## Initial Deploy
 1. Fork this project if you have not done so already!
