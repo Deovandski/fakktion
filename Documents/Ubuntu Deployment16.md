@@ -25,7 +25,7 @@ Notes:
 10. Now navigate to secrets.yml, and change the production secret to not be an ENV var anymore. You can whether run ```rake secret``` and paste over the ENV VAR, or just smash your keyboard A-Z/0-9 until you have the same amount of characters as the development secret. You could use ```nano FILE``` to edit the file.
 11. Do the same thing for the database.yml with the info previously entered when you created the database.
 12. Navigate to Documents folder, and execute ```./install_reqs_16.sh```.
-13. Move your app from your home folder to /var/www with ```sudo mv /home/$USER/Fakktion /var/www```
+13. Move your app from your home folder to /var/www with ```mv /home/$USER/Fakktion /var/www```
 14. Navigate to the documents location with ```/var/www/Fakktion/Documents```
 15. Edit **setup_puma_16.sh** with ```nano ./setup_puma_16.sh```, and change the user from deovandski to your user.
 16. Execture ```sudo ./setup_puma_16.sh``` to setup PUMA Daemon service through init.d.
