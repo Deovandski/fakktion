@@ -25,15 +25,14 @@ Notes:
 10. Now navigate to secrets.yml, and change the production secret to not be an ENV var anymore. You can whether run ```rake secret``` and paste over the ENV VAR, or just smash your keyboard A-Z/0-9 until you have the same amount of characters as the development secret. You could use ```nano FILE``` to edit the file.
 11. Do the same thing for the database.yml with the info previously entered when you created the database.
 12. Navigate to Documents folder, and execute ```./install_reqs_16.sh```.
-13. Precompile Fakktion with ```rake assets:precompile```.
-14. Move your app from your home folder to /var/www with ```sudo mv /home/$USER/Fakktion /var/www```
-15. Navigate to the documents location with ```/var/www/Fakktion/Documents```
-16. Edit **setup_puma_16.sh** with ```nano ./setup_puma_16.sh```, and change the user from deovandski to your user.
-17. Execture ```sudo ./setup_puma_16.sh``` to setup PUMA Daemon service through init.d.
-18. If you need **SSL**, then open **fakktion_16_ssl.conf**. Otherwise open **fakktion_16_non_ssl.conf**.
-19. Change hostname on the conf file if desired. ALso, you will need to change the certificate details if using the SSL version.
-20. Execute ```sudo ./setup_nginx_16.sh``` to setup NGINX in order to put your app live.
-21. ```sudo reboot```, then visit your live website!
+13. Move your app from your home folder to /var/www with ```sudo mv /home/$USER/Fakktion /var/www```
+14. Navigate to the documents location with ```/var/www/Fakktion/Documents```
+15. Edit **setup_puma_16.sh** with ```nano ./setup_puma_16.sh```, and change the user from deovandski to your user.
+16. Execture ```sudo ./setup_puma_16.sh``` to setup PUMA Daemon service through init.d.
+17. If you need **SSL**, then open **fakktion_16_ssl.conf**. Otherwise open **fakktion_16_non_ssl.conf**.
+18. Change hostname on the conf file if desired. ALso, you will need to change the certificate details if using the SSL version.
+19. Execute ```sudo ./setup_nginx_16.sh``` to setup NGINX in order to put your app live.
+20. ```sudo reboot```, then visit your live website!
 
 
 ## Running puma

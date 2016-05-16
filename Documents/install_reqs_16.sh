@@ -11,6 +11,7 @@ sudo npm cache clean -f
 # n package | https://www.npmjs.com/package/n
 sudo npm install -g n
 sudo n stable
+
 # Fix any ownership issues that may rise from the use of sudo.
 # Why use Sudo in the first place? because non-sudo installs often lead to issues, and the initial sudo install
 # guarantees that the chances of something going haywire is minimal.
@@ -29,3 +30,16 @@ cd ..
 echo "" > config/puma.rb
 echo "workers $(grep -c processor /proc/cpuinfo)" >> config/puma.rb
 cat Documents/partial_puma_16.txt >> config/puma.rb
+
+
+# Create necessary folders and files.
+mkdir /var/www/Fakktion/tmp/puma
+mkdir /var/www/Fakktion/shared
+mkdir /var/www/Fakktion/shared/log
+mkdir /var/www/Fakktion/shared/sockets
+touch /var/www/Fakktion/shared/sockets/puma.sock
+touch /var/www/Fakktion/shared/log/puma.stderr.log
+touch /var/www/Fakktion/shared/log/puma.stdout.log
+
+# Precompile App.
+rake assets:precompile
