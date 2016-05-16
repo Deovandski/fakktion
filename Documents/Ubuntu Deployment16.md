@@ -13,7 +13,7 @@ Notes:
 
 5. **DO NOT USE THE SCRIPTS FOR UBUNTU 14 DEPLOYMENT!**
 
-## Initial Deploy
+## Initial Deploy (**WIP**)
 1. Fork this project if you have not done so already!
 2. Run ```sudo apt-get update```.
 3. Install Git Core ```sudo apt-get install -y git-core```
@@ -34,6 +34,10 @@ Notes:
 19. Change hostname on the conf file if desired. ALso, you will need to change the certificate details if using the SSL version.
 20. Execute ```sudo ./setup_nginx_16.sh``` to setup NGINX in order to put your app live.
 21. ```sudo reboot```, then visit your live website!
+
+
+## Running puma
+```bundle exec puma -e production -d -b unix:///shared/sockets/puma.sock```
 
 ## Updating Project Source Code.
 1. Make sure that the Admin notice was given in the website, and that users had at least 72 hours to deal with it.
