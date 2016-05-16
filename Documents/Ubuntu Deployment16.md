@@ -18,24 +18,22 @@ Notes:
 2. Run ```sudo apt-get update```.
 3. Install Git Core ```sudo apt-get install -y git-core```
 5. From your home/$USER directory, clone repo through ```git clone https://github.com/YOURUSERNAME/Fakktion.git``` (HTTPS instead of SSH suggested as it will make it harder to accidentally push commits back into origin master (or the branch that you use as master.)
-6. Navigate to Fakktion/Documents folder, and execute ```./base_reqs_16.sh```.
+6. Navigate to Fakktion/Documents folder, and execute ```. base_reqs_16.sh```.
 7. Now reboot with ```sudo reboot```. This is needed because the previous script added you into the **www-data** group, and at the end PUMA will run the app through you. Logging out and then back in is not a recommend solution as the system will notify you that a restart is required.
 8. Now create a Postgres User with ```sudo -u postgres createuser --superuser $USER --pwprompt```. Don't forget to write down the password entered!
 9. After creating the user. now create the fakktion db with ```sudo -u $USER createdb fakktion```.
 10. Now navigate to secrets.yml, and change the production secret to not be an ENV var anymore. You can whether run ```rake secret``` and paste over the ENV VAR, or just smash your keyboard A-Z/0-9 until you have the same amount of characters as the development secret. You could use ```nano FILE``` to edit the file.
 11. Do the same thing for the database.yml with the info previously entered when you created the database.
-12. Navigate to Documents folder, and execute ```./install_reqs_16.sh```.
-13. Move your app from your home folder to /var/www with ```mv /home/$USER/Fakktion /var/www```
-14. Navigate to the documents location with ```/var/www/Fakktion/Documents```
-15. Edit **setup_puma_16.sh** with ```nano ./setup_puma_16.sh```, and change the user from deovandski to your user.
-16. Execture ```sudo ./setup_puma_16.sh``` to setup PUMA Daemon service through init.d.
-17. If you need **SSL**, then open **fakktion_16_ssl.conf**. Otherwise open **fakktion_16_non_ssl.conf**.
-18. Change hostname on the conf file if desired. ALso, you will need to change the certificate details if using the SSL version.
-19. Execute ```sudo ./setup_nginx_16.sh``` to setup NGINX in order to put your app live.
-20. ```sudo reboot```, then visit your live website!
+12. Navigate back to Documents folder, and execute ```. install_reqs_16.sh```.
+13. Edit **setup_puma_16.sh** with ```nano . setup_puma_16.sh```, and change the user from **deovandski** to your user.
+14. Execute ```sudo ./setup_puma_16.sh``` to setup PUMA Daemon service through init.d.
+15. If you need **SSL**, then open **fakktion_16_ssl.conf**. Otherwise open **fakktion_16_non_ssl.conf**.
+16. Change hostname on the conf file if desired. ALso, you will need to change the certificate details if using the SSL version.
+17. Execute ```sudo ./setup_nginx_16.sh``` to setup NGINX in order to put your app live.
+18. ```sudo reboot```, then visit your live website!
 
 
-## Running puma
+## Manually Running puma
 ```bundle exec puma -e production -d -b unix:///shared/sockets/puma.sock```
 
 ## Updating Project Source Code.

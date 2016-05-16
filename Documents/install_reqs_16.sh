@@ -31,9 +31,13 @@ echo "" > config/puma.rb
 echo "workers $(grep -c processor /proc/cpuinfo)" >> config/puma.rb
 cat Documents/partial_puma_16.txt >> config/puma.rb
 
+# Move Fakktion to /var/www
+mv /home/$USER/Fakktion /var/www
 
 # Create necessary folders and files.
 mkdir /var/www/Fakktion/tmp/puma
+touch /var/www/Fakktion/tmp/puma/pid
+touch /var/www/Fakktion/tmp/puma/state
 mkdir /var/www/Fakktion/shared
 mkdir /var/www/Fakktion/shared/log
 mkdir /var/www/Fakktion/shared/sockets
@@ -41,5 +45,7 @@ touch /var/www/Fakktion/shared/sockets/puma.sock
 touch /var/www/Fakktion/shared/log/puma.stderr.log
 touch /var/www/Fakktion/shared/log/puma.stdout.log
 
+
 # Precompile App.
+cd /var/www/Fakktion
 rake assets:precompile
