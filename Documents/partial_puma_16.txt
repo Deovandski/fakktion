@@ -15,8 +15,8 @@ bind "unix://#{shared_dir}/sockets/puma.sock"
 stdout_redirect "#{shared_dir}/log/puma.stdout.log", "#{shared_dir}/log/puma.stderr.log", true
 
 # Set master PID and state locations as required by init.d script
-pidfile "/tmp/puma/pid"
-state_path "/tmp/puma/state"
+pidfile "#{app_dir}/tmp/puma/pid"
+state_path "#{app_dir}/tmp/puma/state"
 activate_control_app
 
 on_worker_boot do

@@ -31,10 +31,22 @@ echo "" > config/puma.rb
 echo "workers $(grep -c processor /proc/cpuinfo)" >> config/puma.rb
 cat Documents/partial_puma_16.txt >> config/puma.rb
 
+# Set unique local secrets.yml
+echo "" > config/secrets.yml
+cat Documents/partial_secrets_16.txt >> config/secrets.yml
+echo "  secret_key_base: $(rake secret)" >> config/secrets.yml
+
+# Database SETUP
+echo "A Postgres User with name $USER will now be created. Please enter the password for it, and don't forget to write it down!'"
+sudo -u postgres createuser --superuser $USER --pwprompt
+echo "Creating the fakktion database'"
+sudo -u $USER createdb fakktion
+
 # Move Fakktion to /var/www
 mv /home/$USER/Fakktion /var/www
 
 # Create necessary folders and files.
+mkdir /var/www/Fakktion/tmp
 mkdir /var/www/Fakktion/tmp/puma
 touch /var/www/Fakktion/tmp/puma/pid
 touch /var/www/Fakktion/tmp/puma/state
@@ -45,7 +57,9 @@ touch /var/www/Fakktion/shared/sockets/puma.sock
 touch /var/www/Fakktion/shared/log/puma.stderr.log
 touch /var/www/Fakktion/shared/log/puma.stdout.log
 
-
 # Precompile App.
 cd /var/www/Fakktion
 rake assets:precompile
+
+echo "Fakktion now lives under /var/www!"
+cd /var/www/Fakktion/Documents
