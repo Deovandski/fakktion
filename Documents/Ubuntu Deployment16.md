@@ -44,8 +44,13 @@ Notes:
 6. Run the recover script to restore the unique puma.rb, secrets.yml and database.yml **(TODO)**
 7. Start puma back with "/etc/init.d/puma restart".
 
+## Checking Logs
+1. Puma Cluster log available under app/log/puma.log
+2. Puma Stdout and Puma Stdeer logs available under app/shared/log
+
 ## Check running PUMA apps
 ```ps aux | grep puma```
 
 ## Remove app from PUMA
 ```sudo /etc/init.d/puma remove /path/to/app```
+
