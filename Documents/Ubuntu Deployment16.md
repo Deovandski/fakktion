@@ -13,7 +13,7 @@ Notes:
 
 5. **DO NOT USE THE SCRIPTS FOR UBUNTU 14 DEPLOYMENT!**
 
-## Initial Deploy (**WIP**)
+## Initial Deploy
 1. Fork this project if you have not done so already!
 2. Run ```sudo apt-get update```.
 3. Install Git Core ```sudo apt-get install -y git-core```
@@ -29,18 +29,27 @@ Notes:
 14. Execute ```sudo ./setup_nginx_16.sh``` to setup NGINX in order to put your app live.
 15. ```sudo reboot```, then visit your live website! Not working? Check the **Checking Logs** section for more info.
 
-
-## Manually Running puma
-```bundle exec puma -e production -d -b unix:///var/www/Fakktion/shared/sockets/puma.sock```
-
-## Updating Project Source Code.
+## Updating Project Source Code without moving database or changing VMs.
 1. Make sure that the Admin notice was given in the website, and that users had at least 72 hours to deal with it.
 2. Stop puma with "/etc/init.d/puma stop".
-3. Run the backup script to save the puma.rb, secrets.yml and database.yml **(TODO)**
+3. Run the backup script (**backup_script_16.sh**) to save the puma.rb, secrets.yml and database.yml.
+4. Create a database dump as described on the [official Docs](http://www.postgresql.org/docs/9.1/static/backup.html) if you are making new Database migrations.
 4. Pull the changes with ```git pull https://github.com/YOURUSERNAME/Fakktion.git```
 5. Perform the necessary changes including any needed package manager updates.
-6. Run the recover script to restore the unique puma.rb, secrets.yml and database.yml **(TODO)**
+6. Run the recover script (**recover_script_16.sh**) to restore the unique puma.rb, secrets.yml and database.yml **(TODO)**
 7. Start puma back with "/etc/init.d/puma restart".
+
+## Updating Project Source Code with database changes or between VMs.
+Follow the instructions from the [official Docs](http://www.postgresql.org/docs/9.1/static/backup.html) before following the instructions from this guide. 
+
+**DO NOT MOVE DATABASE WITH PENDING MIGRATIONS!** If you do have pending migrations, you must follow the normal updating guide before following this guide otherwise you will risk desync schemas! 
+
+If performing a change of VM, copy the contents of the backup script stored under home/$USER/Fakktion_backup and the Postgres DB dump to the new machine without executing them, and follow the initial deploy guide with the following changes:
+
+1. Use the recover script on step 8, and again right after step 9 (unless you are okay with changing the rake secret because it will force a logout of all clients.)
+2. After step 9 recover the database with the instructions from the official docs.
+
+# Maintenance/Advanced instructions
 
 ## Checking Logs
 1. Puma Cluster log available under app/log/puma.log
@@ -48,6 +57,9 @@ Notes:
 
 ## Check running PUMA apps
 ```ps aux | grep puma```
+
+## Manually Running puma
+```bundle exec puma -e production -d -b unix:///var/www/Fakktion/shared/sockets/puma.sock```
 
 ## Remove app from PUMA
 ```sudo /etc/init.d/puma remove /path/to/app```

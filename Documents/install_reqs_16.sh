@@ -32,6 +32,7 @@ echo "workers $(grep -c processor /proc/cpuinfo)" >> config/puma.rb
 cat Documents/partial_puma_16.txt >> config/puma.rb
 
 # Set unique local secrets.yml
+echo "Setting Unique Secret"
 echo "" > config/secrets.yml
 cat Documents/partial_secrets_16.txt >> config/secrets.yml
 echo "  secret_key_base: $(rake secret)" >> config/secrets.yml
@@ -43,13 +44,16 @@ echo "Creating the fakktion database'"
 sudo -u $USER createdb fakktion
 
 # Move Fakktion to /var/www
+echo "Moving Fakktion to /var/www"
 mv /home/$USER/Fakktion /var/www
 
 # Create necessary folders and files.
+echo "Creating necessary folders..."
 mkdir /var/www/Fakktion/tmp
 mkdir /var/www/Fakktion/tmp/puma
 touch /var/www/Fakktion/tmp/puma/pid
 touch /var/www/Fakktion/tmp/puma/state
+touch /var/www/Fakktion/log/puma.log
 mkdir /var/www/Fakktion/shared
 mkdir /var/www/Fakktion/shared/log
 mkdir /var/www/Fakktion/shared/sockets
@@ -58,8 +62,13 @@ touch /var/www/Fakktion/shared/log/puma.stderr.log
 touch /var/www/Fakktion/shared/log/puma.stdout.log
 
 # Precompile App.
+echo "precompiling Fakktion"
 cd /var/www/Fakktion
 rake assets:precompile
 
+echo "Configs for Fakktion database underway..."
+rake db:setup RAILS_ENV=production
+
 echo "Fakktion now lives under /var/www!"
+echo "Setting terminal path for next step..."
 cd /var/www/Fakktion/Documents

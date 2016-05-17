@@ -15,3 +15,4 @@ touch /etc/puma.conf
 # Link Fakktion to Puma
 /etc/init.d/puma add /var/www/Fakktion deovandski /var/www/Fakktion/config/puma.rb /var/www/Fakktion/log/puma.log
 
+echo "PUMA is ready!"
