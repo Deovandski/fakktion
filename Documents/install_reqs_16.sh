@@ -53,6 +53,7 @@ mkdir /var/www/Fakktion/tmp
 mkdir /var/www/Fakktion/tmp/puma
 touch /var/www/Fakktion/tmp/puma/pid
 touch /var/www/Fakktion/tmp/puma/state
+mkdir /var/www/Fakktion/log
 touch /var/www/Fakktion/log/puma.log
 mkdir /var/www/Fakktion/shared
 mkdir /var/www/Fakktion/shared/log
