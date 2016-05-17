@@ -20,7 +20,7 @@ Notes:
 5. From your home/$USER directory, clone repo through ```git clone https://github.com/YOURUSERNAME/Fakktion.git``` (HTTPS instead of SSH suggested as it will make it harder to accidentally push commits back into origin master (or the branch that you use as master.)
 6. Navigate to Fakktion/Documents folder, and execute ```. base_reqs_16.sh```.
 7. Now reboot with ```sudo reboot```. This is needed because the previous script added you into the **www-data** group, and at the end PUMA will run the app through you. Logging out and then back in is not a recommend solution as the system will notify you that a restart is required.
-8. ```nano config/database.yml``` and change the **username** to your $USER, **password** to an unique one, and database to **fakktion**. The next step will setup the database for you, but you will need to enter the password when requested.
+8. After the restart, go into Fakktion/config and execute ```nano database.yml```, then change the **username** to your $USER, **password** to an unique one, and database to **fakktion**. The next step will setup the database for you, but you will need to enter the password when requested.
 9. Navigate back to Documents folder, and execute ```. install_reqs_16.sh```.
 10. Edit **setup_puma_16.sh** with ```nano setup_puma_16.sh```, and change the user from **deovandski** to your user.
 11. Execute ```sudo ./setup_puma_16.sh``` to setup PUMA Daemon service through init.d.
