@@ -27,7 +27,9 @@ Notes:
 12. If you need **SSL**, then open **fakktion_16_ssl.conf**. Otherwise open **fakktion_16_non_ssl.conf**.
 13. Change hostname on the conf file if desired. ALso, you will need to change the certificate details if using the SSL version.
 14. Execute ```sudo ./setup_nginx_16.sh``` to setup NGINX in order to put your app live.
-15. ```sudo reboot```, then visit your live website! Not working? Check the **Checking Logs** section for more info.
+15. ```sudo reboot```.
+16. Now mannually run Fakktion with ```bundle exec puma -e production -d -b unix:///var/www/Fakktion/shared/sockets/puma.sock```. This command is needed only once!
+17. Visit your live website! Not working? Check the **Checking Logs** section for more info.
 
 ## Updating Project Source Code without moving database or changing VMs.
 1. Make sure that the Admin notice was given in the website, and that users had at least 72 hours to deal with it.
