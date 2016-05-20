@@ -12,7 +12,9 @@
 
 [![Frontend Coverage][frontendCoverage-badge]] [frontendCoverage]
  
-[Live Website](http://fakktion.herokuapp.com/) (Initial load may be slow due to Dyno sleep mode implemented by [Heroku](https://www.heroku.com/pricing).)
+[Experimental Live Website](http://fakktion.herokuapp.com/) (In sync with master branch - Initial load may be slow due to Dyno sleep mode implemented by [Heroku](https://www.heroku.com/pricing).)
+
+[Live Website]() (In sync with releases - Soon to be deployed through NDSU CSCI Departmental VM.)
 
 All information about this project can be found on this [published paper](http://www.micsymposium.org/mics2015/ProceedingsMICS_2015/Skibinski_3C1_31.pdf). Information regarding the Database Design can be seen [Here](erd.pdf) while any other information can be seen in the documents below.
 
