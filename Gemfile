@@ -4,14 +4,14 @@ source 'https://rubygems.org'
 
 ruby "2.3.0"
 
-gem "foreman", '>=0.81'
+gem "foreman", '>=0.82'
 gem "local_time", '>=1.0'
 
 # Webserver
 gem "puma", '>=3.4'
 
-# Waiting for 0.10: https://github.com/rails-api/active_model_serializers
-gem 'active_model_serializers', '0.10.0.rc5'
+# AMS
+gem 'active_model_serializers', '0.10.0'
 
 # EmberCLI
 gem 'ember-cli-rails', '0.7.0'
@@ -36,7 +36,7 @@ gem 'uglifier', '>=2.7'
 gem 'jquery-rails', '>=4.1'
 
 # Flexible authentication solution for Rails
-gem 'devise', '>=4.1'
+gem 'devise', '>=4.1.1'
 
 # Development Group
 group :development do
@@ -54,7 +54,7 @@ end
 group :development, :test do
 
   # JSON Schema for comparison Assert test.
-  gem "json_schema", '0.12'
+  gem "json_schema", '0.12.3'
   # Code Climate
   gem 'coveralls', require: false
   # Travis CI
