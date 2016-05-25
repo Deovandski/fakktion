@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.post_title_container{
+.post_title_container {
   width: 100%;
   height: 35px;
   list-style-type:none;
@@ -10,7 +10,7 @@
   border-bottom-style: solid;
   border-width: 2px;
   margin-bottom: 5px;
-  .title_info{
+  .title_info {
     border-right-style: solid;
     border-width: 1px; 
     width: 80%;
@@ -18,57 +18,59 @@
     height: 35px;
     padding-left: 5px;
   }
-  .owner_info{
+  .owner_info {
     padding-left: 5px;
     height: 35px;
     width: 20%;
     float: right;
     text-overflow:ellipsis;
     .owner_text_info_partial{
-	  width: 75%;
-	  text-overflow:ellipsis;
-	  float: left;
+      width: 75%;
+      text-overflow:ellipsis;
+      float: left;
     
     }
-    .owner_edit{
-	  width: 25%;
-	  text-overflow:ellipsis;
-	  float: right;
+    .owner_edit {
+      width: 25%;
+      text-overflow:ellipsis;
+      float: right;
     
     }
-    .owner_text_info{
-	  width: 100%;
-	  text-overflow:ellipsis;
+    .owner_text_info {
+      width: 100%;
+      text-overflow:ellipsis;
     
     }
   }
-  }
-  .post_buttons_container{
+}
+
+.post_buttons_container {
   list-style-type:none;
   text-align: center;
   border-bottom-style: solid;
   border-width: 1px; 
   width: 100%;
   height: 35px;
-  .more_info_button{
+  .more_info_button {
     float: left;
     width: 34%;
     height: 35px;
   }
-  .fact_link_button{
+  .fact_link_button {
     float: left;
     width: 33%;
     height: 35px;
     
   }
-  .fiction_link_button{
+  .fiction_link_button {
     float: left;
     width: 33%;
     height: 35px;
     
   }
-  }
-  .post_tags_container{
+}
+
+.post_tags_container {
   list-style-type:none;
   text-align: center;
   border-left-style: solid;
@@ -78,68 +80,64 @@
   border-width: 1px; 
   width: 100%;
   height: 105px;
-  .genre_topic_container{
+  .genre_topic_container {
     width: 100%;
     height: 35px;
     border-bottom-style: solid;
     border-width: 1px; 
-    .genre_info_container{
-	  width: 50%;
-	  float: left;
-	  border-right-style: solid;
-	  border-width: 1px;
-	  height: 35px;
-    
+    .genre_info_container {
+      width: 50%;
+      float: left;
+      border-right-style: solid;
+      border-width: 1px;
+      height: 35px;
     }
-    .topic_info_container{
-	  width: 50%;
-	  float: right;
-	  height: 35px;
-    
+    .topic_info_container {
+      width: 50%;
+      float: right;
+      height: 35px;
     }
   }
-  .fact_type_created_on_container{
+  .fact_type_created_on_container {
     width: 100%;
     height: 35px;
     border-bottom-style: solid;
     border-width: 1px;
-    .fact_Type_info_container{
-	  width: 50%;
-	  float: left;
-	  border-right-style: solid;
-	  border-width: 1px;
-	  height: 35px;
+    .fact_Type_info_container {
+      width: 50%;
+      float: left;
+      border-right-style: solid;
+      border-width: 1px;
+      height: 35px;
     
     }
-    .created_on_info_container{
-	  width: 50%;
-	  float: right;
-	  height: 35px;
-    
-    }
-  }
-  .category_updated_on_container{
-    width: 100%;
-    height: 35px;
-    border-bottom-style: solid;
-    border-width: 1px; 
-    .category_info_container{
-	  width: 50%;
-	  float: left;
-	  border-right-style: solid;
-	  border-width: 1px;
-	  height: 35px;
-    
-    }
-    .updated_on_info_container{
+    .created_on_info_container {
       width: 50%;
       float: right;
       height: 35px;
     
     }
   }
+  .category_updated_on_container {
+    width: 100%;
+    height: 35px;
+    border-bottom-style: solid;
+    border-width: 1px; 
+    .category_info_container {
+      width: 50%;
+      float: left;
+      border-right-style: solid;
+      border-width: 1px;
+      height: 35px;
+    }
+    .updated_on_info_container {
+      width: 50%;
+      float: right;
+      height: 35px;
+    }
+  }
 }
-.post_text_container{
+.post_text_container {
   margin-top: 10px;
   min-height: 50px;
   text-align: left;
@@ -149,23 +147,4 @@
     margin: 5px;
     line-height: 25px;
   }
-}
-.post_comments_container{
-  h5{
-    text-align: center;
-  }
-  ol{
-    li{
-      margin-top: 10px;
-      margin-bottom: 10px;
-      ul{
-	li {
-	  margin-top: 10px;
-	  margin-bottom: 10px;
-	}
-      }
-    }
-  }
-  text-align: left;
-  width: 100%;
 }

@@ -1,0 +1,23 @@
+// Place all the styles related to the Comments and Inner Comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.post_comments_container {
+  h5{
+    text-align: center;
+  }
+  ol{
+    li{
+      margin-top: 10px;
+      margin-bottom: 10px;
+      ul{
+        li {
+          margin-top: 10px;
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+  text-align: left;
+  width: 100%;
+}
