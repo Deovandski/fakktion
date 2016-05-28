@@ -17,7 +17,10 @@
   vertical-align: middle;
   white-space: nowrap;
   -webkit-font-smoothing: antialiased;
-
+  width: 65%;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  
   &:hover {
     background-color: lighten($button-bar-post-date-bg, 2%);
     border-color: lighten($button-bar-post-date-bg, 2%);
