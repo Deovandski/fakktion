@@ -1,8 +1,15 @@
 <div class="sidebar_sub">
-	<h5 class="tag_h5">Genres {{#link-to "genres.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
+	<h5 class="tag_h5">Genres {{#link-to "genres.index" id='genreManagementTootip'}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
+	{{#tooltip-on-component target='#genreManagementTootip'}}
+		Manage Genres.
+	{{/tooltip-on-component}}
 		{{#if showGP}}
 		<ul class="tag_listing">
-			<li class="tag_listing_search">{{input value=genreInputText placeholder="Search Genre" class="genreInput"}}</li>
+			<li class="tag_listing_search">{{input value=genreInputText placeholder="Search Genre" class="genreInput" id='genreInputTextTootip'}}
+				{{#tooltip-on-component event='click' target='#genreInputTextTootip'}}
+					Search all existing Genres with "{{genreInputText}}".
+				{{/tooltip-on-component}}
+			</li>
 			{{#each filteredGenres as |genre|}}
 				<li><button class="button_type1_genre" {{action "setGenre" genre}}>{{capitalize genre.name}}</button><label class="tag_posts">{{counter-styler genre.posts_count}}</label></li>
 			{{/each}}

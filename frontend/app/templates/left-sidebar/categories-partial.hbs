@@ -1,8 +1,16 @@
 <div class="sidebar_sub">
-	<h5 class="tag_h5">Categories {{#link-to "categories.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
+	<h5 class="tag_h5">Categories {{#link-to "categories.index" id='categoryManagementTootip'}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
+	{{#tooltip-on-component target='#categoryManagementTootip'}}
+		Manage Categories.
+	{{/tooltip-on-component}}
 		{{#if showCP}}
 		<ul class="tag_listing">
-			<li class="tag_listing_search">{{input value=categoryInputText placeholder="Search Category" class="categoryInput"}}</li>
+			<li class="tag_listing_search">
+				{{input value=categoryInputText placeholder="Search Category" class="categoryInput" id='categoryInputTextTootip'}}
+				{{#tooltip-on-component event='click' target='#categoryInputTextTootip'}}
+					Search all existing Categories with "{{categoryInputText}}".
+				{{/tooltip-on-component}}
+			</li>
 			{{#each filteredCategories as |category|}}
 				<li><button class="button_type1_category" {{action "setCategory" category}}>{{capitalize category.name}}</button><label class="tag_posts">{{counter-styler category.posts_count}}</label></li>
 			{{/each}}

@@ -1,8 +1,15 @@
 <div class="sidebar_sub">
-	<h5 class="tag_h5">Fact Types {{#link-to "factTypes.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
+	<h5 class="tag_h5">Fact Types {{#link-to "factTypes.index" id='factTypeManagementTootip'}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
+	{{#tooltip-on-component target='#factTypeManagementTootip'}}
+		Manage Fact Types.
+	{{/tooltip-on-component}}
 		{{#if showFTP}}
 		<ul class="tag_listing">
-			<li class="tag_listing_search">{{input value=factTypeInputText placeholder="Search Fact Type" class="factTypeInput"}}</li>
+			<li class="tag_listing_search">{{input value=factTypeInputText placeholder="Search Fact Type" class="factTypeInput" id='factTypeInputTextTootip'}}
+				{{#tooltip-on-component event='click' target='#factTypeInputTextTootip'}}
+					Search all existing Fact Types with "{{factTypeInputText}}".
+				{{/tooltip-on-component}}
+			</li>
 			{{#each filteredFactTypes as |factType|}}
 				<li><button class="button_type1_fact_type" {{action "setFactType" factType}}>{{capitalize factType.name}}</button><label class="tag_posts">{{counter-styler factType.posts_count}}</label></li>
 			{{/each}}

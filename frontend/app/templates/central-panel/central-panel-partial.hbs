@@ -1,42 +1,72 @@
 <div class="central_upper_panel">
 	<div class="central_upper_panel_sub">
 		{{#if isCategorySelected}}
-			<button class="button_bar_category" {{action "clearCategory"}}>{{capitalize selectedCategory.name}}</button>
+			<button class="button_bar_category" id='currentCategoryTootip' {{action "clearCategory"}}>{{capitalize selectedCategory.name}}</button>
+			{{#tooltip-on-component target='#currentCategoryTootip'}}
+				The current selected Category. <br> Press it to clear the selection.
+			{{/tooltip-on-component}}
 		{{else}}
-			<label class="button_bar_category">- - -</label>
+			<label id='noCategorySelectedTootip' class="button_bar_category">- - -</label>
+			{{#tooltip-on-component target='#noCategorySelectedTootip'}}
+				No Category currently selected.
+			{{/tooltip-on-component}}
 		{{/if}}
 	</div>
 	<div class="central_upper_panel_sub">
 		{{#if isGenreSelected}}
-			<button class="button_bar_genre" {{action "clearGenre"}}>{{capitalize selectedGenre.name}}</button>
+			<button id='currentGenreTootip' class="button_bar_genre" {{action "clearGenre"}}>{{capitalize selectedGenre.name}}</button>
+			{{#tooltip-on-component target='#currentGenreTootip'}}
+				The current selected Genre. <br> Press it to clear the selection.
+			{{/tooltip-on-component}}
 		{{else}}
-			<label class="button_bar_genre">- - -</label>
+			<label id='noGenreSelectedTootip' class="button_bar_genre">- - -</label>
+			{{#tooltip-on-component target='#noGenreSelectedTootip'}}
+				No Genre currently selected.
+			{{/tooltip-on-component}}
 		{{/if}}
 	</div>
 	<div class="central_upper_panel_sub">
 		{{#if isFactTypeSelected}}
-			<button class="button_bar_fact_type" {{action "clearFactType"}}>{{capitalize selectedFactType.name}}</button>
+			<button id='currentFactTypeTootip' class="button_bar_fact_type" {{action "clearFactType"}}>{{capitalize selectedFactType.name}}</button>
+			{{#tooltip-on-component target='#currentFactTypeTootip'}}
+				The current selected Fact Type. <br> Press it to clear the selection.
+			{{/tooltip-on-component}}
 		{{else}}
-			<label class="button_bar_fact_type">- - -</label>
+			<label id='noFactTypeSelectedTootip' class="button_bar_fact_type">- - -</label>
+			{{#tooltip-on-component target='#noFactTypeSelectedTootip'}}
+				No Fact Type currently selected.
+			{{/tooltip-on-component}}
 		{{/if}}
 	</div>
 	<div class="central_upper_panel_sub">
 		{{#if isPostDateSelected}}
-			<button class="button_bar_post_date" {{action "clearPostDate"}}>{{selectedPDN}}</button>
+			<button id='currentPostingDateTootip' class="button_bar_post_date" {{action "clearPostDate"}}>{{selectedPDN}}</button>
+			{{#tooltip-on-component target='#currentPostingDateTootip'}}
+				The current selected Posting Date. <br> Press it to clear the selection.
+			{{/tooltip-on-component}}
 		{{else}}
-			<label class="button_bar_post_date">- - -</label>
+			<label id='noPostingDateSelectedTootip' class="button_bar_post_date">- - -</label>
+			{{#tooltip-on-component target='#noPostingDateSelectedTootip'}}
+				No Posting Date currently selected.
+			{{/tooltip-on-component}}
 		{{/if}}
 	</div>
 </div>
 <div class="central_lower_panel">
-	<form class="topic_search">
+	<form class="topic_search" id='topicDisabledTextTootip'>
 		{{#if isTopicSelected}}
 			{{input class="topic_search_text" placeholder=selectedTopic.name disabled="true"}}
+			{{#tooltip-on-component target='#topicDisabledTextTootip'}}
+				The current selected Topic.
+			{{/tooltip-on-component}}
 			<div class="topic_search_input">
 				<button class="button_bar_topic" {{action "clearTopic"}}>Clear</button>
 			</div>
 		{{else}}
-			{{input class="topic_search_text" value=topicInputText placeholder="Search Topic"}}
+			{{input id='topicTextTootip' class="topic_search_text" value=topicInputText placeholder="Search Topic"}}
+			{{#tooltip-on-component target='#topicTextTootip'}}
+				Search for Topics. If no matching topic is automatically selected, please follow the on-screen instructions.
+			{{/tooltip-on-component}}
 			<div class="topic_search_input">
 				<button class="button_bar_topic" {{action "setTopic"}}>Search</button>
 			</div>
@@ -46,6 +76,9 @@
 		<label>{{topicStatus}}</label>
 	</div>
 	<div class="topic_tagging_settings">
-		{{#link-to "topics.index"}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}
+		{{#link-to "topics.index" id='topicManagementTootip'}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}
+		{{#tooltip-on-component target='#topicManagementTootip'}}
+			Manage Topics.
+		{{/tooltip-on-component}}
 	</div>
 </div>
