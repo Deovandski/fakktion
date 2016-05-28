@@ -329,20 +329,22 @@ div {
       flex-grow: 1;
       flex-direction: column;
       flex-wrap: wrap;
-	  textarea{
-	    margin-left: 5px;
-	    margin-right: 5px;
-	    height: 250px;
-	  }
+      textarea{
+        margin-left: 5px;
+        margin-right: 5px;
+        height: 200px;
+        resize: none;
+      }
     }
     .preview_wrapper {
       width: 50%;
       flex-grow: 1;
       flex-direction: column;
       flex-wrap: wrap;
-	    margin-left: 5px;
+	    margin-left: 15px;
 	    margin-right: 5px;
-	    height: 250px;
+	    height: 200px;
+      overflow: auto;
     }
   }
 }

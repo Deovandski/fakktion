@@ -2,22 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// Set overall organization
 .post_comments_container {
   h5{
     text-align: center;
   }
-  ol{
-    li{
-      margin-top: 10px;
-      margin-bottom: 10px;
-      ul{
-        li {
-          margin-top: 10px;
-          margin-bottom: 10px;
-        }
+  text-align: left;
+  width: 100%;
+}
+
+// Comment
+.comment_ol {
+  li{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    ul{
+      li {
+        margin-top: 10px;
+        margin-bottom: 10px;
       }
     }
   }
-  text-align: left;
-  width: 100%;
+  
 }

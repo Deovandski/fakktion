@@ -1,6 +1,6 @@
 <div class="post_comments_container">
   <h5>Comments</h5>
-  <ol>
+  <ol class="comment_ol">
     {{#each model.comments as |comment|}}
       <li>{{render "post.comment.index" comment}}</li>
     {{/each}}

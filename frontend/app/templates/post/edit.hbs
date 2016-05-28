@@ -6,11 +6,6 @@
     <label class="second_label">{{verifyTitle}}</label>
   </div><br/>
   <div class="input_block_type1">
-    <label class="first_label">Text:</label>
-    <label class="input_wrapper">{{input value=model.text}}</label>
-    <label class="second_label">{{verifyText}}</label>
-  </div><br/>
-  <div class="input_block_type1">
     <label class="first_label">Fact Link:</label>
     <label class="input_wrapper">{{input value=model.fact_link}}</label>
     <label class="second_label">{{verifyfact_link}}</label>
@@ -68,6 +63,17 @@
       <label class="first_label"><button class="button_type2_large" {{action "setChangeTags" true}}>Update tags</button></label>
     </div><br/>
   {{/if}}
+  <div class="input_block_textArea">
+    <div class="input_block_textArea_header">
+      <div class="left_header"><strong>Post Message</strong></div>
+      <div class="right_header"><strong>Preview</strong></div>
+    </div>
+    <div class="input_block_textArea_body">
+      <div class="input_wrapper">{{textarea value=model.text}}</div>
+      <div class="preview_wrapper">{{{model.text}}}</div>
+    </div>
+  </div>
+  <p>Allowed HTML tags: <label>h4, h5, br, strong, p and a. </label></p><br/>
   
   <button class="button_type1_normal" {{action "update"}}>Update Post</button>
 </form>

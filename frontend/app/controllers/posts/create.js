@@ -6,7 +6,7 @@ export default Ember.Controller.extend ({
   sessionAccount: service('session-account'),
   application: Ember.inject.controller('application'),
   title: "",
-  text: "",
+  text: '<h4>Example</h4><p>You should use p for paragraphs, but you can also <strong>br</strong> for line breaks.</p>',
   factLink: "",
   fictionLink: "",
   clientSideValidationComplete: false,
