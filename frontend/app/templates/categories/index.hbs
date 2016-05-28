@@ -1,12 +1,12 @@
 <h3>Categories Tag Management</h3>
   <div class="input_block_typeUser">
     <label class="first_label"></label>
-    <label class="input_wrapper">{{input value=tagSearchText placeholder="Search Category"}}</label>
+    <label class="input_wrapper">{{input value=application.categoryInputText placeholder="Search Category"}}</label>
     <label class="second_label"><button class="button_type1_smallest" {{action 'clearTagSearchText'}}>Clear</button></label>
   </div><br/>
   <p class="center_text">Tag Name | # Posts | Elegibility</p>
 {{#if searchingTag}}
-  <h5>Displaying all Categories that contains <b>{{tagSearchText}}</b></h5>
+  <h5>Displaying all Categories that contains <b>{{application.categoryInputText}}</b></h5>
 {{else}}
   <h5>Displaying all Categories...</h5>
 {{/if}}

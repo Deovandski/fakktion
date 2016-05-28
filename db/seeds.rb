@@ -83,15 +83,6 @@ FactType.create!(name: 'Technology')
 FactType.create!(name: 'Business')
 FactType.create!(name: 'Immigration')
 FactType.create!(name: 'Environment')
-FactType.create!(name: 'USA')
-FactType.create!(name: 'UK')
-FactType.create!(name: 'canada')
-FactType.create!(name: 'brazil')
-FactType.create!(name: 'Argentina')
-FactType.create!(name: 'China')
-FactType.create!(name: 'Japan')
-FactType.create!(name: 'Indonesia')
-FactType.create!(name: 'taiwan')
 Rails.logger.info 'Default fact types created!'
 
 # GENRE RELATED SEED

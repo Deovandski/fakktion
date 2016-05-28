@@ -2,24 +2,24 @@ import Ember from "ember";
 const { service } = Ember.inject;
 
 export default Ember.Controller.extend ({
+  application: Ember.inject.controller('application'),
   session:        service('session'),
   sessionAccount: service('session-account'),
-  tagSearchText: "",
-  searchingTag: Ember.computed('tagSearchText', function() {
-    if(this.get('tagSearchText').length > 0 ){
+  searchingTag: Ember.computed('application.factTypeInputText', function() {
+    if(this.get('application.factTypeInputText').length > 0 ){
       return true;
     }
     else{
       return false;
     }
   }),
-  filteredTags: Ember.computed('tagSearchText', function() {
-    if(this.get('factTypeInputText') === '') {
+  filteredTags: Ember.computed('application.factTypeInputText', function() {
+    if(this.get('application.factTypeInputText') === '') {
       this.set('noTags', false);
       return this.get('model');
     }
     else{
-        var rx = new RegExp(this.get('tagSearchText').toLowerCase()
+        var rx = new RegExp(this.get('application.factTypeInputText').toLowerCase()
       );
       var filteredTags = this.model.filter(function(tag) {
         return tag.get('name').match(rx);
@@ -36,7 +36,7 @@ export default Ember.Controller.extend ({
   }),
   actions: {
   clearTagSearchText: function() {
-    this.set('tagSearchText','');
+    this.set('application.factTypeInputText','');
   }
   }
 });
