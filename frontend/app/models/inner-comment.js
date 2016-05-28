@@ -4,6 +4,8 @@ export default DS.Model.extend ({
   text: DS.attr ('string'),
   hidden: DS.attr ('boolean'),
   empathy_level: DS.attr ('number'),
+  updated_at: DS.attr ('date'),
+  created_at: DS.attr ('date'),
   
   // Relationships
   user: DS.belongsTo('user', {async: true}),

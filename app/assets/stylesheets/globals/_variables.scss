@@ -57,6 +57,10 @@ $button-type-1-bg: $base-accent-color;
 
 $button-bar-color: #000000;
 $button-bar-bg: #ddd;
+$button-bar-upvote-bg: hsla(110, 100%, 39%, 1);
+$button-bar-upvote-color: #000000;
+$button-bar-downvote-bg: hsla(0, 100%, 39%, 1);
+$button-bar-downvote-color: #000000;
 
 // Tag specific button colors
 $button-category-color: #fff;

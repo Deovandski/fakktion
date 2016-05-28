@@ -1,12 +1,12 @@
 <div class="post_comments_container">
-  <ul>
+  <ul class="inner_comment_ul">
     {{#each model.inner_comments as |innerComment|}}
       <li>{{render "post.comment.innerComment.index" innerComment}}</li>
     {{/each}}
   </ul>
   <br/>
   {{#if session.isAuthenticated}}
-    <p>{{render "post.comment.innerComments.create" model}}</p>
+    <div class="inner_comment_create">{{render "post.comment.innerComments.create" model}}</div>
   {{else}}
     <p  class="login_required_warning">Please login to inner comment</p>
   {{/if}}

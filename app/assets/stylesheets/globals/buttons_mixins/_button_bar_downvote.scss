@@ -1,12 +1,12 @@
-@mixin button_bar() {
+@mixin button_bar_downvote() {
   width: 100%;
   height: 100%;
   @include appearance(none);
-  background: $button-bar-bg;
-  border: 1px solid darken($button-bar-bg, 15%);
+  background: $button-bar-downvote-bg;
+  border: 1px solid darken($button-bar-downvote-bg, 15%);
   border-radius: $base-border-radius;
   box-shadow: 0 1px 2px rgba(#000, 0.4);
-  color: $button-bar-color;
+  color: $button-bar-downvote-color;
   cursor: pointer;
   display: inline-block;
   font-size: $base-font-size;
@@ -22,21 +22,21 @@
   -webkit-font-smoothing: antialiased;
 
   &:visited {
-    background: $button-bar-bg;
-    border-color: $button-bar-bg;
+    background: $button-bar-downvote-bg;
+    border-color: $button-bar-downvote-bg;
     box-shadow: 0 1px 2px rgba(#000, 0.2);
-    color: $button-bar-color;
+    color: $button-bar-downvote-color;
   }
   &:hover {
-    background: darken($button-bar-bg, 25%);
-    border-color: darken($button-bar-bg, 25%);
-    color: $button-bar-color;
+    background: darken($button-bar-downvote-bg, 15%);
+    border-color: darken($button-bar-downvote-bg, 15%);
+    color: $button-bar-downvote-color;
   }
   &:active {
-    background: $button-bar-bg;
-    border-color: $button-bar-bg;
+    background: $button-bar-downvote-bg;
+    border-color: $button-bar-downvote-bg;
     box-shadow: 0 1px 2px rgba(#000, 0.2);
-    color: $button-bar-color;
+    color: $button-bar-downvote-color;
   }
   &.animate {
     @include transition(all 2s ease);

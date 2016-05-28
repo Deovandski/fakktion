@@ -10,11 +10,12 @@ export default Ember.Controller.extend ({
   downvoteEnabled: false,
   didUserVote: false,
   votingID: -1,
+  createdDate: 'TODO',
   // Setup for initial allowed votings by the logged in User.
   votingSystemHandler: Ember.computed('sessionAccount.user.id', function() {
     if(this.get('sessionAccount.user.id') > 0){
       
-      var self = this; // Controller instance for maniupulation with then()
+      var self = this; // Controller instance for manipulation with then()
       
       // QueryRecord not working, using filter on clientside as a fallback...
       this.store.findAll('innerCommentVote').then(function(possibleVotes) {

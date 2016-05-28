@@ -6,6 +6,21 @@ button_bar,
 input[type="submit"] {
   @include button_bar;
 }
+.button_bar_disabled,
+button_bar_disabled,
+input[type="submit"] {
+  @include button_bar_disabled;
+}
+.button_bar_upvote,
+button_bar_upvote,
+input[type="submit"] {
+  @include button_bar_upvote;
+}
+.button_bar_downvote,
+button_bar_downvote,
+input[type="submit"] {
+  @include button_bar_downvote;
+}
 .button_type1_normal,
 button_type1_normal,
 input[type="submit"] {

@@ -1,39 +1,90 @@
 {{votingSystemHandler}}
-{{#if session.isAuthenticated}}
-  {{#if upvoteEnabled}}
-    <button class="button_type1_normal" {{action "castVote" true}}>+1</button>
-  {{else}}
-    <label class="test_class">Nope</label>
-  {{/if}}
-  {{model.empathy_level}}
-  {{#if downvoteEnabled}}
-    <button class="button_type1_normal" {{action "castVote" false}}>-1</button>
-  {{else}}
-    <label class="test_class">Nope</label>
-  {{/if}}
-  {{#if canEdit}}
-    {{#if editMode}}
-      <div class="input_block_comment">
-      <label class="input_wrapper">{{input value=model.text}}</label>
-
-      <div class="feedback_wrapper">
-      {{#if validComment}}
-      <button class="button_type1_smallest" {{action "update"}}>Edit Comment</button>
+<div class="comment_upper">
+  {{#if session.isAuthenticated}}
+    <div class="comment_voting">
+      {{#if upvoteEnabled}}
+        <div class="comment_voting_upper">
+          <button class="button_bar_upvote" {{action "castVote" true}}></button>
+        </div>
       {{else}}
-      <label>{{verifyText}}</label>
+        <div class="comment_voting_upper">
+          <button class="button_bar_disabled" {{action "castVote" true}} disabled=true></button>
+        </div>
       {{/if}}
+      <div class="comment_voting_middle">
+        {{counter-styler model.empathy_level}}
       </div>
-      </div>
-      <button class="button_type1_smallest" {{action "ToggleEditMode"}}>Cancel Edit</button>
+      {{#if downvoteEnabled}}
+        <div class="comment_voting_lower">
+          <button class="button_bar_downvote" {{action "castVote" false}}></button>
+        </div>
+      {{else}}
+        <div class="comment_voting_lower">
+          <button class="button_bar_disabled" {{action "castVote" false}} disabled=true></button>
+        </div>
+      {{/if}}
+    </div>
+    {{#if canEdit}}
+      {{#if editMode}}
+        <div class="comment_text">
+          <label class="comment_text_input">{{textarea value=model.text}}</label>
+          {{#if validComment}}
+            <button class="button_type1_smallest" {{action "update"}}>Confirm</button>
+          {{else}}
+            <label>{{verifyText}}</label>
+          {{/if}}
+        </div>
+        <div class="comment_user">
+          <button class="button_bar" {{action "ToggleEditMode"}}>Cancel Edit</button>
+        </div>
+      {{else}}
+        <div class="comment_text">
+          {{model.text}}
+        </div>
+        <div class="comment_user">
+          <div class="comment_user_name">
+            {{capitalize model.user.display_name}}
+          </div>
+          <div class="comment_user_edit">
+            <button class="button_bar" {{action "ToggleEditMode"}}>Edit</button>
+          </div>
+        </div>
+      {{/if}}
     {{else}}
-      {{model.text}}<button class="button_type1_smallest" {{action "ToggleEditMode"}}>Edit</button>
+      <div class="comment_text">
+        {{model.text}}
+      </div>
+      <div class="comment_user">
+        <div class="comment_user_name">
+          {{capitalize model.user.display_name}}
+        </div>
+        <div class="comment_user_date">
+          {{createdDate}}
+        </div>
+      </div>
     {{/if}}
   {{else}}
-    {{model.text}}
-    {{capitalize model.user.display_name}}
+    <div class="comment_voting">
+      <div class="comment_voting_upper">
+        <button class="button_bar_disabled" {{action "castVote" true}} disabled=true></button>
+      </div>
+      <div class="comment_voting_middle">
+        {{counter-styler model.empathy_level}}
+      </div>
+      <div class="comment_voting_lower">
+        <button class="button_bar_disabled" {{action "castVote" false}} disabled=true></button>
+      </div>
+    </div>
+    <div class="comment_text">
+      {{model.text}}
+    </div>
+    <div class="comment_user">
+        <div class="comment_user_name">
+          {{capitalize model.user.display_name}}
+        </div>
+        <div class="comment_user_date">
+          {{createdDate}}
+        </div>
+    </div>
   {{/if}}
-{{else}}
-  {{model.empathy_level}}
-  {{model.text}}
-  {{capitalize model.user.display_name}}
-{{/if}}
+</div>

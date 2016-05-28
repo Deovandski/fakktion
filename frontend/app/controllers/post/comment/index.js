@@ -10,6 +10,7 @@ export default Ember.Controller.extend ({
   downvoteEnabled: false,
   didUserVote: false,
   votingID: -1,
+  createdDate: 'TODO',
   // Setup for initial allowed votings by the logged in User.
   votingSystemHandler: Ember.computed('sessionAccount.user.id', function() {
     if(this.get('sessionAccount.user.id') > 0){
