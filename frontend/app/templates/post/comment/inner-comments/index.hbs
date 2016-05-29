@@ -4,7 +4,6 @@
       <li>{{render "post.comment.innerComment.index" innerComment}}</li>
     {{/each}}
   </ul>
-  <br/>
   {{#if session.isAuthenticated}}
     <div class="inner_comment_create">{{render "post.comment.innerComments.create" model}}</div>
   {{else}}
