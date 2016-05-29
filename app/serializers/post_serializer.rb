@@ -3,7 +3,6 @@ class PostSerializer < ActiveModel::Serializer
   attributes  :fact_link,
               :fiction_link,
               :title,
-              :hidden,
               :views_count,
               :text,
               :comments_count,

@@ -41,10 +41,9 @@ ActiveRecord::Schema.define(version: 20160501161006) do
   create_table "comments", force: :cascade do |t|
     t.string   "text"
     t.integer  "empathy_level",        default: 0
-    t.boolean  "hidden",               default: false
     t.integer  "inner_comments_count", default: 0
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.integer  "post_id"
     t.integer  "user_id"
   end
@@ -76,9 +75,8 @@ ActiveRecord::Schema.define(version: 20160501161006) do
   create_table "inner_comments", force: :cascade do |t|
     t.string   "text"
     t.integer  "empathy_level", default: 0
-    t.boolean  "hidden",        default: false
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.integer  "comment_id"
     t.integer  "user_id"
   end
@@ -93,7 +91,6 @@ ActiveRecord::Schema.define(version: 20160501161006) do
     t.string   "text"
     t.integer  "comments_count", default: 0
     t.integer  "views_count",    default: 0
-    t.boolean  "hidden"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.integer  "user_id"
