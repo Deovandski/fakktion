@@ -1,4 +1,4 @@
-<div class="input_block_inner_comment">
+<div class="input_block_inner_comment_create">
   <div class="upper_input_wrapper">
     <label class="input_wrapper">{{input value=text placeholder="Add Inner Comment"}}</label>
     <div class="feedback_wrapper">
@@ -9,7 +9,12 @@
       {{/if}}
     </div>
   </div>
-  <div class="lower_input_wrapper">
-  <label>{{verifyText}}</label>
-  </div>
+  {{#if anyInput}}
+    <div class="lower_input_wrapper">
+      <label>{{verifyText}}</label>
+    </div>
+    <div class="lower_warning_wrapper">
+      <div class="small_warning">Inner Comments does not allow HTML tags.</div>
+    </div>
+  {{/if}}
 </div>

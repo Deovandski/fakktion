@@ -1,0 +1,46 @@
+<div class="input_block_inner_comment">
+  <div class="comment_upper">
+    <div class="comment_voting">
+      {{#if upvoteEnabled}}
+        <div class="comment_voting_upper">
+          <button class="button_bar_upvote" {{action "castVote" true}}></button>
+        </div>
+      {{else}}
+        <div class="comment_voting_upper">
+          <button class="button_bar_disabled" {{action "castVote" true}} disabled=true></button>
+        </div>
+      {{/if}}
+      <div class="comment_voting_middle">
+        {{counter-styler model.empathy_level}}
+      </div>
+      {{#if downvoteEnabled}}
+        <div class="comment_voting_lower">
+          <button class="button_bar_downvote" {{action "castVote" false}}></button>
+        </div>
+      {{else}}
+        <div class="comment_voting_lower">
+          <button class="button_bar_disabled" {{action "castVote" false}} disabled=true></button>
+        </div>
+      {{/if}}
+    </div>
+      <div class="comment_text">
+        <label class="comment_text_input">{{textarea value=model.text}}</label>
+      </div>
+      <div class="comment_user">
+        <button class="button_bar" {{action "ToggleEditMode"}}>Cancel Edit</button>
+      </div>
+  </div>
+  <div class="lower_input_wrapper">
+    <div class="feedback_wrapper">
+      <label>{{verifyText}}</label>
+    </div>
+    <div class="create_button_wrapper">
+      {{#if validComment}}
+        <button class="button_bar_create" {{action "update"}}>Update Inner Comment</button>
+      {{/if}}
+    </div>
+  </div>
+  <div class="lower_warning_wrapper">
+    No HTML input allowed on Inner Comments.
+  </div>
+</div>

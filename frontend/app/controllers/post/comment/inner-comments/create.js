@@ -35,6 +35,14 @@ export default Ember.Controller.extend ({
       return true;
     }
   }),
+  anyInput: Ember.computed('text', function() {
+    if(this.get('text').length > 0) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }),
   actions: {
     create: function() {
       if(this.get('clientSideValidationComplete') === true) {

@@ -21,6 +21,7 @@
     margin-bottom: 10px;
     .comment_upper{
       background-color: hsla(216, 96%, 90%, 0.5);
+      box-shadow: 2px 2px 1px #888888;
       width: 100%;
       height: auto;
       display: flex;
@@ -117,11 +118,12 @@
 
 
 .input_block_comment {
+  box-shadow: 2px 2px 1px #888888;
   width: 100%;
   text-align: left;
   height: 260px;
   margin-bottom: 25px;
-  background-color: hsla(216, 96%, 90%, 0.5);
+  background-color: hsla(216, 96%, 85%, 0.5);
   .upper_input_wrapper{
     height: 240px;
     width: 100%;
@@ -191,29 +193,48 @@
   }
 }
 .input_block_inner_comment {
-  width: 100%;
-  text-align: left;
-  height: 60px;
-  .upper_input_wrapper{
-    height: 40px;
-    .input_wrapper {
-      height: 100%;
-      width: 75%;
-      .ember-text-field {
-        float: center;
-        height: 100%;
-      }
-    }
-    .feedback_wrapper {
-      text-align: left;
-      float: right;
-      width: 25%;
-      height: 100%;
-      font-size: 80%;
-    }
-  }
+  @extend .input_block_comment;
+  height: 270px;
+  margin-bottom: 0px;
+  background-color: transparent;
   .lower_input_wrapper{
     height: 20px;
     width: 100%;
+    display: flex;
+    .feedback_wrapper{
+      width: 60%;
+    }
+    .create_button_wrapper{
+      width: 40%;
+    }
+  }
+  .lower_warning_wrapper{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    height: 20px;
+    width: 100%;
+    .small_warning{
+      border-style: solid;
+      border-width: 1px;
+      font-size: $base-font-size - 2;
+      text-align: center;
+    }
+  }
+}
+
+.input_block_inner_comment_create {
+  @extend .input_block_inner_comment;
+  background-color: transparent;
+  height: auto;
+  .upper_input_wrapper{
+    height: 50px;
+    width: 100%;
+    display: flex;
+    .input_wrapper{
+      width: 60%;
+    }
+    .feedback_wrapper{
+      width: 40%;
+    }
   }
 }

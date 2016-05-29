@@ -55,12 +55,22 @@ export default Ember.Controller.extend ({
     else if(this.get('model.text').length < 10) {
       return 'At least 10 chars.';
     }
+    else if(this.get('model.text').length > 250) {
+      this.set('clientSideValidationComplete',false);
+      return "250 Max Characters!!!";
+    }
     else {
-      return '';
+      var charsLeft = 250 - this.get('model.text').length;
+      return charsLeft + ' Characters left.';
     }
   }),
+  
   validComment: Ember.computed('model.text', function() {
     if(this.get('model.text').length < 10) {
+      this.set('clientSideValidationComplete',false);
+      return false;
+    }
+    else if(this.get('model.text').length > 250) {
       this.set('clientSideValidationComplete',false);
       return false;
     }

@@ -56,7 +56,7 @@ export default Ember.Controller.extend ({
     }
     else if(this.get('model.text').length > 500) {
       this.set('clientSideValidationComplete',false);
-      return "1000 Max Characters!!!";
+      return "500 Max Characters!!!";
     }
     else {
       this.set('clientSideValidationComplete',true);
@@ -66,6 +66,10 @@ export default Ember.Controller.extend ({
   }),
   validComment: Ember.computed('model.text', function() {
     if(this.get('model.text').length < 10) {
+      this.set('clientSideValidationComplete',false);
+      return false;
+    }
+    else if(this.get('model.text').length > 500) {
       this.set('clientSideValidationComplete',false);
       return false;
     }
