@@ -1,0 +1,34 @@
+<div class="comment_voting">
+  {{#if upvoteEnabled}}
+    <div class="comment_voting_upper">
+      <button class="button_bar_upvote" {{action "castVote" true}}></button>
+    </div>
+  {{else}}
+    <div class="comment_voting_upper">
+      <button class="button_bar_disabled" {{action "castVote" true}} disabled=true></button>
+    </div>
+  {{/if}}
+  <div class="comment_voting_middle">
+    {{counter-styler model.empathy_level}}
+  </div>
+  {{#if downvoteEnabled}}
+    <div class="comment_voting_lower">
+      <button class="button_bar_downvote" {{action "castVote" false}}></button>
+    </div>
+  {{else}}
+    <div class="comment_voting_lower">
+      <button class="button_bar_disabled" {{action "castVote" false}} disabled=true></button>
+    </div>
+  {{/if}}
+</div>
+<div class="comment_text">
+  {{{model.text}}}
+</div>
+<div class="comment_user">
+    <div class="comment_user_name">
+      {{capitalize model.user.display_name}}
+    </div>
+    <div class="comment_user_date">
+      {{createdDate}}
+    </div>
+</div>

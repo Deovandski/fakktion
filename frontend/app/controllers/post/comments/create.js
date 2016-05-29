@@ -4,11 +4,9 @@ const { service } = Ember.inject;
 export default Ember.Controller.extend ({
   session:        service('session'),
   sessionAccount: service('session-account'),
+  application: Ember.inject.controller('application'),
   text: "",
   clientSideValidationComplete: false,
-  exampleH4: "<h4>Example</h4><h5>Example</h5>",
-  exampleStrongBR: "Easy way to break lines with:<br> <strong>br</strong>",
-  exampleLabelP: "<p>Use P for <label>paragraphs</label></p>",
   verifyText: Ember.computed('text', function() {
     if(this.get('text').length === 0) {
       return '';

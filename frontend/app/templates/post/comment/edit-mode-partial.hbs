@@ -1,12 +1,15 @@
 <div class="input_block_comment">
   <div class="upper_input_wrapper">
 		<div class="comment_input_header">
-			<div class="left_header"><strong>Create Comment</strong></div>
-			<div class="right_header"><strong>Preview</strong></div>
+			<div class="left_header"><strong>Update Comment</strong></div>
+			<div class="right_header">
+        <button class="button_bar" {{action "ToggleEditMode"}}>Cancel Edit</button>
+        <strong>Preview</strong>
+      </div>
 		</div>
 		<div class="comment_input_body">
-			<div class="input_wrapper">{{textarea value=text}}</div>
-			<div class="preview_wrapper">{{{text}}}</div>
+			<div class="input_wrapper">{{textarea value=model.text}}</div>
+			<div class="preview_wrapper">{{{model.text}}}</div>
 		</div>
   </div>
   <div class="lower_input_wrapper">
@@ -15,11 +18,12 @@
 		</div>
 		<div class="create_button_wrapper">
 			{{#if validComment}}
-				<button class="button_bar_create" {{action "create"}}>Add Comment</button>
+				<button class="button_bar_create" {{action "update"}}>Update Comment</button>
 			{{/if}}
 		</div>
   </div>
 </div>
+
 <div class="input_block_textArea">
 	<div class="input_block_textArea_header">
 		<div class="left_header"><strong>Allowed HTML Tags</strong></div>

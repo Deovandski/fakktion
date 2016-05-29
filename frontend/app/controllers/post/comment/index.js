@@ -4,6 +4,7 @@ const { service } = Ember.inject;
 export default Ember.Controller.extend ({
   session:        service('session'),
   sessionAccount: service('session-account'),
+  application: Ember.inject.controller('application'),
   clientSideValidationComplete: false,
   editMode: false,
   upvoteEnabled: false,
@@ -49,14 +50,18 @@ export default Ember.Controller.extend ({
     }
   }),
   verifyText: Ember.computed('model.text', function() {
-    if(this.get('model.text').length === 0) {
-      return '';
+    if(this.get('model.text').length < 10) {
+      this.set('clientSideValidationComplete',false);
+      return "10 Min Characters...";
     }
-    else if(this.get('model.text').length < 10) {
-      return 'At least 10 chars.';
+    else if(this.get('model.text').length > 500) {
+      this.set('clientSideValidationComplete',false);
+      return "1000 Max Characters!!!";
     }
     else {
-      return '';
+      this.set('clientSideValidationComplete',true);
+      var charsLeft = 500 - this.get('model.text').length;
+      return charsLeft + ' Characters left.';
     }
   }),
   validComment: Ember.computed('model.text', function() {

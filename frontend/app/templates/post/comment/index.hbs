@@ -1,91 +1,17 @@
 {{votingSystemHandler}}
 <div class="comment_upper">
   {{#if session.isAuthenticated}}
-    <div class="comment_voting">
-      {{#if upvoteEnabled}}
-        <div class="comment_voting_upper">
-          <button class="button_bar_upvote" {{action "castVote" true}}></button>
-        </div>
-      {{else}}
-        <div class="comment_voting_upper">
-          <button class="button_bar_disabled" {{action "castVote" true}} disabled=true></button>
-        </div>
-      {{/if}}
-      <div class="comment_voting_middle">
-        {{counter-styler model.empathy_level}}
-      </div>
-      {{#if downvoteEnabled}}
-        <div class="comment_voting_lower">
-          <button class="button_bar_downvote" {{action "castVote" false}}></button>
-        </div>
-      {{else}}
-        <div class="comment_voting_lower">
-          <button class="button_bar_disabled" {{action "castVote" false}} disabled=true></button>
-        </div>
-      {{/if}}
-    </div>
     {{#if canEdit}}
       {{#if editMode}}
-        <div class="comment_text">
-          <label class="comment_text_input">{{textarea value=model.text}}</label>
-          {{#if validComment}}
-            <button class="button_type1_smallest" {{action "update"}}>Confirm</button>
-          {{else}}
-            <label>{{verifyText}}</label>
-          {{/if}}
-        </div>
-        <div class="comment_user">
-          <button class="button_bar" {{action "ToggleEditMode"}}>Cancel Edit</button>
-        </div>
+        {{partial 'post/comment/edit-mode-partial'}}
       {{else}}
-        <div class="comment_text">
-          {{model.text}}
-        </div>
-        <div class="comment_user">
-          <div class="comment_user_name">
-            {{capitalize model.user.display_name}}
-          </div>
-          <div class="comment_user_edit">
-            <button class="button_bar" {{action "ToggleEditMode"}}>Edit</button>
-          </div>
-        </div>
+        {{partial 'post/comment/can-edit-mode-partial'}}
       {{/if}}
     {{else}}
-      <div class="comment_text">
-        {{model.text}}
-      </div>
-      <div class="comment_user">
-        <div class="comment_user_name">
-          {{capitalize model.user.display_name}}
-        </div>
-        <div class="comment_user_date">
-          {{createdDate}}
-        </div>
-      </div>
+      {{partial 'post/comment/view-mode-partial'}}
     {{/if}}
   {{else}}
-    <div class="comment_voting">
-      <div class="comment_voting_upper">
-        <button class="button_bar_disabled" {{action "castVote" true}} disabled=true></button>
-      </div>
-      <div class="comment_voting_middle">
-        {{counter-styler model.empathy_level}}
-      </div>
-      <div class="comment_voting_lower">
-        <button class="button_bar_disabled" {{action "castVote" false}} disabled=true></button>
-      </div>
-    </div>
-    <div class="comment_text">
-      {{model.text}}
-    </div>
-    <div class="comment_user">
-        <div class="comment_user_name">
-          {{capitalize model.user.display_name}}
-        </div>
-        <div class="comment_user_date">
-          {{createdDate}}
-        </div>
-    </div>
+    {{partial 'post/comment/guest-mode-partial'}}
   {{/if}}
 </div>
 {{render "post.comment.innerComments.index" model}}

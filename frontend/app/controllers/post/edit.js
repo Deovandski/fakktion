@@ -47,11 +47,16 @@ export default Ember.Controller.extend ({
   verifyText: Ember.computed('model.text', function() {
     if(this.get('model.text').length < 10) {
       this.set('clientSideValidationComplete',false);
-      return "Too short";
+      return "10 Min Characters...";
+    }
+    else if(this.get('model.text').length > 1000) {
+      this.set('clientSideValidationComplete',false);
+      return "1000 Max Characters. Please revise your input!";
     }
     else {
       this.set('clientSideValidationComplete',true);
-      return '';
+      var charsLeft = 1000 - this.get('model.text').length;
+      return charsLeft + ' Characters left.';
     }
   }),
   verifyfactLink: Ember.computed('model.fact_link', function() {

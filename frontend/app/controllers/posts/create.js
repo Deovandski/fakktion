@@ -10,9 +10,6 @@ export default Ember.Controller.extend ({
   factLink: "",
   fictionLink: "",
   clientSideValidationComplete: false,
-  exampleH4: "<h4>Example</h4><h5>Example</h5>",
-  exampleStrongBR: "Easy way to break lines with:<br> <strong>br</strong>",
-  exampleLabelP: "<p>Use P for <label>paragraphs</label></p>",
   verifyTitle: Ember.computed('title', function() {
     if(this.get('title').length < 10) {
       this.set('clientSideValidationComplete',false);
@@ -26,11 +23,17 @@ export default Ember.Controller.extend ({
   verifyText: Ember.computed('text', function() {
     if(this.get('text').length < 10) {
       this.set('clientSideValidationComplete',false);
-      return "Too short";
+      return "10 Min Characters...";
+    }
+    else if(this.get('text').length > 1000) {
+      this.set('clientSideValidationComplete',false);
+      return "1000 Max Characters. Please revise your input!";
     }
     else {
       this.set('clientSideValidationComplete',true);
-      return '';
+      var charsLeft = 1000 - this.get('text').length;
+      
+      return charsLeft + ' Characters left.';
     }
   }),
   verifyFactLink: Ember.computed('factLink', function() {

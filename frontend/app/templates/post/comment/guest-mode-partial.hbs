@@ -1,0 +1,22 @@
+<div class="comment_voting">
+  <div class="comment_voting_upper">
+    <button class="button_bar_disabled" {{action "castVote" true}} disabled=true></button>
+  </div>
+  <div class="comment_voting_middle">
+    {{counter-styler model.empathy_level}}
+  </div>
+  <div class="comment_voting_lower">
+    <button class="button_bar_disabled" {{action "castVote" false}} disabled=true></button>
+  </div>
+</div>
+<div class="comment_text">
+  {{{model.text}}}
+</div>
+<div class="comment_user">
+    <div class="comment_user_name">
+      {{capitalize model.user.display_name}}
+    </div>
+    <div class="comment_user_date">
+      {{createdDate}}
+    </div>
+</div>

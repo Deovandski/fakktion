@@ -32,11 +32,9 @@
     <label class="input_wrapper">{{input value=model.topic.name disabled=true}}</label>
   </div><br/>
     
-
-
   {{#if changeTags}}
     <div class="input_block_typeLogin">
-      <label class="first_label"><button class="button_type2_large" {{action "setChangeTags" false}}>Don't Update tags</button></label>
+      <label class="first_label"><button class="button_type1_normal" {{action "setChangeTags" false}}>Cancel Tags Update</button></label>
     </div><br/>
       <div class="input_block_type1">
         <label class="first_label">New Genre:</label>
@@ -60,7 +58,7 @@
       </div><br/>
   {{else}}
     <div class="input_block_typeLogin">
-      <label class="first_label"><button class="button_type2_large" {{action "setChangeTags" true}}>Update tags</button></label>
+      <label class="first_label"><button class="button_type1_normal" {{action "setChangeTags" true}}>Update tags</button></label>
     </div><br/>
   {{/if}}
   <div class="input_block_textArea">
@@ -73,7 +71,25 @@
       <div class="preview_wrapper">{{{model.text}}}</div>
     </div>
   </div>
-  <p>Allowed HTML tags: <label>h4, h5, br, strong, p and a. </label></p><br/>
+  <p><strong>{{verifyText}}</strong></p>
+  <div class="input_block_textArea">
+    <div class="input_block_textArea_header">
+      <div class="left_header"><strong>Allowed HTML Tags</strong></div>
+      <div class="right_header"><strong>Preview</strong></div>
+    </div>
+    <div class="input_block_textArea_example">
+      <div class="input_wrapper">{{application.exampleH4}}</div>
+      <div class="preview_wrapper">{{{application.exampleH4}}}</div>
+    </div>
+    <div class="input_block_textArea_example">
+      <div class="input_wrapper">{{application.exampleStrongBR}}</div>
+      <div class="preview_wrapper">{{{application.exampleStrongBR}}}</div>
+    </div>
+    <div class="input_block_textArea_example">
+      <div class="input_wrapper">{{application.exampleLabelP}}</div>
+      <div class="preview_wrapper">{{{application.exampleLabelP}}}</div>
+    </div>
+  </div><br/>
   
   <button class="button_type1_normal" {{action "update"}}>Update Post</button>
 </form>

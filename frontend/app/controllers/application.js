@@ -36,6 +36,9 @@ export default Ember.Controller.extend ({
   displayCentralPanel:true,
   displayLeftSidebar: true,
   displayRightSidebar: true,
+  exampleH4: "<h4>Example</h4><h5>Example</h5>",
+  exampleStrongBR: "Easy way to break lines with:<br> <strong>br</strong>",
+  exampleLabelP: "<p>Use P for <label>paragraphs</label></p>",
   defaultCategories: Ember.computed.filter('model.categories', function(category, index) {
       console.log('DEBUG --CT1 - Categories');
       return (index < 10);
