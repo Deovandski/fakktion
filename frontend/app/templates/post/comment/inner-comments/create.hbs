@@ -1,11 +1,15 @@
-<div class="input_block_comment">
-	<label class="input_wrapper">{{input value=text placeholder="Add Inner Comment"}}</label>
-	
-	<div class="feedback_wrapper">
-		{{#if validComment}}
-			<button class="button_type1_smallest" {{action "create"}}>Add Inner Comment</button>
-		{{else}}
-			<label>{{verifyText}}</label>
-		{{/if}}
-	</div>
+<div class="input_block_inner_comment">
+  <div class="upper_input_wrapper">
+    <label class="input_wrapper">{{input value=text placeholder="Add Inner Comment"}}</label>
+    <div class="feedback_wrapper">
+      {{#if validComment}}
+        <button class="button_bar_create" {{action "create"}}>Add Inner<br>Comment</button>
+      {{else}}
+        <label>{{verifyText}}</label>
+      {{/if}}
+    </div>
+  </div>
+  <div class="lower_input_wrapper">
+  <label>{{verifyText}}</label>
+  </div>
 </div>

@@ -234,27 +234,6 @@ div {
   }
 }
 
-.input_block_comment {
-  width: 100%;
-  text-align: left;
-  height: 40px;
-  .input_wrapper {
-    height: 100%;
-    width: 75%;
-    .ember-text-field {
-      float: center;
-      height: 100%;
-    }
-  }
-  .feedback_wrapper {
-    text-align: left;
-    float: right;
-    width: 25%;
-    height: 100%;
-    font-size: 80%;
-  }
-}
-
 .input_block_date {
   width: 100%;
   text-align: left;

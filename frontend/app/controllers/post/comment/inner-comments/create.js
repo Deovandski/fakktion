@@ -13,12 +13,20 @@ export default Ember.Controller.extend ({
     else if(this.get('text').length < 10) {
       return 'At least 10 chars.';
     }
+    else if(this.get('text').length > 250) {
+      return 'At most 500 chars.';
+    }
     else {
-      return '';
+      var charsLeft = 250 - this.get('text').length;
+      return charsLeft + ' remaining chars.';
     }
   }),
   validComment: Ember.computed('text', function() {
     if(this.get('text').length < 10) {
+      this.set('clientSideValidationComplete',false);
+      return false;
+    }
+    else if(this.get('text').length > 250) {
       this.set('clientSideValidationComplete',false);
       return false;
     }
@@ -35,7 +43,6 @@ export default Ember.Controller.extend ({
           comment: store.peekRecord('comment', this.get('model.id')),
           user: store.peekRecord('user', this.get('sessionAccount.user.id')),
           text: this.get('text'),
-          hidden: false,
           empathy_level: 0
         });
         var self = this;

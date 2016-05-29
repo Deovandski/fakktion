@@ -114,3 +114,106 @@
   margin-left: 20px;
   background-color: hsla(256, 96%, 90%, 0.5);
 }
+
+
+.input_block_comment {
+  width: 100%;
+  text-align: left;
+  height: 260px;
+  margin-bottom: 25px;
+  background-color: hsla(216, 96%, 90%, 0.5);
+  .upper_input_wrapper{
+    height: 240px;
+    width: 100%;
+    text-align: left;
+    height: auto;
+    text-overflow: ellipsis;
+    .comment_input_header {
+      text-overflow: ellipsis;
+      width: 100%;
+      display: flex;
+      .left_header {
+        width: 50%;
+        flex-grow: 1;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+      }
+      .right_header {
+        width: 50%;
+        flex-grow: 1;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+      }
+    }
+    .comment_input_body {
+      width: 100%;
+      display: flex;
+      .input_wrapper {
+        width: 50%;
+        flex-grow: 1;
+        flex-direction: column;
+        flex-wrap: wrap;
+        textarea{
+          margin-left: 5px;
+          margin-right: 5px;
+          height: 200px;
+          resize: none;
+        }
+      }
+      .preview_wrapper {
+        width: 50%;
+        flex-grow: 1;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin-left: 15px;
+        margin-right: 5px;
+        height: 200px;
+        overflow: auto;
+      }
+    }
+  }
+  .lower_input_wrapper{
+    height: 20px;
+    width: 100%;
+    display: flex;
+    .feedback_wrapper{
+      width: 60%;
+    }
+    .create_button_wrapper{
+      width: 40%;
+    }
+  }
+}
+.input_block_inner_comment {
+  width: 100%;
+  text-align: left;
+  height: 60px;
+  .upper_input_wrapper{
+    height: 40px;
+    .input_wrapper {
+      height: 100%;
+      width: 75%;
+      .ember-text-field {
+        float: center;
+        height: 100%;
+      }
+    }
+    .feedback_wrapper {
+      text-align: left;
+      float: right;
+      width: 25%;
+      height: 100%;
+      font-size: 80%;
+    }
+  }
+  .lower_input_wrapper{
+    height: 20px;
+    width: 100%;
+  }
+}

@@ -1,0 +1,46 @@
+@mixin button_bar_create() {
+  width: 100%;
+  height: 100%;
+  @include appearance(none);
+  background: lighten($button-bar-upvote-bg, 45%);
+  border: 1px solid darken($button-bar-upvote-bg, 15%);
+  border-radius: $base-border-radius;
+  box-shadow: 0 1px 2px rgba(#000, 0.4);
+  color: $button-bar-upvote-color;
+  cursor: pointer;
+  display: inline-block;
+  font-size: $base-font-size - 2;
+  font-weight: bold;
+  outline: none;
+  margin: 0;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  -webkit-font-smoothing: antialiased;
+  word-wrap: normal;
+  &:visited {
+    background: $button-bar-bg;
+    border-color: $button-bar-upvote-bg;
+    box-shadow: 0 1px 2px rgba(#000, 0.2);
+    color: $button-bar-upvote-color;
+  }
+  &:hover {
+    background: darken($button-bar-upvote-bg, 15%);
+    border-color: darken($button-bar-upvote-bg, 15%);
+    color: $button-bar-upvote-color;
+  }
+  &:active {
+    background: $button-bar-upvote-bg;
+    border-color: $button-bar-upvote-bg;
+    box-shadow: 0 1px 2px rgba(#000, 0.2);
+    color: $button-bar-upvote-color;
+  }
+  &.animate {
+    @include transition(all 2s ease);
+    &:hover {
+      @include transform(scale(1.1));
+    }
+  }
+}
