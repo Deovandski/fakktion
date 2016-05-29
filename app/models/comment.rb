@@ -4,7 +4,6 @@ class Comment < ActiveRecord::Base
   
   # Validations
   validates_presence_of :empathy_level, :text, :user_id, :post_id
-  validates_inclusion_of :hidden, :in => [true,false]
 
   # Relationships
   has_many :inner_comments

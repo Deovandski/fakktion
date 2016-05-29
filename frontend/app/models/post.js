@@ -4,7 +4,6 @@ export default DS.Model.extend ({
   fact_link: DS.attr ('string'),
   fiction_link: DS.attr ('string'),
   title: DS.attr ('string'),
-  hidden: DS.attr ('boolean'),
   views_count: DS.attr ('number'),
   text: DS.attr ('string'),
   updated_at: DS.attr ('date'),

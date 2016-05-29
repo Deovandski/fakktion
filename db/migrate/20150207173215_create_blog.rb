@@ -25,7 +25,6 @@ class CreateBlog < ActiveRecord::Migration
     create_table :comments do |t|
       t.string :text
       t.integer :empathy_level, default: 0
-      t.boolean :hidden, default: false
       t.integer  :inner_comments_count, default: 0
       t.timestamps null: false
     end
@@ -33,7 +32,6 @@ class CreateBlog < ActiveRecord::Migration
     create_table :inner_comments do |t|
       t.string :text
       t.integer :empathy_level, default: 0
-      t.boolean :hidden, default: false
       t.timestamps null: false
     end
     
@@ -44,7 +42,6 @@ class CreateBlog < ActiveRecord::Migration
       t.string :text
       t.integer  :comments_count, default: 0
       t.integer  :views_count, default: 0
-      t.boolean :hidden
       t.timestamps null: false
     end
     

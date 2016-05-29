@@ -4,7 +4,6 @@ class Post < ActiveRecord::Base
   before_destroy :check_for_comments
   # Validations
   validates_presence_of :fact_link, :fiction_link, :text, :title, :user_id, :genre_id, :topic_id, :fact_type_id, :category_id
-  validates_inclusion_of :hidden, :in => [true,false]
 
   # Relationships
   has_many :comments

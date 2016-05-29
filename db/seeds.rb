@@ -137,7 +137,6 @@ Post.create!(fact_link: 'https://en.wikipedia.org/wiki/Hatsune_Miku',
   fiction_link: 'http://www.cbsnews.com/news/hatsune-miku-the-worlds-fakest-pop-star/',
   text: '<h3>Miku is love! Miku is Life!</h3> <p>No seriously, Miku is the result of how community driven creativity can bring a virtual being into real life. The Fiction article talks about Miku being a fake persona or a simple program, but if you ask the Vocaloid community, you will hear quite the different tale. Miku is not the only Vocaloid, but she is the logo of how community driven content management can not only bring people closer, but also breath life into a character that represents most of the Vocaloid community (as in all the people who have respect for her in an I-thou interpersonal relation.)</p>',
   title: 'The concept of reality behind Hatsune Miku',
-  hidden: false,
   genre_id: ComedyGenre.id,
   fact_type_id: technologyFactType.id,
   topic_id: mikuTopic.id,
@@ -152,12 +151,12 @@ if Comment.count != 0
 end
 
 mikuPost = Post.first
-Comment.create!(hidden: false,
+Comment.create!(
   post_id: mikuPost.id,
   text: 'Sample Text',
   user_id: firstUser.id,
   empathy_level: 0)
-Comment.create!(hidden: false,
+Comment.create!(
   post_id: mikuPost.id,
   text: 'Sample Text #1',
   user_id: firstUser.id,
@@ -173,12 +172,12 @@ end
 
 firstComment = Comment.first
 
-InnerComment.create!(hidden: false,
+InnerComment.create!(
   comment_id: firstComment.id,
  text: 'Sample Inner Text',
  user_id: firstUser.id,
   empathy_level: 0)
-InnerComment.create!(hidden: false,
+InnerComment.create!(
   comment_id: firstComment.id,
   text: 'Sample Inner Text #1',
   user_id: firstUser.id,

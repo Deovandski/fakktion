@@ -3,7 +3,6 @@ class InnerComment < ActiveRecord::Base
   before_destroy :check_empathy
   # Validations
   validates_presence_of :empathy_level, :text, :user_id, :comment_id
-  validates_inclusion_of :hidden, :in => [true,false]
 
   # Relationships
   belongs_to :comment, :counter_cache => true
