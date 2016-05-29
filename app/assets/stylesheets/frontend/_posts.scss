@@ -67,14 +67,35 @@
   font-weight: normal;
 }
 .warning_tags{
-	color: #ff6a00;
-	margin-bottom: 5px;
-	span:nth-child(n) {
-        border-style: solid;
-        border-width: 1px;
-		margin: 5px;
-	}
+    .warning_tags_desc{
+	padding-bottom:5px;
+    }
+    margin-bottom: 15px;
+    span:nth-child(n) {
+	font-weight: bold;
+	border-style: solid;
+	border-width: 2px;
+	margin: 5px;
+	padding: 3px;
+    }
+    .category_warning{
+	background-color: $button-category-bg;
+	color: $button-category-color;
+	border-color: darken($button-category-bg,60%);
+    }
+    .fact_type_warning{
+	background-color: $button-fact-type-bg;
+	color: $button-fact-type-color;
+	border-color: darken($button-fact-type-bg,60%);
+    }
+    .genre_warning{
+	background-color: $button-genre-bg;
+	color: $button-genre-color;
+	border-color: darken($button-genre-bg,60%);
+    }
+    .topic_warning{
+	background-color: $button-topic-bg;
+	color: $button-topic-color;
+	border-color: darken($button-topic-bg,60%);
+    }
 }
-
-
-

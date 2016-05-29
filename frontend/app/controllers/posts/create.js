@@ -6,10 +6,13 @@ export default Ember.Controller.extend ({
   sessionAccount: service('session-account'),
   application: Ember.inject.controller('application'),
   title: "",
-  text: '<h4>Example</h4><p>You should use p for paragraphs, but you can also <strong>br</strong> for line breaks.</p>',
+  text: '',
   factLink: "",
   fictionLink: "",
   clientSideValidationComplete: false,
+  exampleH4: "<h4>Example</h4><h5>Example</h5>",
+  exampleStrongBR: "Easy way to break lines with:<br> <strong>br</strong>",
+  exampleLabelP: "<p>Use P for <label>paragraphs</label></p>",
   verifyTitle: Ember.computed('title', function() {
     if(this.get('title').length < 10) {
       this.set('clientSideValidationComplete',false);

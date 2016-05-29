@@ -309,16 +309,18 @@ div {
       flex-grow: 1;
       flex-direction: column;
       flex-wrap: wrap;
-	  margin-left: 5px;
-	  margin-right: 5px;
+      margin-left: 5px;
+      margin-right: 5px;
+      margin-bottom: 5px;
     }
     .right_header {
       width: 50%;
       flex-grow: 1;
       flex-direction: column;
       flex-wrap: wrap;
-	  margin-left: 5px;
-	  margin-right: 5px;
+      margin-left: 5px;
+      margin-right: 5px;
+      margin-bottom: 5px;
     }
   }
   .input_block_textArea_body {
@@ -344,6 +346,34 @@ div {
 	    margin-left: 15px;
 	    margin-right: 5px;
 	    height: 200px;
+      overflow: auto;
+    }
+  }
+  .input_block_textArea_example{
+    border: 0.2px solid darken($button-type-1-bg, 15%);
+    width: 100%;
+    display: flex;
+    .input_wrapper {
+      width: 50%;
+      flex-grow: 1;
+      flex-direction: column;
+      flex-wrap: wrap;
+      textarea{
+        margin-left: 5px;
+        margin-right: 5px;
+        height: 50px;
+        resize: none;
+      }
+    }
+    .preview_wrapper {
+      border-left: 0.2px solid darken($button-type-1-bg, 15%);
+      width: 50%;
+      flex-grow: 1;
+      flex-direction: column;
+      flex-wrap: wrap;
+	    margin-left: 15px;
+	    margin-right: 5px;
+	    height: 50px;
       overflow: auto;
     }
   }

@@ -2,12 +2,12 @@
 <form>
   {{#if allTagsValid}}
   {{else}}
-  <p class="tag_warning_label">Post is missing the following tags: </p>
   <div class="warning_tags">
-    {{#if verifyGenre}}<span>Genre</span>{{/if}}
-    {{#if verifyFactType}}<span>Fact Type</span>{{/if}}
-    {{#if verifyCategory}}<span>Category</span>{{/if}}
-    {{#if verifyTopic}}<span>Topic</span>{{/if}}
+    <label class="warning_tags_desc">Post is missing the following tags: </label><br>
+    {{#if verifyGenre}}<span class="genre_warning">Genre</span>{{/if}}
+    {{#if verifyFactType}}<span class="fact_type_warning">Fact Type</span>{{/if}}
+    {{#if verifyCategory}}<span class="category_warning">Category</span>{{/if}}
+    {{#if verifyTopic}}<span class="topic_warning">Topic</span>{{/if}}
   </div>
   {{/if}}
   <div class="input_block_type1">
@@ -35,6 +35,23 @@
       <div class="preview_wrapper">{{{text}}}</div>
     </div>
   </div><br/>
-  <p>Allowed HTML tags: <label>h4, h5, br, strong, p and a. </label></p><br/>
+  <div class="input_block_textArea">
+    <div class="input_block_textArea_header">
+      <div class="left_header"><strong>Allowed HTML Tags</strong></div>
+      <div class="right_header"><strong>Preview</strong></div>
+    </div>
+    <div class="input_block_textArea_example">
+      <div class="input_wrapper">{{exampleH4}}</div>
+      <div class="preview_wrapper">{{{exampleH4}}}</div>
+    </div>
+    <div class="input_block_textArea_example">
+      <div class="input_wrapper">{{exampleStrongBR}}</div>
+      <div class="preview_wrapper">{{{exampleStrongBR}}}</div>
+    </div>
+    <div class="input_block_textArea_example">
+      <div class="input_wrapper">{{exampleLabelP}}</div>
+      <div class="preview_wrapper">{{{exampleLabelP}}}</div>
+    </div>
+  </div><br/>
   <button class="button_type1_normal" {{action "create"}}>Create</button>
 </form>
