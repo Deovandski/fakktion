@@ -66,6 +66,17 @@
             min-height: 200px;
           }
         }
+        .inner_comment_text_input{
+          height: auto;
+          min-height: 140px;
+          width: 100%;
+          textarea{
+            resize: none;
+            width: 100%;
+            height: auto;
+            min-height: 140px;
+          }
+        }
       }
       .comment_user{
         display: flex;
@@ -195,7 +206,7 @@
 }
 .input_block_inner_comment {
   @extend .input_block_comment;
-  height: 270px;
+  height: auto;
   margin-bottom: 0px;
   background-color: transparent;
   .lower_input_wrapper{
@@ -210,8 +221,8 @@
     }
   }
   .lower_warning_wrapper{
-    margin-top: 10px;
-    margin-bottom: 5px;
+    margin-top: 20px;
+    margin-bottom: 10px;
     height: 20px;
     width: 100%;
     .small_warning{
