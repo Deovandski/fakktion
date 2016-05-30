@@ -9,15 +9,15 @@ class CreateBlog < ActiveRecord::Migration
       t.string :personal_message, default: ""
       t.string :webpage_url, default: ""
       t.date :date_of_birth
-      t.date :is_banned_date
       t.integer  :admin_messages_count, default: 0
+      t.integer  :reputation, default: 0
       t.integer  :posts_count, default: 0
       t.integer  :comments_count, default: 0
-      t.boolean :is_banned, default: false
-      t.integer :times_banned, default: 0
       t.boolean :legal_terms_read, default: false
       t.boolean :privacy_terms_read, default: false
       t.boolean :is_admin, default: false
+      t.boolean :is_super_user, default: false
+      t.boolean :is_legend, default: false
       t.boolean :show_full_name, default: false
       t.timestamps null: false
     end
