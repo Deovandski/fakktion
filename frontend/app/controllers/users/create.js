@@ -228,8 +228,10 @@ export default Ember.Controller.extend ({
           privacy_terms_read: this.get('privacyTermsRead'),
           date_of_birth: moment(this.get('dateOfBirth')).toDate(),
           show_full_name: this.get('showFullName'),
-          is_banned: false,
-          is_admin: false
+          reputation: 0,
+          is_super_user: false,
+          is_admin: false,
+          is_legend: false
         });
         var self = this; // Controller instance for route transitioning.
         user.save().then(function() {

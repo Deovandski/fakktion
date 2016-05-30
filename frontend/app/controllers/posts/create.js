@@ -125,8 +125,6 @@ export default Ember.Controller.extend ({
           text: this.get('text'),
           fact_link: this.get('factLink'),
           fiction_link: this.get('fictionLink'),
-          hidden: false,
-          softDelete: false,
           comments_count: 0,
           user: store.peekRecord('user', this.get('sessionAccount.user.id')),
           genre: store.peekRecord('genre', this.get('application.selectedGenre.id')),

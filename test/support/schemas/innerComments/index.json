@@ -4,7 +4,6 @@
     "type" : { "type" : "string" },
     "attributes": {
       "empathy_level" : { "type" : "number" },
-      "hidden" : { "type" : "boolean" },
       "text" : { "type" : "string" }
     }
   }

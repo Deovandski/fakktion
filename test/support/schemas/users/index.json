@@ -3,6 +3,7 @@
     "id" : { "type" : "number" },
     "type" : { "type" : "string" },
     "attributes": {
+      "reputation" : { "type" : "number" },
       "admin_messages_count" : { "type" : "number" },
       "authentication_token" : { "type" : "string" },
       "comments_count" : { "type" : "number" },
@@ -14,9 +15,9 @@
       "facebook_url" : { "type" : "string" },
       "full_name" : { "type" : "string" },
       "gender" : { "type" : "number" },
+      "is_super_user" : { "type" : "boolean" },
       "is_admin" : { "type" : "boolean" },
-      "is_banned" : { "type" : "boolean" },
-      "is_banned_date" : { "type" : "date" },
+      "is_legend" : { "type" : "boolean" },
       "legal_terms_read" : { "type" : "boolean" },
       "personal_message" : { "type" : "string" },
       "posts_count" : { "type" : "number" },
@@ -26,7 +27,6 @@
       "reset_password_token" : { "type" : "string" },
       "show_full_name" : { "type" : "boolean" },
       "sign_in_count" : { "type" : "number" },
-      "times_banned" : { "type" : "number" },
       "posts_count" : { "type" : "number" },
       "twitter_url" : { "type" : "string" },
       "webpage_url" : { "type" : "string" }
