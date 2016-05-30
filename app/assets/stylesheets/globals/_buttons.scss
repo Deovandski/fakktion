@@ -6,6 +6,11 @@ button_bar,
 input[type="submit"] {
   @include button_bar;
 }
+.button_bar_edit,
+button_bar_edit,
+input[type="submit"] {
+  @include button_bar_edit;
+}
 .button_bar_create,
 button_bar_create,
 input[type="submit"] {

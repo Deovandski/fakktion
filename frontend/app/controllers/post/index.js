@@ -6,7 +6,8 @@ export default Ember.Controller.extend ({
   session: service('session'),
   sessionAccount: service('session-account'),
   application: Ember.inject.controller('application'),
-  notExpandInfo: true,
+  expandInfo: false,
+  expandTags: false,
   canEdit: Ember.computed('model.user_id', 'application.isAdmin', function() {
     if(this.get('session.secure.userId') === this.get('model.user.id')){
       return true;
@@ -26,8 +27,17 @@ export default Ember.Controller.extend ({
   }),
   actions: {
     //Set ID Tag Methods
-    setNotExpandInfo: function(expandInfo) { 
-      this.set('notExpandInfo', expandInfo);
+    setExpandInfo: function(expandInfo) {
+      if (this.get('expandTags') === true){
+        this.set('expandTags', false);
+      }
+      this.set('expandInfo', expandInfo);
+    },
+    setExpandTags: function(expandTags) {
+      if (this.get('expandInfo') === true){
+        this.set('expandInfo', false);
+      }
+      this.set('expandTags', expandTags);
     }
   }
 });

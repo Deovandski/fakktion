@@ -1,4 +1,5 @@
 import Ember from "ember";
+import moment from 'moment';
 const { service } = Ember.inject;
 
 export default Ember.Controller.extend ({
@@ -10,7 +11,9 @@ export default Ember.Controller.extend ({
   downvoteEnabled: false,
   didUserVote: false,
   votingID: -1,
-  createdDate: 'TODO',
+  createdDate: Ember.computed('model.created_at', function() {
+    return moment(this.get("model.created_at")).format('L');
+  }),
   // Setup for initial allowed votings by the logged in User.
   votingSystemHandler: Ember.computed('sessionAccount.user.id', function() {
     if(this.get('sessionAccount.user.id') > 0){

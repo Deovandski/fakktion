@@ -93,7 +93,8 @@
           width: 100%;
           height: 20px;
           text-align: center;
-          background-color: #e3e2e4;
+          background-color: transparent;
+          font-size: $base-font-size - 1;
         }
       }
     }

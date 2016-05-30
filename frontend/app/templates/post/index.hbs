@@ -1,45 +1,40 @@
 <div class="post_title_container">
   <div class="title_info">
-    <label class="first_label">{{capitalize model.title}}</label>
-  </div>
-  <div class="owner_info">
-      {{#if canEdit}}
-        <div class="owner_text_info_partial">
-          <label class="first_label">{{#link-to 'user.index' model.user}}{{capitalize model.user.display_name}}{{/link-to}}</label>
-        </div>
-        <div class="owner_edit">
-        {{#link-to 'post.edit' class="button_type2_large"}}Edit{{/link-to}}
-        </div>
-      {{else}}
-        <div class="owner_text_info">
-          <label class="first_label">{{#link-to 'user.index' model.user}}{{capitalize model.user.display_name}}{{/link-to}}</label>
-        </div>
-      {{/if}}
+    <h5>{{capitalize model.title}}</h5>
   </div>
 </div>
 
 <div class="post_buttons_container">
-  {{#if notExpandInfo}}
+  {{#if expandTags}}
+    <div class="tags_info_button">
+      <label class="first_label"><button class="button_type1_normal" {{action "setExpandTags" false}}>Hide Tags</button></label>
+    </div>
+  {{else}}
+    <div class="tags_info_button">
+      <label class="first_label"><button class="button_type1_normal" {{action "setExpandTags" true}}>Show Tags</button></label>
+    </div>
+  {{/if}}
+  {{#if expandInfo}}
     <div class="more_info_button">
-      <label class="first_label"><button class="button_type1_normal" {{action "setNotExpandInfo" false}}>+ Tags</button></label>
+      <label class="first_label"><button class="button_type1_normal" {{action "setExpandInfo" false}}>Hide More Info</button></label>
     </div>
   {{else}}
     <div class="more_info_button">
-      <label class="first_label"><button class="button_type1_normal" {{action "setNotExpandInfo" true}}>- Tags</button></label>
+      <label class="first_label"><button class="button_type1_normal" {{action "setExpandInfo" true}}>Show More Info</button></label>
     </div>
   {{/if}}
-  
-  <div class="fact_link_button">
-    <label class="first_label"><a class="button_type1_normal" target="_blank" href="{{model.fact_link}}">Fact Link</a></label>
-  </div>
-  <div class="fiction_link_button">
-    <label class="first_label"><a class="button_type1_normal" target="_blank" href="{{model.fiction_link}}">Fiction Link</a></label>
-  </div>
+  {{#if canEdit}}
+    <div class="edit_button">
+      {{#link-to 'post.edit' class="button_type1_normal"}}Edit{{/link-to}}
+    </div>
+  {{else}}
+    <div class="edit_button">
+      {{#link-to 'user.index' model.user class="button_type1_normal"}}{{capitalize model.user.display_name}}{{/link-to}}
+    </div>
+  {{/if}}
 </div>
 
-{{#if notExpandInfo}}
-
-{{else}}
+{{#if expandTags}}
   <div class="post_tags_container">
     <div class="genre_topic_container">
       <div class="genre_info_container">
@@ -54,15 +49,36 @@
         <label class="first_label">Fact Type: {{capitalize model.fact_type.name}}</label>
       </div>
       <div class="created_on_info_container">
-        <label class="first_label">Post Created on: {{createdDate}}</label>  
+        <label class="first_label">Category: {{capitalize model.category.name}}</label>
+      </div>
+    </div>
+  </div>
+{{/if}}
+
+{{#if expandInfo}}
+  <div class="post_more_info_container">
+    <div class="genre_topic_container">
+    <div class="fact_type_created_on_container">
+      <div class="fact_Type_info_container">
+        <label class="first_label">{{counter-styler model.comments_count}} Comments</label>
+      </div>
+      <div class="created_on_info_container">
+        <label class="first_label">{{counter-styler model.views_count}} Views</label>  
       </div>
     </div>
     <div class="category_updated_on_container">
       <div class="category_info_container">
-        <label class="first_label">Category: {{capitalize model.category.name}}</label>
+        <label class="first_label">Post Created on: {{createdDate}}</label>  
       </div>
       <div class="updated_on_info_container">
         <label class="first_label">Post Updated on: {{updatedDate}}</label>  
+      </div>
+    </div>
+      <div class="genre_info_container">
+        <label class="first_label"><label class="first_label"><a class="button_type1_normal" target="_blank" href="{{model.fact_link}}">Fact Link</a></label></label>
+      </div>
+      <div class="topic_info_container">
+         <label class="first_label"><a class="button_type1_normal" target="_blank" href="{{model.fiction_link}}">Fiction Link</a></label>
       </div>
     </div>
   </div>
