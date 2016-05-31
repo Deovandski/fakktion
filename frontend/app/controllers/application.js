@@ -36,9 +36,20 @@ export default Ember.Controller.extend ({
   displayCentralPanel:true,
   displayLeftSidebar: true,
   displayRightSidebar: true,
-  exampleH4: "<h4>Example</h4><h5>Example</h5>",
-  exampleStrongBR: "Easy way to break lines with:<br> <strong>br</strong>",
-  exampleLabelP: "<p>Use P for <label>paragraphs</label></p>",
+  exampleH5: "<h5>Header</h5><ul><li><i>Item 1</i></li><li><s>Item 2</s></li></ul>",
+  exampleFontManipulation: "Easy <b>way</b> to break lines with:<br>BR",
+  exampleOL: "<p>However, you can use p for paragraphs.</p><ol><li><label>Item 1</label></li><li>Item 2</li></ol>",
+  exampleLineBreaker: "<br>",
+  exampleH5_part1: "<h5>Header</h5>",
+  exampleH5_part2: "<ul>",
+  exampleH5_part3: "<li><i>Item 1</i></li>",
+  exampleH5_part4: "<li><s>Item 2</s></li>",
+  exampleH5_part5: "</ul>",
+  exampleOL_part1: "<p>However, you can use p for paragraphs.</p>",
+  exampleOL_part2: "<ol>",
+  exampleOL_part3: "<li><label>Item 1</label></li>",
+  exampleOL_part4: "</li><li>Item 2</li>",
+  exampleOL_part5: "</ol>",
   defaultCategories: Ember.computed.filter('model.categories', function(category, index) {
       console.log('DEBUG --CT1 - Categories');
       return (index < 10);

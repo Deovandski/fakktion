@@ -340,7 +340,7 @@ div {
       textarea{
         margin-left: 5px;
         margin-right: 5px;
-        height: 50px;
+        height: 100px;
         resize: none;
       }
     }
@@ -352,8 +352,9 @@ div {
       flex-wrap: wrap;
 	    margin-left: 15px;
 	    margin-right: 5px;
-	    height: 50px;
+	    height: 100px;
       overflow: auto;
+      
     }
   }
 }

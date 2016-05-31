@@ -53,6 +53,47 @@ class ApiController < ApplicationController
   
   private
   
+  # Super User check alongside reputation check.
+  def isSuperUser
+    reputationCheck()
+    return current_user.is_super_user
+  end
+  
+  # Admin check alongside reputation check.
+  def isUserAdmin
+    reputationCheck()
+    return current_user.is_admin
+  end
+    
+  # Legend check alongside reputation check.
+  def isLegend
+    reputationCheck()
+    return current_user.is_legend
+  end
+  
+  # Validates the current_user reputation by using the live reputation score.
+  def reputationCheck
+    if current_user.reputation >= 500 && current_user.is_super_user == false
+      current_user.is_super_user = true
+      current_user.save()
+    elsif current_user.reputation >= 1500 && current_user.is_admin == false
+      current_user.is_admin = true
+      current_user.save()
+    elsif current_user.reputation >= 3000 && current_user.is_legend == false
+      current_user.is_legend = true
+      current_user.save()
+    elsif current_user.reputation <= 500 && current_user.is_super_user == true
+      current_user.is_super_user = true
+      current_user.save()
+    elsif current_user.reputation <= 1500 && current_user.is_admin == true
+      current_user.is_admin = true
+      current_user.save()
+    elsif current_user.reputation <= 3000 && current_user.is_legend == true
+      current_user.is_legend = true
+      current_user.save()
+    end
+  end
+  
   # Disable Devise Trackable for all API requests
   # Devise Trackable still tracks login since Devise is hooked to ApplicationController.
   def disable_devise_trackable
@@ -62,7 +103,7 @@ class ApiController < ApplicationController
     # Prevent XSS Attacks like a boss!
   def protect_from_xss_like_a_boss(dirtyText)
     scrubber = Rails::Html::PermitScrubber.new
-    scrubber.tags = ['a','p','br', 'strong', 'h4','h5']
+    scrubber.tags = ['a','p','br','b','i','s','ol','ul','li','h5','label']
     cleanText = Loofah.fragment(dirtyText).scrub!(scrubber)
     return cleanText.to_s
   end
