@@ -331,17 +331,19 @@ div {
   .input_block_textArea_example{
     border: 0.2px solid darken($button-type-1-bg, 15%);
     width: 100%;
+    height: auto;
     display: flex;
     .input_wrapper {
+      height: auto;
       width: 50%;
       flex-grow: 1;
       flex-direction: column;
       flex-wrap: wrap;
+        word-break: break-all;
       textarea{
-        margin-left: 5px;
-        margin-right: 5px;
-        height: 100px;
+        height: auto;
         resize: none;
+        word-break: break-all;
       }
     }
     .preview_wrapper {
@@ -350,9 +352,7 @@ div {
       flex-grow: 1;
       flex-direction: column;
       flex-wrap: wrap;
-	    margin-left: 15px;
-	    margin-right: 5px;
-	    height: 100px;
+	    height: auto;
       overflow: auto;
       
     }

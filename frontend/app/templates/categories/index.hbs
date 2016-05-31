@@ -15,8 +15,16 @@
     {{#each filteredTags as |tag|}}
       <li>
         <label class="flex_tags_display_name">{{#link-to 'category' tag class="button_bar"}}{{capitalize tag.name}}{{/link-to}}</label>
-        <label class="flex_tags_display_posts">{{counter-styler tag.posts_count}}</label>
-        <label class="flex_tags_display_eligibility">{{counter-styler tag.posts_count}}</label>
+        <label class="flex_tags_display_posts">{{counter-styler tag.posts_count}}
+          {{#tooltip-on-element}}
+            Elegibility Counter
+          {{/tooltip-on-element}}
+        </label>
+        <label class="flex_tags_display_eligibility">{{counter-styler tag.posts_count}}
+          {{#tooltip-on-element}}
+            Post Counter
+          {{/tooltip-on-element}}
+        </label>
       </li>
     {{/each}}
 </ul>
