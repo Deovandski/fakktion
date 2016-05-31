@@ -1,16 +1,412 @@
+// Major style structure for Fakktion
 html {
-  min-width: 800px;
   height: 100%;
   width: 100%;
   margin: 0px;
   padding: 0px;
-  overflow-y: hidden;
+  body.ember-application {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    .ember-view {
+      width: auto;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      @include clearfix;
+      header {
+        margin: 0px;
+        @include clearfix;
+        background-color: $header-background-color;
+        color: #fff;
+        font-family: 'Questrial', sans-serif;
+        width: auto;
+        height: 50px;
+        .outer-container {
+          width: 100%;
+          height: 100%;
+        }
+        a {
+          @include transition(all 0.1s ease);
+        }
+        .branding {
+          margin: 0px;
+          padding: 0px;
+          width: 50%;
+          display: inline-block;
+          float: left;
+          text-align: left;
+          .image_branding {
+            margin: 0px;
+            padding: 0px;
+            float: left;
+            margin-right: 10px;
+          }
+          .text_branding {
+            line-height: 50px;
+            text-align: center;
+            float: left;
+            font-size: 16px;
+            li {
+              color: darken($header-font-color,15%);
+            }
+          }
+        }
+        .header_nav {
+            height:100%;
+            width:50%;
+            float: right;
+          ul {
+            width: 100%;
+            height: 100%;
+            display: inline-block;
+            list-style-type: none;
+            text-align: right;
+          }
+          li {
+            line-height: 50px;
+            text-align: center;
+            height: 100%;
+            display: inline-block;
+            margin-left: 3px;
+            margin-right: 3px;
+            a {
+              height: 100%;
+              line-height: 50px;
+              text-align: center;
+              border-bottom: 2px solid $header-background-color;
+              color: $header-font-color;
+              font-weight: 300;
+              letter-spacing: 2px;
+              text-decoration: none;
+              text-transform: uppercase;
+              &:hover {
+                border-bottom: 2px solid $header-font-color;
+                color: lighten($header-font-color, 12%);
+              }
+            }
+            &.active a {
+              color: #fff;
+              font-weight: 400;
+            }
+          }
+        }
+      }
+      main {
+        @include clearfix;
+        margin: 0px;
+        height: auto;
+        flex-grow: 1;
+        width: auto;
+        display: flex;
+        flex-direction: row;
+        overflow-y: scroll;
+        .left_sidebar {
+          .sidebar_sub{
+            border-right-style: solid;
+          }
+        }
+        .right_sidebar {
+          .sidebar_sub{
+            border-left-style: solid;
+          }
+        }
+        .left_sidebar, .right_sidebar {
+          flex-grow: 1;
+          flex-direction: column;
+          flex-wrap: wrap;
+          min-width: 170px;
+          max-width: 230px;
+          height: auto;
+          text-align: center;
+          border-width: 2px;
+          .sidebar_sub {
+            width: 100%;
+            border-width: 3px;
+            display: flex;
+            flex-direction: column;
+            min-height: 30%;
+            max-height: 70%;
+            .tag_header {
+              display: flex;
+              flex-direction: row;
+              .management_link {
+                width: 15%;
+                img {
+                  height: auto; 
+                  width: auto;
+                }
+              }
+              h5 {
+                flex: none;
+                height: 25px;
+                width: 85%;
+                margin-top: 3px;
+                margin-bottom: 3px;
+                text-align: center;
+              }
+            }
+            .tag_listing {
+              flex: 1;
+              width:100%;
+              margin: 0px;
+              list-style-type:none;
+              text-align: center;
+              padding: 0px;
+              margin-bottom: 5px;
+              input {
+                width: 100%;
+                height: 80%;
+              }
+              .tag_posts {
+                margin-left: 5px;
+                padding: 1px;
+                width: auto;
+                font-weight: bold;
+                border-style: solid;
+                border-width: 0.5px;
+              }
+              .tag_listing_search{
+                flex: none;
+                height: 50px;
+                margin-right: 10px;
+                margin-left: 10px;
+                font-weight: bold;
+                .factTypeInput{
+                  color: $button-fact-type-bg;
+                }
+                .genreInput{
+                  color: $button-genre-bg;
+                }
+                .categoryInput{
+                  color: $button-category-bg;
+                }
+              }
+              li:nth-child(n) {
+                margin-top: 4px;
+                margin-bottom: 4px;
+              }
+            }
+            .tag_no_result_genre{
+              flex: 1;
+              height: 25px;
+              width: 100%;
+              margin-top: 3px;
+              margin-bottom: 3px;
+              text-align: center;
+              color: $button-genre-bg;
+            }
+            .tag_no_result_category{
+              flex: 1;
+              height: 25px;
+              width: 100%;
+              margin-top: 3px;
+              margin-bottom: 3px;
+              text-align: center;
+              color: $button-category-bg;
+            }
+            .tag_no_result_fact_type{
+              flex: 1;
+              height: 25px;
+              width: 100%;
+              margin-top: 3px;
+              margin-bottom: 3px;
+              text-align: center;
+              color: $button-fact-type-bg;
+            }
+            .button_toggler{
+              flex: none;
+              height: 25px;
+              width: 100%;
+              text-align: center;
+              margin-top: 0px;
+            }
+          }
+        }
+        .central {
+          flex-grow: 2;
+          flex-wrap: wrap;
+          min-height: 100%;
+          list-style-type:none;
+          text-align: center;
+          border-width: 3px;
+          padding-bottom: 20px;
+          .central_panel {
+            width: auto;
+            max-width: 630px;
+            height: 80px;
+            border-bottom-style: solid;
+            border-left-style: solid;
+            border-right-style: solid;
+            border-width: 2px;
+            margin-left: auto;
+            margin-right: auto;
+            .central_upper_panel {
+              height: 30px;
+              width: 100%;
+              display: flex;
+              .central_upper_panel_sub {
+                flex-direction: row;
+                font-size: 12px;
+                font-style: normal;
+                overflow:hidden;
+                text-overflow:ellipsis;
+                width: 25%;
+                height: 100%;
+                border-right-style: solid;
+                border-bottom-style: solid;
+                border-width: 1px;
+              }
+            }
+            .central_lower_panel {
+              height: 50px;
+              width: 100%;
+              border-bottom-style: solid;
+              border-width: 3px;
+              .topic_search {
+                height: 100%;
+                width: 60%;
+                float: left;
+                height: 100%;
+                border-top-style: solid; 
+                border-bottom-style: solid;
+                border-width: 1px;
+                .topic_search_input {
+                  height: 100%;
+                  width: 30%;
+                  float: left;
+                  border-left-style: solid;
+                  border-right-style: solid;
+                  background-color: #b3fffc;
+                  font-weight: bold;
+                }
+                .topic_search_text {
+                  height: 100%;
+                  width: 70%;
+                  float: left;
+                  background-color: #b3fffc;
+                  font-weight: bold;
+                }
+              }
+              .topic_tagging {
+                background-color: #b3fffc;
+                color: #333;
+                font-weight: bold;
+                label {
+                  font-size: 14px;
+                  font-style: normal;
+                  overflow:hidden;
+                  text-overflow:ellipsis;
+                }
+                float: left;
+                width: 35%;
+                height: 100%;
+                border-top-style: solid; 
+                border-bottom-style: solid;
+                border-width: 1px;
+              }
+              .topic_tagging_settings {
+                background-color: #b3fffc;
+                float: left;
+                width: 5%;
+                height: 100%;
+                border-top-style: solid; 
+                border-bottom-style: solid;
+                border-width: 1px;
+                img{
+                  width: 100%;
+                  height: 100%;
+                }
+              }
+            }
+          }
+          .panel_toggler{
+            margin: 10px auto 10px auto;
+            width: auto;
+            max-width: 210px;
+            height: 20px;
+            display: flex;
+            .panel_toggler_left{
+              flex-grow: 1;
+              flex-direction: column;
+              flex-wrap: wrap;
+            }
+            .panel_toggler_central{
+              flex-grow: 1;
+              flex-direction: column;
+              flex-wrap: wrap;
+              margin-right: 10px;
+              margin-left: 10px;
+            }
+            .panel_toggler_right{
+              flex-grow: 1;
+              flex-direction: column;
+              flex-wrap: wrap;
+            }
+          }
+          .shared_panel {
+            min-height: 100%;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-top: 15px;
+            padding-left: 10px;
+            padding-right: 10px;
+            .center_text {
+              text-align: center;
+            }
+          }
+        }
+      }
+      footer {
+        @include clearfix;
+        border-top: 1px solid $base-border-color;
+        padding: 0.2em 0;
+        font-family: 'Questrial', sans-serif;
+        height: 50px;
+        margin: 0px;
+        width:100%;
+        background-color: #F8F8F8;
+        .outer-container {
+          width: 100%;
+        }
+        nav {
+          float: left;
+        }
+        ul {
+          display: block;
+          list-style-type: none;
+          padding: 0;
+        }
+        li {
+        display: inline-block;
+          a {
+            color: #454545;
+            display: inline-block;
+            letter-spacing: 1px;
+            padding: 10px;
+            text-decoration: none;
+            &:hover {
+              color: #fff;
+            }
+          }
+        }
+        label {
+          color: #aaa;
+          display: inline-block;
+          letter-spacing: 1px;
+          padding: 10px;
+          text-decoration: none;
+          float: right;
+          font-size: 14px;
+        }
+      }
+    }
+  }
 }
-body.ember-application {
-  min-width: 800px;
-  height: 100%;
-  width: 100%;
-  margin: 0px;
-  padding: 0px;
-  overflow-y: hidden;
+
+// Make sure that all tooltips do not inherit "height: 100%;" from .ember-view
+.tooltip {
+  height: auto !important;
 }

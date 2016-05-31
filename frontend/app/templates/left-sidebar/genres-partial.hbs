@@ -1,9 +1,10 @@
 <div class="sidebar_sub">
-	<h5 class="tag_h5">Genres {{#link-to "genres.index" id='genreManagementTootip'}}<img width="23px" height="23px" src="/assets/small_settings.png">{{/link-to}}</h5>
-	{{#tooltip-on-component target='#genreManagementTootip'}}
-		Manage Genres.
-	{{/tooltip-on-component}}
-		{{#if showGP}}
+	<div class="tag_header">
+		<h5>Genres</h5>
+		<div class="management_link">{{#link-to "genres.index" id='genreManagementTootip'}}<img src="/assets/small_settings.png">{{/link-to}}</div>
+		{{#tooltip-on-component target='#genreManagementTootip'}}Manage Genres.{{/tooltip-on-component}}
+	</div>
+	{{#if showGP}}
 		<ul class="tag_listing">
 			<li class="tag_listing_search">{{input value=genreInputText placeholder="Search Genre" class="genreInput" id='genreInputTextTootip'}}
 				{{#tooltip-on-component event='click' target='#genreInputTextTootip'}}
