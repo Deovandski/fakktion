@@ -228,8 +228,6 @@ export default Ember.Controller.extend ({
           this.set('selectedTopic', possibleTopic);
         }
       }
-      else {
-      }
     },
     setPDID: function(varDayType, varDayName) { 
       this.set('selectedPDID', varDayType);

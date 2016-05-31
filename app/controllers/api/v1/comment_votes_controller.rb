@@ -19,10 +19,9 @@ class Api::V1::CommentVotesController < ApiController
     userVotedAlready = CommentVote.where(:comment_id => comment_vote_params[:comment_id], :user_id => comment_vote_params[:user_id]).exists?
     comment = Comment.find(comment_vote_params[:comment_id])
     user = User.find(comment_vote_params[:user_id])
+    loggedUserIsAuthor = false
     if user.id == comment.user.id
       loggedUserIsAuthor = true
-    else
-      loggedUserIsAuthor = false
     end
     if userVotedAlready || loggedUserIsAuthor
       return render json: {}, status: :unprocessable_entity

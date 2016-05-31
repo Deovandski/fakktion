@@ -19,10 +19,9 @@ class Api::V1::InnerCommentVotesController < ApiController
     userVotedAlready = InnerCommentVote.where(:inner_comment_id => inner_comment_vote_params[:inner_comment_id], :user_id => inner_comment_vote_params[:user_id]).exists?
     innerComment = InnerComment.find(inner_comment_vote_params[:inner_comment_id])
     user = User.find(inner_comment_vote_params[:user_id])
+    loggedUserIsAuthor = false
     if user.id == innerComment.user.id
       loggedUserIsAuthor = true
-    else
-      loggedUserIsAuthor = false
     end
     if userVotedAlready || loggedUserIsAuthor
       return render json: {}, status: :unprocessable_entity

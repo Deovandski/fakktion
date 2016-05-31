@@ -7,7 +7,7 @@ var options = {
   enableCoverage: true,
   cliOptions: {
     lcovOptions: {
-      outputFile: 'lcov.dat',
+      outputFile: 'lcov.dat'
     },
     reporters: ['lcov'],
     autostart: true

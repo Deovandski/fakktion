@@ -4,7 +4,7 @@ class ApiController < ApplicationController
 
   # Shared JSON API render methods.
   protected
-  def json_render_all(resource_model, sortParam)
+  def json_render_all(resource_model, _sortParam)
       return render json: resource_model.all.sort_by{|x| x[:sortParam]}
   end
   def json_create(resource_params, resource_model)

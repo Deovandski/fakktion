@@ -3,5 +3,5 @@ const { service } = Ember.inject;
 
 export default Ember.Route.extend ({
   session: service('session'),
-  sessionAccount: service('sessionAccount'),
+  sessionAccount: service('sessionAccount')
 });
