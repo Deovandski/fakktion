@@ -72,6 +72,10 @@
     </div>
   </div>
   <p><strong>{{verifyText}}</strong></p>
+  <div class="edit_main_controls">
+    <button class="button_type1_normal" {{action "update"}}>Update Post</button>
+    <button class="button_type1_normal" {{action "cancelChanges"}}>Cancel Changes</button>
+  </div>
   <div class="input_block_textArea">
     <div class="input_block_textArea_header">
       <div class="left_header"><strong>Allowed HTML Tags</strong></div>
@@ -90,6 +94,4 @@
       <div class="preview_wrapper">{{{application.exampleOL}}}</div>
     </div>
   </div><br/>
-  
-  <button class="button_type1_normal" {{action "update"}}>Update Post</button>
 </form>

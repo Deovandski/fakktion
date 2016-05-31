@@ -33,6 +33,10 @@ export default Ember.Controller.extend ({
     }
   }),
   actions: {
+    cancelChanges: function() {
+      this.get('model').rollbackAttributes();
+      this.transitionToRoute('category', this.get('model'));
+    },
     update: function() {
       if(this.get('clientSideValidationComplete') === true){
         var category = this.get('content');

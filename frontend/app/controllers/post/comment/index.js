@@ -98,6 +98,7 @@ export default Ember.Controller.extend ({
     ToggleEditMode: function() {
       if(this.get('canEdit') === true){
         if(this.get('editMode') === true){
+          this.get('model').rollbackAttributes();
           this.set('editMode', false);
         }
         else{

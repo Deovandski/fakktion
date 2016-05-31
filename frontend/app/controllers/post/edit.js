@@ -123,6 +123,10 @@ export default Ember.Controller.extend ({
     setChangeTags: function(varBoolean) {
       this.set('changeTags', varBoolean);
     },
+    cancelChanges: function() {
+      this.get('model').rollbackAttributes();
+      this.transitionToRoute('post', this.get('model'));
+    },
     update: function() {
       if(this.get('clientSideValidationComplete')) {
         var post = this.get('content');

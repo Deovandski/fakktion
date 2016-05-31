@@ -8,7 +8,10 @@
 </form>
 {{#if session.isAuthenticated}}
   {{#if sessionAccount.user.is_admin}}
-    <button class="button_type1_normal" {{action "update"}}>Update Genre</button>
+    <div class="edit_main_controls">
+      <button class="button_type1_normal" {{action "update"}}>Update Genre</button>
+      <button class="button_type1_normal" {{action "cancelChanges"}}>Cancel Changes</button>
+    </div>
   {{else}}
     <label class="login_required_warning">Only Admins can edit Genre</label>
   {{/if}}

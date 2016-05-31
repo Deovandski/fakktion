@@ -289,6 +289,10 @@ export default Ember.Controller.extend ({
     }
   }),
   actions: {
+    cancelChanges: function() {
+      this.get('model').rollbackAttributes();
+      this.transitionToRoute('user', this.get('model'));
+    },
     setShowPassword: function(password) {
       this.set('showPassword', password);
     },
