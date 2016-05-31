@@ -12,7 +12,7 @@
 				{{/tooltip-on-component}}
 			</li>
 			{{#each filteredFactTypes as |factType|}}
-				<li><button class="button_type1_fact_type" {{action "setFactType" factType}}>{{capitalize factType.name}}</button><label class="tag_posts">{{counter-styler factType.posts_count}}</label></li>
+				<li><button class="button_type1_fact_type" {{action "setFactType" factType}}><div class="tag_selection_container"><label class="tag_name">{{capitalize factType.name}}</label><label class="tag_posts"> {{counter-styler factType.posts_count}}</label></div></button></li>
 			{{/each}}
 		</ul>
 	{{#if noFactTypes}}<div class="tag_no_result_fact_type">No Results</div>{{/if}}

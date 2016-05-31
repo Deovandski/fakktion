@@ -8,18 +8,17 @@
   cursor: pointer;
   display: inline-block;
   font-size: 14px;
-  font-weight: bold;
   outline: none;
-  padding: 0.5em 0.7em;
   text-align: center;
   text-decoration: none;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
   -webkit-font-smoothing: antialiased;
-  width: 65%;
+  width: 90%;
+  padding: 0px;
   margin-top: 1px;
-  margin-bottom: 1px;
+  margin-bottom: 1.5px;
   
   &:hover {
     background-color: lighten($button-bar-post-date-bg, 2%);

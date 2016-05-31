@@ -12,7 +12,7 @@
 				{{/tooltip-on-component}}
 			</li>
 			{{#each filteredGenres as |genre|}}
-				<li><button class="button_type1_genre" {{action "setGenre" genre}}>{{capitalize genre.name}}</button><label class="tag_posts">{{counter-styler genre.posts_count}}</label></li>
+				<li><button class="button_type1_genre" {{action "setGenre" genre}}><div class="tag_selection_container"><label class="tag_name">{{capitalize genre.name}}</label><label class="tag_posts"> {{counter-styler genre.posts_count}}</label></div></button></li>
 			{{/each}}
 		</ul>
 	{{#if noGenres}}<div class="tag_no_result_genre">No Results</div>{{/if}}

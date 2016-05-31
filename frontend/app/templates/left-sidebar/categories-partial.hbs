@@ -13,7 +13,7 @@
 				{{/tooltip-on-component}}
 			</li>
 			{{#each filteredCategories as |category|}}
-				<li><button class="button_type1_category" {{action "setCategory" category}}>{{capitalize category.name}}</button><label class="tag_posts">{{counter-styler category.posts_count}}</label></li>
+				<li><button class="button_type1_category" {{action "setCategory" category}}><div class="tag_selection_container"><label class="tag_name">{{capitalize category.name}}</label><label class="tag_posts"> {{counter-styler category.posts_count}}</label></div></button></li>
 			{{/each}}
 		</ul>
 	{{#if noCategories}}<div class="tag_no_result_category">No Results</div>{{/if}}
