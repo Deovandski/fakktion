@@ -25,13 +25,13 @@ export default Ember.Controller.extend ({
       this.set('clientSideValidationComplete',false);
       return "10 Min Characters...";
     }
-    else if(this.get('text').length > 1000) {
+    else if(this.get('text').length > 2000) {
       this.set('clientSideValidationComplete',false);
-      return "1000 Max Characters. Please revise your input!";
+      return "2000 Max Characters. Please revise your input!";
     }
     else {
       this.set('clientSideValidationComplete',true);
-      var charsLeft = 1000 - this.get('text').length;
+      var charsLeft = 2000 - this.get('text').length;
       
       return charsLeft + ' Characters left.';
     }

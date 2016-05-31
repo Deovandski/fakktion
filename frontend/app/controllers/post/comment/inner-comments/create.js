@@ -13,11 +13,11 @@ export default Ember.Controller.extend ({
     else if(this.get('text').length < 10) {
       return 'At least 10 chars.';
     }
-    else if(this.get('text').length > 250) {
+    else if(this.get('text').length > 500) {
       return 'At most 500 chars.';
     }
     else {
-      var charsLeft = 250 - this.get('text').length;
+      var charsLeft = 500 - this.get('text').length;
       return charsLeft + ' remaining chars.';
     }
   }),
@@ -26,7 +26,7 @@ export default Ember.Controller.extend ({
       this.set('clientSideValidationComplete',false);
       return false;
     }
-    else if(this.get('text').length > 250) {
+    else if(this.get('text').length > 500) {
       this.set('clientSideValidationComplete',false);
       return false;
     }

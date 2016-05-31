@@ -1,6 +1,6 @@
 <div class="post_comments_container">
   <ul class="inner_comment_ul">
-    {{#each model.inner_comments as |innerComment|}}
+    {{#each sortedInnerComments as |innerComment|}}
       <li>{{render "post.comment.innerComment.index" innerComment}}</li>
     {{/each}}
   </ul>
