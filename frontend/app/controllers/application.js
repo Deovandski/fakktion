@@ -187,6 +187,14 @@ export default Ember.Controller.extend ({
       return '< Search or manage topics >';
     }
   }),
+  server422Watcher: Ember.computed('sessionAccount.server422', function() {
+    if(this.get('sessionAccount.server422') === true) {
+      console.log('422 | Refreshing in 300ms');
+      Ember.run.later((function() {
+        location.reload();
+      }), 300);
+    }
+  }),
   actions: {
     //Set ID Tag Methods
     setGenre: function(genre) { 

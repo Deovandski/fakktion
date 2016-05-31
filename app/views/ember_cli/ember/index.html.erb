@@ -1,21 +1,7 @@
-<%= render_ember_app :frontend do |head, body| %>
+<%= render_ember_app :frontend do |head| %>
   <% head.append do %>
-
-	<%# Rails Asset Pipeline%>
-
-	<%= stylesheet_link_tag 'application', media: 'all'%>
-	<%= javascript_include_tag 'application' %>
-
-	<%# META Stuff %>
-
-	<%= csrf_meta_tag %>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Fakktion is a relational blog with purpose of bringing the discussion of fiction and fact closer!">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <% end %>
-  <% body.append do %>
-	<%= render partial: "layouts/shared/analytics" %>
+    <%= stylesheet_link_tag 'application', media: 'all'%>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tag %>
   <% end %>
 <% end %>

@@ -1,3 +1,3 @@
 # Be sure to restart your server when you modify this file.
 
-Rails.application.config.session_store :csrf_cookie_store, key: '_fakktion_id', httponly: false
+Rails.application.config.session_store :cookie_store, key: '_fakktion_session'

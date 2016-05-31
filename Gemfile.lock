@@ -75,9 +75,9 @@ GEM
       responders
       warden (~> 1.2.3)
     docile (1.1.5)
-    ember-cli-rails (0.7.0)
+    ember-cli-rails (0.7.4)
       cocaine (~> 0.5.8)
-      ember-cli-rails-assets (>= 0.6.1)
+      ember-cli-rails-assets (~> 0.6.2)
       html_page (~> 0.1.0)
       railties (>= 3.2, < 5)
     ember-cli-rails-assets (0.6.2)
@@ -243,7 +243,7 @@ DEPENDENCIES
   bourbon (>= 4.2.7)
   coveralls
   devise (>= 4.1.1)
-  ember-cli-rails (= 0.7.0)
+  ember-cli-rails (= 0.7.4)
   font-awesome-rails (>= 4.6)
   foreman (>= 0.82)
   jquery-rails (>= 4.1)

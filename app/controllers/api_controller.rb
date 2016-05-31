@@ -1,5 +1,5 @@
 # Api Controller: Set options for all v1 API controllers. 
-class ApiController < ActionController::Base
+class ApiController < ApplicationController
   prepend_before_filter :disable_devise_trackable
 
   # Shared JSON API render methods.
@@ -8,6 +8,8 @@ class ApiController < ActionController::Base
       return render json: resource_model.all.sort_by{|x| x[:sortParam]}
   end
   def json_create(resource_params, resource_model)
+    #puts current_user.id
+    #puts current_user.reputation
     resource_obj = resource_model.new(resource_params)
     if resource_obj.save
       return render json: resource_obj, status: :ok
@@ -25,6 +27,8 @@ class ApiController < ActionController::Base
     end
   end  
   def json_update(resource_obj,resource_params)
+    puts user_signed_in?
+    puts current_user
     if resource_obj.update(resource_params)
       return render json: resource_obj, status: :ok
     else
