@@ -275,6 +275,9 @@ export default Ember.Controller.extend ({
       this.set('selectedPDID', 0);
       this.set('selectedPDN', 'None');
     },
+    goHome : function(){
+        this.transitionToRoute('index');
+    },
     logout() {
       this.get('session').invalidate();
     }

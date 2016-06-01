@@ -1,46 +1,31 @@
-<div class="outer-container">
-	<div class="branding">
-		<div class="image_branding">
-			{{#link-to 'index'}}
-				<img height="50px" src="/assets/UltraSmall_FakktionLogo.png">
-			{{/link-to}}
-		</div>
-		<div class="text_branding">
-			{{#if session.isAuthenticated}}
-				<div class="small_login_info">
-					{{#if sessionAccount.user}}
-						Signed in as {{sessionAccount.user.display_name}}
-					{{/if}}
-				</div>
-			{{else}}
-				<div class="small_login_info">
-					<strong>EXP v0.7 </strong>
-				</div>
-			{{/if}}
-		</div>
-	</div>
-	<nav class="header_nav">
-		<ul>
-			{{#if session.isAuthenticated}}
-				{{#if isAdmin}}
-					<li>
-						{{#link-to 'adminPanel'}}Admin Panel{{/link-to}}
-					</li>
-				{{/if}}
-				<li>
-					{{#link-to 'user' sessionAccount.user.id}}Profile{{/link-to}}
-				</li>
-				<li>
-     				<a {{action 'logout'}}>Logout</a>
-				</li>
-			{{else}}
-				<li>
-					{{#link-to 'users.create'}}SignUp{{/link-to}}
-				</li>
-				<li>
-					{{#link-to "login"}}Login{{/link-to}}
-				</li>
-			{{/if}}
-		</ul>
-	</nav>
-</div>
+<img src="/assets/UltraSmall_FakktionLogo.png" {{action 'goHome'}}>
+<nav>
+  <ul>
+    {{#if session.isAuthenticated}}
+    <li>
+      {{#if sessionAccount.user}}Signed in as {{sessionAccount.user.display_name}}{{/if}}
+    </li>
+    {{#if isAdmin}}
+      <li>
+        {{#link-to 'adminPanel'}}Admin{{/link-to}}
+      </li>
+    {{/if}}
+    <li>
+      {{#link-to 'user' sessionAccount.user.id}}Profile{{/link-to}}
+    </li>
+    <li>
+      <a {{action 'logout'}}>Logout</a>
+    </li>
+  {{else}}
+    <li>
+      <strong>EXP v0.7 </strong>
+    </li>
+    <li>
+      {{#link-to 'users.create'}}SignUp{{/link-to}}
+    </li>
+    <li>
+      {{#link-to "login"}}Login{{/link-to}}
+    </li>
+  {{/if}}
+	</ul>
+</nav>

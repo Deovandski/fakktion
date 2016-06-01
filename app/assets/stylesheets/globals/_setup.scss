@@ -21,84 +21,89 @@ html,body {
         @include clearfix;
         font-size: $base-font-size;
         header {
+          padding: 0px;
           margin: 0px;
-          @include clearfix;
-          background-color: $header-background-color;
-          color: #fff;
+          min-height: 39px;
+          max-height: 50px;
+          width:100%;
+          flex-grow: 1;
+          display: flex;
+          flex-direction: row;
+          overflow: hidden;
           font-family: 'Questrial', sans-serif;
-          width: auto;
-          height: 50px;
-          .outer-container {
+          background-color: $header-background-color;
+          display: flex;
+          color: #fff;
+          img {
+            flex-shrink: 3;
+            flex: 0;
+            color: #aaa;
+            text-align: right;
+            display: inline-block;
+            letter-spacing: 1px;
+            padding: 10px;
+            text-decoration: none;
+            cursor: pointer;
+            height: 100%;
+            width: auto;
+            padding: 0px;
+            margin: 0px;
+          }
+          nav {
+            flex-shrink: 2;
+            flex: 1;
             width: 100%;
             height: 100%;
-          }
-          a {
-            @include transition(all 0.1s ease);
-          }
-          .branding {
-            margin: 0px;
-            padding: 0px;
-            width: 50%;
-            display: inline-block;
-            float: left;
-            text-align: left;
-            .image_branding {
-              margin: 0px;
-              padding: 0px;
-              float: left;
-              margin-right: 10px;
-            }
-            .text_branding {
-              line-height: 50px;
-              text-align: center;
-              float: left;
-              li {
-                color: darken($header-font-color,15%);
-              }
-            }
-          }
-          .header_nav {
-              height:100%;
-              width:50%;
-              float: right;
+            margin-top: auto;
+            margin-bottom: auto;
             ul {
+              display: block;
+              list-style-type: none;
+              margin-top: auto;
+              margin-bottom: auto;
+              padding: 0px;
               width: 100%;
               height: 100%;
+              display: flex;
+              li:first-child {
+                text-align: left;
+                @include clearfix;
+                width: auto;
+                flex: 1;
+                padding-left: 7px;
+              }
+              li:not(:first-child){
+                text-align: right;
+                @include clearfix;
+                width: auto;
+                flex: 0;
+              }
+              li {
+              color: #fff;
               display: inline-block;
-              list-style-type: none;
-              text-align: right;
-            }
-            li {
-              line-height: 50px;
-              text-align: center;
-              height: 100%;
-              display: inline-block;
-              a {
-                margin-left: 3px;
-                margin-right: 3px;
-                padding-left: 3px;
-                padding-right: 3px;
-                height: 100%;
-                line-height: 50px;
-                text-align: center;
-                border-bottom: 2px solid $header-background-color;
-                color: $header-font-color;
-                font-weight: 300;
-                letter-spacing: 2px;
-                text-decoration: none;
-                text-transform: uppercase;
-                &:hover {
-                  border-bottom: 2px solid $header-font-color;
-                  color: lighten($header-font-color, 12%);
+                a {
+                  margin-left: 3px;
+                  margin-right: 3px;
+                  padding-left: 3px;
+                  padding-right: 3px;
+                  height: 100%;
+                  text-align: center;
+                  border-bottom: 2px solid $header-background-color;
+                  color: $header-font-color;
+                  font-weight: 300;
+                  letter-spacing: 2px;
+                  text-decoration: none;
+                  text-transform: uppercase;
+                  &:hover {
+                    border-bottom: 2px solid $header-font-color;
+                    color: lighten($header-font-color, 12%);
+                  }
+                }
+                &.active a {
+                  color: #fff;
+                  font-weight: 400;
                 }
               }
-              &.active a {
-                color: #fff;
-                font-weight: 400;
-              }
-            }
-            li:last-child{
-              margin-right: 10px;
             }
           }
         }
