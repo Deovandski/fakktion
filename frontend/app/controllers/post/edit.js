@@ -4,10 +4,6 @@ const { service } = Ember.inject;
 export default Ember.Controller.extend ({
   application: Ember.inject.controller('application'),
   session: service('session'),
-  title: "",
-  text: "",
-  fact_link: "",
-  fictionLink: "",
   clientSideValidationComplete: false,
   changeTags: false,
   nextGenreID: Ember.computed('application.selectedGID', function() {
@@ -65,7 +61,15 @@ export default Ember.Controller.extend ({
       return "Past Complete URL";
     }
     else {
-      this.set('clientSideValidationComplete',true);
+      var rx = new RegExp("^(http|https)://");
+      var htmlString = this.get('model.fact_link').match(rx);
+      if (htmlString !== null){
+        this.set('clientSideValidationComplete',true);
+      }
+      else {
+        this.set('clientSideValidationComplete',false);
+        return "URL missing HTTP:// or HTTPS://";
+      }
       return '';
     }
   }),
