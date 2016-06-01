@@ -144,6 +144,8 @@ html,body {
               max-height: 70%;
               .tag_header {
                 display: flex;
+                flex: 1;
+                height: auto;
                 flex-direction: row;
                 .management_link {
                   width: 15%;
@@ -153,8 +155,8 @@ html,body {
                   }
                 }
                 h5 {
-                  flex: none;
-                  height: 25px;
+                  flex: 1;
+                  height: auto;
                   width: 85%;
                   margin-top: 3px;
                   margin-bottom: 3px;
@@ -337,9 +339,10 @@ html,body {
                   border-top-style: solid; 
                   border-bottom-style: solid;
                   border-width: 1px;
+                  overflow: hidden;
                   label {
                     font-style: normal;
-                    overflow:hidden;
+                    overflow: hidden;
                     text-overflow:ellipsis;
                   }
                 }

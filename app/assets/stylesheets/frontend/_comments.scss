@@ -51,9 +51,9 @@
         }
       }
       .comment_text {
-        width: calc(100% - 160px);
-        margin-left: 5px;
-        margin-right: 5px;
+        width: auto;
+        flex: 1;
+        padding: 7px;
         overflow: auto;
         .comment_text_input{
           height: auto;
@@ -79,11 +79,12 @@
         }
       }
       .comment_user{
+        width: auto;
+        max-width: 150px;
         display: flex;
         flex-wrap: wrap;
         border-style: solid;
         border-width: 1px;
-        width: 100px;
         height: 40px;
         text-align: center;
         .comment_user_name{

@@ -6,3 +6,109 @@
 .frontend_index {
   color: red;
 }
+
+.posts_info {
+  width: 100%;
+  ul {
+    overflow:hidden;
+    text-overflow:ellipsis;
+    padding: 0;
+    list-style-type: none;
+    width: 100%;
+    li {
+      padding: 0;
+      list-style-type: none;
+      margin: 15px;
+      width: auto;
+      display:flex;
+          .label_title_header {
+            padding: 0;
+            list-style-type: none;
+            text-overflow:ellipsis;
+            border-width: 1px;
+            width: auto;
+            text-align:center;
+            word-break: break-all;
+            flex: 1;
+          }
+          .label_views_header {
+            font-weight: normal;
+            text-overflow:ellipsis;
+            width: 50px;
+            text-align:center;
+          }
+          .label_comments_count_header {
+            font-weight: normal;
+            text-overflow:ellipsis;
+            width: 50px;
+            text-align:center;
+          }
+      .label_title {
+        padding: 0;
+        list-style-type: none;
+        text-overflow:ellipsis;
+        border-width: 1px;
+        width: auto;
+        flex: 1;
+        text-align:center;
+        word-break: break-all;
+      }
+      .label_views {
+        width: 50px;
+        font-weight: normal;
+        text-overflow:ellipsis;
+        border-style: solid;
+        border-width: 1px;
+        margin-top: auto;
+        margin-bottom: auto;
+        text-align:center;
+      }
+      .label_comments_count {
+        width: 50px;
+        font-weight: normal;
+        text-overflow:ellipsis;
+        border-style: solid;
+        border-width: 1px;
+        margin-top: auto;
+        margin-bottom: auto;
+        text-align:center;
+      }
+    }
+  }
+}
+.label_forum_info{
+  font-weight: normal;
+}
+.warning_tags{
+    .warning_tags_desc{
+        padding-bottom:5px;
+    }
+    margin-bottom: 15px;
+    span:nth-child(n) {
+        font-weight: bold;
+        border-style: solid;
+        border-width: 2px;
+        margin: 5px;
+        padding: 3px;
+    }
+    .category_warning{
+        background-color: $button-category-bg;
+        color: $button-category-color;
+        border-color: darken($button-category-bg,60%);
+    }
+    .fact_type_warning{
+        background-color: $button-fact-type-bg;
+        color: $button-fact-type-color;
+        border-color: darken($button-fact-type-bg,60%);
+    }
+    .genre_warning{
+        background-color: $button-genre-bg;
+        color: $button-genre-color;
+        border-color: darken($button-genre-bg,60%);
+    }
+    .topic_warning{
+        background-color: $button-topic-bg;
+        color: $button-topic-color;
+        border-color: darken($button-topic-bg,60%);
+    }
+}
