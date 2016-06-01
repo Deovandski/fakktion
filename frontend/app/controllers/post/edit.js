@@ -55,7 +55,7 @@ export default Ember.Controller.extend ({
       return charsLeft + ' Characters left.';
     }
   }),
-  verifyfactLink: Ember.computed('model.fact_link', function() {
+  verifyFactLink: Ember.computed('model.fact_link', function() {
     if(this.get('model.fact_link').length < 4) {
       this.set('clientSideValidationComplete',false);
       return "Past Complete URL";
@@ -65,12 +65,12 @@ export default Ember.Controller.extend ({
       var htmlString = this.get('model.fact_link').match(rx);
       if (htmlString !== null){
         this.set('clientSideValidationComplete',true);
+        return '';
       }
       else {
         this.set('clientSideValidationComplete',false);
         return "URL missing HTTP:// or HTTPS://";
       }
-      return '';
     }
   }),
   verifyFictionLink: Ember.computed('model.fiction_link', function() {
@@ -79,8 +79,16 @@ export default Ember.Controller.extend ({
       return "Past Complete URL";
     }
     else {
-      this.set('clientSideValidationComplete',true);
-      return '';
+      var rx = new RegExp("^(http|https)://");
+      var htmlString = this.get('model.fiction_link').match(rx);
+      if (htmlString !== null){
+        this.set('clientSideValidationComplete',true);
+        return '';
+      }
+      else {
+        this.set('clientSideValidationComplete',false);
+        return "URL missing HTTP:// or HTTPS://";
+      }
     }
   }),
   verifyGenre: Ember.computed('model.genreID', function() {

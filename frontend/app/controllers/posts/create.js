@@ -43,8 +43,16 @@ export default Ember.Controller.extend ({
         return "Invalid URL";
       }
       else {
-        this.set("clientSideValidationComplete", true);
-        return "";
+        var rx = new RegExp("^(http|https)://");
+        var htmlString = this.get('factLink').match(rx);
+        if (htmlString !== null){
+          this.set('clientSideValidationComplete',true);
+          return '';
+        }
+        else {
+          this.set('clientSideValidationComplete',false);
+          return "URL missing HTTP:// or HTTPS://";
+        }
       }
     }
     else {
@@ -59,8 +67,16 @@ export default Ember.Controller.extend ({
         return "Invalid URL";
       }
       else {
-        this.set("clientSideValidationComplete", true);
-        return "";
+        var rx = new RegExp("^(http|https)://");
+        var htmlString = this.get('fictionLink').match(rx);
+        if (htmlString !== null){
+          this.set('clientSideValidationComplete',true);
+          return '';
+        }
+        else {
+          this.set('clientSideValidationComplete',false);
+          return "URL missing HTTP:// or HTTPS://";
+        }
       }
     }
     else {
