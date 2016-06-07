@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Color for Warning messages.
+red='tput setaf 1; tput setab 7'
+reset='tput sgr0'
+green='tput setaf 2'
+
 setupBaseReqs(){
   deployUser="$1"
   # Min necessary for NGINX, Postgres, Ruby, Bundler and Rails.
@@ -19,9 +24,7 @@ setupBaseReqs(){
   else
     echo "$deployUser does not exist."
     echo "run sudo adduser, followed by sudo passwd"
-    RED='\033[0;31m'
-    NC='\033[0m'
-    echo "${RED}DO NOT MOVE TO STEP 2!${NC} RETRY STEP 1 AFTER CREATING USER"
+    echo "${red}DO NOT MOVE TO STEP 2!${reset} RETRY STEP 1 AFTER CREATING USER"
   fi
   
 }
