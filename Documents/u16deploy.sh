@@ -17,18 +17,19 @@ setupBaseReqs(){
     fi
   else
     echo "$user does not exist. Creating one now..."
-    useradd "$deployUser"
-    passwd "$deployUser"
+    sudo useradd "$deployUser"
+    sudo passwd "$deployUser"
     mv /home/"$USER"/Fakktion /home/"$deployUser"
-    cd /home/"$deployUser"/Fakktion
+    echo "Fakktion moved to /home/$deployUser/Fakktion"
   fi
   # Check GemFile.lock for exactly what is being installed from https://rubygems.org/.
   bundle install
   echo "Base Reqs Finished"
-
+  
 }
 setupApp(){
   deployUser="$1"
+  deployDBName="$2"
   # Make sure that we are in the proper place.
   cd /home/"$deployUser"/Fakktion
 
@@ -68,8 +69,8 @@ setupApp(){
   # Database SETUP
   echo "A Postgres User with name $deployUser will now be created. Please enter the password for it, and don't forget to write it down!'"
   sudo -u postgres createuser --superuser "$deployUser" --pwprompt
-  echo "Creating the fakktion database'"
-  sudo -u "$deployUser" createdb fakktion
+  echo "Creating the $deployDBName database'"
+  sudo -u "$deployUser" createdb "$deployDBName"
 
   # Create necessary folders and files.
   echo "Creating necessary folders..."
@@ -150,13 +151,13 @@ then
 else    
   if [ "$1" = 1 ]
   then
-    if [ $# -eq 2 ]
+    if [ $# -eq 3 ]
     then
-      setupBaseReqs "$2"
+      setupBaseReqs "$2" "$3"
     else
       echo "User in which Puma should use to run Fakktion was not provided."
-      echo "Usage: Step user"
-      echo "Example: 1 fakktionApp"
+      echo "Usage: Step user DBNAME"
+      echo "Example: 1 fakktionApp fakktionDB"
     fi
   elif [ "$1" = 2 ]
   then
