@@ -1,9 +1,13 @@
 #!/bin/bash
 
-# Color for Warning messages.
-red='tput setaf 1; tput setab 7'
-reset='tput sgr0'
-green='tput setaf 2'
+# Colors for Scrip Messages.
+boldTxt=$(tput bold)
+red=${boldTxt}$(tput setaf 1)
+cyan=${boldTxt}$(tput setaf 6)
+whiteBg=$(tput setab 7)
+blackBg=$(tput setab 0)
+warn=${whiteBg}$(red)
+inform=${blackBg}$(cyan)
 
 setupBaseReqs(){
   deployUser="$1"
@@ -20,11 +24,11 @@ setupBaseReqs(){
     else
       sudo mv /home/"$USER"/Fakktion /home/"$deployUser/Fakktion"
     fi
-    echo "Base Reqs Finished"
+    echo "${inform}Base Reqs Finished ${reset}"
   else
     echo "$deployUser does not exist."
     echo "run sudo adduser, followed by sudo passwd"
-    echo "${red}DO NOT MOVE TO STEP 2!${reset} RETRY STEP 1 AFTER CREATING USER"
+    echo "${warn} DO NOT MOVE TO STEP 2! ${reset} RETRY STEP 1 AFTER CREATING USER"
   fi
   
 }
@@ -70,13 +74,13 @@ setupApp(){
   echo "  secret_key_base: $(rake secret)" >> config/secrets.yml
 
   # Database SETUP
-  echo "A Postgres User with name $deployUser will now be created. Please enter the password for it, and don't forget to write it down!'"
+  echo "A Postgres User with name $deployUser will now be created. Please enter the password for it, and don't forget to write it down!${reset}'"
   sudo -u postgres createuser --superuser "$deployUser" --pwprompt
   echo "Creating the $deployDBName database'"
   sudo -u "$deployUser" createdb "$deployDBName"
 
   # Create necessary folders and files.
-  echo "Creating necessary folders..."
+  echo "${inform}Creating necessary folders...${reset}"
   mkdir /home/"$deployUser"/Fakktion/tmp
   mkdir /home/"$deployUser"/Fakktion/tmp/puma
   touch /home/"$deployUser"/Fakktion/tmp/puma/pid
@@ -95,11 +99,11 @@ setupApp(){
   sudo ln -s /home/"$deployUser"/Fakktion/public /var/www/Fakktion/public
   
   # Precompile App.
-  echo "precompiling Fakktion"
+  echo "${inform}precompiling Fakktion${reset}"
   rake assets:precompile
 
   # Setup Database.
-  echo "Configs for Fakktion database underway..."
+  echo "${inform}Configs for Fakktion database underway...${reset}"
   rake db:setup RAILS_ENV=production
 
 }
@@ -124,7 +128,7 @@ setupPuma(){
   # Link Fakktion to Puma
   /etc/init.d/puma add /home/"$deployUser"/Fakktion "$deployUser" /home/"$deployUser"/Fakktion/config/puma.rb /home/"$deployUser"/Fakktion/log/puma.log
 
-  echo "PUMA is ready!"
+  echo "${inform}PUMA is ready!${reset}"
 }
 
 setupNGINX(){
@@ -138,7 +142,7 @@ setupNGINX(){
     cat fakktion_16_non_ssl.conf >> /etc/nginx/sites-available/default
   fi
   service nginx restart
-  echo "NGINX is ready!"
+  echo "${inform}NGINX is ready!${reset}"
 }
 
 
@@ -146,7 +150,7 @@ setupNGINX(){
 
 if [ $# -eq 0 ]
 then
-  echo "No arguments provided. See Below for Usage according to each step:"
+  echo "${warn}No arguments provided. See Below for Usage according to each step:${reset}"
   echo "1 User"
   echo "2 User"
   echo "3 User"
@@ -158,7 +162,7 @@ else
     then
       setupBaseReqs "$2"
     else
-      echo "User in which Puma should use to run Fakktion was not provided."
+      echo "${warn}User in which Puma should use to run Fakktion was not provided.${reset}"
       echo "Usage: Step user"
       echo "Example: 1 fakktionApp"
     fi
@@ -168,7 +172,7 @@ else
     then
       setupApp "$2" "$3"
     else
-      echo "User in which Puma should use to run Fakktion was not provided."
+      echo "${warn}User in which Puma should use to run Fakktion was not provided.${reset}"
       echo "Usage: Step user DBNAME"
       echo "Example: 2 fakktionApp fakktionDB"
     fi
@@ -179,7 +183,7 @@ else
     then
       setupPuma "$2"
     else
-      echo "User in which Puma should use to run Fakktion was not provided."
+      echo "${warn}User in which Puma should use to run Fakktion was not provided.${reset}"
       echo "Usage: Step user"
       echo "Example: 3 fakktionApp"
     fi
@@ -189,7 +193,7 @@ else
     then
       setupNGINX "$2" "$3"
     else
-      echo "Incorrect # of arguments..."
+      echo "${warn}Incorrect # of arguments...${reset}"
       echo "Usage: Step user SSLConfig? "
       echo "Example: 4 fakktionApp y/n "
     fi
