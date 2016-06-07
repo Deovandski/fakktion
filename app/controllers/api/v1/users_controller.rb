@@ -17,7 +17,6 @@ class Api::V1::UsersController < ApiController
     tempUser = User.new(user_params.except(:current_password))
     tempUser.sign_in_count = 0
     tempUser.webpage_url = ""
-    tempUser.is_banned = false
     tempUser.facebook_url = ""
     tempUser.twitter_url = ""
     tempUser.is_admin = false
