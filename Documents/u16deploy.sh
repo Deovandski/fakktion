@@ -142,6 +142,12 @@ setupNGINX(){
 
 if [ $# -eq 0 ]
 then
+  echo "No arguments provided. See Below for Usage according to each step:"
+  echo "1 User"
+  echo "2 User"
+  echo "3 User"
+  echo "4 User SSSL?"
+else    
   if [ "$1" = 1 ]
   then
     if [ $# -eq 2 ]
@@ -184,12 +190,5 @@ then
       echo "Example: 4 fakktionApp y/n "
     fi
   fi
-
-else
-    echo "No arguments provided. See Below for Usage:"
-    echo "1 User"
-    echo "2 User"
-    echo "3 User"
-    echo "4 User SSSL?"
 fi
 

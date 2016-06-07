@@ -16,15 +16,16 @@ Notes:
 2. Run ```sudo apt-get update```.
 3. Install Git Core ```sudo apt-get install -y git-core```
 4. From your home/$USER directory, clone repo through ```git clone https://github.com/YOURUSERNAME/Fakktion.git``` (HTTPS instead of SSH suggested as it will make it harder to accidentally push commits back into origin master (or the branch that you use as master.)
-5. Navigate to Fakktion/Documents folder, and execute ```. u16deploy.sh 1 $USER``` (Or change $USER to the user where Puma will use to control the app.)
-6. Now go into USER/Fakktion/config and execute ```nano database.yml```, then change the **username** to the USER, **password** to an unique one, and database to **fakktion**. The next step will setup the database for you, but you will need to enter the password when requested.
-7. Navigate back to Documents folder, and execute ```. u16deploy.sh 2 $USER```.
-8. Execute ```u16deploy.sh 3 $USER``` to setup PUMA Daemon service through init.d.
-9. If you need **SSL**, then open **fakktion_16_ssl.conf** and change the certificate details.
-10. Execute ```. u16deploy.sh 4 $USER SSL?``` (replace SSL? with y or n) to setup NGINX in order to put your app live.
-11. ```sudo reboot```.
-12. Now mannually run Fakktion with ```bundle exec puma -e production -d -b unix:///home/USER/Fakktion/shared/sockets/puma.sock```. **This command is needed only once!**
-13. Visit your live website! Not working? Check the **Checking Logs** section for more info.
+5. Allow Execution access to the main script with ```sudo chmod +x u16deploy.sh```.
+6. Navigate to Fakktion/Documents folder, and execute ```./u16deploy.sh 1 $USER``` (Or change $USER to the user where Puma will use to control the app.)
+7. Now go into USER/Fakktion/config and execute ```nano database.yml```, then change the **username** to the USER, **password** to an unique one, and database to **fakktion**. The next step will setup the database for you, but you will need to enter the password when requested.
+8. Navigate back to Documents folder, and execute ```./u16deploy.sh 2 $USER```.
+9. Execute ```./u16deploy.sh 3 $USER``` to setup PUMA Daemon service through init.d.
+10. If you need **SSL**, then open **fakktion_16_ssl.conf** and change the certificate details.
+11. Execute ```./u16deploy.sh 4 $USER SSL?``` (replace SSL? with y or n) to setup NGINX in order to put your app live.
+12. ```sudo reboot```.
+13. Now mannually run Fakktion with ```bundle exec puma -e production -d -b unix:///home/USER/Fakktion/shared/sockets/puma.sock```. **This command is needed only once!**
+14. Visit your live website! Not working? Check the **Checking Logs** section for more info.
 
 ## Updating Project Source Code without moving database or changing VMs. (**WIP**)
 1. Make sure that the Admin notice was given in the website, and that users had at least 72 hours to deal with it.
