@@ -1,4 +1,4 @@
-# Ubuntu Server 16.04 Deployment (**WIP**)
+# Ubuntu Server 16.04 Deployment
 In order to deploy an ember-cli-rails project to Ubuntu Server 16.04, please follow the initial deploy section.
 
 Notes:
@@ -29,7 +29,7 @@ Notes:
 15. Initiate Puma socket with the final part of the script: ```. u16deploy.sh 5```.
 16. Visit your live website! Not working? Go to the **Checking Logs** section for more info.
 
-## Updating Project Source Code without moving database or changing VMs.
+## Updating Project Source Code without moving database or changing VMs. (**WIP**)
 1. Make sure that the Admin notice was given in the website, and that users had at least 72 hours to deal with it.
 2. Stop puma with "/etc/init.d/puma stop".
 3. Run the backup script (**backup_script_16.sh**) to save the puma.rb, secrets.yml and database.yml.
@@ -39,7 +39,7 @@ Notes:
 6. Run the recover script (**recover_script_16.sh**) to restore the unique puma.rb, secrets.yml and database.yml
 7. Start puma back with "/etc/init.d/puma restart".
 
-## Updating Project Source Code with database changes or between VMs.
+## Updating Project Source Code with database changes or between VMs. (**WIP**)
 Follow the instructions from the [official Docs](http://www.postgresql.org/docs/9.1/static/backup.html) before following the instructions from this guide. 
 
 **DO NOT MOVE DATABASE WITH PENDING MIGRATIONS!** If you do have pending migrations, you must follow the normal updating guide before following this guide otherwise you will risk desync schemas! 

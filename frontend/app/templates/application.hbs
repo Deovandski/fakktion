@@ -1,43 +1,48 @@
 <div id="app_container">
 <header>
-	{{partial 'header'}}
+    {{partial 'header'}}
 </header>
 <main>
-	{{#if displayLeftSidebar}}
-		<div class="left_sidebar">
-			{{partial 'left-sidebar/categories-partial'}}
-			{{partial 'left-sidebar/genres-partial'}}
-		</div>
-	{{else}}
-	
-	{{/if}}
-	<div class="central">
-		{{#if displayCentralPanel}}
-			<div class="central_panel">
-				{{partial 'central-panel/central-panel-partial'}}
-			</div>
-		{{/if}}
-			<div class="panel_toggler">
-				<div class="panel_toggler_left"><button class="button_bar" {{action "toggleLeftSidebar"}}>&lt; |</button></div>
-				<div class="panel_toggler_central"><button class="button_bar" {{action "toggleCentralPanel"}}><img height="21px" src="assets/upper_pannel_icon.png"></button></div>
-				<div class="panel_toggler_right"><button class="button_bar" {{action "toggleRightSidebar"}}>| &gt;</button></div>
-			</div>
-			<div class="shared_panel">
-				{{outlet}}
-			</div>
-	</div>
-	
-	{{#if displayRightSidebar}}
-		<div class="right_sidebar">
-			{{partial 'right-sidebar/fact-types-partial'}}
-			{{partial 'right-sidebar/posting-dates-partial'}}
-		</div>
-	{{else}}
-	
-	{{/if}}
+    {{#if displayLeftSidebar}}
+        <div class="left_sidebar">
+            {{partial 'left-sidebar/categories-partial'}}
+            {{partial 'left-sidebar/genres-partial'}}
+        </div>
+    {{else}}
+    
+    {{/if}}
+    <div class="central">
+        {{#if displayCentralPanel}}
+            <div class="central_panel">
+                {{partial 'central-panel/central-panel-partial'}}
+            </div>
+        {{/if}}
+            <div class="panel_toggler">
+              <div class="pannel_container">
+                <button class="button_bar" id="leftSidebarToggler"  {{action "toggleLeftSidebar"}}>Left Panel</button>
+                {{#tooltip-on-component target='#leftSidebarToggler'}}Toggle Left Panel{{/tooltip-on-component}}
+                <button class="button_bar" id="centralPanelToggler" {{action "toggleCentralPanel"}}>Upper Panel</button>
+                {{#tooltip-on-component target='#centralPanelToggler'}}Toggle Central Panel{{/tooltip-on-component}}
+                <button class="button_bar" id="rightSidebarToggler"  {{action "toggleRightSidebar"}}>Right Panel</button>
+                {{#tooltip-on-component target='#rightSidebarToggler'}}Toggle Right Panel{{/tooltip-on-component}}
+              </div>
+            </div>
+            <div class="shared_panel">
+                {{outlet}}
+            </div>
+    </div>
+    
+    {{#if displayRightSidebar}}
+        <div class="right_sidebar">
+            {{partial 'right-sidebar/fact-types-partial'}}
+            {{partial 'right-sidebar/posting-dates-partial'}}
+        </div>
+    {{else}}
+    
+    {{/if}}
 </main>
 <footer>
-	{{partial 'footer'}}
+    {{partial 'footer'}}
 </footer>
 {{server422Watcher}}
 </div>

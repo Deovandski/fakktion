@@ -44,7 +44,7 @@
             text-align:center;
           }
       .label_title {
-        padding: 0;
+        padding: 0px 5px 0px 0px;
         list-style-type: none;
         text-overflow:ellipsis;
         border-width: 1px;
@@ -80,16 +80,20 @@
   font-weight: normal;
 }
 .warning_tags{
+    padding-bottom: 20px;
+    height: auto;
     .warning_tags_desc{
         padding-bottom:5px;
     }
-    margin-bottom: 15px;
-    span:nth-child(n) {
+    div:nth-child(n) {
         font-weight: bold;
         border-style: solid;
         border-width: 2px;
         margin: 5px;
+        height: auto;
+        width: auto;
         padding: 3px;
+        display: inline-block;
     }
     .category_warning{
         background-color: $button-category-bg;

@@ -278,6 +278,9 @@ export default Ember.Controller.extend ({
     goHome : function(){
         this.transitionToRoute('index');
     },
+    goSearch : function(){
+        this.transitionToRoute('search');
+    },
     logout() {
       this.get('session').invalidate();
     }

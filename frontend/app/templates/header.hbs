@@ -5,11 +5,12 @@
     <li>
       {{#if sessionAccount.user}}Signed in as {{sessionAccount.user.display_name}}{{/if}}
     </li>
-    {{#if isAdmin}}
-      <li>
-        {{#link-to 'adminPanel'}}Admin{{/link-to}}
-      </li>
     {{/if}}
+    <li>
+      <img src="/assets/search.png" class="searchIcon" id="searchIconTooltip" {{action 'goSearch'}}>
+      {{#tooltip-on-component target='#searchIconTooltip'}}Search{{/tooltip-on-component}}
+    </li>
+    {{#if session.isAuthenticated}}
     <li>
       {{#link-to 'user' sessionAccount.user.id}}Profile{{/link-to}}
     </li>
@@ -18,7 +19,7 @@
     </li>
   {{else}}
     <li>
-      <strong>EXP v0.7 </strong>
+      <strong>EXP v0.8 </strong>
     </li>
     <li>
       {{#link-to 'users.create'}}SignUp{{/link-to}}

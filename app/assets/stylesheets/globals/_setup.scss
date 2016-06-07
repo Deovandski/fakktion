@@ -132,7 +132,7 @@ html,body {
             flex-wrap: wrap;
             width: auto;
             max-width: 230px;
-            height: auto;
+            height: 100%;
             text-align: center;
             border-width: 2px;
             .sidebar_sub {
@@ -140,8 +140,6 @@ html,body {
               border-width: 3px;
               display: flex;
               flex-direction: column;
-              min-height: 30%;
-              max-height: 70%;
               .tag_header {
                 display: flex;
                 flex: 1;
@@ -362,27 +360,19 @@ html,body {
               }
             }
             .panel_toggler{
-              margin: 10px auto 10px auto;
               width: auto;
-              max-width: 210px;
+              max-width: 310px;
               height: 20px;
-              display: flex;
-              .panel_toggler_left{
-                flex-grow: 1;
-                flex-direction: column;
-                flex-wrap: wrap;
-              }
-              .panel_toggler_central{
-                flex-grow: 1;
-                flex-direction: column;
-                flex-wrap: wrap;
-                margin-right: 10px;
-                margin-left: 10px;
-              }
-              .panel_toggler_right{
-                flex-grow: 1;
-                flex-direction: column;
-                flex-wrap: wrap;
+              margin: 10px auto 10px auto;
+              .pannel_container{
+                display: flex;
+                button {
+                  flex-grow: 1;
+                  flex-direction: column;
+                  flex-wrap: wrap;
+                  width: auto;
+                  margin: 2px 5px 2px 5px;
+                }
               }
             }
             .shared_panel {
@@ -453,4 +443,20 @@ html,body {
   height: auto !important;
   width: auto !important;
 }
-
+.searchIcon {
+    flex-shrink: 3;
+    flex: 0;
+    color: #aaa;
+    text-align: right;
+    display: inline-block;
+    letter-spacing: 1px;
+    padding: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    height: 100%;
+    width: auto;
+    max-height: 30px;
+    max-width: 30px;
+    padding: 0px;
+    margin: 0px 0px 7px 0px;
+  }
