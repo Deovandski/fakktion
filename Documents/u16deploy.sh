@@ -108,11 +108,6 @@ setupApp(){
   ln -s /home/"$USER"/Fakktion/shared/sockets/puma.sock /var/www/Fakktion/shared/sockets/puma.sock
   ln -s /home/"$USER"/Fakktion/public /var/www/Fakktion/public
   
-  # Precompile App.
-  echo "${inform}precompiling Fakktion${reset}"
-  cd /home/$USER/Fakktion/public
-  rake assets:precompile
-
   # Setup Database.
   echo "${inform}Configs for Fakktion database underway...${reset}"
   rake db:setup RAILS_ENV=production
@@ -122,7 +117,7 @@ setupApp(){
 # Setup Puma
 setupPuma(){
   deployUser="$1"
-  sudo deluser $deployUser sudo
+  deluser $deployUser sudo
   echo "${inform}$deployUser is no longer a sudo user...${reset}"
   # Copy the init script to services directory 
   cp puma /etc/init.d

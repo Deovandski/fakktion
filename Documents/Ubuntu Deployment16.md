@@ -1,4 +1,4 @@
-# Ubuntu Server 16.04 Deployment
+# Ubuntu Server 16.04 Deployment (**WIP**)
 In order to deploy an ember-cli-rails project to Ubuntu Server 16.04, please follow the initial deploy section.
 
 Notes:
@@ -17,21 +17,20 @@ Notes:
 3. Install Git Core ```sudo apt-get install -y git-core```
 4. From your home/$USER directory, clone repo through ```git clone https://github.com/YOURUSERNAME/Fakktion.git``` (HTTPS instead of SSH suggested as it will make it harder to accidentally push commits back into origin master (or the branch that you use as master.)
 5. Navigate to Fakktion/Documents folder, and allow Execution access to the main script with ```sudo chmod +x u16deploy.sh```.
-6. Now run ```./u16deploy.sh 1 $USER``` (Or change $USER to the user where Puma will use to control the app. You must the same user whenever requested from now on.)
+6. Now run ```./u16deploy.sh 1 USER``` (Or change $USER to the user where Puma will use to control the app. You must the same user whenever requested from now on.)
 7. If the App has been created as another user, you must login as said user for steps 8 through 9.
 8. Now go into USER/Fakktion/config and execute ```nano database.yml```, then change the **username** to DBUSER, **password** to DBPW, and **database** to DBNAME. The next step will setup the database for you, but you will to match the same exact info that you entered in this step.
 9. Navigate back to Documents folder, and execute ```./u16deploy.sh 2 DBUSER DBNAME```.
 10. Now login back as the previous user if you did switch accounts. The reason for this is because the app user was granted temporary sudo to install some initial dependencies that could not have worked non-sudo. However, this only applies to the initial install.
-11. Execute ```sudo ./u16deploy.sh 3 $USER``` to setup PUMA Daemon service through init.d.
+11. Execute ```sudo ./u16deploy.sh 3 USER``` to setup PUMA Daemon service through init.d.
 12. If you need **SSL**, then open **fakktion_16_ssl.conf** and change the certificate details.
-13. Execute ```sudo ./u16deploy.sh 4 $USER SSL?``` (replace SSL? with y or n) to setup NGINX in order to put your app live.
+13. Execute ```sudo ./u16deploy.sh 4 USER SSL?``` (replace SSL? with y or n) to setup NGINX in order to put your app live.
 14. ```sudo reboot```, then login as the app user.
-15. Now mannually run Fakktion with ```bundle exec puma -e production -d -b unix:///var/www/Fakktion/shared/sockets/puma.sock```. **This command is needed only once!**
-16. Visit your live website! Not working? Check the **Checking Logs** section for more info. Otherwise check the graph below for a summary of how the project interact.
+15. Now go to the Fakktion folder and run ```rake assets:precompile```.
+16. Now mannually start Fakktion with ```bundle exec puma -e production -d -b unix:///var/www/Fakktion/shared/sockets/puma.sock```. **This command is needed only once!**
+17. Visit your live website! You can also use ```wget HOSTNAME``` to check... Not working? Check the **Checking Logs** section for more info. Otherwise check the graph below for a summary of how the project interact.
 
-(WIP)
-
-## Updating Project Source Code without moving database or changing VMs. (**WIP**)
+## Updating Project Source Code without moving database or changing VMs.
 1. Make sure that the Admin notice was given in the website, and that users had at least 72 hours to deal with it.
 2. Stop puma with "/etc/init.d/puma stop".
 3. Run the backup script (**backup_script_16.sh**) to save the puma.rb, secrets.yml and database.yml.
