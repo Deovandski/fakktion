@@ -23,24 +23,24 @@ setupBaseReqs(){
     echo "${inform}Base Reqs Finished ${reset}"
   else
     echo "$deployUser does not exist."
-    echo "run sudo adduser, followed by sudo passwd"
-    echo "${warn} DO NOT MOVE TO STEP 2! ${reset} RETRY STEP 1 AFTER CREATING USER"
+    echo "${warn} DO NOT FOLLOW THE NEXT STEP! ${reset}"
+    echo "${warn} RUN: sudo adduser $deployUser sudo ${reset}, then try again!"
   fi
   
 }
 setupApp(){
-  deployUser="$1"
+  databaseUser="$1"
   deployDBName="$2"
   # Make sure that we are in the proper place.
-  cd /home/"$deployUser"/Fakktion
+  cd /home/"$USER"/Fakktion
   # Check GemFile.lock for exactly what is being installed from https://rubygems.org/.
-  bundle install
   
   # Install NPM (Node.js Package Manager) followed by installing Node.js
   # The install methodology below avoids the use of NVM (node version manager.)
   sudo apt-get -y install npm
   sudo npm cache clean -f
   # n package which install latest stabe NodeJS | https://www.npmjs.com/package/n
+  # Using apt-get not recommend due to lack of support. https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
   sudo npm install -g n
   sudo n stable
 
@@ -49,6 +49,7 @@ setupApp(){
   # guarantees that the chances of something going haywire is minimal.
   sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
 
+  echo "${inform}Creating puma.rb according to system configs...${reset}"
   # Install all Fakktion frontend dependencies
   cd frontend
   # NPM install takes care of Ember CLI Middleware
@@ -59,40 +60,47 @@ setupApp(){
   cd ..
 
   # Puma configuration
+  echo "${inform}Creating puma.rb according to system configs...${reset}"
   echo "" > config/puma.rb
   echo "workers $(grep -c processor /proc/cpuinfo)" >> config/puma.rb
   cat Documents/partial_puma_16.txt >> config/puma.rb
 
   # Set unique local secrets.yml
-  echo "Setting Unique Secret"
+  echo "${inform}Setting Unique Rails Secret used for managing sessions...${reset}"
   echo "" > config/secrets.yml
   cat Documents/partial_secrets_16.txt >> config/secrets.yml
   echo "  secret_key_base: $(rake secret)" >> config/secrets.yml
 
   # Database SETUP
-  echo "A Postgres User with name $deployUser will now be created. Please enter the password for it, and don't forget to write it down!${reset}'"
-  sudo -u postgres createuser --superuser "$deployUser" --pwprompt
-  echo "Creating the $deployDBName database'"
-  sudo -u "$deployUser" createdb "$deployDBName"
+  echo "${inform}A Postgres User with name $databaseUser will now be created. Please enter the password for it, and don't forget to write it down!${reset}'"
+  sudo -u postgres createuser --superuser "$databaseUser" --pwprompt
+  echo "${inform}Creating the $deployDBName database${reset}'"
+  sudo -u "$databaseUser" createdb "$deployDBName"
 
   # Create necessary folders and files.
   echo "${inform}Creating necessary folders...${reset}"
-  mkdir /home/"$deployUser"/Fakktion/tmp
-  mkdir /home/"$deployUser"/Fakktion/tmp/puma
-  touch /home/"$deployUser"/Fakktion/tmp/puma/pid
-  touch /home/"$deployUser"/Fakktion/tmp/puma/state
-  mkdir /home/"$deployUser"/Fakktion/log
-  touch /home/"$deployUser"/Fakktion/log/puma.log
-  mkdir /home/"$deployUser"/Fakktion/shared
-  mkdir /home/"$deployUser"/Fakktion/shared/log
-  mkdir /home/"$deployUser"/Fakktion/shared/sockets
-  touch /home/"$deployUser"/Fakktion/shared/sockets/puma.sock
-  touch /home/"$deployUser"/Fakktion/shared/log/puma.stderr.log
-  touch /home/"$deployUser"/Fakktion/shared/log/puma.stdout.log
-
+  mkdir /home/"$USER"/Fakktion/tmp
+  mkdir /home/"$USER"/Fakktion/tmp/puma
+  touch /home/"$USER"/Fakktion/tmp/puma/pid
+  touch /home/"$USER"/Fakktion/tmp/puma/state
+  mkdir /home/"$USER"/Fakktion/log
+  touch /home/"$USER"/Fakktion/log/puma.log
+  mkdir /home/"$USER"/Fakktion/shared
+  mkdir /home/"$USER"/Fakktion/shared/log
+  mkdir /home/"$USER"/Fakktion/shared/sockets
+  touch /home/"$USER"/Fakktion/shared/sockets/puma.sock
+  touch /home/"$USER"/Fakktion/shared/log/puma.stderr.log
+  touch /home/"$USER"/Fakktion/shared/log/puma.stdout.log
+  
+  # Setup for Symbolic link
+  echo "${inform}Setting up Symbolic Link to /var/www/Fakktion...${reset}"
+  sudo mkdir /var/www/Fakktion
+  sudo chown -R "$USER" /var/www/Fakktion
+  mkdir /var/www/Fakktion/shared
+  mkdir /var/www/Fakktion/shared/sockets
   # Create Symlinks on /var/www for future NGINX connection to PUMA
-  sudo ln -s /home/"$deployUser"/Fakktion/shared/sockets/puma.sock /var/www/Fakktion/shared/sockets/puma.sock
-  sudo ln -s /home/"$deployUser"/Fakktion/public /var/www/Fakktion/public
+  ln -s /home/"$USER"/Fakktion/shared/sockets/puma.sock /var/www/Fakktion/shared/sockets/puma.sock
+  ln -s /home/"$USER"/Fakktion/public /var/www/Fakktion/public
   
   # Precompile App.
   echo "${inform}precompiling Fakktion${reset}"
@@ -106,6 +114,8 @@ setupApp(){
 
 # Setup Puma
 setupPuma(){
+  sudo deluser $deployUser sudo
+  echo "${inform}$deployUser is no longer a sudo user...${reset}"
   deployUser="$1"
   # Copy the init script to services directory 
   cp puma /etc/init.d
@@ -168,9 +178,9 @@ else
     then
       setupApp "$2" "$3"
     else
-      echo "${warn}User in which Puma should use to run Fakktion was not provided.${reset}"
-      echo "Usage: Step user DBNAME"
-      echo "Example: 2 fakktionApp fakktionDB"
+      echo "${warn}DBUSER AND/OR DBNAME was not provided.${reset}"
+      echo "Usage: Step DBUSER DBNAME"
+      echo "Example: 2 fakktionDBUser fakktionDB"
     fi
   
   elif [ "$1" = 3 ]

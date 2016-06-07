@@ -18,14 +18,18 @@ Notes:
 4. From your home/$USER directory, clone repo through ```git clone https://github.com/YOURUSERNAME/Fakktion.git``` (HTTPS instead of SSH suggested as it will make it harder to accidentally push commits back into origin master (or the branch that you use as master.)
 5. Allow Execution access to the main script with ```sudo chmod +x u16deploy.sh```.
 6. Navigate to Fakktion/Documents folder, and execute ```./u16deploy.sh 1 $USER``` (Or change $USER to the user where Puma will use to control the app.)
-7. Now go into USER/Fakktion/config and execute ```nano database.yml```, then change the **username** to DBUSER, **password** to DBPW, and **database** to DBNAME. The next step will setup the database for you, but you will to match the same exact info that you entered in this step.
-8. Navigate back to Documents folder, and execute ```./u16deploy.sh 2 DBUSER DBNAME```.
-9. Execute ```./u16deploy.sh 3 $USER``` to setup PUMA Daemon service through init.d.
-10. If you need **SSL**, then open **fakktion_16_ssl.conf** and change the certificate details.
-11. Execute ```./u16deploy.sh 4 $USER SSL?``` (replace SSL? with y or n) to setup NGINX in order to put your app live.
-12. ```sudo reboot```.
-13. Now mannually run Fakktion with ```bundle exec puma -e production -d -b unix:///home/USER/Fakktion/shared/sockets/puma.sock```. **This command is needed only once!**
-14. Visit your live website! Not working? Check the **Checking Logs** section for more info.
+7. If the App has been created as another user, you must login as said user for steps 8 through 9.
+8. Now go into USER/Fakktion/config and execute ```nano database.yml```, then change the **username** to DBUSER, **password** to DBPW, and **database** to DBNAME. The next step will setup the database for you, but you will to match the same exact info that you entered in this step.
+9. Navigate back to Documents folder, and execute ```./u16deploy.sh 2 DBUSER DBNAME```.
+10. Now login back as the previous user if you did switch accounts. The reason for this is because the app user was granted temporary sudo to install some initial dependencies that could not have worked non-sudo. However, this only applies to the initial install.
+11. Execute ```sudo ./u16deploy.sh 3 $USER``` to setup PUMA Daemon service through init.d.
+12. If you need **SSL**, then open **fakktion_16_ssl.conf** and change the certificate details.
+13. Execute ```sudo ./u16deploy.sh 4 $USER SSL?``` (replace SSL? with y or n) to setup NGINX in order to put your app live.
+14. ```sudo reboot```, then login as the app user.
+15. Now mannually run Fakktion with ```bundle exec puma -e production -d -b unix:///var/www/Fakktion/shared/sockets/puma.sock```. **This command is needed only once!**
+16. Visit your live website! Not working? Check the **Checking Logs** section for more info. Otherwise check the graph below for a summary of how the project interact.
+
+(WIP)
 
 ## Updating Project Source Code without moving database or changing VMs. (**WIP**)
 1. Make sure that the Admin notice was given in the website, and that users had at least 72 hours to deal with it.
@@ -34,7 +38,7 @@ Notes:
 4. Create a database dump as described on the [official Docs](http://www.postgresql.org/docs/9.1/static/backup.html) if you are making new Database migrations.
 4. Pull the changes with ```git pull https://github.com/YOURUSERNAME/Fakktion.git```
 5. Perform the necessary changes including any needed package manager updates.
-6. Run the recover script (**recover_script_16.sh**) to restore the unique puma.rb, secrets.yml and database.yml **(TODO)**
+6. Run the recover script (**recover_script_16.sh**) to restore the unique puma.rb, secrets.yml and database.yml
 7. Start puma back with "/etc/init.d/puma restart".
 
 ## Updating Project Source Code with database changes or between VMs.
@@ -57,7 +61,7 @@ If performing a change of VM, copy the contents of the backup script stored unde
 ```ps aux | grep puma```
 
 ## Manually Running puma
-```bundle exec puma -e production -d -b unix:///path/to/app/Fakktion/shared/sockets/puma.sock```
+```bundle exec puma -e production -d -b unix:///var/www/Fakktion/shared/sockets/puma.sock```
 
 ## Remove app from PUMA
 ```sudo /etc/init.d/puma remove /path/to/app```
