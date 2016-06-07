@@ -13,7 +13,7 @@ setupBaseReqs(){
     then
       cd /home/"$deployUser"/Fakktion
     else
-      mv /home/"$USER"/Fakktion /home/"$deployUser"
+      sudo mv /home/"$USER"/Fakktion /home/"$deployUser"
     fi
   else
     echo "$deployUser does not exist. Creating one now..."
