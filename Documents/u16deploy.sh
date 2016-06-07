@@ -1,13 +1,8 @@
 #!/bin/bash
 
 # Colors for Scrip Messages.
-boldTxt=$(tput bold)
-red=${boldTxt}$(tput setaf 1)
-cyan=${boldTxt}$(tput setaf 6)
-whiteBg=$(tput setab 7)
-blackBg=$(tput setab 0)
-warn=${whiteBg}$(red)
-inform=${blackBg}$(cyan)
+warn=$(tput setaf 0; tput bold; tput setab 1)
+inform=$(tput setaf 6; tput bold; tput setab 0)
 reset=$(tput sgr0)
 
 setupBaseReqs(){
