@@ -16,8 +16,8 @@ Notes:
 2. Run ```sudo apt-get update```.
 3. Install Git Core ```sudo apt-get install -y git-core```
 4. From your home/$USER directory, clone repo through ```git clone https://github.com/YOURUSERNAME/Fakktion.git``` (HTTPS instead of SSH suggested as it will make it harder to accidentally push commits back into origin master (or the branch that you use as master.)
-5. Allow Execution access to the main script with ```sudo chmod +x u16deploy.sh```.
-6. Navigate to Fakktion/Documents folder, and execute ```./u16deploy.sh 1 $USER``` (Or change $USER to the user where Puma will use to control the app.)
+5. Navigate to Fakktion/Documents folder, and allow Execution access to the main script with ```sudo chmod +x u16deploy.sh```.
+6. Now run ```./u16deploy.sh 1 $USER``` (Or change $USER to the user where Puma will use to control the app. You must the same user whenever requested from now on.)
 7. If the App has been created as another user, you must login as said user for steps 8 through 9.
 8. Now go into USER/Fakktion/config and execute ```nano database.yml```, then change the **username** to DBUSER, **password** to DBPW, and **database** to DBNAME. The next step will setup the database for you, but you will to match the same exact info that you entered in this step.
 9. Navigate back to Documents folder, and execute ```./u16deploy.sh 2 DBUSER DBNAME```.

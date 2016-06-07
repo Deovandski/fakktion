@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Colors for Scrip Messages.
-warn=$(tput setaf 0; tput bold; tput setab 1)
+warn=$(tput setaf 5; tput bold; tput setab 0)
 inform=$(tput setaf 6; tput bold; tput setab 0)
 reset=$(tput sgr0)
 
@@ -19,12 +19,13 @@ setupBaseReqs(){
       cd /home/"$deployUser"/Fakktion
     else
       sudo mv /home/"$USER"/Fakktion /home/"$deployUser/Fakktion"
+      sudo adduser $deployUser sudo
     fi
-    echo "${inform}Base Reqs Finished ${reset}"
+    echo "${inform}Base Reqs Finished${reset}"
   else
     echo "$deployUser does not exist."
     echo "${warn} DO NOT FOLLOW THE NEXT STEP! ${reset}"
-    echo "${warn} RUN: sudo adduser $deployUser sudo ${reset}, then try again!"
+    echo "${warn} RUN: sudo adduser $deployUser ${reset}, then try again!"
   fi
   
 }
