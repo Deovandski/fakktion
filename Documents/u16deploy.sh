@@ -1,0 +1,195 @@
+#!/bin/bash
+
+setupBaseReqs(){
+  user="$1"
+  # Min necessary for NGINX, Postgres, Ruby, Bundler and Rails.
+  sudo apt-get install -y libpq-dev nginx ruby2.3 rails bundler
+  # Note regarding using apt-get for every needed package instead of Bundler.
+  # This is a non-DRY approach, and many packages may not be available (especially edge versions.)
+  # An example of it is ruby-active-model-serializers where apt-get only displays 0.9.3 when Fakktion needs 0.10.0.rc5
+  if getent passwd "$1" > /dev/null 2>&1
+  then
+    if [ -d "/home/$user/Fakktion" ]
+    then
+      cd /home/"$user"/Fakktion
+    else
+      mv /home/"$USER"/Fakktion /home/"$user"
+    fi
+  else
+    echo "$user does not exist. Creating One now..."
+    useradd "$user"
+    passwd "$user"
+    mv /home/"$USER"/Fakktion /home/"$user"
+    cd /home/"$user"/Fakktion
+  fi
+  # Check GemFile.lock for exactly what is being installed from https://rubygems.org/.
+  bundle install
+  echo "Base Reqs Finished"
+
+}
+setupApp(){
+  user="$1"
+  # Make sure that we are in the proper place.
+  cd /home/"$USER"/Fakktion
+
+  # Install NPM (Node.js Package Manager) followed by installing Node.js
+  # The install methodology below avoids the use of NVM (node version manager.)
+  sudo apt-get -y install npm
+  sudo npm cache clean -f
+  # n package which install latest stabe NodeJS | https://www.npmjs.com/package/n
+  sudo npm install -g n
+  sudo n stable
+
+  # Fix any ownership issues that may rise from the use of sudo.
+  # Why use Sudo in the first place? because non-sudo installs often lead to issues, and the initial sudo install
+  # guarantees that the chances of something going haywire is minimal.
+  sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
+
+  # Install all Fakktion frontend dependencies
+  cd frontend
+  # NPM install takes care of Ember CLI Middleware
+  npm install
+  # Bower takes care of Ember.js (Ember.js !== Ember CLI)
+  npm install -g bower
+  bower install
+  cd ..
+
+  # Puma configuration
+  echo "" > config/puma.rb
+  echo "workers $(grep -c processor /proc/cpuinfo)" >> config/puma.rb
+  cat Documents/partial_puma_16.txt >> config/puma.rb
+
+  # Set unique local secrets.yml
+  echo "Setting Unique Secret"
+  echo "" > config/secrets.yml
+  cat Documents/partial_secrets_16.txt >> config/secrets.yml
+  echo "  secret_key_base: $(rake secret)" >> config/secrets.yml
+
+  # Database SETUP
+  echo "A Postgres User with name $USER will now be created. Please enter the password for it, and don't forget to write it down!'"
+  sudo -u postgres createuser --superuser "$USER" --pwprompt
+  echo "Creating the fakktion database'"
+  sudo -u "$USER" createdb fakktion
+
+  # Create necessary folders and files.
+  echo "Creating necessary folders..."
+  mkdir /home/"$USER"/Fakktion/tmp
+  mkdir /home/"$USER"/Fakktion/tmp/puma
+  touch /home/"$USER"/Fakktion/tmp/puma/pid
+  touch /home/"$USER"/Fakktion/tmp/puma/state
+  mkdir /home/"$USER"/Fakktion/log
+  touch /home/"$USER"/Fakktion/log/puma.log
+  mkdir /home/"$USER"/Fakktion/shared
+  mkdir /home/"$USER"/Fakktion/shared/log
+  mkdir /home/"$USER"/Fakktion/shared/sockets
+  touch /home/"$USER"/Fakktion/shared/sockets/puma.sock
+  touch /home/"$USER"/Fakktion/shared/log/puma.stderr.log
+  touch /home/"$USER"/Fakktion/shared/log/puma.stdout.log
+
+  # Create Symlinks on /var/www for future NGINX connection to PUMA
+  sudo ln -s /home/"$user"/Fakktion/shared/sockets/puma.sock /var/www/Fakktion/shared/sockets/puma.sock
+  sudo ln -s /home/"$user"/Fakktion/public /var/www/Fakktion/public
+  
+  # Precompile App.
+  echo "precompiling Fakktion"
+  rake assets:precompile
+
+  # Setup Database.
+  echo "Configs for Fakktion database underway..."
+  rake db:setup RAILS_ENV=production
+
+}
+
+# Setup Puma
+setupPuma(){
+  user="$1"
+  # Copy the init script to services directory 
+  cp puma /etc/init.d
+  chmod +x /etc/init.d/puma
+
+  # Make it start at boot time. 
+  update-rc.d -f puma defaults
+
+  # Copy the Puma runner to an accessible location
+  cp run-puma /usr/local/bin
+  chmod +x /usr/local/bin/run-puma
+
+  # Create an empty configuration file
+  touch /etc/puma.conf
+
+  # Link Fakktion to Puma
+  /etc/init.d/puma add /home/"$user"/Fakktion "$user" /home/"$user"/Fakktion/config/puma.rb /home/"$user"/Fakktion/log/puma.log
+
+  echo "PUMA is ready!"
+}
+
+setupNGINX(){
+  user="$1"
+  # Purges default NGINX configs.
+  echo "" > /etc/nginx/sites-available/default
+  if [ "$2" = "y" ] || [ "$2" = "yes" ]
+  then
+    cat fakktion_16_ssl.conf >> /etc/nginx/sites-available/default
+  else
+    cat fakktion_16_non_ssl.conf >> /etc/nginx/sites-available/default
+  fi
+  service nginx restart
+  echo "NGINX is ready!"
+}
+
+
+
+
+if [ $# -eq 0 ]
+then
+  if [ "$1" = 1 ]
+  then
+    if [ $# -eq 2 ]
+    then
+      setupBaseReqs "$2"
+    else
+      echo "User in which Puma should use to run Fakktion was not provided."
+      echo "Usage: Step user"
+      echo "Example: 1 fakktionApp"
+    fi
+  elif [ "$1" = 2 ]
+  then
+    if [ $# -eq 2 ]
+    then
+      setupApp "$2"
+    else
+      echo "User in which Puma should use to run Fakktion was not provided."
+      echo "Usage: Step user"
+      echo "Example: 2 fakktionApp"
+    fi
+  
+  elif [ "$1" = 3 ]
+  then
+    if [ $# -eq 2 ]
+    then
+      setupPuma "$2"
+    else
+      echo "User in which Puma should use to run Fakktion was not provided."
+      echo "Usage: Step user"
+      echo "Example: 3 fakktionApp"
+    fi
+  elif [ "$1" = 4 ]
+  then
+    if [ $# -eq 3 ]
+    then
+      setupNGINX "$2" "$3"
+    else
+      echo "Incorrect # of arguments..."
+      echo "Usage: Step user SSLConfig? "
+      echo "Example: 4 fakktionApp y/n "
+    fi
+  fi
+
+else
+    echo "No arguments provided. See Below for Usage:"
+    echo "1 User"
+    echo "2 User"
+    echo "3 User"
+    echo "4 User SSSL?"
+fi
+
