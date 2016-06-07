@@ -36,6 +36,7 @@ setupApp(){
   cd /home/"$USER"/Fakktion
   # Check GemFile.lock for exactly what is being installed from https://rubygems.org/.
   
+  echo "${inform}Install NPM and Nodejs through N...${reset}"
   # Install NPM (Node.js Package Manager) followed by installing Node.js
   # The install methodology below avoids the use of NVM (node version manager.)
   sudo apt-get -y install npm
@@ -55,7 +56,7 @@ setupApp(){
   echo "${inform}Bundler Install...${reset}"
   bundle install
   
-  echo "${inform}Creating puma.rb according to system configs...${reset}"
+  echo "${inform}NPM and Bower dependencies install...${reset}"
   # Install all Fakktion frontend dependencies
   cd frontend
   # NPM install takes care of Ember CLI Middleware
@@ -153,6 +154,15 @@ setupNGINX(){
   echo "${inform}NGINX is ready!${reset}"
 }
 
+prepareApp(){
+  cd ..
+  rake assets:precompile
+  bundle exec puma -e production -d -b unix:///var/www/Fakktion/shared/sockets/puma.sock
+  cd shared/log
+  nano puma.stderr.log
+  echo "${inform}App is ready! Now opening log for confirmation...${reset}"
+}
+
 
 
 
@@ -204,6 +214,17 @@ else
       echo "${warn}Incorrect # of arguments...${reset}"
       echo "Usage: Step user SSLConfig? "
       echo "Example: 4 fakktionApp y/n "
+    fi
+  fi
+  elif [ "$1" = 5 ]
+  then
+    if [ $# -eq 1 ]
+    then
+      prepareApp
+    else
+      echo "${warn}Incorrect # of arguments...${reset}"
+      echo "Usage: Step"
+      echo "Example: 5 "
     fi
   fi
 fi

@@ -19,16 +19,15 @@ Notes:
 5. Navigate to Fakktion/Documents folder, and allow Execution access to the main script with ```sudo chmod +x u16deploy.sh```.
 6. Now run ```./u16deploy.sh 1 USER``` (Or change $USER to the user where Puma will use to control the app. You must the same user whenever requested from now on.)
 7. If the App has been created as another user, you must login as said user for steps 8 through 9.
-8. Now go into USER/Fakktion/config and execute ```nano database.yml```, then change the **username** to DBUSER, **password** to DBPW, and **database** to DBNAME. The next step will setup the database for you, but you will to match the same exact info that you entered in this step.
+8. Now go into USER/Fakktion/config and execute ```sudo nano database.yml```, then change the **username** to DBUSER, **password** to DBPW, and **database** to DBNAME. The next step will setup the database for you, but you will to match the same exact info that you entered in this step.
 9. Navigate back to Documents folder, and execute ```./u16deploy.sh 2 DBUSER DBNAME```.
 10. Now login back as the previous user if you did switch accounts. The reason for this is because the app user was granted temporary sudo to install some initial dependencies that could not have worked non-sudo. However, this only applies to the initial install.
 11. Execute ```sudo ./u16deploy.sh 3 USER``` to setup PUMA Daemon service through init.d.
 12. If you need **SSL**, then open **fakktion_16_ssl.conf** and change the certificate details.
 13. Execute ```sudo ./u16deploy.sh 4 USER SSL?``` (replace SSL? with y or n) to setup NGINX in order to put your app live.
 14. ```sudo reboot```, then login as the app user.
-15. Now go to the Fakktion folder and run ```rake assets:precompile```.
-16. Now mannually start Fakktion with ```bundle exec puma -e production -d -b unix:///var/www/Fakktion/shared/sockets/puma.sock```. **This command is needed only once!**
-17. Visit your live website! You can also use ```wget HOSTNAME``` to check... Not working? Check the **Checking Logs** section for more info. Otherwise check the graph below for a summary of how the project interact.
+15. Initiate Puma socket with the final part of the script: ```. u16deploy.sh 5```.
+16. Visit your live website! Not working? Go to the **Checking Logs** section for more info.
 
 ## Updating Project Source Code without moving database or changing VMs.
 1. Make sure that the Admin notice was given in the website, and that users had at least 72 hours to deal with it.
