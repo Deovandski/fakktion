@@ -15,16 +15,14 @@ setupBaseReqs(){
     else
       sudo mv /home/"$USER"/Fakktion /home/"$deployUser/Fakktion"
     fi
+    echo "Base Reqs Finished"
   else
-    echo "$deployUser does not exist. Creating one now..."
-    sudo adduser "$deployUser"
-    sudo passwd "$deployUser"
-    cd /home
-    sudo mv /home/"$USER"/Fakktion /home/"$deployUser/Fakktion"
-    cd /home/"$deployUser"/Fakktion
-    echo "Fakktion moved to /home/$deployUser/Fakktion"
+    echo "$deployUser does not exist."
+    echo "run sudo adduser, followed by sudo passwd"
+    RED='\033[0;31m'
+    NC='\033[0m'
+    echo "${RED}DO NOT MOVE TO STEP 2!${NC} RETRY STEP 1 AFTER CREATING USER"
   fi
-  echo "Base Reqs Finished"
   
 }
 setupApp(){
