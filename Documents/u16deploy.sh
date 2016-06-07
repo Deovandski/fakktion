@@ -20,7 +20,7 @@ setupBaseReqs(){
     sudo useradd "$deployUser"
     sudo passwd "$deployUser"
     cd /home
-    mv /home/"$USER"/Fakktion /home/"$deployUser"
+    sudo mv /home/"$USER"/Fakktion /home/"$deployUser"
     cd /home/"$deployUser"/Fakktion
     echo "Fakktion moved to /home/$deployUser/Fakktion"
   fi
