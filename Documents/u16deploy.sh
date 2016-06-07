@@ -49,6 +49,9 @@ setupApp(){
   # guarantees that the chances of something going haywire is minimal.
   sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
 
+  # Get ownership of the files being transfered to prevent write permissions from other users, or fix any eisitng file permission issues...
+  sudo chown -R /home/$(whoami)/Fakktion
+  
   echo "${inform}Creating puma.rb according to system configs...${reset}"
   # Install all Fakktion frontend dependencies
   cd frontend
