@@ -18,8 +18,8 @@ Notes:
 4. From your home/$USER directory, clone repo through ```git clone https://github.com/YOURUSERNAME/Fakktion.git``` (HTTPS instead of SSH suggested as it will make it harder to accidentally push commits back into origin master (or the branch that you use as master.)
 5. Allow Execution access to the main script with ```sudo chmod +x u16deploy.sh```.
 6. Navigate to Fakktion/Documents folder, and execute ```./u16deploy.sh 1 $USER``` (Or change $USER to the user where Puma will use to control the app.)
-7. Now go into USER/Fakktion/config and execute ```nano database.yml```, then change the **username** to the USER, **password** to an unique one, and database to **fakktion**. The next step will setup the database for you, but you will need to enter the password when requested.
-8. Navigate back to Documents folder, and execute ```./u16deploy.sh 2 $USER```.
+7. Now go into USER/Fakktion/config and execute ```nano database.yml```, then change the **username** to DBUSER, **password** to DBPW, and **database** to DBNAME. The next step will setup the database for you, but you will to match the same exact info that you entered in this step.
+8. Navigate back to Documents folder, and execute ```./u16deploy.sh 2 DBUSER DBNAME```.
 9. Execute ```./u16deploy.sh 3 $USER``` to setup PUMA Daemon service through init.d.
 10. If you need **SSL**, then open **fakktion_16_ssl.conf** and change the certificate details.
 11. Execute ```./u16deploy.sh 4 $USER SSL?``` (replace SSL? with y or n) to setup NGINX in order to put your app live.

@@ -151,23 +151,23 @@ then
 else    
   if [ "$1" = 1 ]
   then
-    if [ $# -eq 3 ]
-    then
-      setupBaseReqs "$2" "$3"
-    else
-      echo "User in which Puma should use to run Fakktion was not provided."
-      echo "Usage: Step user DBNAME"
-      echo "Example: 1 fakktionApp fakktionDB"
-    fi
-  elif [ "$1" = 2 ]
-  then
     if [ $# -eq 2 ]
     then
-      setupApp "$2"
+      setupBaseReqs "$2"
     else
       echo "User in which Puma should use to run Fakktion was not provided."
       echo "Usage: Step user"
-      echo "Example: 2 fakktionApp"
+      echo "Example: 1 fakktionApp"
+    fi
+  elif [ "$1" = 2 ]
+  then
+    if [ $# -eq 3 ]
+    then
+      setupApp "$2" "$3"
+    else
+      echo "User in which Puma should use to run Fakktion was not provided."
+      echo "Usage: Step user DBNAME"
+      echo "Example: 2 fakktionApp fakktionDB"
     fi
   
   elif [ "$1" = 3 ]
