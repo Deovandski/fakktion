@@ -16,14 +16,14 @@ setupBaseReqs(){
       mv /home/"$USER"/Fakktion /home/"$deployUser"
     fi
   else
-    echo "$user does not exist. Creating one now..."
+    echo "$deployUser does not exist. Creating one now..."
     sudo useradd "$deployUser"
     sudo passwd "$deployUser"
+    cd /home
     mv /home/"$USER"/Fakktion /home/"$deployUser"
+    cd /home/"$deployUser"/Fakktion
     echo "Fakktion moved to /home/$deployUser/Fakktion"
   fi
-  # Check GemFile.lock for exactly what is being installed from https://rubygems.org/.
-  bundle install
   echo "Base Reqs Finished"
   
 }
@@ -32,7 +32,9 @@ setupApp(){
   deployDBName="$2"
   # Make sure that we are in the proper place.
   cd /home/"$deployUser"/Fakktion
-
+  # Check GemFile.lock for exactly what is being installed from https://rubygems.org/.
+  bundle install
+  
   # Install NPM (Node.js Package Manager) followed by installing Node.js
   # The install methodology below avoids the use of NVM (node version manager.)
   sudo apt-get -y install npm
