@@ -1,7 +1,7 @@
 #!/bin/bash
 
 setupBaseReqs(){
-  user="$1"
+  deployUser="$1"
   # Min necessary for NGINX, Postgres, Ruby, Bundler and Rails.
   sudo apt-get install -y libpq-dev nginx ruby2.3 rails bundler
   # Note regarding using apt-get for every needed package instead of Bundler.
@@ -9,18 +9,18 @@ setupBaseReqs(){
   # An example of it is ruby-active-model-serializers where apt-get only displays 0.9.3 when Fakktion needs 0.10.0.rc5
   if getent passwd "$1" > /dev/null 2>&1
   then
-    if [ -d "/home/$user/Fakktion" ]
+    if [ -d "/home/$deployUser/Fakktion" ]
     then
-      cd /home/"$user"/Fakktion
+      cd /home/"$deployUser"/Fakktion
     else
-      mv /home/"$USER"/Fakktion /home/"$user"
+      mv /home/"$USER"/Fakktion /home/"$deployUser"
     fi
   else
-    echo "$user does not exist. Creating One now..."
-    useradd "$user"
-    passwd "$user"
-    mv /home/"$USER"/Fakktion /home/"$user"
-    cd /home/"$user"/Fakktion
+    echo "$user does not exist. Creating one now..."
+    useradd "$deployUser"
+    passwd "$deployUser"
+    mv /home/"$USER"/Fakktion /home/"$deployUser"
+    cd /home/"$deployUser"/Fakktion
   fi
   # Check GemFile.lock for exactly what is being installed from https://rubygems.org/.
   bundle install
@@ -28,9 +28,9 @@ setupBaseReqs(){
 
 }
 setupApp(){
-  user="$1"
+  deployUser="$1"
   # Make sure that we are in the proper place.
-  cd /home/"$USER"/Fakktion
+  cd /home/"$deployUser"/Fakktion
 
   # Install NPM (Node.js Package Manager) followed by installing Node.js
   # The install methodology below avoids the use of NVM (node version manager.)
@@ -66,29 +66,29 @@ setupApp(){
   echo "  secret_key_base: $(rake secret)" >> config/secrets.yml
 
   # Database SETUP
-  echo "A Postgres User with name $USER will now be created. Please enter the password for it, and don't forget to write it down!'"
-  sudo -u postgres createuser --superuser "$USER" --pwprompt
+  echo "A Postgres User with name $deployUser will now be created. Please enter the password for it, and don't forget to write it down!'"
+  sudo -u postgres createuser --superuser "$deployUser" --pwprompt
   echo "Creating the fakktion database'"
-  sudo -u "$USER" createdb fakktion
+  sudo -u "$deployUser" createdb fakktion
 
   # Create necessary folders and files.
   echo "Creating necessary folders..."
-  mkdir /home/"$USER"/Fakktion/tmp
-  mkdir /home/"$USER"/Fakktion/tmp/puma
-  touch /home/"$USER"/Fakktion/tmp/puma/pid
-  touch /home/"$USER"/Fakktion/tmp/puma/state
-  mkdir /home/"$USER"/Fakktion/log
-  touch /home/"$USER"/Fakktion/log/puma.log
-  mkdir /home/"$USER"/Fakktion/shared
-  mkdir /home/"$USER"/Fakktion/shared/log
-  mkdir /home/"$USER"/Fakktion/shared/sockets
-  touch /home/"$USER"/Fakktion/shared/sockets/puma.sock
-  touch /home/"$USER"/Fakktion/shared/log/puma.stderr.log
-  touch /home/"$USER"/Fakktion/shared/log/puma.stdout.log
+  mkdir /home/"$deployUser"/Fakktion/tmp
+  mkdir /home/"$deployUser"/Fakktion/tmp/puma
+  touch /home/"$deployUser"/Fakktion/tmp/puma/pid
+  touch /home/"$deployUser"/Fakktion/tmp/puma/state
+  mkdir /home/"$deployUser"/Fakktion/log
+  touch /home/"$deployUser"/Fakktion/log/puma.log
+  mkdir /home/"$deployUser"/Fakktion/shared
+  mkdir /home/"$deployUser"/Fakktion/shared/log
+  mkdir /home/"$deployUser"/Fakktion/shared/sockets
+  touch /home/"$deployUser"/Fakktion/shared/sockets/puma.sock
+  touch /home/"$deployUser"/Fakktion/shared/log/puma.stderr.log
+  touch /home/"$deployUser"/Fakktion/shared/log/puma.stdout.log
 
   # Create Symlinks on /var/www for future NGINX connection to PUMA
-  sudo ln -s /home/"$user"/Fakktion/shared/sockets/puma.sock /var/www/Fakktion/shared/sockets/puma.sock
-  sudo ln -s /home/"$user"/Fakktion/public /var/www/Fakktion/public
+  sudo ln -s /home/"$deployUser"/Fakktion/shared/sockets/puma.sock /var/www/Fakktion/shared/sockets/puma.sock
+  sudo ln -s /home/"$deployUser"/Fakktion/public /var/www/Fakktion/public
   
   # Precompile App.
   echo "precompiling Fakktion"
@@ -102,7 +102,7 @@ setupApp(){
 
 # Setup Puma
 setupPuma(){
-  user="$1"
+  deployUser="$1"
   # Copy the init script to services directory 
   cp puma /etc/init.d
   chmod +x /etc/init.d/puma
@@ -118,13 +118,13 @@ setupPuma(){
   touch /etc/puma.conf
 
   # Link Fakktion to Puma
-  /etc/init.d/puma add /home/"$user"/Fakktion "$user" /home/"$user"/Fakktion/config/puma.rb /home/"$user"/Fakktion/log/puma.log
+  /etc/init.d/puma add /home/"$deployUser"/Fakktion "$deployUser" /home/"$deployUser"/Fakktion/config/puma.rb /home/"$deployUser"/Fakktion/log/puma.log
 
   echo "PUMA is ready!"
 }
 
 setupNGINX(){
-  user="$1"
+  deployUser="$1"
   # Purges default NGINX configs.
   echo "" > /etc/nginx/sites-available/default
   if [ "$2" = "y" ] || [ "$2" = "yes" ]
