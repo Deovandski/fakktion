@@ -13,14 +13,14 @@ setupBaseReqs(){
     then
       cd /home/"$deployUser"/Fakktion
     else
-      sudo mv /home/"$USER"/Fakktion /home/"$deployUser"
+      sudo mv /home/"$USER"/Fakktion /home/"$deployUser/Fakktion"
     fi
   else
     echo "$deployUser does not exist. Creating one now..."
     sudo useradd "$deployUser"
     sudo passwd "$deployUser"
     cd /home
-    sudo mv /home/"$USER"/Fakktion /home/"$deployUser"
+    sudo mv /home/"$USER"/Fakktion /home/"$deployUser/Fakktion"
     cd /home/"$deployUser"/Fakktion
     echo "Fakktion moved to /home/$deployUser/Fakktion"
   fi
