@@ -8,6 +8,7 @@ whiteBg=$(tput setab 7)
 blackBg=$(tput setab 0)
 warn=${whiteBg}$(red)
 inform=${blackBg}$(cyan)
+reset=$(tput sgr0)
 
 setupBaseReqs(){
   deployUser="$1"
