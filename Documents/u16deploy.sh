@@ -194,7 +194,6 @@ else
       echo "Usage: Step DBUSER DBNAME"
       echo "Example: 2 fakktionDBUser fakktionDB"
     fi
-  
   elif [ "$1" = 3 ]
   then
     if [ $# -eq 2 ]
@@ -215,7 +214,6 @@ else
       echo "Usage: Step user SSLConfig? "
       echo "Example: 4 fakktionApp y/n "
     fi
-  fi
   elif [ "$1" = 5 ]
   then
     if [ $# -eq 1 ]
