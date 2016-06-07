@@ -17,7 +17,7 @@ setupBaseReqs(){
     fi
   else
     echo "$deployUser does not exist. Creating one now..."
-    sudo adduser -c "Fakktion Deploy User" "$deployUser" -s /bin/bash -m
+    sudo adduser "$deployUser"
     sudo passwd "$deployUser"
     cd /home
     sudo mv /home/"$USER"/Fakktion /home/"$deployUser/Fakktion"
