@@ -110,6 +110,7 @@ setupApp(){
   
   # Precompile App.
   echo "${inform}precompiling Fakktion${reset}"
+  cd /home/$USER/Fakktion/public
   rake assets:precompile
 
   # Setup Database.
@@ -120,9 +121,9 @@ setupApp(){
 
 # Setup Puma
 setupPuma(){
+  deployUser="$1"
   sudo deluser $deployUser sudo
   echo "${inform}$deployUser is no longer a sudo user...${reset}"
-  deployUser="$1"
   # Copy the init script to services directory 
   cp puma /etc/init.d
   chmod +x /etc/init.d/puma
