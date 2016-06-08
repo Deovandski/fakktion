@@ -38,12 +38,8 @@ This project once used [Ember-Rails](https://github.com/emberjs/ember-rails), bu
   3. `sudo npm install -g n`
   4. `sudo n stable`
   5. `sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}` (Force npm to be non-sudo.)
-3. Install RVM, Ruby, Rails and Bundler if you don't have it already:
-  1. `gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3`
-  2. `\curl -sSL https://get.rvm.io | bash -s stable --ruby --rails` (Install RVM, Ruby and Rails)
-  3. Reopen the terminal.
-  4. `sudo apt-get install libpq-dev` (Requirement for pg gem)
-  5. `gem install bundler`
+3. Install Ruby and Bundler if you don't have it already or not using RVM or Rbenv):
+  1. ```sudo apt-get install -y libpq-dev ruby2.3 rails bundler```
 4. Bundle Install
 5. Rake db:setup
 6. cd frontend

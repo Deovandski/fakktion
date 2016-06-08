@@ -42,7 +42,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.4.0)
     arel (6.0.3)
-    awesome_print (1.6.1)
+    awesome_print (1.7.0)
     backports (3.6.8)
     bcrypt (3.1.11)
     bourbon (4.2.7)
@@ -123,7 +123,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
-    mini_portile2 (2.0.0)
+    mini_portile2 (2.1.0)
     minitest (5.9.0)
     multi_json (1.12.1)
     multipart-post (2.0.0)
@@ -132,10 +132,12 @@ GEM
       sass (>= 3.3)
     net-http-persistent (2.9.4)
     net-http-pipeline (1.0.1)
-    nokogiri (1.6.7.2)
-      mini_portile2 (~> 2.0.0.rc2)
+    nokogiri (1.6.8)
+      mini_portile2 (~> 2.1.0)
+      pkg-config (~> 1.1.7)
     orm_adapter (0.5.0)
     pg (0.18.4)
+    pkg-config (1.1.7)
     puma (3.4.0)
     pusher-client (0.6.2)
       json
@@ -211,7 +213,7 @@ GEM
       tins (~> 1.0)
     thor (0.19.1)
     thread_safe (0.3.5)
-    tilt (2.0.4)
+    tilt (2.0.5)
     tins (1.6.0)
     travis (1.8.2)
       backports
@@ -263,9 +265,6 @@ DEPENDENCIES
   travis (>= 1.8)
   travis-lint (>= 2.0)
   uglifier (>= 2.7)
-
-RUBY VERSION
-   ruby 2.3.0p0
 
 BUNDLED WITH
    1.12.1
