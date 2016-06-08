@@ -28,9 +28,9 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
       post :create, ActiveModelSerializers::SerializableResource.new(apiTopic).as_json
     end
   end
-  test "Topics - API - Create 405" do
+  test "Topics - API - Create 422" do
     post :create, ActiveModelSerializers::SerializableResource.new(@testTopic).as_json
-    assert_response(405)
+    assert_response(422)
   end
   test "Topics - API - SHOW 200" do
     get :show, id: @testTopic

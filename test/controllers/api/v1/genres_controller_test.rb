@@ -28,9 +28,9 @@ class Api::V1::GenresControllerTest < ActionController::TestCase
       post :create, ActiveModelSerializers::SerializableResource.new(apiGenre).as_json
     end
   end
-  test "Genres - API - Create 405" do
+  test "Genres - API - Create 422" do
       post :create, ActiveModelSerializers::SerializableResource.new(@testGenre).as_json
-      assert_response(405)
+      assert_response(422)
   end
   test "Genres - API - SHOW 200" do
     get :show, id: @testGenre
