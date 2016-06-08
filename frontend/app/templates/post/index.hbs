@@ -28,9 +28,23 @@
       {{#link-to 'post.edit' class="button_type1_normal"}}Edit Post{{/link-to}}
     </div>
   {{else}}
-    <div class="edit_button">
-      {{#link-to 'user.index' model.user class="button_type1_normal"}}{{capitalize model.user.display_name}}{{/link-to}}
-    </div>
+    {{#if model.user.is_super_user}}
+      <div class="edit_button">
+        {{#link-to 'user.index' model.user class="button_type1_normal_super_user"}}{{capitalize model.user.display_name}}{{/link-to}}
+      </div>
+    {{else if model.user.is_admin}}
+      <div class="edit_button">
+        {{#link-to 'user.index' model.user class="button_type1_normal_admin"}}{{capitalize model.user.display_name}}{{/link-to}}
+      </div>
+    {{else if model.user.is_legend}}
+      <div class="edit_button">
+        {{#link-to 'user.index' model.user class="button_type1_normal_legend"}}{{capitalize model.user.display_name}}{{/link-to}}
+      </div>
+    {{else}}
+      <div class="edit_button">
+        {{#link-to 'user.index' model.user class="button_type1_normal"}}{{capitalize model.user.display_name}}{{/link-to}}
+      </div>
+    {{/if}}
   {{/if}}
 </div>
 

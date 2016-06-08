@@ -25,9 +25,23 @@
   {{{model.text}}}
 </div>
 <div class="comment_user">
-  <div class="comment_user_name">
-    {{capitalize model.user.display_name}}
-  </div>
+  {{#if model.user.is_super_user}}
+    <div class="comment_user_name_super_user">
+      {{capitalize model.user.display_name}}
+    </div>
+  {{else if model.user.is_admin}}
+    <div class="comment_user_name_admin">
+      {{capitalize model.user.display_name}}
+    </div>
+  {{else if model.user.is_legend}}
+    <div class="comment_user_name_legend">
+      {{capitalize model.user.display_name}}
+    </div>
+  {{else}}
+    <div class="comment_user_name">
+      {{capitalize model.user.display_name}}
+    </div>
+  {{/if}}
   <div class="comment_user_edit">
     <button class="button_bar_edit" {{action "ToggleEditMode"}}>Edit</button>
   </div>

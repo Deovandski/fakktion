@@ -15,6 +15,10 @@ export default Ember.Controller.extend ({
       this.set('clientSideValidationComplete',false);
       return "Too short";
     }
+    else if(this.get('model.title').length > 100) {
+      this.set('clientSideValidationComplete',false);
+      return "Max 100 Chars.";
+    }
     else {
       this.set('clientSideValidationComplete',true);
       return '';
@@ -43,7 +47,7 @@ export default Ember.Controller.extend ({
         return "Invalid URL";
       }
       else {
-        var rx = new RegExp("^(http|https)://");
+        var rx = new RegExp("^(http|https|HTTP|HTTPS)://");
         var htmlString = this.get('factLink').match(rx);
         if (htmlString !== null){
           this.set('clientSideValidationComplete',true);
@@ -67,7 +71,7 @@ export default Ember.Controller.extend ({
         return "Invalid URL";
       }
       else {
-        var rx = new RegExp("^(http|https)://");
+        var rx = new RegExp("^(http|https|HTTP|HTTPS)://");
         var htmlString = this.get('fictionLink').match(rx);
         if (htmlString !== null){
           this.set('clientSideValidationComplete',true);

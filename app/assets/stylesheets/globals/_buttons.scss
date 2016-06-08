@@ -36,6 +36,21 @@ button_type1_normal,
 input[type="submit"] {
   @include button_type1_normal;
 }
+.button_type1_normal_super_user,
+button_type1_normal_super_user,
+input[type="submit"] {
+  @include button_type1_normal_super_user;
+}
+.button_type1_normal_admin,
+button_type1_normal_admin,
+input[type="submit"] {
+  @include button_type1_normal_admin;
+}
+.button_type1_normal_legend,
+button_type1_normal_legend,
+input[type="submit"] {
+  @include button_type1_normal_legend;
+}
 .button_type1_small,
 button_type1_small,
 input[type="submit"] {
