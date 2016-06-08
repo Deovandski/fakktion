@@ -24,9 +24,15 @@
     </div>
   {{/if}}
   {{#if canEdit}}
+    {{#if isBanned}}
+    <div class="edit_button">
+      {{#link-to 'post.edit' disabled=true class="login_required_warning"}}Cannot edit Post{{/link-to}}
+    </div>
+    {{else}}
     <div class="edit_button">
       {{#link-to 'post.edit' class="button_type1_normal"}}Edit Post{{/link-to}}
     </div>
+    {{/if}}
   {{else}}
     {{#if model.user.is_super_user}}
       <div class="edit_button">

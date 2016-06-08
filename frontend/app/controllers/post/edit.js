@@ -4,8 +4,17 @@ const { service } = Ember.inject;
 export default Ember.Controller.extend ({
   application: Ember.inject.controller('application'),
   session: service('session'),
+  sessionAccount: service('session-account'),
   clientSideValidationComplete: false,
   changeTags: false,
+  isBanned: Ember.computed('sessionAccount.user.reputation', function() {
+    if(this.get('sessionAccount.user.reputation') < -250){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }),
   nextGenreID: Ember.computed('application.selectedGID', function() {
     return this.get('application.selectedGID');
   }),

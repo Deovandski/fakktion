@@ -73,7 +73,11 @@
   </div>
   <p><strong>{{verifyText}}</strong></p>
   <div class="edit_main_controls">
-    <button class="button_type1_normal" {{action "update"}}>Update Post</button>
+    {{#if isBanned}}
+      <p class="login_required_warning">You cannot edit the post due to your reputation!</p>
+    {{else}}
+      <button class="button_type1_normal" {{action "update"}}>Update Post</button>
+    {{/if}}
     <button class="button_type1_normal" {{action "cancelChanges"}}>Cancel Changes</button>
   </div>
   <div class="input_block_textArea">

@@ -7,6 +7,14 @@ export default Ember.Controller.extend ({
   application: Ember.inject.controller('application'),
   text: "",
   clientSideValidationComplete: false,
+  isBanned: Ember.computed('sessionAccount.user.reputation', function() {
+    if(this.get('sessionAccount.user.reputation') < -500){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }),
   verifyText: Ember.computed('text', function() {
     if(this.get('text').length === 0) {
       return '';

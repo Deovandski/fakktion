@@ -5,8 +5,12 @@
     {{/each}}
   </ul>
   {{#if session.isAuthenticated}}
-    <div class="inner_comment_create">{{render "post.comment.innerComments.create" model}}</div>
+    {{#if isBanned}}
+      <p class="login_required_warning">You cannot create Inner comments due to your reputation!</p>
+    {{else}}
+      <div class="inner_comment_create">{{render "post.comment.innerComments.create" model}}</div>
+    {{/if}}
   {{else}}
-    <p  class="login_required_warning">Please login to inner comment</p>
+    <p class="login_required_warning">Please login to create Inner Comments</p>
   {{/if}}
 </div>

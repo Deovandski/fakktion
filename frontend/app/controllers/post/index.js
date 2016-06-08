@@ -3,16 +3,21 @@ import moment from 'moment';
 const { service } = Ember.inject;
 
 export default Ember.Controller.extend ({
-  session: service('session'),
   sessionAccount: service('session-account'),
   application: Ember.inject.controller('application'),
   expandInfo: false,
   expandTags: false,
-  canEdit: Ember.computed('model.user_id', 'application.isAdmin', function() {
-    if(this.get('session.secure.userId') === this.get('model.user.id')){
+  isBanned: Ember.computed('sessionAccount.user.reputation', function() {
+    if(this.get('sessionAccount.user.reputation') < -250){
       return true;
     }
-    else if(this.get('application.isAdmin') === true) {
+    else{
+      return false;
+    }
+  }),
+  canEdit: Ember.computed('model.user.id','sessionAccount.user.id', function() {
+    console.log(this.get('sessionAccount.user.id'));
+    if(this.get('sessionAccount.user.id') === this.get('model.user.id')){
       return true;
     }
     else {

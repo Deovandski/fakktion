@@ -23,11 +23,15 @@
     </li>
     {{/each}}
   </ul>
-        {{#if session.isAuthenticated}}
-          {{#link-to  'posts.create' class="button_type1_normal"}}Create Post{{/link-to}}
-        {{else}}
-          <p class="login_required_warning">Please login to create a post</p>
-        {{/if}}
+  {{#if session.isAuthenticated}}
+    {{#if isBanned}}
+      <p class="login_required_warning">You cannot create Posts due to your reputation!</p>
+    {{else}}
+      <button class="button_type1_normal" {{action "create"}}>Create</button>
+    {{/if}}
+  {{else}}
+    <p class="login_required_warning">Please login to create a Post</p>
+  {{/if}}
 </div>
 
 {{outlet}}

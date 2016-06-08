@@ -9,6 +9,14 @@ export default Ember.Controller.extend ({
   text: '',
   factLink: "",
   fictionLink: "",
+  isBanned: Ember.computed('sessionAccount.user.reputation', function() {
+    if(this.get('sessionAccount.user.reputation') < -250){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }),
   clientSideValidationComplete: false,
   verifyTitle: Ember.computed('title', function() {
     if(this.get('title').length < 10) {

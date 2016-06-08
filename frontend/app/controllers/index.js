@@ -10,6 +10,14 @@ export default Ember.Controller.extend ({
   application: Ember.inject.controller('application'),
   session:        service('session'),
   sessionAccount: service('session-account'),
+  isBanned: Ember.computed('sessionAccount.user.reputation', function() {
+    if(this.get('sessionAccount.user.reputation') < -250){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }),
   filteredPosts: Ember.computed('application.selectedGenre',
   'application.selectedCategory', 'application.selectedFactType',
   'application.selectedTopic', 'application.selectedPDID',

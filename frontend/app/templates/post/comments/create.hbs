@@ -1,30 +1,30 @@
 <div class="input_block_comment">
   <div class="upper_input_wrapper">
-		<div class="comment_input_header">
-			<div class="left_header"><strong>Create Comment</strong></div>
-			<div class="right_header"><strong>Preview</strong></div>
-		</div>
-		<div class="comment_input_body">
-			<div class="input_wrapper">{{textarea value=text}}</div>
-			<div class="preview_wrapper">{{{text}}}</div>
-		</div>
+    <div class="comment_input_header">
+      <div class="left_header"><strong>Create Comment</strong></div>
+      <div class="right_header"><strong>Preview</strong></div>
+    </div>
+    <div class="comment_input_body">
+      <div class="input_wrapper">{{textarea value=text}}</div>
+      <div class="preview_wrapper">{{{text}}}</div>
+    </div>
   </div>
   <div class="lower_input_wrapper">
-		<div class="feedback_wrapper">
-			<label>{{verifyText}}</label>
-		</div>
-		<div class="create_button_wrapper">
-			{{#if validComment}}
-				<button class="button_bar_create" {{action "create"}}>Add Comment</button>
-			{{/if}}
-		</div>
+    <div class="feedback_wrapper">
+      <label>{{verifyText}}</label>
+    </div>
+    <div class="create_button_wrapper">
+      {{#if validComment}}
+	<button class="button_bar_create" {{action "create"}}>Add Comment</button>
+      {{/if}}
+    </div>
   </div>
 </div>
 <div class="input_block_textArea">
-	<div class="input_block_textArea_header">
-		<div class="left_header"><strong>Allowed HTML Tags</strong></div>
-		<div class="right_header"><strong>Preview</strong></div>
-	</div>
+        <div class="input_block_textArea_header">
+                <div class="left_header"><strong>Allowed HTML Tags</strong></div>
+                <div class="right_header"><strong>Preview</strong></div>
+        </div>
     <div class="input_block_textArea_example">
       <div class="input_wrapper">{{application.exampleH5_part1}}{{{application.exampleLineBreaker}}}{{application.exampleH5_part2}}{{{application.exampleLineBreaker}}}{{application.exampleH5_part3}}{{{application.exampleLineBreaker}}}{{application.exampleH5_part4}}{{{application.exampleLineBreaker}}}{{application.exampleH5_part5}}</div>
       <div class="preview_wrapper">{{{application.exampleH5}}}</div>
