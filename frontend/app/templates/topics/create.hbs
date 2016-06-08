@@ -7,7 +7,11 @@
     <label class="second_label">{{verifyTopicName}}</label>
   </div><br/>
   {{#if session.isAuthenticated}}
-    <button class="button_type1_normal" {{action "create"}}>Create Topic</button>
+    {{#if isBanned}}
+      <p class="login_required_warning">You cannot create tags due to your reputation!</p>
+    {{else}}
+      <button class="button_type1_normal" {{action "create"}}>Create Topic</button>
+    {{/if}}
   {{else}}
     <p class="login_required_warning">Please login to create a Topic</p>
   {{/if}}

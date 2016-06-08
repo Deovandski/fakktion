@@ -10,8 +10,8 @@ export default Ember.Controller.extend ({
     if(this.get('text').length === 0) {
       return '';
     }
-    else if(this.get('text').length < 10) {
-      return 'At least 10 chars.';
+    else if(this.get('text').length < 25) {
+      return 'At least 25 chars.';
     }
     else if(this.get('text').length > 500) {
       return 'At most 500 chars.';
@@ -22,7 +22,7 @@ export default Ember.Controller.extend ({
     }
   }),
   validComment: Ember.computed('text', function() {
-    if(this.get('text').length < 10) {
+    if(this.get('text').length < 25) {
       this.set('clientSideValidationComplete',false);
       return false;
     }
@@ -57,7 +57,7 @@ export default Ember.Controller.extend ({
         innerComment.save().then(function() {
           self.set('text', "");
         }, function() {
-          alert('failed to create comment!');
+          alert('Server rejected the attempt.');
         });
       }
       else {

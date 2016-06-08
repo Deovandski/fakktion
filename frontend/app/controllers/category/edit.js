@@ -6,22 +6,20 @@ export default Ember.Controller.extend ({
   sessionAccount: service('session-account'),
   clientSideValidationComplete: false,
   verifyCategoryName: Ember.computed('model.name', function(){
-    if(this.get('model.name').length < 4){
-      if(this.get('model.name').length === 0){
+    if(this.get('model.name').length === 0){
+      this.set('clientSideValidationComplete',false);
+      return 'Cannot be empty';
+    }
+    else if(this.get('model.name').length < 4) {
         this.set('clientSideValidationComplete',false);
-        return 'Cannot be empty';
-      }
-      else if(this.get('model.name').length > 10) {
-          this.set('clientSideValidationComplete',false);
-          return 'Max 10 characters.';
-      }
-      else{
+        return 'Min 4 characters.';
+    }
+    else if(this.get('model.name').length > 10) {
         this.set('clientSideValidationComplete',false);
-        return 'Too short...';
-      }
+        return 'Max 10 characters.';
     }
     else{
-      var possibleCategory = this.get('categories').filterBy('name', this.get('model.name'));
+      var possibleCategory = this.get('categories').filterBy('name', this.get('model.name').toLowerCase());
       if(possibleCategory.length > 1) {
         this.set('clientSideValidationComplete',false);
         return 'This genre model.name is already in use...';
@@ -45,11 +43,11 @@ export default Ember.Controller.extend ({
         category.save().then(function(){
           self.transitionToRoute('category', category);
         }, function(){
-          alert('(Server 402) failed to update genre.');
+          alert('Server rejected the attempt.');
         });
       }
       else{
-        alert("(Client 402) Failed to update genre.");
+        alert("Please check any outstanding warning message(s), and try again!");
       }
     }
   }

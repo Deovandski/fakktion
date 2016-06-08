@@ -31,6 +31,10 @@ export default Ember.Controller.extend ({
       this.set('clientSideValidationComplete',false);
       return 'Min 5 Chars.';
     }
+    else if(this.get('fullName').length > 30) {
+      this.set('clientSideValidationComplete',false);
+      return 'Max 30 Chars.';
+    }
     else {
       this.set('clientSideValidationComplete',true);
       return '';
@@ -44,6 +48,10 @@ export default Ember.Controller.extend ({
     else if(this.get('displayName').length < 5) {
       this.set('clientSideValidationComplete',false);
       return 'Min 5 Chars.';
+    }
+    else if(this.get('displayName').length > 15) {
+      this.set('clientSideValidationComplete',false);
+      return 'Max 15 Chars.';
     }
     else {
       if(this.model.get('users').isAny('display_name', this.get('displayName'))) {
@@ -150,6 +158,10 @@ export default Ember.Controller.extend ({
       this.set('clientSideValidationComplete',false);
       return 'Cannot be empty.';
     }
+    else if(this.get('email').length > 30) {
+      this.set("clientSideValidationComplete",false);
+      return "Max 30 Chars.";
+    }
     else {
       var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
       if(emailRegex.test(this.get('email'))) {
@@ -228,6 +240,7 @@ export default Ember.Controller.extend ({
           privacy_terms_read: this.get('privacyTermsRead'),
           date_of_birth: moment(this.get('dateOfBirth')).toDate(),
           show_full_name: this.get('showFullName'),
+          personal_message: "",
           reputation: 0,
           is_super_user: false,
           is_admin: false,
@@ -249,11 +262,11 @@ export default Ember.Controller.extend ({
           self.set('dateOfBirth_year','');
           self.transitionToRoute('login');
         }, function() {
-          alert('Server Failure!');
+          alert('Server rejected the attempt.');
         });
       }
       else {
-        alert("Check any warning messages and try again! (Client Validation F)");
+        alert("Please check any outstanding warning message(s), and try again!");
       }
     }
   }

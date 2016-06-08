@@ -6,22 +6,20 @@ export default Ember.Controller.extend ({
   sessionAccount: service('session-account'),
   clientSideValidationComplete: false,
   verifyTopicName: Ember.computed('model.name', function(){
-    if(this.get('model.name').length < 4){
-      if(this.get('model.name').length === 0){
+    if(this.get('model.name').length === 0){
+      this.set('clientSideValidationComplete',false);
+      return 'Cannot be empty';
+    }
+    else if(this.get('model.name').length < 4) {
         this.set('clientSideValidationComplete',false);
-        return 'Cannot be empty';
-      }
-      else if(this.get('model.name').length > 20) {
-          this.set('clientSideValidationComplete',false);
-          return 'Max 10 characters.';
-      }
-      else{
+        return 'Min 4 characters.';
+    }
+    else if(this.get('model.name').length > 20) {
         this.set('clientSideValidationComplete',false);
-        return 'Too short...';
-      }
+        return 'Max 20 characters.';
     }
     else{
-      var possibleTopic = this.get('topics').filterBy('name', this.get('model.name'));
+      var possibleTopic = this.get('topics').filterBy('name', this.get('model.name').toLowerCase());
       if(possibleTopic.length > 1) {
         this.set('clientSideValidationComplete',false);
         return 'This Topic already exists!';
@@ -45,11 +43,11 @@ export default Ember.Controller.extend ({
         topic.save().then(function(){
           self.transitionToRoute('topic', topic);
         }, function(){
-          alert('(Server 402) failed to update genre.');
+          alert('Server rejected the attempt.');
         });
       }
       else{
-        alert("(Client 402) Failed to update genre.");
+        alert("Please check any outstanding warning message(s), and try again!");
       }
     }
   }

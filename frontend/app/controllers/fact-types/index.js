@@ -3,8 +3,16 @@ const { service } = Ember.inject;
 
 export default Ember.Controller.extend ({
   application: Ember.inject.controller('application'),
-  session:        service('session'),
+  session: service('session'),
   sessionAccount: service('session-account'),
+  isBanned: Ember.computed('sessionAccount.user.reputation', function() {
+    if(this.get('sessionAccount.user.reputation') < -100){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }),
   searchingTag: Ember.computed('application.factTypeInputText', function() {
     if(this.get('application.factTypeInputText').length > 0 ){
       return true;

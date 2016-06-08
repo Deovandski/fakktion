@@ -16,6 +16,7 @@ class UserSerializer < ActiveModel::Serializer
               :sign_in_count,
               :current_password,
               :password,
+              :reputation,
               :last_sign_in_at,
               :created_at,
               :updated_at,

@@ -25,9 +25,9 @@ export default Ember.Controller.extend ({
     }
   }),
   verifyText: Ember.computed('text', function() {
-    if(this.get('text').length < 10) {
+    if(this.get('text').length < 100) {
       this.set('clientSideValidationComplete',false);
-      return "10 Min Characters...";
+      return "100 Min Characters...";
     }
     else if(this.get('text').length > 2000) {
       this.set('clientSideValidationComplete',false);
@@ -45,6 +45,10 @@ export default Ember.Controller.extend ({
       if(this.get('factLink').length < 8) {
         this.set("clientSideValidationComplete", false);
         return "Invalid URL";
+      }
+      else if(this.get('factLink').length > 50) {
+        this.set("clientSideValidationComplete", false);
+        return "Max 50 Chars";
       }
       else {
         var rx = new RegExp("^(http|https|HTTP|HTTPS)://");
@@ -69,6 +73,10 @@ export default Ember.Controller.extend ({
       if(this.get('fictionLink').length < 8) {
         this.set("clientSideValidationComplete", false);
         return "Invalid URL";
+      }
+      else if(this.get('fictionLink').length > 50) {
+        this.set("clientSideValidationComplete", false);
+        return "Max 50 Chars";
       }
       else {
         var rx = new RegExp("^(http|https|HTTP|HTTPS)://");
@@ -160,11 +168,11 @@ export default Ember.Controller.extend ({
           self.set('fictionLink', '');
           self.transitionToRoute('post', post);
         }, function() {
-          alert('Server Failure!');
+          alert('Server rejected the attempt.');
         });
       }
       else {
-        alert("Check any warning messages and try again! (Client Validation F)");
+        alert("Please check any outstanding warning message(s), and try again!");
       }
     }
   }

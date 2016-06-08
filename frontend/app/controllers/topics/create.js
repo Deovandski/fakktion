@@ -4,19 +4,32 @@ const { service } = Ember.inject;
 export default Ember.Controller.extend ({
   application: Ember.inject.controller('application'),
   session: service('session'),
+  sessionAccount: service('session-account'),
   name: "",
+  isBanned: Ember.computed('sessionAccount.user.reputation', function() {
+    if(this.get('sessionAccount.user.reputation') < -100){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }),
   clientSideValidationComplete: false,
   verifyTopicName: Ember.computed('name', function() {
-    if(this.get('name').length === 0) {
+    if(this.get('name').length === 0){
       this.set('clientSideValidationComplete',false);
-      return 'Cannot be empty!';
+      return 'Cannot be empty';
+    }
+    else if(this.get('name').length < 4) {
+        this.set('clientSideValidationComplete',false);
+        return 'Min 4 characters.';
     }
     else if(this.get('name').length > 20) {
         this.set('clientSideValidationComplete',false);
         return 'Max 20 characters.';
     }
     else {
-      if(this.model.get('topics').isAny('name', this.get('name'))) {
+      if(this.model.get('topics').isAny('name', this.get('name').toLowerCase())) {
         this.set('clientSideValidationComplete',false);
         return 'This topic already exists...';
       }
@@ -36,13 +49,13 @@ export default Ember.Controller.extend ({
         topic.save().then(function() {
           self.set("application.selectedTopic",topic);
           self.set("name","");
-          self.transitionToRoute('index');
+          self.transitionToRoute('topics');
         }, function() {
-          alert('Server Failure!');
+          alert('Server rejected the attempt.');
         });
       }
       else {
-        alert("Check any warning messages and try again! (Client Validation F)");
+        alert("Please check any outstanding warning message(s), and try again!");
       }
     }
   }

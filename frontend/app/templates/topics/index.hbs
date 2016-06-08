@@ -38,9 +38,15 @@
 {{#if noTags}}
   <h5>No results...</h5>
 {{/if}}
+
+
 {{#if session.isAuthenticated}}
-  {{#link-to 'topics.create' class="button_type1_normal"}}Create Topic{{/link-to}}
-  {{#link-to 'posts.create' class="button_type1_normal"}}Create Post{{/link-to}}
+  {{#if isBanned}}
+    <p class="login_required_warning">You cannot create tags due to your reputation!</p>
+  {{else}}
+    {{#link-to 'topics.create' class="button_type1_normal"}}Create Topic{{/link-to}}
+    {{#link-to 'posts.create' class="button_type1_normal"}}Create Post{{/link-to}}
+  {{/if}}
 {{else}}
-  <p class="login_required_warning">Please login to create a Topic</p>
+    <p class="login_required_warning">Please login to create a Topic</p>
 {{/if}}

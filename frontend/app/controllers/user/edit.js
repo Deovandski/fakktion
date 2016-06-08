@@ -29,6 +29,10 @@ export default Ember.Controller.extend ({
       this.set('clientSideValidationComplete',false);
       return 'Min 5 Chars.';
     }
+    else if(this.get('fullName').length > 30) {
+      this.set('clientSideValidationComplete',false);
+      return 'Max 30 Chars.';
+    }
     else {
       this.set('clientSideValidationComplete',true);
       return '';
@@ -43,6 +47,10 @@ export default Ember.Controller.extend ({
       else {
         return "Cannot be empty";
       }
+    }
+    else if(this.get('model.user.display_name').length > 15) {
+      this.set("clientSideValidationComplete",false);
+      return "Max 15 Chars.";
     }
     else {
       // TODO = Change logic to check display names that were returned instead of the length?
@@ -150,6 +158,10 @@ export default Ember.Controller.extend ({
     if(this.get('model.user.email').length < 4) {
       this.set("clientSideValidationComplete",false);
       return "user@sample.com";
+    }
+    else if(this.get('model.user.email').length > 30) {
+      this.set("clientSideValidationComplete",false);
+      return "Max 30 Chars.";
     }
     else {
       var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -264,11 +276,30 @@ export default Ember.Controller.extend ({
     }
   }),
   verifyWebpageURL: Ember.computed('model.user.webpage_url', function() {
-    
     if(this.get('model.user.webpage_url') !== '') {
       if(this.get('model.user.webpage_url').length < 8) {
         this.set("clientSideValidationComplete", false);
         return "Invalid URL";
+      }
+      else if(this.get('model.user.webpage_url').length > 40) {
+        this.set("clientSideValidationComplete", false);
+        return "Max 40 Chars.";
+      }
+      else {
+        this.set("clientSideValidationComplete", true);
+        return "";
+      }
+    }
+    else {
+      this.set("clientSideValidationComplete",true);
+      return "http(s)://www.example.com";
+    }
+  }),
+  verifyPersonalMessage: Ember.computed('model.user.personal_message', function() {
+    if(this.get('model.user.personal_message') !== '') {
+      if(this.get('model.user.personal_message').length > 100) {
+        this.set("clientSideValidationComplete", false);
+        return "Max 100 Chars.";
       }
       else {
         this.set("clientSideValidationComplete", true);
@@ -333,11 +364,11 @@ export default Ember.Controller.extend ({
           }
         }).catch((reason) => {
           console.log(reason);
-          alert('User Not Updated!');
+          alert('Server rejected the attempt.');
         });
       }
       else {
-        alert("Failed to save user... Check the warning messages and try again!");
+        alert("Please check any outstanding warning message(s), and try again!");
       }
     }
   }

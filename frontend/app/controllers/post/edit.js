@@ -45,9 +45,9 @@ export default Ember.Controller.extend ({
     }
   }),
   verifyText: Ember.computed('model.text', function() {
-    if(this.get('model.text').length < 10) {
+    if(this.get('model.text').length < 100) {
       this.set('clientSideValidationComplete',false);
-      return "10 Min Characters...";
+      return "100 Min Characters...";
     }
     else if(this.get('model.text').length > 2000) {
       this.set('clientSideValidationComplete',false);
@@ -63,6 +63,10 @@ export default Ember.Controller.extend ({
     if(this.get('model.fact_link').length < 4) {
       this.set('clientSideValidationComplete',false);
       return "Past Complete URL";
+    }
+    else if(this.get('model.fact_link').length > 50) {
+      this.set("clientSideValidationComplete", false);
+      return "Max 50 Chars";
     }
     else {
       var rx = new RegExp("^(http|https|HTTP|HTTPS)://");
@@ -81,6 +85,10 @@ export default Ember.Controller.extend ({
     if(this.get('model.fiction_link').length < 4) {
       this.set('clientSideValidationComplete',false);
       return "Past Complete URL";
+    }
+    else if(this.get('model.fiction_link').length > 50) {
+      this.set("clientSideValidationComplete", false);
+      return "Max 50 Chars";
     }
     else {
       var rx = new RegExp("^(http|https|HTTP|HTTPS)://");
@@ -165,11 +173,11 @@ export default Ember.Controller.extend ({
         post.save().then(function() {
           controller.transitionToRoute('post', post);  
         }, function() {
-          alert('failed to save post!');
+          alert('Server rejected the attempt.');
         });
       }
       else {
-        alert("(Client 402) Failed to save post... Check any warning messages (to the right of each textbox) otherwise contact support if you don't see any");
+        alert("Please check any outstanding warning message(s), and try again!");
       }
     }
   }

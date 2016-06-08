@@ -18,7 +18,6 @@ export default Ember.Controller.extend ({
   // Setup for initial allowed votings by the logged in User.
   votingSystemHandler: Ember.computed('sessionAccount.user.id', function() {
     if(this.get('sessionAccount.user.id') > 0){
-      
       var self = this; // Controller instance for maniupulation with then()
       
       // QueryRecord not working, using filter on clientside as a fallback...
@@ -53,9 +52,9 @@ export default Ember.Controller.extend ({
     }
   }),
   verifyText: Ember.computed('model.text', function() {
-    if(this.get('model.text').length < 10) {
+    if(this.get('model.text').length < 25) {
       this.set('clientSideValidationComplete',false);
-      return "10 Min Characters...";
+      return "25 Min Characters...";
     }
     else if(this.get('model.text').length > 1000) {
       this.set('clientSideValidationComplete',false);
@@ -173,11 +172,11 @@ export default Ember.Controller.extend ({
           this.set('editMode', false);
         }).catch((reason) => {
           console.log(reason);
-          alert('Comment Not Updated!');
+          alert('Server rejected the attempt.');
         });
       }
       else {
-        alert("(Client 402) Failed to create Comment... Check any warning messages (to the right of each textbox) otherwise contact support if you don't see any");
+        alert("Please check any outstanding warning message(s), and try again!");
       }
     }
   }

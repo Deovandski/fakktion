@@ -7,8 +7,12 @@
     <label class="second_label">{{verifyCategoryName}}</label>
   </div><br/>
   {{#if session.isAuthenticated}}
-    <button class="button_type1_normal" {{action "create"}}>Create Category</button>
+    {{#if isBanned}}
+      <p class="login_required_warning">You cannot create tags due to your reputation!</p>
+    {{else}}
+      <button class="button_type1_normal" {{action "create"}}>Create Category</button>
+    {{/if}}
   {{else}}
-    <p class="login_required_warning">Please login to create a category</p>
+    <p class="login_required_warning">Please login to create a Category</p>
   {{/if}}
 </form>
