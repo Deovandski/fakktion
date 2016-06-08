@@ -62,8 +62,7 @@ class Api::V1::CommentVotesController < ApiController
 
   # Destroy commentVote from the AMS Deserialization params.
   def destroy
-    # Do not allow to destroy a commentVote.
-    # json_destroy(commentVote)
+      render json: {}, status: :method_not_allowed
   end
 
   private

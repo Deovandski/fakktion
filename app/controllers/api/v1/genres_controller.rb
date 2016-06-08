@@ -32,7 +32,7 @@ class Api::V1::GenresController < ApiController
 
   # Destroy Genre from the AMS Deserialization params.
   def destroy
-    json_destroy(genre)
+      render json: {}, status: :method_not_allowed
   end
 
   private

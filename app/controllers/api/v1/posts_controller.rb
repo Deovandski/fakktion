@@ -24,7 +24,7 @@ class Api::V1::PostsController < ApiController
 
   # Destroy Post from the AMS Deserialization params.
   def destroy
-    json_destroy(post)
+      render json: {}, status: :method_not_allowed
   end
   
   private

@@ -19,7 +19,9 @@ class Api::V1::UsersController < ApiController
     tempUser.webpage_url = ""
     tempUser.facebook_url = ""
     tempUser.twitter_url = ""
+    tempUser.is_super_user = false
     tempUser.is_admin = false
+    tempUser.is_legend = false
     tempUser.personal_message = "This person did not write anything here yet..."
     tempUser.save
     render json: tempUser
@@ -29,23 +31,27 @@ class Api::V1::UsersController < ApiController
   def update
     # Check if password is blank, if so, clear :current_password
     # and update without password, else updates password.
-    if user_params[:password].blank? || user_params[:current_password].blank?
-      if user.email == user_params[:email]
-        user.update_without_password(user_params.except(:current_password,:password))
+    if current_user.id == user.id
+      if user_params[:password].blank? || user_params[:current_password].blank?
+        if user.email == user_params[:email]
+          user.update_without_password(user_params.except(:current_password,:password))
+        else
+          user.update_without_password(user_params.except(:current_password,:password, :email))
+        end
+        render json: user, status: :ok
+      elsif user.update_with_password(user_params)
+        render json: user, status: :ok
       else
-        user.update_without_password(user_params.except(:current_password,:password, :email))
+        render json: user.errors, status: :unprocessable_entity
       end
-      render json: user, status: :ok
-    elsif user.update_with_password(user_params)
-      render json: user, status: :ok
     else
-      render json: user.errors, status: :unprocessable_entity
+      render json: user.errors, status: :forbidden
     end
   end
 
   # Destroy User from the AMS Deserialization params.
   def destroy
-    json_destroy(genre)
+      render json: {}, status: :method_not_allowed
   end
 
   private

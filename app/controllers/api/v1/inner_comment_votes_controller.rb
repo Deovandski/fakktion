@@ -62,8 +62,7 @@ class Api::V1::InnerCommentVotesController < ApiController
 
   # Destroy innerCommentVote from the AMS Deserialization params.
   def destroy
-    # Do not allow to destroy a innerCommentVote.
-    # json_destroy(innerCommentVote)
+      render json: {}, status: :method_not_allowed
   end
 
   private

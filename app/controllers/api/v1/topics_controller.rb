@@ -32,7 +32,7 @@ class Api::V1::TopicsController < ApiController
 
   # Destroy Topic from the AMS Deserialization params.
   def destroy
-    json_destroy(topic)
+      render json: {}, status: :method_not_allowed
   end
   
   private

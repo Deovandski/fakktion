@@ -53,22 +53,17 @@ export default Ember.Controller.extend ({
   exampleOL_part4: "</li><li>Item 2</li>",
   exampleOL_part5: "</ol>",
   defaultCategories: Ember.computed.filter('model.categories', function(category, index) {
-      console.log('DEBUG --CT1 - Categories');
-      return (index < 10);
-  }),
+      return (index < 7);
+  }).property('model.categories'),
   defaultGenres: Ember.computed.filter('model.genres', function(genre, index) {
-      console.log('DEBUG --CT1 - Genres');
-      return (index < 10);
-  }),
+      return (index < 7);
+  }).property('model.genres'),
   defaultFactTypes: Ember.computed.filter('model.factTypes', function(factType, index) {
-      console.log('DEBUG --CT1 - Fact Types');
-      return (index < 10);
-  }),
+      return (index < 7);
+  }).property('model.factTypes'),
   filteredCategories: Ember.computed('categoryInputText', function() {
-    console.log('DEBUG --CT2 - Categories');
     if(this.get('categoryInputText') === '') {
       this.set('noCategories', false);
-      console.log('DEBUG --CT3 - Categories');
       return this.get('defaultCategories');
     }
     else{
@@ -84,16 +79,13 @@ export default Ember.Controller.extend ({
       }
       else {
         this.set('noCategories', true);
-        console.log('DEBUG --CTNULL - Categories');
        return null;
       }
     }
   }),
   filteredGenres: Ember.computed('genreInputText', function() {
-    console.log('DEBUG --CT2 - Genres');
     if(this.get('genreInputText') === '') {
       this.set('noGenres', false);
-      console.log('DEBUG --CT3 - Genres');
       return this.get('defaultGenres');
     }
     else{
@@ -115,10 +107,8 @@ export default Ember.Controller.extend ({
     }
   }),
   filteredFactTypes: Ember.computed('factTypeInputText', function() {
-      console.log('DEBUG --CT2 - Fact Types');
     if(this.get('factTypeInputText') === '') {
       this.set('noFactTypes', false);
-      console.log('DEBUG --CT3 - Fact Types');
       return this.get('defaultFactTypes');
     }
     else{
@@ -134,7 +124,6 @@ export default Ember.Controller.extend ({
       }
       else {
         this.set('noFactTypes', true);
-        console.log('DEBUG --CTNULL - Fact Types');
         return null;
       }
     }

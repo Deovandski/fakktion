@@ -24,7 +24,7 @@ class Api::V1::InnerCommentsController < ApiController
 
   # Destroy InnerComment from the AMS Deserialization params.
   def destroy
-    json_destroy(innerComment)
+      render json: {}, status: :method_not_allowed
   end
 
   private

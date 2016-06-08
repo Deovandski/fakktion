@@ -24,7 +24,7 @@ class Api::V1::AdminMessagesController < ApiController
 
   # Destroy AdminMessage from the AMS Deserialization params.
   def destroy
-    json_destroy(adminMessage)
+      render json: {}, status: :method_not_allowed
   end
 
   private

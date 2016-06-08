@@ -15,7 +15,7 @@ export default Ember.Controller.extend ({
       this.set('clientSideValidationComplete',false);
       return "Too short";
     }
-    else if(this.get('model.title').length > 100) {
+    else if(this.get('title').length > 100) {
       this.set('clientSideValidationComplete',false);
       return "Max 100 Chars.";
     }
