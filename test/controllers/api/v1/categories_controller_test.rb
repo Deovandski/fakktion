@@ -28,9 +28,9 @@ class Api::V1::CategoriesControllerTest < ActionController::TestCase
       post :create, ActiveModelSerializers::SerializableResource.new(categoryGenre).as_json
     end
   end
-  test "Categories - API - Create 422" do
+  test "Categories - API - Create 405" do
       post :create, ActiveModelSerializers::SerializableResource.new(@testCategory).as_json
-      assert_response(422)
+      assert_response(405)
   end
   test "Categories - API - SHOW 200" do
     get :show, id: @testCategory
@@ -56,16 +56,16 @@ class Api::V1::CategoriesControllerTest < ActionController::TestCase
     assert_response(422)
   end
   test "Categories - API - DELETE 200" do
-    assert_difference('Category.count', -1) do
+    assert_difference('Category.count', 0) do
       delete :destroy, id: @testCategory
     end
   end
-  test "Categories - API - DELETE 422" do
+  test "Categories - API - DELETE 405" do
     category = Category.find_by name: 'movie'
     post = Post.first
     post.category = category
     post.save
     delete :destroy, id: category
-    assert_response(422)
+    assert_response(405)
   end
 end

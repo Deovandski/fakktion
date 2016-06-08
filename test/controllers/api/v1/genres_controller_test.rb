@@ -28,9 +28,9 @@ class Api::V1::GenresControllerTest < ActionController::TestCase
       post :create, ActiveModelSerializers::SerializableResource.new(apiGenre).as_json
     end
   end
-  test "Genres - API - Create 422" do
+  test "Genres - API - Create 405" do
       post :create, ActiveModelSerializers::SerializableResource.new(@testGenre).as_json
-      assert_response(422)
+      assert_response(405)
   end
   test "Genres - API - SHOW 200" do
     get :show, id: @testGenre
@@ -56,16 +56,16 @@ class Api::V1::GenresControllerTest < ActionController::TestCase
     assert_response(422)
   end
   test "Genres - API - DELETE 200" do
-    assert_difference('Genre.count', -1) do
+    assert_difference('Genre.count', 0) do
       delete :destroy, id: @testGenre
     end
   end
-  test "Genres - API - DELETE 422" do
+  test "Genres - API - DELETE 405" do
     genre = Genre.find_by name: 'action'
     post = Post.first
     post.genre = genre
     post.save
     delete :destroy, id: genre
-    assert_response(422)
+    assert_response(405)
   end
 end

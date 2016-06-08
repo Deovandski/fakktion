@@ -28,9 +28,9 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
       post :create, ActiveModelSerializers::SerializableResource.new(apiTopic).as_json
     end
   end
-  test "Topics - API - Create 422" do
+  test "Topics - API - Create 405" do
     post :create, ActiveModelSerializers::SerializableResource.new(@testTopic).as_json
-    assert_response(422)
+    assert_response(405)
   end
   test "Topics - API - SHOW 200" do
     get :show, id: @testTopic
@@ -56,16 +56,16 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     assert_response(422)
   end
   test "Topics - API - DELETE 200" do
-    assert_difference('Topic.count', -1) do
+    assert_difference('Topic.count', 0) do
       delete :destroy, id: @testTopic
     end
   end
-  test "Topics - API - DELETE 422" do
+  test "Topics - API - DELETE 405" do
     topic = Topic.find_by name: 'hatsune miku'
     post = Post.first
     post.topic = topic
     post.save
     delete :destroy, id: topic
-    assert_response(422)
+    assert_response(405)
   end
 end

@@ -28,9 +28,9 @@ class Api::V1::FactTypesControllerTest < ActionController::TestCase
       post :create, ActiveModelSerializers::SerializableResource.new(apiFactType).as_json
     end
   end
-  test "FactTypes - API - Create 422" do
+  test "FactTypes - API - Create 405" do
       post :create, ActiveModelSerializers::SerializableResource.new(@testFactType).as_json
-      assert_response(422)
+      assert_response(405)
   end
   test "FactTypes - API - SHOW 200" do
     get :show, id: @testFactType
@@ -60,12 +60,12 @@ class Api::V1::FactTypesControllerTest < ActionController::TestCase
       delete :destroy, id: @testFactType
     end
   end
-  test "FactTypes - API - DELETE 422" do
+  test "FactTypes - API - DELETE 405" do
     factType = FactType.find_by name: 'technology'
     post = Post.first
     post.fact_type = factType
     post.save
     delete :destroy, id: factType
-    assert_response(422)
+    assert_response(405)
   end
 end

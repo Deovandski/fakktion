@@ -59,7 +59,7 @@ class Api::V1::AdminMessagesControllerTest < ActionController::TestCase
     assert_response(422)
   end
   test "AdminMessages - API - DELETE 200" do
-    assert_difference('AdminMessage.count', -1) do
+    assert_difference('AdminMessage.count', 0) do
       delete :destroy, id: @testAdminMessage
     end
   end
