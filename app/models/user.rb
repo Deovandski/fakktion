@@ -26,11 +26,11 @@ class User < ActiveRecord::Base
   validates :display_name, length: {maximum: 15}
   validates :email, length: {minimum: 4}
   validates :email, length: {maximum: 30}
-  validates :webpage_url, length: {minimum: 8}
+  validates :webpage_url, length: {minimum: 0}
   validates :webpage_url, length: {maximum: 40}
-  validates :facebook_url, length: {minimum: 8}
+  validates :facebook_url, length: {minimum: 0}
   validates :facebook_url, length: {maximum: 40}
-  validates :twitter_url, length: {minimum: 8}
+  validates :twitter_url, length: {minimum: 0}
   validates :twitter_url, length: {maximum: 40}
   validates :personal_message, length: {maximum: 100}
 
