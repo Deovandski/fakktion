@@ -5,6 +5,10 @@
     <li>
       {{#if sessionAccount.user}}Signed in as {{sessionAccount.user.display_name}}{{/if}}
     </li>
+    {{else}}
+    <li>
+      <strong>EXP v0.8 </strong>
+    </li>
     {{/if}}
     <li>
       <img src="/assets/search.png" class="searchIcon" id="searchIconTooltip" {{action 'goSearch'}}>
@@ -18,9 +22,6 @@
       <a {{action 'logout'}}>Logout</a>
     </li>
   {{else}}
-    <li>
-      <strong>EXP v0.8 </strong>
-    </li>
     <li>
       {{#link-to 'users.create'}}SignUp{{/link-to}}
     </li>

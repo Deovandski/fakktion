@@ -43,31 +43,37 @@ class ApiController < ApplicationController
   end
   
   def json_update(resource_obj,resource_params, resource_model)
-    routine_check
-    if resource_model == FactType || resource_model == InnerComment || resource_model == Genre || resource_model == Topic || resource_model == Category
-      if current_user.reputation < -100
-        return render json: {}, status: :forbidden
-      else
-        return update_resource(resource_obj,resource_params)
+    if routine_check
+      if resource_model == FactType || resource_model == InnerComment || resource_model == Genre || resource_model == Topic || resource_model == Category
+        if current_user.reputation < -100
+          return render json: {}, status: :forbidden
+        else
+          return update_resource(resource_obj,resource_params)
+        end
       end
+    else
+      return update_resource(resource_obj,resource_params.e)
     end
   end
   
   def json_update_and_sanitize(resource_obj,resource_params, resource_model)
-    routine_check
-    resource_obj.text = protect_from_xss_like_a_boss(resource_params[:text])
-    if resource_model == Post
-      if current_user.reputation < -250
-        return render json: {}, status: :forbidden
-      else
-        return update_resource(resource_obj, resource_params.except(:text))
+    if routine_check
+      resource_obj.text = protect_from_xss_like_a_boss(resource_params[:text])
+      if resource_model == Post
+        if current_user.reputation < -250
+          return render json: {}, status: :forbidden
+        else
+          return update_resource(resource_obj, resource_params.except(:text))
+        end
+      elsif resource_model == Comment
+        if current_user.reputation < -500
+          return render json: {}, status: :forbidden
+        else
+          return update_resource(resource_obj, resource_params.except(:text))
+        end
       end
-    elsif resource_model == Comment
-      if current_user.reputation < -500
-        return render json: {}, status: :forbidden
-      else
-        return update_resource(resource_obj, resource_params.except(:text))
-      end
+    else
+      return update_resource(resource_obj,resource_params.except(:title,:text,:genre_id,:topic_id,:category_id,:user_id,:comments_count,:fact_link,:fiction_link))
     end
   end
   
@@ -80,6 +86,35 @@ class ApiController < ApplicationController
     else
       return render json: resource_obj.errors, status: :unprocessable_entity
     end
+  end
+  
+  
+  #Routine check for Reputation and Authorization
+  def routine_check
+    if !user_signed_in?
+      return false
+    else
+      reputationCheck
+      return true
+    end
+  end
+  
+  # Super User check alongside reputation check.
+  def isSuperUser
+    reputationCheck()
+    return current_user.is_super_user
+  end
+  
+  # Admin check alongside reputation check.
+  def isUserAdmin
+    reputationCheck()
+    return current_user.is_admin
+  end
+    
+  # Legend check alongside reputation check.
+  def isLegend
+    reputationCheck()
+    return current_user.is_legend
   end
   
   private
@@ -103,31 +138,7 @@ class ApiController < ApplicationController
     end
   end
   
-  #Routine check for Reputation and Authorization
-  def routine_check
-    if !user_signed_in?
-      return render json: {}, status: :forbidden
-    end
-    reputationCheck
-  end
   
-  # Super User check alongside reputation check.
-  def isSuperUser
-    reputationCheck()
-    return current_user.is_super_user
-  end
-  
-  # Admin check alongside reputation check.
-  def isUserAdmin
-    reputationCheck()
-    return current_user.is_admin
-  end
-    
-  # Legend check alongside reputation check.
-  def isLegend
-    reputationCheck()
-    return current_user.is_legend
-  end
   
   # Validates the current_user reputation by using the live reputation score.
   def reputationCheck
