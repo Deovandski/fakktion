@@ -14,20 +14,12 @@ class Api::V1::CategoriesController < ApiController
 
   # Render the created Category using CategoriesSerializer and the AMS Deserialization.
   def create
-    if category_params[:name].length < 10
-    json_create(category_params, Category)
-    else
-      return render json: {}, status: :unprocessable_entity
-    end
+      json_create(category_params, Category)
   end
 
   # Render the updated Category using CategoriesSerializer and the AMS Deserialization.
   def update
-    if category_params[:name].length < 10
-      json_update(category,category_params)
-    else
-      return render json: {}, status: :unprocessable_entity
-    end
+    json_update(category,category_params, Category)
   end
 
   # Destroy Categories from the AMS Deserialization params.

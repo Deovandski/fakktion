@@ -19,7 +19,7 @@ class Api::V1::PostsController < ApiController
 
   # Render the updated Post using PostSerializer and the AMS Deserialization.
   def update
-    json_update_and_sanitize(post,post_params)
+    json_update_and_sanitize(post,post_params, Post)
   end
 
   # Destroy Post from the AMS Deserialization params.

@@ -8,42 +8,73 @@ class ApiController < ApplicationController
       return render json: resource_model.all.sort_by{|x| x[:sortParam]}
   end
   def json_create(resource_params, resource_model)
-    #puts current_user.id
-    #puts current_user.reputation
+    routine_check
     resource_obj = resource_model.new(resource_params)
-    if resource_obj.save
-      return render json: resource_obj, status: :ok
-    else
-      return render json: resource_obj.errors, status: :unprocessable_entity
+    puts resource_model
+    # Only allow resource creation if the user reputation is in good standing depending on the Level ban. See Fakktion Issue #17
+    if resource_model == FactType || resource_model == Genre || resource_model == Topic || resource_model == Category
+      puts current_user.reputation
+      if current_user.reputation < -100
+        return render json: {}, status: :forbidden
+      else
+        return create_resource(resource_obj)
+      end
     end
   end
+  
+  # XSS prevention used on Post, Comment and Inner Comment.
   def json_create_and_sanitize(resource_params, resource_model)
+    routine_check
     resource_obj = resource_model.new(resource_params)
     resource_obj.text = protect_from_xss_like_a_boss(resource_obj.text)
-    if resource_obj.save
-      return render json: resource_obj, status: :ok
-    else
-      return render json: resource_obj.errors, status: :unprocessable_entity
-    end
-  end  
-  def json_update(resource_obj,resource_params)
-    puts user_signed_in?
-    puts current_user
-    if resource_obj.update(resource_params)
-      return render json: resource_obj, status: :ok
-    else
-      return render json: resource_obj.errors, status: :unprocessable_entity
+    if resource_model == Post
+      if current_user.reputation < -250
+        return render json: {}, status: :forbidden
+      else
+        return create_resource(resource_obj)
+      end
+    elsif resource_model == Comment || resource_model == InnerComment
+      if current_user.reputation < -500
+        return render json: {}, status: :forbidden
+      else
+        return create_resource(resource_obj)
+      end
     end
   end
-  def json_update_and_sanitize(resource_obj,resource_params)
+  
+  def json_update(resource_obj,resource_params, resource_model)
+    routine_check
+    if resource_model == FactType || resource_model == Genre || resource_model == Topic || resource_model == Category
+      if current_user.reputation < -100
+        return render json: {}, status: :forbidden
+      else
+        return update_resource(resource_obj,resource_params)
+      end
+    end
+  end
+  
+  def json_update_and_sanitize(resource_obj,resource_params, resource_model)
+    routine_check
     resource_obj.text = protect_from_xss_like_a_boss(resource_params[:text])
-    if resource_obj.update(resource_params.except(:text))
-      return render json: resource_obj, status: :ok
-    else
-      return render json: resource_obj.errors, status: :unprocessable_entity
+    if resource_model == Post
+      if current_user.reputation < -250
+        return render json: {}, status: :forbidden
+      else
+        return update_resource(resource_obj, resource_params.except(:text))
+      end
+    elsif resource_model == Comment || resource_model == InnerComment
+      if current_user.reputation < -500
+        return render json: {}, status: :forbidden
+      else
+        return update_resource(resource_obj, resource_params.except(:text))
+      end
     end
   end
+  
   def json_destroy(resource_obj)
+    if !user_signed_in?
+      return render json: {}, status: :forbidden
+    end
     if resource_obj.destroy
       return render json: {}, status: :no_content
     else
@@ -52,6 +83,33 @@ class ApiController < ApplicationController
   end
   
   private
+  
+  
+  # Handle resource creation. 
+  def create_resource(resource_obj)
+    if resource_obj.save
+      return render json: resource_obj, status: :ok
+    else
+      return render json: resource_obj.errors, status: :unprocessable_entity
+    end
+  end
+  
+  # Handles Updating a resource
+  def update_resource(resource_obj, resource_params)
+    if resource_obj.update(resource_params)
+      return render json: resource_obj, status: :ok
+    else
+      return render json: resource_obj.errors, status: :unprocessable_entity
+    end
+  end
+  
+  #Routine check for Reputation and Authorization
+  def routine_check
+    if !user_signed_in?
+      return render json: {}, status: :forbidden
+    end
+    reputationCheck
+  end
   
   # Super User check alongside reputation check.
   def isSuperUser
