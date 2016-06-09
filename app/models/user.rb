@@ -11,13 +11,28 @@ class User < ActiveRecord::Base
   :recoverable, :rememberable, :trackable, :validatable
 
   # Validations
-  validates :password, presence: true, length: { minimum: 8 }, on: :create
-  validates :password, length: {minimum: 8}, on: :update, allow_blank: true
   validates_presence_of :full_name, :show_full_name, :email, :display_name, :date_of_birth
   validates_inclusion_of :is_super_user, :is_admin, :is_legend, :in => [true,false]
   validates_uniqueness_of :email, :display_name
   validates_acceptance_of :privacy_terms_read, :on => :create, :accept => true, :allow_nil => false
   validates_acceptance_of :legal_terms_read, :on => :create, :accept => true, :allow_nil => false
+
+  # Attributes Length Validations
+  validates :password, presence: true, length: { minimum: 8 }, on: :create
+  validates :password, length: {minimum: 8}, on: :update, allow_blank: true
+  validates :full_name, length: {minimum: 8}
+  validates :full_name, length: {maximum: 30}
+  validates :display_name, length: {minimum: 3}
+  validates :display_name, length: {maximum: 15}
+  validates :email, length: {minimum: 4}
+  validates :email, length: {maximum: 30}
+  validates :webpage_url, length: {minimum: 8}
+  validates :webpage_url, length: {maximum: 40}
+  validates :facebook_url, length: {minimum: 8}
+  validates :facebook_url, length: {maximum: 40}
+  validates :twitter_url, length: {minimum: 8}
+  validates :twitter_url, length: {maximum: 40}
+  validates :personal_message, length: {maximum: 100}
 
   # Relationships
   has_many :admin_messages

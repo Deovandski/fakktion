@@ -23,8 +23,11 @@ class Api::V1::UsersController < ApiController
     tempUser.is_admin = false
     tempUser.is_legend = false
     tempUser.personal_message = "This person did not write anything here yet..."
-    tempUser.save
-    render json: tempUser
+    if tempUser.save
+      render json: tempUser
+    else
+      render json: user.errors, status: :unprocessable_entity
+    end
   end
 
   # Render the updated User using UserSerializer and the AMS Deserialization.
@@ -34,11 +37,18 @@ class Api::V1::UsersController < ApiController
     if current_user.id == user.id
       if user_params[:password].blank? || user_params[:current_password].blank?
         if user.email == user_params[:email]
-          user.update_without_password(user_params.except(:current_password,:password))
+          if user.update_without_password(user_params.except(:current_password,:password))
+            render json: user, status: :ok
+          else
+            render json: user.errors, status: :unprocessable_entity
+          end
         else
-          user.update_without_password(user_params.except(:current_password,:password, :email))
+          if user.update_without_password(user_params.except(:current_password,:password, :email))
+            render json: user, status: :ok
+          else
+            render json: user.errors, status: :unprocessable_entity
+          end
         end
-        render json: user, status: :ok
       elsif user.update_with_password(user_params)
         render json: user, status: :ok
       else

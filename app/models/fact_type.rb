@@ -9,6 +9,10 @@ class FactType < ActiveRecord::Base
   # Validations
   validates_uniqueness_of :name
 
+  # Attributes Length Validations
+  validates :name, length: {minimum: 4}
+  validates :name, length: {maximum: 10}
+  
   # Relationships
   has_many :posts
 end

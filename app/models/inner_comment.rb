@@ -4,6 +4,10 @@ class InnerComment < ActiveRecord::Base
   # Validations
   validates_presence_of :empathy_level, :text, :user_id, :comment_id
 
+  # Attributes Length Validations
+  validates :text, length: {minimum: 25}
+  validates :text, length: {maximum: 500}
+  
   # Relationships
   belongs_to :comment, :counter_cache => true
   belongs_to :user

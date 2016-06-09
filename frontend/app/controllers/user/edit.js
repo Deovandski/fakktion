@@ -29,7 +29,7 @@ export default Ember.Controller.extend ({
       this.set('clientSideValidationComplete',false);
       return 'Min 5 Chars.';
     }
-    else if(this.get('fullName').length > 30) {
+    else if(this.get('model.user.full_name').length > 30) {
       this.set('clientSideValidationComplete',false);
       return 'Max 30 Chars.';
     }

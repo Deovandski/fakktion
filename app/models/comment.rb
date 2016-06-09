@@ -4,6 +4,10 @@ class Comment < ActiveRecord::Base
   
   # Validations
   validates_presence_of :empathy_level, :text, :user_id, :post_id
+  
+  # Attributes Length Validations
+  validates :text, length: {minimum: 25}
+  validates :text, length: {maximum: 1000}
 
   # Relationships
   has_many :inner_comments
