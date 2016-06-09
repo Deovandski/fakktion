@@ -172,7 +172,7 @@ firstComment = Comment.first
 
 InnerComment.create!(
   comment_id: firstComment.id,
- text: 'Sample Inner Text',
+ text: 'Sample Inner Comment Text',
  user_id: firstUser.id,
   empathy_level: 0)
 Rails.logger.info 'Default comments created!'

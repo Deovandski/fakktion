@@ -14,9 +14,9 @@ export default Ember.Controller.extend ({
         this.set('clientSideValidationComplete',false);
         return 'Min 4 characters.';
     }
-    else if(this.get('model.name').length > 10) {
+    else if(this.get('model.name').length > 15) {
         this.set('clientSideValidationComplete',false);
-        return 'Max 10 characters.';
+        return 'Max 15 characters.';
     }
     else{
       var possibleFactType = this.get('factTypes').filterBy('name', this.get('model.name').toLowerCase());

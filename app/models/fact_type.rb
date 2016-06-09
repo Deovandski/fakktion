@@ -11,7 +11,7 @@ class FactType < ActiveRecord::Base
 
   # Attributes Length Validations
   validates :name, length: {minimum: 4}
-  validates :name, length: {maximum: 10}
+  validates :name, length: {maximum: 15}
   
   # Relationships
   has_many :posts

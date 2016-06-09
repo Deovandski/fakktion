@@ -11,9 +11,9 @@ class Post < ActiveRecord::Base
   validates :text, length: {minimum: 100}
   validates :text, length: {maximum: 2000}
   validates :fact_link, length: {minimum: 8}
-  validates :fact_link, length: {maximum: 50}
+  validates :fact_link, length: {maximum: 150}
   validates :fiction_link, length: {minimum: 8}
-  validates :fiction_link, length: {maximum: 50}
+  validates :fiction_link, length: {maximum: 150}
   
   # Relationships
   has_many :comments

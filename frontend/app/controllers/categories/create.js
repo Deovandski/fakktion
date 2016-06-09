@@ -24,9 +24,9 @@ export default Ember.Controller.extend ({
         this.set('clientSideValidationComplete',false);
         return 'Min 4 characters.';
     }
-    else if(this.get('name').length > 10) {
+    else if(this.get('name').length > 15) {
         this.set('clientSideValidationComplete',false);
-        return 'Max 10 characters.';
+        return 'Max 15 characters.';
     }
     else {
       if(this.model.get('categories').isAny('name', this.get('name').toLowerCase())) {

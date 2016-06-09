@@ -54,9 +54,9 @@ export default Ember.Controller.extend ({
         this.set("clientSideValidationComplete", false);
         return "Invalid URL";
       }
-      else if(this.get('factLink').length > 50) {
+      else if(this.get('factLink').length > 150) {
         this.set("clientSideValidationComplete", false);
-        return "Max 50 Chars";
+        return "Max 150 Chars";
       }
       else {
         var rx = new RegExp("^(http|https|HTTP|HTTPS)://");
@@ -82,9 +82,9 @@ export default Ember.Controller.extend ({
         this.set("clientSideValidationComplete", false);
         return "Invalid URL";
       }
-      else if(this.get('fictionLink').length > 50) {
+      else if(this.get('fictionLink').length > 150) {
         this.set("clientSideValidationComplete", false);
-        return "Max 50 Chars";
+        return "Max 150 Chars";
       }
       else {
         var rx = new RegExp("^(http|https|HTTP|HTTPS)://");
