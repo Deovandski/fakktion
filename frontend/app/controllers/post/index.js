@@ -16,7 +16,6 @@ export default Ember.Controller.extend ({
     }
   }),
   canEdit: Ember.computed('model.user.id','sessionAccount.user.id', function() {
-    console.log(this.get('sessionAccount.user.id'));
     if(this.get('sessionAccount.user.id') === this.get('model.user.id')){
       return true;
     }
