@@ -7,14 +7,20 @@ class ApiController < ApplicationController
   def json_render_all(resource_model, _sortParam)
       return render json: resource_model.all.sort_by{|x| x[:sortParam]}
   end
+  
   def json_create(resource_params, resource_model)
     routine_check
     resource_obj = resource_model.new(resource_params)
-    puts resource_model
+    puts current_user.reputation
     # Only allow resource creation if the user reputation is in good standing depending on the Level ban. See Fakktion Issue #17
     if resource_model == FactType || resource_model == InnerComment || resource_model == Genre || resource_model == Topic || resource_model == Category
-      puts current_user.reputation
       if current_user.reputation < -100
+        return render json: {}, status: :forbidden
+      else
+        return create_resource(resource_obj)
+      end
+    elsif resource_model == CommentVote || resource_model == InnerCommentVote
+      if current_user.reputation < -200
         return render json: {}, status: :forbidden
       else
         return create_resource(resource_obj)
@@ -51,11 +57,80 @@ class ApiController < ApplicationController
           return update_resource(resource_obj,resource_params)
         end
       end
-    else
-      return update_resource(resource_obj,resource_params.e)
     end
   end
   
+  # Create Votes.
+  def json_voting_create(commenting_obj, resource_params, resource_model)
+    routine_check
+    if resource_model == CommentVote || resource_model == InnerCommentVote
+      if current_user.reputation < -200
+        return render json: {}, status: :forbidden
+      else
+        commenting_vote_obj = resource_model.new(resource_params)
+        votingHandler(commenting_obj, commenting_vote_obj, false)
+        return render json: commenting_vote_obj, status: :ok
+      end
+    end
+  end
+  
+  # Update Existing Votes
+  def json_voting_update(commenting_obj,commenting_vote_obj, resource_params, resource_model)
+    if routine_check
+      if resource_model == CommentVote || resource_model == InnerCommentVote
+        if current_user.reputation < -200
+          return render json: {}, status: :forbidden
+        else
+          commenting_vote_obj.update(resource_params.except(:voting_record))
+          votingHandler(commenting_obj, commenting_vote_obj, true)
+          return render json: commenting_vote_obj, status: :ok
+        end
+      end
+      else
+        return render json: {}, status: :unprocessable_entity
+    end
+  end
+  
+  
+  # Voting Amount Control Method
+  def votingHandler(commenting_obj, commenting_vote_obj , reverseVote)
+    # Reverse voting acts upon the recorded vote enacted early on.
+    if reverseVote
+      reverseVotingAmmount = commenting_vote_obj.recorded_vote * 2
+      if commenting_vote_obj.positive_vote
+        commenting_obj.increment(:empathy_level, reverseVotingAmmount)
+        commenting_obj.user.increment(:reputation, reverseVotingAmmount)
+      else
+        commenting_obj.decrement(:empathy_level, reverseVotingAmmount)
+        commenting_obj.user.decrement(:reputation, reverseVotingAmmount)
+      end
+    else
+      # Get the amount of votes that the user can cast.
+      if isLegend
+        votingAmmount = 4
+      elsif isUserAdmin
+        votingAmmount = 3
+      elsif isSuperUser
+        votingAmmount = 2
+      else
+        votingAmmount = 1
+      end
+      commenting_vote_obj.recorded_vote = votingAmmount
+      if commenting_vote_obj.positive_vote
+        commenting_obj.increment(:empathy_level, votingAmmount)
+        commenting_obj.user.increment(:reputation, votingAmmount)
+      else
+        commenting_obj.decrement(:empathy_level, votingAmmount)
+        commenting_obj.user.decrement(:reputation, votingAmmount)
+      end
+    end
+      commenting_obj.save
+      commenting_obj.user.save
+      commenting_vote_obj.save
+  end
+  
+  # Update Method used by Post and Comment. User must be signed for all Patch operations
+  # Except for updating the views_counter of a given post.
   def json_update_and_sanitize(resource_obj,resource_params, resource_model)
     if routine_check
       resource_obj.text = protect_from_xss_like_a_boss(resource_params[:text])
@@ -73,7 +148,11 @@ class ApiController < ApplicationController
         end
       end
     else
-      return update_resource(resource_obj,resource_params.except(:title,:text,:genre_id,:topic_id,:category_id,:user_id,:comments_count,:fact_link,:fiction_link))
+      if resource_model == Post
+        return update_resource(resource_obj,resource_params.except(:title,:text,:genre_id,:topic_id,:category_id,:user_id,:comments_count,:fact_link,:fiction_link))
+      else
+        return render json: {}, status: :forbidden
+      end
     end
   end
   
@@ -117,33 +196,6 @@ class ApiController < ApplicationController
     return current_user.is_legend
   end
   
-  # Voting Amount Control Method
-  def votingHandler(typeOfComment, reverseVote, isVotePositive)
-    if isSuperUser
-      votingAmmount = 2
-    elsif isUserAdmin
-      votingAmmount = 3
-    elsif isLegend
-      votingAmmount = 4
-    else
-      votingAmmount = 1
-    end
-    if reverseVote
-      votingAmmount = votingAmmount * 2
-      if isVotePositive
-        typeOfComment.decrement(:empathy_level, votingAmmount)
-      else
-        typeOfComment.increment(:empathy_level, votingAmmount)
-      end
-    else
-      if isVotePositive
-        typeOfComment.increment(:empathy_level, votingAmmount)
-      else
-        typeOfComment.decrement(:empathy_level, votingAmmount)
-      end
-    end
-  end
-  
   private
     
   
@@ -164,8 +216,6 @@ class ApiController < ApplicationController
       return render json: resource_obj.errors, status: :unprocessable_entity
     end
   end
-  
-  
   
   # Validates the current_user reputation by using the live reputation score.
   def reputationCheck

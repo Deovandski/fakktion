@@ -2,9 +2,11 @@
 class CreateVotings < ActiveRecord::Migration
   def up
     create_table :comment_votes do |t|
+      t.integer  :recorded_vote
       t.boolean  :positive_vote
     end
     create_table :inner_comment_votes do |t|
+      t.integer  :recorded_vote
       t.boolean  :positive_vote
     end
     # Add relationships to the tags tables.

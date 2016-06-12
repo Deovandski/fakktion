@@ -1,5 +1,6 @@
 # Devise Default Sessions Controller: Not in use... See Custom Sessions Controller.
 class Users::SessionsController < Devise::SessionsController
+  respond_to :json
   # GET /resource/sign_in
   # def new
   #   super

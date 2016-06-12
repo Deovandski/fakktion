@@ -12,11 +12,9 @@ class Api::V1::InnerCommentVotesController < ApiController
     render json: innerCommentVote
   end
 
-  # Render the created InnerCommentVote using InnerCommentVoteSerializer and the AMS Deserialization.
-  # Do not allow an user to vote multiple times on the same item!
-  # positiveVote boolean vote change is propagated right before creating the vote.
+  # Render the created CommentVote using CommentVoteSerializer and the AMS Deserialization.
   def create
-    userVotedAlready = InnerCommentVote.where(:inner_comment_id => inner_comment_vote_params[:inner_comment_id], :user_id => inner_comment_vote_params[:user_id]).exists?
+    userVotedAlready = InnerCommentVote.where(:inner_comment_id => inner_comment_vote_params[:cinner_omment_id], :user_id => inner_comment_vote_params[:user_id]).exists?
     innerComment = InnerComment.find(inner_comment_vote_params[:inner_comment_id])
     user = User.find(inner_comment_vote_params[:user_id])
     loggedUserIsAuthor = false
@@ -26,34 +24,19 @@ class Api::V1::InnerCommentVotesController < ApiController
     if userVotedAlready || loggedUserIsAuthor
       return render json: {}, status: :unprocessable_entity
     else
-      if inner_comment_vote_params[:positive_vote]
-        innerComment.increment(:empathy_level)
-      else
-        innerComment.decrement(:empathy_level)
-      end
-      innerComment.save
-      json_create(inner_comment_vote_params, InnerCommentVote)
+      json_voting_create(innerComment, inner_comment_vote_params, InnerCommentVote)
     end
   end
 
-  # Render the updated InnerCommentVote using InnerCommentSerializer and the AMS Deserialization.
-  # Only allow the user to change vote from +1 to -1 through positiveVote boolean.
+  # Render the updated CommentVote using CommentSerializer and the AMS Deserialization.
   def update
     userVotedAlready = InnerCommentVote.where(:inner_comment_id => inner_comment_vote_params[:inner_comment_id], :user_id => inner_comment_vote_params[:user_id]).exists?
     if userVotedAlready
       if innerCommentVote.positive_vote != inner_comment_vote_params[:positive_vote]
         innerComment = InnerComment.find(inner_comment_vote_params[:inner_comment_id])
-        # Negate previous vote from -1 to +1, and vice versa.
-        if innerCommentVote.positive_vote
-          innerComment.decrement(:empathy_level, 2)
-        else
-          innerComment.increment(:empathy_level, 2)
-        end
-        innerComment.save
-        innerCommentVote.save
-        json_update(innerCommentVote, inner_comment_vote_params)
+        json_voting_update(innerComment, innerCommentVote, inner_comment_vote_params, InnerCommentVote)
       else
-        return render json: {}, status: :ok
+        return render json: {}, status: :no_content
       end
     else
       return render json: {}, status: :unprocessable_entity

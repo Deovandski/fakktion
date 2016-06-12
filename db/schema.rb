@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20160501161006) do
   end
 
   create_table "comment_votes", force: :cascade do |t|
+    t.integer "recorded_vote"
     t.boolean "positive_vote"
     t.integer "user_id"
     t.integer "comment_id"
@@ -64,6 +65,7 @@ ActiveRecord::Schema.define(version: 20160501161006) do
   end
 
   create_table "inner_comment_votes", force: :cascade do |t|
+    t.integer "recorded_vote"
     t.boolean "positive_vote"
     t.integer "user_id"
     t.integer "inner_comment_id"

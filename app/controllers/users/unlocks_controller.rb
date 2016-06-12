@@ -1,5 +1,6 @@
 # Devise Unlocks Controller.
 class Users::UnlocksController < Devise::UnlocksController
+  respond_to :json
   # GET /resource/unlock/new
   # def new
   #   super

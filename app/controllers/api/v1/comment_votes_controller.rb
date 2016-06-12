@@ -12,11 +12,8 @@ class Api::V1::CommentVotesController < ApiController
     render json: commentVote
   end
 
-  # Render the created CommentVote using CommentVoteSerializer and the AMS Deserialization.
-  # Do not allow an user to vote multiple times on the same item!
-  # positiveVote boolean vote change is propagated right before creating the vote.
+  # Render the created CommentVote using CommentVoteSerializer and the AMS Deserialization..
   def create
-    routine_check
     userVotedAlready = CommentVote.where(:comment_id => comment_vote_params[:comment_id], :user_id => comment_vote_params[:user_id]).exists?
     comment = Comment.find(comment_vote_params[:comment_id])
     user = User.find(comment_vote_params[:user_id])
@@ -27,30 +24,19 @@ class Api::V1::CommentVotesController < ApiController
     if userVotedAlready || loggedUserIsAuthor
       return render json: {}, status: :unprocessable_entity
     else
-      if comment_vote_params[:positive_vote]
-        comment.increment(:empathy_level)
-      else
-        comment.decrement(:empathy_level)
-      end
-      comment.save
-      json_create(comment_vote_params, CommentVote)
+      json_voting_create(comment, comment_vote_params, CommentVote)
     end
   end
 
   # Render the updated CommentVote using CommentSerializer and the AMS Deserialization.
-  # Only allow the user to change vote from +1 to -1 through positiveVote boolean.
   def update
-    routine_check
     userVotedAlready = CommentVote.where(:comment_id => comment_vote_params[:comment_id], :user_id => comment_vote_params[:user_id]).exists?
     if userVotedAlready
       if commentVote.positive_vote != comment_vote_params[:positive_vote]
         comment = Comment.find(comment_vote_params[:comment_id])
-        votingHandler(comment, yes, commentVote.positive_vote)
-        comment.save
-        commentVote.save
-        json_update(commentVote, comment_vote_params)
+        json_voting_update(comment, commentVote, comment_vote_params, CommentVote)
       else
-        return render json: {}, status: :ok
+        return render json: {}, status: :no_content
       end
     else
       return render json: {}, status: :unprocessable_entity
@@ -61,9 +47,7 @@ class Api::V1::CommentVotesController < ApiController
   def destroy
       render json: {}, status: :method_not_allowed
   end
-
-    
-  end
+  
   # CommentVote object from the Deserialization params.
   def commentVote
     CommentVote.find(params[:id])

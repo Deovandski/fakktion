@@ -193,6 +193,10 @@ export default Ember.Controller.extend ({
         return "8 characters minimum.";
       }
     }
+    else if(this.get('currentPassword').length > 72) {
+        this.set("clientSideValidationComplete",false);
+        return "72 Characters Max.";
+    }
     else {
       this.set("clientSideValidationComplete",true);
       return "";
@@ -208,6 +212,10 @@ export default Ember.Controller.extend ({
         this.set("clientSideValidationComplete",false);
         return "8 characters minimum.";
       }
+    }
+    else if(this.get('newPassword').length > 72) {
+        this.set("clientSideValidationComplete",false);
+        return "72 Characters Max.";
     }
     else {
       this.set("clientSideValidationComplete",true);
