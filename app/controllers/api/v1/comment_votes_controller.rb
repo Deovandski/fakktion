@@ -63,8 +63,8 @@ class Api::V1::CommentVotesController < ApiController
   end
 
   private
-
-  def votingHandler(comment, reverseVote, isVotePositive)
+  # Voting Amount Control Method
+  def votingHandler(typeOfComment, reverseVote, isVotePositive)
     if isSuperUser
       votingAmmount = 2
     elsif isUserAdmin
@@ -74,21 +74,22 @@ class Api::V1::CommentVotesController < ApiController
     else
       votingAmmount = 1
     end
-    
     if reverseVote
       votingAmmount = votingAmmount * 2
       if isVotePositive
-        comment.decrement(:empathy_level, votingAmmount)
+        typeOfComment.decrement(:empathy_level, votingAmmount)
       else
-        comment.increment(:empathy_level, votingAmmount)
+        typeOfComment.increment(:empathy_level, votingAmmount)
       end
     else
       if isVotePositive
-        comment.increment(:empathy_level, votingAmmount)
+        typeOfComment.increment(:empathy_level, votingAmmount)
       else
-        comment.decrement(:empathy_level, votingAmmount)
+        typeOfComment.decrement(:empathy_level, votingAmmount)
       end
     end
+  end
+    
     
   end
   # CommentVote object from the Deserialization params.

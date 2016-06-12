@@ -26,6 +26,8 @@ class Post < ActiveRecord::Base
   # Normalize a few attributes to lowercase in case frontend failed to do so.
   def normalize_input
     self.title = title.downcase
+    self.fact_link = fact_link.downcase
+    self.fiction_link = fiction_link.downcase
   end
   
   # Allow deletion if there are no comments.
