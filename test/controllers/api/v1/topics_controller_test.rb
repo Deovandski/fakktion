@@ -25,7 +25,7 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     assert_equal TopicSerializer, serializer
   end
   test "Topics - API - Create 200" do
-    apiTopic = Topic.new(name: 'kagamine rin', eligibility_counter: 0, posts_count: 0)
+    apiTopic = Topic.new(name: 'testng123', eligibility_counter: 0, posts_count: 0)
     assert_difference('Topic.count', +1) do
       post :create, ActiveModelSerializers::SerializableResource.new(apiTopic).as_json
     end
