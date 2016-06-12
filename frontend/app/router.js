@@ -28,6 +28,8 @@ Router.map(function() {
     this.route('comments'); // View all Comments by x User
   });
 
+  
+  /* See Issue #31
   // ADMIN MESSAGE(S) ROUTES
   this.route('adminMessages', function(){
     this.route('create');
@@ -35,7 +37,7 @@ Router.map(function() {
   this.route('adminMessage', { path:'adminMessage/:admin_message_id' }, function() {
     this.route('edit');
   });
-
+  */
   // POST(S) ROUTES
   this.route('posts', function(){
     this.route('create');

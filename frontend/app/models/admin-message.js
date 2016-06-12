@@ -1,3 +1,4 @@
+/* SEE ISSUE #31
 import DS from "ember-data";
 
 export default DS.Model.extend ({
@@ -7,3 +8,4 @@ export default DS.Model.extend ({
   // Relationships
   user: DS.belongsTo('user', {async: true})
 });
+*/

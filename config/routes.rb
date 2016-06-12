@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   # API Routes
   namespace :api do
     namespace :v1 do
-      resources :admin_messages
+      #resources :admin_messages || See Issue #32
       resources :posts
       resources :comments
       resources :comment_votes

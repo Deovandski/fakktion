@@ -6,6 +6,8 @@ class Api::V1::FactTypesControllerTest < ActionController::TestCase
     @request.headers["Content-Type"] = "application/json; charset=utf-8"
     @testFactType = FactType.new(name: 'TEST', eligibility_counter: 0, posts_count: 0)
     @testFactType.save
+    @user = User.first
+    sign_in @user    
   end
   # Called after test
   def teardown

@@ -6,6 +6,8 @@ class Api::V1::GenresControllerTest < ActionController::TestCase
     @request.headers["Content-Type"] = "application/json; charset=utf-8"
     @testGenre = Genre.new(name: 'TEST', eligibility_counter: 0, posts_count: 0)
     @testGenre.save
+    @user = User.first
+    sign_in @user    
   end
   # Called after test
   def teardown

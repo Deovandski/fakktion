@@ -6,6 +6,8 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     @request.headers["Content-Type"] = "application/json; charset=utf-8"
     @testTopic = Topic.new(name: 'Testing Topic', eligibility_counter: 0, posts_count: 0)
     @testTopic.save
+    @user = User.first
+    sign_in @user
   end
   # Called after test
   def teardown

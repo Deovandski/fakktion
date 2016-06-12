@@ -6,6 +6,8 @@ class Api::V1::CategoriesControllerTest < ActionController::TestCase
     @request.headers["Content-Type"] = "application/json; charset=utf-8"
     @testCategory = Category.new(name: 'TEST', posts_count: 0)
     @testCategory.save
+    @user = User.first
+    sign_in @user
   end
   # Called after test
   def teardown
