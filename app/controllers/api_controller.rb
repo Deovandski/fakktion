@@ -117,8 +117,35 @@ class ApiController < ApplicationController
     return current_user.is_legend
   end
   
-  private
+  # Voting Amount Control Method
+  def votingHandler(typeOfComment, reverseVote, isVotePositive)
+    if isSuperUser
+      votingAmmount = 2
+    elsif isUserAdmin
+      votingAmmount = 3
+    elsif isLegend
+      votingAmmount = 4
+    else
+      votingAmmount = 1
+    end
+    if reverseVote
+      votingAmmount = votingAmmount * 2
+      if isVotePositive
+        typeOfComment.decrement(:empathy_level, votingAmmount)
+      else
+        typeOfComment.increment(:empathy_level, votingAmmount)
+      end
+    else
+      if isVotePositive
+        typeOfComment.increment(:empathy_level, votingAmmount)
+      else
+        typeOfComment.decrement(:empathy_level, votingAmmount)
+      end
+    end
+  end
   
+  private
+    
   
   # Handle resource creation. 
   def create_resource(resource_obj)
