@@ -4,6 +4,9 @@ source 'https://rubygems.org'
 
 ruby "2.3.0"
 
+# Rack Attack Middleware. https://github.com/kickstarter/rack-attack
+gem 'rack-attack'
+
 gem "foreman", '>=0.82'
 gem "local_time", '>=1.0'
 
