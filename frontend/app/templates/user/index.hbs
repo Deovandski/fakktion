@@ -1,68 +1,123 @@
-<div class="user_show">
-  <h2 class="h2_top">User Page</h2>
-  <div class="user_show_left">
-    <div class="basic_info_div">
-      <h4 class="inner_heading">Basic Information</h4>
-      {{#if isOwner}}
-        <p><label class="inner_label">Full Name:</label>  {{capitalize model.full_name}}</p>
+{{#if model.is_legend }}
+  {{#if isOwner}}
+    <h3 class="h3_legend">{{capitalize model.full_name}}{{#link-to 'user.edit'}}Edit{{/link-to}}</h3>
+  {{else}}
+    {{#if model.show_full_name}}
+      <h4 class="h3_legend">{{capitalize model.full_name}}</h4>
+    {{else}}
+      <h4 class="h3_legend">{{capitalize model.display_name}}</h4>
+    {{/if}}
+  {{/if}}
+{{else if model.is_admin }}
+  {{#if isOwner}}
+    <h3 class="h3_admin">{{capitalize model.full_name}}{{#link-to 'user.edit'}}Edit{{/link-to}}</h3>
+  {{else}}
+    {{#if model.show_full_name}}
+      <h4 class="h3_admin">{{capitalize model.full_name}}</h4>
+    {{else}}
+      <h4 class="h3_admin">{{capitalize model.display_name}}</h4>
+    {{/if}}
+  {{/if}}
+{{else if model.is_super_user}}
+  {{#if isOwner}}
+    <h3 class="h3_super_user">{{capitalize model.full_name}}{{#link-to 'user.edit'}}Edit{{/link-to}}</h3>
+  {{else}}
+    {{#if model.show_full_name}}
+      <h4 class="h3_super_user">{{capitalize model.full_name}}</h4>
+    {{else}}
+      <h4 class="h3_super_user">{{capitalize model.display_name}}</h4>
+    {{/if}}
+  {{/if}}
+{{else}}
+  {{#if isOwner}}
+    <h3 class="h3_user">{{capitalize model.full_name}}{{#link-to 'user.edit'}}Edit{{/link-to}}</h3>
+  {{else}}
+    {{#if model.show_full_name}}
+      <h4 class="h3_user">{{capitalize model.full_name}}</h4>
+    {{else}}
+      <h4 class="h3_user">{{capitalize model.display_name}}</h4>
+    {{/if}}
+  {{/if}}
+{{/if}}
+
+<div class="user_intro"><label>{{model.personal_message}}</label></div>
+
+{{#if expandInfo}}
+  <button class="button_type1_normal" {{action "setExpandInfo" false}}>Hide User Information</button>
+  <div class="user_more_info">
+    <div class="user_more_info_row">
+      <div class="user_more_info_cl_left"><label>Reputation:</label>  {{counter-styler model.reputation}}</div>
+      {{#if model.is_legend }}
+        <div class="user_more_info_cl_right info_legend_user">Legendary User</div>
+      {{else if model.is_admin }}
+        <div class="user_more_info_cl_right info_admin_user">Admin User</div>
+      {{else if model.is_super_user}}
+        <div class="user_more_info_cl_right info_super_user">Super User</div>
       {{else}}
-        {{#if model.show_full_name}}
-          <p><label class="inner_label">Full Name:</label>  {{capitalize model.full_name}}</p>
-        {{else}}
-          <p><label class="inner_label">Full Name: Hidden</label></p>
-        {{/if}}
-      {{/if}}
-      <p><label class="inner_label">Display Name:</label>  {{capitalize model.display_name}}</p>
-      <p><label class="inner_label">Gender:</label>  {{model.gender}}</p>
-      <p><label class="inner_label">Age:</label>  {{ageDate}}</p>
-      <p><label class="inner_label">About Me:</label></p>
-      <p><label class="inner_label_message">{{model.personal_message}}</label></p>
-      <p><label class="inner_label">Number of Posts:</label>  {{model.posts_count}}</p>
-      <p><label class="inner_label">Number of Comments:</label>  {{model.comments_count}}</p>
-      <p><label class="inner_label">Profile Created on:</label>  {{createdDate}}</p>
-      <p><label class="inner_label">Profile Updated on:</label>  {{updatedDate}}</p>
-      {{#if model.is_admin}}
-        <p><label class="inner_label">User is an admin!</label></p>
+        <div class="user_more_info_cl_right info_normal_user">New User</div>
       {{/if}}
     </div>
-      {{#if isOwner}}
-      <p class="inner_edit_info">{{#link-to 'user.edit'}}Edit Information{{/link-to}}</p>
-      {{else}}
-      <p class="inner_edit_info">Fakktion</p>
-      {{/if}}
-  </div>
-  <div class="user_show_right">
-    <div class="posts_info_div">
-      <h4 class="inner_heading">Posts by this user</h4>
-      {{#if verifyPosts}}
-      <ul class="posts_ul">
-        {{#each model.posts as |post|}}
-          <li>{{#link-to 'post' post}}{{post.title}}{{/link-to}}</li>
-        {{/each}}
-      </ul>
-      {{else}}
-        <p>No posts to show</p>
-      {{/if}}
+    <div class="user_more_info_row">
+      <div class="user_more_info_cl_left"><label class="inner_label"># Posts:</label>  {{counter-styler model.posts_count}}</div>
+      <div class="user_more_info_cl_right"><label class="inner_label"># Comments:</label>  {{counter-styler model.comments_count}}</div>
     </div>
-    <div class="links_info_div">
-      <h4 class="inner_heading">Social Network Links</h4>
-      <label>Fakktion is not responsible for the contents or the destination of the links below.<br/> More information on Legal Info.</label><br/>
+    <div class="user_more_info_row">
+      <div class="user_more_info_cl_left"><label class="inner_label">Created on:</label>  {{createdDate}}</div>
+      <div class="user_more_info_cl_right"><label class="inner_label">Updated on:</label>  {{updatedDate}}</div>
+    </div>
+    <div class="user_links_info_row">
+      <div class="user_more_info_notice"><label class="inner_label">User Links</label></div>
+      <div class="user_more_info_cl_container">
+      
+      
       {{#if verifyFacebookURL}}
-      <a href="{{model.facebook_url}}" target="_blank">Facebook</a>
+        <div class="user_more_info_cl"><a href="{{model.facebook_url}}" target="_blank"><img width="23px" height="23px" src="/assets/facebook.png"></a></div>
       {{else}}
-        <label>(No Facebook Link)</label>
+        <div class="user_more_info_cl"><img width="23px" height="23px" src="/assets/facebook_disabled.png"></div>
       {{/if}}
       {{#if verifyTwitterURL}}
-      <a href="{{model.twitter_url}}" target="_blank">Twitter</a>
+        <div class="user_more_info_cl"><a href="{{model.twitter_url}}" target="_blank"><img width="23px" height="23px" src="/assets/twitter.png"></a></div>
       {{else}}
-        <label>(No Twitter Link)</label>
+        <div class="user_more_info_cl"><img width="23px" height="23px" src="/assets/twitter_disabled.png"></div>
       {{/if}}
       {{#if verifyWebpageURL}}
-      <a href="{{model.webpage_url}}" target="_blank">Personal Page</a>
+        <div class="user_more_info_cl"><a href="{{model.webpage_url}}" target="_blank"><img width="23px" height="23px" src="/assets/webpage.png"></a></div>
       {{else}}
-        <label>(No Webpage Link)</label>
+        <div class="user_more_info_cl"><img width="23px" height="23px" src="/assets/webpage_disabled.png"></div>
       {{/if}}
+      </div>
     </div>
+    <div class="user_more_info_warning">Fakktion does not verify the links authenticity.</div>
   </div>
-  
+{{else}}
+  <button class="button_type1_normal" {{action "setExpandInfo" true}}>Show User Information</button>
+{{/if}}
+
+
+<h4 class="user_posts_header">Posts by this User</h4>
+<div class="posts_info">
+  {{#if verifyPosts}}
+    <ul>
+      <li>
+        <label class="label_title_header"><strong>Showing {{model.posts.length}} Posts</strong></label>
+        <label class="label_views_header"><img height="15px" src="/assets/views.svg"></label>
+        <label class="label_comments_count_header"><img height="15px" src="/assets/comments.png"></label>
+      </li>
+      {{#each model.posts as |post|}}
+      <li>
+        <label class="label_title">
+          {{#link-to 'post' post}}{{capitalize post.title}}{{/link-to}}
+        </label>
+        <label class="label_views">
+          {{counter-styler post.views_count}}
+        </label>
+        <label class="label_comments_count">
+          {{counter-styler post.comments_count}}
+        </label>
+      </li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <p>No posts to show</p>
+  {{/if}}
 </div>

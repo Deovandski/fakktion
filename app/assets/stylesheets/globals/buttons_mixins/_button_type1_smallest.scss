@@ -17,6 +17,8 @@
   vertical-align: middle;
   white-space: nowrap;
   -webkit-font-smoothing: antialiased;
+  width: auto !important;
+  height: auto !important;
 
   &:hover {
     background-color: lighten($button-type-1-bg, 10%);

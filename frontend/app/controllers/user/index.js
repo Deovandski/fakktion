@@ -5,6 +5,7 @@ const { service } = Ember.inject;
 export default Ember.Controller.extend ({
   session: service('session'),
   sessionAccount: service('session-account'),
+  expandInfo: false,
   verifyFacebookURL: Ember.computed('model.facebook_url', function() {
     if(this.get('model.facebook_url') !== '') {
       if(this.get('model.facebook_url').indexOf("facebook") !== -1)
@@ -60,5 +61,10 @@ export default Ember.Controller.extend ({
   }),
   createdDate: Ember.computed('model.created_at', function() {
     return moment(this.get("model.created_at")).format('L');
-  })
+  }),
+  actions: {
+    setExpandInfo: function(boolean) {
+      this.set('expandInfo', boolean);
+    }
+  }
 });
