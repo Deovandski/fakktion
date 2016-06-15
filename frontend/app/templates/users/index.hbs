@@ -1,26 +1,57 @@
-<h1>Search Users</h1>
+<h3>Search Users</h3>
 
-<p>TODO</p>
-
-<div class="users_info">
-  <ul>
-    <li>
-      <label class="label_title_header"><strong>Showing {{filteredUsers.length}} Users</strong></label>
-      <label class="label_views_header"><img height="15px" src="/assets/views.svg"></label>
-      <label class="label_comments_count_header"><img height="15px" src="/assets/comments.png"></label>
-    </li>
-    {{#each filteredUsers as |user|}}
-    <li>
-      <label class="label_title">
-        {{#link-to 'user' user}}{{capitalize post.title}}{{/link-to}}
-      </label>
-      <label class="label_views">
-        {{counter-styler post.views_count}}
-      </label>
-      <label class="label_comments_count">
-        {{counter-styler post.comments_count}}
-      </label>
-    </li>
-    {{/each}}
-  </ul>
+<div class="user_attribute_selector">
+  <div class="pannel_container">
+    {{#if canSelectAttribute_1}}
+      <button class="button_type1_active" {{action "setSearchAttribute" 1}}>Display Name</button>
+    {{else}}
+      <button class="button_type1_inactive" {{action "setSearchAttribute" 1 disabled=true}}>Display Name</button>
+    {{/if}}
+    {{#if canSelectAttribute_2}}
+      <button class="button_type1_active" {{action "setSearchAttribute" 2}}>Email</button>
+    {{else}}
+      <button class="button_type1_inactive" {{action "setSearchAttribute" 2 disabled=true}}>Email</button>
+    {{/if}}
+  </div>
 </div>
+
+<div class="input_block_search_page">
+    <label class="first_label">{{attrSelected}}</label>
+    <label class="input_wrapper">{{input value=searchText placeholder="Mr. Fakktion"}}</label>
+    <label class="second_label">{{searchTextWarnings}}</label>
+</div>
+
+<h4>Results</h4>
+{{#if underSearch}}
+  <div class="users_info">
+    <ul>
+      <li>
+        <label class="label_display_header"><strong>Showing {{filteredUsers.length}} Users</strong></label>
+        <label class="label_email_header">Email</label>
+        <label class="label_reputation_header">Reputation</label>
+      </li>
+      {{#each filteredUsers as |user|}}
+      <li>
+        <label class="label_display_name">
+          {{#link-to 'user' user}}{{capitalize user.display_name}}{{/link-to}}
+        </label>
+        <label class="label_email">
+          {{capitalize user.email}}
+        </label>
+      {{#if user.is_legend }}
+        <label class="label_reputation info_legend_user">{{counter-styler user.reputation}}</label>
+      {{else if user.is_admin }}
+        <label class="label_reputation info_admin_user">{{counter-styler user.reputation}}</label>
+      {{else if user.is_super_user}}
+        <label class="label_reputation info_super_user">{{counter-styler user.reputation}}</label>
+      {{else}}
+        <label class="label_reputation info_normal_user">{{counter-styler user.reputation}}</label>
+      {{/if}}
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+{{else}}
+  <p>Please select the search attribute, then type the search query...</p>
+{{/if}}
+

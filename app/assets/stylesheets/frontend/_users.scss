@@ -105,27 +105,6 @@
       float: right;
       height: 34px;
     }
-    .info_legend_user {
-      background-color: $is-legend;
-      padding: 1px;
-      font-weight: bold;
-      
-    }
-    .info_admin_user {
-      background-color: $is-admin;
-      padding: 1px;
-      font-weight: bold;
-    
-    }
-    .info_super_user {
-      background-color: $is-super-user;
-      padding: 1px;
-      font-weight: bold;
-    
-    }
-    .info_normal_user {
-    
-    }
   }
   .user_links_info_row {
     @extend .user_more_info_row;
@@ -155,4 +134,76 @@
 }
 .user_posts_header{
   margin: 7px;
+}
+.user_attribute_selector{
+  width: auto;
+  max-width: 200px;
+  height: 20px;
+  margin: 15px auto 25px auto;
+  .pannel_container{
+    display: flex;
+    button {
+      flex-grow: 0;
+      flex-direction: column;
+      margin: 0px 5px 2px 5px;
+    }
+  }
+}
+.users_info{
+  @extend .posts_info;
+  width: 100%;
+  ul {
+    li {
+          .label_display_header {
+            @extend .label_title_header;
+            width: 40%;
+            border-style: none;
+          }
+          .label_email_header {
+            @extend .label_views_header;
+            width: 40%;
+            border-style: none;
+          }
+          .label_reputation_header {
+            @extend .label_comments_count_header;
+            width: 20%;
+            border-style: none;
+          }
+      .label_display_name {
+        @extend .label_title;
+        width: 40%;
+        border-style: none;
+      }
+      .label_email {
+        @extend .label_views;
+        width: 40%;
+        border-style: none;
+      }
+      .label_reputation {
+        @extend .label_comments_count;
+        width: 20%;
+      }
+    }
+  }
+}
+
+.info_legend_user {
+  background-color: $is-legend;
+  padding: 1px;
+  font-weight: bold;
+  
+}
+.info_admin_user {
+  background-color: $is-admin;
+  padding: 1px;
+  font-weight: bold;
+
+}
+.info_super_user {
+  background-color: $is-super-user;
+  padding: 1px;
+  font-weight: bold;
+}
+.info_normal_user {
+
 }

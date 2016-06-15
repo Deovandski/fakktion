@@ -159,12 +159,15 @@ div {
   width: 100%;
   text-align: left;
   height: 40px;
+  line-height: 40px;
   .first_label {
     text-overflow: ellipsis;
     float: left;
     vertical-align: middle;
     width: 25%;
     height: 100%;
+    text-align: left;
+    padding-right: 10px;
   }
   .input_wrapper {
     height: 100%;
@@ -182,6 +185,8 @@ div {
     width: 25%;
     height: 100%;
     font-size: 80%;
+    text-align: left;
+    padding-left: 10px;
   }
 
 }
@@ -189,7 +194,15 @@ div {
 .input_block_type1 {
   @extend .input_block_base;
 }
-.input_block_checkbox{
+.input_block_search_page {
+  @extend .input_block_base;
+  margin: 15px 0px 15px 0px;
+  .first_label {
+    text-align: right;
+  }
+
+}
+.input_block_checkbox {
   width: 100%;
   text-align: left;
   height: 40px;

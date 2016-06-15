@@ -36,6 +36,16 @@ button_type1_normal,
 input[type="submit"] {
   @include button_type1_normal;
 }
+.button_type1_active,
+button_type1_active,
+input[type="submit"] {
+  @include button_type1_active;
+}
+.button_type1_inactive,
+button_type1_inactive,
+input[type="submit"] {
+  @include button_type1_inactive;
+}
 .button_type1_normal_super_user,
 button_type1_normal_super_user,
 input[type="submit"] {

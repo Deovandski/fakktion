@@ -61,7 +61,8 @@ $form-font-family: $base-font-family;
 // Shared Button Colors
 $button-type-1-color: #FFFFFF;
 $button-type-1-bg: $base-accent-color;
-
+$button-type-active-bg: #084F3D;
+$button-type-inactive-bg: darken($red, 35%);
 $button-bar-color: #000000;
 $button-bar-bg: #ddd;
 $button-bar-upvote-bg: hsla(110, 100%, 39%, 1);
