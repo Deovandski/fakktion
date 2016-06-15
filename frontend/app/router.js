@@ -15,9 +15,6 @@ Router.map(function() {
   this.route('header');
   this.route('login', { path: '/login' });
 
-  // Search Panel
-  this.route('search', { path: '/search' });
-
   // USER(S) ROUTES
   this.route('users', function(){
     this.route('create');

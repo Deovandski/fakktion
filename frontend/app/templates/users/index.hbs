@@ -1,6 +1,26 @@
-<p>Users Page</p>
-<ul>
-  {{#each model as |user|}}
-    <li>{{#link-to 'user' user}}{{user.display_name}}{{/link-to}}</li>
-  {{/each}}
-</ul>
+<h1>Search Users</h1>
+
+<p>TODO</p>
+
+<div class="users_info">
+  <ul>
+    <li>
+      <label class="label_title_header"><strong>Showing {{filteredUsers.length}} Users</strong></label>
+      <label class="label_views_header"><img height="15px" src="/assets/views.svg"></label>
+      <label class="label_comments_count_header"><img height="15px" src="/assets/comments.png"></label>
+    </li>
+    {{#each filteredUsers as |user|}}
+    <li>
+      <label class="label_title">
+        {{#link-to 'user' user}}{{capitalize post.title}}{{/link-to}}
+      </label>
+      <label class="label_views">
+        {{counter-styler post.views_count}}
+      </label>
+      <label class="label_comments_count">
+        {{counter-styler post.comments_count}}
+      </label>
+    </li>
+    {{/each}}
+  </ul>
+</div>
