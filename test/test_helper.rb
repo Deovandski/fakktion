@@ -10,8 +10,9 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 class ActiveSupport::TestCase
-  # Database Seed for all tests.
-  Rake::Task["db:seed"].invoke
+  # Database Seed Coverage Test for both empty and filled DB.
+  system("rake db:setup RAILS_ENV=test")
+  system("rake db:seed RAILS_ENV=test")
   # Add more helper methods to be used by all tests here...
 end
 class ActionController::TestCase

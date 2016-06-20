@@ -57,11 +57,6 @@ class Api::V1::GenresControllerTest < ActionController::TestCase
     post :update, tempGenre1.merge(id: genre1)
     assert_response(422)
   end
-  test "Genres - API - DELETE 200" do
-    assert_difference('Genre.count', 0) do
-      delete :destroy, id: @testGenre
-    end
-  end
   test "Genres - API - DELETE 405" do
     genre = Genre.find_by name: 'action'
     post = Post.first

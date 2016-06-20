@@ -1,65 +1,100 @@
 # Seeds.rb
 
-# USER RELATED SEED
-if User.count != 0
-  Rails.logger.info 'There are users already...'
-else
-  # User #1 - Legend User:
-  User.create!(full_name: 'Sample User',
-    show_full_name: true,
-    display_name: 'User#1',
-    email: 'user@example.com',
-    reputation: 4000,
-    password: '12345678',
-    password_confirmation:'12345678',
-    date_of_birth: DateTime.strptime('09/14/2001', '%m/%d/%Y'),
-    is_super_user: true,
-    is_admin: true,
-    is_legend: true,
-    facebook_url: '',
-    personal_message: 'sample personal message',
-    twitter_url: 'https://twitter.com/Deovandski',
-    webpage_url: 'https://www.google.com',
-    privacy_terms_read: true,
-    legal_terms_read: true)
-  # User #2 - Normal User:
-  User.create!(full_name: 'User Example',
-    show_full_name: true,
-    email: 'user@sample.com',
-    display_name: 'User#2',
-    reputation: 0,
-    password: '12345678',
-    password_confirmation:'12345678',
-    date_of_birth: DateTime.strptime('09/14/2002', '%m/%d/%Y'),
-    is_super_user: false,
-    is_admin: false,
-    is_legend: false,
-    facebook_url: '',
-    personal_message: 'Vocaloid Rules!',
-    twitter_url: 'https://twitter.com/Deo',
-    webpage_url: 'https://www.deovandski.blogspot.com',
-    privacy_terms_read: true,
-    legal_terms_read: true)
-  # User #3 - Banned User:
-  User.create!(full_name: 'Banned User Example',
-    show_full_name: true,
-    email: 'user@user.com',
-    display_name: 'User#3',
-    reputation: -3600,
-    password: '12345678',
-    password_confirmation:'12345678',
-    date_of_birth: DateTime.strptime('09/14/2002', '%m/%d/%Y'),
-    is_super_user: false,
-    is_admin: false,
-    is_legend: false,
-    facebook_url: '',
-    personal_message: 'Vocaloid Rules!',
-    twitter_url: 'https://twitter.com/Deo',
-    webpage_url: 'https://www.deovandski.blogspot.com',
-    privacy_terms_read: true,
-    legal_terms_read: true)
-  Rails.logger.info 'Default users created!'
+# ENV SPECIFIC SEEDING
+def seed_users
+  # USER RELATED SEED
+  if User.count != 0
+    Rails.logger.info 'There are users already...'
+  else
+    # User #1 - Legend User:
+    User.create!(full_name: 'Sample User',
+      show_full_name: true,
+      display_name: 'User#1',
+      email: 'user@example.com',
+      reputation: 4000,
+      password: '12345678',
+      password_confirmation:'12345678',
+      date_of_birth: DateTime.strptime('09/14/2001', '%m/%d/%Y'),
+      is_super_user: true,
+      is_admin: true,
+      is_legend: true,
+      facebook_url: '',
+      personal_message: 'sample personal message',
+      twitter_url: 'https://twitter.com/Deovandski',
+      webpage_url: 'https://www.google.com',
+      privacy_terms_read: true,
+      legal_terms_read: true)
+    # User #2 - Normal User:
+    User.create!(full_name: 'User Example',
+      show_full_name: true,
+      email: 'user@sample.com',
+      display_name: 'User#2',
+      reputation: 0,
+      password: '12345678',
+      password_confirmation:'12345678',
+      date_of_birth: DateTime.strptime('09/14/2002', '%m/%d/%Y'),
+      is_super_user: false,
+      is_admin: false,
+      is_legend: false,
+      facebook_url: '',
+      personal_message: 'Vocaloid Rules!',
+      twitter_url: 'https://twitter.com/Deo',
+      webpage_url: 'https://www.deovandski.blogspot.com',
+      privacy_terms_read: true,
+      legal_terms_read: true)
+    # User #3 - Banned User:
+    User.create!(full_name: 'Banned User Example',
+      show_full_name: true,
+      email: 'user@user.com',
+      display_name: 'User#3',
+      reputation: -3600,
+      password: '12345678',
+      password_confirmation:'12345678',
+      date_of_birth: DateTime.strptime('09/14/2002', '%m/%d/%Y'),
+      is_super_user: false,
+      is_admin: false,
+      is_legend: false,
+      facebook_url: '',
+      personal_message: 'Vocaloid Rules!',
+      twitter_url: 'https://twitter.com/Deo',
+      webpage_url: 'https://www.deovandski.blogspot.com',
+      privacy_terms_read: true,
+      legal_terms_read: true)
+    Rails.logger.info 'Default users created!'
+  end
 end
+
+case Rails.env   
+  when 'development' then seed_users
+  when 'test' then seed_users
+  when 'production'
+    # USER RELATED SEED
+    if User.count != 0
+      Rails.logger.info 'There are users already...'
+    else
+    # User #1 - Deovandski:
+    User.create!(full_name: 'Deovandski Skibinski Junior',
+      show_full_name: true,
+      display_name: 'Deovandski',
+      email: 'deovandski@outlook.com',
+      reputation: 2000,
+      password: '12345678',
+      password_confirmation:'12345678',
+      date_of_birth: DateTime.strptime('05/15/1993', '%m/%d/%Y'),
+      is_super_user: true,
+      is_admin: true,
+      is_legend: false,
+      facebook_url: '',
+      personal_message: 'sample personal message',
+      twitter_url: 'https://twitter.com/Deovandski',
+      webpage_url: 'http://deovandski.herokuapp.com',
+      privacy_terms_read: true,
+      legal_terms_read: true)
+    end
+end
+
+
+# SHARED SEEDS
 
 # CATEGORIES RELATED SEED
 if Category.count != 0
@@ -124,8 +159,8 @@ else
   Topic.create!(name: 'kagamine rin')
   Topic.create!(name: 'Kagamine len')
   Rails.logger.info 'Default topics created!'
-end
-
+end    
+    
 # POST RELATED SEED
 if Post.count != 0
   Rails.logger.info 'There are posts already...'

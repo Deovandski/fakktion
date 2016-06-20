@@ -3,7 +3,7 @@ class CreateBlog < ActiveRecord::Migration
   def up
     create_table :users do |t|
       t.string :full_name
-      t.string :display_name
+      t.string :display_name, :unique => true
       t.string :facebook_url, default: ""
       t.string :twitter_url, default: ""
       t.string :personal_message, default: ""

@@ -16,6 +16,9 @@ class Api::V1::UsersController < ApiController
   def create
     tempUser = User.new(user_params.except(:current_password))
     tempUser.sign_in_count = 0
+    tempUser.comments_count = 0
+    tempUser.reputation = 0
+    tempUser.posts_count = 0
     tempUser.webpage_url = ""
     tempUser.facebook_url = ""
     tempUser.twitter_url = ""
@@ -26,7 +29,7 @@ class Api::V1::UsersController < ApiController
     if tempUser.save
       render json: tempUser
     else
-      render json: user.errors, status: :unprocessable_entity
+      render json: tempUser.errors, status: :unprocessable_entity
     end
   end
 
@@ -36,18 +39,10 @@ class Api::V1::UsersController < ApiController
     # and update without password, else updates password.
     if current_user.id == user.id
       if user_params[:password].blank? || user_params[:current_password].blank?
-        if user.email == user_params[:email]
-          if user.update_without_password(user_params.except(:current_password,:password))
-            render json: user, status: :ok
-          else
-            render json: user.errors, status: :unprocessable_entity
-          end
+        if user.update_without_password(user_params.except(:current_password,:password))
+          render json: user, status: :ok
         else
-          if user.update_without_password(user_params.except(:current_password,:password, :email))
-            render json: user, status: :ok
-          else
-            render json: user.errors, status: :unprocessable_entity
-          end
+          render json: user.errors, status: :unprocessable_entity
         end
       elsif user.update_with_password(user_params)
         render json: user, status: :ok

@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { maximum: 72 }, on: :create
   validates :password, length: {minimum: 8}, on: :update, allow_blank: true
   validates :password, length: {maximum: 72}, on: :update, allow_blank: true
-  validates :full_name, length: {minimum: 8}
+  validates :full_name, length: {minimum: 5}
   validates :full_name, length: {maximum: 30}
   validates :display_name, length: {minimum: 3}
   validates :display_name, length: {maximum: 15}
