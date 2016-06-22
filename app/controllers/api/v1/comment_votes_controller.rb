@@ -14,15 +14,11 @@ class Api::V1::CommentVotesController < ApiController
 
   # Render the created CommentVote using CommentVoteSerializer and the AMS Deserialization..
   def create
-    userVotedAlready = CommentVote.where(:comment_id => comment_vote_params[:comment_id], :user_id => comment_vote_params[:user_id]).exists?
     comment = Comment.find(comment_vote_params[:comment_id])
-    user = User.find(comment_vote_params[:user_id])
-    loggedUserIsAuthor = false
-    if user.id == comment.user.id
-      loggedUserIsAuthor = true
-    end
-    if userVotedAlready || loggedUserIsAuthor
-      return render json: {}, status: :unprocessable_entity
+    if current_user == comment.user
+      return render json: {}, status: :forbidden
+    elsif CommentVote.where(:comment_id => comment, :user_id => current_user).exists?
+      return render json: {}, status: :not_allowed
     else
       json_voting_create(comment, comment_vote_params, CommentVote)
     end

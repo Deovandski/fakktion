@@ -35,6 +35,7 @@ class Api::V1::UsersController < ApiController
 
   # Render the updated User using UserSerializer and the AMS Deserialization.
   def update
+    routine_check
     # Check if password is blank, if so, clear :current_password
     # and update without password, else updates password.
     if current_user.id == user.id

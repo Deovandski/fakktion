@@ -7,11 +7,11 @@ export default Ember.Controller.extend ({
   commentSortProperties: ['empathy_level:desc'],
   sortedComments: Ember.computed.sort('model.comments', 'commentSortProperties'),
   isBanned: Ember.computed('sessionAccount.user.reputation', function() {
-    if(this.get('sessionAccount.user.reputation') < -500){
+    if(this.get('sessionAccount.user.reputation') < -200){
       return true;
     }
     else{
       return false;
     }
-  })
+  }),
 });

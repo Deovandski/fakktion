@@ -11,6 +11,14 @@ export default Ember.Controller.extend ({
   downvoteEnabled: false,
   didUserVote: false,
   votingID: -1,
+  isBanned: Ember.computed('sessionAccount.user.reputation', function() {
+    if(this.get('sessionAccount.user.reputation') < -500){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }),
   createdDate: Ember.computed('model.created_at', function() {
     return moment(this.get("model.created_at")).format('L');
   }),
@@ -31,6 +39,10 @@ export default Ember.Controller.extend ({
         
         // Allow the opposite vote to be cast by the non author user.
         if (self.get('sessionAccount.user.id') === self.get('model.user.id')){
+          self.set('upvoteEnabled',false);
+          self.set('downvoteEnabled',false);
+        }
+        else if(self.get('isBanned') === true){
           self.set('upvoteEnabled',false);
           self.set('downvoteEnabled',false);
         }

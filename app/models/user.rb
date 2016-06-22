@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable
 
+  # For use alongside tests.
+  attr_accessor :current_password
+
   # Validations
   validates_presence_of :full_name, :show_full_name, :email, :display_name, :date_of_birth
   validates_inclusion_of :is_super_user, :is_admin, :is_legend, :in => [true,false]
@@ -65,7 +68,7 @@ class User < ActiveRecord::Base
   end
   
   # Make sure that there are no resources created by this user
-  def check_for_posts
+  def check_for_resources
     if self.posts.any?
       errors[:base] << "Cannot delete account! You have at least one post associated to it."
       return false

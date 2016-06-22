@@ -9,42 +9,47 @@ class ApiController < ApplicationController
   end
   
   def json_create(resource_params, resource_model)
-    routine_check
-    resource_obj = resource_model.new(resource_params)
-    puts current_user.reputation
-    # Only allow resource creation if the user reputation is in good standing depending on the Level ban. See Fakktion Issue #17
-    if resource_model == FactType || resource_model == InnerComment || resource_model == Genre || resource_model == Topic || resource_model == Category
-      if current_user.reputation < -100
-        return render json: {}, status: :forbidden
-      else
-        return create_resource(resource_obj)
+    if routine_check
+      resource_obj = resource_model.new(resource_params)
+      # Only allow resource creation if the user reputation is in good standing depending on the Level ban. See Fakktion Issue #17
+      if resource_model == FactType || resource_model == InnerComment || resource_model == Genre || resource_model == Topic || resource_model == Category
+        if current_user.reputation < -100
+          return render json: {}, status: :forbidden
+        else
+          return create_resource(resource_obj)
+        end
+      elsif resource_model == CommentVote || resource_model == InnerCommentVote
+        if current_user.reputation < -200
+          return render json: {}, status: :forbidden
+        else
+          return create_resource(resource_obj)
+        end
       end
-    elsif resource_model == CommentVote || resource_model == InnerCommentVote
-      if current_user.reputation < -200
-        return render json: {}, status: :forbidden
-      else
-        return create_resource(resource_obj)
-      end
+    else
+      return render json: {}, status: :unauthorized
     end
   end
   
   # XSS prevention used on Post, Comment and Inner Comment.
   def json_create_and_sanitize(resource_params, resource_model)
-    routine_check
-    resource_obj = resource_model.new(resource_params)
-    resource_obj.text = protect_from_xss_like_a_boss(resource_obj.text)
-    if resource_model == Post
-      if current_user.reputation < -250
-        return render json: {}, status: :forbidden
-      else
-        return create_resource(resource_obj)
+    if routine_check
+      resource_obj = resource_model.new(resource_params)
+      resource_obj.text = protect_from_xss_like_a_boss(resource_obj.text)
+      if resource_model == Post
+        if current_user.reputation < -250
+          return render json: {}, status: :forbidden
+        else
+          return create_resource(resource_obj)
+        end
+      elsif resource_model == Comment
+        if current_user.reputation < -500
+          return render json: {}, status: :forbidden
+        else
+          return create_resource(resource_obj)
+        end
       end
-    elsif resource_model == Comment
-      if current_user.reputation < -500
-        return render json: {}, status: :forbidden
-      else
-        return create_resource(resource_obj)
-      end
+    else
+      return render json: {}, status: :unauthorized
     end
   end
   
@@ -57,20 +62,25 @@ class ApiController < ApplicationController
           return update_resource(resource_obj,resource_params)
         end
       end
+    else
+      return render json: {}, status: :unauthorized
     end
   end
   
   # Create Votes.
   def json_voting_create(commenting_obj, resource_params, resource_model)
-    routine_check
-    if resource_model == CommentVote || resource_model == InnerCommentVote
-      if current_user.reputation < -200
-        return render json: {}, status: :forbidden
-      else
-        commenting_vote_obj = resource_model.new(resource_params)
-        votingHandler(commenting_obj, commenting_vote_obj, false)
-        return render json: commenting_vote_obj, status: :ok
+    if routine_check
+      if resource_model == CommentVote || resource_model == InnerCommentVote
+        if current_user.reputation < -200
+          return render json: {}, status: :forbidden
+        else
+          commenting_vote_obj = resource_model.new(resource_params.except(:voting_record))
+          votingHandler(commenting_obj, commenting_vote_obj, false)
+          return render json: commenting_vote_obj, status: :ok
+        end
       end
+    else
+      return render json: {}, status: :unauthorized
     end
   end
   
@@ -86,8 +96,8 @@ class ApiController < ApplicationController
           return render json: commenting_vote_obj, status: :ok
         end
       end
-      else
-        return render json: {}, status: :unprocessable_entity
+    else
+      return render json: {}, status: :unauthorized
     end
   end
   
@@ -106,11 +116,11 @@ class ApiController < ApplicationController
       end
     else
       # Get the amount of votes that the user can cast.
-      if isLegend
+      if current_user.is_legend
         votingAmmount = 4
-      elsif isUserAdmin
+      elsif current_user.is_admin
         votingAmmount = 3
-      elsif isSuperUser
+      elsif current_user.is_super_user
         votingAmmount = 2
       else
         votingAmmount = 1
@@ -124,9 +134,11 @@ class ApiController < ApplicationController
         commenting_obj.user.decrement(:reputation, votingAmmount)
       end
     end
-      commenting_obj.save
-      commenting_obj.user.save
-      commenting_vote_obj.save
+    commenting_obj.save
+    commenting_obj.user.save
+    commenting_vote_obj.save
+    # Update reputation of the user who created the commenting_obj
+    reputationCheck(commenting_obj.user)
   end
   
   # Update Method used by Post and Comment. User must be signed for all Patch operations
@@ -135,13 +147,13 @@ class ApiController < ApplicationController
     if routine_check
       resource_obj.text = protect_from_xss_like_a_boss(resource_params[:text])
       if resource_model == Post
-        if current_user.reputation < -250
+        if current_user.reputation < -50
           return render json: {}, status: :forbidden
         else
           return update_resource(resource_obj, resource_params.except(:text))
         end
       elsif resource_model == Comment
-        if current_user.reputation < -500
+        if current_user.reputation < -150
           return render json: {}, status: :forbidden
         else
           return update_resource(resource_obj, resource_params.except(:text))
@@ -157,13 +169,14 @@ class ApiController < ApplicationController
   end
   
   def json_destroy(resource_obj)
-    if !user_signed_in?
-      return render json: {}, status: :forbidden
-    end
-    if resource_obj.destroy
-      return render json: {}, status: :no_content
+    if routine_check
+      if resource_obj.destroy
+        return render json: {}, status: :no_content
+      else
+        return render json: resource_obj.errors, status: :unprocessable_entity
+      end
     else
-      return render json: resource_obj.errors, status: :unprocessable_entity
+      return render json: {}, status: :forbidden
     end
   end
   
@@ -173,27 +186,9 @@ class ApiController < ApplicationController
     if !user_signed_in?
       return false
     else
-      reputationCheck
+      reputationCheck(current_user)
       return true
     end
-  end
-  
-  # Super User check alongside reputation check.
-  def isSuperUser
-    reputationCheck()
-    return current_user.is_super_user
-  end
-  
-  # Admin check alongside reputation check.
-  def isUserAdmin
-    reputationCheck()
-    return current_user.is_admin
-  end
-    
-  # Legend check alongside reputation check.
-  def isLegend
-    reputationCheck()
-    return current_user.is_legend
   end
   
   private
@@ -218,25 +213,30 @@ class ApiController < ApplicationController
   end
   
   # Validates the current_user reputation by using the live reputation score.
-  def reputationCheck
-    if current_user.reputation >= 500 && current_user.is_super_user == false
-      current_user.is_super_user = true
-      current_user.save()
-    elsif current_user.reputation >= 1500 && current_user.is_admin == false
-      current_user.is_admin = true
-      current_user.save()
-    elsif current_user.reputation >= 3000 && current_user.is_legend == false
-      current_user.is_legend = true
-      current_user.save()
-    elsif current_user.reputation <= 500 && current_user.is_super_user == true
-      current_user.is_super_user = true
-      current_user.save()
-    elsif current_user.reputation <= 1500 && current_user.is_admin == true
-      current_user.is_admin = true
-      current_user.save()
-    elsif current_user.reputation <= 3000 && current_user.is_legend == true
-      current_user.is_legend = true
-      current_user.save()
+  def reputationCheck(userToCheck)
+    # SuperUser Block
+    if userToCheck.reputation >= 500 && userToCheck.is_super_user == false
+      userToCheck.is_super_user = true
+      userToCheck.save()
+    elsif userToCheck.reputation <= 500 && userToCheck.is_super_user == true
+      userToCheck.is_super_user = false
+      userToCheck.save()
+    end
+    # Admin Block
+    if userToCheck.reputation >= 1500 && userToCheck.is_admin == false
+      userToCheck.is_admin = true
+      userToCheck.save()
+    elsif userToCheck.reputation <= 1500 && userToCheck.is_admin == true
+      userToCheck.is_admin = false
+      userToCheck.save()
+    end
+    # Legend Block
+    if userToCheck.reputation >= 3000 && userToCheck.is_legend == false
+      userToCheck.is_legend = true
+      userToCheck.save()
+    elsif userToCheck.reputation <= 3000 && userToCheck.is_legend == true
+      userToCheck.is_legend = false
+      userToCheck.save()
     end
   end
   
