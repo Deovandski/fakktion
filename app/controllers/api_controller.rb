@@ -157,7 +157,7 @@ class ApiController < ApplicationController
       if resource_model == Post
         return update_resource(resource_obj,resource_params.except(:title,:text,:genre_id,:topic_id,:category_id,:user_id,:comments_count,:fact_link,:fiction_link))
       else
-        return render json: {}, status: :forbidden
+        return render json: {}, status: :unauthorized
       end
     end
   end
@@ -170,7 +170,7 @@ class ApiController < ApplicationController
         return render json: resource_obj.errors, status: :unprocessable_entity
       end
     else
-      return render json: {}, status: :forbidden
+      return render json: {}, status: :unauthorized
     end
   end
   

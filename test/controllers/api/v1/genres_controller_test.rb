@@ -31,15 +31,15 @@ class Api::V1::GenresControllerTest < ActionController::TestCase
     end
   end
   test "Genres - API - Create 401" do
-      sign_out @user
-      post :create, ActiveModelSerializers::SerializableResource.new(@testGenre).as_json
-      assert_response(401)
+    sign_out @user
+    post :create, ActiveModelSerializers::SerializableResource.new(@testGenre).as_json
+    assert_response(401)
   end
   test "Genres - API - Create 403" do
-      @user = User.find_by_email('user@user.com')
-      sign_in @user
-      post :create, ActiveModelSerializers::SerializableResource.new(@testGenre).as_json
-      assert_response(403)
+    @user = User.find_by_email('user@user.com')
+    sign_in @user
+    post :create, ActiveModelSerializers::SerializableResource.new(@testGenre).as_json
+    assert_response(403)
   end
   test "Genres - API - Create 422" do
       post :create, ActiveModelSerializers::SerializableResource.new(@testGenre).as_json
@@ -58,29 +58,29 @@ class Api::V1::GenresControllerTest < ActionController::TestCase
     assert_response :success, genreUpdated
   end
   test "Genres - API - UPDATE 401" do
-      sign_out @user
-      genre = Genre.find_by name: 'test'
-      genre1 = Genre.find_by name: 'action'
-      genre.name = "mikuchan"
-      genre1.name = "mikuchan"
-      tempGenre = ActiveModelSerializers::SerializableResource.new(genre).serializable_hash
-      tempGenre1 = ActiveModelSerializers::SerializableResource.new(genre1).serializable_hash
-      post :update, tempGenre.merge(id: genre)
-      post :update, tempGenre1.merge(id: genre1)
-      assert_response(401)
+    sign_out @user
+    genre = Genre.find_by name: 'test'
+    genre1 = Genre.find_by name: 'action'
+    genre.name = "mikuchan"
+    genre1.name = "mikuchan"
+    tempGenre = ActiveModelSerializers::SerializableResource.new(genre).serializable_hash
+    tempGenre1 = ActiveModelSerializers::SerializableResource.new(genre1).serializable_hash
+    post :update, tempGenre.merge(id: genre)
+    post :update, tempGenre1.merge(id: genre1)
+    assert_response(401)
   end
   test "Genres - API - UPDATE 403" do
-      @user = User.find_by_email('user@user.com')
-      sign_in @user
-      genre = Genre.find_by name: 'test'
-      genre1 = Genre.find_by name: 'action'
-      genre.name = "mikuchan"
-      genre1.name = "mikuchan"
-      tempGenre = ActiveModelSerializers::SerializableResource.new(genre).serializable_hash
-      tempGenre1 = ActiveModelSerializers::SerializableResource.new(genre1).serializable_hash
-      post :update, tempGenre.merge(id: genre)
-      post :update, tempGenre1.merge(id: genre1)
-      assert_response(403)
+    @user = User.find_by_email('user@user.com')
+    sign_in @user
+    genre = Genre.find_by name: 'test'
+    genre1 = Genre.find_by name: 'action'
+    genre.name = "mikuchan"
+    genre1.name = "mikuchan"
+    tempGenre = ActiveModelSerializers::SerializableResource.new(genre).serializable_hash
+    tempGenre1 = ActiveModelSerializers::SerializableResource.new(genre1).serializable_hash
+    post :update, tempGenre.merge(id: genre)
+    post :update, tempGenre1.merge(id: genre1)
+    assert_response(403)
   end
   test "Genres - API - UPDATE 422" do
     genre = Genre.find_by name: 'test'

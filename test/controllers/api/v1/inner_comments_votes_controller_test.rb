@@ -177,6 +177,7 @@ class Api::V1::InnerCommentVotesControllerTest < ActionController::TestCase
     assert_not updatedTestUser.is_legend
   end
   test "InnerCommentsVote - API - LOSE SUPER USER TEST" do
+    @testUser.is_super_user = true
     @testUser.reputation = 500
     @testUser.save
     testInnerComment = InnerComment.new(user_id: @testUser.id, comment_id: @testComment.id, empathy_level: 0, text: "Hello hello, (hola!) I'm at a place called Vertigo (Donde estás?)")
@@ -209,6 +210,8 @@ class Api::V1::InnerCommentVotesControllerTest < ActionController::TestCase
     assert_not updatedTestUser.is_legend
   end
   test "InnerCommentsVote - API - LOSE ADMIN TEST" do
+    @testUser.is_super_user = true
+    @testUser.is_admin = true
     @testUser.reputation = 1501
     @testUser.save
     testInnerComment = InnerComment.new(user_id: @testUser.id, comment_id: @testComment.id, empathy_level: 0, text: "Hello hello, (hola!) I'm at a place called Vertigo (Donde estás?)")
@@ -241,6 +244,9 @@ class Api::V1::InnerCommentVotesControllerTest < ActionController::TestCase
     assert updatedTestUser.is_legend
   end
   test "InnerCommentsVote - API - LOSE LEGEND TEST" do
+    @testUser.is_super_user = true
+    @testUser.is_admin = true
+    @testUser.is_legend = true
     @testUser.reputation = 3001
     @testUser.save
     testInnerComment = InnerComment.new(user_id: @testUser.id, comment_id: @testComment.id, empathy_level: 0, text: "Hello hello, (hola!) I'm at a place called Vertigo (Donde estás?)")
