@@ -1,0 +1,10 @@
+{
+  "data": {
+    "id" : { "type" : "number" },
+    "type" : { "type" : "string" },
+    "attributes": {
+      "recorded_vote" : { "type" : "number" },
+      "positive_vote" : { "type" : "boolean" }
+    }
+  }
+}

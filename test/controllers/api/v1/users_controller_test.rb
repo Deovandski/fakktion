@@ -27,11 +27,11 @@ class Api::V1::UsersControllerTest < ActionController::TestCase
   end
   test "Users - API - Get Index" do
     get :index
-    assert_response_schema('genres/index.json')
+    assert_response_schema('users/index.json')
   end
   test "Users - API - SHOW 200" do
     get :show, id: @user
-    assert_response_schema('genres/show.json')
+    assert_response_schema('users/show.json')
   end
   test "Users - API - Create 200" do
     assert_difference('User.count', +1) do
