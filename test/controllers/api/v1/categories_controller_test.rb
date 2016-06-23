@@ -30,6 +30,17 @@ class Api::V1::CategoriesControllerTest < ActionController::TestCase
       post :create, ActiveModelSerializers::SerializableResource.new(categoryGenre).as_json
     end
   end
+  test "Categories - API - Create 401" do
+      sign_out @user
+      post :create, ActiveModelSerializers::SerializableResource.new(@testCategory).as_json
+      assert_response(401)
+  end
+  test "Categories - API - Create 403" do
+      @user = User.find_by_email('user@user.com')
+      sign_in @user
+      post :create, ActiveModelSerializers::SerializableResource.new(@testCategory).as_json
+      assert_response(403)
+  end
   test "Categories - API - Create 422" do
       post :create, ActiveModelSerializers::SerializableResource.new(@testCategory).as_json
       assert_response(422)
@@ -43,8 +54,33 @@ class Api::V1::CategoriesControllerTest < ActionController::TestCase
     category.name = "mikuchan"
     tempCategory = ActiveModelSerializers::SerializableResource.new(category).serializable_hash
     post :update, tempCategory.merge(id: category)
-    genreUpdated = Category.find_by name: 'mikuchan'
-    assert_response :success, genreUpdated
+    categoryUpdated = Category.find_by name: 'mikuchan'
+    assert_response :success, categoryUpdated
+  end
+  test "Categories - API - UPDATE 401" do
+    sign_out @user
+    category = Category.find_by name: 'test'
+    category1 = Category.find_by name: 'movie'
+    category.name = "mikuchan"
+    category1.name = "mikuchan"
+    tempCategory = ActiveModelSerializers::SerializableResource.new(category).serializable_hash
+    tempCategory1 = ActiveModelSerializers::SerializableResource.new(category1).serializable_hash
+    post :update, tempCategory.merge(id: category)
+    post :update, tempCategory1.merge(id: category1)
+    assert_response(401)
+  end
+  test "Categories - API - UPDATE 403" do
+    @user = User.find_by_email('user@user.com')
+    sign_in @user
+    category = Category.find_by name: 'test'
+    category1 = Category.find_by name: 'movie'
+    category.name = "mikuchan"
+    category1.name = "mikuchan"
+    tempCategory = ActiveModelSerializers::SerializableResource.new(category).serializable_hash
+    tempCategory1 = ActiveModelSerializers::SerializableResource.new(category1).serializable_hash
+    post :update, tempCategory.merge(id: category)
+    post :update, tempCategory1.merge(id: category1)
+    assert_response(403)
   end
   test "Categories - API - UPDATE 422" do
     category = Category.find_by name: 'test'

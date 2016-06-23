@@ -30,9 +30,20 @@ class Api::V1::FactTypesControllerTest < ActionController::TestCase
       post :create, ActiveModelSerializers::SerializableResource.new(apiFactType).as_json
     end
   end
+  test "FactTypes - API - Create 401" do
+    sign_out @user
+    post :create, ActiveModelSerializers::SerializableResource.new(@testFactType).as_json
+    assert_response(401)
+  end
+  test "FactTypes - API - Create 403" do
+    @user = User.find_by_email('user@user.com')
+    sign_in @user
+    post :create, ActiveModelSerializers::SerializableResource.new(@testFactType).as_json
+    assert_response(403)
+  end
   test "FactTypes - API - Create 422" do
-      post :create, ActiveModelSerializers::SerializableResource.new(@testFactType).as_json
-      assert_response(422)
+    post :create, ActiveModelSerializers::SerializableResource.new(@testFactType).as_json
+    assert_response(422)
   end
   test "FactTypes - API - SHOW 200" do
     get :show, id: @testFactType
@@ -43,8 +54,33 @@ class Api::V1::FactTypesControllerTest < ActionController::TestCase
     factType.name = "mikuchan"
     tempFactType = ActiveModelSerializers::SerializableResource.new(factType).serializable_hash
     post :update, tempFactType.merge(id: factType)
-    genreUpdated = FactType.find_by name: 'mikuchan'
-    assert_response :success, genreUpdated
+    factTypeUpdated = FactType.find_by name: 'mikuchan'
+    assert_response :success, factTypeUpdated
+  end
+  test "FactTypes - API - UPDATE 401" do
+    sign_out @user
+    factType = FactType.find_by name: 'test'
+    factType1 = FactType.find_by name: 'technology'
+    factType.name = "mikuchan"
+    factType1.name = "mikuchan"
+    tempFactType = ActiveModelSerializers::SerializableResource.new(factType).serializable_hash
+    tempFactType1 = ActiveModelSerializers::SerializableResource.new(factType1).serializable_hash
+    post :update, tempFactType.merge(id: factType)
+    post :update, tempFactType1.merge(id: factType1)
+    assert_response(401)
+  end
+  test "FactTypes - API - UPDATE 403" do
+    @user = User.find_by_email('user@user.com')
+    sign_in @user
+    factType = FactType.find_by name: 'test'
+    factType1 = FactType.find_by name: 'technology'
+    factType.name = "mikuchan"
+    factType1.name = "mikuchan"
+    tempFactType = ActiveModelSerializers::SerializableResource.new(factType).serializable_hash
+    tempFactType1 = ActiveModelSerializers::SerializableResource.new(factType1).serializable_hash
+    post :update, tempFactType.merge(id: factType)
+    post :update, tempFactType1.merge(id: factType1)
+    assert_response(403)
   end
   test "FactTypes - API - UPDATE 422" do
     factType = FactType.find_by name: 'test'
@@ -52,9 +88,9 @@ class Api::V1::FactTypesControllerTest < ActionController::TestCase
     factType.name = "mikuchan"
     factType1.name = "mikuchan"
     tempFactType = ActiveModelSerializers::SerializableResource.new(factType).serializable_hash
-    tempGenre1 = ActiveModelSerializers::SerializableResource.new(factType1).serializable_hash
+    tempFactType1 = ActiveModelSerializers::SerializableResource.new(factType1).serializable_hash
     post :update, tempFactType.merge(id: factType)
-    post :update, tempGenre1.merge(id: factType1)
+    post :update, tempFactType1.merge(id: factType1)
     assert_response(422)
   end
   test "FactTypes - API - DELETE 200" do

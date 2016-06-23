@@ -30,6 +30,17 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
       post :create, ActiveModelSerializers::SerializableResource.new(apiTopic).as_json
     end
   end
+  test "Topics - API - Create 401" do
+    sign_out @user
+    post :create, ActiveModelSerializers::SerializableResource.new(@testTopic).as_json
+    assert_response(401)
+  end
+  test "Topics - API - Create 403" do
+    @user = User.find_by_email('user@user.com')
+    sign_in @user
+    post :create, ActiveModelSerializers::SerializableResource.new(@testTopic).as_json
+    assert_response(403)
+  end
   test "Topics - API - Create 422" do
     post :create, ActiveModelSerializers::SerializableResource.new(@testTopic).as_json
     assert_response(422)
@@ -45,6 +56,31 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     post :update, tempTopic.merge(id: topic)
     topicUpdated = Topic.find_by name: 'mikuchan'
     assert_response :success, topicUpdated
+  end
+  test "Topics - API - UPDATE 401" do
+    sign_out @user
+    topic = Topic.find_by name: 'hatsune miku'
+    topic1 = Topic.find_by name: 'megurine luka'
+    topic.name = "mikuchan"
+    topic1.name = "mikuchan"
+    tempTopic = ActiveModelSerializers::SerializableResource.new(topic).serializable_hash
+    tempTopic1 = ActiveModelSerializers::SerializableResource.new(topic1).serializable_hash
+    post :update, tempTopic.merge(id: topic)
+    post :update, tempTopic1.merge(id: topic1)
+    assert_response(401)
+  end
+  test "Topics - API - UPDATE 403" do
+    @user = User.find_by_email('user@user.com')
+    sign_in @user
+    topic = Topic.find_by name: 'hatsune miku'
+    topic1 = Topic.find_by name: 'megurine luka'
+    topic.name = "mikuchan"
+    topic1.name = "mikuchan"
+    tempTopic = ActiveModelSerializers::SerializableResource.new(topic).serializable_hash
+    tempTopic1 = ActiveModelSerializers::SerializableResource.new(topic1).serializable_hash
+    post :update, tempTopic.merge(id: topic)
+    post :update, tempTopic1.merge(id: topic1)
+    assert_response(403)
   end
   test "Topics - API - UPDATE 422" do
     topic = Topic.find_by name: 'hatsune miku'
