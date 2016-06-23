@@ -18,12 +18,6 @@ class ApiController < ApplicationController
         else
           return create_resource(resource_obj)
         end
-      elsif resource_model == CommentVote || resource_model == InnerCommentVote
-        if current_user.reputation < -200
-          return render json: {}, status: :forbidden
-        else
-          return create_resource(resource_obj)
-        end
       end
     else
       return render json: {}, status: :unauthorized

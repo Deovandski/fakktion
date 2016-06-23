@@ -64,6 +64,16 @@ class Api::V1::CommentVotesControllerTest < ActionController::TestCase
     post :create, ActiveModelSerializers::SerializableResource.new(@testCommentVote).as_json
     assert_response :unauthorized
   end
+  test "CommentsVote - API - CREATE BY OWNER - 403" do
+    @testUser.reputation = 0
+    @testUser.save
+    testComment = Comment.new(user_id: @testUser.id, post_id: @testPost.id, empathy_level: 0, inner_comments_count: 0, text: "Hello hello, (hola!) I'm at a place called Vertigo (Donde estás?)")
+    testComment.save
+    sign_in @testUser
+    @testCommentVote = CommentVote.new(user_id: @testUser.id, comment_id: testComment.id, recorded_vote: 0, positive_vote: true)
+    post :create, ActiveModelSerializers::SerializableResource.new(@testCommentVote).as_json
+    assert_response :forbidden
+  end
   test "CommentsVote - API - CREATE 409" do
     @testUser.reputation = 0
     @testUser.save
@@ -93,6 +103,10 @@ class Api::V1::CommentVotesControllerTest < ActionController::TestCase
     tempVote = ActiveModelSerializers::SerializableResource.new(@testCommentVote).serializable_hash
     post :update, tempVote.merge(id: @testCommentVote)
     assert_response :success
+    @testCommentVote.positive_vote = true
+    tempVote = ActiveModelSerializers::SerializableResource.new(@testCommentVote).serializable_hash
+    post :update, tempVote.merge(id: @testCommentVote)
+    assert_response :success
   end
   test "CommentsVote - API - UPDATE 204" do
     @testUser.reputation = 0
@@ -110,6 +124,23 @@ class Api::V1::CommentVotesControllerTest < ActionController::TestCase
     post :update, tempVote.merge(id: @testCommentVote)
     assert_response :no_content
   end
+  test "CommentsVote - API - UPDATE 401" do
+    @testUser.reputation = 0
+    @testUser.save
+    testComment = Comment.new(user_id: @testUser.id, post_id: @testPost.id, empathy_level: 0, inner_comments_count: 0, text: "Hello hello, (hola!) I'm at a place called Vertigo (Donde estás?)")
+    testComment.save
+    @testUser2.reputation = 0
+    @testUser2.save
+    sign_in @testUser2
+    @testCommentVote = CommentVote.new(user_id: @testUser2.id, comment_id: testComment.id, recorded_vote: 0, positive_vote: true)
+    post :create, ActiveModelSerializers::SerializableResource.new(@testCommentVote).as_json
+    @testCommentVote = CommentVote.find_by comment_id: testComment.id, user_id: @testUser2.id
+    @testCommentVote.positive_vote = false
+    tempVote = ActiveModelSerializers::SerializableResource.new(@testCommentVote).serializable_hash
+    sign_out @testUser2
+    post :update, tempVote.merge(id: @testCommentVote)
+    assert_response :unauthorized
+  end
   test "CommentsVote - API - UPDATE 422" do
     @testUser.reputation = 0
     @testUser.save
@@ -121,21 +152,11 @@ class Api::V1::CommentVotesControllerTest < ActionController::TestCase
     @testCommentVote = CommentVote.new(user_id: @testUser2.id, comment_id: testComment.id, recorded_vote: 0, positive_vote: true)
     post :create, ActiveModelSerializers::SerializableResource.new(@testCommentVote).as_json
     @testCommentVote = CommentVote.find_by comment_id: testComment.id, user_id: @testUser2.id
-    @testCommentVote.positive_vote = true
+    @testCommentVote.positive_vote = false
     @testCommentVote.user_id = @user.id
     tempVote = ActiveModelSerializers::SerializableResource.new(@testCommentVote).serializable_hash
     post :update, tempVote.merge(id: @testCommentVote)
     assert_response :unprocessable_entity
-  end
-  test "CommentsVote - API - CREATE BY OWNER - 403" do
-    @testUser.reputation = 0
-    @testUser.save
-    testComment = Comment.new(user_id: @testUser.id, post_id: @testPost.id, empathy_level: 0, inner_comments_count: 0, text: "Hello hello, (hola!) I'm at a place called Vertigo (Donde estás?)")
-    testComment.save
-    sign_in @testUser
-    @testCommentVote = CommentVote.new(user_id: @testUser.id, comment_id: testComment.id, recorded_vote: 0, positive_vote: true)
-    post :create, ActiveModelSerializers::SerializableResource.new(@testCommentVote).as_json
-    assert_response :forbidden
   end
   test "CommentsVote - API - ACHIEVE SUPER USER TEST" do
     @testUser.reputation = 499
@@ -233,7 +254,7 @@ class Api::V1::CommentVotesControllerTest < ActionController::TestCase
     assert updatedTestUser.is_admin
     assert_not updatedTestUser.is_legend
   end
-  test "CommentsVote - API - BANNED TEST" do
+  test "CommentsVote - API - CREATE BAN" do
     @testUser.reputation = 0
     @testUser.save
     testComment = Comment.new(user_id: @testUser.id, post_id: @testPost.id, empathy_level: 0, inner_comments_count: 0, text: "Hello hello, (hola!) I'm at a place called Vertigo (Donde estás?)")
@@ -249,6 +270,24 @@ class Api::V1::CommentVotesControllerTest < ActionController::TestCase
     assert_not updatedTestUser.is_super_user
     assert_not updatedTestUser.is_admin
     assert_not updatedTestUser.is_legend
+  end
+  test "CommentsVote - API - UPDATE BAN" do
+    @testUser.reputation = 0
+    @testUser.save
+    testComment = Comment.new(user_id: @testUser.id, post_id: @testPost.id, empathy_level: 0, inner_comments_count: 0, text: "Hello hello, (hola!) I'm at a place called Vertigo (Donde estás?)")
+    testComment.save
+    @testUser2.reputation = 0
+    @testUser2.save
+    sign_in @testUser2
+    @testCommentVote = CommentVote.new(user_id: @testUser2.id, comment_id: testComment.id, recorded_vote: 0, positive_vote: true)
+    post :create, ActiveModelSerializers::SerializableResource.new(@testCommentVote).as_json
+    @testCommentVote = CommentVote.find_by comment_id: testComment.id, user_id: @testUser2.id
+    @testCommentVote.positive_vote = false
+    tempVote = ActiveModelSerializers::SerializableResource.new(@testCommentVote).serializable_hash
+    @testUser2.reputation = -201
+    @testUser2.save
+    post :update, tempVote.merge(id: @testCommentVote)
+    assert_response :success
   end
   test "Users - API - DELETE 405" do
     @testUser.reputation = 0
