@@ -14,15 +14,11 @@ class Api::V1::InnerCommentVotesController < ApiController
 
   # Render the created CommentVote using CommentVoteSerializer and the AMS Deserialization.
   def create
-    userVotedAlready = InnerCommentVote.where(:inner_comment_id => inner_comment_vote_params[:cinner_omment_id], :user_id => inner_comment_vote_params[:user_id]).exists?
     innerComment = InnerComment.find(inner_comment_vote_params[:inner_comment_id])
-    user = User.find(inner_comment_vote_params[:user_id])
-    loggedUserIsAuthor = false
-    if user.id == innerComment.user.id
-      loggedUserIsAuthor = true
-    end
-    if userVotedAlready || loggedUserIsAuthor
-      return render json: {}, status: :unprocessable_entity
+    if current_user == innerComment.user
+      return render json: {}, status: :forbidden
+    elsif InnerCommentVote.where(:inner_comment_id => innerComment, :user_id => current_user).exists?
+      return render json: {}, status: :conflict
     else
       json_voting_create(innerComment, inner_comment_vote_params, InnerCommentVote)
     end

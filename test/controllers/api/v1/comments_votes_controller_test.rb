@@ -284,12 +284,14 @@ class Api::V1::CommentVotesControllerTest < ActionController::TestCase
     @testCommentVote = CommentVote.find_by comment_id: testComment.id, user_id: @testUser2.id
     @testCommentVote.positive_vote = false
     tempVote = ActiveModelSerializers::SerializableResource.new(@testCommentVote).serializable_hash
+    sign_out @testUser2
     @testUser2.reputation = -201
     @testUser2.save
+    sign_in @testUser2
     post :update, tempVote.merge(id: @testCommentVote)
-    assert_response :success
+    assert_response :forbidden
   end
-  test "Users - API - DELETE 405" do
+  test "CommentsVote - API - DELETE 405" do
     @testUser.reputation = 0
     @testUser.save
     testComment = Comment.new(user_id: @testUser.id, post_id: @testPost.id, empathy_level: 0, inner_comments_count: 0, text: "Hello hello, (hola!) I'm at a place called Vertigo (Donde estás?)")
@@ -302,7 +304,7 @@ class Api::V1::CommentVotesControllerTest < ActionController::TestCase
     delete :destroy, id: CommentVote.first
     assert_response(405)
   end
-  test "Users - ACTIVE RECORD - CANNOT DELETE VOTE" do
+  test "CommentsVote - ACTIVE RECORD - CANNOT DELETE VOTE" do
     @testUser.reputation = 0
     @testUser.save
     testComment = Comment.new(user_id: @testUser.id, post_id: @testPost.id, empathy_level: 0, inner_comments_count: 0, text: "Hello hello, (hola!) I'm at a place called Vertigo (Donde estás?)")
