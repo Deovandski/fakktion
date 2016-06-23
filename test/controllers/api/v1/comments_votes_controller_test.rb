@@ -47,7 +47,7 @@ class Api::V1::CommentVotesControllerTest < ActionController::TestCase
     post :create, ActiveModelSerializers::SerializableResource.new(@testCommentVote).as_json
     assert_response :unauthorized
   end
-  test "CommentsVote - API - CREATE 422" do
+  test "CommentsVote - API - CREATE 409" do
     @testUser.reputation = 0
     @testUser.save
     testComment = Comment.new(user_id: @testUser.id, post_id: @testPost.id, empathy_level: 0, inner_comments_count: 0, text: "Hello hello, (hola!) I'm at a place called Vertigo (Donde estás?)")
@@ -59,7 +59,7 @@ class Api::V1::CommentVotesControllerTest < ActionController::TestCase
     @testCommentVote = CommentVote.new(user_id: @testUser2.id, comment_id: testComment.id, recorded_vote: 0, positive_vote: true)
     post :create, ActiveModelSerializers::SerializableResource.new(@testCommentVote).as_json
     post :create, ActiveModelSerializers::SerializableResource.new(@testCommentVote).as_json
-    assert_response :unprocessable_entity
+    assert_response :conflict
   end
   test "CommentsVote - API - CREATE BY OWNER - 403" do
     @testUser.reputation = 0

@@ -18,7 +18,7 @@ class Api::V1::CommentVotesController < ApiController
     if current_user == comment.user
       return render json: {}, status: :forbidden
     elsif CommentVote.where(:comment_id => comment, :user_id => current_user).exists?
-      return render json: {}, status: :not_allowed
+      return render json: {}, status: :conflict
     else
       json_voting_create(comment, comment_vote_params, CommentVote)
     end

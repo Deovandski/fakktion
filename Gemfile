@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 ruby "2.3.0"
 
 # Rack Attack Middleware. https://github.com/kickstarter/rack-attack
-gem 'rack-attack'
+gem 'rack-attack', '>=4.4.1'
 
 gem "foreman", '>=0.82'
 gem "local_time", '>=1.0'
@@ -14,7 +14,7 @@ gem "local_time", '>=1.0'
 gem "puma", '>=3.4'
 
 # AMS
-gem 'active_model_serializers', '0.10.0'
+gem 'active_model_serializers', '0.10.1'
 
 # EmberCLI
 gem 'ember-cli-rails', '0.7.4'
@@ -30,7 +30,7 @@ gem 'sass-rails', '>=5.0'
 gem "awesome_print", '>=1.6'
 gem "font-awesome-rails", '>=4.6'
 gem 'bourbon', '>=4.2.7'
-gem 'neat'
+gem 'neat', '>=1.8.0'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>=2.7'

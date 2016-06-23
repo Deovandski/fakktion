@@ -218,7 +218,7 @@ class ApiController < ApplicationController
     if userToCheck.reputation >= 500 && userToCheck.is_super_user == false
       userToCheck.is_super_user = true
       userToCheck.save()
-    elsif userToCheck.reputation <= 500 && userToCheck.is_super_user == true
+    elsif userToCheck.reputation < 500 && userToCheck.is_super_user == true
       userToCheck.is_super_user = false
       userToCheck.save()
     end
@@ -226,7 +226,7 @@ class ApiController < ApplicationController
     if userToCheck.reputation >= 1500 && userToCheck.is_admin == false
       userToCheck.is_admin = true
       userToCheck.save()
-    elsif userToCheck.reputation <= 1500 && userToCheck.is_admin == true
+    elsif userToCheck.reputation < 1500 && userToCheck.is_admin == true
       userToCheck.is_admin = false
       userToCheck.save()
     end
@@ -234,7 +234,7 @@ class ApiController < ApplicationController
     if userToCheck.reputation >= 3000 && userToCheck.is_legend == false
       userToCheck.is_legend = true
       userToCheck.save()
-    elsif userToCheck.reputation <= 3000 && userToCheck.is_legend == true
+    elsif userToCheck.reputation < 3000 && userToCheck.is_legend == true
       userToCheck.is_legend = false
       userToCheck.save()
     end
