@@ -154,7 +154,7 @@ class ApiController < ApplicationController
         end
       end
     else
-      if resource_model == Post
+      if resource_model == Post && resource_params[:views_count].to_f != resource_obj.views_count.to_f
         return update_resource(resource_obj,resource_params.except(:title,:text,:genre_id,:topic_id,:category_id,:user_id,:comments_count,:fact_link,:fiction_link))
       else
         return render json: {}, status: :unauthorized

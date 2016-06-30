@@ -60,6 +60,6 @@ export default Ember.Controller.extend ({
         this.set('canSelectAttribute_1', true);
         this.set('canSelectAttribute_2', false);
       }
-    },
+    }
   }
 });

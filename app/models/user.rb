@@ -1,5 +1,6 @@
 # User Model
 require 'bcrypt'
+# All validations and Actve Record for User
 class User < ActiveRecord::Base
   before_save :ensure_authentication_token, :normalize_input
   before_destroy :check_for_resources
@@ -45,6 +46,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :inner_comments
 
+  # Used when creating users
   def ensure_authentication_token
     if authentication_token.blank?
       self.authentication_token = generate_authentication_token
@@ -53,6 +55,7 @@ class User < ActiveRecord::Base
 
   private
 
+  # Generate token.
   def generate_authentication_token
     loop do
       token = Devise.friendly_token
