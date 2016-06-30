@@ -19,7 +19,7 @@ class Api::V1::InnerCommentsController < ApiController
 
   # Render the updated InnerComment using InnerCommentSerializer and the AMS Deserialization.
   def update
-    json_update(innerComment,innerComment_params)
+    json_update(innerComment, innerComment_params, InnerComment)
   end
 
   # Destroy InnerComment from the AMS Deserialization params.

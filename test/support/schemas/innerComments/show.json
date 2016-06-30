@@ -1,0 +1,10 @@
+{
+  "data": {
+    "id" : { "type" : "number" },
+    "type" : { "type" : "string" },
+    "attributes": {
+      "empathy_level" : { "type" : "number" },
+      "text" : { "type" : "string" }
+    }
+  }
+}

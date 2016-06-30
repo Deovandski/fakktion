@@ -3,8 +3,8 @@ class Genre < ActiveRecord::Base
   include TagMethods
   
   before_create :set_default_values
-  before_save :normalize_input
   before_destroy :check_for_posts
+  before_save :normalize_input
   
   # Validations
   validates_uniqueness_of :name

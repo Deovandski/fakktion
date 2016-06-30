@@ -21,7 +21,7 @@ class Api::V1::CommentsController < ApiController
 
   # Render the updated Comment using CommentSerializer and the AMS Deserialization.
   def update
-    json_update_and_sanitize(comment,comment_params, Comment)
+    json_update_and_sanitize(comment, comment_params, Comment)
   end
 
   # Destroy Comment from the AMS Deserialization params.

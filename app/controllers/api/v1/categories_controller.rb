@@ -14,7 +14,7 @@ class Api::V1::CategoriesController < ApiController
 
   # Render the created Category using CategoriesSerializer and the AMS Deserialization.
   def create
-      json_create(category_params, Category)
+    json_create(category_params, Category)
   end
 
   # Render the updated Category using CategoriesSerializer and the AMS Deserialization.
@@ -24,7 +24,7 @@ class Api::V1::CategoriesController < ApiController
 
   # Destroy Categories from the AMS Deserialization params.
   def destroy
-      render json: {}, status: :method_not_allowed
+    render json: {}, status: :method_not_allowed
   end
   
   private

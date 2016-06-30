@@ -24,7 +24,7 @@ class Api::V1::FactTypesController < ApiController
 
   # Destroy FactType from the AMS Deserialization params.
   def destroy
-      render json: {}, status: :method_not_allowed
+    render json: {}, status: :method_not_allowed
   end
   
   private

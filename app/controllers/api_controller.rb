@@ -8,6 +8,7 @@ class ApiController < ApplicationController
       return render json: resource_model.all.sort_by{|x| x[:sortParam]}
   end
   
+  # Shared create API method used by Tags and InnerComment
   def json_create(resource_params, resource_model)
     if routine_check
       resource_obj = resource_model.new(resource_params)
@@ -47,6 +48,7 @@ class ApiController < ApplicationController
     end
   end
   
+  # Shared Update API method used by Tags and InnerComment
   def json_update(resource_obj,resource_params, resource_model)
     if routine_check
       if resource_model == FactType || resource_model == InnerComment || resource_model == Genre || resource_model == Topic || resource_model == Category
@@ -240,7 +242,7 @@ class ApiController < ApplicationController
     request.env["devise.skip_trackable"] = true
   end
   
-    # Prevent XSS Attacks like a boss!
+  # Prevent XSS Attacks like a boss!
   def protect_from_xss_like_a_boss(dirtyText)
     scrubber = Rails::Html::PermitScrubber.new
     scrubber.tags = ['a','p','br','b','i','s','ol','ul','li','h5','label']

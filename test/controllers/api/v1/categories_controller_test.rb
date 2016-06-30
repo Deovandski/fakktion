@@ -106,4 +106,9 @@ class Api::V1::CategoriesControllerTest < ActionController::TestCase
     delete :destroy, id: category
     assert_response(405)
   end
+  test "Categories - ACTIVE RECORD - CAN DELETE" do
+    assert_difference('Category.count', -1) do
+      @testCategory.destroy
+    end
+  end
 end

@@ -101,4 +101,9 @@ class Api::V1::GenresControllerTest < ActionController::TestCase
     delete :destroy, id: genre
     assert_response(405)
   end
+  test "Genres - ACTIVE RECORD - CAN DELETE" do
+    assert_difference('Genre.count', -1) do
+      @testGenre.destroy
+    end
+  end
 end

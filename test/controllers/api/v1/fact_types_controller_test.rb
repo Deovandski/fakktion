@@ -106,4 +106,27 @@ class Api::V1::FactTypesControllerTest < ActionController::TestCase
     delete :destroy, id: factType
     assert_response(405)
   end
+  test "FactTypes - ACTIVE RECORD - CAN DELETE" do
+    assert_difference('FactType.count', -1) do
+      @testFactType.destroy
+    end
+  end
+  test "FactTypes - ACTIVE RECORD - CANNOT DELETE" do
+    genre = Genre.first
+    topic = Topic.first
+    factType = FactType.first
+    category = Category.first
+    topic = Topic.first
+    testPost = Post.new(user_id: @user.id, genre_id: genre.id, category_id: category.id, fact_type_id: factType.id, topic_id: topic.id,
+    views_count: 0,
+    comments_count: 0,
+    fact_link: "https://www.google.com",
+    fiction_link: "https://www.google.com",
+    title: "THis is a testing title for the sake of testing the title",
+    text: "test text for testing text so that I can test out the backend text............................................................")
+    testPost.save
+    assert_difference('FactType.count', 0) do
+      factType.destroy
+    end
+  end
 end
