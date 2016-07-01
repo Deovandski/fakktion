@@ -6,7 +6,7 @@ cache:
     - frontend/node_modules
     - frontend/bower_components
 rvm:
-- 2.3.0
+- 2.3.1
 before_install:
 - openssl aes-256-cbc -K $encrypted_f7320bcbcc32_key -iv $encrypted_f7320bcbcc32_iv
   -in secrets.yml.enc -out config/secrets.yml -d
