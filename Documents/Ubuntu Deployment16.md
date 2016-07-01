@@ -9,11 +9,15 @@ Notes:
 
 3. You will need 10GB of free space for deployment procedures.
 
-4. **DO NOT USE THE SCRIPTS FOR UBUNTU 14 DEPLOYMENT!**
+4. This guide sets up the database under the same server. However, it is recommended that you create a separated Postgres Database and connect to it instead by changing the config/database.yml.
+
+5. When installing Ubuntu Server 16, it is recommended that you encrypt your home directory.
+
+6. **DO NOT USE THE SCRIPTS FOR UBUNTU 14 DEPLOYMENT!**
 
 ## Initial Deploy
 1. Fork this project if you have not done so already!
-2. Run ```sudo apt-get update```.
+2. Run ```sudo apt-get update``` followed by ```sudo apt-get upgrade```.
 3. Install Git Core ```sudo apt-get install -y git-core```
 4. From your home/$USER directory, clone repo through ```git clone https://github.com/YOURUSERNAME/Fakktion.git``` (HTTPS instead of SSH suggested as it will make it harder to accidentally push commits back into origin master (or the branch that you use as master.)
 5. Navigate to Fakktion/Documents folder, and allow Execution access to the main script with ```sudo chmod +x u16deploy.sh```.
