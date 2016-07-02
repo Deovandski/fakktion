@@ -31,8 +31,8 @@ In order to deploy an ember-cli-rails project to Ubuntu Server 16.04, please fol
 5. Navigate to Fakktion/Documents folder, and allow Execution access to the main script with ```sudo chmod +x u16deploy.sh```.
 6. Now run ```./u16deploy.sh 1 USER``` (Or change $USER to the user where Puma will use to control the app. You must the same user whenever requested from now on.)
 7. Run ```sudo reboot``` as a system restart is required. Upon restart, if the App has been created as another user, then you must login as said user for steps 8 and 9.
-8. Now go into USER/Fakktion/config and execute ```sudo nano database.yml```, then change the **username** to DBUSER, **password** to DBPW, and **database** to DBNAME. The next step will setup the database for you, but you will to match the same exact info that you entered in this step.
-9. Navigate back to Documents folder, and execute ```./u16deploy.sh 2 DBUSER DBNAME```.
+8. Now go into USER/Fakktion/config and execute ```sudo nano database.yml```, then change the **username** to DBUSER, **password** to DBPW, and **database** to DBNAME. You may need to change other configurations if setting up a remote database.
+9. Navigate back to Documents folder, and execute ```. u16deploy.sh 2 RemoteDB? DBUSER DBNAME```. (replace RemoteDB? with y or n according to your demand for a local or remote DB. DBUSER and DBNAME are only necessary if setting up local database.)
 10. Now login back as the previous user if you did switch accounts. The reason for this is because the app user was granted temporary sudo to install some initial dependencies that could not have worked non-sudo. However, this only applies to the initial install.
 11. Execute ```sudo ./u16deploy.sh 3 USER``` to setup PUMA Daemon service through init.d.
 12. If you need **SSL**, then open **fakktion_16_ssl.conf** and change the certificate details.
@@ -43,10 +43,10 @@ In order to deploy an ember-cli-rails project to Ubuntu Server 16.04, please fol
 
 ### Troubleshooting Initial Deploy
 1. **Ruby version installed is different from the one specified on gemfile.**
-
 If this error happens, then go back to your development machine, and run ```sudo apt-get install -y libpq-dev nginx ruby2.3 rails bundler```. Then, fix the gemfile to the current installed ruby version and run ```rake test```. If all tests works, then push to master followed by pulling on the deployment server and retry the step.
 
-
+2. **postgres user does not exist, or PostgreSQL related errors.**
+Please fix them, or switch to a remote pg database before reattempting the step that failed.
 
 # Maintenance/Advanced instructions (**WIP**)
 
