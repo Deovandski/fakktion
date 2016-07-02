@@ -4,10 +4,10 @@ In order to deploy an ember-cli-rails project to Ubuntu Server 16.04, please fol
 ### Server Overall Structure
 
 #### Local DB
-![](/u16_localdb.png)
+![](u16_localdb.png)
 
 #### Remote DB
-![](/u16_remotedb.png)
+![](u16_remotedb.png)
 
 ### Deployment Notes
 1. This guide is tailored for max performance on running only one app (and its workers) through PUMA while using one single install of Ruby 2.3 with Node.js through NPM (Node Package Manager.) If you plan for multiple apps, you must use RVM (Ruby Version Manager) or Rbenv alongside NVM (Node Version Manager.)
