@@ -1,8 +1,15 @@
-# Ubuntu Server 16.04 Deployment
+## Ubuntu Server 16.04 Deployment
 In order to deploy an ember-cli-rails project to Ubuntu Server 16.04, please follow the initial deploy section.
 
-Notes:
+### Server Overall Structure
 
+#### Local DB
+![](/u16_localdb.png)
+
+#### Remote DB
+![](/u16_remotedb.png)
+
+### Deployment Notes
 1. This guide is tailored for max performance on running only one app (and its workers) through PUMA while using one single install of Ruby 2.3 with Node.js through NPM (Node Package Manager.) If you plan for multiple apps, you must use RVM (Ruby Version Manager) or Rbenv alongside NVM (Node Version Manager.)
 
 2. I do not recommend dropping usage of Bundler, or other package managers in favor of apt-get. You will face terrible consequences from non-available packages, micro-managing inter-dependencies to lack of edge versions and broken installs with no clear solution. **You have been warned, so do not contact me wondering what went wrong if you did not follow this piece of advise!**
@@ -32,6 +39,14 @@ Notes:
 14. ```sudo reboot```, then login as the app user.
 15. Initiate Puma socket with the final part of the script: ```. u16deploy.sh 5```.
 16. Visit your live website! Not working? Go to the **Checking Logs** section for more info.
+
+## Troubleshooting Initial Deploy
+1. **Ruby version installed is different from the one specified on gemfile.**
+
+If this error happens, then go back to your development machine, and run ```sudo apt-get install -y libpq-dev nginx ruby2.3 rails bundler```. Then, fix the gemfile to the current installed ruby version and run ```rake test```. If all tests works, then push to master followed by pulling on the deployment server and retry the step.
+
+2. **Ruby version installed is different from the one specified on gemfile.**
+
 
 ## Updating Project Source Code without moving database or changing VMs. (**WIP**)
 1. Make sure that the Admin notice was given in the website, and that users had at least 72 hours to deal with it.
