@@ -8,7 +8,8 @@ reset=$(tput sgr0)
 setupBaseReqs(){
   deployUser="$1"
   # Min necessary for NGINX, Ruby, Bundler and Rails.
-  sudo apt-get install -y nginx ruby2.3 rails bundler
+  # libpq-dev is necessary for pg gem.
+  sudo apt-get install -y nginx ruby2.3 rails bundler libpq-dev
   # Note regarding using apt-get for every needed package instead of Bundler.
   # This is a non-DRY approach, and many packages may not be available (especially edge versions.)
   # An example of it is ruby-active-model-serializers where apt-get only displays 0.9.3 when Fakktion needs 0.10.0.rc5
