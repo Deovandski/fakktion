@@ -1,7 +1,7 @@
 ## Ubuntu Server 16.04 Deployment
-In order to deploy an ember-cli-rails project to Ubuntu Server 16.04, please follow the initial deploy section.
+In order to deploy an ember-cli-rails project to Ubuntu Server 16.04, please follow the server deployment section.
 
-### Server Overall Structure
+## Server Overall Structure
 
 #### Local DB
 ![](u16_localdb.png)
@@ -9,20 +9,21 @@ In order to deploy an ember-cli-rails project to Ubuntu Server 16.04, please fol
 #### Remote DB
 ![](u16_remotedb.png)
 
+# Server Deployment
+
 ### Deployment Notes
 1. This guide is tailored for max performance on running only one app (and its workers) through PUMA while using one single install of Ruby 2.3 with Node.js through NPM (Node Package Manager.) If you plan for multiple apps, you must use RVM (Ruby Version Manager) or Rbenv alongside NVM (Node Version Manager.)
-
 2. I do not recommend dropping usage of Bundler, or other package managers in favor of apt-get. You will face terrible consequences from non-available packages, micro-managing inter-dependencies to lack of edge versions and broken installs with no clear solution. **You have been warned, so do not contact me wondering what went wrong if you did not follow this piece of advise!**
+3. This guide sets up the database under the same server. However, it is recommended that you create a separated Postgres Database and connect to it instead by changing the config/database.yml.
+4. **DO NOT USE THE SCRIPTS FOR UBUNTU 14 DEPLOYMENT!**
 
-3. You will need 10GB of free space for deployment procedures.
+### Server Requirements
+1. Server with at least 10GB free space.
+2. PostgreSQL database installed if you are running the local version.
+3. Encrypted home directory.
+4. OpenSSH recommended
 
-4. This guide sets up the database under the same server. However, it is recommended that you create a separated Postgres Database and connect to it instead by changing the config/database.yml.
-
-5. When installing Ubuntu Server 16, it is recommended that you encrypt your home directory.
-
-6. **DO NOT USE THE SCRIPTS FOR UBUNTU 14 DEPLOYMENT!**
-
-## Initial Deploy
+### Initial Deploy
 1. Fork this project if you have not done so already!
 2. Run ```sudo apt-get update``` followed by ```sudo apt-get upgrade```.
 3. Install Git Core ```sudo apt-get install -y git-core```
@@ -40,15 +41,16 @@ In order to deploy an ember-cli-rails project to Ubuntu Server 16.04, please fol
 15. Initiate Puma socket with the final part of the script: ```. u16deploy.sh 5```.
 16. Visit your live website! Not working? Go to the **Checking Logs** section for more info.
 
-## Troubleshooting Initial Deploy
+### Troubleshooting Initial Deploy
 1. **Ruby version installed is different from the one specified on gemfile.**
 
 If this error happens, then go back to your development machine, and run ```sudo apt-get install -y libpq-dev nginx ruby2.3 rails bundler```. Then, fix the gemfile to the current installed ruby version and run ```rake test```. If all tests works, then push to master followed by pulling on the deployment server and retry the step.
 
-2. **Ruby version installed is different from the one specified on gemfile.**
 
 
-## Updating Project Source Code without moving database or changing VMs. (**WIP**)
+# Maintenance/Advanced instructions (**WIP**)
+
+### Updating Project Source Code without moving database or changing servers.
 1. Make sure that the Admin notice was given in the website, and that users had at least 72 hours to deal with it.
 2. Stop puma with "/etc/init.d/puma stop".
 3. Run the backup script (**backup_script_16.sh**) to save the puma.rb, secrets.yml and database.yml.
@@ -58,7 +60,7 @@ If this error happens, then go back to your development machine, and run ```sudo
 6. Run the recover script (**recover_script_16.sh**) to restore the unique puma.rb, secrets.yml and database.yml
 7. Start puma back with "/etc/init.d/puma restart".
 
-## Updating Project Source Code with database changes or between VMs. (**WIP**)
+### Updating Project Source Code with database changes or between Servers. (**WIP**)
 Follow the instructions from the [official Docs](http://www.postgresql.org/docs/9.1/static/backup.html) before following the instructions from this guide. 
 
 **DO NOT MOVE DATABASE WITH PENDING MIGRATIONS!** If you do have pending migrations, you must follow the normal updating guide before following this guide otherwise you will risk desync schemas! 
@@ -68,18 +70,16 @@ If performing a change of VM, copy the contents of the backup script stored unde
 1. Use the recover script on step 8, and again right after step 9 (unless you are okay with changing the rake secret because it will force a logout of all clients.)
 2. After step 9 recover the database with the instructions from the official docs.
 
-# Maintenance/Advanced instructions
-
-## Checking Logs
+### Checking Logs
 1. Puma Cluster log available under app/log/puma.log
 2. Puma Stdout and Puma Stdeer logs available under app/shared/log
 
-## Check running PUMA apps
+### Check running PUMA apps
 ```ps aux | grep puma```
 
-## Manually Running puma
+### Manually Running puma
 ```bundle exec puma -e production -d -b unix:///var/www/Fakktion/shared/sockets/puma.sock```
 
-## Remove app from PUMA
+### Remove app from PUMA
 ```sudo /etc/init.d/puma remove /path/to/app```
 
