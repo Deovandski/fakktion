@@ -116,15 +116,12 @@ setupApp(){
     sudo -u postgres createuser --superuser "$databaseUser" --pwprompt
     echo "${inform}Creating the $deployDBName database${reset}'"
     sudo -u "$databaseUser" createdb "$deployDBName"
-    echo "${inform}Configs for Fakktion database underway...${reset}"
-    rake db:setup RAILS_ENV=production
   else
     echo "${inform}Setting up PostgreSQL as client mode ${reset}'"
     sudo apt-get install postgresql-client
-    echo "${warn}Please run the following comman setup skipped${reset}'"
-    echo "${inform}Configs for Fakktion database underway...${reset}"
-    rake db:setup RAILS_ENV=production
   fi
+  echo "${inform}Configs for Fakktion database underway...${reset}"
+  rake db:setup RAILS_ENV=production
   echo "${inform}If an error ocurred at this point, please execute the Database SETUP section of the setupAPP() manually...${reset}"
 
 }
