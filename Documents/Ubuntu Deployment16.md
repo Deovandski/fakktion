@@ -22,23 +22,22 @@ In order to deploy an ember-cli-rails project to Ubuntu Server 16.04, please fol
 3. Encrypted home directory.
 4. OpenSSH recommended
 
-### Initial Deploy
+### Initial Deploy  (**Under Testing**)
 1. Fork this project if you have not done so already!
-2. Run ```sudo apt-get update``` followed by ```sudo apt-get upgrade```.
+2. Run ```sudo apt-get update```.
 3. Install Git Core ```sudo apt-get install -y git-core```
 4. From your home/$USER directory, clone repo through ```git clone https://github.com/YOURUSERNAME/Fakktion.git``` (HTTPS instead of SSH suggested as it will make it harder to accidentally push commits back into origin master (or the branch that you use as master.)
 5. Navigate to Fakktion/Documents folder, and allow Execution access to the main script with ```sudo chmod +x u16deploy.sh```.
 6. Now run ```./u16deploy.sh 1 USER``` (Or change $USER to the user where Puma will use to control the app. You must the same user whenever requested from now on.)
-7. Run ```sudo reboot``` as a system restart is required. Upon restart, if the App has been created as another user, then you must login as said user for steps 8 and 9.
-8. Now go into USER/Fakktion/config and execute ```sudo nano database.yml```, then change the **username** to DBUSER, **password** to DBPW, and **database** to DBNAME. You may need to change other configurations if setting up a remote database.
-9. Navigate back to Documents folder, and execute ```. u16deploy.sh 2 RemoteDB? DBUSER DBNAME```. (replace RemoteDB? with y or n according to your demand for a local or remote DB. DBUSER and DBNAME are only necessary if setting up local database.)
+7. If the App has been created as another user, you must login as said user for the next steps.
+8. Now go into USER/Fakktion/config and execute ```sudo nano database.yml```, then change the **username** to DBUSER, **password** to DBPW, and **database** to DBNAME. The next step will setup the database for you, but you will to match the same exact info that you entered in this step.
+9. Navigate back to Documents folder, and execute ```./u16deploy.sh 2 $USER DBUSER DBNAME```.
 10. Now login back as the previous user if you did switch accounts. The reason for this is because the app user was granted temporary sudo to install some initial dependencies that could not have worked non-sudo. However, this only applies to the initial install.
 11. Execute ```sudo ./u16deploy.sh 3 USER``` to setup PUMA Daemon service through init.d.
 12. If you need **SSL**, then open **fakktion_16_ssl.conf** and change the certificate details.
 13. Execute ```sudo ./u16deploy.sh 4 USER SSL?``` (replace SSL? with y or n) to setup NGINX in order to put your app live.
 14. ```sudo reboot```, then login as the app user.
-15. Initiate Puma socket with the final part of the script: ```. u16deploy.sh 5```.
-16. Visit your live website! Not working? Go to the **Checking Logs** section for more info.
+15. Initiate Puma socket with the final part of the script: ```. u16deploy.sh 5 USER```.
 
 ### Troubleshooting Initial Deploy
 1. **Ruby version installed is different from the one specified on gemfile.**
@@ -77,7 +76,7 @@ If performing a change of VM, copy the contents of the backup script stored unde
 ```ps aux | grep puma```
 
 ### Manually Running puma
-```bundle exec puma -e production -d -b unix:///var/www/Fakktion/shared/sockets/puma.sock```
+```bundle exec puma -e production -d -b unix:///home/USER/Fakktion/shared/sockets/puma.sock```
 
 ### Remove app from PUMA
 ```sudo /etc/init.d/puma remove /path/to/app```
