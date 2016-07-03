@@ -4,10 +4,10 @@ In order to deploy an ember-cli-rails project to Ubuntu Server 16.04, please fol
 ## Server Overall Structure
 
 #### Local DB
-![](u16_localdb.png)
+![](sources/u16_localdb.png)
 
 #### Remote DB
-![](u16_remotedb.png)
+![](sources/u16_remotedb.png)
 
 # Server Deployment
 

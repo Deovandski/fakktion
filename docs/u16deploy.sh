@@ -171,16 +171,16 @@ setupPuma(){
   
   echo "${inform}$deployUser is no longer a sudo user...${reset}"
   # Copy the init script to services directory 
-  cp puma /etc/init.d
+  cp sources/puma /etc/init.d
   watchForErrors $? "Copy the init script to services directory" ""
   chmod +x /etc/init.d/puma
 
   # Make it start at boot time. 
-  update-rc.d -f puma defaults
+  update-rc.d -f sources/puma defaults
   watchForErrors $? "Make PUMA run at boot time" ""
 
   # Copy the Puma runner to an accessible location
-  cp run-puma /usr/local/bin
+  cp sources/run-puma /usr/local/bin
   watchForErrors $? "Make PUMA accessible from /usr/local/bin" ""
   chmod +x /usr/local/bin/run-puma
   watchForErrors $? "Make PUMA chmox +x on /usr/local/bin" ""
