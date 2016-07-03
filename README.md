@@ -21,40 +21,26 @@ All information about this project can be found on this [published paper](http:/
 ## Notice
 This project once used [Ember-Rails](https://github.com/emberjs/ember-rails), but now it is using [Ember-cli-rails](https://github.com/rwz/ember-cli-rails). If you would like to see the previous Ember-Rails implementation, please check the [Ember-Rails Implementation branch](https://github.com/Deovandski/Fakktion/tree/Ember-Rails).
 
-## Requirements
-
-1. [Node.js](https://nodejs.org/)
-2. [Npm](https://www.npmjs.com/)
-3. [Bower](https://www.npmjs.com/package/bower)
-4. [Ruby](https://www.ruby-lang.org/en/)
-5. [Bundler](http://bundler.io/)
-
-## Installation
+## Development
 
 1. Clone Project
-2. Install NPM if you don't have it already:
-  1. `sudo apt-get install npm`
-  2. `sudo npm cache clean -f` (Clean cache to reduce issues.)
-  3. `sudo npm install -g n`
-  4. `sudo n stable`
-  5. `sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}` (Force npm to be non-sudo.)
-3. Install Ruby and Bundler if you don't have it already or not using RVM or Rbenv):
-  1. ```sudo apt-get install -y libpq-dev ruby2.3 rails bundler```
-4. Bundle Install
-5. Rake db:setup
-6. cd frontend
-7. npm install
-8. bower install
+2. Navigate to docs and execute ```sudo chmod +x u16dev.sh``` to allow script execution.
+3. Install backend dependencies with ```. u16dev.sh 1 RVM?``` (Replace RVM? with y/n - No will install ruby through apt-get which you may have to update the gemfile ruby 2.3.X requirement.)
+4. Install frontend dependencies with  ```. u16dev.sh 2```.
+5. Install App dependencies with  ```. u16dev.sh 3 HerokuToolbet?``` (Replace HerokuToolbet? with y/n.)
+6. Start the Server with '''rake start'''. To quickly login under Development mode, use the default account user@example.com with password 12345678.
 
-Start the Server with '''rake start'''. To quickly login under Development mode, use the default account user@example.com with password 12345678.
-
-## Deployment
+## Server Deployment
 
 [Heroku](docs/heroku.md) (~35 minutes for deployment)
 
-[Ubuntu Server 14.04](docs/Ubuntu Deployment14.md) (~2 hours for deployment | More Dependencies)
+[Ubuntu Server 14.04](docs/Ubuntu Deployment14.md) (~2 hours for deployment | Deprecated)
 
-[Ubuntu Server 16.04](docs/Ubuntu Deployment16.md) (~1 hour for deployment | Less Dependencies)
+[Ubuntu Server 16.04](docs/Ubuntu Deployment16.md) (~1 hour for deployment)
+
+## Server Maintenance
+
+[Ubuntu Server 16.04](docs/Ubuntu Maintenance16.md)
 
 ## Documents
 
