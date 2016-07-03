@@ -52,23 +52,23 @@ Start the Server with '''rake start'''. To quickly login under Development mode,
 
 [Heroku](Documents/heroku.md) (~35 minutes for deployment)
 
-[Ubuntu Server 14.04](Documents/Ubuntu Deployment14.md) (~2 hours for deployment | More Dependencies)
+[Ubuntu Server 14.04](docs/Ubuntu Deployment14.md) (~2 hours for deployment | More Dependencies)
 
-[Ubuntu Server 16.04](Documents/Ubuntu Deployment16.md) (~1 hour for deployment | Less Dependencies)
+[Ubuntu Server 16.04](docs/Ubuntu Deployment16.md) (~1 hour for deployment | Less Dependencies)
 
 ## Documents
 
-[Discussions regarding this project](Documents/Discussions.md)
+[Discussions regarding this project](docs/Discussions.md)
 
-[Code Information](Documents/Code Information.txt)
+[Code Information](docs/Code Information.txt)
 
-[Design Information](Documents/Design Information.txt)
+[Design Information](docs/Design Information.txt)
 
-[Extra Commands](Documents/Extra Commands.md)
+[Extra Commands](docs/Extra Commands.md)
 
 ## License
 
-[The MIT License (MIT)](Documents/License.md)
+[The MIT License (MIT)](docs/License.md)
 
 Copyright (c) 2014 - 2016, Deovandski Skibinski Junior and Dr. Anne Denton
 All rights reserved.
