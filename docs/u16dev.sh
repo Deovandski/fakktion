@@ -1,4 +1,5 @@
 #!/bin/bash
+# u16dev.sh v1
 # Script for setting up development envivroment on Ubuntu 16.
 # The entire guide can be found at http://deovandski.herokuapp.com/emberTutorial/installation
 
@@ -16,7 +17,7 @@ watchForErrors(){
   then
     echo "${inform}OK${reset} | $step"
   else
-    echo "${warn}ERROR $exitStatus ${reset} |$step"
+    echo "${warn}ERROR ${inform} $exitStatus ${reset} |$step"
     echo "${warn}$action${reset}"
   fi
 }

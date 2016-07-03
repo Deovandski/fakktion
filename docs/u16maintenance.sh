@@ -1,4 +1,6 @@
 #!/bin/bash
+# u16maintenance.sh v1
+# Ubuntu Server 16.04 maintenance
 
 # Colors for Scrip Messages.
 warn=$(tput setaf 5; tput bold; tput setab 0)
@@ -14,8 +16,9 @@ watchForErrors(){
   then
     echo "${inform}OK${reset} | $step"
   else
-    echo "${warn}ERROR $exitStatus ${reset} |$step"
+    echo "${warn}ERROR ${inform} $exitStatus ${reset} |$step"
     echo "${warn}$action${reset}"
+    exit
   fi
 }
 

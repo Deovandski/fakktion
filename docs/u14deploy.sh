@@ -1,4 +1,6 @@
 #!/bin/bash
+# u14deploy.sh v1 - Deprecated Guide
+# Ubuntu Server 14.04 deployment
 
 # Colors for Scrip Messages.
 warn=$(tput setaf 5; tput bold; tput setab 0)
@@ -7,16 +9,17 @@ reset=$(tput sgr0)
 
 # Error Detection
 watchForErrors(){
-    exitStatus="$1"
-    step="$2"
-    action="$3"
-    if [ "$exitStatus" -eq 0 ]
-    then
-      echo "${inform}OK${reset} | $step"
-    else
-      echo "${warn}ERROR $exitStatus ${reset} |$step"
-      echo "${warn}$action${reset}"
-    fi
+  exitStatus="$1"
+  step="$2"
+  action="$3"
+  if [ "$exitStatus" -eq 0 ]
+  then
+    echo "${inform}OK${reset} | $step"
+  else
+    echo "${warn}ERROR ${inform} $exitStatus ${reset} |$step"
+    echo "${warn}$action${reset}"
+    exit
+  fi
 }
 
 setupBaseReqs(){

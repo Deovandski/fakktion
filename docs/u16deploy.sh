@@ -1,4 +1,6 @@
 #!/bin/bash
+# u16deploy.sh v2
+# Ubuntu Server 16.04 deployment
 
 # Colors for Scrip Messages.
 warn=$(tput setaf 5; tput bold; tput setab 0)
@@ -14,8 +16,9 @@ watchForErrors(){
   then
     echo "${inform}OK${reset} | $step"
   else
-    echo "${warn}ERROR $exitStatus ${reset} |$step"
+    echo "${warn}ERROR ${inform} $exitStatus ${reset} |$step"
     echo "${warn}$action${reset}"
+    exit
   fi
 }
 
@@ -32,14 +35,14 @@ setupBaseReqs(){
     then
       cd /home/"$deployUser"/Fakktion || return
     else
-      sudo mv /home/"$USER"/Fakktion /home/"$deployUser/Fakktion"
+      sudo mv /home/"$deployUser"/Fakktion /home/"$deployUser/Fakktion"
       sudo adduser "$deployUser" sudo
     fi
     echo "${inform}Base Reqs Finished${reset}"
   else
     echo "$deployUser does not exist."
-    echo "${warn} DO NOT FOLLOW THE NEXT STEP! ${reset}"
-    echo "${warn} RUN: sudo adduser $deployUser ${reset}, then try again!"
+    echo "${warn}DO NOT FOLLOW THE NEXT STEP! ${reset}"
+    echo "${warn}RUN: ${inform}sudo adduser $deployUser,${warn} then try again!${reset}"
   fi
   
 }
@@ -51,7 +54,7 @@ setupApp(){
     deployDBName="$4"
   fi
   # Make sure that we are in the proper place.
-  cd /home/"$USER"/Fakktion || return
+  cd /home/"$deployUser"/Fakktion || return
   # Check GemFile.lock for exactly what is being installed from https://rubygems.org/.
   
   echo "${inform}Install NPM and Nodejs through N...${reset}"
@@ -72,7 +75,7 @@ setupApp(){
   sudo chown -R "$(whoami)" "$(npm config get prefix)"/{lib/node_modules,bin,share}
 
   # Get ownership of the files being transfered to prevent write permissions from other users, or fix any existing file permission issues...
-  sudo chown -R "$USER" /home/"$USER"/Fakktion
+  sudo chown -R "$USER" /home/"$deployUser"/Fakktion
   watchForErrors $? "NPM/NODE permissions change" "Fix ownership issues mannually"
   echo "${inform}Bundler Install...${reset}"
   bundle install
@@ -93,46 +96,46 @@ setupApp(){
 
   # Puma configuration
   echo "${inform}Creating puma.rb according to system configs...${reset}"
-  echo "" > config/puma.rb
+  echo "" > /home/"$deployUser"/Fakktion/config/puma.rb
   watchForErrors $? "Clear puma config file" "Empty config/puma.rb yourself then try again"
-  echo "workers $(grep -c processor /proc/cpuinfo)" >> config/puma.rb
+  echo "workers $(grep -c processor /proc/cpuinfo)" >> /home/"$deployUser"/Fakktion/config/puma.rb
   watchForErrors $? "Creating puma.rb according to system configs..." "Could not get number of processors currently available"
-  cat docs/source/partial_puma_16.txt >> config/puma.rb
+  cat /home/"$deployUser"/Fakktion/docs/source/partial_puma_16.txt >> /home/"$deployUser"/Fakktion/config/puma.rb
   watchForErrors $? "Inject the rest of Puma configs" "Check config/puma.rb and partial_puma_16.txt yourself then try again"
 
   # Set unique local secrets.yml
   echo "${inform}Setting Unique Rails Secret used for managing sessions...${reset}"
-  echo "" > config/secrets.yml
+  echo "" > /home/"$deployUser"/Fakktion/config/secrets.yml
   watchForErrors $? "Empty config/secrets.yml" "Mannually empty config/secrets.yml"
-  cat docs/source/partial_secrets_16.txt >> config/secrets.yml
+  cat /home/"$deployUser"/Fakktion/docs/source/partial_secrets_16.txt >> /home/"$deployUser"/Fakktion/config/secrets.yml
   watchForErrors $? "Adding rails secrets information" "Check partial_secrets_16.txt and config/secrets.yml"
-  echo "  secret_key_base: $(rake secret)" >> config/secrets.yml
+  echo "  secret_key_base: $(rake secret)" >> /home/"$deployUser"/Fakktion/config/secrets.yml
   watchForErrors $? "Setting New Rails Secret used for managing sessions..." "Run rake secret and paste it into config/secrets.yml"
 
   # Create necessary folders and files.
-  mkdir /home/"$USER"/Fakktion/tmp
+  mkdir /home/"$deployUser"/Fakktion/tmp
   watchForErrors $? "MKDIR /Fakktion/tmp" ""
-  mkdir /home/"$USER"/Fakktion/tmp/puma
+  mkdir /home/"$deployUser"/Fakktion/tmp/puma
   watchForErrors $? "MKDIR /Fakktion/tmp/puma" ""
-  touch /home/"$USER"/Fakktion/tmp/puma/pid
+  touch /home/"$deployUser"/Fakktion/tmp/puma/pid
   watchForErrors $? "TOUCH /Fakktion/tmp/puma/pid" ""
-  touch /home/"$USER"/Fakktion/tmp/puma/state
+  touch /home/"$deployUser"/Fakktion/tmp/puma/state
   watchForErrors $? "TOUCH /Fakktion/tmp/puma/state" ""
-  mkdir /home/"$USER"/Fakktion/log
+  mkdir /home/"$deployUser"/Fakktion/log
   watchForErrors $? "MKDIR /Fakktion/log" ""
-  touch /home/"$USER"/Fakktion/log/puma.log
+  touch /home/"$deployUser"/Fakktion/log/puma.log
   watchForErrors $? "TOUCH /Fakktion/log/puma.log" ""
-  mkdir /home/"$USER"/Fakktion/shared
+  mkdir /home/"$deployUser"/Fakktion/shared
   watchForErrors $? "MKDIR /Fakktion/shared" ""
-  mkdir /home/"$USER"/Fakktion/shared/log
+  mkdir /home/"$deployUser"/Fakktion/shared/log
   watchForErrors $? "MKDIR /Fakktion/shared/log" ""
-  mkdir /home/"$USER"/Fakktion/shared/sockets
+  mkdir /home/"$deployUser"/Fakktion/shared/sockets
   watchForErrors $? "MKDIR /Fakktion/shared/sockets" ""
-  touch /home/"$USER"/Fakktion/shared/sockets/puma.sock
+  touch /home/"$deployUser"/Fakktion/shared/sockets/puma.sock
   watchForErrors $? "TOUCH /Fakktion/shared/sockets/puma.sock" ""
-  touch /home/"$USER"/Fakktion/shared/log/puma.stderr.log
+  touch /home/"$deployUser"/Fakktion/shared/log/puma.stderr.log
   watchForErrors $? "TOUCH /Fakktion/shared/log/puma.stderr.log" ""
-  touch /home/"$USER"/Fakktion/shared/log/puma.stdout.log
+  touch /home/"$deployUser"/Fakktion/shared/log/puma.stdout.log
   watchForErrors $? "TOUCH /Fakktion/shared/log/puma.stdout.log" ""
   
   # Setup for Symbolic link
@@ -144,9 +147,9 @@ setupApp(){
   watchForErrors $? "MKDIR /var/www/Fakktion/shared/sockets" ""
 
   # Create Symlinks on /var/www for future NGINX connection to PUMA
-  sudo ln -s /home/"$USER"/Fakktion/shared/sockets/puma.sock /var/www/Fakktion/shared/sockets/puma.sock
+  sudo ln -s /home/"$deployUser"/Fakktion/shared/sockets/puma.sock /var/www/Fakktion/shared/sockets/puma.sock
   watchForErrors $? "LN for /var/www/Fakktion/shared/sockets/puma.sock" ""
-  sudo ln -s /home/"$USER"/Fakktion/public /var/www/Fakktion/public
+  sudo ln -s /home/"$deployUser"/Fakktion/public /var/www/Fakktion/public
   watchForErrors $? "LN for /var/www/Fakktion/public" ""
   
   # Database SETUP
