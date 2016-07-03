@@ -31,7 +31,7 @@ In order to deploy an ember-cli-rails project to Ubuntu Server 16.04, please fol
 6. Now run ```./u16deploy.sh 1 USER``` (Or change $USER to the user where Puma will use to control the app. You must the same user whenever requested from now on.)
 7. If the App has been created as another user, you must login as said user for the next steps.
 8. Now go into USER/Fakktion/config and execute ```sudo nano database.yml```, then change the **username** to DBUSER, **password** to DBPW, and **database** to DBNAME. The next step will setup the database for you, but you will to match the same exact info that you entered in this step.
-9. Navigate back to Documents folder, and execute ```./u16deploy.sh 2 $USER DBUSER DBNAME```.
+9. Navigate back to Documents folder, and execute ```./u16deploy.sh 2 $USER RemoteConfig? DBUSER DBNAME```. If RemoteConfig is **y**, then no need for DBUSER nor DBNAME.
 10. Now login back as the previous user if you did switch accounts. The reason for this is because the app user was granted temporary sudo to install some initial dependencies that could not have worked non-sudo. However, this only applies to the initial install.
 11. Execute ```sudo ./u16deploy.sh 3 USER``` to setup PUMA Daemon service through init.d.
 12. If you need **SSL**, then open **fakktion_16_ssl.conf** and change the certificate details.

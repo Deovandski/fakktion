@@ -163,7 +163,6 @@ setupApp(){
   fi
   rake db:setup RAILS_ENV=production
   watchForErrors $? "Rake db migration and seeding" "run rake db:setup mannually"
-  rake assets:precompile
 }
 
 # Setup Puma
