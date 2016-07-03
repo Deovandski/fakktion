@@ -7,16 +7,16 @@ reset=$(tput sgr0)
 
 # Error Detection
 watchForErrors(){
-    exitStatus="$1"
-    step="$2"
-    action="$3"
-    if [ "$exitStatus" -eq 0 ]
-    then
-      echo "${inform}OK${reset} | $step"
-    else
-      echo "${warn}ERROR $exitStatus ${reset} |$step"
-      echo "${warn}$action${reset}"
-    fi
+  exitStatus="$1"
+  step="$2"
+  action="$3"
+  if [ "$exitStatus" -eq 0 ]
+  then
+    echo "${inform}OK${reset} | $step"
+  else
+    echo "${warn}ERROR $exitStatus ${reset} |$step"
+    echo "${warn}$action${reset}"
+  fi
 }
 
 setupBaseReqs(){
@@ -97,14 +97,14 @@ setupApp(){
   watchForErrors $? "Clear puma config file" "Empty config/puma.rb yourself then try again"
   echo "workers $(grep -c processor /proc/cpuinfo)" >> config/puma.rb
   watchForErrors $? "Creating puma.rb according to system configs..." "Could not get number of processors currently available"
-  cat Documents/partial_puma_16.txt >> config/puma.rb
+  cat docs/source/partial_puma_16.txt >> config/puma.rb
   watchForErrors $? "Inject the rest of Puma configs" "Check config/puma.rb and partial_puma_16.txt yourself then try again"
 
   # Set unique local secrets.yml
   echo "${inform}Setting Unique Rails Secret used for managing sessions...${reset}"
   echo "" > config/secrets.yml
   watchForErrors $? "Empty config/secrets.yml" "Mannually empty config/secrets.yml"
-  cat Documents/partial_secrets_16.txt >> config/secrets.yml
+  cat docs/source/partial_secrets_16.txt >> config/secrets.yml
   watchForErrors $? "Adding rails secrets information" "Check partial_secrets_16.txt and config/secrets.yml"
   echo "  secret_key_base: $(rake secret)" >> config/secrets.yml
   watchForErrors $? "Setting New Rails Secret used for managing sessions..." "Run rake secret and paste it into config/secrets.yml"

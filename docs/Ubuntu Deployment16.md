@@ -27,11 +27,11 @@ In order to deploy an ember-cli-rails project to Ubuntu Server 16.04, please fol
 2. Run ```sudo apt-get update```.
 3. Install Git Core ```sudo apt-get install -y git-core```
 4. From your home/$USER directory, clone repo through ```git clone https://github.com/YOURUSERNAME/Fakktion.git``` (HTTPS instead of SSH suggested as it will make it harder to accidentally push commits back into origin master (or the branch that you use as master.)
-5. Navigate to Fakktion/Documents folder, and allow Execution access to the main script with ```sudo chmod +x u16deploy.sh```.
+5. Navigate to Fakktion/docs folder, and allow Execution access to the main script with ```sudo chmod +x u16deploy.sh```.
 6. Now run ```./u16deploy.sh 1 USER``` (Or change $USER to the user where Puma will use to control the app. You must the same user whenever requested from now on.)
 7. If the App has been created as another user, you must login as said user for the next steps.
 8. Now go into USER/Fakktion/config and execute ```sudo nano database.yml```, then change the **username** to DBUSER, **password** to DBPW, and **database** to DBNAME. The next step will setup the database for you, but you will to match the same exact info that you entered in this step.
-9. Navigate back to Documents folder, and execute ```./u16deploy.sh 2 $USER RemoteConfig? DBUSER DBNAME```. If RemoteConfig is **y**, then no need for DBUSER nor DBNAME.
+9. Navigate back to docs folder, and execute ```./u16deploy.sh 2 $USER RemoteConfig? DBUSER DBNAME```. If RemoteConfig is **y**, then no need for DBUSER nor DBNAME.
 10. Now login back as the previous user if you did switch accounts. The reason for this is because the app user was granted temporary sudo to install some initial dependencies that could not have worked non-sudo. However, this only applies to the initial install.
 11. Execute ```sudo ./u16deploy.sh 3 USER``` to setup PUMA Daemon service through init.d.
 12. If you need **SSL**, then open **fakktion_16_ssl.conf** and change the certificate details.
@@ -49,24 +49,25 @@ Please fix them, or switch to a remote pg database before reattempting the step 
 # Maintenance/Advanced instructions (**WIP**)
 
 ### Updating Project Source Code without moving database or changing servers.
-1. Make sure that the Admin notice was given in the website, and that users had at least 72 hours to deal with it.
-2. Stop puma with "/etc/init.d/puma stop".
-3. Run the backup script (**backup_script_16.sh**) to save the puma.rb, secrets.yml and database.yml.
-4. Create a database dump as described on the [official Docs](http://www.postgresql.org/docs/9.1/static/backup.html) if you are making new Database migrations.
-4. Pull the changes with ```git pull https://github.com/YOURUSERNAME/Fakktion.git```
-5. Perform the necessary changes including any needed package manager updates.
-6. Run the recover script (**recover_script_16.sh**) to restore the unique puma.rb, secrets.yml and database.yml
-7. Start puma back with "/etc/init.d/puma restart".
+1. Make a database backup if you have not done so. For local DBs, you should create a database dump as described on the [official Docs](http://www.postgresql.org/docs/9.1/static/backup.html).
+2. Select an option of project update:
+  - If running a surface update (e.g Source code changes), then run From docs folder ```./u16maintenance.sh 1 USER```.
+  - If running a deep update (e.g Update project dependencies), then run From docs folder ```./u16maintenance.sh 2 USER```.
 
 ### Updating Project Source Code with database changes or between Servers. (**WIP**)
-Follow the instructions from the [official Docs](http://www.postgresql.org/docs/9.1/static/backup.html) before following the instructions from this guide. 
 
-**DO NOT MOVE DATABASE WITH PENDING MIGRATIONS!** If you do have pending migrations, you must follow the normal updating guide before following this guide otherwise you will risk desync schemas! 
+**DO NOT MOVE DATABASE WITH PENDING MIGRATIONS!** If you do have pending migrations, you must follow the normal updating guide before following this guide otherwise you will risk desync schemas!
 
-If performing a change of VM, copy the contents of the backup script stored under home/$USER/Fakktion_backup and the Postgres DB dump to the new machine without executing them, and follow the initial deploy guide with the following changes:
-
-1. Use the recover script on step 8, and again right after step 9 (unless you are okay with changing the rake secret because it will force a logout of all clients.)
-2. After step 9 recover the database with the instructions from the official docs.
+1. Make a DB backup!
+2. Run from docs folder ```./u16maintenance.sh 3 USER```.
+3. Copy **/home/USER/Fakktion_backup** to the new machine.
+4. Follow the initial deploy guide until step 7, then run ```./u16maintenance.sh 4 USER``` instead of step 8.
+5. Keep on following the deployment steps until 11, then run  ```./u16maintenance.sh 5 USER restorePuma? restorePreviousSecrets?``` instead of step 12.
+6. Finish following the guide.
+7. Stop PUMA with ```service puma stop```.
+8. Recover your DB
+9. Start PUMA with ```service puma start```.
+10. Voila!
 
 ### Checking Logs
 1. Puma Cluster log available under app/log/puma.log
