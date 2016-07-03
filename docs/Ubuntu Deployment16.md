@@ -1,4 +1,4 @@
-## Ubuntu Server 16.04 Deployment
+## Ubuntu Server 16.04 Deployment  (**Under Testing**)
 
 ## Server Overall Structure
 
@@ -19,7 +19,7 @@
 3. Encrypted home directory.
 4. OpenSSH recommended
 
-### Initial Deploy  (**Under Testing**)
+### Initial Deploy
 1. Fork this project if you have not done so already!
 2. Run ```sudo apt-get update```.
 3. Install Git Core ```sudo apt-get install -y git-core```
@@ -31,8 +31,8 @@
 9. Navigate back to docs folder, and execute ```./u16deploy.sh 2 $USER RemoteConfig? DBUSER DBNAME```. If RemoteConfig is **y**, then no need for DBUSER nor DBNAME.
 10. Now login back as the previous user if you did switch accounts. The reason for this is because the app user was granted temporary sudo to install some initial dependencies that could not have worked non-sudo. However, this only applies to the initial install.
 11. Execute ```sudo ./u16deploy.sh 3 USER``` to setup PUMA Daemon service through init.d.
-12. If you need **SSL**, then open **fakktion_16_ssl.conf** and change the certificate details.
-13. Execute ```sudo ./u16deploy.sh 4 USER SSL?``` (replace SSL? with y or n) to setup NGINX in order to put your app live.
+12. Edit **fakktion_16_ssl.conf** or *fakktion_16_non_ssl.conf** depending on your SSL needs and confirm the NGINX configs.
+13. Execute ```sudo ./u16deploy.sh 4 USER SSL?``` (replace SSL? with y or n) to prepare NGINX for the PUMA socket.
 14. ```sudo reboot```, then login as the app user.
 15. Initiate Puma socket with the final part of the script: ```. u16deploy.sh 5 USER```.
 

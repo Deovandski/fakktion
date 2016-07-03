@@ -1,4 +1,4 @@
-## Ubuntu Server 16.04 Server Maintenance
+## Ubuntu Server 16.04 Server Maintenance (**WIP**)
 
 ## Server Overall Structure
 
@@ -15,7 +15,7 @@
   - If running a surface update (e.g Source code changes), then run From docs folder ```./u16maintenance.sh 1 USER```.
   - If running a deep update (e.g Update project dependencies), then run From docs folder ```./u16maintenance.sh 2 USER```.
 
-### Updating Project Source Code with database changes or between Servers. (**WIP**)
+### Updating Project Source Code with database changes or between Servers.
 
 **DO NOT MOVE DATABASE WITH PENDING MIGRATIONS!** If you do have pending migrations, you must follow the normal updating guide before following this guide otherwise you will risk desync schemas!
 
