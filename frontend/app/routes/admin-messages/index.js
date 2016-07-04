@@ -1,10 +1,10 @@
-import Ember from 'ember';
+import Ember from "ember";
 const { service } = Ember.inject;
 
-export default Ember.Route.extend ({
+export default Ember.Route.extend({
   session: service('session'),
   sessionAccount: service('sessionAccount'),
-    model: function() {
-        return this.store.findAll('admin_message');
-    }
+  model: function() {
+    return this.store.findAll('admin_message');
+  }
 });

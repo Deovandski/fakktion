@@ -7,4 +7,3 @@ class TopicSerializer < ActiveModel::Serializer
   # Relationships
   has_many :posts
 end
-

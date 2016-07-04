@@ -25,7 +25,7 @@ Router.map(function() {
     this.route('comments'); // View all Comments by x User
   });
 
-  
+
   /* See Issue #31
   // ADMIN MESSAGE(S) ROUTES
   this.route('adminMessages', function(){
@@ -64,7 +64,7 @@ Router.map(function() {
   this.route('genre', { path:'genre/:genre_id' }, function() {
     this.route('edit');
   });
-  
+
   // Fact Type(S) ROUTES
   this.route('factTypes', function(){
     this.route('create');
@@ -72,7 +72,7 @@ Router.map(function() {
   this.route('factType', { path:'factType/:factType_id' }, function() {
     this.route('edit');
   });
-  
+
   // TOPIC(S) ROUTES
   this.route('topics', function(){
     this.route('create');
@@ -80,7 +80,7 @@ Router.map(function() {
   this.route('topic', { path:'topic/:topic_id' }, function() {
     this.route('edit');
   });
-  
+
   // CATEGORY(S) ROUTES
   this.route('categories', function(){
     this.route('create');
@@ -88,13 +88,13 @@ Router.map(function() {
   this.route('category', { path:'category/:category_id' }, function() {
     this.route('edit');
   });
-  
+
   // Footer related
   this.route('footer');
   this.route('legalInfo');
   this.route('privacyInfo');
   this.route('support');
-  
+
   // 404 Handler
   this.route('not-found', { path: '/*wildcard' });
 });

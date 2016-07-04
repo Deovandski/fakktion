@@ -61,12 +61,12 @@ class Api::V1::UsersController < ApiController
   end
 
   private
-  
+
   # User object from the Deserialization params if there is an id.
   def user
     User.find(params[:id])
   end
-  
+
   # AMS User Deserialization.
   def user_params
     ActiveModelSerializers::Deserialization.jsonapi_parse!(params.to_unsafe_h)

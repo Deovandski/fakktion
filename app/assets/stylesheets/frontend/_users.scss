@@ -1,209 +1,191 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-
 // SCSS for Create Template
-
-
-.show_extra_form
-{
-  font-weight: bold;
-  border-left-style: solid; 
-  border-right-style: solid;
-  border-top-style: solid; 
-  border-bottom-style: solid;
-  border-width: 1px;
+.show_extra_form {
+    font-weight: bold;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-width: 1px;
 }
-.show_password_form
-{
-  font-weight: bold;
-  border-left-style: solid; 
-  border-right-style: solid;
-  border-top-style: solid; 
-  border-bottom-style: solid;
-  border-width: 1px;
-  text-align: left;
+.show_password_form {
+    font-weight: bold;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-width: 1px;
+    text-align: left;
 }
-
 // SCSS for Show Template
-
-.h3_user{
- width: 100%;
- text-align: center;
- a {
-  font-size: 13px;
-  margin-left: 5px;
-  vertical-align: middle;
- }
+.h3_user {
+    width: 100%;
+    text-align: center;
+    a {
+        font-size: 13px;
+        margin-left: 5px;
+        vertical-align: middle;
+    }
 }
-.h3_super_user{
- @extend .h3_user;
- color: darken($is-super-user, 45%);
+.h3_super_user {
+    @extend .h3_user;
+    color: darken($is-super-user, 45%);
 }
-.h3_admin{
- @extend .h3_user;
- color: darken($is-admin, 45%);
+.h3_admin {
+    @extend .h3_user;
+    color: darken($is-admin, 45%);
 }
-.h3_legend{
- @extend .h3_user;
- color: darken($is-legend, 45%);
+.h3_legend {
+    @extend .h3_user;
+    color: darken($is-legend, 45%);
 }
-
 .post_buttons_container {
-  list-style-type:none;
-  text-align: center;
-  border-bottom-style: solid;
-  border-width: 1px; 
-  width: 100%;
-  height: 35px;
-  .more_info_button {
-    float: left;
-    width: 34%;
-    height: 35px;
-  }
-  .tags_info_button {
-    float: left;
-    width: 33%;
-    height: 35px;
-    
-  }
-  .edit_button {
-    float: left;
-    width: 33%;
-    height: 35px;
-    
-  }
-}
-
-.user_intro{
-  height: auto;
-  width: 75%;
-  text-align: center;
-  margin: 0px auto 5px auto;
-}
-
-.user_more_info {
-  @extend .post_more_info_container;
-  width: 75%;
-  height: 185px;
-  margin: 3px auto 5px auto;
-  .user_more_info_row {
+    list-style-type: none;
+    text-align: center;
+    border-bottom-style: solid;
+    border-width: 1px;
     width: 100%;
     height: 35px;
-    border-bottom-style: solid;
-    border-width: 1px; 
-    .user_more_info_cl_left {
-      width: 50%;
-      float: left;
-      border-right-style: solid;
-      border-width: 1px;
-      height: 34px;
-    }
-    .user_more_info_cl_right {
-      width: 50%;
-      float: right;
-      height: 34px;
-    }
-  }
-  .user_links_info_row {
-    @extend .user_more_info_row;
-    height: auto;
-    .user_more_info_notice {
-      width: 100%;
-      border-top-style: solid;
-      border-width: 2px;
-      height: 25px;
-    }
-    .user_more_info_cl_container {
-      width: 100%;
-      height: 29px;
-      display: flex;
-      .user_more_info_cl {
-        flex: 1;
+    .more_info_button {
+        float: left;
+        width: 34%;
         height: 35px;
-      }
     }
-    .user_more_info_warning {
-      width: 100%;
-      border-top-style: solid;
-      border-width: 1px;
-      height: 20px;
+    .tags_info_button {
+        float: left;
+        width: 33%;
+        height: 35px;
     }
-  }
-}
-.user_posts_header{
-  margin: 7px;
-}
-.user_attribute_selector{
-  width: auto;
-  max-width: 200px;
-  height: 20px;
-  margin: 15px auto 25px auto;
-  .pannel_container{
-    display: flex;
-    button {
-      flex-grow: 0;
-      flex-direction: column;
-      margin: 0px 5px 2px 5px;
+    .edit_button {
+        float: left;
+        width: 33%;
+        height: 35px;
     }
-  }
 }
-.users_info{
-  @extend .posts_info;
-  width: 100%;
-  ul {
-    li {
-          .label_display_header {
-            @extend .label_title_header;
-            width: 40%;
-            border-style: none;
-          }
-          .label_email_header {
-            @extend .label_views_header;
-            width: 40%;
-            border-style: none;
-          }
-          .label_reputation_header {
-            @extend .label_comments_count_header;
-            width: 20%;
-            border-style: none;
-          }
-      .label_display_name {
-        @extend .label_title;
-        width: 40%;
-        border-style: none;
-      }
-      .label_email {
-        @extend .label_views;
-        width: 40%;
-        border-style: none;
-      }
-      .label_reputation {
-        @extend .label_comments_count;
-        width: 20%;
-      }
+.user_intro {
+    height: auto;
+    width: 75%;
+    text-align: center;
+    margin: 0 auto 5px;
+}
+.user_more_info {
+    @extend .post_more_info_container;
+    width: 75%;
+    height: 185px;
+    margin: 3px auto 5px;
+    .user_more_info_row {
+        width: 100%;
+        height: 35px;
+        border-bottom-style: solid;
+        border-width: 1px;
+        .user_more_info_cl_left {
+            width: 50%;
+            float: left;
+            border-right-style: solid;
+            border-width: 1px;
+            height: 34px;
+        }
+        .user_more_info_cl_right {
+            width: 50%;
+            float: right;
+            height: 34px;
+        }
     }
-  }
+    .user_links_info_row {
+        @extend .user_more_info_row;
+        height: auto;
+        .user_more_info_notice {
+            width: 100%;
+            border-top-style: solid;
+            border-width: 2px;
+            height: 25px;
+        }
+        .user_more_info_cl_container {
+            width: 100%;
+            height: 29px;
+            display: flex;
+            .user_more_info_cl {
+                flex: 1;
+                height: 35px;
+            }
+        }
+        .user_more_info_warning {
+            width: 100%;
+            border-top-style: solid;
+            border-width: 1px;
+            height: 20px;
+        }
+    }
 }
-
+.user_posts_header {
+    margin: 7px;
+}
+.user_attribute_selector {
+    width: auto;
+    max-width: 200px;
+    height: 20px;
+    margin: 15px auto 25px;
+    .pannel_container {
+        display: flex;
+        button {
+            flex-grow: 0;
+            flex-direction: column;
+            margin: 0 5px 2px;
+        }
+    }
+}
+.users_info {
+    @extend .posts_info;
+    width: 100%;
+    ul {
+        li {
+            .label_display_header {
+                @extend .label_title_header;
+                width: 40%;
+                border-style: none;
+            }
+            .label_email_header {
+                @extend .label_views_header;
+                width: 40%;
+                border-style: none;
+            }
+            .label_reputation_header {
+                @extend .label_comments_count_header;
+                width: 20%;
+                border-style: none;
+            }
+            .label_display_name {
+                @extend .label_title;
+                width: 40%;
+                border-style: none;
+            }
+            .label_email {
+                @extend .label_views;
+                width: 40%;
+                border-style: none;
+            }
+            .label_reputation {
+                @extend .label_comments_count;
+                width: 20%;
+            }
+        }
+    }
+}
 .info_legend_user {
-  background-color: $is-legend;
-  padding: 1px;
-  font-weight: bold;
-  
+    background-color: $is-legend;
+    padding: 1px;
+    font-weight: bold;
 }
 .info_admin_user {
-  background-color: $is-admin;
-  padding: 1px;
-  font-weight: bold;
-
+    background-color: $is-admin;
+    padding: 1px;
+    font-weight: bold;
 }
 .info_super_user {
-  background-color: $is-super-user;
-  padding: 1px;
-  font-weight: bold;
+    background-color: $is-super-user;
+    padding: 1px;
+    font-weight: bold;
 }
-.info_normal_user {
-
-}
+.info_normal_user {}

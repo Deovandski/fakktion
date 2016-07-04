@@ -9,7 +9,7 @@ class Api::V1::FactTypesControllerTest < ActionController::TestCase
     @user = User.first
     @user.reputation = 1500
     @user.save
-    sign_in @user    
+    sign_in @user
   end
   # Called after test
   def teardown

@@ -2,12 +2,13 @@
 	<div class="central_upper_panel_sub">
 		{{#if isCategorySelected}}
 			<button class="button_bar_category" id='currentCategoryTootip' {{action "clearCategory"}}>{{capitalize selectedCategory.name}}</button>
-			{{#tooltip-on-component target='#currentCategoryTootip'}}
-				The current selected Category. <br> Press it to clear the selection.
+			{{#tooltip-on-component target='#currentCategoryTootip' }}
+				The current selected Category.
+				<br> Press it to clear the selection.
 			{{/tooltip-on-component}}
 		{{else}}
 			<label id='noCategorySelectedTootip' class="button_bar_category">- - -</label>
-			{{#tooltip-on-component target='#noCategorySelectedTootip'}}
+			{{#tooltip-on-component target='#noCategorySelectedTootip' }}
 				No Category currently selected.
 			{{/tooltip-on-component}}
 		{{/if}}
@@ -15,12 +16,13 @@
 	<div class="central_upper_panel_sub">
 		{{#if isGenreSelected}}
 			<button id='currentGenreTootip' class="button_bar_genre" {{action "clearGenre"}}>{{capitalize selectedGenre.name}}</button>
-			{{#tooltip-on-component target='#currentGenreTootip'}}
-				The current selected Genre. <br> Press it to clear the selection.
+			{{#tooltip-on-component target='#currentGenreTootip' }}
+				The current selected Genre.
+				<br> Press it to clear the selection.
 			{{/tooltip-on-component}}
 		{{else}}
 			<label id='noGenreSelectedTootip' class="button_bar_genre">- - -</label>
-			{{#tooltip-on-component target='#noGenreSelectedTootip'}}
+			{{#tooltip-on-component target='#noGenreSelectedTootip' }}
 				No Genre currently selected.
 			{{/tooltip-on-component}}
 		{{/if}}
@@ -28,12 +30,13 @@
 	<div class="central_upper_panel_sub">
 		{{#if isFactTypeSelected}}
 			<button id='currentFactTypeTootip' class="button_bar_fact_type" {{action "clearFactType"}}>{{capitalize selectedFactType.name}}</button>
-			{{#tooltip-on-component target='#currentFactTypeTootip'}}
-				The current selected Fact Type. <br> Press it to clear the selection.
+			{{#tooltip-on-component target='#currentFactTypeTootip' }}
+				The current selected Fact Type.
+				<br> Press it to clear the selection.
 			{{/tooltip-on-component}}
 		{{else}}
 			<label id='noFactTypeSelectedTootip' class="button_bar_fact_type">- - -</label>
-			{{#tooltip-on-component target='#noFactTypeSelectedTootip'}}
+			{{#tooltip-on-component target='#noFactTypeSelectedTootip' }}
 				No Fact Type currently selected.
 			{{/tooltip-on-component}}
 		{{/if}}
@@ -41,12 +44,13 @@
 	<div class="central_upper_panel_sub">
 		{{#if isPostDateSelected}}
 			<button id='currentPostingDateTootip' class="button_bar_post_date" {{action "clearPostDate"}}>{{selectedPDN}}</button>
-			{{#tooltip-on-component target='#currentPostingDateTootip'}}
-				The current selected Posting Date. <br> Press it to clear the selection.
+			{{#tooltip-on-component target='#currentPostingDateTootip' }}
+				The current selected Posting Date.
+				<br> Press it to clear the selection.
 			{{/tooltip-on-component}}
 		{{else}}
 			<label id='noPostingDateSelectedTootip' class="button_bar_post_date">- - -</label>
-			{{#tooltip-on-component target='#noPostingDateSelectedTootip'}}
+			{{#tooltip-on-component target='#noPostingDateSelectedTootip' }}
 				No Posting Date currently selected.
 			{{/tooltip-on-component}}
 		{{/if}}
@@ -56,7 +60,7 @@
 	<form class="topic_search" id='topicDisabledTextTootip'>
 		{{#if isTopicSelected}}
 			{{input class="topic_search_text" placeholder=selectedTopic.name disabled="true"}}
-			{{#tooltip-on-component target='#topicDisabledTextTootip'}}
+			{{#tooltip-on-component target='#topicDisabledTextTootip' }}
 				The current selected Topic.
 			{{/tooltip-on-component}}
 			<div class="topic_search_input">
@@ -64,7 +68,7 @@
 			</div>
 		{{else}}
 			{{input id='topicTextTootip' class="topic_search_text" value=topicInputText placeholder="Search Topic"}}
-			{{#tooltip-on-component target='#topicTextTootip'}}
+			{{#tooltip-on-component target='#topicTextTootip' }}
 				Search for Topics. If no matching topic is automatically selected, please follow the on-screen instructions.
 			{{/tooltip-on-component}}
 			<div class="topic_search_input">
@@ -76,8 +80,8 @@
 		<label>{{topicStatus}}</label>
 	</div>
 	<div class="topic_tagging_settings">
-		{{#link-to "topics.index" id='topicManagementTootip'}}<img src="/assets/small_settings.png">{{/link-to}}
-		{{#tooltip-on-component target='#topicManagementTootip'}}
+		{{#link-to "topics.index" id='topicManagementTootip' }}<img src="/assets/small_settings.png">{{/link-to}}
+		{{#tooltip-on-component target='#topicManagementTootip' }}
 			Manage Topics.
 		{{/tooltip-on-component}}
 	</div>

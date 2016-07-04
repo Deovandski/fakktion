@@ -1,137 +1,133 @@
 @import "buttons_mixins/**/*";
-
 /* Shared Buttons */
 .button_bar,
 button_bar,
 input[type="submit"] {
-  @include button_bar;
+    @include button_bar;
 }
 .button_bar_edit,
 button_bar_edit,
 input[type="submit"] {
-  @include button_bar_edit;
+    @include button_bar_edit;
 }
 .button_bar_create,
 button_bar_create,
 input[type="submit"] {
-  @include button_bar_create;
+    @include button_bar_create;
 }
 .button_bar_disabled,
 button_bar_disabled,
 input[type="submit"] {
-  @include button_bar_disabled;
+    @include button_bar_disabled;
 }
 .button_bar_upvote,
 button_bar_upvote,
 input[type="submit"] {
-  @include button_bar_upvote;
+    @include button_bar_upvote;
 }
 .button_bar_downvote,
 button_bar_downvote,
 input[type="submit"] {
-  @include button_bar_downvote;
+    @include button_bar_downvote;
 }
 .button_type1_normal,
 button_type1_normal,
 input[type="submit"] {
-  @include button_type1_normal;
+    @include button_type1_normal;
 }
 .button_type1_active,
 button_type1_active,
 input[type="submit"] {
-  @include button_type1_active;
+    @include button_type1_active;
 }
 .button_type1_inactive,
 button_type1_inactive,
 input[type="submit"] {
-  @include button_type1_inactive;
+    @include button_type1_inactive;
 }
 .button_type1_normal_super_user,
 button_type1_normal_super_user,
 input[type="submit"] {
-  @include button_type1_normal_super_user;
+    @include button_type1_normal_super_user;
 }
 .button_type1_normal_admin,
 button_type1_normal_admin,
 input[type="submit"] {
-  @include button_type1_normal_admin;
+    @include button_type1_normal_admin;
 }
 .button_type1_normal_legend,
 button_type1_normal_legend,
 input[type="submit"] {
-  @include button_type1_normal_legend;
+    @include button_type1_normal_legend;
 }
 .button_type1_small,
 button_type1_small,
 input[type="submit"] {
-  @include button_type1_small;
+    @include button_type1_small;
 }
 .button_type1_smallest,
 button_type1_smallest,
 input[type="submit"] {
-  @include button_type1_smallest;
+    @include button_type1_smallest;
 }
-
 /* Tag Specific buttons */
-
 .button_type1_genre,
 button_type1_genre,
 input[type="submit"] {
-  @include button_type1_genre;
+    @include button_type1_genre;
 }
 .button_type1_fact_type,
 button_type1_fact_type,
 input[type="submit"] {
-  @include button_type1_fact_type;
+    @include button_type1_fact_type;
 }
 .button_type1_category,
 button_type1_category,
 input[type="submit"] {
-  @include button_type1_category;
+    @include button_type1_category;
 }
 .button_type1_post_date,
 button_type1_post_date,
 input[type="submit"] {
-  @include button_type1_post_date;
+    @include button_type1_post_date;
 }
 .button_type1_topic,
 button_type1_topic,
 input[type="submit"] {
-  @include button_type1_topic;
+    @include button_type1_topic;
 }
 .button_type1_topic_small,
 button_type1_topic_small,
 input[type="submit"] {
-  @include button_type1_topic_small;
+    @include button_type1_topic_small;
 }
-
 .button_bar_genre,
 button_bar_genre,
 input[type="submit"] {
-  @include button_bar_genre;
+    @include button_bar_genre;
 }
 .button_bar_fact_type,
 button_bar_fact_type,
 input[type="submit"] {
-  @include button_bar_fact_type;
+    @include button_bar_fact_type;
 }
 .button_bar_category,
 button_bar_category,
 input[type="submit"] {
-  @include button_bar_category;
+    @include button_bar_category;
 }
 .button_bar_post_date,
 button_bar_post_date,
 input[type="submit"] {
-  @include button_bar_post_date;
+    @include button_bar_post_date;
 }
 .button_bar_post_date,
 button_bar_post_date,
 input[type="submit"] {
-  @include button_bar_post_date;
+    @include button_bar_post_date;
 }
 .button_bar_topic,
 button_bar_topic,
 input[type="submit"] {
-  @include button_bar_topic;
+    @include button_bar_topic;
 }

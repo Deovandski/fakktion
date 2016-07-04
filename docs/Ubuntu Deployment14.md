@@ -8,7 +8,7 @@ In order to deploy an ember-cli-rails project to Ubuntu Server 14.04, the follow
 5. ```sudo -u $USER createdb fakktion```
 6. Now navigate to secrets.yml, and change the production secret to not be an ENV var anymore. Afterwards, do the same thing for the database.yml
 7. Navigate to Documents folder, and execute ```./u14deploy.sh 2``` (you will be asked to set a new password for your Postgres User, so use the one you wrote on database.yml), then precompile Fakktion with ```rake assets:precompile```.
-8. PUMA SETUP: 
+8. PUMA SETUP:
  - ```nano /home/$USER/puma.conf``` and replace **setuid** and **setgid** apps to the deploying user.
  - Go to your $USER folder with ```cd /home/$USER```
  - Copy scripts into upstart services directory with ```sudo cp puma.conf puma-manager.conf /etc/init```

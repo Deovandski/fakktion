@@ -15,7 +15,7 @@ class Post < ActiveRecord::Base
   validates :fact_link, length: {maximum: 150}
   validates :fiction_link, length: {minimum: 8}
   validates :fiction_link, length: {maximum: 150}
-  
+
   # Relationships
   has_many :comments
   belongs_to :user, :counter_cache => true
@@ -25,20 +25,20 @@ class Post < ActiveRecord::Base
   belongs_to :category, :counter_cache => true
 
   private
-  
+
   # Prevent integer tampering while creating records
   def prevent_tampering
     self.views_count = 0
     self.comments_count = 0
   end
-  
+
   # Normalize a few attributes to lowercase in case frontend failed to do so.
   def normalize_input
     self.title = title.downcase
     self.fact_link = fact_link.downcase
     self.fiction_link = fiction_link.downcase
   end
-  
+
   # Allow deletion if there are no comments.
   def check_for_comments
     if self.comments.any?

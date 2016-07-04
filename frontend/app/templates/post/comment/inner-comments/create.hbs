@@ -3,7 +3,8 @@
     <label class="input_wrapper">{{input value=text placeholder="Add Inner Comment"}}</label>
     <div class="feedback_wrapper">
       {{#if validComment}}
-        <button class="button_bar_create" {{action "create"}}>Add Inner<br>Comment</button>
+        <button class="button_bar_create" {{action "create"}}>Add Inner
+          <br>Comment</button>
       {{else}}
         <label>{{verifyText}}</label>
       {{/if}}

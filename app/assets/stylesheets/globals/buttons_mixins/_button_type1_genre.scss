@@ -1,0 +1,39 @@
+@mixin button_type1_genre() {
+     @include appearance(none);
+    background-color: $button-genre-bg;
+    border: 1px solid $button-genre-bg;
+    border-radius: $base-border-radius;
+    box-shadow: 0 1px 2px rgba(#000, 0.4);
+    color: $button-genre-color;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    outline: none;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+    width: 90%;
+    padding: 0;
+    margin-top: 1px;
+    margin-bottom: 1.5px;
+    &:hover {
+        background-color: lighten($button-genre-bg, 2%);
+        border-color: lighten($button-genre-bg, 2%);
+        color: $button-genre-color;
+    }
+    &:active {
+        background-color: $button-genre-bg;
+        border-color: $button-genre-bg;
+        box-shadow: 0 1px 2px rgba(#000, 0.2);
+        color: $button-genre-color;
+    }
+    &.animate {
+        @include transition(all 0.2s ease);
+        &:hover {
+            @include transform(scale(1.1));
+        }
+    }
+}

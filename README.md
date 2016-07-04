@@ -8,10 +8,6 @@
 ####Rails (Backend)
 [![Security][security-badge]][security] [![Docs][docs-badge]][docs] [![Backend Coverage][backendCoverage-badge]][backendCoverage]
 
-####Ember Cli (Frontend)
-
-[![Frontend Coverage][frontendCoverage-badge]] [frontendCoverage]
- 
 [Experimental Live Website](http://fakktion.herokuapp.com/) (In sync with master branch - Initial load may be slow due to Dyno sleep mode implemented by [Heroku](https://www.heroku.com/pricing).)
 
 [Live Website]() (In sync with releases - Soon to be deployed through NDSU CSCI Departmental VM.)

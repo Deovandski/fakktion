@@ -1,408 +1,379 @@
 // Place all the styles related to the shared controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
 p {
-  line-height: $base-line-height;
-  margin: 0 0 ($base-line-height * .5);
-  font-family: $form-font-family;
-  font-size: $form-font-size;
+    line-height: $base-line-height;
+    margin: 0 0 ($base-line-height * .5);
+    font-family: $form-font-family;
+    font-size: $form-font-size;
 }
-
 a {
-  color: $base-link-color;
-  font-family: $form-font-family;
-  font-size: $form-font-size;
-  @include transition(color 0.1s linear);
-
-  &:hover {
-    color: $hover-link-color;
-  }
-
-  &:active, &:focus {
-    color: $hover-link-color;
-    outline: none;
-  }
-}
-
-hr {
-  border-bottom: 1px solid $base-border-color;
-  border-left: none;
-  border-right: none;
-  border-top: none;
-  margin: $base-line-height 0;
-}
-
-img {
-  margin: 0;
-  max-width: 100%;
-}
-
-abbr, acronym {
-  border-bottom: 1px dotted $base-border-color;
-  cursor: help;
-}
-
-address {
-  display: block;
-  margin: 0 0 ($base-line-height / 2);
-}
-
-hgroup {
-  margin-bottom: $base-line-height / 2;
-}
-
-del {
-  color: lighten($base-font-color, 15);
-}
-
-pre {
-  font-family: "Menlo", "Monaco", monospace;
-  margin: 0;
-  padding: 0;
-}
-
-code {
-  background-color: darken($base-body-color, 3%);
-  border: 1px solid $base-border-color;
-  border-radius: $base-border-radius;
-  font-family: "Menlo", "Monaco", monospace;
-  font-size: 0.95em;
-  margin-left: 1px;
-  margin-right: 1px;
-  padding: 0 4px;
-}
-
-blockquote {
-  border-left: 2px solid $base-border-color;
-  color: lighten($base-font-color, 15);
-  margin: $base-line-height 0;
-  padding-left: $base-line-height / 2;
-}
-
-cite {
-  color: lighten($base-font-color, 25);
-  font-style: italic;
-
-  &:before {
-    content: '\\2014 \\00A0';
-  }
-}
-
-
-p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 16px;
-  line-height: 18px;
-  text-align: left;
-}
-
-pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px;
-}
-
-a {
-  color: #000;
-  &:visited {
-    color: #666;
-  }
-  &:hover {
-    color: #fff;
-    background-color: #000;
-  }
-}
-
-div {
-  &.field, &.actions {
-    margin-bottom: 10px;
-  }
-}
-
-#notice {
-  color: green;
-}
-
-.field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
-}
-
-#error_explanation {
-  width: 450px;
-  border: 2px solid red;
-  padding: 7px;
-  padding-bottom: 0;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
-  h2 {
-    text-align: left;
-    font-weight: bold;
-    padding: 5px 5px 5px 15px;
-    font-size: 12px;
-    margin: -7px;
-    margin-bottom: 0px;
-    background-color: #c00;
-    color: #fff;
-  }
-  ul li {
-    font-size: 12px;
-    list-style: square;
-  }
-}
-
-// Input Blocks
-
-.input_block_base{
-  width: 100%;
-  text-align: left;
-  height: 40px;
-  line-height: 40px;
-  .first_label {
-    text-overflow: ellipsis;
-    float: left;
-    vertical-align: middle;
-    width: 25%;
-    height: 100%;
-    text-align: left;
-    padding-right: 10px;
-  }
-  .input_wrapper {
-    height: 100%;
-    width: 50%;
-    .ember-text-field {
-      float: center;
-      height: 100%;
+    color: $base-link-color;
+    font-family: $form-font-family;
+    font-size: $form-font-size;
+    @include transition(color 0.1s linear);
+    &:hover {
+        color: $hover-link-color;
     }
-  }
-  .second_label {
-    text-overflow: ellipsis;
-    color: $orange;
-    text-align: left;
-    float: right;
-    width: 25%;
-    height: 100%;
-    font-size: 80%;
-    text-align: left;
-    padding-left: 10px;
-  }
-
+    &:active,
+    &:focus {
+        color: $hover-link-color;
+        outline: none;
+    }
 }
-
+hr {
+    border-bottom: 1px solid $base-border-color;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    margin: $base-line-height 0;
+}
+img {
+    margin: 0;
+    max-width: 100%;
+}
+abbr,
+acronym {
+    border-bottom: 1px dotted $base-border-color;
+    cursor: help;
+}
+address {
+    display: block;
+    margin: 0 0 ($base-line-height / 2);
+}
+hgroup {
+    margin-bottom: $base-line-height / 2;
+}
+del {
+    color: lighten($base-font-color, 15);
+}
+pre {
+    font-family: "Menlo", "Monaco", monospace;
+    margin: 0;
+    padding: 0;
+}
+code {
+    background-color: darken($base-body-color, 3%);
+    border: 1px solid $base-border-color;
+    border-radius: $base-border-radius;
+    font-family: "Menlo", "Monaco", monospace;
+    font-size: 0.95em;
+    margin-left: 1px;
+    margin-right: 1px;
+    padding: 0 4px;
+}
+blockquote {
+    border-left: 2px solid $base-border-color;
+    color: lighten($base-font-color, 15);
+    margin: $base-line-height 0;
+    padding-left: $base-line-height / 2;
+}
+cite {
+    color: lighten($base-font-color, 25);
+    font-style: italic;
+    &:before {
+        content: '\\2014 \\00A0';
+    }
+}
+ol,
+p,
+td,
+ul {
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 18px;
+    text-align: left;
+}
+pre {
+    background-color: #eee;
+    padding: 10px;
+    font-size: 11px;
+}
+a {
+    color: #000;
+    &:visited {
+        color: #666;
+    }
+    &:hover {
+        color: #fff;
+        background-color: #000;
+    }
+}
+div {
+    &.actions,
+    &.field {
+        margin-bottom: 10px;
+    }
+}
+#notice {
+    color: green;
+}
+.field_with_errors {
+    padding: 2px;
+    background-color: red;
+    display: table;
+}
+#error_explanation {
+    width: 450px;
+    border: 2px solid red;
+    padding: 7px 7px 0;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+    h2 {
+        text-align: left;
+        font-weight: bold;
+        padding: 5px 5px 5px 15px;
+        font-size: 12px;
+        margin: -7px -7px 0;
+        background-color: #c00;
+        color: #fff;
+    }
+    ul li {
+        font-size: 12px;
+        list-style: square;
+    }
+}
+// Input Blocks
+.input_block_base {
+    width: 100%;
+    text-align: left;
+    height: 40px;
+    line-height: 40px;
+    .first_label {
+        text-overflow: ellipsis;
+        float: left;
+        vertical-align: middle;
+        width: 25%;
+        height: 100%;
+        text-align: left;
+        padding-right: 10px;
+    }
+    .input_wrapper {
+        height: 100%;
+        width: 50%;
+        .ember-text-field {
+            float: center;
+            height: 100%;
+        }
+    }
+    .second_label {
+        text-overflow: ellipsis;
+        color: $orange;
+        text-align: left;
+        float: right;
+        width: 25%;
+        height: 100%;
+        font-size: 80%;
+        text-align: left;
+        padding-left: 10px;
+    }
+}
 .input_block_type1 {
-  @extend .input_block_base;
+    @extend .input_block_base;
 }
 .input_block_search_page {
-  @extend .input_block_base;
-  margin: 15px 0px 15px 0px;
-  .first_label {
-    text-align: right;
-  }
-
+    @extend .input_block_base;
+    margin: 15px 0;
+    .first_label {
+        text-align: right;
+    }
 }
 .input_block_checkbox {
-  width: 100%;
-  text-align: left;
-  height: 40px;
-  .first_label {
-    float: left;
-    vertical-align: middle;
-    width: 30%;
-    height: 100%;
-  }
-  .input_wrapper {
-    height: 100%;
-    width: 10%;
-  }
-  .second_label {
-    color: $orange;
+    width: 100%;
     text-align: left;
-    float: right;
-    width: 60%;
-    height: 100%;
-    font-size: 80%;
-  }
+    height: 40px;
+    .first_label {
+        float: left;
+        vertical-align: middle;
+        width: 30%;
+        height: 100%;
+    }
+    .input_wrapper {
+        height: 100%;
+        width: 10%;
+    }
+    .second_label {
+        color: $orange;
+        text-align: left;
+        float: right;
+        width: 60%;
+        height: 100%;
+        font-size: 80%;
+    }
 }
 .input_block_typeLogin {
-  width: 100%;
-  text-align: right;
-  height: 40px;
-  .first_label {
-    text-overflow: ellipsis;
-    float: left;
-    vertical-align: middle;
-    margin-right: 10px;
-    width: 30%;
-    height: 100%;
-  }
-  .input_wrapper {
-    float: left;
-    height: 100%;
-    width: 40%;
-    .ember-text-field {
-      height: 100%;
+    width: 100%;
+    text-align: right;
+    height: 40px;
+    .first_label {
+        text-overflow: ellipsis;
+        float: left;
+        vertical-align: middle;
+        margin-right: 10px;
+        width: 30%;
+        height: 100%;
     }
-  }
+    .input_wrapper {
+        float: left;
+        height: 100%;
+        width: 40%;
+        .ember-text-field {
+            height: 100%;
+        }
+    }
 }
-
 .input_block_date {
-  width: 100%;
-  text-align: left;
-  display: flex;
-  height: 40px;
-  .first_label {
-    vertical-align: middle;
-    height: 100%;
-    min-width: 25%
-  }
-  .month_input {
-    height: 40px;
-    min-width: 40px;
-  }
-  .day_input {
-    height: 40px;
-    min-width: 40px;
-  }
-  .year_input {
-    height: 40px;
-    min-width: 60px;
-  }
-  .dob_label {
-    color: $orange;
+    width: 100%;
     text-align: left;
+    display: flex;
     height: 40px;
-    min-width: 25%;
-    margin: auto 0px auto 10px;
-    vertical-align: middle;
-  }
-  .input_separator{
-    height: 40px;
-    min-width: 10px;
-    margin: 2px;
-    vertical-align: middle;
-    font-weight: normal;
-    font-size: 30px;
-  }
+    .first_label {
+        vertical-align: middle;
+        height: 100%;
+        min-width: 25%;
+    }
+    .month_input {
+        height: 40px;
+        min-width: 40px;
+    }
+    .day_input {
+        height: 40px;
+        min-width: 40px;
+    }
+    .year_input {
+        height: 40px;
+        min-width: 60px;
+    }
+    .dob_label {
+        color: $orange;
+        text-align: left;
+        height: 40px;
+        min-width: 25%;
+        margin: auto 0 auto 10px;
+        vertical-align: middle;
+    }
+    .input_separator {
+        height: 40px;
+        min-width: 10px;
+        margin: 2px;
+        vertical-align: middle;
+        font-weight: normal;
+        font-size: 30px;
+    }
 }
-
 .input_block_textArea {
-  width: 100%;
-  text-align: left;
-  height: auto;
-  text-overflow: ellipsis;
-  .input_block_textArea_header {
-    text-overflow: ellipsis;
     width: 100%;
-    display: flex;
-    .left_header {
-      width: 50%;
-      flex-grow: 1;
-      flex-direction: column;
-      flex-wrap: wrap;
-      margin-left: 5px;
-      margin-right: 5px;
-      margin-bottom: 5px;
-    }
-    .right_header {
-      width: 50%;
-      flex-grow: 1;
-      flex-direction: column;
-      flex-wrap: wrap;
-      margin-left: 5px;
-      margin-right: 5px;
-      margin-bottom: 5px;
-    }
-  }
-  .input_block_textArea_body {
-    width: 100%;
-    display: flex;
-    .input_wrapper {
-      width: 50%;
-      flex-grow: 1;
-      flex-direction: column;
-      flex-wrap: wrap;
-      textarea{
-        margin-left: 5px;
-        margin-right: 5px;
-        height: 200px;
-        resize: none;
-      }
-    }
-    .preview_wrapper {
-      width: 50%;
-      flex-grow: 1;
-      flex-direction: column;
-      flex-wrap: wrap;
-	    margin-left: 15px;
-	    margin-right: 5px;
-	    height: 200px;
-      overflow: auto;
-    }
-  }
-  .input_block_textArea_example{
-    border: 0.2px solid darken($button-type-1-bg, 15%);
-    width: 100%;
+    text-align: left;
     height: auto;
-    display: flex;
-    .input_wrapper {
-      height: auto;
-      width: 50%;
-      flex-grow: 1;
-      flex-direction: column;
-      flex-wrap: wrap;
-        word-break: break-all;
-      textarea{
+    text-overflow: ellipsis;
+    .input_block_textArea_header {
+        text-overflow: ellipsis;
+        width: 100%;
+        display: flex;
+        .left_header {
+            width: 50%;
+            flex-grow: 1;
+            flex-direction: column;
+            flex-wrap: wrap;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        .right_header {
+            width: 50%;
+            flex-grow: 1;
+            flex-direction: column;
+            flex-wrap: wrap;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+    }
+    .input_block_textArea_body {
+        width: 100%;
+        display: flex;
+        .input_wrapper {
+            width: 50%;
+            flex-grow: 1;
+            flex-direction: column;
+            flex-wrap: wrap;
+            textarea {
+                margin-left: 5px;
+                margin-right: 5px;
+                height: 200px;
+                resize: none;
+            }
+        }
+        .preview_wrapper {
+            width: 50%;
+            flex-grow: 1;
+            flex-direction: column;
+            flex-wrap: wrap;
+            margin-left: 15px;
+            margin-right: 5px;
+            height: 200px;
+            overflow: auto;
+        }
+    }
+    .input_block_textArea_example {
+        border: 0.2px solid darken($button-type-1-bg, 15%);
+        width: 100%;
         height: auto;
-        resize: none;
-        word-break: break-all;
-      }
+        display: flex;
+        .input_wrapper {
+            height: auto;
+            width: 50%;
+            flex-grow: 1;
+            flex-direction: column;
+            flex-wrap: wrap;
+            word-break: break-all;
+            textarea {
+                height: auto;
+                resize: none;
+                word-break: break-all;
+            }
+        }
+        .preview_wrapper {
+            border-left: 0.2px solid darken($button-type-1-bg, 15%);
+            width: 50%;
+            flex-grow: 1;
+            flex-direction: column;
+            flex-wrap: wrap;
+            height: auto;
+            overflow: auto;
+        }
     }
-    .preview_wrapper {
-      border-left: 0.2px solid darken($button-type-1-bg, 15%);
-      width: 50%;
-      flex-grow: 1;
-      flex-direction: column;
-      flex-wrap: wrap;
-	    height: auto;
-      overflow: auto;
-      
-    }
-  }
 }
-
-.loading{
-  color: #fff;
-  background-color: #000;
-  width: 100%;
-  height: 100%;
+.loading {
+    color: #fff;
+    background-color: #000;
+    width: 100%;
+    height: 100%;
 }
-.login_required_warning{
-  text-align: center;
-  @include appearance(none);
-  border: 0.2px solid darken($button-type-1-bg, 15%);
-  border-radius: $base-border-radius;
-  box-shadow: 0 0.4px 1px rgba(#000, 0.4);
-  display: inline-block;
-  font-size: $base-font-size;
-  font-weight: bold;
-  outline: none;
-  padding: 0.2em 0.2em;
-  text-align: center;
-  text-decoration: none;
-  user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
-  -webkit-font-smoothing: antialiased;
+.login_required_warning {
+    text-align: center;
+    @include appearance(none);
+    border: 0.2px solid darken($button-type-1-bg, 15%);
+    border-radius: $base-border-radius;
+    box-shadow: 0 0.4px 1px rgba(#000, 0.4);
+    display: inline-block;
+    font-size: $base-font-size;
+    font-weight: bold;
+    outline: none;
+    padding: 0.2em;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
 }
-
-.edit_main_controls{
+.edit_main_controls {
     margin-bottom: 15px;
-  button {
-    margin: 15px;
-  }
+    button {
+        margin: 15px;
+    }
 }
 .loading_text {
-  color: $miku-color;
+    color: $miku-color;
 }

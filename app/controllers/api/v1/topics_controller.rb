@@ -26,7 +26,7 @@ class Api::V1::TopicsController < ApiController
   def destroy
       render json: {}, status: :method_not_allowed
   end
-  
+
   private
 
   # Topic object from the Deserialization params if there is an id.

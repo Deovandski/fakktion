@@ -1,6 +1,6 @@
 ## Routes Extra Information
 
-The following code does not work as it causes SyntaxError: Unexpected token < 
+The following code does not work as it causes SyntaxError: Unexpected token <
 '''
 get '/*path' => 'forums#index' || get '/*path', to: 'forums#index'
 '''

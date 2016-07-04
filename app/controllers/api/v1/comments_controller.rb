@@ -28,7 +28,7 @@ class Api::V1::CommentsController < ApiController
   def destroy
       render json: {}, status: :method_not_allowed
   end
-  
+
   private
 
   # Comment object from the Deserialization params if there is an id.

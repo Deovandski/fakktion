@@ -1,6 +1,6 @@
 # Posts Controller: JSON response through Active Model Serializers
 class Api::V1::PostsController < ApiController
-  respond_to :json 
+  respond_to :json
 
   # Render all Posts using PostSerializer.
   def index
@@ -26,9 +26,9 @@ class Api::V1::PostsController < ApiController
   def destroy
       render json: {}, status: :method_not_allowed
   end
-  
+
   private
-  
+
   # Post object from the Deserialization params if there is an id.
   def post
     Post.find(params[:id])

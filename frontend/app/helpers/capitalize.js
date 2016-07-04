@@ -4,14 +4,13 @@ import Ember from "ember";
  * requests are being eagerly sent before the promise
  * is resolved. Instead of letting hell break loose, we simply send
  * the undefined back to the Ahole who called it...
- * But seriously, do not let the method be called 
+ * But seriously, do not let the method be called
  * on a undefined parameter!
-*/
+ */
 export default Ember.Helper.helper(function([value]) {
   if (value === undefined) {
     return value;
-  }
-  else {
+  } else {
     return value.capitalize();
   }
 });

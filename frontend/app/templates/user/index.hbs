@@ -8,7 +8,7 @@
       <h4 class="h3_legend">{{capitalize model.display_name}}</h4>
     {{/if}}
   {{/if}}
-{{else if model.is_admin }}
+  {{else if model.is_admin }}
   {{#if isOwner}}
     <h3 class="h3_admin">{{capitalize model.full_name}}{{#link-to 'user.edit'}}Edit{{/link-to}}</h3>
   {{else}}
@@ -18,7 +18,7 @@
       <h4 class="h3_admin">{{capitalize model.display_name}}</h4>
     {{/if}}
   {{/if}}
-{{else if model.is_super_user}}
+  {{else if model.is_super_user}}
   {{#if isOwner}}
     <h3 class="h3_super_user">{{capitalize model.full_name}}{{#link-to 'user.edit'}}Edit{{/link-to}}</h3>
   {{else}}
@@ -40,51 +40,66 @@
   {{/if}}
 {{/if}}
 
-<div class="user_intro"><label>{{model.personal_message}}</label></div>
+<div class="user_intro">
+  <label>{{model.personal_message}}</label>
+</div>
 
 {{#if expandInfo}}
   <button class="button_type1_normal" {{action "setExpandInfo" false}}>Hide User Information</button>
   <div class="user_more_info">
     <div class="user_more_info_row">
-      <div class="user_more_info_cl_left"><label>Reputation:</label>  {{counter-styler model.reputation}}</div>
+      <div class="user_more_info_cl_left">
+        <label>Reputation:</label> {{counter-styler model.reputation}}</div>
       {{#if model.is_legend }}
         <div class="user_more_info_cl_right info_legend_user">Legendary User</div>
-      {{else if model.is_admin }}
+        {{else if model.is_admin }}
         <div class="user_more_info_cl_right info_admin_user">Admin User</div>
-      {{else if model.is_super_user}}
+        {{else if model.is_super_user}}
         <div class="user_more_info_cl_right info_super_user">Super User</div>
       {{else}}
         <div class="user_more_info_cl_right info_normal_user">New User</div>
       {{/if}}
     </div>
     <div class="user_more_info_row">
-      <div class="user_more_info_cl_left"><label class="inner_label"># Posts:</label>  {{counter-styler model.posts_count}}</div>
-      <div class="user_more_info_cl_right"><label class="inner_label"># Comments:</label>  {{counter-styler model.comments_count}}</div>
+      <div class="user_more_info_cl_left">
+        <label class="inner_label"># Posts:</label> {{counter-styler model.posts_count}}</div>
+      <div class="user_more_info_cl_right">
+        <label class="inner_label"># Comments:</label> {{counter-styler model.comments_count}}</div>
     </div>
     <div class="user_more_info_row">
-      <div class="user_more_info_cl_left"><label class="inner_label">Created on:</label>  {{createdDate}}</div>
-      <div class="user_more_info_cl_right"><label class="inner_label">Updated on:</label>  {{updatedDate}}</div>
+      <div class="user_more_info_cl_left">
+        <label class="inner_label">Created on:</label> {{createdDate}}</div>
+      <div class="user_more_info_cl_right">
+        <label class="inner_label">Updated on:</label> {{updatedDate}}</div>
     </div>
     <div class="user_links_info_row">
-      <div class="user_more_info_notice"><label class="inner_label">User Links</label></div>
+      <div class="user_more_info_notice">
+        <label class="inner_label">User Links</label>
+      </div>
       <div class="user_more_info_cl_container">
-      
-      
-      {{#if verifyFacebookURL}}
-        <div class="user_more_info_cl"><a href="{{model.facebook_url}}" target="_blank"><img width="23px" height="23px" src="/assets/facebook.png"></a></div>
-      {{else}}
-        <div class="user_more_info_cl"><img width="23px" height="23px" src="/assets/facebook_disabled.png"></div>
-      {{/if}}
-      {{#if verifyTwitterURL}}
-        <div class="user_more_info_cl"><a href="{{model.twitter_url}}" target="_blank"><img width="23px" height="23px" src="/assets/twitter.png"></a></div>
-      {{else}}
-        <div class="user_more_info_cl"><img width="23px" height="23px" src="/assets/twitter_disabled.png"></div>
-      {{/if}}
-      {{#if verifyWebpageURL}}
-        <div class="user_more_info_cl"><a href="{{model.webpage_url}}" target="_blank"><img width="23px" height="23px" src="/assets/webpage.png"></a></div>
-      {{else}}
-        <div class="user_more_info_cl"><img width="23px" height="23px" src="/assets/webpage_disabled.png"></div>
-      {{/if}}
+
+
+        {{#if verifyFacebookURL}}
+          <div class="user_more_info_cl">
+            <a href="{{model.facebook_url}}" target="_blank"><img width="23px" height="23px" src="/assets/facebook.png"></a>
+          </div>
+        {{else}}
+          <div class="user_more_info_cl"><img width="23px" height="23px" src="/assets/facebook_disabled.png"></div>
+        {{/if}}
+        {{#if verifyTwitterURL}}
+          <div class="user_more_info_cl">
+            <a href="{{model.twitter_url}}" target="_blank"><img width="23px" height="23px" src="/assets/twitter.png"></a>
+          </div>
+        {{else}}
+          <div class="user_more_info_cl"><img width="23px" height="23px" src="/assets/twitter_disabled.png"></div>
+        {{/if}}
+        {{#if verifyWebpageURL}}
+          <div class="user_more_info_cl">
+            <a href="{{model.webpage_url}}" target="_blank"><img width="23px" height="23px" src="/assets/webpage.png"></a>
+          </div>
+        {{else}}
+          <div class="user_more_info_cl"><img width="23px" height="23px" src="/assets/webpage_disabled.png"></div>
+        {{/if}}
       </div>
     </div>
     <div class="user_more_info_warning">Fakktion does not verify the links authenticity.</div>
@@ -104,17 +119,17 @@
         <label class="label_comments_count_header"><img height="15px" src="/assets/comments.png"></label>
       </li>
       {{#each model.posts as |post|}}
-      <li>
-        <label class="label_title">
-          {{#link-to 'post' post}}{{capitalize post.title}}{{/link-to}}
-        </label>
-        <label class="label_views">
-          {{counter-styler post.views_count}}
-        </label>
-        <label class="label_comments_count">
-          {{counter-styler post.comments_count}}
-        </label>
-      </li>
+        <li>
+          <label class="label_title">
+            {{#link-to 'post' post}}{{capitalize post.title}}{{/link-to}}
+          </label>
+          <label class="label_views">
+            {{counter-styler post.views_count}}
+          </label>
+          <label class="label_comments_count">
+            {{counter-styler post.comments_count}}
+          </label>
+        </li>
       {{/each}}
     </ul>
   {{else}}

@@ -1,7 +1,7 @@
 import Ember from "ember";
 const { service } = Ember.inject;
 
-export default Ember.Controller.extend ({
+export default Ember.Controller.extend({
   session: service('session'),
   sessionAccount: service('session-account'),
   application: Ember.inject.controller('application'),
@@ -10,151 +10,133 @@ export default Ember.Controller.extend ({
   factLink: "",
   fictionLink: "",
   isBanned: Ember.computed('sessionAccount.user.reputation', function() {
-    if(this.get('sessionAccount.user.reputation') < -250){
+    if (this.get('sessionAccount.user.reputation') < -250) {
       return true;
-    }
-    else{
+    } else {
       return false;
     }
   }),
   clientSideValidationComplete: false,
   verifyTitle: Ember.computed('title', function() {
-    if(this.get('title').length < 10) {
-      this.set('clientSideValidationComplete',false);
+    if (this.get('title').length < 10) {
+      this.set('clientSideValidationComplete', false);
       return "Too short";
-    }
-    else if(this.get('title').length > 100) {
-      this.set('clientSideValidationComplete',false);
+    } else if (this.get('title').length > 100) {
+      this.set('clientSideValidationComplete', false);
       return "Max 100 Chars.";
-    }
-    else {
-      this.set('clientSideValidationComplete',true);
+    } else {
+      this.set('clientSideValidationComplete', true);
       return '';
     }
   }),
   verifyText: Ember.computed('text', function() {
-    if(this.get('text').length < 100) {
-      this.set('clientSideValidationComplete',false);
+    if (this.get('text').length < 100) {
+      this.set('clientSideValidationComplete', false);
       return "100 Min Characters...";
-    }
-    else if(this.get('text').length > 2000) {
-      this.set('clientSideValidationComplete',false);
+    } else if (this.get('text').length > 2000) {
+      this.set('clientSideValidationComplete', false);
       return "2000 Max Characters. Please revise your input!";
-    }
-    else {
-      this.set('clientSideValidationComplete',true);
+    } else {
+      this.set('clientSideValidationComplete', true);
       var charsLeft = 2000 - this.get('text').length;
-      
+
       return charsLeft + ' Characters left.';
     }
   }),
   verifyFactLink: Ember.computed('factLink', function() {
-    if(this.get('factLink') !== '') {
-      if(this.get('factLink').length < 8) {
+    if (this.get('factLink') !== '') {
+      if (this.get('factLink').length < 8) {
         this.set("clientSideValidationComplete", false);
         return "Invalid URL";
-      }
-      else if(this.get('factLink').length > 150) {
+      } else if (this.get('factLink').length > 150) {
         this.set("clientSideValidationComplete", false);
         return "Max 150 Chars";
-      }
-      else {
+      } else {
         var rx = new RegExp("^(http|https|HTTP|HTTPS)://");
         var htmlString = this.get('factLink').match(rx);
-        if (htmlString !== null){
-          this.set('clientSideValidationComplete',true);
+        if (htmlString !== null) {
+          this.set('clientSideValidationComplete', true);
           return '';
-        }
-        else {
-          this.set('clientSideValidationComplete',false);
+        } else {
+          this.set('clientSideValidationComplete', false);
           return "URL missing HTTP:// or HTTPS://";
         }
       }
-    }
-    else {
-      this.set("clientSideValidationComplete",true);
+    } else {
+      this.set("clientSideValidationComplete", true);
       return "http(s)://www.example.com";
     }
   }),
   verifyFictionLink: Ember.computed('fictionLink', function() {
-    if(this.get('fictionLink') !== '') {
-      if(this.get('fictionLink').length < 8) {
+    if (this.get('fictionLink') !== '') {
+      if (this.get('fictionLink').length < 8) {
         this.set("clientSideValidationComplete", false);
         return "Invalid URL";
-      }
-      else if(this.get('fictionLink').length > 150) {
+      } else if (this.get('fictionLink').length > 150) {
         this.set("clientSideValidationComplete", false);
         return "Max 150 Chars";
-      }
-      else {
+      } else {
         var rx = new RegExp("^(http|https|HTTP|HTTPS)://");
         var htmlString = this.get('fictionLink').match(rx);
-        if (htmlString !== null){
-          this.set('clientSideValidationComplete',true);
+        if (htmlString !== null) {
+          this.set('clientSideValidationComplete', true);
           return '';
-        }
-        else {
-          this.set('clientSideValidationComplete',false);
+        } else {
+          this.set('clientSideValidationComplete', false);
           return "URL missing HTTP:// or HTTPS://";
         }
       }
-    }
-    else {
-      this.set("clientSideValidationComplete",true);
+    } else {
+      this.set("clientSideValidationComplete", true);
       return "http(s)://www.example.com";
     }
   }),
-  allTagsValid: Ember.computed('application.selectedGenre.id','application.selectedFactType.id', 'application.selectedCategory.id','application.selectedTopic.id',  function() {
-    if(this.get('application.selectedGenre.id') > 0 && this.get('application.selectedFactType.id') > 0 && this.get('application.selectedCategory.id') > 0 && this.get('application.selectedTopic.id') > 0) {
+  allTagsValid: Ember.computed('application.selectedGenre.id', 'application.selectedFactType.id', 'application.selectedCategory.id', 'application.selectedTopic.id', function() {
+    if (this.get('application.selectedGenre.id') > 0 && this.get('application.selectedFactType.id') > 0 && this.get('application.selectedCategory.id') > 0 && this.get('application.selectedTopic.id') > 0) {
       return true;
-    }
-    else {
+    } else {
       return false;
     }
   }),
   verifyGenre: Ember.computed('application.selectedGenre.id', function() {
-    if(this.get('application.selectedGenre.id') > 0) {
-      this.set('clientSideValidationComplete',true);
+    if (this.get('application.selectedGenre.id') > 0) {
+      this.set('clientSideValidationComplete', true);
       return false;
-    }
-    else {
-      this.set('clientSideValidationComplete',false);
+    } else {
+      this.set('clientSideValidationComplete', false);
       return true;
     }
   }),
   verifyFactType: Ember.computed('application.selectedFactType.id', function() {
-    if(this.get('application.selectedFactType.id') > 0) {
-      this.set('clientSideValidationComplete',true);
+    if (this.get('application.selectedFactType.id') > 0) {
+      this.set('clientSideValidationComplete', true);
       return false;
-    }
-    else {
-      this.set('clientSideValidationComplete',false);
+    } else {
+      this.set('clientSideValidationComplete', false);
       return true;
     }
   }),
   verifyCategory: Ember.computed('application.selectedCategory.id', function() {
-    if(this.get('application.selectedCategory.id') > 0) {
-      this.set('clientSideValidationComplete',true);
+    if (this.get('application.selectedCategory.id') > 0) {
+      this.set('clientSideValidationComplete', true);
       return false;
-    }
-    else {
-      this.set('clientSideValidationComplete',false);
+    } else {
+      this.set('clientSideValidationComplete', false);
       return true;
     }
   }),
   verifyTopic: Ember.computed('application.selectedTopic.id', function() {
-    if(this.get('application.selectedTopic.id') > 0) {
-      this.set('clientSideValidationComplete',true);
+    if (this.get('application.selectedTopic.id') > 0) {
+      this.set('clientSideValidationComplete', true);
       return false;
-    }
-    else {
-      this.set('clientSideValidationComplete',false);
+    } else {
+      this.set('clientSideValidationComplete', false);
       return true;
     }
   }),
   actions: {
     create: function() {
-      if(this.get('clientSideValidationComplete') === true) {
+      if (this.get('clientSideValidationComplete') === true) {
         var store = this.store;
         var post = store.createRecord('post', {
           title: this.get('title'),
@@ -178,8 +160,7 @@ export default Ember.Controller.extend ({
         }, function() {
           alert('Server rejected the attempt.');
         });
-      }
-      else {
+      } else {
         alert("Please check any outstanding warning message(s), and try again!");
       }
     }

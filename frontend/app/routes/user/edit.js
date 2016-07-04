@@ -4,11 +4,11 @@ import Ember from 'ember';
 import moment from 'moment';
 const { service } = Ember.inject;
 
-export default Ember.Route.extend ({
+export default Ember.Route.extend({
   session: service('session'),
   sessionAccount: service('session-account'),
   model: function() {
-    return Ember.Object.create ({
+    return Ember.Object.create({
       user: this.modelFor('user'),
       users: this.store.findAll('user')
     });

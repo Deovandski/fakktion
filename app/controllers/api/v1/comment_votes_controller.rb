@@ -43,9 +43,9 @@ class Api::V1::CommentVotesController < ApiController
   def destroy
       render json: {}, status: :method_not_allowed
   end
-  
+
   private
-  
+
   # CommentVote object from the Deserialization params.
   def commentVote
     CommentVote.find(params[:id])

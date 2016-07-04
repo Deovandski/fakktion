@@ -1,7 +1,7 @@
-import Ember from 'ember';
+import Ember from "ember";
 const { service } = Ember.inject;
 
-export default Ember.Route.extend ({
+export default Ember.Route.extend({
   session: service('session'),
   sessionAccount: service('sessionAccount'),
   setupController: function(controller, model) {
@@ -11,8 +11,7 @@ export default Ember.Route.extend ({
   afterModel() {
     if (this.get('sessionAccount.user.is_admin') === true) {
       // Allow Editing
-    }
-    else{
+    } else {
       this.transitionTo('index');
     }
   }

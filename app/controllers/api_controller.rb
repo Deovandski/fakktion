@@ -1,4 +1,4 @@
-# Api Controller: Set options for all v1 API controllers. 
+# Api Controller: Set options for all v1 API controllers.
 class ApiController < ApplicationController
   prepend_before_filter :disable_devise_trackable
 
@@ -7,7 +7,7 @@ class ApiController < ApplicationController
   def json_render_all(resource_model, _sortParam)
       return render json: resource_model.all.sort_by{|x| x[:sortParam]}
   end
-  
+
   # Shared create API method used by Tags and InnerComment
   def json_create(resource_params, resource_model)
     if routine_check
@@ -24,7 +24,7 @@ class ApiController < ApplicationController
       return render json: {}, status: :unauthorized
     end
   end
-  
+
   # XSS prevention used on Post, Comment and Inner Comment.
   def json_create_and_sanitize(resource_params, resource_model)
     if routine_check
@@ -47,7 +47,7 @@ class ApiController < ApplicationController
       return render json: {}, status: :unauthorized
     end
   end
-  
+
   # Shared Update API method used by Tags and InnerComment
   def json_update(resource_obj,resource_params, resource_model)
     if routine_check
@@ -70,7 +70,7 @@ class ApiController < ApplicationController
       return render json: {}, status: :unauthorized
     end
   end
-  
+
   # Create Votes.
   def json_voting_create(commenting_obj, resource_params, resource_model)
     if routine_check
@@ -87,7 +87,7 @@ class ApiController < ApplicationController
       return render json: {}, status: :unauthorized
     end
   end
-  
+
   # Update Existing Votes
   def json_voting_update(commenting_obj,commenting_vote_obj, resource_params, resource_model)
     if routine_check
@@ -106,8 +106,8 @@ class ApiController < ApplicationController
       return render json: {}, status: :unauthorized
     end
   end
-  
-  
+
+
   # Voting Amount Control Method
   def votingHandler(commenting_obj, commenting_vote_obj , reverseVote)
     # Reverse voting acts upon the recorded vote enacted early on.
@@ -122,15 +122,15 @@ class ApiController < ApplicationController
       end
     else
       # Get the amount of votes that the user can cast.
-      if current_user.is_legend
-        votingAmmount = 4
+      votingAmmount = if current_user.is_legend
+        4
       elsif current_user.is_admin
-        votingAmmount = 3
+        3
       elsif current_user.is_super_user
-        votingAmmount = 2
+        2
       else
-        votingAmmount = 1
-      end
+        1
+                      end
       commenting_vote_obj.recorded_vote = votingAmmount
       if commenting_vote_obj.positive_vote
         commenting_obj.increment(:empathy_level, votingAmmount)
@@ -146,7 +146,7 @@ class ApiController < ApplicationController
     # Update reputation of the user who created the commenting_obj
     reputationCheck(commenting_obj.user)
   end
-  
+
   # Update Method used by Post and Comment. User must be signed for all Patch operations
   # Except for updating the views_counter of a given post.
   def json_update_and_sanitize(resource_obj,resource_params, resource_model)
@@ -179,7 +179,7 @@ class ApiController < ApplicationController
       end
     end
   end
-  
+
   def json_destroy(resource_obj)
     if routine_check
       if resource_obj.destroy
@@ -191,8 +191,8 @@ class ApiController < ApplicationController
       return render json: {}, status: :unauthorized
     end
   end
-  
-  
+
+
   #Routine check for Reputation and Authorization
   def routine_check
     if !user_signed_in?
@@ -202,11 +202,11 @@ class ApiController < ApplicationController
       return true
     end
   end
-  
+
   private
-    
-  
-  # Handle resource creation. 
+
+
+  # Handle resource creation.
   def create_resource(resource_obj)
     if resource_obj.save
       return render json: resource_obj, status: :ok
@@ -214,7 +214,7 @@ class ApiController < ApplicationController
       return render json: resource_obj.errors, status: :unprocessable_entity
     end
   end
-  
+
   # Handles Updating a resource
   def update_resource(resource_obj, resource_params)
     if resource_obj.update(resource_params)
@@ -223,7 +223,7 @@ class ApiController < ApplicationController
       return render json: resource_obj.errors, status: :unprocessable_entity
     end
   end
-  
+
   # Validates the current_user reputation by using the live reputation score.
   def reputationCheck(userToCheck)
     # SuperUser Block
@@ -251,13 +251,13 @@ class ApiController < ApplicationController
       userToCheck.save()
     end
   end
-  
+
   # Disable Devise Trackable for all API requests
   # Devise Trackable still tracks login since Devise is hooked to ApplicationController.
   def disable_devise_trackable
     request.env["devise.skip_trackable"] = true
   end
-  
+
   # Prevent XSS Attacks like a boss!
   def protect_from_xss_like_a_boss(dirtyText)
     scrubber = Rails::Html::PermitScrubber.new

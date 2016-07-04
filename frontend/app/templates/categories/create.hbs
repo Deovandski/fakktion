@@ -5,7 +5,8 @@
     <label class="first_label">Name:</label>
     <label class="input_wrapper">{{input value=name}}</label>
     <label class="second_label">{{verifyCategoryName}}</label>
-  </div><br/>
+  </div>
+  <br/>
   {{#if session.isAuthenticated}}
     {{#if isBanned}}
       <p class="login_required_warning">You cannot create tags due to your reputation!</p>

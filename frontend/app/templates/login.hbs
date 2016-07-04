@@ -1,20 +1,19 @@
 <form {{action 'authenticate' on='submit'}}>
 	<h1>Login</h1>
 	<div class="input_block_typeLogin">
-		<label class="first_label">Email:  </label>
-		<label class="input_wrapper">  {{input value=identification placeholder='example@example.com'}}</label>
-	</div><br/>
+		<label class="first_label">Email: </label>
+		<label class="input_wrapper"> {{input value=identification placeholder='example@example.com'}}</label>
+	</div>
+	<br/>
 	<div class="input_block_typeLogin">
-		<label class="first_label">Password:  </label>
-		<label class="input_wrapper">  {{input value=password placeholder='Enter Password' type='password'}}</label>
-	</div><br/>
-  <button type="submit" class="button_type1_normal">Login</button>
+		<label class="first_label">Password: </label>
+		<label class="input_wrapper"> {{input value=password placeholder='Enter Password' type='password'}}</label>
+	</div>
+	<br/>
+	<button type="submit" class="button_type1_normal">Login</button>
 </form>
 <br/>
 
 {{#if errorMessage}}
-  {{errorMessage}}
+	{{errorMessage}}
 {{/if}}
-
-<p class="frontend_index center_text">Devise recoverable not yet implemented.</p>
-<button class="button_type1_normal">Forgot Password?</button>

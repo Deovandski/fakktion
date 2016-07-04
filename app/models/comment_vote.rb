@@ -1,7 +1,7 @@
 # CommentVote Model
 class CommentVote < ActiveRecord::Base
   before_destroy :prevent_destroy
-  
+
   # Relationships
   belongs_to :comment
   belongs_to :user

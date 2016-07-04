@@ -2,32 +2,32 @@
 <nav>
   <ul>
     {{#if session.isAuthenticated}}
-    <li>
-      {{#if sessionAccount.user}}Signed in as {{sessionAccount.user.display_name}}{{/if}}
-    </li>
+      <li>
+        {{#if sessionAccount.user}}Signed in as {{sessionAccount.user.display_name}}{{/if}}
+      </li>
     {{else}}
-    <li>
-      <strong>EXP v0.9 </strong>
-    </li>
+      <li>
+        <strong>Alpha</strong>
+      </li>
     {{/if}}
     <li>
       <img src="/assets/search.png" class="searchIcon" id="searchIconTooltip" {{action 'goSearch'}}>
-      {{#tooltip-on-component target='#searchIconTooltip'}}Search Users{{/tooltip-on-component}}
+      {{#tooltip-on-component target='#searchIconTooltip' }}Search Users{{/tooltip-on-component}}
     </li>
     {{#if session.isAuthenticated}}
-    <li>
-      {{#link-to 'user' sessionAccount.user.id}}Profile{{/link-to}}
-    </li>
-    <li>
-      <a {{action 'logout'}}>Logout</a>
-    </li>
-  {{else}}
-    <li>
-      {{#link-to 'users.create'}}SignUp{{/link-to}}
-    </li>
-    <li>
-      {{#link-to "login"}}Login{{/link-to}}
-    </li>
-  {{/if}}
-	</ul>
+      <li>
+        {{#link-to 'user' sessionAccount.user.id}}Profile{{/link-to}}
+      </li>
+      <li>
+        <a {{action 'logout'}}>Logout</a>
+      </li>
+    {{else}}
+      <li>
+        {{#link-to 'users.create'}}SignUp{{/link-to}}
+      </li>
+      <li>
+        {{#link-to "login"}}Login{{/link-to}}
+      </li>
+    {{/if}}
+  </ul>
 </nav>

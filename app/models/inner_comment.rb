@@ -8,18 +8,18 @@ class InnerComment < ActiveRecord::Base
   # Attributes Length Validations
   validates :text, length: {minimum: 25}
   validates :text, length: {maximum: 500}
-  
+
   # Relationships
   belongs_to :comment, :counter_cache => true
   belongs_to :user
 
   private
-  
+
   # Prevent integer tampering while creating records
   def prevent_tampering
     self.empathy_level = 0
   end
-  
+
   # Allow deletion if the inner_comment empathy level is lower than -10.
   def check_empathy
     if self.empathy_level < -10

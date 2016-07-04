@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
   end
 
   private
-  
+
   # Prevent integer tampering while creating records
   def prevent_tampering
     self.is_super_user = false
@@ -73,14 +73,14 @@ class User < ActiveRecord::Base
       break token unless User.where(authentication_token: token).first
     end
   end
-  
+
   # Normalize a few attributes to lowercase in case frontend failed to do so.
   def normalize_input
     self.email = email.downcase
     self.display_name = display_name.downcase
     self.full_name = full_name.downcase
   end
-  
+
   # Make sure that there are no resources created by this user
   def check_for_resources
     if self.posts.any?

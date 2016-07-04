@@ -1,5 +1,5 @@
 // Application Controller
-import Ember from 'ember';
+import Ember from "ember";
 const { service } = Ember.inject;
 
 /* Abbreviations:
@@ -169,7 +169,7 @@ export default Ember.Controller.extend ({
     else {
       return false;
     }
-  }),  
+  }),
   isPostDateSelected: Ember.computed('selectedPDID', function() {
     if(this.get('selectedPDID') !== 0) {
       return true;
@@ -199,28 +199,28 @@ export default Ember.Controller.extend ({
   }),
   actions: {
     //Set ID Tag Methods
-    setGenre: function(genre) { 
+    setGenre: function(genre) {
       this.set('selectedGenre', genre);
     },
-    setCategory: function(category) { 
+    setCategory: function(category) {
       this.set('selectedCategory', category);
     },
-    setFactType: function(factType) { 
+    setFactType: function(factType) {
       this.set('selectedFactType', factType);
     },
     setTopic: function() {
-      if(this.get('topicInputText') !== '') {  
+      if(this.get('topicInputText') !== '') {
         var possibleTopic = this.model.get('topics').findBy('name', this.get('topicInputText').toLowerCase());
         if(possibleTopic === undefined) {
           this.set('selectedTopic', 'invalid');
           this.transitionToRoute('topics');
         }
-        else {  
+        else {
           this.set('selectedTopic', possibleTopic);
         }
       }
     },
-    setPDID: function(varDayType, varDayName) { 
+    setPDID: function(varDayType, varDayName) {
       this.set('selectedPDID', varDayType);
       this.set('selectedPDN', varDayName);
     },
@@ -247,20 +247,20 @@ export default Ember.Controller.extend ({
       this.toggleProperty('displayRightSidebar');
     },
     //Clear Tag Methods
-    clearGenre: function() { 
+    clearGenre: function() {
       this.set('selectedGenre', null);
     },
-    clearFactType: function() { 
+    clearFactType: function() {
       this.set('selectedFactType', null);
     },
-    clearCategory: function() { 
+    clearCategory: function() {
       this.set('selectedCategory', null);
     },
-    clearTopic: function() { 
+    clearTopic: function() {
       this.set('selectedTopic', null);
       this.set('topicInputText', '');
     },
-    clearPostDate: function() { 
+    clearPostDate: function() {
       this.set('selectedPDID', 0);
       this.set('selectedPDN', 'None');
     },

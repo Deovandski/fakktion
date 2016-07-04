@@ -6,7 +6,7 @@ export default Ember.Service.extend ({
   store: service(),
   serverValidationComplete: false,
   server422: false,
-  
+
   // Create a Promise to handle a server request that validates the current LocalStorage
   // If valid, then set SessionAccount User.
   loadCurrentUser() {

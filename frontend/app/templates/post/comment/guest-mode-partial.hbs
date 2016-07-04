@@ -17,11 +17,11 @@
     <div class="comment_user_name_super_user">
       {{capitalize model.user.display_name}}
     </div>
-  {{else if model.user.is_admin}}
+    {{else if model.user.is_admin}}
     <div class="comment_user_name_admin">
       {{capitalize model.user.display_name}}
     </div>
-  {{else if model.user.is_legend}}
+    {{else if model.user.is_legend}}
     <div class="comment_user_name_legend">
       {{capitalize model.user.display_name}}
     </div>
@@ -30,7 +30,7 @@
       {{capitalize model.user.display_name}}
     </div>
   {{/if}}
-    <div class="comment_user_date">
-      {{createdDate}}
-    </div>
+  <div class="comment_user_date">
+    {{createdDate}}
+  </div>
 </div>

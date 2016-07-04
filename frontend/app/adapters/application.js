@@ -5,7 +5,7 @@ import ENV from "../config/environment";
 import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 
 
-export default DS.JSONAPIAdapter.extend (DataAdapterMixin,{
+export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
   // Namespace.
   namespace: 'api/v1',
   authorizer: 'authorizer:devise',
@@ -22,7 +22,7 @@ export default DS.JSONAPIAdapter.extend (DataAdapterMixin,{
   urlForFindRecord(id, modelName, snapshot) {
     let url = this._super(...arguments);
     let query = Ember.get(snapshot, 'adapterOptions.query');
-    if(query) {
+    if (query) {
       url += '?' + Ember.$.param(query);
     }
     return url;

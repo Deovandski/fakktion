@@ -8,7 +8,7 @@ class InnerCommentVoteSerializer < ActiveModel::Serializer
   # to use DS.BelongsTo(). See Ember Data #1865 for more info...
               :user_id,
               :inner_comment_id
-              
+
   # Relationships
   belongs_to :inner_comment
   belongs_to :user

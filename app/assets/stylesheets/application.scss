@@ -1,21 +1,12 @@
 /* Application.scss -- Below are the @imports groups */
-
 /* #1 -- Vendors... */
-
 @import "bourbon";
 @import "neat";
-
 /* #2 -- Globals... */
-
 @import "globals/variables";
 @import "globals/setup";
 @import "globals/buttons";
-
 /* #3 -- Shared stuff... */
-
 @import "shared/**/*";
-
 /* #4 -- Frontend stuff... */
-
 @import "frontend/**/*";
-

@@ -1,7 +1,7 @@
 <p class="center_text"><strong>IE 11 or older not supported. Use Edge instead.</strong></p>
 <h4 class="frontend_index"><strong>DO NOT USE PERSONAL INFORMATION!</strong></h4>
 <p class="frontend_index">SSL has not been yet activated since Fakktion is still on experimentals.</p>
-<p> <b>v0.9</b> is now available! Please see Issue <a href="https://github.com/Deovandski/Fakktion/issues/31" target="_blank">#31</a> for the Alpha Checklist.</p>
+<p> <b>Fakktion Alpha</b> is now available! Please see Issue <a href="https://github.com/Deovandski/Fakktion/issues/24" target="_blank">#24</a> for upcoming features.</p>
 <div class="posts_info">
   <ul>
     <li>
@@ -10,24 +10,24 @@
       <label class="label_comments_count_header"><img height="15px" src="/assets/comments.png"></label>
     </li>
     {{#each filteredPosts as |post|}}
-    <li>
-      <label class="label_title">
-        {{#link-to 'post' post}}{{capitalize post.title}}{{/link-to}}
-      </label>
-      <label class="label_views">
-        {{counter-styler post.views_count}}
-      </label>
-      <label class="label_comments_count">
-        {{counter-styler post.comments_count}}
-      </label>
-    </li>
+      <li>
+        <label class="label_title">
+          {{#link-to 'post' post}}{{capitalize post.title}}{{/link-to}}
+        </label>
+        <label class="label_views">
+          {{counter-styler post.views_count}}
+        </label>
+        <label class="label_comments_count">
+          {{counter-styler post.comments_count}}
+        </label>
+      </li>
     {{/each}}
   </ul>
   {{#if session.isAuthenticated}}
     {{#if isBanned}}
       <p class="login_required_warning">You cannot create Posts due to your reputation!</p>
     {{else}}
-      {{#link-to 'posts.create'  class="button_type1_normal" }}Create Post{{/link-to}}
+      {{#link-to 'posts.create' class="button_type1_normal" }}Create Post{{/link-to}}
     {{/if}}
   {{else}}
     <p class="login_required_warning">Please login to create a Post</p>

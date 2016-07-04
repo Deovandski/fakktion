@@ -1,0 +1,39 @@
+@mixin button_type1_post_date() {
+     @include appearance(none);
+    background-color: $button-bar-post-date-bg;
+    border: 1px solid $button-bar-post-date-bg;
+    border-radius: $base-border-radius;
+    box-shadow: 0 1px 2px rgba(#000, 0.4);
+    color: $button-bar-post-date-color;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    outline: none;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+    width: 90%;
+    padding: 0;
+    margin-top: 1px;
+    margin-bottom: 1.5px;
+    &:hover {
+        background-color: lighten($button-bar-post-date-bg, 2%);
+        border-color: lighten($button-bar-post-date-bg, 2%);
+        color: $button-bar-post-date-color;
+    }
+    &:active {
+        background-color: $button-bar-post-date-bg;
+        border-color: $button-bar-post-date-bg;
+        box-shadow: 0 1px 2px rgba(#000, 0.2);
+        color: $button-bar-post-date-color;
+    }
+    &.animate {
+        @include transition(all 0.2s ease);
+        &:hover {
+            @include transform(scale(1.1));
+        }
+    }
+}

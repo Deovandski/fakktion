@@ -2,12 +2,12 @@
 # + CSRF protection for all Devise requests.
 class ApplicationController < ActionController::Base
   before_action :authenticate_user_from_token!
-  
+
   # Full CSRF protection
   protect_from_forgery with: :exception
 
   protected
-  
+
   # Login User from token if there is one present on the Header.
   def authenticate_user_from_token!
     authenticate_with_http_token do |token, options|

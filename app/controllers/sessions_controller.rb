@@ -2,7 +2,7 @@
 class SessionsController < Devise::SessionsController
   respond_to :json
   skip_before_filter :verify_authenticity_token, only: [:destroy]
-  
+
   # Customized Create action. super do |user| kicks in Devise followed by
   # returning JSON only for 200.
   def create
@@ -17,9 +17,9 @@ class SessionsController < Devise::SessionsController
       end
     end
   end
-  
+
   # Fully customized Destroy action in order to destroy the session on the server.
-  # Destroy request on client is handled by 
+  # Destroy request on client is handled by
   def destroy
     signed_out_user = current_user
     sign_out :user

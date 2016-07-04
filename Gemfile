@@ -39,7 +39,7 @@ gem 'uglifier', '~> 3.0.0'
 gem 'jquery-rails', '~> 4.1.1'
 
 # Flexible authentication solution for Rails
-gem 'devise', '~> 4.1.1'
+gem 'devise', '~> 4.2.0'
 
 # Development Group
 group :development do
@@ -48,7 +48,10 @@ group :development do
   # Bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', '~> 0.4.1'
   # Spring speeds up development by keeping your application running in the background.
-  gem 'spring', '~> 1.7.1'
+  gem 'spring', '~> 1.7.2'
+  # Takes care of trailing spaces project wide
+  gem "rstrip"
+  gem "rubocop"
 end
 
 # Test Group

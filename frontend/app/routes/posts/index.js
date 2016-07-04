@@ -1,11 +1,11 @@
-import Ember from 'ember';
+import Ember from "ember";
 const { service } = Ember.inject;
 
-export default Ember.Route.extend ({
+export default Ember.Route.extend({
   session: service('session'),
   sessionAccount: service('sessionAccount'),
   model: function() {
-    return Ember.Object.create ({
+    return Ember.Object.create({
       posts: this.store.findAll('post')
     });
   }

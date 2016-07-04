@@ -42,4 +42,3 @@
 
 ### Remove app from PUMA
 ```sudo /etc/init.d/puma remove /path/to/app```
-

@@ -1,35 +1,31 @@
 @mixin button_bar_disabled() {
-  width: 100%;
-  height: 100%;
-  @include appearance(none);
-  background: darken($button-bar-bg, 15%);
-  border: 1px solid darken($button-bar-bg, 15%);
-  border-radius: $base-border-radius;
-  box-shadow: 0 1px 2px rgba(#000, 0.4);
-  color: $button-bar-color;
-  display: inline-block;
-  font-size: $base-font-size;
-  font-weight: bold;
-  outline: none;
-  margin: 0;
-  padding: 0.1em 0.3em;
-  text-align: center;
-  text-decoration: none;
-  user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
-  -webkit-font-smoothing: antialiased;
-
-  &:visited {
-  }
-  &:hover {
-  }
-  &:active {
-  }
-  &.animate {
-    @include transition(all 2s ease);
-    &:hover {
-      @include transform(scale(1.1));
+    width: 100%;
+    height: 100%;
+    @include appearance(none);
+    background: darken($button-bar-bg, 15%);
+    border: 1px solid darken($button-bar-bg, 15%);
+    border-radius: $base-border-radius;
+    box-shadow: 0 1px 2px rgba(#000, 0.4);
+    color: $button-bar-color;
+    display: inline-block;
+    font-size: $base-font-size;
+    font-weight: bold;
+    outline: none;
+    margin: 0;
+    padding: 0.1em 0.3em;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+    &:visited {}
+    &:hover {}
+    &:active {}
+    &.animate {
+        @include transition(all 2s ease);
+        &:hover {
+            @include transform(scale(1.1));
+        }
     }
-  }
 }

@@ -2,29 +2,41 @@
 <form>
   {{#if allTagsValid}}
   {{else}}
-  <div class="warning_tags">
-    <label class="warning_tags_desc">Post is missing the following tags: </label><br>
-    {{#if verifyGenre}}<div class="genre_warning">Genre</div>{{/if}}
-    {{#if verifyFactType}}<div class="fact_type_warning">Fact Type</div>{{/if}}
-    {{#if verifyCategory}}<div class="category_warning">Category</div>{{/if}}
-    {{#if verifyTopic}}<div class="topic_warning">Topic</div>{{/if}}
-  </div>
+    <div class="warning_tags">
+      <label class="warning_tags_desc">Post is missing the following tags: </label>
+      <br>
+      {{#if verifyGenre}}
+        <div class="genre_warning">Genre</div>
+      {{/if}}
+      {{#if verifyFactType}}
+        <div class="fact_type_warning">Fact Type</div>
+      {{/if}}
+      {{#if verifyCategory}}
+        <div class="category_warning">Category</div>
+      {{/if}}
+      {{#if verifyTopic}}
+        <div class="topic_warning">Topic</div>
+      {{/if}}
+    </div>
   {{/if}}
   <div class="input_block_type1">
     <label class="first_label">Title:</label>
     <label class="input_wrapper">{{input value=title}}</label>
     <label class="second_label">{{verifyTitle}}</label>
-  </div><br/>
+  </div>
+  <br/>
   <div class="input_block_type1">
     <label class="first_label">Fact Link:</label>
     <label class="input_wrapper">{{input value=factLink}}</label>
     <label class="second_label">{{verifyFactLink}}</label>
-  </div><br/>
+  </div>
+  <br/>
   <div class="input_block_type1">
     <label class="first_label">Fiction Link:</label>
     <label class="input_wrapper">{{input value=fictionLink}}</label>
     <label class="second_label">{{verifyFictionLink}}</label>
-  </div><br/>
+  </div>
+  <br/>
   <div class="input_block_textArea">
     <div class="input_block_textArea_header">
       <div class="left_header"><strong>Post Message</strong></div>
@@ -34,7 +46,8 @@
       <div class="input_wrapper">{{textarea value=text}}</div>
       <div class="preview_wrapper">{{{text}}}</div>
     </div>
-  </div><br/>
+  </div>
+  <br/>
   <p><strong>{{verifyText}}</strong></p>
   <div class="input_block_textArea">
     <div class="input_block_textArea_header">
@@ -54,8 +67,9 @@
       <div class="preview_wrapper">{{{application.exampleOL}}}</div>
     </div>
     <label><b>Any given &lt;a&gt; tag must use target="blank" and contain http:// on its href!</b></label>
-  </div><br/>
- 
+  </div>
+  <br/>
+
 
   {{#if session.isAuthenticated}}
     {{#if isBanned}}

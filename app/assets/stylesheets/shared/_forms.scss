@@ -1,100 +1,83 @@
 fieldset {
-  background-color: lighten($base-border-color, 10);
-  border: 1px solid $base-border-color;
-  margin: 0;
-  margin-bottom: $base-line-height;
-  padding: $base-line-height;
-
-  & > div {
-    margin-bottom: $base-font-size;
-  }
+    background-color: lighten($base-border-color, 10);
+    border: 1px solid $base-border-color;
+    margin: 0 0 $base-line-height;
+    padding: $base-line-height;
+    & > div {
+        margin-bottom: $base-font-size;
+    }
 }
-
 input,
 label,
 select {
-  font-family: $form-font-family;
-  font-size: $form-font-size;
+    font-family: $form-font-family;
+    font-size: $form-font-size;
 }
-
 label {
-  color: lighten($base-font-color, 10%);
-  display: inline-block;
-  font-weight: bold;
-  margin-bottom: $base-line-height / 4;
-
-  &.required:after {
-    color: rgba($alert-color, 0.7);
-    content: "*";
-  }
-
-  abbr {
-    display: none;
-  }
+    color: lighten($base-font-color, 10%);
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: $base-line-height / 4;
+    &.required:after {
+        color: rgba($alert-color, 0.7);
+        content: "*";
+    }
+    abbr {
+        display: none;
+    }
 }
-
-textarea,
-#{$all-text-inputs} {
-  @include transition(border-color);
-  background-color: white;
-  border-radius: $form-border-radius;
-  border: 1px solid $form-border-color;
-  box-shadow: $form-box-shadow;
-  font-family: $form-font-family;
-  font-size: $form-font-size;
-  margin-bottom: $base-line-height / 2;
-  padding: ($base-line-height / 3) ($base-line-height / 3);
-  width: 100%;
-
-  &:hover {
-    border-color: $form-border-color-hover;
-  }
-
-  &:focus {
-    border-color: $form-border-color-focus;
-    box-shadow: $form-box-shadow-focus;
-    outline: none;
-  }
-}
-
-form .field_with_errors {
-  label {
-    color: $alert-color;
-  }
-
-  textarea,
-  #{$all-text-inputs} {
-    border-color: rgba($alert-color, 0.6);
-
+#{$all-text-inputs},
+textarea {
+    @include transition(border-color);
+    background-color: white;
+    border-radius: $form-border-radius;
+    border: 1px solid $form-border-color;
+    box-shadow: $form-box-shadow;
+    font-family: $form-font-family;
+    font-size: $form-font-size;
+    margin-bottom: $base-line-height / 2;
+    padding: ($base-line-height / 3) ($base-line-height / 3);
+    width: 100%;
     &:hover {
-      border-color: $alert-color;
+        border-color: $form-border-color-hover;
     }
-
     &:focus {
-      border-color: $alert-color;
-      box-shadow: $form-box-shadow, 0 1px 2px rgba(darken($alert-color, 5), 0.5);
+        border-color: $form-border-color-focus;
+        box-shadow: $form-box-shadow-focus;
+        outline: none;
     }
-  }
-
-  & + br {
-    display: none;
-  }
 }
-
+form .field_with_errors {
+    label {
+        color: $alert-color;
+    }
+    #{$all-text-inputs},
+    textarea {
+        border-color: rgba($alert-color, 0.6);
+        &:hover {
+            border-color: $alert-color;
+        }
+        &:focus {
+            border-color: $alert-color;
+            box-shadow: $form-box-shadow, 0 1px 2px rgba(darken($alert-color, 5), 0.5);
+        }
+    }
+    & + br {
+        display: none;
+    }
+}
 input[type="search"] {
-  @include appearance(none);
+    @include appearance(none);
 }
-
-input[type="checkbox"], input[type="radio"] {
-  display: inline;
-  margin-right: $base-line-height / 4;
+input[type="checkbox"],
+input[type="radio"] {
+    display: inline;
+    margin-right: $base-line-height / 4;
 }
-
 input[type="file"] {
-  width: 100%;
+    width: 100%;
 }
-
 select {
-  width: auto;
-  margin-bottom: $base-line-height;
+    width: auto;
+    margin-bottom: $base-line-height;
 }

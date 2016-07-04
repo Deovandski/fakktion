@@ -1,10 +1,13 @@
 <h3>Topics Tag Management</h3>
-  <div class="input_block_typeUser">
-    <label class="first_label"></label>
-    <label class="input_wrapper">{{input value=application.topicInputText placeholder="Search Topic"}}</label>
-    <label class="second_label"><button class="button_type1_smallest" {{action 'clearTagSearchText'}}>Clear</button></label>
-  </div><br/>
-  <p class="center_text">Tag Name | # Posts | Elegibility | Set as Search Topic</p>
+<div class="input_block_typeUser">
+  <label class="first_label"></label>
+  <label class="input_wrapper">{{input value=application.topicInputText placeholder="Search Topic"}}</label>
+  <label class="second_label">
+    <button class="button_type1_smallest" {{action 'clearTagSearchText'}}>Clear</button>
+  </label>
+</div>
+<br/>
+<p class="center_text">Tag Name | # Posts | Elegibility | Set as Search Topic</p>
 
 {{#if searchingTag}}
   <h5>Displaying all Topics that contains <b>{{application.topicInputText}}</b></h5>
@@ -13,27 +16,29 @@
 {{/if}}
 
 <ul class="flex_topics_display">
-    {{#each filteredTags as |tag|}}
-      <li>
-        <label class="flex_tags_display_name">{{#link-to 'topic' tag class="button_bar"}}{{capitalize tag.name}}{{/link-to}}</label>
-        <label class="flex_tags_display_posts">{{counter-styler tag.posts_count}}
-          {{#tooltip-on-element}}
-            Post Counter
-          {{/tooltip-on-element}}
-        </label>
-        <label class="flex_tags_display_eligibility">{{counter-styler tag.eligibility_counter}}
-          {{#tooltip-on-element}}
-            Elegibility Counter
-          {{/tooltip-on-element}}
-        </label>
-        <button class="button_type1_topic_small" {{action "setTopic" tag}}>
-          Set
-          {{#tooltip-on-element}}
-            Set this tag as the selected tag.
-          {{/tooltip-on-element}}
-        </button>
-      </li>
-    {{/each}}
+  {{#each filteredTags as |tag|}}
+    <li>
+      <label class="flex_tags_display_name">
+        {{#link-to 'topic' tag class="button_bar" }}{{capitalize tag.name}}{{/link-to}}
+      </label>
+      <label class="flex_tags_display_posts">{{counter-styler tag.posts_count}}
+        {{#tooltip-on-element}}
+          Post Counter
+        {{/tooltip-on-element}}
+      </label>
+      <label class="flex_tags_display_eligibility">{{counter-styler tag.eligibility_counter}}
+        {{#tooltip-on-element}}
+          Elegibility Counter
+        {{/tooltip-on-element}}
+      </label>
+      <button class="button_type1_topic_small" {{action "setTopic" tag}}>
+        Set
+        {{#tooltip-on-element}}
+          Set this tag as the selected tag.
+        {{/tooltip-on-element}}
+      </button>
+    </li>
+  {{/each}}
 </ul>
 {{#if noTags}}
   <h5>No results...</h5>
@@ -44,9 +49,9 @@
   {{#if isBanned}}
     <p class="login_required_warning">You cannot create tags due to your reputation!</p>
   {{else}}
-    {{#link-to 'topics.create' class="button_type1_normal"}}Create Topic{{/link-to}}
-    {{#link-to 'posts.create' class="button_type1_normal"}}Create Post{{/link-to}}
+    {{#link-to 'topics.create' class="button_type1_normal" }}Create Topic{{/link-to}}
+    {{#link-to 'posts.create' class="button_type1_normal" }}Create Post{{/link-to}}
   {{/if}}
 {{else}}
-    <p class="login_required_warning">Please login to create a Topic</p>
+  <p class="login_required_warning">Please login to create a Topic</p>
 {{/if}}

@@ -21,20 +21,20 @@ class CreateBlog < ActiveRecord::Migration
       t.boolean :show_full_name, default: false
       t.timestamps null: false
     end
- 
+
     create_table :comments do |t|
       t.string :text
       t.integer :empathy_level, default: 0
-      t.integer  :inner_comments_count, default: 0
+      t.integer :inner_comments_count, default: 0
       t.timestamps null: false
     end
- 
+
     create_table :inner_comments do |t|
       t.string :text
       t.integer :empathy_level, default: 0
       t.timestamps null: false
     end
-    
+
     create_table :posts do |t|
       t.string :fact_link
       t.string :fiction_link
@@ -44,14 +44,14 @@ class CreateBlog < ActiveRecord::Migration
       t.integer  :views_count, default: 0
       t.timestamps null: false
     end
-    
+
     create_table :admin_messages do |t|
       t.string :title
       t.string :message
       t.timestamps null: false
     end
-  end  
-  
+  end
+
   def down
     drop_table :users
     drop_table :comments

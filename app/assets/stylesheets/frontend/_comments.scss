@@ -1,260 +1,253 @@
 // Place all the styles related to the Comments and Inner Comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
 // Set overall organization
 .post_comments_container {
-  h5{
-    text-align: center;
-  }
-  text-align: left;
-  width: 100%;
+    h5 {
+        text-align: center;
+    }
+    text-align: left;
+    width: 100%;
 }
-
 // Comment System styles.
 .comment_ol {
-  list-style-type: none;
-  margin-left: 0px;
-  padding-left: 0px;
-  li{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    .comment_upper{
-      background-color: hsla(216, 96%, 90%, 0.5);
-      box-shadow: 2px 2px 1px #888888;
-      width: 100%;
-      height: auto;
-      display: flex;
-      flex-wrap: wrap;
-      .comment_voting{
-        width: 50px;
-        height: 55px;
-        border-style: solid;
-        border-width: 1px;
-        display: flex;
-        flex-wrap: wrap;
-        .comment_voting_upper{
-          width: 100%;
-          height: 15px;
-          margin-top: -2px;
-        }
-        .comment_voting_middle{
-          width: 100%;
-          height: 15px;
-          text-align: center;
-          margin-top: 4px;
-        }
-        .comment_voting_lower{
-          width: 100%;
-          height: 15px;
-          margin: 0px;
-        }
-      }
-      .comment_text {
-        width: auto;
-        flex: 1;
-        padding: 7px;
-        overflow: auto;
-        .comment_text_input{
-          height: auto;
-          min-height: 200px;
-          width: 100%;
-          textarea{
-            resize: none;
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+    li {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        .comment_upper {
+            background-color: hsla(216, 96%, 90%, 0.5);
+            box-shadow: 2px 2px 1px #888888;
             width: 100%;
             height: auto;
-            min-height: 200px;
-          }
+            display: flex;
+            flex-wrap: wrap;
+            .comment_voting {
+                width: 50px;
+                height: 55px;
+                border-style: solid;
+                border-width: 1px;
+                display: flex;
+                flex-wrap: wrap;
+                .comment_voting_upper {
+                    width: 100%;
+                    height: 15px;
+                    margin-top: -2px;
+                }
+                .comment_voting_middle {
+                    width: 100%;
+                    height: 15px;
+                    text-align: center;
+                    margin-top: 4px;
+                }
+                .comment_voting_lower {
+                    width: 100%;
+                    height: 15px;
+                    margin: 0;
+                }
+            }
+            .comment_text {
+                width: auto;
+                flex: 1;
+                padding: 7px;
+                overflow: auto;
+                .comment_text_input {
+                    height: auto;
+                    min-height: 200px;
+                    width: 100%;
+                    textarea {
+                        resize: none;
+                        width: 100%;
+                        height: auto;
+                        min-height: 200px;
+                    }
+                }
+                .inner_comment_text_input {
+                    height: auto;
+                    min-height: 140px;
+                    width: 100%;
+                    textarea {
+                        resize: none;
+                        width: 100%;
+                        height: auto;
+                        min-height: 140px;
+                    }
+                }
+            }
+            .comment_user {
+                width: auto;
+                max-width: 90px;
+                display: flex;
+                flex-wrap: wrap;
+                border-style: solid;
+                border-width: 1px;
+                height: 40px;
+                text-align: center;
+                font-size: $base-font-size - 5;
+                .comment_user_name {
+                    width: 100%;
+                    height: 15px;
+                    margin: 0;
+                }
+                .comment_user_name_super_user {
+                    @extend .comment_user_name;
+                    background-color: $is-super-user;
+                }
+                .comment_user_name_admin {
+                    @extend .comment_user_name;
+                    background-color: $is-admin;
+                }
+                .comment_user_name_legend {
+                    @extend .comment_user_name;
+                    background-color: $is-legend;
+                }
+                .comment_user_edit {
+                    width: 100%;
+                    height: 20px;
+                }
+                .comment_user_date {
+                    width: 100%;
+                    height: 20px;
+                    text-align: center;
+                    background-color: transparent;
+                }
+            }
         }
-        .inner_comment_text_input{
-          height: auto;
-          min-height: 140px;
-          width: 100%;
-          textarea{
-            resize: none;
-            width: 100%;
-            height: auto;
-            min-height: 140px;
-          }
-        }
-      }
-      .comment_user{
-        width: auto;
-        max-width: 90px;
-        display: flex;
-        flex-wrap: wrap;
-        border-style: solid;
-        border-width: 1px;
-        height: 40px;
-        text-align: center;
-        font-size: $base-font-size - 5;
-        .comment_user_name{
-          width: 100%;
-          height: 15px;
-          margin: 0px;
-        }
-        .comment_user_name_super_user{
-          @extend .comment_user_name;
-          background-color: $is-super-user;
-        }
-        .comment_user_name_admin{
-          @extend .comment_user_name;
-          background-color: $is-admin;
-        }
-        .comment_user_name_legend{
-          @extend .comment_user_name;
-          background-color: $is-legend;
-        }
-        .comment_user_edit{
-          width: 100%;
-          height: 20px;
-        }
-        .comment_user_date{
-          width: 100%;
-          height: 20px;
-          text-align: center;
-          background-color: transparent;
-        }
-      }
     }
-  }
 }
-
 .inner_comment_ul {
-  @extend .comment_ol;
-  padding-left: 20px;
-  list-style-type: none;
-  
-  li{
-    .comment_upper{
-      background-color: hsla(256, 96%, 90%, 0.5);
+    @extend .comment_ol;
+    padding-left: 20px;
+    list-style-type: none;
+    li {
+        .comment_upper {
+            background-color: hsla(256, 96%, 90%, 0.5);
+        }
     }
-  }
 }
-.inner_comment_create{
-  margin-left: 20px;
-  background-color: hsla(256, 96%, 90%, 0.5);
+.inner_comment_create {
+    margin-left: 20px;
+    background-color: hsla(256, 96%, 90%, 0.5);
 }
-
-
 .input_block_comment {
-  box-shadow: 2px 2px 1px #888888;
-  width: 100%;
-  text-align: left;
-  height: 260px;
-  margin-bottom: 25px;
-  background-color: hsla(216, 96%, 85%, 0.5);
-  .upper_input_wrapper{
-    height: 240px;
+    box-shadow: 2px 2px 1px #888888;
     width: 100%;
     text-align: left;
-    height: auto;
-    text-overflow: ellipsis;
-    .comment_input_header {
-      text-overflow: ellipsis;
-      width: 100%;
-      display: flex;
-      .left_header {
-        width: 50%;
-        flex-grow: 1;
-        flex-direction: column;
-        flex-wrap: wrap;
-        margin-left: 5px;
-        margin-right: 5px;
-        margin-bottom: 5px;
-      }
-      .right_header {
-        width: 50%;
-        flex-grow: 1;
-        flex-direction: column;
-        flex-wrap: wrap;
-        margin-left: 5px;
-        margin-right: 5px;
-        margin-bottom: 5px;
-      }
-    }
-    .comment_input_body {
-      width: 100%;
-      display: flex;
-      .input_wrapper {
-        width: 50%;
-        flex-grow: 1;
-        flex-direction: column;
-        flex-wrap: wrap;
-        textarea{
-          margin-left: 5px;
-          margin-right: 5px;
-          height: 200px;
-          resize: none;
+    height: 260px;
+    margin-bottom: 25px;
+    background-color: hsla(216, 96%, 85%, 0.5);
+    .upper_input_wrapper {
+        height: 240px;
+        width: 100%;
+        text-align: left;
+        height: auto;
+        text-overflow: ellipsis;
+        .comment_input_header {
+            text-overflow: ellipsis;
+            width: 100%;
+            display: flex;
+            .left_header {
+                width: 50%;
+                flex-grow: 1;
+                flex-direction: column;
+                flex-wrap: wrap;
+                margin-left: 5px;
+                margin-right: 5px;
+                margin-bottom: 5px;
+            }
+            .right_header {
+                width: 50%;
+                flex-grow: 1;
+                flex-direction: column;
+                flex-wrap: wrap;
+                margin-left: 5px;
+                margin-right: 5px;
+                margin-bottom: 5px;
+            }
         }
-      }
-      .preview_wrapper {
-        width: 50%;
-        flex-grow: 1;
-        flex-direction: column;
-        flex-wrap: wrap;
-        margin-left: 15px;
-        margin-right: 5px;
-        height: 200px;
-        overflow: auto;
-      }
+        .comment_input_body {
+            width: 100%;
+            display: flex;
+            .input_wrapper {
+                width: 50%;
+                flex-grow: 1;
+                flex-direction: column;
+                flex-wrap: wrap;
+                textarea {
+                    margin-left: 5px;
+                    margin-right: 5px;
+                    height: 200px;
+                    resize: none;
+                }
+            }
+            .preview_wrapper {
+                width: 50%;
+                flex-grow: 1;
+                flex-direction: column;
+                flex-wrap: wrap;
+                margin-left: 15px;
+                margin-right: 5px;
+                height: 200px;
+                overflow: auto;
+            }
+        }
     }
-  }
-  .lower_input_wrapper{
-    height: 20px;
-    width: 100%;
-    display: flex;
-    .feedback_wrapper{
-      width: 60%;
+    .lower_input_wrapper {
+        height: 20px;
+        width: 100%;
+        display: flex;
+        .feedback_wrapper {
+            width: 60%;
+        }
+        .create_button_wrapper {
+            width: 40%;
+        }
     }
-    .create_button_wrapper{
-      width: 40%;
-    }
-  }
 }
 .input_block_inner_comment {
-  @extend .input_block_comment;
-  height: auto;
-  margin-bottom: 0px;
-  background-color: transparent;
-  .lower_input_wrapper{
-    height: 20px;
-    width: 100%;
-    display: flex;
-    .feedback_wrapper{
-      width: 60%;
+    @extend .input_block_comment;
+    height: auto;
+    margin-bottom: 0;
+    background-color: transparent;
+    .lower_input_wrapper {
+        height: 20px;
+        width: 100%;
+        display: flex;
+        .feedback_wrapper {
+            width: 60%;
+        }
+        .create_button_wrapper {
+            width: 40%;
+        }
     }
-    .create_button_wrapper{
-      width: 40%;
+    .lower_warning_wrapper {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        height: 20px;
+        width: 100%;
+        .small_warning {
+            border-style: solid;
+            border-width: 1px;
+            font-size: $base-font-size - 2;
+            text-align: center;
+        }
     }
-  }
-  .lower_warning_wrapper{
-    margin-top: 20px;
-    margin-bottom: 10px;
-    height: 20px;
-    width: 100%;
-    .small_warning{
-      border-style: solid;
-      border-width: 1px;
-      font-size: $base-font-size - 2;
-      text-align: center;
-    }
-  }
 }
-
 .input_block_inner_comment_create {
-  @extend .input_block_inner_comment;
-  background-color: transparent;
-  height: auto;
-  .upper_input_wrapper{
-    height: 50px;
-    width: 100%;
-    display: flex;
-    .input_wrapper{
-      width: 60%;
+    @extend .input_block_inner_comment;
+    background-color: transparent;
+    height: auto;
+    .upper_input_wrapper {
+        height: 50px;
+        width: 100%;
+        display: flex;
+        .input_wrapper {
+            width: 60%;
+        }
+        .feedback_wrapper {
+            width: 40%;
+        }
     }
-    .feedback_wrapper{
-      width: 40%;
-    }
-  }
 }

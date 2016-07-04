@@ -1,124 +1,123 @@
 // Place all the styles related to the Tags controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-.flex_tags_display{
-  padding: 0;
-  margin: 10px auto 10px auto;
-  list-style-type: none;
-  text-overflow:ellipsis;
-  flex-wrap: wrap;
-  display: flex;
-  .set_topic_tag {
-    margin: 0px;
-    padding: 0px;
-  }
-  li {
-    padding: 1px;
-    font-weight: bold;
-    border-style: solid;
-    border-width: 0.5px;
-    margin: 10px;
-    .flex_tags_display_name{
-      width: 100px;
-      height: 100%;
-      margin: 0px;
+.flex_tags_display {
+    padding: 0;
+    margin: 10px auto;
+    list-style-type: none;
+    text-overflow: ellipsis;
+    flex-wrap: wrap;
+    display: flex;
+    .set_topic_tag {
+        margin: 0;
+        padding: 0;
     }
-    .flex_tags_display_posts{
-      height: 100%;
-      width: 40px;
-      text-align: center;
-      font-weight: bold;
-      border-width: 1px;
-      border-right-style: solid;
-      margin: 0px;
+    li {
+        padding: 1px;
+        font-weight: bold;
+        border-style: solid;
+        border-width: 0.5px;
+        margin: 10px;
+        .flex_tags_display_name {
+            width: 100px;
+            height: 100%;
+            margin: 0;
+        }
+        .flex_tags_display_posts {
+            height: 100%;
+            width: 40px;
+            text-align: center;
+            font-weight: bold;
+            border-width: 1px;
+            border-right-style: solid;
+            margin: 0;
+        }
+        .flex_tags_display_eligibility {
+            height: 100%;
+            width: 40px;
+            text-align: center;
+            font-weight: bold;
+            margin: 0;
+        }
     }
-    .flex_tags_display_eligibility{
-      height: 100%;
-      width: 40px;
-      text-align: center;
-      font-weight: bold;
-      margin: 0px;
-    }
-  }
 }
-.flex_topics_display{
-  padding: 0;
-  margin: 10px auto 10px auto;
-  list-style-type: none;
-  text-overflow:ellipsis;
-  flex-wrap: wrap;
-  display: flex;
-  li {
-    padding: 1px;
-    font-weight: bold;
-    border-style: solid;
-    border-width: 0.5px;
-    margin: 10px;
-    .flex_tags_display_name{
-      width: 200px;
-      height: 100%;
-      margin: 0px;
+.flex_topics_display {
+    padding: 0;
+    margin: 10px auto;
+    list-style-type: none;
+    text-overflow: ellipsis;
+    flex-wrap: wrap;
+    display: flex;
+    li {
+        padding: 1px;
+        font-weight: bold;
+        border-style: solid;
+        border-width: 0.5px;
+        margin: 10px;
+        .flex_tags_display_name {
+            width: 200px;
+            height: 100%;
+            margin: 0;
+        }
+        .flex_tags_display_posts {
+            height: 100%;
+            width: 40px;
+            text-align: center;
+            font-weight: bold;
+            border-width: 1px;
+            border-right-style: solid;
+            margin: 0;
+        }
+        .flex_tags_display_eligibility {
+            height: 100%;
+            width: 40px;
+            text-align: center;
+            font-weight: bold;
+            margin: 0;
+        }
     }
-    .flex_tags_display_posts{
-      height: 100%;
-      width: 40px;
-      text-align: center;
-      font-weight: bold;
-      border-width: 1px;
-      border-right-style: solid;
-      margin: 0px;
-    }
-    .flex_tags_display_eligibility{
-      height: 100%;
-      width: 40px;
-      text-align: center;
-      font-weight: bold;
-      margin: 0px;
-    }
-  }
 }
-.tag_posts{
-  li {
-    margin-top: 20px;
-  }
+.tag_posts {
+    li {
+        margin-top: 20px;
+    }
 }
 .input_block_tags {
-  width: 100%;
-  line-height: 40px;
-  text-align: left;
-  height: 40px;
-  .first_label {
-    float: left;
-    text-align:right;
-    padding-right: 10px;
-    vertical-align: middle;
-    width: 25%;
-    height: 100%;
-  }
-  .input_wrapper {
-    height: 100%;
-    width: 50%;
-    .ember-text-field {
-      float: center;
-      height: 100%;
-    }
-  }
-  .second_label {
-    color: $orange;
-    padding-left: 10px;
+    width: 100%;
+    line-height: 40px;
     text-align: left;
-    float: right;
-    width: 25%;
-    height: 100%;
-    font-size: 80%;
-  }
+    height: 40px;
+    .first_label {
+        float: left;
+        text-align: right;
+        padding-right: 10px;
+        vertical-align: middle;
+        width: 25%;
+        height: 100%;
+    }
+    .input_wrapper {
+        height: 100%;
+        width: 50%;
+        .ember-text-field {
+            float: center;
+            height: 100%;
+        }
+    }
+    .second_label {
+        color: $orange;
+        padding-left: 10px;
+        text-align: left;
+        float: right;
+        width: 25%;
+        height: 100%;
+        font-size: 80%;
+    }
 }
-.topics_index_ul{
+.topics_index_ul {
     list-style-type: none;
     li {
-      padding: 0;
-      margin: 15px;
-      width: 100%;
+        padding: 0;
+        margin: 15px;
+        width: 100%;
     }
 }

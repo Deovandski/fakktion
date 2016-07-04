@@ -4,6 +4,6 @@ class FactTypeSerializer < ActiveModel::Serializer
               :eligibility_counter,
               :posts_count
 
-  # Relationships  
+  # Relationships
   has_many :posts
 end

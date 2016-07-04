@@ -26,7 +26,7 @@ class Api::V1::FactTypesController < ApiController
   def destroy
     render json: {}, status: :method_not_allowed
   end
-  
+
   private
 
   # FactType object from the Deserialization params if there is an id.

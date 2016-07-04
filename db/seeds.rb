@@ -64,7 +64,7 @@ def seed_users
   end
 end
 
-case Rails.env   
+case Rails.env
   when 'development' then seed_users
   when 'test' then seed_users
   when 'production'
@@ -159,8 +159,8 @@ else
   Topic.create!(name: 'kagamine rin')
   Topic.create!(name: 'Kagamine len')
   Rails.logger.info 'Default topics created!'
-end    
-    
+end
+
 # POST RELATED SEED
 if Post.count != 0
   Rails.logger.info 'There are posts already...'

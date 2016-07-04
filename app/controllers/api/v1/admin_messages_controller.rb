@@ -1,7 +1,7 @@
 # Admin Messages Controller: JSON response through Active Model Serializers
 #class Api::V1::AdminMessagesController < ApiController
 #  respond_to :json
-#  
+#
 #  # Render all AdminMessages using AdminMessageSerializer.
 #  def index
 #    json_render_all(AdminMessage, :created_at)

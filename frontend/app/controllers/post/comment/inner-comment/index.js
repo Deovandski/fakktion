@@ -25,9 +25,9 @@ export default Ember.Controller.extend ({
   // Setup for initial allowed votings by the logged in User.
   votingSystemHandler: Ember.computed('sessionAccount.user.id', function() {
     if(this.get('sessionAccount.user.id') > 0){
-      
+
       var self = this; // Controller instance for manipulation with then()
-      
+
       // QueryRecord not working, using filter on clientside as a fallback...
       this.store.findAll('innerCommentVote').then(function(possibleVotes) {
         possibleVotes = possibleVotes.filter(function(possibleVote) {
@@ -36,7 +36,7 @@ export default Ember.Controller.extend ({
           }
         });
         var possibleVote = possibleVotes.objectAt(0);
-        
+
         // Allow the opposite vote to be cast by the non author user.
         if (self.get('sessionAccount.user.id') === self.get('model.user.id')){
           self.set('upvoteEnabled',false);
@@ -79,7 +79,7 @@ export default Ember.Controller.extend ({
       return charsLeft + ' Characters left.';
     }
   }),
-  
+
   validComment: Ember.computed('model.text', function() {
     if(this.get('model.text').length < 25) {
       this.set('clientSideValidationComplete',false);
