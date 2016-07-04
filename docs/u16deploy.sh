@@ -1,5 +1,5 @@
 #!/bin/bash
-# u16deploy.sh v2.1
+# u16deploy.sh v2.2
 # Ubuntu Server 16.04 deployment
 
 # Colors for Scrip Messages.
@@ -22,13 +22,6 @@ watchForErrors(){
   fi
 }
 
-setupBaseReqs(){
-  # Min necessary for NGINX, Postgres, Ruby, Bundler and Rails.
-  sudo apt-get install -y libpq-dev nginx ruby2.3 rails bundler
-  # Note regarding using apt-get for every needed package instead of Bundler.
-  # This is a non-DRY approach, and many packages may not be available (especially edge versions.)
-  # An example of it is ruby-active-model-serializers where apt-get only displays 0.9.3 when Fakktion needs 0.10.0.rc5  
-}
 setupApp(){
   deployUser="$1"
   if [ $# -eq 4 ]
@@ -40,7 +33,13 @@ setupApp(){
   cd /home/"$deployUser"/Fakktion || return
   # Check GemFile.lock for exactly what is being installed from https://rubygems.org/.
   
-  echo "${inform}Install NPM and Nodejs through N...${reset}"
+  # Min necessary for NGINX, Postgres, Ruby, Bundler and Rails.
+  sudo apt-get install -y libpq-dev nginx ruby2.3 rails bundler
+  # !!!Note regarding using apt-get for every needed package instead of Bundler, NPM and Bower.!!!
+  # This is an approach that will cost your soul due to the increased cost in maintenance and error prone micro-management.
+  # If that does not deter you from doing it, then be aware that many packages may not be available (especially edge versions.)
+  # I warned you, so I will not be friendly if you ask for assistance because micro-managing packages f****d up your server.
+  
   # Install NPM (Node.js Package Manager) followed by installing Node.js
   # The install methodology below avoids the use of NVM (node version manager.)
   sudo apt-get -y install npm
@@ -60,11 +59,9 @@ setupApp(){
   # Get ownership of the files being transfered to prevent write permissions from other users, or fix any existing file permission issues...
   sudo chown -R "$deployUser" /home/"$deployUser"/Fakktion
   watchForErrors $? "NPM/NODE permissions change" "Fix ownership issues mannually"
-  echo "${inform}Bundler Install...${reset}"
   bundle install
   watchForErrors $? "BUNDLER install" "Run bundler install mannually"
   
-  echo "${inform}NPM and Bower dependencies install...${reset}"
   # Install all Fakktion frontend dependencies
   cd frontend || return
   # NPM install takes care of Ember CLI Middleware
@@ -82,13 +79,13 @@ setupApp(){
   watchForErrors $? "Clear puma config file" "Empty config/puma.rb yourself then try again"
   echo "workers $(grep -c processor /proc/cpuinfo)" >> /home/"$deployUser"/Fakktion/config/puma.rb
   watchForErrors $? "Creating puma.rb according to system configs..." "Could not get number of processors currently available"
-  cat /home/"$deployUser"/Fakktion/docs/source/partial_puma_16.txt >> /home/"$deployUser"/Fakktion/config/puma.rb
+  cat /home/"$deployUser"/Fakktion/docs/sources/partial_puma_16.txt >> /home/"$deployUser"/Fakktion/config/puma.rb
   watchForErrors $? "Inject the rest of Puma configs" "Check config/puma.rb and partial_puma_16.txt yourself then try again"
 
   # Set unique local secrets.yml
   echo "" > /home/"$deployUser"/Fakktion/config/secrets.yml
   watchForErrors $? "Empty config/secrets.yml" "Mannually empty config/secrets.yml"
-  cat /home/"$deployUser"/Fakktion/docs/source/partial_secrets_16.txt >> /home/"$deployUser"/Fakktion/config/secrets.yml
+  cat /home/"$deployUser"/Fakktion/docs/sources/partial_secrets_16.txt >> /home/"$deployUser"/Fakktion/config/secrets.yml
   watchForErrors $? "Adding rails secrets information" "Check partial_secrets_16.txt and config/secrets.yml"
   echo "  secret_key_base: $(rake secret)" >> /home/"$deployUser"/Fakktion/config/secrets.yml
   watchForErrors $? "Setting New Rails Secret used for managing sessions..." "Run rake secret and paste it into config/secrets.yml"
@@ -136,14 +133,14 @@ setupApp(){
   # Database SETUP
   if [ "$2" = "n" ] || [ "$2" = "no" ]
   then
-    sudo apt-get install postgresql postgresql-contrib
-    watchForErrors $? "Setting up PostgreSQL as local server mode " "Check the scripts mannually"
+    sudo apt-get install postgresql
+    watchForErrors $? "Setup up PostgreSQL as local server mode " "Check the scripts mannually"
     echo "${inform}A Postgres User with name $databaseUser will now be created. Please enter the password for it, and don't forget to write it down!${reset}'"
     sudo -u postgres createuser --superuser "$databaseUser" --pwprompt
     sudo -u "$databaseUser" createdb "$deployDBName"
   else
     sudo apt-get install postgresql-client
-    watchForErrors $? "Setting up PostgreSQL as client mode" "Check the scripts mannually"
+    watchForErrors $? "Setup PostgreSQL as client mode" "Check the scripts mannually"
   fi
   rake db:setup RAILS_ENV=production
   watchForErrors $? "Rake db migration and seeding" "run rake db:setup mannually"
@@ -209,24 +206,13 @@ prepareApp(){
 if [ $# -eq 0 ]
 then
   echo "${warn}No arguments provided. See Below for Usage according to each step:${reset}"
-  echo "1"
-  echo "2 y fakktionDBUser fakktionDB"
-  echo "2 n"
-  echo "3"
-  echo "4 SSSL?"
-  echo "5"
-else    
+  echo "1 y fakktionDBUser fakktionDB"
+  echo "1 n"
+  echo "2"
+  echo "3 SSSL?"
+  echo "4"
+else
   if [ "$1" = 1 ]
-  then
-    if [ $# -eq 1 ]
-    then
-      setupBaseReqs "$(whoami)"
-    else
-      echo "${warn}User in which Puma should use to run Fakktion was not provided.${reset}"
-      echo "Usage: Step"
-      echo "Example: 1"
-    fi
-  elif [ "$1" = 2 ]
   then
     if [ $# -eq 4 ]
     then
@@ -245,7 +231,7 @@ else
       echo "Example: 2 y fakktionDBUser fakktionDB"
       echo "Example: 2 n"
     fi
-  elif [ "$1" = 3 ]
+  elif [ "$1" = 2 ]
   then
     if [ $# -eq 1 ]
     then
@@ -255,7 +241,7 @@ else
       echo "Usage: Step"
       echo "Example: 3"
     fi
-  elif [ "$1" = 4 ]
+  elif [ "$1" = 3 ]
   then
     if [ $# -eq 3 ]
     then
@@ -265,7 +251,7 @@ else
       echo "Usage: Step SSLConfig? "
       echo "Example: 4 y/n "
     fi
-  elif [ "$1" = 5 ]
+  elif [ "$1" = 4 ]
   then
     if [ $# -eq 2 ]
     then
