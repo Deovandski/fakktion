@@ -180,17 +180,17 @@ setupApp(){
 
 setupNGINX(){
   deployUser="$1"
-  echo "" > /etc/nginx/sites-available/default
+  sudo echo "" > /etc/nginx/sites-available/default
   watchForErrors $? "Purges default NGINX config" ""
   if [ "$2" = "y" ] || [ "$2" = "yes" ]
   then
-    cat /home/"$deployUser"/Fakktion/docs/sources/fakktion_16_ssl.conf >> /etc/nginx/sites-available/default
+    sudo cat /home/"$deployUser"/Fakktion/docs/sources/fakktion_16_ssl.conf >> /etc/nginx/sites-available/default
     watchForErrors $? "Transfer SSL NGINX config" ""
   else
-    cat /home/"$deployUser"/Fakktion/docs/sources/fakktion_16_non_ssl.conf >> /etc/nginx/sites-available/default
+    sudo cat /home/"$deployUser"/Fakktion/docs/sources/fakktion_16_non_ssl.conf >> /etc/nginx/sites-available/default
     watchForErrors $? "Transfer non-SSL NGINX config" ""
   fi
-  service nginx restart
+  sudo service nginx restart
   watchForErrors $? "NGINX restart" ""
 }
 
