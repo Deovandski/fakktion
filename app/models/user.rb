@@ -2,6 +2,7 @@
 require 'bcrypt'
 # All validations and Actve Record for User
 class User < ActiveRecord::Base
+  before_create :prevent_tampering
   before_save :ensure_authentication_token, :normalize_input
   before_destroy :check_for_resources
   # Include default devise modules. Others available are:
@@ -54,6 +55,16 @@ class User < ActiveRecord::Base
   end
 
   private
+  
+  # Prevent integer tampering while creating records
+  def prevent_tampering
+    self.is_super_user = false
+    self.is_admin = false
+    self.is_legend = false
+    self.comments_count = 0
+    self.posts_count = 0
+    self.reputation = 0
+  end
 
   # Generate token.
   def generate_authentication_token

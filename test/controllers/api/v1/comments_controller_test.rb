@@ -30,6 +30,8 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
   end
   test "Comments - API - Create 403" do
     @user = User.find_by_email('user@user.com')
+    @user.reputation = -1500
+    @user.save
     sign_in @user
     post :create, ActiveModelSerializers::SerializableResource.new(@testComment).as_json
     assert_response(403)

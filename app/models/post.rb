@@ -1,5 +1,6 @@
 # Post Model
 class Post < ActiveRecord::Base
+  before_create :prevent_tampering
   before_save :normalize_input
   before_destroy :check_for_comments
   # Validations
@@ -23,6 +24,14 @@ class Post < ActiveRecord::Base
   belongs_to :fact_type, :counter_cache => true
   belongs_to :category, :counter_cache => true
 
+  private
+  
+  # Prevent integer tampering while creating records
+  def prevent_tampering
+    self.views_count = 0
+    self.comments_count = 0
+  end
+  
   # Normalize a few attributes to lowercase in case frontend failed to do so.
   def normalize_input
     self.title = title.downcase

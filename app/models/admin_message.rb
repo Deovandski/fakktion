@@ -9,6 +9,8 @@ class AdminMessage < ActiveRecord::Base
   # Relationships
   belongs_to :user, :counter_cache => true
 
+  private
+  
   # Normalize :title to lowercase in case frontend failed to do so.
   def normalize_input
     self.title = title.downcase

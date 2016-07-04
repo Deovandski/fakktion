@@ -7,6 +7,8 @@ class Api::V1::FactTypesControllerTest < ActionController::TestCase
     @testFactType = FactType.new(name: 'TEST', eligibility_counter: 0, posts_count: 0)
     @testFactType.save
     @user = User.first
+    @user.reputation = 1500
+    @user.save
     sign_in @user    
   end
   # Called after test
@@ -37,6 +39,8 @@ class Api::V1::FactTypesControllerTest < ActionController::TestCase
   end
   test "FactTypes - API - Create 403" do
     @user = User.find_by_email('user@user.com')
+    @user.reputation = -1500
+    @user.save
     sign_in @user
     post :create, ActiveModelSerializers::SerializableResource.new(@testFactType).as_json
     assert_response(403)
@@ -71,6 +75,8 @@ class Api::V1::FactTypesControllerTest < ActionController::TestCase
   end
   test "FactTypes - API - UPDATE 403" do
     @user = User.find_by_email('user@user.com')
+    @user.reputation = -1500
+    @user.save
     sign_in @user
     factType = FactType.find_by name: 'test'
     factType1 = FactType.find_by name: 'technology'

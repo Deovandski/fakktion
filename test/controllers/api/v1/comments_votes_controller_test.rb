@@ -12,6 +12,8 @@ class Api::V1::CommentVotesControllerTest < ActionController::TestCase
       show_full_name: true, reputation: 0, posts_count: 0, is_admin: false,
       is_super_user: false, is_legend: false, webpage_url: "", facebook_url: "",
       twitter_url: "", email: "fakktion@fakktion.com", password: "12345678")
+    @testUser.save
+    @testUser2.save
     @testPost = Post.first
     @request.headers["Content-Type"] = "application/json; charset=utf-8"
     @user = User.find_by_email('user@example.com')

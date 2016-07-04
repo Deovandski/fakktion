@@ -34,6 +34,8 @@ class Api::V1::InnerCommentsControllerTest < ActionController::TestCase
   end
   test "InnerComments - API - Create 403" do
     @user = User.find_by_email('user@user.com')
+    @user.reputation = -1500
+    @user.save
     sign_in @user
     post :create, ActiveModelSerializers::SerializableResource.new(@testInnerComment).as_json
     assert_response(403)

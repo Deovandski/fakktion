@@ -7,6 +7,8 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     @testTopic = Topic.new(name: 'Testing Topic', eligibility_counter: 0, posts_count: 0)
     @testTopic.save
     @user = User.first
+    @user.reputation = 1500
+    @user.save
     sign_in @user
   end
   # Called after test
@@ -37,6 +39,8 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
   end
   test "Topics - API - Create 403" do
     @user = User.find_by_email('user@user.com')
+    @user.reputation = -1500
+    @user.save
     sign_in @user
     post :create, ActiveModelSerializers::SerializableResource.new(@testTopic).as_json
     assert_response(403)
@@ -71,6 +75,8 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
   end
   test "Topics - API - UPDATE 403" do
     @user = User.find_by_email('user@user.com')
+    @user.reputation = -1500
+    @user.save
     sign_in @user
     topic = Topic.find_by name: 'hatsune miku'
     topic1 = Topic.find_by name: 'megurine luka'

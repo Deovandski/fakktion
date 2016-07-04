@@ -7,6 +7,8 @@ class Api::V1::GenresControllerTest < ActionController::TestCase
     @testGenre = Genre.new(name: 'TEST', eligibility_counter: 0, posts_count: 0)
     @testGenre.save
     @user = User.first
+    @user.reputation = 1500
+    @user.save
     sign_in @user
   end
   # Called after test
@@ -37,6 +39,8 @@ class Api::V1::GenresControllerTest < ActionController::TestCase
   end
   test "Genres - API - Create 403" do
     @user = User.find_by_email('user@user.com')
+    @user.reputation = -1500
+    @user.save
     sign_in @user
     post :create, ActiveModelSerializers::SerializableResource.new(@testGenre).as_json
     assert_response(403)
@@ -71,6 +75,8 @@ class Api::V1::GenresControllerTest < ActionController::TestCase
   end
   test "Genres - API - UPDATE 403" do
     @user = User.find_by_email('user@user.com')
+    @user.reputation = -1500
+    @user.save
     sign_in @user
     genre = Genre.find_by name: 'test'
     genre1 = Genre.find_by name: 'action'

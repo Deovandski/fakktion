@@ -1,5 +1,6 @@
 # Comment Model
 class Comment < ActiveRecord::Base
+  before_create :prevent_tampering
   before_destroy :check_for_inner_comments
   
   # Validations
@@ -13,6 +14,14 @@ class Comment < ActiveRecord::Base
   has_many :inner_comments
   belongs_to :post, :counter_cache => true
   belongs_to :user, :counter_cache => true
+  
+  private
+  
+  # Prevent integer tampering while creating records
+  def prevent_tampering
+    self.empathy_level = 0
+    self.inner_comments_count = 0
+  end
   
   # Make sure that there are no Inner Comments associated before destruction.
   def check_for_inner_comments

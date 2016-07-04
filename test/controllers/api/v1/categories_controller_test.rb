@@ -7,6 +7,8 @@ class Api::V1::CategoriesControllerTest < ActionController::TestCase
     @testCategory = Category.new(name: 'TEST', posts_count: 0)
     @testCategory.save
     @user = User.first
+    @user.reputation = 1500
+    @user.save
     sign_in @user
   end
   # Called after test
@@ -31,19 +33,21 @@ class Api::V1::CategoriesControllerTest < ActionController::TestCase
     end
   end
   test "Categories - API - Create 401" do
-      sign_out @user
-      post :create, ActiveModelSerializers::SerializableResource.new(@testCategory).as_json
-      assert_response(401)
+    sign_out @user
+    post :create, ActiveModelSerializers::SerializableResource.new(@testCategory).as_json
+    assert_response(401)
   end
   test "Categories - API - Create 403" do
-      @user = User.find_by_email('user@user.com')
-      sign_in @user
-      post :create, ActiveModelSerializers::SerializableResource.new(@testCategory).as_json
-      assert_response(403)
+    @user = User.find_by_email('user@user.com')
+    @user.reputation = -1500
+    @user.save
+    sign_in @user
+    post :create, ActiveModelSerializers::SerializableResource.new(@testCategory).as_json
+    assert_response(403)
   end
   test "Categories - API - Create 422" do
-      post :create, ActiveModelSerializers::SerializableResource.new(@testCategory).as_json
-      assert_response(422)
+    post :create, ActiveModelSerializers::SerializableResource.new(@testCategory).as_json
+    assert_response(422)
   end
   test "Categories - API - SHOW 200" do
     get :show, id: @testCategory
@@ -71,6 +75,8 @@ class Api::V1::CategoriesControllerTest < ActionController::TestCase
   end
   test "Categories - API - UPDATE 403" do
     @user = User.find_by_email('user@user.com')
+    @user.reputation = -1500
+    @user.save
     sign_in @user
     category = Category.find_by name: 'test'
     category1 = Category.find_by name: 'movie'
