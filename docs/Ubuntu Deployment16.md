@@ -20,21 +20,18 @@
 4. OpenSSH recommended
 
 ### Initial Deploy
-1. Fork this project if you have not done so already!
-2. Run ```sudo apt-get update```.
-3. Install Git Core ```sudo apt-get install -y git-core```
-4. From your home/$USER directory, clone repo through ```git clone https://github.com/YOURUSERNAME/Fakktion.git``` (HTTPS instead of SSH suggested as it will make it harder to accidentally push commits back into origin master (or the branch that you use as master.)
-5. Navigate to Fakktion/docs folder, and allow Execution access to the main script with ```sudo chmod +x u16deploy.sh```.
-6. Now run ```./u16deploy.sh 1 USER``` (Or change $USER to the user where Puma will use to control the app. You must the same user whenever requested from now on.)
-7. If the App has been created as another user, you must login as said user for the next steps.
-8. Now go into USER/Fakktion/config and execute ```sudo nano database.yml```, then change the **username** to DBUSER, **password** to DBPW, and **database** to DBNAME. The next step will setup the database for you, but you will to match the same exact info that you entered in this step.
-9. Navigate back to docs folder, and execute ```./u16deploy.sh 2 $USER RemoteConfig? DBUSER DBNAME```. If RemoteConfig is **y**, then no need for DBUSER nor DBNAME.
-10. Now login back as the previous user if you did switch accounts. The reason for this is because the app user was granted temporary sudo to install some initial dependencies that could not have worked non-sudo. However, this only applies to the initial install.
-11. Execute ```sudo ./u16deploy.sh 3 USER``` to setup PUMA Daemon service through init.d.
-12. Edit **fakktion_16_ssl.conf** or *fakktion_16_non_ssl.conf** depending on your SSL needs and confirm the NGINX configs.
-13. Execute ```sudo ./u16deploy.sh 4 USER SSL?``` (replace SSL? with y or n) to prepare NGINX for the PUMA socket.
-14. ```sudo reboot```, then login as the app user.
-15. Initiate Puma socket with the final part of the script: ```. u16deploy.sh 5 USER```.
+1. Add the Deploying user through ```sudo adduser DEPLOYINGUSER sudo```.
+2. Login as DEPLOYINGUSER.
+3. From your home/$deployUser directory, clone repo through ```git clone https://github.com/YOURUSERNAME/Fakktion.git``` (HTTPS instead of SSH suggested as it will make it harder to accidentally push commits back into origin master (or the branch that you use as master.)
+4. Navigate to Fakktion/docs folder, and allow Execution access to the main script with ```sudo chmod +x u16deploy.sh```.
+5. Now run ```./u16deploy.sh 1 USER``` (Or change $USER to the user where Puma will use to control the app. You must the same user whenever requested from now on.)
+6. Now go into USER/Fakktion/config and execute ```sudo nano database.yml```, then change the **username** to DBUSER, **password** to DBPW, and **database** to DBNAME. The next step will setup the database for you, but you will to match the same exact info that you entered in this step.
+7. Navigate back to docs folder, and execute ```./u16deploy.sh 2 $USER RemoteConfig? DBUSER DBNAME```. If RemoteConfig is **y**, then no need for DBUSER nor DBNAME.
+8. Execute ```sudo ./u16deploy.sh 3 USER``` to setup PUMA Daemon service through init.d.
+9. Edit **fakktion_16_ssl.conf** or *fakktion_16_non_ssl.conf** depending on your SSL needs and confirm the NGINX configs.
+10. Execute ```sudo ./u16deploy.sh 4 USER SSL?``` (replace SSL? with y or n) to prepare NGINX for the PUMA socket.
+11. ```sudo reboot```, then login as DEPLOYINGUSER.
+12. Initiate Puma socket with the final part of the script: ```. u16deploy.sh 5 USER```.
 
 ### Troubleshooting Initial Deploy
 1. **Ruby version installed is different from the one specified on gemfile.**

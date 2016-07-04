@@ -1,5 +1,5 @@
 #!/bin/bash
-# u16deploy.sh v2
+# u16deploy.sh v2.1
 # Ubuntu Server 16.04 deployment
 
 # Colors for Scrip Messages.
@@ -23,28 +23,11 @@ watchForErrors(){
 }
 
 setupBaseReqs(){
-  deployUser="$1"
   # Min necessary for NGINX, Postgres, Ruby, Bundler and Rails.
   sudo apt-get install -y libpq-dev nginx ruby2.3 rails bundler
   # Note regarding using apt-get for every needed package instead of Bundler.
   # This is a non-DRY approach, and many packages may not be available (especially edge versions.)
-  # An example of it is ruby-active-model-serializers where apt-get only displays 0.9.3 when Fakktion needs 0.10.0.rc5
-  if getent passwd "$1" > /dev/null 2>&1
-  then
-    if [ -d "/home/$deployUser/Fakktion" ]
-    then
-      cd /home/"$deployUser"/Fakktion || return
-    else
-      sudo mv /home/"$deployUser"/Fakktion /home/"$deployUser/Fakktion"
-      sudo adduser "$deployUser" sudo
-    fi
-    echo "${inform}Base Reqs Finished${reset}"
-  else
-    echo "$deployUser does not exist."
-    echo "${warn}DO NOT FOLLOW THE NEXT STEP! ${reset}"
-    echo "${warn}RUN: ${inform}sudo adduser $deployUser,${warn} then try again!${reset}"
-  fi
-  
+  # An example of it is ruby-active-model-serializers where apt-get only displays 0.9.3 when Fakktion needs 0.10.0.rc5  
 }
 setupApp(){
   deployUser="$1"
@@ -75,7 +58,7 @@ setupApp(){
   sudo chown -R "$(whoami)" "$(npm config get prefix)"/{lib/node_modules,bin,share}
 
   # Get ownership of the files being transfered to prevent write permissions from other users, or fix any existing file permission issues...
-  sudo chown -R "$USER" /home/"$deployUser"/Fakktion
+  sudo chown -R "$deployUser" /home/"$deployUser"/Fakktion
   watchForErrors $? "NPM/NODE permissions change" "Fix ownership issues mannually"
   echo "${inform}Bundler Install...${reset}"
   bundle install
@@ -95,7 +78,6 @@ setupApp(){
   cd ..
 
   # Puma configuration
-  echo "${inform}Creating puma.rb according to system configs...${reset}"
   echo "" > /home/"$deployUser"/Fakktion/config/puma.rb
   watchForErrors $? "Clear puma config file" "Empty config/puma.rb yourself then try again"
   echo "workers $(grep -c processor /proc/cpuinfo)" >> /home/"$deployUser"/Fakktion/config/puma.rb
@@ -104,7 +86,6 @@ setupApp(){
   watchForErrors $? "Inject the rest of Puma configs" "Check config/puma.rb and partial_puma_16.txt yourself then try again"
 
   # Set unique local secrets.yml
-  echo "${inform}Setting Unique Rails Secret used for managing sessions...${reset}"
   echo "" > /home/"$deployUser"/Fakktion/config/secrets.yml
   watchForErrors $? "Empty config/secrets.yml" "Mannually empty config/secrets.yml"
   cat /home/"$deployUser"/Fakktion/docs/source/partial_secrets_16.txt >> /home/"$deployUser"/Fakktion/config/secrets.yml
@@ -172,7 +153,6 @@ setupApp(){
 setupPuma(){
   deployUser="$1"
   
-  echo "${inform}$deployUser is no longer a sudo user...${reset}"
   # Copy the init script to services directory 
   cp sources/puma /etc/init.d
   watchForErrors $? "Copy the init script to services directory" ""
@@ -229,61 +209,61 @@ prepareApp(){
 if [ $# -eq 0 ]
 then
   echo "${warn}No arguments provided. See Below for Usage according to each step:${reset}"
-  echo "1 User"
-  echo "2 User y fakktionDBUser fakktionDB"
-  echo "2 User n"
-  echo "3 User"
-  echo "4 User SSSL?"
-  echo "5 User "
+  echo "1"
+  echo "2 y fakktionDBUser fakktionDB"
+  echo "2 n"
+  echo "3"
+  echo "4 SSSL?"
+  echo "5"
 else    
   if [ "$1" = 1 ]
   then
-    if [ $# -eq 2 ]
+    if [ $# -eq 1 ]
     then
-      setupBaseReqs "$2"
+      setupBaseReqs "$(whoami)"
     else
       echo "${warn}User in which Puma should use to run Fakktion was not provided.${reset}"
-      echo "Usage: Step user"
-      echo "Example: 1 fakktionApp"
+      echo "Usage: Step"
+      echo "Example: 1"
     fi
   elif [ "$1" = 2 ]
   then
-    if [ $# -eq 5 ]
+    if [ $# -eq 4 ]
     then
-      setupApp "$2" "$3" "$4" "$5"
+      setupApp "$(whoami)" "$3" "$4"
     elif [ $# -eq 3 ]
     then
       if [ "$3" = "y" ] || [ "$3" = "yes" ]
       then
-        setupApp "$2" "$3"
+        setupApp "$(whoami)" "$3"
       else
         echo "${warn}Local Database setup must contain DBUSER DBNAME arguments.${reset}"
       fi
     else
       echo "${warn}Wrong number of arguments.${reset}"
-      echo "Usage: Step User remoteDatabase? DBUSER DBNAME"
-      echo "Example: 2 User y fakktionDBUser fakktionDB"
-      echo "Example: 2 User n"
+      echo "Usage: Step remoteDatabase? DBUSER DBNAME"
+      echo "Example: 2 y fakktionDBUser fakktionDB"
+      echo "Example: 2 n"
     fi
   elif [ "$1" = 3 ]
   then
-    if [ $# -eq 2 ]
+    if [ $# -eq 1 ]
     then
-      setupPuma "$2"
+      setupPuma "$(whoami)"
     else
-      echo "${warn}User in which Puma should use to run Fakktion was not provided.${reset}"
-      echo "Usage: Step user"
-      echo "Example: 3 fakktionApp"
+      echo "${warn}Incorrect # of arguments...${reset}"
+      echo "Usage: Step"
+      echo "Example: 3"
     fi
   elif [ "$1" = 4 ]
   then
     if [ $# -eq 3 ]
     then
-      setupNGINX "$2" "$3"
+      setupNGINX "$(whoami)" "$3"
     else
       echo "${warn}Incorrect # of arguments...${reset}"
-      echo "Usage: Step user SSLConfig? "
-      echo "Example: 4 fakktionApp y/n "
+      echo "Usage: Step SSLConfig? "
+      echo "Example: 4 y/n "
     fi
   elif [ "$1" = 5 ]
   then
@@ -292,8 +272,8 @@ else
       prepareApp "$2"
     else
       echo "${warn}Incorrect # of arguments...${reset}"
-      echo "Usage: Step user"
-      echo "Example: 5 USER "
+      echo "Usage: Step"
+      echo "Example: 5 "
     fi
   fi
 fi
