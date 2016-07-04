@@ -143,7 +143,9 @@ class ApiController < ApplicationController
     if routine_check
       resource_obj.text = protect_from_xss_like_a_boss(resource_params[:text])
       if resource_model == Post
-        if current_user.reputation < -50
+        if current_user != resource_obj.user
+          return update_resource(resource_obj,resource_params.except(:title,:text,:genre_id,:topic_id,:category_id,:user_id,:comments_count,:fact_link,:fiction_link))
+        elsif current_user.reputation < -50
           return render json: {}, status: :forbidden
         else
           return update_resource(resource_obj, resource_params.except(:text))

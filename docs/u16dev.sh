@@ -48,6 +48,8 @@ frontendDependencies(){
   watchForErrors $? "Ember CLI install" ""
   npm install bower -g
   watchForErrors $? "Bower install" ""
+  npm install phantomjs
+  watchForErrors $? "Phantomjs install" ""
 }
 
 appDependencies(){

@@ -23,10 +23,7 @@ export default Ember.Route.extend ({
     controller.set('dateOfBirth_year', year);
   },
   afterModel(model, transition) {
-    if (model.user.get('id') === this.get('sessionAccount.user.id')) {
-      // Allow Editing
-    }
-    else{
+    if (model.user.get('id') !== this.get('sessionAccount.user.id')) {
       this.transitionTo('index');
     }
   }
