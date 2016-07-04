@@ -1,5 +1,5 @@
 #!/bin/bash
-# u16deploy.sh v2.2
+# u16deploy.sh v2.5
 # Ubuntu Server 16.04 deployment
 
 # Colors for Scrip Messages.
@@ -173,9 +173,6 @@ setupApp(){
   # Link Fakktion to Puma
   sudo /etc/init.d/puma add /home/"$deployUser"/Fakktion "$deployUser" /home/"$deployUser"/Fakktion/config/puma.rb /home/"$deployUser"/Fakktion/log/puma.log
   watchForErrors $? "Add Fakktion into PUMA" ""
-
-  cd /home/"$deployUser"/Fakktion/shared/log || return
-  nano puma.stderr.log
 }
 
 setupNGINX(){
