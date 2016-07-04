@@ -142,7 +142,7 @@ setupApp(){
     echo "${inform}A Postgres User with name $databaseUser will now be created. Please enter the password for it, and don't forget to write it down!${reset}'"
     sudo -u postgres createuser --superuser "$databaseUser" --pwprompt
     watchForErrors $? "PostgreSQL Local Server mode - Create User" "Check the scripts"
-    sudo -u "$databaseUser" createdb "$deployDBName"
+    sudo -u postgres createdb -O "$databaseUser" "$deployDBName"
     watchForErrors $? "PostgreSQL Local Server mode - Create DB" "Check the scripts"
   fi
   rake db:setup RAILS_ENV=production
