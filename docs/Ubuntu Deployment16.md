@@ -26,11 +26,10 @@
 4. Now go into Fakktion/config and change the database configurations with ```nano database.yml``` if your connection is remote or you are not using variables. What matters is that the configs are valid and that the database is acessible for the next step.
 5. Navigate to Fakktion/docs folder, and allow Execution access to the main script with ```sudo chmod +x u16deploy.sh```.
 6. Now execute ```./u16deploy.sh 1 RemoteConfig? DBUSER DBNAME```. If RemoteConfig is **y**, then no need for DBUSER nor DBNAME.
-7. Execute ```sudo ./u16deploy.sh 2``` to setup PUMA Daemon service through init.d.
-8. Edit **fakktion_16_ssl.conf** or **fakktion_16_non_ssl.conf** depending on your SSL needs and confirm the NGINX configs.
-9. Execute ```sudo ./u16deploy.sh 3 SSL?``` (replace SSL? with y or n) to prepare NGINX for the PUMA socket.
-10. ```sudo reboot```, then login as DEPLOYINGUSER.
-11. Initiate Puma socket with the final part of the script: ```. u16deploy.sh 5```.
+7. Edit **fakktion_16_ssl.conf** or **fakktion_16_non_ssl.conf** depending on your SSL needs and confirm the NGINX configs.
+8. Execute ```sudo ./u16deploy.sh 2 SSL?``` (replace SSL? with y or n) to prepare NGINX for the PUMA socket.
+9. ```sudo reboot```, then login as DEPLOYINGUSER.
+10. Initiate Puma socket with the final part of the script: ```. u16deploy.sh 3```.
 
 ### Troubleshooting Initial Deploy
 1. **Ruby version installed is different from the one specified on gemfile.**

@@ -131,36 +131,37 @@ setupApp(){
   watchForErrors $? "LN for /var/www/Fakktion/public" ""
   
   # Database SETUP
-  if [ "$2" = "n" ] || [ "$2" = "no" ]
+  if [ "$2" = "y" ] || [ "$2" = "yes" ]
   then
-    sudo apt-get install postgresql
+    sudo apt-get install -y postgresql-client
+    watchForErrors $? "Setup PostgreSQL as client mode" "Check the scripts"
+  else
+    sudo apt-get install -y postgresql
+    watchForErrors $? "Setup PostgreSQL as Local Server mode" "Check the scripts"
     watchForErrors $? "Setup up PostgreSQL as local server mode " "Check the scripts mannually"
     echo "${inform}A Postgres User with name $databaseUser will now be created. Please enter the password for it, and don't forget to write it down!${reset}'"
     sudo -u postgres createuser --superuser "$databaseUser" --pwprompt
+    watchForErrors $? "PostgreSQL Local Server mode - Create User" "Check the scripts"
     sudo -u "$databaseUser" createdb "$deployDBName"
-  else
-    sudo apt-get install postgresql-client
-    watchForErrors $? "Setup PostgreSQL as client mode" "Check the scripts mannually"
+    watchForErrors $? "PostgreSQL Local Server mode - Create DB" "Check the scripts"
   fi
   rake db:setup RAILS_ENV=production
   watchForErrors $? "Rake db migration and seeding" "run rake db:setup mannually"
-}
-
-# Setup Puma
-setupPuma(){
-  deployUser="$1"
+  
+  # PUMA section
   
   # Copy the init script to services directory 
-  cp sources/puma /etc/init.d
+  cp /home/"$deployUser"/Fakktion/docs/sources/puma /etc/init.d
   watchForErrors $? "Copy the init script to services directory" ""
   chmod +x /etc/init.d/puma
+  watchForErrors $? "PUMA init.d +x chmod permission" ""
 
   # Make it start at boot time. 
-  update-rc.d -f sources/puma defaults
+  update-rc.d -f /home/"$deployUser"/Fakktion/docs/sources/puma defaults
   watchForErrors $? "Make PUMA run at boot time" ""
 
   # Copy the Puma runner to an accessible location
-  cp sources/run-puma /usr/local/bin
+  cp /home/"$deployUser"/Fakktion/docs/sources/run-puma /usr/local/bin
   watchForErrors $? "Make PUMA accessible from /usr/local/bin" ""
   chmod +x /usr/local/bin/run-puma
   watchForErrors $? "Make PUMA chmox +x on /usr/local/bin" ""
@@ -173,19 +174,21 @@ setupPuma(){
   /etc/init.d/puma add /home/"$deployUser"/Fakktion "$deployUser" /home/"$deployUser"/Fakktion/config/puma.rb /home/"$deployUser"/Fakktion/log/puma.log
   watchForErrors $? "Add Fakktion into PUMA" ""
 
-  cd shared/log || return
+  cd /home/"$deployUser"/Fakktion/docs/shared/log || return
   nano puma.stderr.log
 }
 
 setupNGINX(){
   deployUser="$1"
-  # Purges default NGINX configs.
   echo "" > /etc/nginx/sites-available/default
+  watchForErrors $? "Purges default NGINX config" ""
   if [ "$2" = "y" ] || [ "$2" = "yes" ]
   then
     cat fakktion_16_ssl.conf >> /etc/nginx/sites-available/default
+    watchForErrors $? "Transfer SSL NGINX config" ""
   else
     cat fakktion_16_non_ssl.conf >> /etc/nginx/sites-available/default
+    watchForErrors $? "Transfer non-SSL NGINX config" ""
   fi
   service nginx restart
   watchForErrors $? "NGINX restart" ""
@@ -208,58 +211,47 @@ then
   echo "${warn}No arguments provided. See Below for Usage according to each step:${reset}"
   echo "1 y fakktionDBUser fakktionDB"
   echo "1 n"
-  echo "2"
-  echo "3 SSSL?"
-  echo "4"
+  echo "2 SSSL?"
+  echo "3"
 else
   if [ "$1" = 1 ]
   then
     if [ $# -eq 4 ]
     then
-      setupApp "$(whoami)" "$3" "$4"
+      setupApp "$(whoami)" "$2" "$3" "$4"
     elif [ $# -eq 3 ]
     then
-      if [ "$3" = "y" ] || [ "$3" = "yes" ]
+      if [ "$2" = "y" ] || [ "$2" = "yes" ]
       then
-        setupApp "$(whoami)" "$3"
+        setupApp "$(whoami)" "$2"
       else
         echo "${warn}Local Database setup must contain DBUSER DBNAME arguments.${reset}"
       fi
     else
       echo "${warn}Wrong number of arguments.${reset}"
       echo "Usage: Step remoteDatabase? DBUSER DBNAME"
-      echo "Example: 2 y fakktionDBUser fakktionDB"
-      echo "Example: 2 n"
+      echo "Example: 1 y fakktionDBUser fakktionDB"
+      echo "Example: 1 n"
     fi
   elif [ "$1" = 2 ]
   then
+    if [ $# -eq 2 ]
+    then
+      setupNGINX "$(whoami)" "$2"
+    else
+      echo "${warn}Incorrect # of arguments...${reset}"
+      echo "Usage: Step SSLConfig? "
+      echo "Example: 2 y/n "
+    fi
+  elif [ "$1" = 3 ]
+  then
     if [ $# -eq 1 ]
     then
-      setupPuma "$(whoami)"
+      prepareApp "$(whoami)"
     else
       echo "${warn}Incorrect # of arguments...${reset}"
       echo "Usage: Step"
       echo "Example: 3"
-    fi
-  elif [ "$1" = 3 ]
-  then
-    if [ $# -eq 3 ]
-    then
-      setupNGINX "$(whoami)" "$3"
-    else
-      echo "${warn}Incorrect # of arguments...${reset}"
-      echo "Usage: Step SSLConfig? "
-      echo "Example: 4 y/n "
-    fi
-  elif [ "$1" = 4 ]
-  then
-    if [ $# -eq 2 ]
-    then
-      prepareApp "$2"
-    else
-      echo "${warn}Incorrect # of arguments...${reset}"
-      echo "Usage: Step"
-      echo "Example: 5 "
     fi
   fi
 fi
