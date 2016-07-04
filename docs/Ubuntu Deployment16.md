@@ -31,7 +31,7 @@
 9. Edit **fakktion_16_ssl.conf** or *fakktion_16_non_ssl.conf** depending on your SSL needs and confirm the NGINX configs.
 10. Execute ```sudo ./u16deploy.sh 4 SSL?``` (replace SSL? with y or n) to prepare NGINX for the PUMA socket.
 11. ```sudo reboot```, then login as DEPLOYINGUSER.
-12. Initiate Puma socket with the final part of the script: ```. u16deploy.sh 5 USER```.
+12. Initiate Puma socket with the final part of the script: ```. u16deploy.sh 5```.
 
 ### Troubleshooting Initial Deploy
 1. **Ruby version installed is different from the one specified on gemfile.**
