@@ -174,7 +174,7 @@ setupApp(){
   sudo /etc/init.d/puma add /home/"$deployUser"/Fakktion "$deployUser" /home/"$deployUser"/Fakktion/config/puma.rb /home/"$deployUser"/Fakktion/log/puma.log
   watchForErrors $? "Add Fakktion into PUMA" ""
 
-  cd /home/"$deployUser"/Fakktion/docs/shared/log || return
+  cd /home/"$deployUser"/Fakktion/shared/log || return
   nano puma.stderr.log
 }
 
@@ -184,10 +184,10 @@ setupNGINX(){
   watchForErrors $? "Purges default NGINX config" ""
   if [ "$2" = "y" ] || [ "$2" = "yes" ]
   then
-    cat fakktion_16_ssl.conf >> /etc/nginx/sites-available/default
+    cat /home/"$deployUser"/Fakktion/docs/sources/fakktion_16_ssl.conf >> /etc/nginx/sites-available/default
     watchForErrors $? "Transfer SSL NGINX config" ""
   else
-    cat fakktion_16_non_ssl.conf >> /etc/nginx/sites-available/default
+    cat /home/"$deployUser"/Fakktion/docs/sources/fakktion_16_non_ssl.conf >> /etc/nginx/sites-available/default
     watchForErrors $? "Transfer non-SSL NGINX config" ""
   fi
   service nginx restart
@@ -196,14 +196,19 @@ setupNGINX(){
 
 prepareApp(){
   deployUser="$1"
-  cd ..
-  rake assets:precompile
-  watchForErrors $? "Precompile Fakktion" ""
-  bundle exec puma -e production -d -b unix:///home/"$deployUser"/Fakktion/shared/sockets/puma.sock
-  watchForErrors $? "Start Fakktion" ""
-  cd shared/log || return
-  nano puma.stderr.log
-  echo "${inform}App is ready! Now opening log for confirmation...${reset}"
+  if [ "$(whoami)" != "root" ];
+  then
+    rake assets:precompile
+    cd ..
+    watchForErrors $? "Precompile Fakktion" ""
+    bundle exec puma -e production -d -b unix:///home/"$deployUser"/Fakktion/shared/sockets/puma.sock
+    watchForErrors $? "Start Fakktion" ""
+    cd shared/log || return
+    nano puma.stderr.log
+    echo "${inform}App is ready! Now opening log for confirmation...${reset}"
+  else
+    echo "${warn}ERROR ${inform} 1 ${reset} | Running as sudo... Please remove sudo from the call and try again!"
+  fi
 }
 
 if [ $# -eq 0 ]
