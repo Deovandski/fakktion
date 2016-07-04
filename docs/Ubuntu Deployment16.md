@@ -27,7 +27,7 @@
 5. Navigate to Fakktion/docs folder, and allow Execution access to the main script with ```sudo chmod +x u16deploy.sh```.
 6. Now execute ```./u16deploy.sh 1 RemoteConfig? DBUSER DBNAME```. If RemoteConfig is **y**, then no need for DBUSER nor DBNAME.
 7. Edit **fakktion_16_ssl.conf** or **fakktion_16_non_ssl.conf** depending on your SSL needs and confirm the NGINX configs.
-8. Execute ```./u16deploy.sh 2 SSL?``` (replace SSL? with y or n) to prepare NGINX for the PUMA socket.
+8. Execute ```./u16deploy.sh 2 DEPLOYINGUSER SSL?``` (replace SSL? with y or n) to prepare NGINX for the PUMA socket.
 9. ```sudo reboot```, then login as DEPLOYINGUSER.
 10. Initiate Puma socket with the final part of the script: ```./u16deploy.sh 3```.
 

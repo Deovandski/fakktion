@@ -180,18 +180,23 @@ setupApp(){
 
 setupNGINX(){
   deployUser="$1"
-  sudo echo "" > /etc/nginx/sites-available/default
-  watchForErrors $? "Purges default NGINX config" ""
-  if [ "$2" = "y" ] || [ "$2" = "yes" ]
+  if [ "$(whoami)" != "root" ];
   then
-    sudo cat /home/"$deployUser"/Fakktion/docs/sources/fakktion_16_ssl.conf >> /etc/nginx/sites-available/default
-    watchForErrors $? "Transfer SSL NGINX config" ""
+    echo "${warn}ERROR ${inform} 1 ${reset} | Not running as sudo... Please add sudo to the call and try again!"
   else
-    sudo cat /home/"$deployUser"/Fakktion/docs/sources/fakktion_16_non_ssl.conf >> /etc/nginx/sites-available/default
-    watchForErrors $? "Transfer non-SSL NGINX config" ""
+    echo "" > /etc/nginx/sites-available/default
+    watchForErrors $? "Purges default NGINX config" ""
+    if [ "$2" = "y" ] || [ "$2" = "yes" ]
+    then
+      cat /home/"$deployUser"/Fakktion/docs/sources/fakktion_16_ssl.conf >> /etc/nginx/sites-available/default
+      watchForErrors $? "Transfer SSL NGINX config" ""
+    else
+      cat /home/"$deployUser"/Fakktion/docs/sources/fakktion_16_non_ssl.conf >> /etc/nginx/sites-available/default
+      watchForErrors $? "Transfer non-SSL NGINX config" ""
+    fi
+    service nginx restart
+    watchForErrors $? "NGINX restart" ""
   fi
-  sudo service nginx restart
-  watchForErrors $? "NGINX restart" ""
 }
 
 prepareApp(){
@@ -240,13 +245,13 @@ else
     fi
   elif [ "$1" = 2 ]
   then
-    if [ $# -eq 2 ]
+    if [ $# -eq 3 ]
     then
-      setupNGINX "$(whoami)" "$2"
+      setupNGINX "$2" "$3"
     else
       echo "${warn}Incorrect # of arguments...${reset}"
-      echo "Usage: Step SSLConfig? "
-      echo "Example: 2 y/n "
+      echo "Usage: Step deployingUser SSLConfig? "
+      echo "Example: 2 deployingUser y/n "
     fi
   elif [ "$1" = 3 ]
   then
