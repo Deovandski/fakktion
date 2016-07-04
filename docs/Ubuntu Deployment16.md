@@ -20,7 +20,7 @@
 4. OpenSSH recommended
 
 ### Initial Deploy
-1. Add the Deploying user through ```sudo adduser DEPLOYINGUSER sudo```.
+1. Add the Deploying user through ```sudo adduser DEPLOYINGUSER``` followed by ```sudo adduser DEPLOYINGUSER sudo``` to allow sudo for it.
 2. Login as DEPLOYINGUSER.
 3. From your home/$deployUser directory, clone repo through ```git clone https://github.com/YOURUSERNAME/Fakktion.git``` (HTTPS instead of SSH suggested as it will make it harder to accidentally push commits back into origin master (or the branch that you use as master.)
 4. Now go into Fakktion/config and change the database configurations with ```nano database.yml``` if your connection is remote or you are not using variables. What matters is that the configs are valid and that the database is acessible for the next step.
