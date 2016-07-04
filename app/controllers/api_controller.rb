@@ -51,8 +51,16 @@ class ApiController < ApplicationController
   # Shared Update API method used by Tags and InnerComment
   def json_update(resource_obj,resource_params, resource_model)
     if routine_check
-      if resource_model == FactType || resource_model == InnerComment || resource_model == Genre || resource_model == Topic || resource_model == Category
+      if resource_model == FactType || resource_model == Genre || resource_model == Topic || resource_model == Category
+        if current_user.reputation < 1500
+          return render json: {}, status: :forbidden
+        else
+          return update_resource(resource_obj,resource_params)
+        end
+      elsif resource_model == InnerComment
         if current_user.reputation < -100
+          return render json: {}, status: :forbidden
+        elsif current_user != resource_obj.user
           return render json: {}, status: :forbidden
         else
           return update_resource(resource_obj,resource_params)
@@ -85,6 +93,8 @@ class ApiController < ApplicationController
     if routine_check
       if resource_model == CommentVote || resource_model == InnerCommentVote
         if current_user.reputation < -200
+          return render json: {}, status: :forbidden
+        elsif current_user != commenting_vote_obj.user
           return render json: {}, status: :forbidden
         else
           commenting_vote_obj.update(resource_params.except(:voting_record))
@@ -144,14 +154,16 @@ class ApiController < ApplicationController
       resource_obj.text = protect_from_xss_like_a_boss(resource_params[:text])
       if resource_model == Post
         if current_user != resource_obj.user
-          return update_resource(resource_obj,resource_params.except(:title,:text,:genre_id,:topic_id,:category_id,:user_id,:comments_count,:fact_link,:fiction_link))
+          resource_obj.increment(:views_count)
+          resource_obj.save
+          return render json: resource_obj, status: :ok
         elsif current_user.reputation < -50
           return render json: {}, status: :forbidden
         else
           return update_resource(resource_obj, resource_params.except(:text))
         end
       elsif resource_model == Comment
-        if current_user.reputation < -150
+        if current_user != resource_obj.user || current_user.reputation < -150
           return render json: {}, status: :forbidden
         else
           return update_resource(resource_obj, resource_params.except(:text))
@@ -159,7 +171,9 @@ class ApiController < ApplicationController
       end
     else
       if resource_model == Post && resource_params[:views_count].to_f != resource_obj.views_count.to_f
-        return update_resource(resource_obj,resource_params.except(:title,:text,:genre_id,:topic_id,:category_id,:user_id,:comments_count,:fact_link,:fiction_link))
+        resource_obj.increment(:views_count)
+        resource_obj.save
+        return render json: resource_obj, status: :ok
       else
         return render json: {}, status: :unauthorized
       end

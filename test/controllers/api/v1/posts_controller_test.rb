@@ -48,7 +48,7 @@ class Api::V1::PostsControllerTest < ActionController::TestCase
     post :create, ActiveModelSerializers::SerializableResource.new(@testPost_unsaved).as_json
     assert_response(401)
   end
-  test "Comments - API - Create 403" do
+  test "Posts - API - Create 403" do
     @user = User.find_by_email('user@user.com')
     sign_in @user
     post :create, ActiveModelSerializers::SerializableResource.new(@testPost_unsaved).as_json
@@ -95,7 +95,7 @@ class Api::V1::PostsControllerTest < ActionController::TestCase
     post :update, tempPost.merge(id: @testPost)
     assert_response(401)
   end
-  test "Posts - API - UPDATE 403" do
+  test "Posts - API - INCREASE VIEW_COUNTER" do
     @user = User.find_by_email('user@user.com')
     @user.reputation = 0
     @user.save
@@ -109,7 +109,7 @@ class Api::V1::PostsControllerTest < ActionController::TestCase
     @user.save
     sign_in @user
     post :update, tempPost.merge(id: @testPost)
-    assert_response(403)
+    assert_response(200)
   end
   test "Posts - API - UPDATE 422" do
     @testPost = Post.first
