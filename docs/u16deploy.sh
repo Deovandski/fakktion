@@ -1,5 +1,5 @@
 #!/bin/bash
-# u16deploy.sh v2.5
+# u16deploy.sh v2.6
 # Ubuntu Server 16.04 deployment
 
 # Colors for Scrip Messages.
@@ -223,22 +223,27 @@ then
 else
   if [ "$1" = 1 ]
   then
-    if [ $# -eq 4 ]
+    if [ "$(whoami)" != "root" ];
     then
-      setupApp "$(whoami)" "$2" "$3" "$4"
-    elif [ $# -eq 3 ]
-    then
-      if [ "$2" = "y" ] || [ "$2" = "yes" ]
+      if [ $# -eq 4 ]
       then
-        setupApp "$(whoami)" "$2"
+        setupApp "$(whoami)" "$2" "$3" "$4"
+      elif [ $# -eq 3 ]
+      then
+        if [ "$2" = "y" ] || [ "$2" = "yes" ]
+        then
+          setupApp "$(whoami)" "$2"
+        else
+          echo "${warn}Local Database setup must contain DBUSER DBNAME arguments.${reset}"
+        fi
       else
-        echo "${warn}Local Database setup must contain DBUSER DBNAME arguments.${reset}"
+        echo "${warn}Wrong number of arguments.${reset}"
+        echo "Usage: Step remoteDatabase? DBUSER DBNAME"
+        echo "Example: 1 y fakktionDBUser fakktionDB"
+        echo "Example: 1 n"
       fi
     else
-      echo "${warn}Wrong number of arguments.${reset}"
-      echo "Usage: Step remoteDatabase? DBUSER DBNAME"
-      echo "Example: 1 y fakktionDBUser fakktionDB"
-      echo "Example: 1 n"
+      echo "${warn}ERROR ${inform} 1 ${reset} | Running as sudo... Please remove sudo from the call and try again!"
     fi
   elif [ "$1" = 2 ]
   then
