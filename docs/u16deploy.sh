@@ -151,27 +151,27 @@ setupApp(){
   # PUMA section
   
   # Copy the init script to services directory 
-  cp /home/"$deployUser"/Fakktion/docs/sources/puma /etc/init.d
+  sudo cp /home/"$deployUser"/Fakktion/docs/sources/puma /etc/init.d
   watchForErrors $? "Copy the init script to services directory" ""
-  chmod +x /etc/init.d/puma
+  sudo chmod +x /etc/init.d/puma
   watchForErrors $? "PUMA init.d +x chmod permission" ""
 
   # Make it start at boot time. 
-  update-rc.d -f /home/"$deployUser"/Fakktion/docs/sources/puma defaults
+  sudo update-rc.d -f /home/"$deployUser"/Fakktion/docs/sources/puma defaults
   watchForErrors $? "Make PUMA run at boot time" ""
 
   # Copy the Puma runner to an accessible location
-  cp /home/"$deployUser"/Fakktion/docs/sources/run-puma /usr/local/bin
+  sudo cp /home/"$deployUser"/Fakktion/docs/sources/run-puma /usr/local/bin
   watchForErrors $? "Make PUMA accessible from /usr/local/bin" ""
-  chmod +x /usr/local/bin/run-puma
+  sudo chmod +x /usr/local/bin/run-puma
   watchForErrors $? "Make PUMA chmox +x on /usr/local/bin" ""
 
   # Create an empty configuration file
-  touch /etc/puma.conf
+  sudo touch /etc/puma.conf
   watchForErrors $? "TOUCH /etc/puma.conf" ""
 
   # Link Fakktion to Puma
-  /etc/init.d/puma add /home/"$deployUser"/Fakktion "$deployUser" /home/"$deployUser"/Fakktion/config/puma.rb /home/"$deployUser"/Fakktion/log/puma.log
+  sudo /etc/init.d/puma add /home/"$deployUser"/Fakktion "$deployUser" /home/"$deployUser"/Fakktion/config/puma.rb /home/"$deployUser"/Fakktion/log/puma.log
   watchForErrors $? "Add Fakktion into PUMA" ""
 
   cd /home/"$deployUser"/Fakktion/docs/shared/log || return
