@@ -157,7 +157,7 @@ setupApp(){
   watchForErrors $? "PUMA init.d +x chmod permission" ""
 
   # Make it start at boot time. 
-  sudo update-rc.d -f /home/"$deployUser"/Fakktion/docs/sources/puma defaults
+  sudo update-rc.d -f puma defaults
   watchForErrors $? "Make PUMA run at boot time" ""
 
   # Copy the Puma runner to an accessible location
