@@ -12,8 +12,8 @@
 1. This guide is tailored for max performance on running only one app (and its workers) through PUMA while using one single install of Ruby 2.3 with Node.js through NPM (Node Package Manager.) If you plan for multiple apps, you must use RVM (Ruby Version Manager) or Rbenv alongside NVM (Node Version Manager.)
 2. I do not recommend dropping usage of Bundler, or other package managers in favor of apt-get. You will face terrible consequences from non-available packages, micro-managing inter-dependencies to lack of edge versions and broken installs with no clear solution. **You have been warned, so do not contact me wondering what went wrong if you did not follow this piece of advise!**
 3. This guide sets up the database under the same server. However, it is recommended that you create a separated Postgres Database and connect to it instead by changing the config/database.yml.
-4. There is a [Youtube video](https://youtu.be/FI_vEPd3NQM) that shows the deployment process under u16deploy.sh v2.4
-5. u16deploy.sh current version is v2.6
+4. u16deploy.sh current version is v2.6
+5. There is a walkthrough [Youtube video](https://youtu.be/QJPv87_OQMg)
 
 ### Server Requirements
 1. Server with at least 10GB free space.

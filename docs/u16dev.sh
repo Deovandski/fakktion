@@ -19,6 +19,7 @@ watchForErrors(){
   else
     echo "${warn}ERROR ${inform} $exitStatus ${reset} |$step"
     echo "${warn}$action${reset}"
+    exit
   fi
 }
 
@@ -33,7 +34,7 @@ backendDependencies(){
     sudo apt-get install -y libpq-dev ruby2.3 rails bundler
     watchForErrors $? "Backend Dependencies install" ""
   fi
-  
+
 }
 frontendDependencies(){
   sudo npm cache clean -f
@@ -113,4 +114,3 @@ else
     fi
   fi
 fi
-

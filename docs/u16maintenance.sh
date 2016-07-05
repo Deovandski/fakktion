@@ -1,5 +1,5 @@
 #!/bin/bash
-# u16maintenance.sh v1.1
+# u16maintenance.sh v1.3
 # Ubuntu Server 16.04 maintenance
 
 # Colors for Scrip Messages.
@@ -29,6 +29,7 @@ surfaceUpdate(){
   sudo service puma stop
   watchForErrors $? "Stop PUMA" ""
   mkdir /home/"$deployingUser"/Fakktion_backup
+  watchForErrors $? "Create Fakktion Backed up config" ""
   cp /home/"$deployingUser"/Fakktion/config/database.yml /home/"$deployingUser"/Fakktion_backup
   watchForErrors $? "Back up database.yml" ""
   cp /home/"$deployingUser"/Fakktion/config/secrets.yml /home/"$deployingUser"/Fakktion_backup
@@ -49,7 +50,9 @@ surfaceUpdate(){
   cp -n /home/"$deployingUser"/Fakktion_backup/puma.rb /home/"$deployingUser"/Fakktion/config
   watchForErrors $? "Restore puma.rb" ""
   rm -rf  /home/"$deployingUser"/Fakktion_backup
+  watchForErrors $? "Delete Fakktion Backed up config" ""
   sudo service puma start
+  watchForErrors $? "Start PUMA" ""
 }
 
 deepUpdate(){
@@ -92,7 +95,9 @@ deepUpdate(){
   cp -n /home/"$deployingUser"/Fakktion_backup/puma.rb /home/"$deployingUser"/Fakktion/config
   watchForErrors $? "Restore puma.rb" ""
   rm -rf  /home/"$deployingUser"/Fakktion_backup
+  watchForErrors $? "Delete Fakktion Backed up config" ""
   sudo service puma start
+  watchForErrors $? "Start PUMA" ""
 }
 
 backupConfig(){
@@ -147,51 +152,71 @@ else
   then
     if [ $# -eq 2 ]
     then
-      surfaceUpdate "$2"
+      if [ "$(whoami)" != "root" ];
+      then
+        surfaceUpdate "$(whoami)"
+      else
+        echo "${warn}Running as sudo... Please remove it from the call and try again.${reset}"
+      fi
     else
-      echo "${warn}User not provided.${reset}"
-      echo "Usage: Step user"
-      echo "Example: 1 fakktionApp"
+      echo "${warn}Incorrect # of arguments...${reset}"
+      echo "Usage: Step"
+      echo "Example: 1"
     fi
   elif [ "$1" = 2 ]
   then
     if [ $# -eq 2 ]
     then
-      deepUpdate "$2"
+      deepUpdate "$(whoami)"
     else
-      echo "${warn}User not provided.${reset}"
-      echo "Usage: Step user"
-      echo "Example: 2 fakktionApp"
+      echo "${warn}Incorrect # of arguments...${reset}"
+      echo "Usage: Step"
+      echo "Example: 2"
     fi
   elif [ "$1" = 3 ]
   then
     if [ $# -eq 2 ]
     then
-      backupConfig "$2"
+      if [ "$(whoami)" != "root" ];
+      then
+        backupConfig "$(whoami)"
+      else
+        echo "${warn}Running as sudo... Please remove it from the call and try again.${reset}"
+      fi
     else
-      echo "${warn}User not provided.${reset}"
-      echo "Usage: Step user"
-      echo "Example: 2 fakktionApp"
+      echo "${warn}Incorrect # of arguments...${reset}"
+      echo "Usage: Step"
+      echo "Example: 3"
     fi
   elif [ "$1" = 4 ]
   then
     if [ $# -eq 2 ]
     then
-      restoreDBConfig "$2"
+      if [ "$(whoami)" != "root" ];
+      then
+        restoreDBConfig "$(whoami)"
+      else
+        echo "${warn}Running as sudo... Please remove it from the call and try again.${reset}"
+      fi
     else
-      echo "${warn}User not provided.${reset}"
-      echo "Usage: Step user"
-      echo "Example: 2 fakktionApp"
+      echo "${warn}Incorrect # of arguments...${reset}"
+      echo "Usage: Step"
+      echo "Example: 4"
     fi
   elif [ "$1" = 5 ]
   then
     if [ $# -eq 4 ]
     then
-      restoreOtherConfig "$2" "$3" "$4"
+      if [ "$(whoami)" != "root" ];
+      then
+        restoreOtherConfig "$(whoami)" "$2" "$3"
+      else
+        echo "${warn}Running as sudo... Please remove it from the call and try again.${reset}"
+      fi
     else
-      echo "${warn}User not provided.${reset}"
-      echo "Usage: Step user restorePuma? restorePreviousSecrets?"
-      echo "Example: 2 fakktionApp y y"
+      echo "${warn}Incorrect # of arguments...${reset}"
+      echo "Usage: Step restorePuma? restorePreviousSecrets?"
+      echo "Example: 5 y y"
     fi
   fi
 fi
