@@ -1,5 +1,5 @@
 #!/bin/bash
-# u16maintenance.sh v1
+# u16maintenance.sh v1.1
 # Ubuntu Server 16.04 maintenance
 
 # Colors for Scrip Messages.
@@ -74,7 +74,7 @@ deepUpdate(){
   # Restore Section
   bundle install
   watchForErrors $? "Bundle install new gemset" ""
-  bundle clean --force
+  sudo bundle clean --force
   watchForErrors $? "Bundle clear old gemset" ""
   cd frontend || return
   rm -rf node_modules bower_components dist tmp
