@@ -1,4 +1,4 @@
-## Ubuntu Server 16.04 Server Maintenance (**WIP**)
+## Ubuntu Server 16.04 Server Maintenance
 
 ## Server Overall Structure
 
@@ -25,13 +25,12 @@
 1. Make a DB backup!
 2. Run from docs folder ```./u16maintenance.sh 3```.
 3. Copy **/home/USER/Fakktion_backup** to the new machine.
-4. Follow the initial deploy guide until step 7, then run ```./u16maintenance.sh 4``` instead of step 8.
-5. Keep on following the deployment steps until 11, then run  ```./u16maintenance.sh 5 restorePuma? restorePreviousSecrets?``` instead of step 12.
+4. Follow the initial deploy guide until step **7**, then run ```./u16maintenance.sh 4``` instead of step **8**.
+5. Keep on following the deployment steps until **11**, then run  ```./u16maintenance.sh 5 restorePuma? restorePreviousSecrets?``` instead of step **12**.
 6. Finish following the guide.
 7. Stop PUMA with ```service puma stop```.
 8. Recover your DB
 9. Start PUMA with ```service puma start```.
-10. Voila!
 
 ### Checking Logs
 1. Puma Cluster log available under app/log/puma.log
