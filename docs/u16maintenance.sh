@@ -74,7 +74,7 @@ deepUpdate(){
   # Restore Section
   bundle install
   watchForErrors $? "Bundle install new gemset" ""
-  bundle clean
+  bundle clean --force
   watchForErrors $? "Bundle clear old gemset" ""
   cd frontend || return
   rm -rf node_modules bower_components dist tmp
