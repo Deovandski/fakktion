@@ -24,7 +24,7 @@ watchForErrors(){
 
 surfaceUpdate(){
   deployingUser="$1"
-  
+
   # Backup Section
   sudo service puma stop
   watchForErrors $? "Stop PUMA" ""
@@ -40,7 +40,7 @@ surfaceUpdate(){
   watchForErrors $? "Sync to last commit" ""
   git pull origin master
   watchForErrors $? "Sync with remote master branch" ""
-  
+
   # Restore Section
   cp -n /home/"$deployingUser"/Fakktion_backup/database.yml /home/"$deployingUser"/Fakktion/config
   watchForErrors $? "Restore database.yml" ""
@@ -54,7 +54,7 @@ surfaceUpdate(){
 
 deepUpdate(){
   deployingUser="$1"
-  
+
   # Backup Section
   sudo service puma stop
   watchForErrors $? "Stop PUMA" ""
@@ -70,12 +70,12 @@ deepUpdate(){
   watchForErrors $? "Sync to last commit" ""
   git pull origin master
   watchForErrors $? "Sync with remote master branch" ""
-  
+
   # Restore Section
-  bundle clean --force
-  watchForErrors $? "Bundle clear cache" ""
   bundle install
-  watchForErrors $? "Bundle install" ""
+  watchForErrors $? "Bundle install new gemset" ""
+  bundle clean
+  watchForErrors $? "Bundle clear old gemset" ""
   cd frontend || return
   rm -rf node_modules bower_components dist tmp
   watchForErrors $? "NPM and BOWER cache clear" ""
@@ -124,7 +124,7 @@ restoreOtherConfig(){
   else
     echo "skipped restoring PUMA"
   fi
-    
+
   # Restore Previous Secrets?
   if [ "$2" = "y" ] || [ "$2" = "yes" ]
   then
