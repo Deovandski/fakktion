@@ -8,6 +8,9 @@
 #### Remote DB
 ![](sources/u16_remotedb.png)
 
+### Notes
+1. u16maintenance.sh current version is v1.0
+2. You may need to allow execution permissions to the scripts with ```sudo chmod +x u16maintenance.sh```.
 
 ### Updating Project Source Code without moving database or changing servers.
 1. Make a database backup if you have not done so. For local DBs, you should create a database dump as described on the [official Docs](http://www.postgresql.org/docs/9.1/static/backup.html).

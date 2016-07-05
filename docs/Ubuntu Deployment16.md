@@ -12,7 +12,7 @@
 1. This guide is tailored for max performance on running only one app (and its workers) through PUMA while using one single install of Ruby 2.3 with Node.js through NPM (Node Package Manager.) If you plan for multiple apps, you must use RVM (Ruby Version Manager) or Rbenv alongside NVM (Node Version Manager.)
 2. I do not recommend dropping usage of Bundler, or other package managers in favor of apt-get. You will face terrible consequences from non-available packages, micro-managing inter-dependencies to lack of edge versions and broken installs with no clear solution. **You have been warned, so do not contact me wondering what went wrong if you did not follow this piece of advise!**
 3. This guide sets up the database under the same server. However, it is recommended that you create a separated Postgres Database and connect to it instead by changing the config/database.yml.
-4. There is a <a href="https://www.youtube.com/embed/FI_vEPd3NQM" target="_blank">video</a> on Youtube that shows the deployment under u16deploy.sh v2.4
+4. There is a [Youtube video](https://youtu.be/FI_vEPd3NQM) that shows the deployment process under u16deploy.sh v2.4
 5. u16deploy.sh current version is v2.6
 
 ### Server Requirements
@@ -25,7 +25,7 @@
 1. Add the Deploying user through ```sudo adduser DEPLOYINGUSER``` followed by ```sudo adduser DEPLOYINGUSER sudo``` to allow sudo for it.
 2. Login as DEPLOYINGUSER.
 3. From your home/$deployUser directory, clone repo through ```git clone https://github.com/YOURUSERNAME/Fakktion.git``` (HTTPS instead of SSH suggested as it will make it harder to accidentally push commits back into origin master (or the branch that you use as master.)
-4. Now go into Fakktion/config and change the database configurations with ```nano database.yml``` if your connection is remote or you are not using variables. What matters is that the configs are valid and that the database is acessible for the next step.
+4. Now go into Fakktion/config and change the database configurations with ```nano database.yml``` if your connection is remote or you are not using variables. What matters is that the configs are valid and that the database is accessible for the next step.
 5. Navigate to Fakktion/docs folder, and allow Execution access to the main script with ```sudo chmod +x u16deploy.sh```.
 6. Now execute ```./u16deploy.sh 1 RemoteConfig? DBUSER DBNAME```. If RemoteConfig is **y**, then no need for DBUSER nor DBNAME.
 7. Edit **fakktion_16_ssl.conf** or **fakktion_16_non_ssl.conf** depending on your SSL needs and confirm the NGINX configs.
@@ -40,7 +40,7 @@ If this error happens, then go back to your development machine, and run ```sudo
 Please fix them, or switch to a remote pg database before reattempting the step that failed.
 
 3. **NGINX 403 or similar errors.**
-Your NGINX configs is wrong or you may have issues connecting the socket between PUMA and NGINX. With that, I recommend setting up a snapshot of your enviroment and use ```chmod -R 755 /var/log/nginx``` so that you can access the NGINX logs. After you fix the error, you may restore the snapshot and fix the error again or simply restore the previous chmod for /var/log/nginx.
+Your NGINX configs is wrong or you may have issues connecting the socket between PUMA and NGINX. With that, I recommend setting up a snapshot of your environment and use ```chmod -R 755 /var/log/nginx``` so that you can access the NGINX logs. After you fix the error, you may restore the snapshot and fix the error again or simply restore the previous chmod for /var/log/nginx.
 
 ### Checking Logs
 1. Puma Cluster log available under app/log/puma.log
