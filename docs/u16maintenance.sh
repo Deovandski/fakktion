@@ -1,5 +1,5 @@
 #!/bin/bash
-# u16maintenance.sh v1.3
+# u16maintenance.sh v1.3.1
 # Ubuntu Server 16.04 maintenance
 
 # Colors for Scrip Messages.
@@ -150,7 +150,7 @@ then
 else
   if [ "$1" = 1 ]
   then
-    if [ $# -eq 2 ]
+    if [ $# -eq 1 ]
     then
       if [ "$(whoami)" != "root" ];
       then
@@ -165,7 +165,7 @@ else
     fi
   elif [ "$1" = 2 ]
   then
-    if [ $# -eq 2 ]
+    if [ $# -eq 1 ]
     then
       deepUpdate "$(whoami)"
     else
@@ -175,7 +175,7 @@ else
     fi
   elif [ "$1" = 3 ]
   then
-    if [ $# -eq 2 ]
+    if [ $# -eq 1 ]
     then
       if [ "$(whoami)" != "root" ];
       then
@@ -190,7 +190,7 @@ else
     fi
   elif [ "$1" = 4 ]
   then
-    if [ $# -eq 2 ]
+    if [ $# -eq 1 ]
     then
       if [ "$(whoami)" != "root" ];
       then
@@ -205,7 +205,7 @@ else
     fi
   elif [ "$1" = 5 ]
   then
-    if [ $# -eq 4 ]
+    if [ $# -eq 3 ]
     then
       if [ "$(whoami)" != "root" ];
       then

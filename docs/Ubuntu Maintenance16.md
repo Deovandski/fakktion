@@ -9,7 +9,7 @@
 ![](sources/u16_remotedb.png)
 
 ### Notes
-1. u16maintenance.sh current version is v1.3
+1. u16maintenance.sh current version is v1.3.1
 2. You may need to allow execution permissions to the scripts with ```sudo chmod +x u16maintenance.sh```.
 
 ### Updating Project Source Code without moving database or changing servers.
