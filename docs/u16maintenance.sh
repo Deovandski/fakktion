@@ -1,5 +1,5 @@
 #!/bin/bash
-# u16maintenance.sh v1.3.1
+# u16maintenance.sh v1.4
 # Ubuntu Server 16.04 maintenance
 
 # Colors for Scrip Messages.
@@ -29,13 +29,15 @@ surfaceUpdate(){
   sudo service puma stop
   watchForErrors $? "Stop PUMA" ""
   mkdir /home/"$deployingUser"/Fakktion_backup
-  watchForErrors $? "Create Fakktion Backed up config" ""
+  watchForErrors $? "Create Fakktion Backed up config" "Make sure that /home/"$deployingUser"/Fakktion_backup does not exist before trying again."
   cp /home/"$deployingUser"/Fakktion/config/database.yml /home/"$deployingUser"/Fakktion_backup
   watchForErrors $? "Back up database.yml" ""
   cp /home/"$deployingUser"/Fakktion/config/secrets.yml /home/"$deployingUser"/Fakktion_backup
   watchForErrors $? "Back up secrets.yml" ""
   cp /home/"$deployingUser"/Fakktion/config/puma.rb /home/"$deployingUser"/Fakktion_backup
   watchForErrors $? "Back up puma.rb" ""
+
+  # Git syncing
   cd .. || return
   git reset HEAD --hard
   watchForErrors $? "Sync to last commit" ""
@@ -43,11 +45,11 @@ surfaceUpdate(){
   watchForErrors $? "Sync with remote master branch" ""
 
   # Restore Section
-  cp -n /home/"$deployingUser"/Fakktion_backup/database.yml /home/"$deployingUser"/Fakktion/config
+  cp /home/"$deployingUser"/Fakktion_backup/database.yml /home/"$deployingUser"/Fakktion/config
   watchForErrors $? "Restore database.yml" ""
-  cp -n /home/"$deployingUser"/Fakktion_backup/secrets.yml /home/"$deployingUser"/Fakktion/config
+  cp /home/"$deployingUser"/Fakktion_backup/secrets.yml /home/"$deployingUser"/Fakktion/config
   watchForErrors $? "Restore secrets.yml" ""
-  cp -n /home/"$deployingUser"/Fakktion_backup/puma.rb /home/"$deployingUser"/Fakktion/config
+  cp /home/"$deployingUser"/Fakktion_backup/puma.rb /home/"$deployingUser"/Fakktion/config
   watchForErrors $? "Restore puma.rb" ""
   rm -rf  /home/"$deployingUser"/Fakktion_backup
   watchForErrors $? "Delete Fakktion Backed up config" ""
@@ -62,12 +64,15 @@ deepUpdate(){
   sudo service puma stop
   watchForErrors $? "Stop PUMA" ""
   mkdir /home/"$deployingUser"/Fakktion_backup
+  watchForErrors $? "Create Fakktion Backed up config" "Make sure that /home/"$deployingUser"/Fakktion_backup does not exist before trying again."
   cp /home/"$deployingUser"/Fakktion/config/database.yml /home/"$deployingUser"/Fakktion_backup
   watchForErrors $? "Back up database.yml" ""
   cp /home/"$deployingUser"/Fakktion/config/secrets.yml /home/"$deployingUser"/Fakktion_backup
   watchForErrors $? "Back up secrets.yml" ""
   cp /home/"$deployingUser"/Fakktion/config/puma.rb /home/"$deployingUser"/Fakktion_backup
   watchForErrors $? "Back up puma.rb" ""
+
+  # Git syncing
   cd .. || return
   git reset HEAD --hard
   watchForErrors $? "Sync to last commit" ""
@@ -88,11 +93,11 @@ deepUpdate(){
   watchForErrors $? "NPM dependencies install" "install Fakktion NPM dependencies mannually"
   bower install
   watchForErrors $? "Bower dependencies install" "install Fakktion Bower dependencies mannually"
-  cp -n /home/"$deployingUser"/Fakktion_backup/database.yml /home/"$deployingUser"/Fakktion/config
+  cp /home/"$deployingUser"/Fakktion_backup/database.yml /home/"$deployingUser"/Fakktion/config
   watchForErrors $? "Restore database.yml" ""
-  cp -n /home/"$deployingUser"/Fakktion_backup/secrets.yml /home/"$deployingUser"/Fakktion/config
+  cp /home/"$deployingUser"/Fakktion_backup/secrets.yml /home/"$deployingUser"/Fakktion/config
   watchForErrors $? "Restore secrets.yml" ""
-  cp -n /home/"$deployingUser"/Fakktion_backup/puma.rb /home/"$deployingUser"/Fakktion/config
+  cp /home/"$deployingUser"/Fakktion_backup/puma.rb /home/"$deployingUser"/Fakktion/config
   watchForErrors $? "Restore puma.rb" ""
   rm -rf  /home/"$deployingUser"/Fakktion_backup
   watchForErrors $? "Delete Fakktion Backed up config" ""
@@ -102,7 +107,11 @@ deepUpdate(){
 
 backupConfig(){
   deployingUser="$1"
+  # Backup Section
+  sudo service puma stop
+  watchForErrors $? "Stop PUMA" ""
   mkdir /home/"$deployingUser"/Fakktion_backup
+  watchForErrors $? "Create Fakktion Backed up config" "Make sure that /home/"$deployingUser"/Fakktion_backup does not exist before trying again."
   cp /home/"$deployingUser"/Fakktion/config/database.yml /home/"$deployingUser"/Fakktion_backup
   watchForErrors $? "Back up database.yml" ""
   cp /home/"$deployingUser"/Fakktion/config/secrets.yml /home/"$deployingUser"/Fakktion_backup
@@ -115,7 +124,7 @@ backupConfig(){
 
 restoreDBConfig(){
   deployingUser="$1"
-  cp -n /home/"$deployingUser"/Fakktion_backup/database.yml /home/"$deployingUser"/Fakktion/config
+  cp /home/"$deployingUser"/Fakktion_backup/database.yml /home/"$deployingUser"/Fakktion/config
   watchForErrors $? "Restore database.yml" ""
 }
 
@@ -124,7 +133,7 @@ restoreOtherConfig(){
   # Restore PUMA?
   if [ "$2" = "y" ] || [ "$2" = "yes" ]
   then
-    cp -n /home/"$deployingUser"/Fakktion_backup/puma.rb /home/"$deployingUser"/Fakktion/config
+    cp /home/"$deployingUser"/Fakktion_backup/puma.rb /home/"$deployingUser"/Fakktion/config
     watchForErrors $? "Restore puma.rb" ""
   else
     echo "skipped restoring PUMA"
@@ -133,12 +142,12 @@ restoreOtherConfig(){
   # Restore Previous Secrets?
   if [ "$2" = "y" ] || [ "$2" = "yes" ]
   then
-    cp -n /home/"$deployingUser"/Fakktion_backup/secrets.yml /home/"$deployingUser"/Fakktion/config
+    cp /home/"$deployingUser"/Fakktion_backup/secrets.yml /home/"$deployingUser"/Fakktion/config
     watchForErrors $? "Restore secrets.yml" ""
   else
     echo "skipped restoring previous secrets"
   fi
-  sudo cp -n /home/"$deployingUser"/Fakktion_backup/default /etc/nginx/sites-available/default
+  sudo cp /home/"$deployingUser"/Fakktion_backup/default /etc/nginx/sites-available/default
   watchForErrors $? "Restore NGINX config" ""
 }
 
