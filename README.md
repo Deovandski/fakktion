@@ -8,14 +8,20 @@
 ####Rails (Backend)
 [![Security][security-badge]][security] [![Docs][docs-badge]][docs] [![Backend Coverage][backendCoverage-badge]][backendCoverage]
 
-[Experimental Live Website](http://fakktion.herokuapp.com/) (In sync with master branch - Initial load may be slow due to Dyno sleep mode implemented by [Heroku](https://www.heroku.com/pricing).)
+####Versioning Structure
+This project uses the following structure for versioning:
+[Master Branch](https://github.com/Deovandski/Fakktion/tree/master): Where all development happens.
+**Releases into**
+[Heroku Branch](https://github.com/Deovandski/Fakktion/tree/heroku): Where development ready features are released. The site can be accessed at [fakktion.herokuapp.com](http://fakktion.herokuapp.com/) (Initial load may be slow due to Dyno sleep mode implemented by [Heroku](https://www.heroku.com/pricing).)
+**Releases into**
+[Ubuntu Branch](https://github.com/Deovandski/Fakktion/tree/master): Where actual releases occurs. Live website to be added late.
 
-[Live Website]() (In sync with releases - Soon to be deployed through NDSU CSCI Departmental VM.)
-
-All information about this project can be found on this [published paper](http://www.micsymposium.org/mics2015/ProceedingsMICS_2015/Skibinski_3C1_31.pdf). Information regarding the Database Design can be seen [Here](erd.pdf) while any other information can be seen in the documents below.
+***You must have ```git config --global merge.ours.driver true``` For pull requests in order to prevent any branch merging issue.***
 
 ## Notice
 This project once used [Ember-Rails](https://github.com/emberjs/ember-rails), but now it is using [Ember-cli-rails](https://github.com/rwz/ember-cli-rails). If you would like to see the previous Ember-Rails implementation, please check the [Ember-Rails Implementation branch](https://github.com/Deovandski/Fakktion/tree/Ember-Rails).
+
+All information about this project can be found on this [published paper](http://www.micsymposium.org/mics2015/ProceedingsMICS_2015/Skibinski_3C1_31.pdf). Information regarding the Database Design can be seen [Here](erd.pdf) while any other information can be seen in the documents below.
 
 ## Development
 
