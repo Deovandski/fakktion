@@ -2,7 +2,7 @@
 In order to deploy an ember-cli-rails project to Ubuntu Server 14.04, the following commands should be done first: (Some info extracted from [Digital Ocean PUMA NGINX Guide](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-rails-app-with-puma-and-nginx-on-ubuntu-14-04))
 
 1. Fork this project if you have not done so already!
-2. Install Git Core ```sudo apt-get install git-core```, and clone repo through ```git clone https://github.com/YOURUSERNAME/Fakktion.git```
+2. Install Git Core ```sudo apt-get install git-core```, and clone repo through ```git clone -b ubuntu https://github.com/YOURUSERNAME/Fakktion.git```
 3. Navigate to docs folder, and execute ```./u14deploy.sh 1```.
 4. ```sudo -u postgres createuser --superuser $USER --pwprompt```
 5. ```sudo -u $USER createdb fakktion```
