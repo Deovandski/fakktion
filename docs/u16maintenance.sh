@@ -1,5 +1,5 @@
 #!/bin/bash
-# u16maintenance.sh v1.4
+# u16maintenance.sh v1.5
 # Ubuntu Server 16.04 maintenance
 
 # Colors for Scrip Messages.
@@ -53,6 +53,8 @@ surfaceUpdate(){
   watchForErrors $? "Restore puma.rb" ""
   rm -rf  /home/"$deployingUser"/Fakktion_backup
   watchForErrors $? "Delete Fakktion Backed up config" ""
+  rake assets:precompile
+  watchForErrors $? "Precompile Assets" ""
   sudo service puma start
   watchForErrors $? "Start PUMA" ""
 }
@@ -101,6 +103,8 @@ deepUpdate(){
   watchForErrors $? "Restore puma.rb" ""
   rm -rf  /home/"$deployingUser"/Fakktion_backup
   watchForErrors $? "Delete Fakktion Backed up config" ""
+  rake assets:precompile
+  watchForErrors $? "Precompile Assets" ""
   sudo service puma start
   watchForErrors $? "Start PUMA" ""
 }
