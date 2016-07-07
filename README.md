@@ -10,11 +10,12 @@
 
 ####Versioning Structure
 This project uses the following structure for versioning:
-[Master Branch](https://github.com/Deovandski/Fakktion/tree/master): Where all development happens.
-**Releases into**
-[Heroku Branch](https://github.com/Deovandski/Fakktion/tree/heroku): Where development ready features are released. The site can be accessed at [fakktion.herokuapp.com](http://fakktion.herokuapp.com/) (Initial load may be slow due to Dyno sleep mode implemented by [Heroku](https://www.heroku.com/pricing).)
-**Releases into**
-[Ubuntu Branch](https://github.com/Deovandski/Fakktion/tree/master): Where actual releases occurs. Live website to be added late.
+
+1. [Master Branch](https://github.com/Deovandski/Fakktion/tree/master): Where all development happens.
+
+2. [Heroku Branch](https://github.com/Deovandski/Fakktion/tree/heroku): Where development ready features are released. The site can be accessed at [fakktion.herokuapp.com](http://fakktion.herokuapp.com/) (Initial load may be slow due to Dyno sleep mode implemented by [Heroku](https://www.heroku.com/pricing).)
+
+3. [Ubuntu Branch](https://github.com/Deovandski/Fakktion/tree/master): Where actual releases occurs. Live website to be added later.
 
 ***You must have ```git config --global merge.ours.driver true``` For pull requests in order to prevent any branch merging issue.***
 
