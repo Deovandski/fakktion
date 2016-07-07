@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 # The Fakktion Blog Source Code - Heroku Branch
-=======
-# The Fakktion Blog Source Code - Master Branch
->>>>>>> master
 
 ![](/FakktionLogo.png)
 
