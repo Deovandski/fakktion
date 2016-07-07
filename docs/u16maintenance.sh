@@ -41,8 +41,8 @@ surfaceUpdate(){
   cd .. || return
   git reset HEAD --hard
   watchForErrors $? "Sync to last commit" ""
-  git pull origin master
-  watchForErrors $? "Sync with remote master branch" ""
+  git pull origin ubuntu
+  watchForErrors $? "Sync with remote ubuntu branch" ""
 
   # Restore Section
   cp /home/"$deployingUser"/Fakktion_backup/database.yml /home/"$deployingUser"/Fakktion/config
@@ -76,8 +76,8 @@ deepUpdate(){
   cd .. || return
   git reset HEAD --hard
   watchForErrors $? "Sync to last commit" ""
-  git pull origin master
-  watchForErrors $? "Sync with remote master branch" ""
+  git pull origin ubuntu
+  watchForErrors $? "Sync with remote ubuntu branch" ""
 
   # Restore Section
   bundle install
