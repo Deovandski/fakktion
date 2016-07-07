@@ -93,3 +93,7 @@ rstrip process
 
 apm install atom-beautify
 apm install terminal-plus
+
+# Git branch merging
+git checkout BRANCH (git checkout -b for new branch)
+git merge MASTER
