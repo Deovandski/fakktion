@@ -23,12 +23,14 @@ export default Ember.Controller.extend ({
   selectedFactType: null,
   selectedTopic: null,
   selectedCategory: null,
+  noTags: false,
   selectedPDID: 0,
   selectedPDN: 'None',
   topicInputText: '',
   factTypeInputText: '',
   genreInputText: '',
   categoryInputText: '',
+  topicSearchButttonText: 'Set Topic',
   showGP: true,
   showCP: true,
   showFTP: true,
@@ -52,6 +54,42 @@ export default Ember.Controller.extend ({
   exampleOL_part3: "<li><label>Item 1</label></li>",
   exampleOL_part4: "</li><li>Item 2</li>",
   exampleOL_part5: "</ol>",
+  isBanned: Ember.computed('sessionAccount.user.reputation', function() {
+    if (this.get('sessionAccount.user.reputation') < -100) {
+      return true;
+    } else {
+      return false;
+    }
+  }),
+  filteredTags: Ember.computed('topicInputText', function() {
+    if(this.get('showPossibleTopics') === true){
+      if (this.get('topicInputText') === '') {
+        // Prevent multiple modification within a single render.
+        if(this.get('noTags') === true){
+          this.set('noTags', false);
+        }
+        return this.get('model.topics');
+      } else {
+        var rx = new RegExp(this.get('topicInputText').toLowerCase());
+        var filteredTags = this.model.topics.filter(function(tag) {
+          return tag.get('name').match(rx);
+        });
+        if (filteredTags.length > 0) {
+          // Prevent multiple modification within a single render.
+          if(this.get('noTags') === true){
+            this.set('noTags', false);
+          }
+          return filteredTags;
+        } else {
+          // Prevent multiple modification within a single render.
+          if(this.get('noTags') === false){
+            this.set('noTags', true);
+          }
+          return null;
+        }
+      }
+    }
+  }),
   defaultCategories: Ember.computed.filter('model.categories', function(category, index) {
       return (index < 7);
   }).property('model.categories'),
@@ -208,15 +246,27 @@ export default Ember.Controller.extend ({
     setFactType: function(factType) {
       this.set('selectedFactType', factType);
     },
-    setTopic: function() {
-      if(this.get('topicInputText') !== '') {
+    setTopic: function(topic) {
+      if(topic !== null && topic !== undefined) {
+        this.set('selectedTopic', topic);
+        this.set('showPossibleTopics', false);
+        this.set('topicSearchButttonText', 'Clear');
+        this.set('isTopicSelected', true);
+        this.set('topicInputText', '');
+      }
+      else if (this.get('topicInputText') !== '') {
         var possibleTopic = this.model.get('topics').findBy('name', this.get('topicInputText').toLowerCase());
-        if(possibleTopic === undefined) {
-          this.set('selectedTopic', 'invalid');
-          this.transitionToRoute('topics');
+        if(possibleTopic !== undefined) {
+          this.set('selectedTopic', possibleTopic);
+          this.set('showPossibleTopics', false);
+          this.set('topicSearchButttonText', 'Clear');
+          this.set('isTopicSelected', true);
+          this.set('topicInputText', '');
         }
         else {
-          this.set('selectedTopic', possibleTopic);
+          this.set('showPossibleTopics', true);
+          this.set('topicSearchButttonText', 'Clear');
+          this.set('isTopicSelected', false);
         }
       }
     },
@@ -256,9 +306,26 @@ export default Ember.Controller.extend ({
     clearCategory: function() {
       this.set('selectedCategory', null);
     },
-    clearTopic: function() {
-      this.set('selectedTopic', null);
-      this.set('topicInputText', '');
+    /* clearTopic clear types
+       #1: Full clean - called by usetting a Topic
+       #2: Current text clean - called in order to quickly show all topics
+    */
+    clearTopic: function(cleanType) {
+      if (cleanType === 1){
+        this.set('selectedTopic', null);
+        this.set('showPossibleTopics', false);
+        this.set('topicSearchButttonText', 'Set Topic');
+        this.set('topicInputText', '');
+        this.set('isTopicSelected', false);
+      }
+      else if (cleanType === 2){
+        this.set('topicInputText', '');
+        this.set('isTopicSelected', false);
+      }
+      else {
+        this.set('showPossibleTopics', false);
+        this.set('topicSearchButttonText', 'Set Topic');
+      }
     },
     clearPostDate: function() {
       this.set('selectedPDID', 0);

@@ -77,6 +77,18 @@
         }
     }
 }
+.flex_topics_display_redux {
+  @extend .flex_topics_display;
+      margin: 10px auto;
+      li {
+        margin: 10px;
+        .flex_tags_display_name_redux {
+          @extend .flex_tags_display_name;
+          width: 180px;
+          text-align: center;
+        }
+    }
+}
 .tag_posts {
     li {
         margin-top: 20px;

@@ -40,10 +40,6 @@ export default Ember.Controller.extend({
   actions: {
     clearTagSearchText: function() {
       this.set('application.topicInputText', '');
-    },
-    setTopic: function(topic) {
-      this.set('application.selectedTopic', topic);
-      this.transitionToRoute('index');
     }
   }
 });

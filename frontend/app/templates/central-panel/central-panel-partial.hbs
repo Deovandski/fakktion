@@ -60,25 +60,21 @@
 	<form class="topic_search" id='topicDisabledTextTootip'>
 		{{#if isTopicSelected}}
 			{{input class="topic_search_text" placeholder=selectedTopic.name disabled="true"}}
-			{{#tooltip-on-component target='#topicDisabledTextTootip' }}
-				The current selected Topic.
-			{{/tooltip-on-component}}
 			<div class="topic_search_input">
-				<button class="button_bar_topic" {{action "clearTopic"}}>Clear</button>
+				<button class="button_bar_topic" {{action "clearTopic" 1}}>{{topicSearchButttonText}}</button>
 			</div>
+		{{else if showPossibleTopics}}
+			{{input class="topic_search_text" value=topicInputText placeholder="Search Topic"}}
+				<div class="topic_search_input">
+					<button class="button_bar_topic" {{action "clearTopic" 2}}>{{topicSearchButttonText}}</button>
+				</div>
 		{{else}}
-			{{input id='topicTextTootip' class="topic_search_text" value=topicInputText placeholder="Search Topic"}}
-			{{#tooltip-on-component target='#topicTextTootip' }}
-				Search for Topics. If no matching topic is automatically selected, please follow the on-screen instructions.
-			{{/tooltip-on-component}}
-			<div class="topic_search_input">
-				<button class="button_bar_topic" {{action "setTopic"}}>Search</button>
-			</div>
+			{{input class="topic_search_text" value=topicInputText placeholder="Search Topic"}}
+				<div class="topic_search_input">
+					<button class="button_bar_topic" {{action "setTopic"}}>{{topicSearchButttonText}}</button>
+				</div>
 		{{/if}}
 	</form>
-	<div class="topic_tagging">
-		<label>{{topicStatus}}</label>
-	</div>
 	<div class="topic_tagging_settings">
 		{{#link-to "topics.index" id='topicManagementTootip' }}<img src="/assets/small_settings.png">{{/link-to}}
 		{{#tooltip-on-component target='#topicManagementTootip' }}

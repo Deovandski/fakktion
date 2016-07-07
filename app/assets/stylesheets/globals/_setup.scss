@@ -304,7 +304,7 @@ html {
                                 border-width: 3px;
                                 .topic_search {
                                     height: 100%;
-                                    width: 60%;
+                                    width: 95%;
                                     float: left;
                                     height: 100%;
                                     border-top-style: solid;
@@ -327,23 +327,6 @@ html {
                                         background-color: $button-topic-bg;
                                         color: $button-topic-color;
                                         font-weight: bold;
-                                    }
-                                }
-                                .topic_tagging {
-                                    background-color: $button-topic-bg;
-                                    color: $button-topic-color;
-                                    font-weight: bold;
-                                    float: left;
-                                    width: 35%;
-                                    height: 100%;
-                                    border-top-style: solid;
-                                    border-bottom-style: solid;
-                                    border-width: 1px;
-                                    overflow: hidden;
-                                    label {
-                                        font-style: normal;
-                                        overflow: hidden;
-                                        text-overflow: ellipsis;
                                     }
                                 }
                                 .topic_tagging_settings {
@@ -390,6 +373,14 @@ html {
                                 text-align: center;
                             }
                         }
+                    }
+                    .topicsContainer {
+                        background-color: darken($button-topic-bg,10%);
+                        color: $button-topic-color;
+                        text-align: center;
+                        border-top-style: solid;
+                        border-bottom-style: solid;
+                        border-width: 2px;
                     }
                 }
                 footer {
