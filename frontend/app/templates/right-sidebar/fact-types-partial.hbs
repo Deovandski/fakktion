@@ -6,31 +6,16 @@
 		</div>
 		{{#tooltip-on-component target='#factTypeManagementTootip' }}Manage Fact Types.{{/tooltip-on-component}}
 	</div>
-	{{#if showFTP}}
-		<ul class="tag_listing">
-			<li class="tag_listing_search">{{input value=factTypeInputText placeholder="Search Fact Type" class="factTypeInput" id='factTypeInputTextTootip'}}
-				{{#tooltip-on-component target='#factTypeInputTextTootip' }}
-					Search all existing Fact Types with "{{factTypeInputText}}".
-				{{/tooltip-on-component}}
+	<ul class="tag_listing">
+		{{#each model.factTypes as |factType|}}
+			<li>
+				<button class="button_type1_fact_type" {{action "setFactType" factType}}>
+					<div class="tag_selection_container">
+						<label class="tag_name">{{capitalize factType.name}}</label>
+						<label class="tag_posts"> {{counter-styler factType.posts_count}}</label>
+					</div>
+				</button>
 			</li>
-			{{#each filteredFactTypes as |factType|}}
-				<li>
-					<button class="button_type1_fact_type" {{action "setFactType" factType}}>
-						<div class="tag_selection_container">
-							<label class="tag_name">{{capitalize factType.name}}</label>
-							<label class="tag_posts"> {{counter-styler factType.posts_count}}</label>
-						</div>
-					</button>
-				</li>
-			{{/each}}
-		</ul>
-		{{#if noFactTypes}}
-			<div class="tag_no_result_fact_type">No Results</div>
-		{{/if}}
-	{{/if}}
-	<div class="button_toggler">
-		<button class="button_bar" {{action "setFTPV"}}>
-			{{#if showFTP}}Hide{{else}}Show{{/if}}
-		</button>
-	</div>
+		{{/each}}
+	</ul>
 </div>

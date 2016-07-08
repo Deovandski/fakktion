@@ -14,12 +14,6 @@ export default Ember.Controller.extend({
       return false;
     }
   }),
-  nextGenreID: Ember.computed('application.selectedGID', function() {
-    return this.get('application.selectedGID');
-  }),
-  nextGenreName: Ember.computed('application.selectedGN', function() {
-    return this.get('application.selectedGN');
-  }),
   nextFactTypeID: Ember.computed('application.selectedFTID', function() {
     return this.get('application.selectedFTID');
   }),
@@ -101,15 +95,6 @@ export default Ember.Controller.extend({
       }
     }
   }),
-  verifyGenre: Ember.computed('model.genreID', function() {
-    if (this.get('model.genreID') === 0) {
-      this.set('clientSideValidationComplete', false);
-      return "Missing Genre";
-    } else {
-      this.set('clientSideValidationComplete', true);
-      return '';
-    }
-  }),
   verifyFactType: Ember.computed('model.factTypeID', function() {
     if (this.get('model.factTypeID') === 0) {
       this.set('clientSideValidationComplete', false);
@@ -155,9 +140,6 @@ export default Ember.Controller.extend({
           }
           if (this.get('nextTopicID') !== 0) {
             post.set('topic', store.peekRecord('topic', this.get('nextTopicID')));
-          }
-          if (this.get('nextGenreID') !== 0) {
-            post.set('genre', store.peekRecord('genre', this.get('nextGenreID')));
           }
           if (this.get('nextFactTypeID') !== 0) {
             post.set('fact_type', store.peekRecord('fact_type', this.get('nextFactTypeID')));

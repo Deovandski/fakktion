@@ -19,11 +19,6 @@
   </div>
   <br/>
   <div class="input_block_type1">
-    <label class="first_label">Genre:</label>
-    <label class="input_wrapper">{{input value=model.genre.name disabled=true}}</label>
-  </div>
-  <br/>
-  <div class="input_block_type1">
     <label class="first_label">Fact Type:</label>
     <label class="input_wrapper">{{input value=model.fact_type.name disabled=true}}</label>
   </div>
@@ -44,12 +39,6 @@
       <label class="first_label">
         <button class="button_type1_normal" {{action "setChangeTags" false}}>Cancel Tags Update</button>
       </label>
-    </div>
-    <br/>
-    <div class="input_block_type1">
-      <label class="first_label">New Genre:</label>
-      <label class="input_wrapper">{{input value=nextGenreName disabled=true}}</label>
-      <label class="second_label">{{verifyGenre}}</label>
     </div>
     <br/>
     <div class="input_block_type1">

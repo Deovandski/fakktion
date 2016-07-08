@@ -21,7 +21,6 @@ export default DS.Model.extend({
     async: true
   }),
   user: DS.belongsTo('user'),
-  genre: DS.belongsTo('genre'),
   fact_type: DS.belongsTo('fact_type'),
   category: DS.belongsTo('category'),
   topic: DS.belongsTo('topic')

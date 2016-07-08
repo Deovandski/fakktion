@@ -13,7 +13,7 @@ class ApiController < ApplicationController
     if routine_check
       resource_obj = resource_model.new(resource_params)
       # Only allow resource creation if the user reputation is in good standing depending on the Level ban. See Fakktion Issue #17
-      if resource_model == FactType || resource_model == InnerComment || resource_model == Genre || resource_model == Topic || resource_model == Category
+      if resource_model == FactType || resource_model == InnerComment || resource_model == Topic || resource_model == Category
         if current_user.reputation < -100
           return render json: {}, status: :forbidden
         else
@@ -51,7 +51,7 @@ class ApiController < ApplicationController
   # Shared Update API method used by Tags and InnerComment
   def json_update(resource_obj,resource_params, resource_model)
     if routine_check
-      if resource_model == FactType || resource_model == Genre || resource_model == Topic || resource_model == Category
+      if resource_model == FactType || resource_model == Topic || resource_model == Category
         if current_user.reputation < 1500
           return render json: {}, status: :forbidden
         else

@@ -91,20 +91,11 @@ export default Ember.Controller.extend({
       return "http(s)://www.example.com";
     }
   }),
-  allTagsValid: Ember.computed('application.selectedGenre.id', 'application.selectedFactType.id', 'application.selectedCategory.id', 'application.selectedTopic.id', function() {
-    if (this.get('application.selectedGenre.id') > 0 && this.get('application.selectedFactType.id') > 0 && this.get('application.selectedCategory.id') > 0 && this.get('application.selectedTopic.id') > 0) {
+  allTagsValid: Ember.computed('application.selectedFactType.id', 'application.selectedCategory.id', 'application.selectedTopic.id', function() {
+    if (this.get('application.selectedFactType.id') > 0 && this.get('application.selectedCategory.id') > 0 && this.get('application.selectedTopic.id') > 0) {
       return true;
     } else {
       return false;
-    }
-  }),
-  verifyGenre: Ember.computed('application.selectedGenre.id', function() {
-    if (this.get('application.selectedGenre.id') > 0) {
-      this.set('clientSideValidationComplete', true);
-      return false;
-    } else {
-      this.set('clientSideValidationComplete', false);
-      return true;
     }
   }),
   verifyFactType: Ember.computed('application.selectedFactType.id', function() {
@@ -145,7 +136,6 @@ export default Ember.Controller.extend({
           fiction_link: this.get('fictionLink'),
           comments_count: 0,
           user: store.peekRecord('user', this.get('sessionAccount.user.id')),
-          genre: store.peekRecord('genre', this.get('application.selectedGenre.id')),
           fact_type: store.peekRecord('fact_type', this.get('application.selectedFactType.id')),
           topic: store.peekRecord('topic', this.get('application.selectedTopic.id')),
           category: store.peekRecord('category', this.get('application.selectedCategory.id'))

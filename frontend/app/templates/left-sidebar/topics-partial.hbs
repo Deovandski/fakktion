@@ -1,0 +1,21 @@
+<div class="sidebar_sub">
+	<div class="tag_header">
+		<h5>Topics</h5>
+		<div class="management_link">
+			{{#link-to "topics.index" id='topicManagementTootip' }}<img src="/assets/small_settings.png">{{/link-to}}
+		</div>
+		{{#tooltip-on-component target='#topicManagementTootip' }}Manage Topics.{{/tooltip-on-component}}
+	</div>
+	<ul class="tag_listing">
+		{{#each model.topics as |topic|}}
+			<li>
+				<button class="button_type1_genre" {{action "setTopic" topic}}>
+					<div class="tag_selection_container">
+						<label class="tag_name">{{capitalize topic.name}}</label>
+						<label class="tag_posts"> {{counter-styler topic.posts_count}}</label>
+					</div>
+				</button>
+			</li>
+		{{/each}}
+	</ul>
+</div>

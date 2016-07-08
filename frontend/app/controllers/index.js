@@ -17,13 +17,11 @@ export default Ember.Controller.extend({
       return false;
     }
   }),
-  filteredPosts: Ember.computed('application.selectedGenre',
-    'application.selectedCategory', 'application.selectedFactType',
+  filteredPosts: Ember.computed('application.selectedCategory', 'application.selectedFactType',
     'application.selectedTopic', 'application.selectedPDID',
     function() {
       // Get variables from ApplicationController
       var tempPosts = this.model;
-      var genreID = parseInt(this.get('application.selectedGenre.id'));
       var factTypeID = parseInt(this.get('application.selectedFactType.id'));
       var categoryID = parseInt(this.get('application.selectedCategory.id'));
       var topicID = parseInt(this.get('application.selectedTopic.id'));
@@ -32,18 +30,12 @@ export default Ember.Controller.extend({
       /*
       // DEBUG
       console.log('Variables Debug: ');
-      console.log('genreID DEBUG: ' + genreID);
       console.log('factTypeID DEBUG: ' + factTypeID);
       console.log('categoryID DEBUG: ' + categoryID);
       console.log('topicID DEBUG: ' + topicID);
       console.log('postDateID DEBUG: ' + postDateID);
       console.log('Filter called');
       */
-
-      if (genreID > 0) {
-        tempPosts = tempPosts.filterBy('genre_id', genreID);
-      }
-
       if (factTypeID > 0) {
         tempPosts = tempPosts.filterBy('fact_type_id', factTypeID);
       }

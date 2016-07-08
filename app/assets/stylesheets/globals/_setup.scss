@@ -215,9 +215,6 @@ html {
                                     .factTypeInput {
                                         color: $button-fact-type-bg;
                                     }
-                                    .genreInput {
-                                        color: $button-genre-bg;
-                                    }
                                     .categoryInput {
                                         color: $button-category-bg;
                                     }
@@ -226,15 +223,6 @@ html {
                                     margin-top: 4px;
                                     margin-bottom: 4px;
                                 }
-                            }
-                            .tag_no_result_genre {
-                                flex: 1;
-                                height: 25px;
-                                width: 100%;
-                                margin-top: 3px;
-                                margin-bottom: 3px;
-                                text-align: center;
-                                color: $button-genre-bg;
                             }
                             .tag_no_result_category {
                                 flex: 1;
@@ -271,96 +259,6 @@ html {
                         text-align: center;
                         border-width: 3px;
                         padding-bottom: 20px;
-                        .central_panel {
-                            width: auto;
-                            max-width: 630px;
-                            height: 80px;
-                            border-bottom-style: solid;
-                            border-left-style: solid;
-                            border-right-style: solid;
-                            border-width: 2px;
-                            margin-left: auto;
-                            margin-right: auto;
-                            .central_upper_panel {
-                                height: 30px;
-                                width: 100%;
-                                display: flex;
-                                .central_upper_panel_sub {
-                                    flex-direction: row;
-                                    font-style: normal;
-                                    overflow: hidden;
-                                    text-overflow: ellipsis;
-                                    width: 25%;
-                                    height: 100%;
-                                    border-right-style: solid;
-                                    border-bottom-style: solid;
-                                    border-width: 1px;
-                                }
-                            }
-                            .central_lower_panel {
-                                height: 50px;
-                                width: 100%;
-                                border-bottom-style: solid;
-                                border-width: 3px;
-                                .topic_search {
-                                    height: 100%;
-                                    width: 95%;
-                                    float: left;
-                                    height: 100%;
-                                    border-top-style: solid;
-                                    border-bottom-style: solid;
-                                    border-width: 1px;
-                                    .topic_search_input {
-                                        height: 100%;
-                                        width: 30%;
-                                        float: left;
-                                        border-left-style: solid;
-                                        border-right-style: solid;
-                                        background-color: $button-topic-bg;
-                                        color: $button-topic-color;
-                                        font-weight: bold;
-                                    }
-                                    .topic_search_text {
-                                        height: 100%;
-                                        width: 70%;
-                                        float: left;
-                                        background-color: $button-topic-bg;
-                                        color: $button-topic-color;
-                                        font-weight: bold;
-                                    }
-                                }
-                                .topic_tagging_settings {
-                                    background-color: $button-topic-bg;
-                                    color: $button-topic-color;
-                                    float: left;
-                                    width: 5%;
-                                    height: 100%;
-                                    border-top-style: solid;
-                                    border-bottom-style: solid;
-                                    border-width: 1px;
-                                    img {
-                                        width: 100%;
-                                        height: auto;
-                                    }
-                                }
-                            }
-                        }
-                        .panel_toggler {
-                            width: auto;
-                            max-width: 310px;
-                            height: 20px;
-                            margin: 10px auto;
-                            .pannel_container {
-                                display: flex;
-                                button {
-                                    flex-grow: 1;
-                                    flex-direction: column;
-                                    flex-wrap: wrap;
-                                    width: auto;
-                                    margin: 2px 5px;
-                                }
-                            }
-                        }
                         .shared_panel {
                             min-height: 100%;
                             max-width: 900px;
