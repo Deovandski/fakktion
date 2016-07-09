@@ -71,11 +71,6 @@ input[type="submit"] {
     @include button_type1_smallest;
 }
 /* Tag Specific buttons */
-.button_type1_genre,
-button_type1_genre,
-input[type="submit"] {
-    @include button_type1_genre;
-}
 .button_type1_fact_type,
 button_type1_fact_type,
 input[type="submit"] {
@@ -100,11 +95,6 @@ input[type="submit"] {
 button_type1_topic_small,
 input[type="submit"] {
     @include button_type1_topic_small;
-}
-.button_bar_genre,
-button_bar_genre,
-input[type="submit"] {
-    @include button_bar_genre;
 }
 .button_bar_fact_type,
 button_bar_fact_type,

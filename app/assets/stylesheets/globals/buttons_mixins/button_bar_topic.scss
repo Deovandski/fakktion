@@ -2,8 +2,8 @@
     width: 100%;
     height: 100%;
     @include appearance(none);
-    background-color: darken($button-topic-bg, 15%);
-    border: 1px solid darken($button-topic-bg, 15%);
+    background-color: darken($button-topic-bg, 5%);
+    border: 1px solid darken($button-topic-bg, 5%);
     color: $button-topic-color;
     cursor: pointer;
     display: inline-block;

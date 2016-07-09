@@ -1,32 +1,32 @@
 @mixin button_type1_topic() {
      @include appearance(none);
-    background-color: $button-topic-bg;
-    border: 1px solid $button-topic-bg;
+    background-color: darken($button-topic-bg, 5%);
+    border: 1px solid darken($button-topic-bg, 5%);
     border-radius: $base-border-radius;
     box-shadow: 0 1px 2px rgba(#000, 0.4);
     color: $button-topic-color;
     cursor: pointer;
     display: inline-block;
     font-size: 14px;
-    font-weight: bold;
     outline: none;
-    padding: 0.5em 0.7em;
     text-align: center;
     text-decoration: none;
     user-select: none;
     vertical-align: middle;
     white-space: nowrap;
     -webkit-font-smoothing: antialiased;
+    width: 90%;
+    padding: 0;
+    margin-top: 1px;
+    margin-bottom: 1.5px;
     &:hover {
         background-color: lighten($button-topic-bg, 2%);
         border-color: lighten($button-topic-bg, 2%);
-        color: $button-topic-color;
     }
     &:active {
         background-color: $button-topic-bg;
         border-color: $button-topic-bg;
         box-shadow: 0 1px 2px rgba(#000, 0.2);
-        color: $button-topic-color;
     }
     &.animate {
         @include transition(all 0.2s ease);

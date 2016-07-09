@@ -9,10 +9,10 @@
 	<ul class="tag_listing">
 		{{#each model.topics as |topic|}}
 			<li>
-				<button class="button_type1_genre" {{action "setTopic" topic}}>
+				<button class="button_type1_topic" {{action "setTopic" topic}}>
 					<div class="tag_selection_container">
-						<label class="tag_name">{{capitalize topic.name}}</label>
-						<label class="tag_posts"> {{counter-styler topic.posts_count}}</label>
+						<label class="tag_name darkText">{{capitalize topic.name}}</label>
+						<label class="tag_posts darkText"> {{counter-styler topic.posts_count}}</label>
 					</div>
 				</button>
 			</li>

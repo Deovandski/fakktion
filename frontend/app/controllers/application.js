@@ -113,7 +113,6 @@ export default Ember.Controller.extend ({
       this.set('selectedPDID', varDayType);
       this.set('selectedPDN', varDayName);
     },
-    // Panel Controls
     clearFactType: function() {
       this.set('selectedFactType', null);
       this.send('clearPostDate');
@@ -122,7 +121,7 @@ export default Ember.Controller.extend ({
       this.set('selectedCategory', null);
       this.send('clearTopic');
     },
-    clearTopic: function(cleanType) {
+    clearTopic: function() {
       this.set('selectedTopic', null);
     },
     clearPostDate: function() {
@@ -130,10 +129,10 @@ export default Ember.Controller.extend ({
       this.set('selectedPDN', 'None');
     },
     goHome : function(){
-        this.transitionToRoute('index');
+      this.transitionToRoute('index');
     },
     goSearch : function(){
-        this.transitionToRoute('users');
+      this.transitionToRoute('users');
     },
     logout() {
       this.get('session').invalidate();
