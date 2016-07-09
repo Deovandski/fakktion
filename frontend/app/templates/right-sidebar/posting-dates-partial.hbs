@@ -1,13 +1,6 @@
 <div class="sidebar_sub">
 	<h5 class="tag_h5">Posting Dates</h5>
-	{{#if showPDP}}
-		<ul class="tag_listing">
-			{{partial 'right-sidebar/posting-dates-inputs-partial'}}
-		</ul>
-	{{/if}}
-	<div class="button_toggler">
-		<button class="button_bar" {{action "setPDPV"}}>
-			{{#if showFTP}}Hide{{else}}Show{{/if}}
-		</button>
-	</div>
+	<ul class="tag_listing">
+		{{partial 'right-sidebar/posting-dates-inputs-partial'}}
+	</ul>
 </div>

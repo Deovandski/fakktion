@@ -1,12 +1,10 @@
 import Ember from "ember";
-const {
-  service
-} = Ember.inject;
+const { service } = Ember.inject;
 
 export default Ember.Controller.extend({
-  application: Ember.inject.controller('application'),
   session: service('session'),
   sessionAccount: service('session-account'),
+  categoryInputText: "",
   isBanned: Ember.computed('sessionAccount.user.reputation', function() {
     if (this.get('sessionAccount.user.reputation') < -100) {
       return true;
@@ -14,19 +12,19 @@ export default Ember.Controller.extend({
       return false;
     }
   }),
-  searchingTag: Ember.computed('application.categoryInputText', function() {
-    if (this.get('application.categoryInputText').length > 0) {
+  searchingTag: Ember.computed('categoryInputText', function() {
+    if (this.get('categoryInputText').length > 0) {
       return true;
     } else {
       return false;
     }
   }),
-  filteredTags: Ember.computed('application.categoryInputText', function() {
-    if (this.get('application.categoryInputText') === '') {
+  filteredTags: Ember.computed('categoryInputText', function() {
+    if (this.get('categoryInputText') === '') {
       this.set('noTags', false);
       return this.get('model');
     } else {
-      var rx = new RegExp(this.get('application.categoryInputText').toLowerCase());
+      var rx = new RegExp(this.get('categoryInputText').toLowerCase());
       var filteredTags = this.model.filter(function(tag) {
         return tag.get('name').match(rx);
       });
@@ -41,7 +39,7 @@ export default Ember.Controller.extend({
   }),
   actions: {
     clearTagSearchText: function() {
-      this.set('application.categoryInputText', '');
+      this.set('categoryInputText', '');
     }
   }
 });

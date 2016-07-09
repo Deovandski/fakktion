@@ -3,60 +3,35 @@
     {{partial 'header'}}
   </header>
   <main>
-    {{#if displayLeftSidebar}}
-      <div class="left_sidebar">
-        {{partial 'left-sidebar/categories-partial'}} {{partial 'left-sidebar/genres-partial'}}
-      </div>
-    {{else}}
-
-    {{/if}}
-    <div class="central">
-      {{#if displayCentralPanel}}
-        <div class="central_panel">
-          {{partial 'central-panel/central-panel-partial'}}
-        </div>
+    <div class="left_sidebar">
+    	<h4>Fiction</h4>
+      {{#if isCategorySelected}}
+        {{partial 'left-sidebar/selected-category-partial'}}
+        {{#if isTopicSelected}}
+          {{partial 'left-sidebar/selected-topic-partial'}}
+        {{else}}
+          {{partial 'left-sidebar/topics-partial'}}
+        {{/if}}
+      {{else}}
+        {{partial 'left-sidebar/categories-partial'}}
       {{/if}}
-      {{#if showPossibleTopics}}
-        <div class="topicsContainer">
-            <div class="topic_selection">
-              <h5>Search Topic 	<button class="button_type1_small" {{action "clearTopic"}}>Hide</button></h5>
-
-              {{#if noTags}}
-                <h5>No topics containing "{{topicInputText}}" found.</h5>
-                <p>Please refine or clear your search to see all topics, or select the topics management button to create one.</p>
-              {{else}}
-                <h5>Tag Name | Set as search topic</h5>
-              {{/if}}
-              <ul class="flex_topics_display_redux">
-                {{#each filteredTags as |tag|}}
-                  <li>
-                    <label class="flex_tags_display_name_redux">{{capitalize tag.name}}</label>
-                    <button class="button_type1_topic_small" {{action "setTopic" tag}}>Set Topic</button>
-                  </li>
-                {{/each}}
-              </ul>
-            </div>
-        </div>
-    {{/if}}
-      <div class="panel_toggler">
-        <div class="pannel_container">
-          <button class="button_bar" {{action "toggleLeftSidebar"}}>Left Panel</button>
-          <button class="button_bar" {{action "toggleCentralPanel"}}>Upper Panel</button>
-          <button class="button_bar" {{action "toggleRightSidebar"}}>Right Panel</button>
-        </div>
-      </div>
-      <div class="shared_panel">
-        {{outlet}}
-      </div>
     </div>
-
-    {{#if displayRightSidebar}}
-      <div class="right_sidebar">
-        {{partial 'right-sidebar/fact-types-partial'}} {{partial 'right-sidebar/posting-dates-partial'}}
-      </div>
-    {{else}}
-
-    {{/if}}
+    <div class="shared_panel">
+      {{outlet}}
+    </div>
+    <div class="right_sidebar">
+    	<h4>Fact</h4>
+      {{#if isFactTypeSelected}}
+        {{partial 'right-sidebar/selected-fact-type-partial'}}
+        {{#if isPostingDateSelected}}
+          {{partial 'right-sidebar/selected-posting-date-partial'}}
+        {{else}}
+          {{partial 'right-sidebar/posting-dates-partial'}}
+        {{/if}}
+      {{else}}
+        {{partial 'right-sidebar/fact-types-partial'}}
+      {{/if}}
+    </div>
   </main>
   <footer>
     {{partial 'footer'}}

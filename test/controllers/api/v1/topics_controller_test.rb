@@ -118,12 +118,11 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     end
   end
   test "Topics - ACTIVE RECORD - CANNOT DELETE" do
-    genre = Genre.first
     topic = Topic.first
     factType = FactType.first
     category = Category.first
     topic = Topic.first
-    testPost = Post.new(user_id: @user.id, genre_id: genre.id, category_id: category.id, fact_type_id: factType.id, topic_id: topic.id,
+    testPost = Post.new(user_id: @user.id, category_id: category.id, fact_type_id: factType.id, topic_id: topic.id,
     views_count: 0,
     comments_count: 0,
     fact_link: "https://www.google.com",

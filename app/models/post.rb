@@ -4,7 +4,7 @@ class Post < ActiveRecord::Base
   before_save :normalize_input
   before_destroy :check_for_comments
   # Validations
-  validates_presence_of :fact_link, :fiction_link, :text, :title, :user_id, :genre_id, :topic_id, :fact_type_id, :category_id
+  validates_presence_of :fact_link, :fiction_link, :text, :title, :user_id, :topic_id, :fact_type_id, :category_id
 
   # Attributes Length Validations
   validates :title, length: {minimum: 10}
@@ -19,7 +19,6 @@ class Post < ActiveRecord::Base
   # Relationships
   has_many :comments
   belongs_to :user, :counter_cache => true
-  belongs_to :genre, :counter_cache => true
   belongs_to :topic, :counter_cache => true
   belongs_to :fact_type, :counter_cache => true
   belongs_to :category, :counter_cache => true
