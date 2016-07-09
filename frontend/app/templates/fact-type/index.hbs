@@ -5,7 +5,7 @@
 {{#if session.isAuthenticated}}
   {{#if sessionAccount.user.is_admin}}
     <p class="center_text">
-      {{#link-to 'genre.edit' class="button_type1_normal" }}Edit Fact Type{{/link-to}}
+      {{#link-to 'factType.edit' class="button_type1_normal" }}Edit Fact Type{{/link-to}}
     </p>
   {{else}}
     <label class="login_required_warning">Only Admins can edit</label>
