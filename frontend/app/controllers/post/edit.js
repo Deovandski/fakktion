@@ -33,9 +33,9 @@ export default Ember.Controller.extend({
     return this.get('application.selectedTN');
   }),
   verifyTitle: Ember.computed('model.title', function() {
-    if (this.get('model.title').length < 10) {
+    if (this.get('model.title').length < 1) {
       this.set('clientSideValidationComplete', false);
-      return "Too short";
+      return "Min 1 char";
     } else if (this.get('model.title').length > 100) {
       this.set('clientSideValidationComplete', false);
       return "Max 100 Chars.";
@@ -45,9 +45,9 @@ export default Ember.Controller.extend({
     }
   }),
   verifyText: Ember.computed('model.text', function() {
-    if (this.get('model.text').length < 100) {
+    if (this.get('model.text').length < 1) {
       this.set('clientSideValidationComplete', false);
-      return "100 Min Characters...";
+      return "1 Min Character...";
     } else if (this.get('model.text').length > 2000) {
       this.set('clientSideValidationComplete', false);
       return "2000 Max Characters. Please revise your input!";
