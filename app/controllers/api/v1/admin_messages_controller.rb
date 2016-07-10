@@ -4,7 +4,7 @@
 #
 #  # Render all AdminMessages using AdminMessageSerializer.
 #  def index
-#    json_render_all(AdminMessage, :created_at)
+#  render json: AdminMessages.all
 #  end
 #
 #  # Render the specified AdminMessage using AdminMessageSerializer.

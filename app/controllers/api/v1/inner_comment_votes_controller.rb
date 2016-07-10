@@ -4,7 +4,7 @@ class Api::V1::InnerCommentVotesController < ApiController
 
   # Render all Inner Comment Votes using InnerCommentVoteSerializer, and organize them by user_id
   def index
-    json_render_all(InnerCommentVote, :user_id)
+    render json: InnerCommentVote.order('user_id ASC').all
   end
 
   # render specified innerCommentVote using InnerCommentVoteSerializer.
