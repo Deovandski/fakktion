@@ -4,7 +4,7 @@ class Api::V1::UsersController < ApiController
 
   # Render all Users using UserSerializer.
   def index
-    json_render_all(User, :display_name)
+    render json: User.order('display_name ASC').all
   end
 
   # Render the specified User using UserSerializer.

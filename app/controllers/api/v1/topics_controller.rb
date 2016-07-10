@@ -4,7 +4,7 @@ class Api::V1::TopicsController < ApiController
 
   # Render all Topics using TopicSerializer.
   def index
-    json_render_all(Topic, :name)
+    render json: Topic.order('name ASC').all
   end
 
   # Render the specified Topic using TopicSerializer.
