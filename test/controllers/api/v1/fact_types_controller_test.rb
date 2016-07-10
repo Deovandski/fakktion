@@ -122,7 +122,10 @@ class Api::V1::FactTypesControllerTest < ActionController::TestCase
     factType = FactType.first
     category = Category.first
     topic = Topic.first
-    testPost = Post.new(user_id: @user.id, category_id: category.id, fact_type_id: factType.id, topic_id: topic.id,
+    testPost = Post.new(user: @user,
+    category: category,
+    fact_type: factType,
+    topic: topic,
     views_count: 0,
     comments_count: 0,
     fact_link: "https://www.google.com",
