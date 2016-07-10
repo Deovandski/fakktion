@@ -4,9 +4,6 @@ class ApiController < ApplicationController
 
   # Shared JSON API render methods.
   protected
-  def json_render_all(resource_model, _sortParam)
-      return render json: resource_model.all.sort_by{|x| x[:sortParam]}
-  end
 
   # Shared create API method used by Tags and InnerComment
   def json_create(resource_params, resource_model)

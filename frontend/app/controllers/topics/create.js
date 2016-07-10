@@ -18,9 +18,9 @@ export default Ember.Controller.extend({
     if (this.get('name').length === 0) {
       this.set('clientSideValidationComplete', false);
       return 'Cannot be empty';
-    } else if (this.get('name').length < 4) {
+    } else if (this.get('name').length < 1) {
       this.set('clientSideValidationComplete', false);
-      return 'Min 4 characters.';
+      return 'Min 1 Char.';
     } else if (this.get('name').length > 20) {
       this.set('clientSideValidationComplete', false);
       return 'Max 20 characters.';

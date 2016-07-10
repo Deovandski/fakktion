@@ -63,8 +63,8 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
   end
   test "Topics - API - UPDATE 401" do
     sign_out @user
-    topic = Topic.find_by name: 'hatsune miku'
-    topic1 = Topic.find_by name: 'megurine luka'
+    topic = Topic.find_by name: 'vocaloid'
+    topic1 = Topic.find_by name: 'action'
     topic.name = "mikuchan"
     topic1.name = "mikuchan"
     tempTopic = ActiveModelSerializers::SerializableResource.new(topic).serializable_hash
@@ -78,8 +78,8 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     @user.reputation = -1500
     @user.save
     sign_in @user
-    topic = Topic.find_by name: 'hatsune miku'
-    topic1 = Topic.find_by name: 'megurine luka'
+    topic = Topic.find_by name: 'vocaloid'
+    topic1 = Topic.find_by name: 'action'
     topic.name = "mikuchan"
     topic1.name = "mikuchan"
     tempTopic = ActiveModelSerializers::SerializableResource.new(topic).serializable_hash
@@ -89,8 +89,8 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     assert_response(403)
   end
   test "Topics - API - UPDATE 422" do
-    topic = Topic.find_by name: 'hatsune miku'
-    topic1 = Topic.find_by name: 'megurine luka'
+    topic = Topic.find_by name: 'vocaloid'
+    topic1 = Topic.find_by name: 'action'
     topic.name = "mikuchan"
     topic1.name = "mikuchan"
     tempTopic = ActiveModelSerializers::SerializableResource.new(topic).serializable_hash
@@ -105,7 +105,7 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     end
   end
   test "Topics - API - DELETE 405" do
-    topic = Topic.find_by name: 'hatsune miku'
+    topic = Topic.find_by name: 'vocaloid'
     post = Post.first
     post.topic = topic
     post.save
@@ -121,8 +121,10 @@ class Api::V1::TopicsControllerTest < ActionController::TestCase
     topic = Topic.first
     factType = FactType.first
     category = Category.first
-    topic = Topic.first
-    testPost = Post.new(user_id: @user.id, category_id: category.id, fact_type_id: factType.id, topic_id: topic.id,
+    testPost = Post.new(user: @user,
+    category: category,
+    fact_type: factType,
+    topic: topic,
     views_count: 0,
     comments_count: 0,
     fact_link: "https://www.google.com",

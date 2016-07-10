@@ -67,8 +67,8 @@ export default Ember.Controller.extend ({
     if(this.get('model.text').length === 0) {
       return '';
     }
-    else if(this.get('model.text').length < 25) {
-      return 'At least 25 chars.';
+    else if(this.get('model.text').length < 1) {
+      return 'At least 1 Char.';
     }
     else if(this.get('model.text').length > 500) {
       this.set('clientSideValidationComplete',false);

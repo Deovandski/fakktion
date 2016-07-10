@@ -4,7 +4,7 @@ class Api::V1::CategoriesController < ApiController
 
   # Render all Categories using CategoriesSerializer.
   def index
-    json_render_all(Category, :name)
+    render json: Category.order('name ASC').all
   end
 
   # Render the specified Category using CategoriesSerializer.

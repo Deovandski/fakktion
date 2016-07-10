@@ -11,8 +11,8 @@ export default Ember.Controller.extend ({
     if(this.get('text').length === 0) {
       return '';
     }
-    else if(this.get('text').length < 25) {
-      return 'At least 25 chars.';
+    else if(this.get('text').length < 1) {
+      return 'At least 1 char.';
     }
     else if(this.get('text').length > 1000) {
       return 'At most 1000 chars.';
