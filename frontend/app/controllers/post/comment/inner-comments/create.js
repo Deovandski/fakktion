@@ -61,7 +61,7 @@ export default Ember.Controller.extend ({
         });
       }
       else {
-        alert("(Client 402) Failed to create Comment... Check any warning messages (to the right of each textbox) otherwise contact support if you don't see any");
+        alert("Please check any outstanding warning message(s), and try again!");
       }
     }
   }

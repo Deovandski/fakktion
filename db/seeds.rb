@@ -114,8 +114,6 @@ if FactType.count != 0
   Rails.logger.info 'There are fact types already...'
 else
   FactType.create!(name: 'Television')
-  FactType.create!(name: 'Radio')
-  FactType.create!(name: 'Newspaper')
   FactType.create!(name: 'Business')
   FactType.create!(name: 'Immigration')
   FactType.create!(name: 'Environment')
