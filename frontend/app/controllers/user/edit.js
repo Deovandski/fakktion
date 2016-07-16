@@ -325,7 +325,7 @@ export default Ember.Controller.extend({
           }
         }).catch((reason) => {
           console.log(reason);
-          alert('Server rejected the attempt.');
+          alert('Server rejected the attempt. If editing your email/password, your current password may be wrong. If not, then make sure to click "cancel changes" if you opened the change email or password tab.');
         });
       } else {
         alert("Please check any outstanding warning message(s), and try again!");

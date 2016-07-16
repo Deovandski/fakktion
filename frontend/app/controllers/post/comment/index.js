@@ -79,7 +79,7 @@ export default Ember.Controller.extend ({
     }
   }),
   validComment: Ember.computed('model.text', function() {
-    if(this.get('model.text').length < 10) {
+    if(this.get('model.text').length < 1) {
       this.set('clientSideValidationComplete',false);
       return false;
     }

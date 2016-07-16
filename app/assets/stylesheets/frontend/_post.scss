@@ -65,7 +65,7 @@
 .post_tags_info_container {
     @extend .post_more_info_container;
     height: auto;
-    .three_row_container{
+    .three_row_container {
         @extend .row_container;
     }
 }
@@ -82,4 +82,16 @@
 }
 .title_edit {
     margin-left: 5px;
+}
+.category_tag_info {
+    color: $button-category-bg;
+    font-weight: bolder;
+}
+.fact_type_tag_info {
+    color: $button-fact-type-bg;
+    font-weight: bolder;
+}
+.topic_tag_info {
+    color: $button-topic-bg;
+    font-weight: bolder;
 }

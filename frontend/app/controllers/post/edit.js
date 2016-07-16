@@ -14,24 +14,6 @@ export default Ember.Controller.extend({
       return false;
     }
   }),
-  nextFactTypeID: Ember.computed('application.selectedFTID', function() {
-    return this.get('application.selectedFTID');
-  }),
-  nextFactTypeName: Ember.computed('application.selectedFTN', function() {
-    return this.get('application.selectedFTN');
-  }),
-  nextCategoryID: Ember.computed('application.selectedCID', function() {
-    return this.get('application.selectedCID');
-  }),
-  nextCategoryName: Ember.computed('application.selectedCN', function() {
-    return this.get('application.selectedCN');
-  }),
-  nextTopicID: Ember.computed('application.selectedTID', function() {
-    return this.get('application.selectedTID');
-  }),
-  nextTopicName: Ember.computed('application.selectedTN', function() {
-    return this.get('application.selectedTN');
-  }),
   verifyTitle: Ember.computed('model.title', function() {
     if (this.get('model.title').length < 1) {
       this.set('clientSideValidationComplete', false);
@@ -135,14 +117,14 @@ export default Ember.Controller.extend({
         var post = this.get('content');
         if (this.get('changeTags') === true) {
           var store = this.store;
-          if (this.get('nextCategoryID') !== 0) {
-            post.set('category', store.peekRecord('category', this.get('nextCategoryID')));
+          if (this.get('application.selectedCategory.id') !== 0) {
+            post.set('category', store.peekRecord('category', this.get('application.selectedCategory.id')));
           }
-          if (this.get('nextTopicID') !== 0) {
-            post.set('topic', store.peekRecord('topic', this.get('nextTopicID')));
+          if (this.get('application.selectedTopic.id') !== 0) {
+            post.set('topic', store.peekRecord('topic', this.get('application.selectedTopic.id')));
           }
-          if (this.get('nextFactTypeID') !== 0) {
-            post.set('fact_type', store.peekRecord('fact_type', this.get('nextFactTypeID')));
+          if (this.get('application.selectedFactType.id') !== 0) {
+            post.set('fact_type', store.peekRecord('fact_type', this.get('application.selectedFactType.id')));
           }
         }
         var controller = this;

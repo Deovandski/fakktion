@@ -22,7 +22,7 @@ export default Ember.Controller.extend ({
     }
   }),
   validComment: Ember.computed('text', function() {
-    if(this.get('text').length < 25) {
+    if(this.get('text').length < 1) {
       this.set('clientSideValidationComplete',false);
       return false;
     }

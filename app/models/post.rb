@@ -9,11 +9,11 @@ class Post < ActiveRecord::Base
   # Attributes Length Validations
   validates :title, length: {minimum: 10}
   validates :title, length: {maximum: 100}
-  validates :text, length: {minimum: 100}
+  validates :text, length: {minimum: 1}
   validates :text, length: {maximum: 2000}
-  validates :fact_link, length: {minimum: 8}
+  validates :fact_link, length: {minimum: 5}
   validates :fact_link, length: {maximum: 150}
-  validates :fiction_link, length: {minimum: 8}
+  validates :fiction_link, length: {minimum: 5}
   validates :fiction_link, length: {maximum: 150}
 
   # Relationships
