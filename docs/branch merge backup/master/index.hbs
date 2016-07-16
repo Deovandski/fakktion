@@ -1,0 +1,35 @@
+{{partial 'notices/defaultNotice'}}
+
+<div class="posts_info">
+  <ul>
+    <li>
+      <label class="label_title_header"><strong>Showing {{filteredPosts.length}} Posts</strong></label>
+      <label class="label_views_header"><img height="15px" src="/assets/views.svg"></label>
+      <label class="label_comments_count_header"><img height="15px" src="/assets/comments.png"></label>
+    </li>
+    {{#each filteredPosts as |post|}}
+      <li>
+        <label class="label_title">
+          {{#link-to 'post' post}}{{capitalize post.title}}{{/link-to}}
+        </label>
+        <label class="label_views">
+          {{counter-styler post.views_count}}
+        </label>
+        <label class="label_comments_count">
+          {{counter-styler post.comments_count}}
+        </label>
+      </li>
+    {{/each}}
+  </ul>
+  {{#if session.isAuthenticated}}
+    {{#if isBanned}}
+      <p class="login_required_warning">You cannot create Posts due to your reputation!</p>
+    {{else}}
+      {{#link-to 'posts.create' class="button_type1_normal" }}Create Post{{/link-to}}
+    {{/if}}
+  {{else}}
+    <p class="login_required_warning">Please login to create a Post</p>
+  {{/if}}
+</div>
+
+{{outlet}}
