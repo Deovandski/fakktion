@@ -6,7 +6,7 @@ class InnerComment < ActiveRecord::Base
   validates_presence_of :empathy_level, :text, :user_id, :comment_id
 
   # Attributes Length Validations
-  validates :text, length: {minimum: 25}
+  validates :text, length: {minimum: 1}
   validates :text, length: {maximum: 500}
 
   # Relationships

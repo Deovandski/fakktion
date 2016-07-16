@@ -11,7 +11,6 @@ export default DS.Model.extend({
   comments_count: DS.attr('number'),
   // Index filter purposes... See Ember Data #1865
   user_id: DS.attr('number'),
-  genre_id: DS.attr('number'),
   topic_id: DS.attr('number'),
   category_id: DS.attr('number'),
   fact_type_id: DS.attr('number'),
@@ -21,7 +20,6 @@ export default DS.Model.extend({
     async: true
   }),
   user: DS.belongsTo('user'),
-  genre: DS.belongsTo('genre'),
   fact_type: DS.belongsTo('fact_type'),
   category: DS.belongsTo('category'),
   topic: DS.belongsTo('topic')

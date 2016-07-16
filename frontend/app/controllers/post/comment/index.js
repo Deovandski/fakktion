@@ -64,9 +64,9 @@ export default Ember.Controller.extend ({
     }
   }),
   verifyText: Ember.computed('model.text', function() {
-    if(this.get('model.text').length < 25) {
+    if(this.get('model.text').length < 1) {
       this.set('clientSideValidationComplete',false);
-      return "25 Min Characters...";
+      return "1 Min Character...";
     }
     else if(this.get('model.text').length > 1000) {
       this.set('clientSideValidationComplete',false);
@@ -79,7 +79,7 @@ export default Ember.Controller.extend ({
     }
   }),
   validComment: Ember.computed('model.text', function() {
-    if(this.get('model.text').length < 10) {
+    if(this.get('model.text').length < 1) {
       this.set('clientSideValidationComplete',false);
       return false;
     }

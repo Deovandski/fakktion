@@ -14,34 +14,10 @@ export default Ember.Controller.extend({
       return false;
     }
   }),
-  nextGenreID: Ember.computed('application.selectedGID', function() {
-    return this.get('application.selectedGID');
-  }),
-  nextGenreName: Ember.computed('application.selectedGN', function() {
-    return this.get('application.selectedGN');
-  }),
-  nextFactTypeID: Ember.computed('application.selectedFTID', function() {
-    return this.get('application.selectedFTID');
-  }),
-  nextFactTypeName: Ember.computed('application.selectedFTN', function() {
-    return this.get('application.selectedFTN');
-  }),
-  nextCategoryID: Ember.computed('application.selectedCID', function() {
-    return this.get('application.selectedCID');
-  }),
-  nextCategoryName: Ember.computed('application.selectedCN', function() {
-    return this.get('application.selectedCN');
-  }),
-  nextTopicID: Ember.computed('application.selectedTID', function() {
-    return this.get('application.selectedTID');
-  }),
-  nextTopicName: Ember.computed('application.selectedTN', function() {
-    return this.get('application.selectedTN');
-  }),
   verifyTitle: Ember.computed('model.title', function() {
-    if (this.get('model.title').length < 10) {
+    if (this.get('model.title').length < 1) {
       this.set('clientSideValidationComplete', false);
-      return "Too short";
+      return "Min 1 char";
     } else if (this.get('model.title').length > 100) {
       this.set('clientSideValidationComplete', false);
       return "Max 100 Chars.";
@@ -51,9 +27,9 @@ export default Ember.Controller.extend({
     }
   }),
   verifyText: Ember.computed('model.text', function() {
-    if (this.get('model.text').length < 100) {
+    if (this.get('model.text').length < 1) {
       this.set('clientSideValidationComplete', false);
-      return "100 Min Characters...";
+      return "1 Min Character...";
     } else if (this.get('model.text').length > 2000) {
       this.set('clientSideValidationComplete', false);
       return "2000 Max Characters. Please revise your input!";
@@ -101,15 +77,6 @@ export default Ember.Controller.extend({
       }
     }
   }),
-  verifyGenre: Ember.computed('model.genreID', function() {
-    if (this.get('model.genreID') === 0) {
-      this.set('clientSideValidationComplete', false);
-      return "Missing Genre";
-    } else {
-      this.set('clientSideValidationComplete', true);
-      return '';
-    }
-  }),
   verifyFactType: Ember.computed('model.factTypeID', function() {
     if (this.get('model.factTypeID') === 0) {
       this.set('clientSideValidationComplete', false);
@@ -150,17 +117,14 @@ export default Ember.Controller.extend({
         var post = this.get('content');
         if (this.get('changeTags') === true) {
           var store = this.store;
-          if (this.get('nextCategoryID') !== 0) {
-            post.set('category', store.peekRecord('category', this.get('nextCategoryID')));
+          if (this.get('application.selectedCategory.id') !== 0) {
+            post.set('category', store.peekRecord('category', this.get('application.selectedCategory.id')));
           }
-          if (this.get('nextTopicID') !== 0) {
-            post.set('topic', store.peekRecord('topic', this.get('nextTopicID')));
+          if (this.get('application.selectedTopic.id') !== 0) {
+            post.set('topic', store.peekRecord('topic', this.get('application.selectedTopic.id')));
           }
-          if (this.get('nextGenreID') !== 0) {
-            post.set('genre', store.peekRecord('genre', this.get('nextGenreID')));
-          }
-          if (this.get('nextFactTypeID') !== 0) {
-            post.set('fact_type', store.peekRecord('fact_type', this.get('nextFactTypeID')));
+          if (this.get('application.selectedFactType.id') !== 0) {
+            post.set('fact_type', store.peekRecord('fact_type', this.get('application.selectedFactType.id')));
           }
         }
         var controller = this;

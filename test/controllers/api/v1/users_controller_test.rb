@@ -23,7 +23,6 @@ class Api::V1::UsersControllerTest < ActionController::TestCase
     @testUser = nil
     @testUser2 = nil
     @testPost = nil
-    @testGenre = nil
   end
   test "Users - API - Get Index" do
     get :index

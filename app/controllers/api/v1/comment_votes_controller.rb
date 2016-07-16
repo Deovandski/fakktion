@@ -4,7 +4,7 @@ class Api::V1::CommentVotesController < ApiController
 
   # Render all Comment Votes using CommentVoteSerializer, and organize them by user_id
   def index
-    json_render_all(CommentVote, :user_id)
+    render json: CommentVote.order('user_id ASC').all
   end
 
   # render specified CommentVote using CommentVoteSerializer.

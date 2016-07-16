@@ -19,11 +19,6 @@
   </div>
   <br/>
   <div class="input_block_type1">
-    <label class="first_label">Genre:</label>
-    <label class="input_wrapper">{{input value=model.genre.name disabled=true}}</label>
-  </div>
-  <br/>
-  <div class="input_block_type1">
     <label class="first_label">Fact Type:</label>
     <label class="input_wrapper">{{input value=model.fact_type.name disabled=true}}</label>
   </div>
@@ -47,26 +42,20 @@
     </div>
     <br/>
     <div class="input_block_type1">
-      <label class="first_label">New Genre:</label>
-      <label class="input_wrapper">{{input value=nextGenreName disabled=true}}</label>
-      <label class="second_label">{{verifyGenre}}</label>
-    </div>
-    <br/>
-    <div class="input_block_type1">
       <label class="first_label">New Fact Type:</label>
-      <label class="input_wrapper">{{input value=nextFactTypeName disabled=true}}</label>
+      <label class="input_wrapper">{{input value=application.selectedFactType.name disabled=true}}</label>
       <label class="second_label">{{verifyFactType}}</label>
     </div>
     <br/>
     <div class="input_block_type1">
       <label class="first_label">New Category:</label>
-      <label class="input_wrapper">{{input value=nextCategoryName disabled=true}}</label>
+      <label class="input_wrapper">{{input value=application.selectedCategory.name disabled=true}}</label>
       <label class="second_label">{{verifyCategory}}</label>
     </div>
     <br/>
     <div class="input_block_type1">
       <label class="first_label">New Topic:</label>
-      <label class="input_wrapper">{{input value=nextTopicName disabled=true}}</label>
+      <label class="input_wrapper">{{input value=application.selectedTopic.name disabled=true}}</label>
       <label class="second_label">{{verifyTopic}}</label>
     </div>
     <br/>

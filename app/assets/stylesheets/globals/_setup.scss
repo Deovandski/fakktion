@@ -116,13 +116,23 @@ html {
                     overflow-y: scroll;
                     overflow-x: hidden;
                     .left_sidebar {
-                        .sidebar_sub {
+                        border-right-style: solid;
+                        h4 {
                             border-right-style: solid;
+                        }
+                        .selected_sidebar_sub {
+                            border-right-style: solid;
+                            border-right-width: 3px;
                         }
                     }
                     .right_sidebar {
-                        .sidebar_sub {
+                        border-left-style: solid;
+                        h4 {
                             border-left-style: solid;
+                        }
+                        .selected_sidebar_sub {
+                            border-left-style: solid;
+                            border-left-width: 3px;
                         }
                     }
                     .left_sidebar,
@@ -131,139 +141,104 @@ html {
                         flex-direction: column;
                         flex-wrap: wrap;
                         width: auto;
-                        max-width: 230px;
+                        min-width: 165px;
+                        max-width: 200px;
                         height: 100%;
                         text-align: center;
                         border-width: 2px;
-                        .sidebar_sub {
-                            width: 100%;
+                        display: flex;
+                        h4 {
                             border-width: 3px;
+                            border-bottom-style: solid;
+                            padding: 0;
+                            margin: 0;
+                        }
+                        .tag_header {
                             display: flex;
-                            flex-direction: column;
-                            .tag_header {
-                                display: flex;
+                            flex: 1;
+                            height: auto;
+                            flex-direction: row;
+                            .management_link {
+                                width: 15%;
+                                img {
+                                    height: auto;
+                                    width: auto;
+                                }
+                            }
+                            h5 {
                                 flex: 1;
                                 height: auto;
-                                flex-direction: row;
-                                .management_link {
-                                    width: 15%;
-                                    img {
-                                        height: auto;
-                                        width: auto;
-                                    }
-                                }
-                                h5 {
-                                    flex: 1;
-                                    height: auto;
-                                    width: 85%;
-                                    margin-top: 3px;
-                                    margin-bottom: 3px;
-                                    text-align: center;
-                                }
-                            }
-                            .tag_listing {
-                                flex: 1;
-                                width: 100%;
-                                margin: 0;
-                                list-style-type: none;
+                                width: 85%;
+                                margin-top: 3px;
+                                margin-bottom: 3px;
                                 text-align: center;
-                                padding: 0;
-                                margin-bottom: 5px;
-                                input {
-                                    width: 100%;
-                                    height: 80%;
-                                }
-                                .tag_selection_container {
-                                    margin: 0;
-                                    padding: 2px;
-                                    height: 100%;
-                                    width: 100%;
-                                    display: flex;
-                                    cursor: pointer;
-                                    .tag_name {
-                                        margin-left: 5px;
-                                        font-weight: bold;
-                                        color: #ffffff;
-                                        padding: 2px;
-                                        width: 80%;
+                            }
+                        }
+                        .selected_sidebar_sub {
+                            border-bottom-style: solid;
+                            border-bottom-width: 4px;
+                            border-color: #000000;
+                            padding: 0;
+                            margin: 0;
+                            button {
+                                padding: 5px 0;
+                            }
+                        }
+                        .tag_listing {
+                            flex: 1;
+                            width: 100%;
+                            margin: 0;
+                            list-style-type: none;
+                            text-align: center;
+                            padding: 0;
+                            overflow-y: auto;
+                            li:nth-child(n) {
+                                margin: 5px auto;
+                                width: 90%;
+                                button {
+                                    .tag_selection_container {
+                                        margin: 0;
+                                        padding: 0;
                                         height: 100%;
-                                        cursor: pointer;
-                                    }
-                                    .tag_date {
-                                        @extend .tag_name;
                                         width: 100%;
-                                    }
-                                    .tag_posts {
-                                        margin-right: 5px;
-                                        font-weight: bold;
-                                        color: #ffffff;
-                                        border-style: solid;
-                                        border-width: 0.1px;
-                                        border-color: darken(#ffffff,45%);
-                                        padding: 2px;
-                                        width: 20%;
-                                        height: 100%;
                                         cursor: pointer;
+                                        display: flex;
+                                        flex-direction: row;
+                                        .tag_name {
+                                            margin: 0;
+                                            padding: 3px 0;
+                                            font-weight: bold;
+                                            color: #ffffff;
+                                            width: 80%;
+                                            height: 100%;
+                                            cursor: pointer;
+                                            white-space: nowrap;
+                                            overflow: hidden;
+                                            text-overflow: clip;
+                                        }
+                                        .tag_date {
+                                            @extend .tag_name;
+                                            width: 100%;
+                                        }
+                                        .tag_posts {
+                                            margin: 0;
+                                            padding: 3px 0;
+                                            font-weight: bold;
+                                            overflow: hidden;
+                                            color: #ffffff;
+                                            border-style: solid;
+                                            border-width: 0.1px;
+                                            border-color: darken(#ffffff,45%);
+                                            width: 20%;
+                                            height: 100%;
+                                            cursor: pointer;
+                                        }
                                     }
                                 }
-                                .tag_listing_search {
-                                    flex: none;
-                                    height: 50px;
-                                    margin-right: 10px;
-                                    margin-left: 10px;
-                                    font-weight: bold;
-                                    .factTypeInput {
-                                        color: $button-fact-type-bg;
-                                    }
-                                    .genreInput {
-                                        color: $button-genre-bg;
-                                    }
-                                    .categoryInput {
-                                        color: $button-category-bg;
-                                    }
-                                }
-                                li:nth-child(n) {
-                                    margin-top: 4px;
-                                    margin-bottom: 4px;
-                                }
-                            }
-                            .tag_no_result_genre {
-                                flex: 1;
-                                height: 25px;
-                                width: 100%;
-                                margin-top: 3px;
-                                margin-bottom: 3px;
-                                text-align: center;
-                                color: $button-genre-bg;
-                            }
-                            .tag_no_result_category {
-                                flex: 1;
-                                height: 25px;
-                                width: 100%;
-                                margin-top: 3px;
-                                margin-bottom: 3px;
-                                text-align: center;
-                                color: $button-category-bg;
-                            }
-                            .tag_no_result_fact_type {
-                                flex: 1;
-                                height: 25px;
-                                width: 100%;
-                                margin-top: 3px;
-                                margin-bottom: 3px;
-                                text-align: center;
-                                color: $button-fact-type-bg;
-                            }
-                            .button_toggler {
-                                flex: none;
-                                height: 25px;
-                                width: 100%;
-                                text-align: center;
-                                margin-top: 0;
                             }
                         }
                     }
-                    .central {
+                    .shared_panel {
                         flex-grow: 2;
                         flex-wrap: wrap;
                         min-height: 100%;
@@ -271,116 +246,16 @@ html {
                         text-align: center;
                         border-width: 3px;
                         padding-bottom: 20px;
-                        .central_panel {
-                            width: auto;
-                            max-width: 630px;
-                            height: 80px;
-                            border-bottom-style: solid;
-                            border-left-style: solid;
-                            border-right-style: solid;
-                            border-width: 2px;
-                            margin-left: auto;
-                            margin-right: auto;
-                            .central_upper_panel {
-                                height: 30px;
-                                width: 100%;
-                                display: flex;
-                                .central_upper_panel_sub {
-                                    flex-direction: row;
-                                    font-style: normal;
-                                    overflow: hidden;
-                                    text-overflow: ellipsis;
-                                    width: 25%;
-                                    height: 100%;
-                                    border-right-style: solid;
-                                    border-bottom-style: solid;
-                                    border-width: 1px;
-                                }
-                            }
-                            .central_lower_panel {
-                                height: 50px;
-                                width: 100%;
-                                border-bottom-style: solid;
-                                border-width: 3px;
-                                .topic_search {
-                                    height: 100%;
-                                    width: 95%;
-                                    float: left;
-                                    height: 100%;
-                                    border-top-style: solid;
-                                    border-bottom-style: solid;
-                                    border-width: 1px;
-                                    .topic_search_input {
-                                        height: 100%;
-                                        width: 30%;
-                                        float: left;
-                                        border-left-style: solid;
-                                        border-right-style: solid;
-                                        background-color: $button-topic-bg;
-                                        color: $button-topic-color;
-                                        font-weight: bold;
-                                    }
-                                    .topic_search_text {
-                                        height: 100%;
-                                        width: 70%;
-                                        float: left;
-                                        background-color: $button-topic-bg;
-                                        color: $button-topic-color;
-                                        font-weight: bold;
-                                    }
-                                }
-                                .topic_tagging_settings {
-                                    background-color: $button-topic-bg;
-                                    color: $button-topic-color;
-                                    float: left;
-                                    width: 5%;
-                                    height: 100%;
-                                    border-top-style: solid;
-                                    border-bottom-style: solid;
-                                    border-width: 1px;
-                                    img {
-                                        width: 100%;
-                                        height: auto;
-                                    }
-                                }
-                            }
+                        min-height: 100%;
+                        max-width: 900px;
+                        margin-left: auto;
+                        margin-right: auto;
+                        padding-top: 15px;
+                        padding-left: 10px;
+                        padding-right: 10px;
+                        .center_text {
+                            text-align: center;
                         }
-                        .panel_toggler {
-                            width: auto;
-                            max-width: 310px;
-                            height: 20px;
-                            margin: 10px auto;
-                            .pannel_container {
-                                display: flex;
-                                button {
-                                    flex-grow: 1;
-                                    flex-direction: column;
-                                    flex-wrap: wrap;
-                                    width: auto;
-                                    margin: 2px 5px;
-                                }
-                            }
-                        }
-                        .shared_panel {
-                            min-height: 100%;
-                            max-width: 900px;
-                            margin-left: auto;
-                            margin-right: auto;
-                            padding-top: 15px;
-                            padding-left: 10px;
-                            padding-right: 10px;
-                            .center_text {
-                                text-align: center;
-                            }
-                        }
-                    }
-                    .topicsContainer {
-                        background-color: darken($button-topic-bg,10%);
-                        color: $button-topic-color;
-                        text-align: center;
-                        border-top-style: solid;
-                        border-bottom-style: solid;
-                        border-width: 2px;
                     }
                 }
                 footer {
@@ -452,4 +327,12 @@ html {
     max-width: 30px;
     padding: 0;
     margin: 0 0 7px;
+}
+.left_text{
+  text-align: left;
+}
+.extra_bottom_margin{
+  li{
+    margin-bottom: 10px;
+  }
 }

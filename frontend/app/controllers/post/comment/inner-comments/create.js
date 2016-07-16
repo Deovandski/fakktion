@@ -10,8 +10,8 @@ export default Ember.Controller.extend ({
     if(this.get('text').length === 0) {
       return '';
     }
-    else if(this.get('text').length < 25) {
-      return 'At least 25 chars.';
+    else if(this.get('text').length < 1) {
+      return 'At least 1 Char.';
     }
     else if(this.get('text').length > 500) {
       return 'At most 500 chars.';
@@ -22,7 +22,7 @@ export default Ember.Controller.extend ({
     }
   }),
   validComment: Ember.computed('text', function() {
-    if(this.get('text').length < 25) {
+    if(this.get('text').length < 1) {
       this.set('clientSideValidationComplete',false);
       return false;
     }
@@ -61,7 +61,7 @@ export default Ember.Controller.extend ({
         });
       }
       else {
-        alert("(Client 402) Failed to create Comment... Check any warning messages (to the right of each textbox) otherwise contact support if you don't see any");
+        alert("Please check any outstanding warning message(s), and try again!");
       }
     }
   }

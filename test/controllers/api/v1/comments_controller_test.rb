@@ -37,7 +37,7 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
     assert_response(403)
   end
   test "Comments - API - Create 422" do
-    @testComment.text = "..."
+    @testComment.text = ""
     post :create, ActiveModelSerializers::SerializableResource.new(@testComment).as_json
     assert_response(422)
   end
@@ -90,7 +90,7 @@ class Api::V1::CommentsControllerTest < ActionController::TestCase
   test "Comments - API - UPDATE 422" do
     post :create, ActiveModelSerializers::SerializableResource.new(@testComment).as_json
     @testComment = Comment.first
-    @testComment.text = ".."
+    @testComment.text = ""
     tempComment = ActiveModelSerializers::SerializableResource.new(@testComment).serializable_hash
     post :update, tempComment.merge(id: @testComment)
     assert_response(422)

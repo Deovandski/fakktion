@@ -2,9 +2,9 @@ import Ember from "ember";
 const { service } = Ember.inject;
 
 export default Ember.Controller.extend({
-  application: Ember.inject.controller('application'),
   session: service('session'),
   sessionAccount: service('session-account'),
+  topicInputText: "",
   isBanned: Ember.computed('sessionAccount.user.reputation', function() {
     if (this.get('sessionAccount.user.reputation') < -100) {
       return true;
@@ -12,19 +12,19 @@ export default Ember.Controller.extend({
       return false;
     }
   }),
-  searchingTag: Ember.computed('application.topicInputText', function() {
-    if (this.get('application.topicInputText').length > 0) {
+  searchingTag: Ember.computed('topicInputText', function() {
+    if (this.get('topicInputText').length > 0) {
       return true;
     } else {
       return false;
     }
   }),
-  filteredTags: Ember.computed('application.topicInputText', function() {
-    if (this.get('application.topicInputText') === '') {
+  filteredTags: Ember.computed('topicInputText', function() {
+    if (this.get('topicInputText') === '') {
       this.set('noTags', false);
       return this.get('model');
     } else {
-      var rx = new RegExp(this.get('application.topicInputText').toLowerCase());
+      var rx = new RegExp(this.get('topicInputText').toLowerCase());
       var filteredTags = this.model.filter(function(tag) {
         return tag.get('name').match(rx);
       });
@@ -39,7 +39,7 @@ export default Ember.Controller.extend({
   }),
   actions: {
     clearTagSearchText: function() {
-      this.set('application.topicInputText', '');
+      this.set('topicInputText', '');
     }
   }
 });

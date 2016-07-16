@@ -188,4 +188,18 @@
     padding: 1px;
     font-weight: bold;
 }
-.info_normal_user {}
+.info_legend_user_boxed {
+    @extend .info_legend_user;
+    border-style: solid;
+    border-width: 1px;
+}
+.info_admin_user_boxed {
+    @extend .info_admin_user;
+    border-style: solid;
+    border-width: 1px;
+}
+.info_super_user_boxed {
+    @extend .info_super_user;
+    border-style: solid;
+    border-width: 1px;
+}

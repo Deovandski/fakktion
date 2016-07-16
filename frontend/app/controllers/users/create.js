@@ -170,7 +170,7 @@ export default Ember.Controller.extend({
   verifyPasswordConfirmation: Ember.computed('passwordConfirmation', 'password', function() {
     if (this.get('passwordConfirmation') !== this.get('password')) {
       this.set('clientSideValidationComplete', false);
-      return 'Does not match!';
+      return 'Password does not match!';
     } else {
       this.set('clientSideValidationComplete', true);
       return '';
@@ -226,9 +226,9 @@ export default Ember.Controller.extend({
           self.set('email', '');
           self.set('password', '');
           self.set('passwordConfirmation', '');
-          self.set('legal_terms_read', false);
-          self.set('privacy_terms_read', false);
-          self.set('show_full_name', false);
+          self.set('legalTermsRead', false);
+          self.set('privacyTermsRead', false);
+          self.set('showFullName', false);
           self.set('dateOfBirth', '');
           self.set('dateOfBirth_day', '');
           self.set('dateOfBirth_month', '');

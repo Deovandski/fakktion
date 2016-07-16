@@ -4,7 +4,7 @@ const { service } = Ember.inject;
 export default Ember.Controller.extend ({
   session: service('session'),
   sessionAccount: service('session-account'),
-  innerCommentSortProperties: ['empathy_level:desc'],
+  innerCommentSortProperties: ['created_at:asc'],
   sortedInnerComments: Ember.computed.sort('model.inner_comments', 'innerCommentSortProperties'),
   isBanned: Ember.computed('sessionAccount.user.reputation', function() {
     if(this.get('sessionAccount.user.reputation') < -200){

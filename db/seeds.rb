@@ -84,10 +84,10 @@ case Rails.env
       is_super_user: true,
       is_admin: true,
       is_legend: false,
-      facebook_url: '',
       personal_message: 'sample personal message',
+      facebook_url: 'https://www.facebook.com/deovandski',
       twitter_url: 'https://twitter.com/Deovandski',
-      webpage_url: 'http://deovandski.herokuapp.com',
+      webpage_url: 'https://deovandski.blogspot.com/',
       privacy_terms_read: true,
       legal_terms_read: true)
     end
@@ -100,14 +100,11 @@ end
 if Category.count != 0
   Rails.logger.info 'There are categories already...'
 else
-  Category.create!(name: 'Gaming')
+  Category.create!(name: 'Game')
   Category.create!(name: 'Song')
   Category.create!(name: 'Movie')
-  Category.create!(name: 'Television')
   Category.create!(name: 'Musical')
   Category.create!(name: 'Book')
-  Category.create!(name: 'Radio')
-  Category.create!(name: 'Newspaper')
   Category.create!(name: 'Vocaloid')
   Rails.logger.info 'Default categories created!'
 end
@@ -116,48 +113,54 @@ end
 if FactType.count != 0
   Rails.logger.info 'There are fact types already...'
 else
-  FactType.create!(name: 'Technology')
+  FactType.create!(name: 'Television')
   FactType.create!(name: 'Business')
   FactType.create!(name: 'Immigration')
   FactType.create!(name: 'Environment')
+  FactType.create!(name: 'Intl. Policy')
+  FactType.create!(name: 'World')
+  FactType.create!(name: 'U.S.')
+  FactType.create!(name: 'Politics')
+  FactType.create!(name: 'Business')
+  FactType.create!(name: 'Opinion')
+  FactType.create!(name: 'Technology')
+  FactType.create!(name: 'Science')
+  FactType.create!(name: 'Health')
+  FactType.create!(name: 'Sports')
+  FactType.create!(name: 'Arts')
+  FactType.create!(name: 'Style')
+  FactType.create!(name: 'Food')
+  FactType.create!(name: 'Travel')
+  FactType.create!(name: 'Magazine')
+  FactType.create!(name: 'Real State')
   Rails.logger.info 'Default fact types created!'
-end
-
-# GENRE RELATED SEED
-if Genre.count != 0
-  Rails.logger.info 'There are genres already...'
-else
-  Genre.create!(name: 'surreal')
-  Genre.create!(name: 'Action')
-  Genre.create!(name: 'Adventure')
-  Genre.create!(name: 'Comedy')
-  Genre.create!(name: 'Crime')
-  Genre.create!(name: 'Drama')
-  Genre.create!(name: 'Fantasy')
-  Genre.create!(name: 'Historical')
-  Genre.create!(name: 'Horror')
-  Genre.create!(name: 'Mystery')
-  Genre.create!(name: 'Paranoid')
-  Genre.create!(name: 'Philosophy')
-  Genre.create!(name: 'Political')
-  Genre.create!(name: 'Romance')
-  Genre.create!(name: 'Saga')
-  Genre.create!(name: 'Satire')
-  Genre.create!(name: 'Science')
-  Genre.create!(name: 'Thriller')
-  Genre.create!(name: 'Urban')
-  Genre.create!(name: 'Western')
-  Rails.logger.info 'Default genres created!'
 end
 
 # TOPIC RELATED SEED
 if Topic.count != 0
   Rails.logger.info 'There are topics already...'
 else
-  Topic.create!(name: 'hatsune miku')
-  Topic.create!(name: 'megurine luka')
-  Topic.create!(name: 'kagamine rin')
-  Topic.create!(name: 'Kagamine len')
+  Topic.create!(name: 'Surreal')
+  Topic.create!(name: 'Action')
+  Topic.create!(name: 'Adventure')
+  Topic.create!(name: 'Comedy')
+  Topic.create!(name: 'Crime')
+  Topic.create!(name: 'Drama')
+  Topic.create!(name: 'Fantasy')
+  Topic.create!(name: 'Historical')
+  Topic.create!(name: 'Horror')
+  Topic.create!(name: 'Mystery')
+  Topic.create!(name: 'Paranoid')
+  Topic.create!(name: 'Philosophy')
+  Topic.create!(name: 'Political')
+  Topic.create!(name: 'Romance')
+  Topic.create!(name: 'Saga')
+  Topic.create!(name: 'Satire')
+  Topic.create!(name: 'Science')
+  Topic.create!(name: 'Thriller')
+  Topic.create!(name: 'Urban')
+  Topic.create!(name: 'Western')
+  Topic.create!(name: 'Vocaloid')
   Rails.logger.info 'Default topics created!'
 end
 
@@ -166,16 +169,14 @@ if Post.count != 0
   Rails.logger.info 'There are posts already...'
 else
   # Post Relationships
-  ComedyGenre = Genre.find_by name: 'comedy'
   songCategory = Category.find_by name: 'song'
-  mikuTopic = Topic.find_by name: 'hatsune miku'
-  firstUser = User.first
+  mikuTopic = Topic.find_by name: 'vocaloid'
   technologyFactType = FactType.find_by name: 'technology'
+  firstUser = User.first
   Post.create!(fact_link: 'https://en.wikipedia.org/wiki/Hatsune_Miku',
     fiction_link: 'http://www.cbsnews.com/news/hatsune-miku-the-worlds-fakest-pop-star/',
     text: '<h5>Miku is love! Miku is Life!</h5> <p>No seriously, Miku is the result of how community driven creativity can bring a virtual being into real life.</p><p> The Fiction article talks about Miku being a fake persona or a simple program, but if you ask the Vocaloid community, you will hear quite the different tale. Miku is not the only Vocaloid, but she is the logo of how community driven content management can not only bring people closer, but also breath life into a character that represents most of the Vocaloid community (as in all the people who have respect for her in an I-thou interpersonal relation.)</p><ol><li>Do you agree that virtual being can attain the status of real due to the breath of life given by a community behind him/her?</li><li>If not, then what would be required to allow those virtual beings being cosidered real?</li></ol>',
     title: 'The concept of reality behind Hatsune Miku',
-    genre_id: ComedyGenre.id,
     fact_type_id: technologyFactType.id,
     topic_id: mikuTopic.id,
     user_id: firstUser.id,

@@ -57,14 +57,6 @@ Router.map(function() {
     });
   });
 
-  // GENRE(S) ROUTES
-  this.route('genres', function(){
-    this.route('create');
-  });
-  this.route('genre', { path:'genre/:genre_id' }, function() {
-    this.route('edit');
-  });
-
   // Fact Type(S) ROUTES
   this.route('factTypes', function(){
     this.route('create');

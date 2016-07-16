@@ -16,7 +16,6 @@
 #  def teardown
 #    @testAdminMessage = nil
 #    @apiAdminMessage = nil
-#    @genreSerialized = nil
 #    @adminMessagedAuthor = nil
 #  end
 #  test "AdminMessages - API - Get Index" do
@@ -47,8 +46,6 @@
 #    adminMessage.title = "mikuchan"
 #    tempAdminMessage = ActiveModelSerializers::SerializableResource.new(adminMessage).serializable_hash
 #    post :update, tempAdminMessage.merge(id: adminMessage)
-#    genreUpdated = AdminMessage.find_by title: 'mikuchan'
-#    assert_response :success, genreUpdated
 #  end
 #  test "AdminMessages - API - UPDATE 422" do
 #    adminMessage = AdminMessage.find_by title: 'testing title'

@@ -4,7 +4,7 @@ class Api::V1::InnerCommentsController < ApiController
 
   # Render all InnerComments using InnerCommentSerializer.
   def index
-    json_render_all(InnerComment, :empathy_level)
+    render json: InnerComment.order('empathy_level ASC').all
   end
 
   # Render the specified InnerComment using InnerCommentSerializer.

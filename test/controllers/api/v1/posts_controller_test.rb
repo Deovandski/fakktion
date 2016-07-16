@@ -4,13 +4,12 @@ class Api::V1::PostsControllerTest < ActionController::TestCase
   # Called before every test
   setup do
     @request.headers["Content-Type"] = "application/json; charset=utf-8"
-    @genre = Genre.first
     @topic = Topic.first
     @factType = FactType.first
     @category = Category.first
     @user = User.first
     @topic = Topic.first
-    @testPost = Post.new(user_id: @user.id, genre_id: @genre.id, category_id: @category.id, fact_type_id: @factType.id, topic_id: @topic.id,
+    @testPost = Post.new(user_id: @user.id,  category_id: @category.id, fact_type_id: @factType.id, topic_id: @topic.id,
     views_count: 0,
     comments_count: 0,
     fact_link: "https://www.google.com",
@@ -18,7 +17,7 @@ class Api::V1::PostsControllerTest < ActionController::TestCase
     title: "THis is a testing title for the sake of testing the title",
     text: "test text for testing text so that I can test out the backend text............................................................")
     @testPost.save
-    @testPost_unsaved = Post.new(user_id: @user.id, genre_id: @genre.id, category_id: @category.id, fact_type_id: @factType.id, topic_id: @topic.id,
+    @testPost_unsaved = Post.new(user_id: @user.id, category_id: @category.id, fact_type_id: @factType.id, topic_id: @topic.id,
     views_count: 0,
     comments_count: 0,
     fact_link: "https://www.google.com",
@@ -29,7 +28,6 @@ class Api::V1::PostsControllerTest < ActionController::TestCase
   end
   # Called after every test
   def teardown
-    @genre = nil
     @topic = nil
     @factType = nil
     @category = nil
@@ -57,7 +55,7 @@ class Api::V1::PostsControllerTest < ActionController::TestCase
     assert_response(403)
   end
   test "Posts - API - Create 422" do
-    @testPost_unsaved.text = "..."
+    @testPost_unsaved.text = ""
     post :create, ActiveModelSerializers::SerializableResource.new(@testPost_unsaved).as_json
     assert_response(422)
   end
@@ -115,7 +113,7 @@ class Api::V1::PostsControllerTest < ActionController::TestCase
   end
   test "Posts - API - UPDATE 422" do
     @testPost = Post.first
-    @testPost.text = ".."
+    @testPost.text = ""
     tempPost = ActiveModelSerializers::SerializableResource.new(@testPost).serializable_hash
     post :update, tempPost.merge(id: @testPost)
     assert_response(422)

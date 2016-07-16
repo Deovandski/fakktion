@@ -18,9 +18,9 @@ export default Ember.Controller.extend({
   }),
   clientSideValidationComplete: false,
   verifyTitle: Ember.computed('title', function() {
-    if (this.get('title').length < 10) {
+    if (this.get('title').length < 1) {
       this.set('clientSideValidationComplete', false);
-      return "Too short";
+      return "Min 1 Char...";
     } else if (this.get('title').length > 100) {
       this.set('clientSideValidationComplete', false);
       return "Max 100 Chars.";
@@ -30,9 +30,9 @@ export default Ember.Controller.extend({
     }
   }),
   verifyText: Ember.computed('text', function() {
-    if (this.get('text').length < 100) {
+    if (this.get('text').length < 1) {
       this.set('clientSideValidationComplete', false);
-      return "100 Min Characters...";
+      return "1 Min Character...";
     } else if (this.get('text').length > 2000) {
       this.set('clientSideValidationComplete', false);
       return "2000 Max Characters. Please revise your input!";
@@ -91,20 +91,11 @@ export default Ember.Controller.extend({
       return "http(s)://www.example.com";
     }
   }),
-  allTagsValid: Ember.computed('application.selectedGenre.id', 'application.selectedFactType.id', 'application.selectedCategory.id', 'application.selectedTopic.id', function() {
-    if (this.get('application.selectedGenre.id') > 0 && this.get('application.selectedFactType.id') > 0 && this.get('application.selectedCategory.id') > 0 && this.get('application.selectedTopic.id') > 0) {
+  allTagsValid: Ember.computed('application.selectedFactType.id', 'application.selectedCategory.id', 'application.selectedTopic.id', function() {
+    if (this.get('application.selectedFactType.id') > 0 && this.get('application.selectedCategory.id') > 0 && this.get('application.selectedTopic.id') > 0) {
       return true;
     } else {
       return false;
-    }
-  }),
-  verifyGenre: Ember.computed('application.selectedGenre.id', function() {
-    if (this.get('application.selectedGenre.id') > 0) {
-      this.set('clientSideValidationComplete', true);
-      return false;
-    } else {
-      this.set('clientSideValidationComplete', false);
-      return true;
     }
   }),
   verifyFactType: Ember.computed('application.selectedFactType.id', function() {
@@ -145,7 +136,6 @@ export default Ember.Controller.extend({
           fiction_link: this.get('fictionLink'),
           comments_count: 0,
           user: store.peekRecord('user', this.get('sessionAccount.user.id')),
-          genre: store.peekRecord('genre', this.get('application.selectedGenre.id')),
           fact_type: store.peekRecord('fact_type', this.get('application.selectedFactType.id')),
           topic: store.peekRecord('topic', this.get('application.selectedTopic.id')),
           category: store.peekRecord('category', this.get('application.selectedCategory.id'))
