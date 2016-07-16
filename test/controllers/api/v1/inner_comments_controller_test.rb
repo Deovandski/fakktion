@@ -41,7 +41,7 @@ class Api::V1::InnerCommentsControllerTest < ActionController::TestCase
     assert_response(403)
   end
   test "InnerComments - API - Create 422" do
-    @testInnerComment.text = "..."
+    @testInnerComment.text = ""
     post :create, ActiveModelSerializers::SerializableResource.new(@testInnerComment).as_json
     assert_response(422)
   end
@@ -88,7 +88,7 @@ class Api::V1::InnerCommentsControllerTest < ActionController::TestCase
   test "InnerComments - API - UPDATE 422" do
     post :create, ActiveModelSerializers::SerializableResource.new(@testInnerComment).as_json
     @testInnerComment = InnerComment.first
-    @testInnerComment.text = ".."
+    @testInnerComment.text = ""
     tempInnerComment = ActiveModelSerializers::SerializableResource.new(@testInnerComment).serializable_hash
     post :update, tempInnerComment.merge(id: @testInnerComment)
     assert_response(422)

@@ -55,7 +55,7 @@ class Api::V1::PostsControllerTest < ActionController::TestCase
     assert_response(403)
   end
   test "Posts - API - Create 422" do
-    @testPost_unsaved.text = "..."
+    @testPost_unsaved.text = ""
     post :create, ActiveModelSerializers::SerializableResource.new(@testPost_unsaved).as_json
     assert_response(422)
   end
@@ -113,7 +113,7 @@ class Api::V1::PostsControllerTest < ActionController::TestCase
   end
   test "Posts - API - UPDATE 422" do
     @testPost = Post.first
-    @testPost.text = ".."
+    @testPost.text = ""
     tempPost = ActiveModelSerializers::SerializableResource.new(@testPost).serializable_hash
     post :update, tempPost.merge(id: @testPost)
     assert_response(422)
