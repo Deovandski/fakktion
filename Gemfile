@@ -14,19 +14,19 @@ gem "local_time", '~> 1.0'
 gem "puma", '~> 3.4.0'
 
 # AMS
-gem 'active_model_serializers', '~> 0.10.1'
+gem 'active_model_serializers', '~> 0.10.2'
 
 # EmberCLI
 gem 'ember-cli-rails', '~> 0.7.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.6'
+gem 'rails', '~> 4.2.7'
 
 # Sanitize Post Text
 gem 'rails-html-sanitizer', '~> 1.0.3'
 
 # CSS related stuff
-gem 'sass-rails', '~> 5.0.5'
+gem 'sass-rails', '~> 5.0.6'
 gem "awesome_print", '~> 1.7.0'
 gem "font-awesome-rails", '~> 4.6.3'
 gem 'bourbon', '~> 4.2.7'
@@ -74,4 +74,3 @@ group :production, :staging do
   # Postgres (Database)
   gem "pg", '~> 0.18.4'
 end
-
