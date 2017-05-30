@@ -28,7 +28,7 @@ This project once used [Ember-Rails](https://github.com/emberjs/ember-rails), bu
 
 [Heroku](docs/heroku.md) (~35 minutes for deployment)
 
-[Ubuntu Server 14.04](docs/Ubuntu-deployment-14.md) (~2 hours for deployment | Deprecated)
+[Ubuntu Server 14.04](docs/ubuntu-deployment-14.md) (~2 hours for deployment | Deprecated)
 
 [Ubuntu Server 16.04](docs/ubuntu-deployment-16.md) (~1 hour for deployment)
 
