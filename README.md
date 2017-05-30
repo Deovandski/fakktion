@@ -2,10 +2,10 @@
 
 ![](/FakktionLogo.png)
 
-####Project
+#### Project
 [![Build Status][travis-badge]][travis] [![Code Climate][codeClimate-badge]][codeClimate] [![Dependency Status][dependency-badge]][dependency] [![Issues][issues-badge]][issues] [![Codebeat][codebeat-badge]][codebeat]
 
-####Rails (Backend)
+#### Rails (Backend)
 [![Security][security-badge]][security] [![Docs][docs-badge]][docs] [![Backend Coverage][backendCoverage-badge]][backendCoverage]
  
 [Experimental Live Website](http://fakktion.herokuapp.com/) (In sync with master branch - Initial load may be slow due to Dyno sleep mode implemented by [Heroku](https://www.heroku.com/pricing).)
@@ -28,13 +28,13 @@ This project once used [Ember-Rails](https://github.com/emberjs/ember-rails), bu
 
 [Heroku](docs/heroku.md) (~35 minutes for deployment)
 
-[Ubuntu Server 14.04](docs/Ubuntu-deployment14.md) (~2 hours for deployment | Deprecated)
+[Ubuntu Server 14.04](docs/Ubuntu-deployment-14.md) (~2 hours for deployment | Deprecated)
 
-[Ubuntu Server 16.04](docs/ubuntu-eployment16.md) (~1 hour for deployment)
+[Ubuntu Server 16.04](docs/ubuntu-deployment-16.md) (~1 hour for deployment)
 
 ## Server Maintenance
 
-[Ubuntu Server 16.04](docs/ubuntu-maintenance16.md)
+[Ubuntu Server 16.04](docs/ubuntu-maintenance-16.md)
 
 ## Documents
 
