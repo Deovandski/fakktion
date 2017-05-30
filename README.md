@@ -13,7 +13,7 @@
 All information about this project can be found on this [published paper](http://www.micsymposium.org/mics2015/ProceedingsMICS_2015/Skibinski_3C1_31.pdf). Information regarding the Database Design can be seen [Here](erd.pdf) while any other information can be seen in the documents below.
 
 ## Notice
-This project once used [Ember-Rails](https://github.com/emberjs/ember-rails), but now it is using [Ember-cli-rails](https://github.com/rwz/ember-cli-rails). If you would like to see the previous Ember-Rails implementation, please check the [Ember-Rails Implementation branch](https://github.com/Deovandski/Fakktion/tree/Ember-Rails).
+This project once used [Ember-Rails](https://github.com/emberjs/ember-rails), but now it is using [Ember-cli-rails](https://github.com/rwz/ember-cli-rails). If you would like to see the previous Ember-Rails implementation, please check the [Ember-Rails Implementation branch](https://github.com/Deovandski/fakktion/tree/Ember-Rails).
 
 ## Development
 
@@ -28,29 +28,29 @@ This project once used [Ember-Rails](https://github.com/emberjs/ember-rails), bu
 
 [Heroku](docs/heroku.md) (~35 minutes for deployment)
 
-[Ubuntu Server 14.04](docs/Ubuntu Deployment14.md) (~2 hours for deployment | Deprecated)
+[Ubuntu Server 14.04](docs/Ubuntu-deployment14.md) (~2 hours for deployment | Deprecated)
 
-[Ubuntu Server 16.04](docs/Ubuntu Deployment16.md) (~1 hour for deployment)
+[Ubuntu Server 16.04](docs/ubuntu-eployment16.md) (~1 hour for deployment)
 
 ## Server Maintenance
 
-[Ubuntu Server 16.04](docs/Ubuntu Maintenance16.md)
+[Ubuntu Server 16.04](docs/ubuntu-maintenance16.md)
 
 ## Documents
 
-[Discussions regarding this project](docs/Discussions.md)
+[Discussions regarding this project](docs/discussions.md)
 
-[Code Information](docs/Code Information.txt)
+[Code Information](docs/code-information.txt)
 
-[Design Information](docs/Design Information.txt)
+[Design Information](docs/design-information.txt)
 
-[Extra Commands](docs/Extra Commands.md)
+[Extra Commands](docs/extra-commands.md)
 
 ## License
 
-[The MIT License (MIT)](docs/License.md)
+[The MIT License (MIT)](LICENSE)
 
-Copyright (c) 2014 - 2016, Deovandski Skibinski Junior and Dr. Anne Denton
+Copyright (c) 2014 - 2017, Deovandski Skibinski Junior and Dr. Anne Denton
 All rights reserved.
 
 [travis]: https://travis-ci.org/Deovandski/Fakktion
